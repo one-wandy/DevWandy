@@ -4,5 +4,5 @@ from . import views
 
 
 urlpatterns = [
-      path("", )
+      path('', views.AddCustomer.as_view(), name='add-customer')
 ]

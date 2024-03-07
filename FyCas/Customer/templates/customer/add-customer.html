@@ -1,0 +1,50 @@
+{% include "base/base.html" %}
+{% block content %}
+      <section>
+            <div class="m-1">
+                <h6 class="vr d-flex">
+                  Datos Personales
+                </h6>  
+            </div>
+            <div class="d-flex flex-wrap">
+                  <div class="form-floating mb-3">
+                        {{form.dni}}
+                        <label for="id_dni">Cedula</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                        {{form.name}}
+                        <label for="id_email">Nombre </label>
+                  </div>
+                  <div class="form-floating mb-3">
+                        {{form.last_name}}
+                        <label for="id_last_name">Apellidos </label>
+                  </div>
+                  <div class="form-floating mb-3">
+                        {{form.number}}
+                        <label for="id_number">Number</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                        {{form.number}}
+                        <label for="id_number">Number</label>
+                  </div>
+                  <section class="w-100 d-flex flex-wrap">
+                        <div class="w-100">
+                              <h6 class="vr">
+                                    Información 
+                              </h6>
+                        </div>
+                        <div class="form-floating mb-3  ">
+                              {{form.amount_purpose}}
+                              <label for="id_amount_purpose">Monto que Solicita y Fines
+                              </label>
+                        </div>
+                        <div class="form-floating mb-3">
+                              {{form.work_information}}
+                              <label for="id_work_information">Información laboral
+      
+                              </label>
+                        </div>
+                  </section>
+            </div>
+      </section>
+{% endblock  %}
