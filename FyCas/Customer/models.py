@@ -12,6 +12,7 @@ class Customer(models.Model):
     work_information = models.TextField(max_length=300)
     references_peopple = models.TextField(max_length=500)
     dni = models.IntegerField(default=000000000000)
+    amount = models.IntegerField(default=0)
     
 
     def __str__(self):

@@ -1,9 +1,72 @@
 {% include "base/base.html" %}
 {% block content %}
-      <section>
+{% load static %}
+<style>
+      #amount_purpose 
+      {
+            min-height: 10rem !important ;
+      }
+      .section 
+      {
+            background-color: rgb(255, 236, 236);
+      }
+      h6
+      {
+            color: rgb(70, 57, 57);
+      }
+      .btn-save
+      {
+            background-color: rgb(206, 175, 175);
+            border-radius: 1.5rem;
+            padding: 0.4rem 1.5rem;
+            border: 0;
+            color: rgb(255, 236, 236);
+            font-weight: bold;
+      }
+      .btn-cancel
+      {
+            background-color: transparent;
+            border-radius: 1.5rem;
+            padding: 0.4rem 1.5rem;
+            border: 0;
+            color: rgb(70, 57, 57);
+            font-weight: bold;
+      }
+      .form-floating label
+      {
+            color: rgb(70, 57, 57);
+            font-size: 13px;
+      }
+      .form-floating 
+      {
+            padding: 2px;
+      }
+      .img-label 
+      {
+            border: solid rgb(206, 175, 175) 1px; background-color: antiquewhite;
+            background-color: white;   
+            cursor: pointer;
+      }
+      .img-label 
+      {
+            width: 20rem; height: 10rem; border-radius: 1.5rem;
+            display: flex; justify-content: center; align-content: center;
+            margin: 0.2rem;
+      }
+      .img-label:hover 
+      {
+            background-color: rgb(255, 236, 236);
+            border-color: white;
+      }
+      .address 
+      {
+            width: 40.4rem !important;
+      }
+</style>
+      <section class="section p-2 m-2" style="border-radius: 1.5rem;" >
             <div class="m-1">
-                <h6 class="vr d-flex">
-                  Datos Personales
+                <h6 class=" d-flex">
+                  -Datos Personales
                 </h6>  
             </div>
             <div class="d-flex flex-wrap">
@@ -24,27 +87,56 @@
                         <label for="id_number">Number</label>
                   </div>
                   <div class="form-floating mb-3">
-                        {{form.number}}
-                        <label for="id_number">Number</label>
+                        {{form.amount}}
+                        <label for="id_amount">Monto</label>
+                  </div>
+                  <div class="form-floating mb-3 ">
+                        {{form.address}}
+                        <label for="id_address">Direccion de recidencia</label>
+                  </div>
+                  <div class="w-100 ">
+                        <h6>
+                              Foto de Cedula
+                        </h6>
+                  </div>
+                  <div class="w-100 d-flex flex-wrap ">
+                        <label for="" class="img-label  d-flex text-center flex-wrap justify-content-center aling-content-center">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-dotted m-0" viewBox="0 0 16 16">
+                              <path d="M8 0q-.264 0-.523.017l.064.998a7 7 0 0 1 .918 0l.064-.998A8 8 0 0 0 8 0M6.44.152q-.52.104-1.012.27l.321.948q.43-.147.884-.237L6.44.153zm4.132.271a8 8 0 0 0-1.011-.27l-.194.98q.453.09.884.237zm1.873.925a8 8 0 0 0-.906-.524l-.443.896q.413.205.793.459zM4.46.824q-.471.233-.905.524l.556.83a7 7 0 0 1 .793-.458zM2.725 1.985q-.394.346-.74.74l.752.66q.303-.345.648-.648zm11.29.74a8 8 0 0 0-.74-.74l-.66.752q.346.303.648.648zm1.161 1.735a8 8 0 0 0-.524-.905l-.83.556q.254.38.458.793l.896-.443zM1.348 3.555q-.292.433-.524.906l.896.443q.205-.413.459-.793zM.423 5.428a8 8 0 0 0-.27 1.011l.98.194q.09-.453.237-.884zM15.848 6.44a8 8 0 0 0-.27-1.012l-.948.321q.147.43.237.884zM.017 7.477a8 8 0 0 0 0 1.046l.998-.064a7 7 0 0 1 0-.918zM16 8a8 8 0 0 0-.017-.523l-.998.064a7 7 0 0 1 0 .918l.998.064A8 8 0 0 0 16 8M.152 9.56q.104.52.27 1.012l.948-.321a7 7 0 0 1-.237-.884l-.98.194zm15.425 1.012q.168-.493.27-1.011l-.98-.194q-.09.453-.237.884zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a7 7 0 0 1-.458-.793zm13.828.905q.292-.434.524-.906l-.896-.443q-.205.413-.459.793zm-12.667.83q.346.394.74.74l.66-.752a7 7 0 0 1-.648-.648zm11.29.74q.394-.346.74-.74l-.752-.66q-.302.346-.648.648zm-1.735 1.161q.471-.233.905-.524l-.556-.83a7 7 0 0 1-.793.458zm-7.985-.524q.434.292.906.524l.443-.896a7 7 0 0 1-.793-.459zm1.873.925q.493.168 1.011.27l.194-.98a7 7 0 0 1-.884-.237zm4.132.271a8 8 0 0 0 1.012-.27l-.321-.948a7 7 0 0 1-.884.237l.194.98zm-2.083.135a8 8 0 0 0 1.046 0l-.064-.998a7 7 0 0 1-.918 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+                                  </svg>                          
+                        </label>
+                        <label for="" class="img-label text-center  d-flex flex-wrap justify-content-center aling-content-center" >
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-dotted m-0" viewBox="0 0 16 16">
+                                    <path d="M8 0q-.264 0-.523.017l.064.998a7 7 0 0 1 .918 0l.064-.998A8 8 0 0 0 8 0M6.44.152q-.52.104-1.012.27l.321.948q.43-.147.884-.237L6.44.153zm4.132.271a8 8 0 0 0-1.011-.27l-.194.98q.453.09.884.237zm1.873.925a8 8 0 0 0-.906-.524l-.443.896q.413.205.793.459zM4.46.824q-.471.233-.905.524l.556.83a7 7 0 0 1 .793-.458zM2.725 1.985q-.394.346-.74.74l.752.66q.303-.345.648-.648zm11.29.74a8 8 0 0 0-.74-.74l-.66.752q.346.303.648.648zm1.161 1.735a8 8 0 0 0-.524-.905l-.83.556q.254.38.458.793l.896-.443zM1.348 3.555q-.292.433-.524.906l.896.443q.205-.413.459-.793zM.423 5.428a8 8 0 0 0-.27 1.011l.98.194q.09-.453.237-.884zM15.848 6.44a8 8 0 0 0-.27-1.012l-.948.321q.147.43.237.884zM.017 7.477a8 8 0 0 0 0 1.046l.998-.064a7 7 0 0 1 0-.918zM16 8a8 8 0 0 0-.017-.523l-.998.064a7 7 0 0 1 0 .918l.998.064A8 8 0 0 0 16 8M.152 9.56q.104.52.27 1.012l.948-.321a7 7 0 0 1-.237-.884l-.98.194zm15.425 1.012q.168-.493.27-1.011l-.98-.194q-.09.453-.237.884zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a7 7 0 0 1-.458-.793zm13.828.905q.292-.434.524-.906l-.896-.443q-.205.413-.459.793zm-12.667.83q.346.394.74.74l.66-.752a7 7 0 0 1-.648-.648zm11.29.74q.394-.346.74-.74l-.752-.66q-.302.346-.648.648zm-1.735 1.161q.471-.233.905-.524l-.556-.83a7 7 0 0 1-.793.458zm-7.985-.524q.434.292.906.524l.443-.896a7 7 0 0 1-.793-.459zm1.873.925q.493.168 1.011.27l.194-.98a7 7 0 0 1-.884-.237zm4.132.271a8 8 0 0 0 1.012-.27l-.321-.948a7 7 0 0 1-.884.237l.194.98zm-2.083.135a8 8 0 0 0 1.046 0l-.064-.998a7 7 0 0 1-.918 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+                                        </svg>                          
+                
+                        </label>
                   </div>
                   <section class="w-100 d-flex flex-wrap">
                         <div class="w-100">
-                              <h6 class="vr">
-                                    Información 
+                              <h6 class="">
+                                    -Información 
                               </h6>
                         </div>
-                        <div class="form-floating mb-3  ">
+                        <div class="form-floating mb-3 w-50 d-flex">
                               {{form.amount_purpose}}
                               <label for="id_amount_purpose">Monto que Solicita y Fines
                               </label>
                         </div>
-                        <div class="form-floating mb-3">
+                        <div class="form-floating mb-3 w-50" >
                               {{form.work_information}}
                               <label for="id_work_information">Información laboral
-      
                               </label>
                         </div>
                   </section>
+                  <div class="d-flex w-100 pt-4 justify-content-end">
+                        <button class="btn-cancel">
+                              Cancelar
+                        </button>
+                        <button class="btn-save">
+                              Agregar
+                        </button>
+                  </div>
             </div>
       </section>
 {% endblock  %}
