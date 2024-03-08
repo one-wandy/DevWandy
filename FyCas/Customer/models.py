@@ -3,17 +3,19 @@ from django.db import models
 # Create your models here.
 
 class Customer(models.Model):
-    name = models.CharField(max_length=255, default="Anonimo")
-    last_name = models.CharField(max_length=255)
-    number = models.CharField(max_length=20, blank=True)
-    address = models.CharField(max_length=255)
-    email = models.EmailField(unique=True)
-    amount_purpose = models.TextField(max_length=355)
-    work_information = models.TextField(max_length=300)
-    references_peopple = models.TextField(max_length=500)
-    dni = models.IntegerField(default=000000000000)
-    amount = models.IntegerField(default=0)
+    name = models.CharField(max_length=255, )#Nombre
+    last_name = models.CharField(max_length=255)#Apellido
+    number = models.CharField(max_length=20, blank=True)#Numero local o Movile
+    address = models.CharField(max_length=255)#Direccion de donde recide
+    email = models.EmailField(unique=True)#Correo electronico
+    amount_purpose = models.TextField(max_length=355)#Proposito por el que se solicita el prestamo
+    work_information = models.TextField(max_length=300)#Informacion donde trabaja
+    references_peopple = models.TextField(max_length=500)#Personas referentes
+    dni = models.IntegerField(default=000000000000) #Numero de Identidad
+    amount = models.IntegerField(default=0)#Monto 
+    no_account = models.IntegerField(default=0) #Numero de Cuenta
+    img1 = models.ImageField(upload_to="media/", blank=True, null=True)#Foto de Cedula delantera
+    img2 = models.ImageField(upload_to="media/", blank=True, null=True)#Foto de Cedula tracera
     
-
     def __str__(self):
         return self.name
