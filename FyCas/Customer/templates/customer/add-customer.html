@@ -15,8 +15,9 @@
                   <img src="{% static "icons/fycas.jpg" %}" weight="300" alt="" srcset="">
             </div>
       </div>
-<section class="section p-2 m-2 ms-4 me-4 " style="border-radius: 1.5rem;  " >
-            <form action="" method="post" enctype='multipart/form-data'>
+<section class="section p-2 m-2 ms-4 me-4 " >
+      <form action="" method="post" enctype='multipart/form-data'>
+                  {% csrf_token %}
             <div class="m-1">
                 <h6 class=" d-flex">
                   -Datos Personales
@@ -76,7 +77,7 @@
                               <img src=""  id="img-views2" style="display: none;" class="w-100 h-100 position-absolute top-0">
                         </div>
                   </div>
-                  <h6 class="p-0 m-0 mt-5">
+                  <h6 class="p-0  mt-5">
                         Informacion Laboral
                   </h6>
                   <section class="w-100 d-flex flex-wrap  ">

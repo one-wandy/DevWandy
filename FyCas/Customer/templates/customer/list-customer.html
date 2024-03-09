@@ -1,0 +1,79 @@
+{% include "base/base.html" %}
+{% block content %}
+{% load static %}
+<style>
+      .list-group-item button 
+      {
+            border: none;
+            background-color: var(--bg-one);
+            border-radius: 0.7rem;
+            padding:0.5rem 1rem;
+            font-weight: bold;
+            color: var(--color-one);
+            margin: 0.1rem;
+            font-size: 14px;
+      }
+      .stag 
+      {
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+      }
+</style>
+<div class="p-3 d-flex  ">
+      <div class="w-50 d-flex flex-wrap align-content-center  flex-wrap">
+            <h3 class="p-0 m-0">
+                  Lista de Todos los Clientes
+            </h3>
+            <p class="text-black-50 w-100">
+                  Permite encontrar fácilmente los datos de contacto de cualquier cliente.
+            </p>
+      </div>
+      <div class="d-flex justify-content-end w-50">
+            <img src="{% static "icons/fycas.jpg" %}" weight="300" alt="" srcset="">
+      </div>
+</div>
+
+<section class="section p-2 m-2 ms-4 me-4 ">
+      <div class="d-flex p-2 justify-content-end" >
+            <div class="">
+                  <h6 class="mt-1 me-2">
+                        Buscar Cliente 
+                  </h6>
+            </div>
+            <input type="text" style="min-height: 3rem; width: 10rem;" class="form-control  p-3  m-0 mb-3"  id="floatingInput" placeholder="Nombre, Apellidos, Cedula">
+          
+      </div>
+      <ul class="list-group list-group-flush">
+            {% for c in customer %}
+                  <li class="list-group-item" style="border-radius:2rem;">
+                        <div class="d-flex ">
+                              <div class="d-flex w-50">
+                                    <img src="{{c.img1}}" style="width: 50px; border-radius: 8px; margin-right: 0.3rem;" alt="">
+                                    <div class="d-flex align-content-center flex-wrap">
+                                          <span class="text-black-50" style="font-size: 16px;">
+                                                {{c.name}} {{c.last_name}} 
+                                         </span><strong> No.{{c.dni}} </strong>
+                                    </div>
+                              </div>
+                              <div class="d-flex justify-content-end align-content-center flex-wrap w-50">
+                                    <button>
+                                          Modificar
+                                    </button>
+                                    <button>
+                                          Eliminar
+                                    </button>
+                                    <button>
+                                          Crear Prestamo
+                                    </button>
+                              </div>
+                       </div>
+                        <div class="d-flex justify-content-end">
+
+                        </div>
+                  </li>
+            {% endfor %}
+          </ul>
+</section>
+{% endblock  %}
