@@ -2,24 +2,7 @@
 {% block content %}
 {% load static %}
 <style>
-      .list-group-item button 
-      {
-            border: none;
-            background-color: var(--bg-one);
-            border-radius: 0.7rem;
-            padding:0.5rem 1rem;
-            font-weight: bold;
-            color: var(--color-one);
-            margin: 0.1rem;
-            font-size: 14px;
-      }
-      .stag 
-      {
-            width: 20px;
-            height: 20px;
-            background-color: red;
-            border-radius: 50%;
-      }
+
 </style>
 <div class="p-3 d-flex  ">
       <div class="w-50 d-flex flex-wrap align-content-center  flex-wrap">
@@ -36,18 +19,24 @@
 </div>
 
 <section class="section p-2 m-2 ms-4 me-4 ">
-      <div class="d-flex p-2 justify-content-end" >
+      <div class="d-flex p-2 flex-wrap justify-content-end" >
             <div class="">
-                  <h6 class="mt-1 me-2">
-                        Buscar Cliente 
-                  </h6>
             </div>
-            <input type="text" style="min-height: 3rem; width: 10rem;" class="form-control  p-3  m-0 mb-3"  id="floatingInput" placeholder="Nombre, Apellidos, Cedula">
-          
+            <input type="text" style="min-height: 3rem; width: 10rem;" class="form-control  p-3  m-0 mb-3"  id="floatingInput" placeholder="| Buscar...">
+          <div class="d-flex w-100 justify-content-end">
+            <a href="{% url "customer:add-customer" %}">
+                  <button class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                              <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                              <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
+                            </svg> Cliente
+                  </button>
+            </a>
+          </div>
       </div>
       <ul class="list-group list-group-flush">
             {% for c in customer %}
-                  <li class="list-group-item " style="border-radius:2rem;">
+                  <li class="list-group-item " style="border-radius:1rem;">
                         <div class="d-flex ">
                               <div class="d-flex w-50">
                                     <img src="{{c.img1}}" style="width: 50px; border-radius: 8px; margin-right: 0.3rem;" alt="">
@@ -58,12 +47,16 @@
                                     </div>
                               </div>
                               <div class="d-flex justify-content-end align-content-center flex-wrap w-50">
-                                    <button>
-                                          Modificar
-                                    </button>
-                                    <button>
-                                          Eliminar
-                                    </button>
+                                    <a href="{% url "customer:update-customer" c.id %}">
+                                          <button>
+                                                Modificar 
+                                          </button>
+                                    </a>
+                                    <a href="{% url "customer:delete-customer" c.id %}">
+                                          <button>
+                                                Eliminar
+                                          </button>
+                                    </a>
                                     <button>
                                           Crear Prestamo
                                     </button>
