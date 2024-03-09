@@ -7,16 +7,16 @@ class CustomerForm(forms.ModelForm):
       fields = ['name', 'last_name', 'number', 'address', 'email', 'amount_purpose', 'work_information', 'references_peopple', 'dni', "amount", "img2", "img1"]
 
       widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'number': forms.NumberInput(attrs={'class': 'form-control'}),
-            'amount': forms.NumberInput(attrs={'class': 'form-control'}),
-            'address': forms.TextInput(attrs={'class': 'form-control address'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control' ,} ),
+            'name': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Nombre Completo"}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Apellidos" }),
+            'number': forms.NumberInput(attrs={'class': 'form-control', "placeholder": "Numero"}),
+            'amount': forms.NumberInput(attrs={'class': 'form-control', "placeholder": "Cantidad"}),
+            'address': forms.TextInput(attrs={'class': 'form-control address', "placeholder": "Donde Recide"}),
+            'email': forms.EmailInput(attrs={'class': 'form-control' , "placeholder": "Correo"} ),
             'amount_purpose': forms.Textarea(attrs={'class': 'form-control textarea'}),
-            'work_information': forms.Textarea(attrs={'class': 'form-control textarea'}),
-            'references_peopple': forms.Textarea(attrs={'class': 'form-control'}),
-            'dni': forms.NumberInput(attrs={'class': 'form-control'}),
+            'work_information': forms.Textarea(attrs={'class': 'form-control textarea', "placeholder": "Informacion Laboral"}),
+            'references_peopple': forms.Textarea(attrs={'class': 'form-control', "placeholder": "Personas Referentes"}),
+            'dni': forms.NumberInput(attrs={'class': 'form-control',  "placeholder": "232-3232-3232"}),
             "img1": forms.FileInput(attrs={'class': 'img1'}),
              "img2": forms.FileInput(attrs={'class': 'img2'})
         }

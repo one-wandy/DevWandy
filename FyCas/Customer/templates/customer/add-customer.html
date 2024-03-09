@@ -1,78 +1,31 @@
 {% include "base/base.html" %}
 {% block content %}
 {% load static %}
-<style>
-      #amount_purpose 
-      {
-            min-height: 10rem !important ;
-      }
-      .section 
-      {
-            background-color: rgb(255, 236, 236);
-      }
-      h6
-      {
-            color: rgb(70, 57, 57);
-      }
-      .btn-save
-      {
-            background-color: rgb(206, 175, 175);
-            border-radius: 1.5rem;
-            padding: 0.4rem 1.5rem;
-            border: 0;
-            color: rgb(255, 236, 236);
-            font-weight: bold;
-      }
-      .btn-cancel
-      {
-            background-color: transparent;
-            border-radius: 1.5rem;
-            padding: 0.4rem 1.5rem;
-            border: 0;
-            color: rgb(70, 57, 57);
-            font-weight: bold;
-      }
-      .form-floating label
-      {
-            color: rgb(70, 57, 57);
-            font-size: 13px;
-      }
-      .form-floating 
-      {
-            padding: 2px;
-      }
-      .img-label
-      {
-            border: solid rgb(206, 175, 175) 1px; background-color: antiquewhite;
-            background-color: white;   
-            cursor: pointer;
-      }
-      .img-label, .div-label 
-      {
-            width: 20rem; height: 10rem; border-radius: 1.5rem;
-            display: flex; justify-content: center; align-content: center;
-            margin: 0.2rem;
-      }
-      .address 
-      {
-            width: 40.4rem !important;
-      }
-      .img1, .img2
-      {
-            display: none;
-      }
-</style>
-      <section class="section p-2 m-2" style="border-radius: 1.5rem;" >
+
+      <div class="p-3 d-flex  ">
+            <div class="w-50 d-flex flex-wrap align-content-center  flex-wrap">
+                  <h3 class="p-0 m-0">
+                        Agregando un Nuevo Cliente
+                  </h3>
+                  <p class="text-black-50 w-100">
+                        Los datos se utilizan para comprender mejor las necesidades del cliente 
+                  </p>
+            </div>
+            <div class="d-flex justify-content-end w-50">
+                  <img src="{% static "icons/fycas.jpg" %}" weight="300" alt="" srcset="">
+            </div>
+      </div>
+<section class="section p-2 m-2 ms-4 me-4 " style="border-radius: 1.5rem;  " >
+            <form action="" method="post" enctype='multipart/form-data'>
             <div class="m-1">
                 <h6 class=" d-flex">
                   -Datos Personales
                 </h6>  
             </div>
-            <div class="d-flex flex-wrap">
-                  <div class="form-floating mb-3">
-                        {{form.dni}}
-                        <label for="id_dni">Cedula</label>
-                  </div>
+            <div class="d-flex flex-wrap ">
+                  <p class="text-black-50 w-100 m-0 ms-2">
+                        ~Revisar minuciosamente antes de enviar el formulario, reduce la posibilidad de errores
+                  </p>
                   <div class="form-floating mb-3">
                         {{form.name}}
                         <label for="id_email">Nombre </label>
@@ -82,21 +35,25 @@
                         <label for="id_last_name">Apellidos </label>
                   </div>
                   <div class="form-floating mb-3">
+                        {{form.dni}}
+                        <label for="id_dni">Cedula</label>
+                  </div>
+                  <div class="form-floating mb-3">
                         {{form.number}}
                         <label for="id_number">Numero</label>
                   </div>
-                  <div class="form-floating mb-3">
-                        {{form.amount}}
-                        <label for="id_amount">Monto</label>
-                  </div>
+
                   <div class="form-floating mb-3 ">
                         {{form.address}}
                         <label for="id_address">Direccion de recidencia</label>
                   </div>
-                  <div class="w-100 ">
+                  <div class="w-100 mt-4 ">
                         <h6>
-                              Foto de Cedula
+                              Fotos de Cedula (Delantera y Tracera)
                         </h6>
+                        <p class="text-black-50 m-0 ms-2">
+                              ~Procura tener una buena iluminacion y calidad de la imagen
+                        </p>
                   </div>
                   <div class="w-100 d-flex flex-wrap ">
                         <div class="div-label d-flex text-center flex-wrap justify-content-center position-relative aling-content-center over"> 
@@ -119,23 +76,27 @@
                               <img src=""  id="img-views2" style="display: none;" class="w-100 h-100 position-absolute top-0">
                         </div>
                   </div>
-                  <section class="w-100 d-flex flex-wrap">
-                        <div class="w-100">
-                              <h6 class="">
-                                    -Información 
-                              </h6>
-                        </div>
-                        <div class="form-floating mb-3 w-50 d-flex">
-                              {{form.amount_purpose}}
-                              <label for="id_amount_purpose">Monto que Solicita y Fines
-                              </label>
-                        </div>
-                        <div class="form-floating mb-3 w-50" >
+                  <h6 class="p-0 m-0 mt-5">
+                        Informacion Laboral
+                  </h6>
+                  <section class="w-100 d-flex flex-wrap  ">
+                        <p class="text-black-50 m-0 ms-2">
+                              ~Lugar de Trabajo, Cargo o (Funcion), Ingresos Mensuales y Numero de Contacto de la Empresa.
+                        </p>
+                        <div class="form-floating mb-3 w-100" >
                               {{form.work_information}}
-                              <label for="id_work_information">Información laboral
+                              <label for="id_work_information">Información Laboral
                               </label>
                         </div>
                   </section>
+                  <div class="w-100 d-flex justify-content-end">
+                        <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                              <label class="form-check-label" style="font-size: 12px;" for="defaultCheck1">
+                                    Confirmo que he revisado cuidadosamente mi información
+                              </label>
+                            </div>
+                  </div>
                   <div class="d-flex w-100 pt-4 justify-content-end">
                         <button class="btn-cancel">
                               Cancelar
@@ -145,6 +106,7 @@
                         </button>
                   </div>
             </div>
+      </form>
       </section>
       <script>
 

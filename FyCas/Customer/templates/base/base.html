@@ -13,6 +13,21 @@
       <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   </head>
   <style>
+    :root {
+/* Baground-color principal */
+    --bg-one:  rgb(252, 246, 255);
+    --bg-cero: white;
+    --color-one:  rgb(59, 2, 94);
+    --color-cero:  white;
+    --shadow-one: 1px 1px 20px rgba(100, 155, 255, 0.1);
+/* Styles of views components */
+      --font-family: "Poppins", sans-serif;
+
+}
+h6, h5, h4, h3
+      {
+            color: var(--color-one) !important; 
+      }
   .form-control 
     {
       border-radius: 16px;
@@ -28,6 +43,72 @@
     {
       transition: 0.4s; 
     }
+    
+    #amount_purpose 
+      {
+            min-height: 10rem !important ;
+      }
+      .section 
+      {
+            background-color: var(--bg-one);
+            box-shadow: var(--shadow-one);
+      }
+
+      .btn-save
+      {
+            background-color: var(--bg-cero);
+            border-radius: 1.5rem;
+            padding: 0.4rem 1.5rem;
+            border: 0;
+            color: var(--color-one);
+            font-weight: bold;
+      }
+      .btn-cancel
+      {
+            background-color: transparent;
+            border-radius: 1.5rem;
+            padding: 0.4rem 1.5rem;
+            border: 0;
+            color: rgb(70, 57, 57);
+            font-weight: bold;
+      }
+      .form-floating label
+      {
+            color: rgb(70, 57, 57);
+            font-size: 12px;
+      }
+      .form-floating 
+      {
+            padding: 2px;
+      }
+      .img-label
+      {
+            border: solid rgb(228, 228, 228) 1px;   background-color: var(--bg-one);
+            background-color: white;   
+            cursor: pointer;
+      }
+      .img-label, .div-label 
+      {
+            width: 25rem; height: 15rem; border-radius: 1.5rem;
+            display: flex; justify-content: center; align-content: center;
+            margin: 0.2rem;
+      }
+      .address 
+      {
+            width: 40.4rem !important;
+      }
+      .img1, .img2
+      {
+            display: none;
+      }
+      .option
+      {
+            background-color: var(--bg-one);
+      }
+      .option:hover
+      {
+            background-color: var(--bg-one) !important;
+      }
   </style>
   <body>
       {% block content %}
