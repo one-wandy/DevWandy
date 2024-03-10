@@ -6,23 +6,17 @@ from django.urls import reverse_lazy, reverse
 from django.shortcuts import redirect
 from .mixing import *
 
-class AddCustomer(CreateView):
+class AddCustomer(CreateView, Options):
     model = models.Customer
     form_class = forms.CustomerForm
     template_name = "customer/add-customer.html"
     
     def post(self, request, *args, **kwargs):
         
-        self.model.objects.create(
-            name =request.POST.get("name"),
-            last_name = request.POST.get("last_name"),
-            number =int(request.POST.get("number")),
-            address =request.POST.get("address"),
-            dni =int(request.POST.get("dni")),
-            img1 =request.FILES.get("img1"),
-            img2=request.FILES.get("img2"),
-        )
-        return super().post(request, *args, **kwargs)
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        return self.List_Redirect()
 
 
     
@@ -47,7 +41,7 @@ class UpdateCustomer(UpdateView, Options):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['customer'] = self.model.objects.get(id=self.kwargs.get('pk'))
+        context['c'] = self.model.objects.get(id=self.kwargs.get('pk'))
         return context
     
     def post(self, request, *args, **kwargs):        
@@ -56,7 +50,7 @@ class UpdateCustomer(UpdateView, Options):
         customer.last_name = request.POST.get("last_name")
         customer.dni = request.POST.get("dni")
         customer.number = request.POST.get("number")
-        customer.addres = request.POST.get("addres")
+        customer.address = request.POST.get("address")
         customer.work_information = request.POST.get("work_information")
         if request.FILES.get("img1"):
             customer.img1 = request.FILES.get("img1")
