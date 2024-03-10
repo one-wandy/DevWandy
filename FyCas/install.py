@@ -1,15 +1,3 @@
-# #Crear una funcion al crear clientes 
-# import os
-#path = os.getcwd() + "\Clientes"
-# sub_file = "CARPS"
-# sub_file = os.path.join(path, sub_file)
-# try:
-#     os.mkdir(sub_file)
-#     print(f" '{sub_file}' Creada correctamente.")
-# except FileExistsError:
-#     print(f"'{sub_file}' Ya existe")
-
-
 
 import os
 import sys
