@@ -14,7 +14,7 @@ class AddCustomer(CreateView, Options):
     def post(self, request, *args, **kwargs):
         f = self.form_class(request.POST, request.FILES)
         if f.is_valid():
-            # form.save()
+            f.save()
             # Creando Carpeta para el Cliente
             self.FileCreate(f.instance.name, f.instance.last_name)
         return self.List_Redirect()

@@ -12,12 +12,10 @@ class Options:
       
       def FileCreate(self, Name, Last):
             path = os.getcwd() + "\Clientes"
-            sub_file = Name + "-" + Last
-            sub_file = os.path.join(path, sub_file)
+            name_file = Name + "-" + Last
+            sub_file = os.path.join(path, name_file)
             try:
                   os.mkdir(sub_file)
-                  path_template = os.getcwd() + "\Templates-PDF\Carta-Notarial.html"
-                  path_client = path + sub_file
                   return True
             except FileExistsError: 
                   return False
