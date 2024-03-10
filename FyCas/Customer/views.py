@@ -149,3 +149,6 @@ class NotaryCustomer(UpdateView, Options):
         return context
     
     
+    
+# class CreateCreadi(CreateView, Options):
+    

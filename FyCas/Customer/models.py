@@ -19,3 +19,17 @@ class Customer(models.Model):
     
     def __str__(self):
         return self.name
+
+
+class Credit(models.Model):
+    customer = models.ForeignKey(Customer, null=True, blank=True, on_delete=models.CASCADE)
+    amount = models.IntegerField(default=10000)
+    name = models.CharField(max_length=100)
+    number = models.IntegerField()
+    no_account = models.IntegerField() #Numero de Cuenta
+    
+    #thow pay for monts
+    mode_pay = models.BooleanField(default=False)
+    #if mode_pay is True Appli 2 Pay 
+    day_pay = models.IntegerField(default=30)
+    day_pay2 = models.IntegerField(default=15)
