@@ -189,6 +189,7 @@ a
       }
 #Calculadora 
       {
+            display: none;
       -webkit-backdrop-filter: blur(30px) !important;
       backdrop-filter: blur(30px) !important;
       }
@@ -203,7 +204,7 @@ a
 }
   </style>
   <body>
-      <div class="card d-none  bg-white bg-opacity-50" id="Calculadora">
+      <div class="card  bg-white bg-opacity-50" id="Calculadora">
             <div class="card-header" >
                   <h6>
                         Calculadora de Intereses
@@ -211,8 +212,9 @@ a
             </div>
             <div class="card-body">
                   <div class="d-flex align-content-center flex-wrap">
-                        <input type="number" style="border-radius: 0.5rem; max-height: 2rem; max-width: 6rem;" class="  p-2  m-0 mb-3 border-0 m-1"  id="plazo" placeholder="Cuotas">
-                        <input type="number" style="max-height: 2rem; border-radius: 0.5rem; max-width: 6rem;" class="  p-2  m-0 mb-3 border-0 m-1"  id="numero" placeholder="Cantidad">
+                        <input type="number" style="border-radius: 0.5rem; outline: none; max-height: 2rem; max-width: 6rem;" class=" btn-outline-light  p-2  m-0 mb-3 border-0 m-1"  id="plazo" placeholder="Cuotas">
+
+                        <input type="number" style=" outline: none; max-height: 2rem; border-radius: 0.5rem; max-width: 6rem;" class="  p-2  m-0 mb-3 border-0 m-1"  id="numero" placeholder="Cantidad">
                         <button id="calcular"  class="d-flex align-content-center flex-wrap " style="height: 2.2rem;">Calcular</button>
                   </div>
                   <div>
@@ -269,6 +271,22 @@ document.addEventListener("mousemove", (event) => {
 
 document.addEventListener("mouseup", () => {
       isMouseDown = false;
+});
+
+function Cal() {
+  // Tu código para la función Cal
+  const div = document.getElementById("Calculadora");
+  if (div.style.display === "none") {
+    div.style.display = "block";
+  } else {
+    div.style.display = "none";
+  }}
+
+  document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && event.altKey && event.key === '1') {
+        // Llamar a la función "Cal"
+        Cal();
+    }
 });
 
       </script>
