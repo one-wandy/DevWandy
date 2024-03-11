@@ -16,6 +16,10 @@ class Customer(models.Model):
     no_account = models.IntegerField(default=0) #Numero de Cuenta
     img1 = models.ImageField(upload_to="media/", blank=True, null=True)#Foto de Cedula delantera
     img2 = models.ImageField(upload_to="media/", blank=True, null=True)#Foto de Cedula tracera
+    name_r1 = models.CharField(max_length=255,  )#Nombre
+    name_r2 = models.CharField(max_length=255,  )#Nombre
+    number_r1 = models.IntegerField( )#Numero local o Movile
+    number_r2 = models.IntegerField( )#Numero local o Movile
     
     def __str__(self):
         return self.name
