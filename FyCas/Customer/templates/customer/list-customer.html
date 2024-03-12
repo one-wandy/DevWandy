@@ -2,7 +2,22 @@
 {% block content %}
 {% load static %}
 <style>
+.img 
+{
+      width: 140px;
+      height: 100px;
+      border-radius: 12px;
+}
+.divCon 
+{
+      background: #ffffff;
+      border-radius: 1.5rem;
 
+}
+.capitalize 
+{
+      text-transform: uppercase;
+}
 </style>
 <div class="p-3 d-flex  ">
       <div class="w-50 d-flex flex-wrap align-content-center  flex-wrap">
@@ -22,7 +37,7 @@
       <div class="d-flex p-2 flex-wrap justify-content-end" >
             <div class="">
             </div>
-            <input type="text" style="min-height: 3rem; width: 10rem;" class="form-control  p-3  m-0 mb-3"  id="floatingInput" placeholder=" Buscar...">
+            <input type="text"  style="min-height: 3rem; width: 10rem;" class="form-control  p-3  m-0 mb-3"  id="searching-config" placeholder=" Buscar...">
           <div class="d-flex w-100 justify-content-end">
             <a href="{% url "customer:add-customer" %}">
                   <button class="">
@@ -34,9 +49,11 @@
             </a>
           </div>
       </div>
-      <ul class="list-group list-group-flush">
+      <div id="config-list">
+      </div>
+      <ul id="list-customer" class="list-group list-group-flush">
             {% for c in customer %}
-                  <li class="list-group-item " style="border-radius:1rem;">
+                  <li class="list-group-item " style=" border-radius:1rem;">
                         <div class="d-flex  p-2" style="font-size: 15px !important;">
                               <div class="d-flex flex-wrap w-50">
                                     <img src="{{c.img1}}" style="width: 140px; height: 100px; border-radius: 12px; margin-right: 0.3rem;" alt="">
@@ -115,4 +132,109 @@
             {% endfor %}
           </ul>
 </section>
+<script>
+      let searching_config = document.getElementById('searching-config');
+    let config_list = document.getElementById('config-list')
+    let config_data;
+
+    searching_config.focus();
+    window.addEventListener("DOMContentLoaded", function() {
+        ConfigData()
+        function ConfigData() {
+            const url = 'searching/customer';
+            $.ajax({
+                url: url,
+                success: function(data){
+                    config_data = data
+                    const searching_config = document.getElementById('searching-config');
+                    searching_config.addEventListener('input', (event) => {
+                    const input_value = event.target.value;
+                    const filtered_data = data.filter((config) => {
+                        return config.name.toLowerCase().includes(input_value.toLowerCase());
+                    });
+                    config_list.innerHTML = ''
+                    for (const c  of filtered_data) {
+                        const div = document.createElement('div');
+                        div.classList.add("divCon", "p-4", "m-1")
+                              let divI = document.createElement("div")
+                              let img = document.createElement("img")
+                                    img.classList.add("img")
+                                    img.src = c.img
+                                    divI.appendChild(img)
+                              let divL = document.createElement("div")
+                              let stronL = document.createElement("strong")
+                                    stronL.textContent = "Nombre y Apellido: "
+                              let spanL = document.createElement("span")
+                              spanL.classList.add("capitalize")
+                                    spanL.textContent = c.name
+                              divL.appendChild(stronL)
+                              divL.appendChild(spanL)
+
+                              let divN = document.createElement("div")
+                                    let stronN = document.createElement("strong")
+                                          stronN.textContent = "No. Cedula: "
+                                    let spanN = document.createElement("span")
+                                          spanN.textContent = c.dni
+                              divN.appendChild(stronN)
+                              divN.appendChild(spanN)
+
+                              let divA = document.createElement("div")
+                                    let stronA = document.createElement("strong")
+                                          stronA.textContent = "Informacion Laboral: "
+                                    let spanA = document.createElement("span")
+                                          spanA.textContent = c.inf
+                              divA.appendChild(stronA)
+                              divA.appendChild(spanA)
+
+                              let divR = document.createElement("div")
+                                    let stronR = document.createElement("strong")
+                                          stronR.textContent = "Recide en: "
+                                    let spanR = document.createElement("a")
+                                          spanR.href = c.recide
+                                          spanR.textContent = c.recide
+                              divR.appendChild(stronR)
+                              divR.appendChild(spanR)
+
+                              
+                              let divK = document.createElement("div")
+                                    let stronK = document.createElement("strong")
+                                          stronK.textContent = "Referencias: "
+                                    let spanK = document.createElement("span")
+                                          spanK.textContent = c.refers
+                              divK.appendChild(stronK)
+                              divK.appendChild(spanK)
+
+
+                        div.appendChild(divI);
+                        div.appendChild(divL);
+                        div.appendChild(divN);
+                        div.appendChild(divR);
+                        div.appendChild(divA);
+                        div.appendChild(divK);
+
+
+
+                        config_list.appendChild(div);
+                    }
+                    if (searching_config.value.trim() === "") {
+                        config_list.innerHTML = ''
+                        config_list.style.display = 'none'
+                        document.getElementById("list-customer").style.display = "block"
+                        
+                    }
+                    else {
+                        config_list.style.display = 'block'
+                        document.getElementById("list-customer").style.display = "none"
+                        
+                    }
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error en la solicitud AJAX:', status, error);
+                }
+            });
+        }
+    });
+</script>
+</script>
 {% endblock  %}

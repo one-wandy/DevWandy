@@ -11,7 +11,7 @@ class Customer(models.Model):
     amount_purpose = models.TextField(max_length=355)#Proposito por el que se solicita el prestamo
     work_information = models.TextField(max_length=300)#Informacion donde trabaja
     references_peopple = models.TextField(max_length=500)#Personas referentes
-    dni = models.IntegerField() #Numero de Identidad
+    dni = models.CharField(max_length=100) #Numero de Identidad
     amount = models.IntegerField(null=True)#Monto 
     no_account = models.IntegerField(default=0) #Numero de Cuenta
     img1 = models.ImageField(upload_to="media/", blank=True, null=True)#Foto de Cedula delantera

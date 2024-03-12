@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from . import views
+from . import views, views_ajax
 
 app_name = "customer"
 urlpatterns = [
@@ -12,6 +12,9 @@ urlpatterns = [
       path('card-customer/<int:pk>', views.CardCustomer.as_view(), name='card-customer'),
       path('notary-customer/<int:pk>', views.NotaryCustomer.as_view(), name='notary-customer'),
 
+
+      # Views Ajax
+      path("searching/customer", views_ajax.SearchCustomer, name="searching-customer"),
 
       
 ]

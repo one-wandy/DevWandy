@@ -59,11 +59,10 @@ class UpdateCustomer(UpdateView, Options):
     
     
     def post(self, request, *args, **kwargs):        
-        print(request.POST.get("number_r1"))
         customer = self.model.objects.get(id=self.kwargs.get('pk'))
         customer.name = request.POST.get("name")
         customer.last_name = request.POST.get("last_name")
-        customer.dni = int(request.POST.get("dni"))
+        customer.dni = request.POST.get("dni")
         customer.number = request.POST.get("number")
         customer.address = request.POST.get("address")
         customer.name_r1 = request.POST.get("name_r1")
