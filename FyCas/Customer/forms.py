@@ -24,7 +24,7 @@ class CustomerForm(forms.ModelForm):
        
             'work_information': forms.Textarea(attrs={'class': 'form-control textarea', "placeholder": "Informacion Laboral"}),
 
-            'dni': forms.NumberInput(attrs={'class': 'form-control',  "placeholder": "232-3232-3232"}),
+            'dni': forms.TextInput(attrs={'class': 'form-control',  "placeholder": "232-3232-3232"}),
             "img1": forms.FileInput(attrs={'class': 'img1'}),
              "img2": forms.FileInput(attrs={'class': 'img2'})
         }
