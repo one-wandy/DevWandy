@@ -4,8 +4,18 @@
          header, footer {
         display: none !important;
     }
+
+  @media print {
+  @page {
+    margin: 1cm;
+  }
+  footer {
+
+  }
+
+}
 </style>
-<section class="container" style="font-family: Times New Roman; font-size: 16px; line-height: 17px; color: black;">
+<section class="container" style="font-family: Times New Roman; font-size: 16px; line-height: 17px; color: black; text-align: justify;">
       <div class="text-center mt-2 pt-3 mb-4" >
             <span class="black">
                   CONTRATO DE PRESTAMO
@@ -63,6 +73,11 @@ Y de la otra parte el señora, <span class="black text-uppercase"> {{c.name}} {{
   <br><br>
 
   
+  @media print {
+  @page {
+    margin: 1cm;
+  }
+
 
 <span class="black">TERCERO: EL DEUDOR</span> se compromete a pagar a <span class="black">GRUPOS FYCAS</span>, intereses a razón de <span class="black">UNO PUNTO CINCUENTA Y NUEVE (1.59).</span> 
 <br><br>
@@ -104,7 +119,8 @@ Y de la otra parte el señora, <span class="black text-uppercase"> {{c.name}} {{
 </section>
 <script>
 window.onload = function() {
-    window.print("container");
+      const footer = document.querySelector("footer");
+    window.print();
 };
 </script>
 {% endblock  %}
