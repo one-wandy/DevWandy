@@ -81,6 +81,14 @@
                   </label>
             </div>
       </div>
+      <div class="form- mb-3 w-100 " >
+          <div >
+            <h6 class="ms-1"> Total RD$: <span class="text-black" id="resultado-div"></span></h6>
+          </div>
+          <div>
+            <h6 class="ms-1"> Cuota Mensual RD$: <span class="text-black" id="valor-div"></span></h6>
+          </div>
+      </div>
       <div class="d-flex w-100 pt-4 justify-content-end">
             <a href="{% url "customer:list-customer" %}" class="btn-cancel">
                   Cancelar
@@ -99,6 +107,40 @@
 
      document.getElementById("id_name").value =  document.getElementById("customer-name").value 
      document.getElementById("id_dni").value =  document.getElementById("customer-dni").value 
+
+
+      let price_feed = document.getElementById("id_price_feed")
+      price_feed.addEventListener("input", () => {
+            if(price_feed.value <= 0) {
+                  price_feed.value = 0
+            }
+            else {
+
+                  CalcularDivisas()
+            }
+
+      })
+      let amoun = document.getElementById("id_amount")
+      amoun.addEventListener("input", () => {
+            CalcularDivisas()
+      })
+
+      window.onload = CalcularDivisas()
+
+      function CalcularDivisas() {
+  let m = document.getElementById("resultado-div");
+  let amounts = parseFloat(document.getElementById("id_amount").value);
+  let p = parseFloat(document.getElementById("id_price_feed").value);
+const int = p * 0.15;
+  // Formatear "intereses" con comas
+  let cuotas = int * amounts
+  let total = cuotas + amounts
+  let total_c = Math.round(cuotas);
+document.getElementById("valor-div").textContent =  total_c.toLocaleString()
+  m.textContent = total.toLocaleString() ;
+}
+
+
 
 </script>
 

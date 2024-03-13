@@ -41,11 +41,10 @@ class CreditForm(forms.ModelForm):
         'customer': forms.TextInput(attrs={'class': 'form-control'}),
         'name': forms.TextInput(attrs={'class': 'form-control'}),
         'dni': forms.TextInput(attrs={'class': 'form-control'}),
-        'amount': forms.TextInput(attrs={'class': 'form-control'}),
+        'amount': forms.NumberInput(attrs={'class': 'form-control'}),
 
-        'price_feed': forms.TextInput(attrs={'class': 'form-control'}),
+        'price_feed': forms.NumberInput(attrs={'class': 'form-control'}),
         'no_account': forms.TextInput(attrs={'class': 'form-control'}),
         'day_pay': forms.NumberInput(attrs={'class': 'form-control'}),
         'day_pay2': forms.NumberInput(attrs={'class': 'form-control'}),
-
       }

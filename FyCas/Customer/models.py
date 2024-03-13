@@ -29,7 +29,7 @@ class Credit(models.Model):
     customer = models.ForeignKey(Customer, null=True, blank=True, on_delete=models.CASCADE)
     amount = models.IntegerField(default=10000)
     name = models.CharField(max_length=100)
-    price_feed = models.TextField(default="")
+    price_feed = models.IntegerField(default=1)
     dni = models.TextField(default="")
     no_account = models.TextField() #Numero de Cuenta
     
