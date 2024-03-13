@@ -12,7 +12,9 @@ urlpatterns = [
       path('card-customer/<int:pk>', views.CardCustomer.as_view(), name='card-customer'),
       path('notary-customer/<int:pk>', views.NotaryCustomer.as_view(), name='notary-customer'),
       
-      path('create-credit/<int:pk>', views.CreateCreadit.as_view(), name='create-credit'),
+      path('create-credit/<int:pk>', views.CreateCredit.as_view(), name='create-credit'),
+      path('update-credit/<int:pk>', views.UpdateCredit.as_view(), name='update-credit'),
+
 
       # Views Ajax
       path("searching/customer", views_ajax.SearchCustomer, name="searching-customer"),

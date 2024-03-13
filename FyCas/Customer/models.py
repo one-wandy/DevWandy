@@ -26,7 +26,7 @@ class Customer(models.Model):
 
 
 class Credit(models.Model):
-    customer = models.ForeignKey(Customer, null=True, blank=True, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, null=True, blank=True, on_delete=models.CASCADE, related_name="credit")
     amount = models.IntegerField(default=10000)
     name = models.CharField(max_length=100)
     price_feed = models.IntegerField(default=1)

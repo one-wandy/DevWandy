@@ -155,14 +155,16 @@ class NotaryCustomer(UpdateView, Options):
     
     
     
-class CreateCreadit(CreateView, Options):
+class CreateCredit(CreateView, Options):
     model = models.Credit
     form_class = forms.CreditForm
     template_name = "customer/create-credit.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['c'] = models.Customer.objects.get(id=self.kwargs.get('pk'))
+        customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
+        context['c'] = customer
+        print(customer.credit.name)
         return context
     
     def post(self, request, *args, **kwargs):
@@ -171,3 +173,8 @@ class CreateCreadit(CreateView, Options):
             f.save()
         return self.List_Redirect()
     
+    
+class UpdateCredit(UpdateView, Options):
+    model = models.Credit
+    form_class = forms.CreditForm
+    template_name = "customer/update-credit.html"
