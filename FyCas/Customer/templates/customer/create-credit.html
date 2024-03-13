@@ -83,7 +83,7 @@
       </div>
       <div class="form- mb-3 w-100 " >
           <div >
-            <h6 class="ms-1"> Total RD$: <span class="text-black" id="resultado-div"></span></h6>
+            <h6 class="ms-1"> Ganancias Total RD$: <span class="text-black" id="resultado-div"></span></h6>
           </div>
           <div>
             <h6 class="ms-1"> Cuota Mensual RD$: <span class="text-black" id="valor-div"></span></h6>
@@ -123,16 +123,16 @@
       window.onload = CalcularDivisas()
 
       function CalcularDivisas() {
-  let m = document.getElementById("resultado-div");
-  let amounts = parseFloat(document.getElementById("id_amount").value);
-  let p = parseFloat(document.getElementById("id_price_feed").value);
-const int = p * 0.15;
-  // Formatear "intereses" con comas
-  let cuotas = int * amounts
-  let total = cuotas + amounts
-  let total_c = Math.round(cuotas);
-document.getElementById("valor-div").textContent =  total_c.toLocaleString()
-  m.textContent = total.toLocaleString() ;
+            let p = parseFloat(document.getElementById("id_price_feed").value);
+            let amounts = parseFloat(document.getElementById("id_amount").value);
+            const int = p * 0.11;
+            // Formatear "intereses" con comas
+            let cuotas = int * amounts
+            let total = cuotas + amounts
+            let tt = total / p 
+            let total_c = Math.round(cuotas);
+            document.querySelector("#resultado-div").textContent = total.toLocaleString() ;
+            document.querySelector("#valor-div").textContent =  tt.toLocaleString()
 }
 
 
