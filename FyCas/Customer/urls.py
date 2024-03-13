@@ -11,7 +11,8 @@ urlpatterns = [
       path('list-customer', views.ListCustomer.as_view(), name='list-customer'),
       path('card-customer/<int:pk>', views.CardCustomer.as_view(), name='card-customer'),
       path('notary-customer/<int:pk>', views.NotaryCustomer.as_view(), name='notary-customer'),
-
+      
+      path('create-credit/<int:pk>', views.CreateCreadit.as_view(), name='create-credit'),
 
       # Views Ajax
       path("searching/customer", views_ajax.SearchCustomer, name="searching-customer"),
