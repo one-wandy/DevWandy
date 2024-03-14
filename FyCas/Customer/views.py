@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import *
 from . import forms
 from . import models
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import redirect
 from .mixing import *
@@ -160,17 +161,26 @@ class CreateCredit(CreateView, Options):
     form_class = forms.CreditForm
     template_name = "customer/create-credit.html"
 
+    def get(self, request, *args, **kwargs):
+        customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
+        try:
+            credit = self.model.objects.get(customer=customer)
+            return self.UpdateCredit(credit.id)
+        except self.model.DoesNotExist:
+            print("No Existe")
+            
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
         context['c'] = customer
-        print(customer.credit.name)
         return context
     
     def post(self, request, *args, **kwargs):
-        f = self.form_class(request.POST, request.FILES)
+        f = self.form_class(request.POST)
         if f.is_valid():
-            f.save()
+            credit = f.save()
+            credit.customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
+            credit.save()
         return self.List_Redirect()
     
     
@@ -178,3 +188,25 @@ class UpdateCredit(UpdateView, Options):
     model = models.Credit
     form_class = forms.CreditForm
     template_name = "customer/update-credit.html"
+    
+                
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        credit =  self.model.objects.get(id=self.kwargs.get('pk'))
+        context['c'] = models.Customer.objects.get(id=credit.customer.id)
+        print(self.model)
+        return context
+    
+    
+    
+    def post(self, request, *args, **kwargs):        
+        credit = self.model.objects.get(id=self.kwargs.get('pk'))
+        credit.customer = models.Customer.objects.get(id=credit.customer.id)
+        credit.name = request.POST.get("name")
+        credit.dni = request.POST.get("dni")
+        credit.price_feed = request.POST.get("price_feed")
+        credit.day_pay = request.POST.get("day_pay")
+        credit.amount = request.POST.get("amount")
+        credit.no_account = request.POST.get("no_account")
+        credit.save()
+        return self.List_Redirect()

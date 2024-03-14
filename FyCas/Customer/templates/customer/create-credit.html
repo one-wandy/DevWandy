@@ -49,6 +49,7 @@
                         No. Cedula
                   </label>
             </div>
+
       </div>
       <div class="w-100">
             <h6 class="p-0  mt-2">
@@ -71,16 +72,25 @@
             </div>
 
             <div class="form-floating mb-3 w-50" >
+                  {{form.no_account}}
+                  <label for="">
+                        No.  Cuenta
+                  </label>
+            </div>
+      </div>
+      <div class="w-100 d-flex">
+            <div class="form-floating mb-3 " >
                   {{form.day_pay}}
                   <label for="id_work_information">Dia de Pago
                   </label>
             </div>
-            <div class="form- mb-3 w-50 d-flex align-content-center justify-content-center" >
+            <div class=" mb-3 ms-3  d-flex align-content-center " >
                   {{form.mode_pay}}
                   <label for="id_mode_pay" class="d-flex h-100 flex-wrap ms-1 align-content-center justify-content-center"> Aplicar dos pagos (15) - (30)
                   </label>
             </div>
       </div>
+
       <div class="form- mb-3 w-100 " >
           <div >
             <h6 class="ms-1"> Ganancias Total RD$: <span class="text-black" id="resultado-div"></span></h6>

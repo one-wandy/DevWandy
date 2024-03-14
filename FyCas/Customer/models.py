@@ -37,5 +37,9 @@ class Credit(models.Model):
     mode_pay = models.BooleanField(default=False)
     #if mode_pay is True Appli 2 Pay 
     day_pay = models.IntegerField(default=30)
-    day_pay2 = models.IntegerField(default=15)
     is_active = models.BooleanField(default=True    )#is active rederict at diferens view
+
+
+    
+    def __str__(self):
+        return self.name

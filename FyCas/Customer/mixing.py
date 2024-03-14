@@ -10,6 +10,10 @@ class Options:
             URL = reverse('customer:list-customer')
             return redirect(URL)
       
+      def UpdateCredit(self, credit_id):
+            URL = reverse('customer:update-credit',  kwargs={'pk': credit_id})
+            return redirect(URL)
+      
       def FileCreate(self, Name, Last):
             path = os.getcwd() + "\Clientes"
             name_file = Name + "-" + Last
