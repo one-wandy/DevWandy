@@ -45,10 +45,9 @@ class ListCustomer(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['customer'] = self.model.objects.all().order_by('-id')
-        # cu = self.model.objects.all()
-        # for c in cu:
-        #     let = models.Credit.objects.get(customer__pk=c.id)
-        #     print(let.is_active)
+        cu = self.model.objects.all()
+        for c in cu:
+            print(c.credit.all())
         return context
     
     
