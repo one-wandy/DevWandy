@@ -167,7 +167,7 @@ class CreateCredit(CreateView, Options):
             credit = self.model.objects.get(customer=customer)
             return self.UpdateCredit(credit.id)
         except self.model.DoesNotExist:
-            print("No Existe")
+            return super().get(request, *args, **kwargs)
             
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
