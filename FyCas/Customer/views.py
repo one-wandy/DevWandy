@@ -102,7 +102,20 @@ class CardCustomer(UpdateView, Options):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        
+        context['mont'] = self.MontNow(datetime.now().month)
+        context['day'] = self.DayNow(datetime.now().day)
+        context['day_number'] = datetime.now().day
+        context['year'] = self.YearNow(datetime.now().year)
+        context['year_number'] = datetime.now().year
+        customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
         context['c'] = self.model.objects.get(id=self.kwargs.get('pk'))
+        try:
+            credit = models.Credit.objects.get(customer=customer) 
+            context["credit"] = credit
+            context["amount"] = self.Amount(credit.amount)
+        except models.Credit.DoesNotExist:
+            return redirect(reverse('customer:create-credit'))
         return context
     
 class NotaryCustomer(UpdateView, Options):

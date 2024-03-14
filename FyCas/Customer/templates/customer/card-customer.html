@@ -1,5 +1,6 @@
 {% include "base/base.html" %}
 {% block content %}
+{% load humanize %}
 <section class="container" style="font-family: Times New Roman; font-size: 16px; line-height: 17px; color: black; text-align: justify;">
       <div class="text-center mt-2 pt-3 mb-4" >
             <span class="black">
@@ -31,7 +32,7 @@ Y de la otra parte el señora, <span class="black text-uppercase"> {{c.name}} {{
 
    
 
-<span class="black">POR CUANTO: EL DEUDOR</span> ha solicitado a <span class="black">GRUPOS FYCAS</span> el otorgamiento de un préstamo por la suma de <span class="black"> DIECIOCHO MIL CON 00/100 (RD$:18,000.00). </span>
+<span class="black">POR CUANTO: EL DEUDOR</span> ha solicitado a <span class="black">GRUPOS FYCAS</span> el otorgamiento de un préstamo por la suma de <span class="black"> <span class="text-uppercase black"> {{amount}}</span> CON 00/100 (RD${{credit.amount|intcomma}}.00) </span>
 
   
 <br>
@@ -46,7 +47,7 @@ Y de la otra parte el señora, <span class="black text-uppercase"> {{c.name}} {{
 </div>
    
 
-<span class="black">PRIMERO:</span> Por medio del presente contrato <span class="black">GRUPOS FYCAS</span> otorga a favor de <span class="black">EL DEUDOR,</span> a quien acepta conforme, un préstamo por la suma de <span  class="black">DIECIOCHO MIL CON 00/100 (RD$:18,000.00).</span> 
+<span class="black">PRIMERO:</span> Por medio del presente contrato <span class="black">GRUPOS FYCAS</span> otorga a favor de <span class="black">EL DEUDOR,</span> a quien acepta conforme, un préstamo por la suma de <span  class="black"> <span class="text-uppercase black"> {{amount}}</span> CON 00/100 (RD${{credit.amount|intcomma}}.00).</span> 
 <br><br>
   
 
@@ -63,7 +64,7 @@ Y de la otra parte el señora, <span class="black text-uppercase"> {{c.name}} {{
 <br><br>
   
 
-<span class="black">CUARTO: EL DEUDOR</span> se obliga a pagar la suma otorgada en calidad de préstamo, la cantidad de cuatro (4) cuotas mensuales contentiva de capital e interés ascendentes a la suma <span class="black">SEIS MIL TRESCIENTOS CUATRO PESOS CON 00/100 (RD$6,304.00).</span> Que deberán ser pagados el día treinta (30) de cada mes.   
+<span class="black">CUARTO: EL DEUDOR</span> se obliga a pagar la suma otorgada en calidad de préstamo, la cantidad de ({{credit.price_feed}}) cuotas mensuales contentiva de capital e interés ascendentes a la suma <span class="black"> {{amount}} PESOS CON 00/100 (RD${{credit.amount|intcomma}}.00).</span> Que deberán ser pagados el día treinta (30) de cada mes.   
  <br><br>
    
 
@@ -95,12 +96,44 @@ Y de la otra parte el señora, <span class="black text-uppercase"> {{c.name}} {{
 <br> <br>
 <span class="black">DECIMO PRIMERO:</span> Para todo lo no previsto en este presente contrato, las partes se remiten al derecho común.   
 
+<div>
+      Hecho y firmado en la ciudad de santo domingo República Dominicana, a los días {{day}} ({{day_number}}) del mes de febrero del año {{year}} ({{year_number}});   
+</div>
+<div class=" w-100 mt-5 mb-3">
+      <span class="black">
+            POR GRUPOS FYCAS   
+      </span>
+</div>
 
+<div class="text-center w-100 mt-5 mb-3 d-flex justify-content-center flex-wrap">
+      <div class="w-50">
+            <hr>
+      </div>
+      <span class="black w-100">
+            FELIX YUNIOR CARMONA SANTOS
+      </span>
+      Socio Gerente
+
+</div>
+<div>
+      POR EL DEUDOR   
+</div>
+<div class="text-center w-100 mt-5 mb-3 d-flex flex-wrap justify-content-center">
+      <div class="w-50">
+            <hr>
+      </div>
+      <span class="black w-100 text-uppercase">
+            {{c.name}}
+      </span> 
+      El deudor 
+  
+
+</div>
 </section>
 <script>
 window.onload = function() {
       const footer = document.querySelector("footer");
-    window.print();
+//     window.print();
 };
 </script>
 {% endblock  %}
