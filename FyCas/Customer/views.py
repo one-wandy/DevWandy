@@ -114,6 +114,7 @@ class CardCustomer(UpdateView, Options):
             credit = models.Credit.objects.get(customer=customer) 
             context["credit"] = credit
             context["amount"] = self.Amount(credit.amount)
+            context["amount_feed"] self.Count(credit.)
         except models.Credit.DoesNotExist:
             return redirect(reverse('customer:create-credit'))
         return context

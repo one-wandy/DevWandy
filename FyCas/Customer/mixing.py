@@ -3,7 +3,7 @@ from django.urls import reverse
 from . import models
 import os
 import copy
-
+from num2words import num2words
 
 class Options:
       def List_Redirect(self):
@@ -23,7 +23,6 @@ class Options:
                   return True
             except FileExistsError: 
                   return False
-            
 
 
       def PDF(self, html_file, pdf_file ):
@@ -300,3 +299,7 @@ class Options:
                   1000000: "un millón",
             }
             return amount.get(N)
+
+
+      def Count(self, N):
+            return num2words(N, lang='es')
