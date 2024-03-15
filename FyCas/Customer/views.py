@@ -112,9 +112,16 @@ class CardCustomer(UpdateView, Options):
         context['c'] = self.model.objects.get(id=self.kwargs.get('pk'))
         try:
             credit = models.Credit.objects.get(customer=customer) 
-            context["credit"] = credit
             context["amount"] = self.Amount(credit.amount)
-            context["amount_feed"] self.Count(credit.)
+            context["day_pay"] = self.DayNow(credit.day_pay)
+
+            context["credit"] = credit
+            if credit.amount_feed:
+                print(credit.amount_feed)
+                v_amount = str(credit.amount_feed)
+                # print(v_amount[:v_amount.index(".")])
+                context["amount_feed_int"] = int(v_amount[:v_amount.index(".")])
+                context["amount_feed"] = self.Count(int(v_amount[:v_amount.index(".")]))
         except models.Credit.DoesNotExist:
             return redirect(reverse('customer:create-credit'))
         return context

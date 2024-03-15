@@ -64,7 +64,7 @@ Y de la otra parte el señora, <span class="black text-uppercase"> {{c.name}} {{
 <br><br>
   
 
-<span class="black">CUARTO: EL DEUDOR</span> se obliga a pagar la suma otorgada en calidad de préstamo, la cantidad de ({{credit.price_feed}}) cuotas mensuales contentiva de capital e interés ascendentes a la suma <span class="black text-uppercase"> {{amount}} PESOS CON 00/100 (RD${{credit.amount|intcomma}}.00).</span> Que deberán ser pagados el día treinta (30) de cada mes.   
+<span class="black">CUARTO: EL DEUDOR</span> se obliga a pagar la suma otorgada en calidad de préstamo, la cantidad de ({{credit.price_feed}}) cuotas mensuales contentiva de capital e interés ascendentes a la suma <span class="black text-uppercase"> {{amount_feed}} PESOS CON 00/100 (RD${{amount_feed_int|intcomma}}.00).</span> Que deberán ser pagados el día {{day_pay}} ({{credit.day_pay}}) de cada mes.   
  <br><br>
    
 
@@ -116,7 +116,7 @@ Y de la otra parte el señora, <span class="black text-uppercase"> {{c.name}} {{
 
 </div>
 <div>
-      POR EL DEUDOR   
+      <span class="black">  POR EL DEUDOR </span>  
 </div>
 <div class="text-center w-100 mt-5 mb-3 d-flex flex-wrap justify-content-center">
       <div class="w-50">
