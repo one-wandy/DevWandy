@@ -224,6 +224,7 @@ class UpdateCredit(UpdateView, Options):
         credit.day_pay = request.POST.get("day_pay")
         credit.amount = request.POST.get("amount")
         credit.no_account = request.POST.get("no_account")
+        credit.amount_feed = request.POST.get("amount_feed")
         credit.mode_pay = True if request.POST.get("mode_pay") == "on" else False
         credit.save()
         return self.List_Redirect()

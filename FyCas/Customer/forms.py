@@ -35,7 +35,7 @@ class CreditForm(forms.ModelForm):
       model = models.Credit
       fields = [
         "customer", "name", "price_feed", "no_account", 
-         "mode_pay", "day_pay", "dni", "amount",
+         "mode_pay", "day_pay", "dni", "amount", "amount_feed",
       ]
       widgets = {
         'customer': forms.TextInput(attrs={'class': 'form-control'}),
@@ -46,4 +46,6 @@ class CreditForm(forms.ModelForm):
         'price_feed': forms.NumberInput(attrs={'class': 'form-control'}),
         'no_account': forms.TextInput(attrs={'class': 'form-control'}),
         'day_pay': forms.NumberInput(attrs={'class': 'form-control'}),
+        'amount_feed': forms.TextInput(attrs={'class': 'form-control'}),
+
       }

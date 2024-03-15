@@ -37,9 +37,9 @@ class Credit(models.Model):
     mode_pay = models.BooleanField(default=False)
     #if mode_pay is True Appli 2 Pay 
     day_pay = models.IntegerField(default=30)
-    is_active = models.BooleanField(default=True    )#is active rederict at diferens view
+    is_active = models.BooleanField(default=True)#is active rederict at diferens view
 
-
+    amount_feed = models.CharField(max_length=100, default="")
     
     def __str__(self):
         return self.name

@@ -57,7 +57,7 @@
                   Detalles del préstamo
             </h6>
             <p>
-                  Monto del préstamo, tasa de interés, plazo del préstamo, tipo de préstamo.
+                  Monto del préstamo, tasa de interés, plazo del préstamo, tipo de préstamo
             </p>
       </div>
       <div class="d-flex">
@@ -100,12 +100,15 @@
             <h6 class="ms-1"> Cuota Mensual RD$: <span class="text-black" id="valor-div"></span></h6>
           </div>
       </div>
+      <div class="d-none">
+            {{form.amount_feed}}
+      </div>
       <div class="d-flex w-100 pt-4 justify-content-end">
             <a href="{% url "customer:list-customer" %}" class="btn-cancel">
                   Cancelar
             </a>
             <button class="btn-save">
-                  Crear 
+                  Actualizar
             </button>
       </div>
 </form>
@@ -144,6 +147,8 @@
             let total_c = Math.round(cuotas);
             document.querySelector("#resultado-div").textContent = total.toLocaleString() ;
             document.querySelector("#valor-div").textContent =  tt.toLocaleString()
+            document.getElementById("id_amount_feed").value = tt.toLocaleString()
+
 }
 
 
