@@ -19,7 +19,7 @@ De una parte, <span class="black text-uppercase"> GRUPO FYCAS, SRL, </span> soci
 
    
 <br><br>
-Y de la otra parte el señora, <span class="black text-uppercase"> {{c.name}} {{c.last_name}} </span>, dominicana, mayor de edad, soltera, portadora de la cedula de identidad y Electoral No. {{c.dni}}, domiciliado y residente en la {{c.address}}, República Dominicana, quien en lo adelante en el presente contrato se denominará <span class="black">´´EL DEUDOR</span> o por su nombre completo´´.   
+Y de la otra parte el señor(a), <span class="black text-uppercase"> {{c.name}} {{c.last_name}} </span>, dominicano, mayor de edad, portador(a) de la cedula de identidad y Electoral No. {{c.dni}}, domiciliado y residente en la {{c.address}}, República Dominicana, quien en lo adelante en el presente contrato se denominará <span class="black">´´EL DEUDOR</span> o por su nombre completo´´.   
 
   
 
@@ -64,7 +64,12 @@ Y de la otra parte el señora, <span class="black text-uppercase"> {{c.name}} {{
 <br><br>
   
 
-<span class="black">CUARTO: EL DEUDOR</span> se obliga a pagar la suma otorgada en calidad de préstamo, la cantidad de ({{credit.price_feed}}) cuotas mensuales contentiva de capital e interés ascendentes a la suma <span class="black text-uppercase"> {{amount_feed}} PESOS CON 00/100 (RD${{amount_feed_int|intcomma}}.00).</span> Que deberán ser pagados el día {{day_pay}} ({{credit.day_pay}}) de cada mes.   
+<span class="black">CUARTO: EL DEUDOR</span> se obliga a pagar la suma otorgada en calidad de préstamo, la cantidad de ({{credit.price_feed}}) cuotas mensuales contentiva de capital e interés ascendentes a la suma <span class="black text-uppercase"> {{amount_feed}} PESOS CON 00/100 (RD${{amount_feed_int|intcomma}}.00).</span>
+{% if credit.mode_pay == True %}
+Que deberán ser pagados los dias quince (15) y treinta (30) de cada mes 
+{% else %}
+Que deberán ser pagados el día {{day_pay}} ({{credit.day_pay}}) de cada mes.   
+{% endif %}
  <br><br>
    
 
