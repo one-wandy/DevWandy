@@ -15,11 +15,14 @@ class AddCustomer(CreateView, Options):
     
     def post(self, request, *args, **kwargs):
         f = self.form_class(request.POST, request.FILES)
+        print(f)
         if f.is_valid():
             f.save()
             # Creando Carpeta para el Cliente
             self.FileCreate(f.instance.name, f.instance.last_name)
-        return self.List_Redirect()
+            return self.List_Redirect()
+        else:
+            return redirect(reverse('customer:add-customer'))
 
 # #Crear una funcion al crear clientes 
 # import os
@@ -84,6 +87,16 @@ class UpdateCustomer(UpdateView, Options):
             
         print(form.errors) 
 
+
+class DetailCustomer(DetailView):
+    model = models.Customer
+    template_name = "customer/detail-customer.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['c'] = self.model.objects.get(id=self.kwargs.get('pk'))
+        return context
+    
 
 class DeleteCustomer(DeleteView, Options):
     model = models.Customer

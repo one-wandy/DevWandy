@@ -1,0 +1,40 @@
+{% include "base/base.html" %}
+{% block content %}
+{% load static %}
+
+<section class='container mt-1'>
+      <div>
+            <header class="w-100" style=' height: 9rem; 
+            background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%); border-radius: 1rem;'>
+            </header>
+            <section class='position-absolute d-flex  p-2 ' style='top:5rem; width: 69.8rem;'>
+                  <div class="card  border-0" style="width: 15rem; border-radius:1rem;">
+                        <img src="{{c.img1.url}}" style='height: ; width: 15rem; border-radius: 0.9rem; ' class="img card-img-top object-fit-cover" alt="...">
+                        <div class="card-body">
+                              <strong style='text'>
+                                    {{c.name}} {{c.last_name}}
+                              </strong>
+                              <span>
+                                    {{c.dni}}
+                              </span>
+                              
+                          <p class="card-text"> </p>
+                        </div>
+                      </div>
+                      <div class='bg-white d-none p-2 ms-2 ' style='width: 52.6rem; border-radius:1rem;'>
+                        <strong>
+                              Informacion
+                        </strong>
+                        <p style='font-size: 13px;' class='text-black-50'>
+                              RENATO ARTURO CABRERA SANTOS , dominicano, mayor de edad, portador(a) de la cedula de identidad y Electoral No. 402-3707526-8, domiciliado y residente en la alle, número de casa, sector, municipio, provincia. Manzana 36-12 casa #11 urb. Franconia, República Dominicana, quien en lo adelante en el presente contrato se denominará ´´EL DEUDOR o por su nombre completo´´
+                        </p>
+                      </div>
+            </section>
+      </div>
+      <section class='' style='margin-top: 10rem;'>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga pariatur earum nulla iste qui, repellendus atque necessitatibus vel omnis voluptate, natus nemo, illum ipsum magni? Ullam sapiente ea voluptatibus architecto?
+      </section>
+</section>
+
+
+{% endblock  %}

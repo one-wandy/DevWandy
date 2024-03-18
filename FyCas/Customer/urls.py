@@ -5,6 +5,7 @@ from . import views, views_ajax
 app_name = "customer"
 urlpatterns = [
       path('add-customer', views.AddCustomer.as_view(), name='add-customer'),
+      path('detail-customer/<int:pk>', views.DetailCustomer.as_view(), name='detail-customer'),
       path('update-customer/<int:pk>', views.UpdateCustomer.as_view(), name='update-customer'),
       path('delete-customer/<int:pk>', views.DeleteCustomer.as_view(), name='delete-customer'),
 
