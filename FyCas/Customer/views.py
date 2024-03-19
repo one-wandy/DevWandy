@@ -178,12 +178,14 @@ class CreateCredit(CreateView, Options):
     template_name = "customer/create-credit.html"
 
     def get(self, request, *args, **kwargs):
+        print(self.kwargs.get('credit_id'))
         customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
         try:
-            credit = self.model.objects.get(customer=customer)
+            credit = self.model.objects.get(customer=customer, id=self.kwargs.get('credit_id'))
             return self.UpdateCredit(credit.id)
         except self.model.DoesNotExist:
             return super().get(request, *args, **kwargs)
+
             
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -7,6 +7,7 @@ urlpatterns = [
       path('add-customer', views.AddCustomer.as_view(), name='add-customer'),
       path('detail-customer/<int:pk>', views.DetailCustomer.as_view(), name='detail-customer'),
       path('update-customer/<int:pk>', views.UpdateCustomer.as_view(), name='update-customer'),
+      
       path('delete-customer/<int:pk>', views.DeleteCustomer.as_view(), name='delete-customer'),
 
       path('list-customer', views.ListCustomer.as_view(), name='list-customer'),
@@ -14,7 +15,7 @@ urlpatterns = [
       path('notary-customer/<int:pk>', views.NotaryCustomer.as_view(), name='notary-customer'),
       
       path('create-credit/<int:pk>', views.CreateCredit.as_view(), name='create-credit'),
-      path('update-credit/<int:pk>', views.UpdateCredit.as_view(), name='update-credit'),
+      path('update-credit/<int:pk>/<int:credit_id>', views.UpdateCredit.as_view(), name='update-credit'),
 
 
       # Views Ajax
