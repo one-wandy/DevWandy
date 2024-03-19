@@ -16,7 +16,7 @@ class Options:
       
       def FileCreate(self, Name, Last):
             path = os.getcwd() + "\Clientes"
-            name_file = Name + "-" + Last
+            name_file = Name + " " + Last
             sub_file = os.path.join(path, name_file)
             try:
                   os.mkdir(sub_file)

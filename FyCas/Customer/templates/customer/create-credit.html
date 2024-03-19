@@ -94,14 +94,19 @@
 
       <div class="form- mb-3 w-100 " >
           <div >
-            <h6 class="ms-1"> Ganancias Total RD$: <span class="text-black" id="resultado-div"></span></h6>
+            <h6 class="ms-1"> Ganancias RD$: <span class="text-black" id="resultado-div"></span>.00</h6>
           </div>
-          <div>
+          <div class="">
             <h6 class="ms-1"> Cuota Mensual RD$: <span class="text-black" id="valor-div"></span></h6>
           </div>
-      </div>
-      <div class="d-none">
+          <div class="form-floating mb-3 " >
             {{form.amount_feed}}
+            <label for="id_amount_feed">Cuota Mensual
+            </label>
+         </div>
+      </div>
+      <div class="d-">
+
       </div>
       <div class="d-flex w-100 pt-4 justify-content-end">
             <a href="{% url "customer:list-customer" %}" class="btn-cancel">
@@ -147,7 +152,6 @@
             let total_c = Math.round(cuotas);
             document.querySelector("#resultado-div").textContent = total.toLocaleString() ;
             document.querySelector("#valor-div").textContent =  tt.toLocaleString()
-            document.getElementById("id_amount_feed").value = tt.toLocaleString()
 }
 
 
