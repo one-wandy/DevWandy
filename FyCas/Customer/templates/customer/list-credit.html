@@ -1,0 +1,44 @@
+{% include "base/base.html" %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+
+<div class="p-3 d-flex  ">
+      <div class="w-50 d-flex flex-wrap align-content-center  flex-wrap">
+            <h3 class="p-0 m-0">
+                  Lista de Creditos de {{c.name}} {{c.last_name}} 
+            </h3>
+            <p class="text-black-50 w-100">
+                  Permite a las entidades financieras realizar un seguimiento de los créditos otorgados, incluyendo el saldo pendiente, la fecha de vencimiento y el estado de los pagos.
+            </p>
+      </div>
+      <div class="d-flex justify-content-end w-50">
+            <img src="{% static "icons/fycas.jpg" %}" weight="300" alt="" srcset="">
+      </div>
+</div>
+<section class='p-3 section m-2'>
+      {% for credit in credit %}
+            <div class='bg-white p-2 bg-opacity-50' style="width: 20rem;
+            border-radius: 1rem; box-shadow: var(--shadow-one);">
+                  <strong>
+                        Prestamo Activo 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi text-danger bi-circle-fill" viewBox="0 0 16 16">
+                        <circle cx="8" cy="8" r="8"/>
+                        </svg>
+                  </strong>
+                  <div>
+                    <span class="black">Nombre y Apellidos:</span>
+                        {{credit.name}}
+                  </div>
+                  <div>
+                        <span class="black">Monto:</span>
+                           RD${{credit.amount|intcomma}}.00
+                  </div>
+                  <div>
+                        <span class="black">Cuotas:</span>
+                        ({{credit.price_feed}}) a RD${{credit.amount_feed|intcomma}}.00 los dias ({{credit.day_pay}})
+                  </div>
+            </div>
+      {% endfor %}
+</section>
+{% endblock  %}

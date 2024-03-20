@@ -178,10 +178,9 @@ class CreateCredit(CreateView, Options):
     template_name = "customer/create-credit.html"
 
     def get(self, request, *args, **kwargs):
-        print(self.kwargs.get('credit_id'))
         customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
         try:
-            credit = self.model.objects.get(customer=customer, id=self.kwargs.get('credit_id'))
+            credit = self.model.objects.get(customer=customer, id=self.kwargs.get('credit_id'), is_active=True)
             return self.UpdateCredit(credit.id)
         except self.model.DoesNotExist:
             return super().get(request, *args, **kwargs)
@@ -229,3 +228,22 @@ class UpdateCredit(UpdateView, Options):
         credit.mode_pay = True if request.POST.get("mode_pay") == "on" else False
         credit.save()
         return self.List_Redirect()
+
+class ListCredit(ListView, Options):
+        model = models.Credit
+        template_name = "customer/list-credit.html"
+        
+        def get(self, request, *args, **kwargs):
+            customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
+            credit = self.model.objects.filter(customer__id = self.kwargs.get('pk'),is_active=True).exists()
+            if credit:
+                return super().get(request, *args, **kwargs)
+            else:
+                return self.CreateCredit(customer.id)
+    
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['c'] = models.Customer.objects.get(id=self.kwargs.get('pk'))
+            context['credit'] = self.model.objects.filter(customer__id=self.kwargs.get('pk'))
+
+            return context

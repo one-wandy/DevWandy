@@ -6,12 +6,20 @@ import copy
 from num2words import num2words
 
 class Options:
+      def List_Credit(self):
+            URL = reverse('customer:list-credit')
+            return redirect(URL)
+      
       def List_Redirect(self):
             URL = reverse('customer:list-customer')
             return redirect(URL)
       
       def UpdateCredit(self, credit_id):
             URL = reverse('customer:update-credit',  kwargs={'pk': credit_id})
+            return redirect(URL)
+      
+      def CreateCredit(self, credit_id):
+            URL = reverse('customer:create-credit',  kwargs={'pk': credit_id})
             return redirect(URL)
       
       def FileCreate(self, Name, Last):

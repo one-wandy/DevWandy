@@ -15,7 +15,8 @@ urlpatterns = [
       path('notary-customer/<int:pk>', views.NotaryCustomer.as_view(), name='notary-customer'),
       
       path('create-credit/<int:pk>', views.CreateCredit.as_view(), name='create-credit'),
-      path('update-credit/<int:pk>/<int:credit_id>', views.UpdateCredit.as_view(), name='update-credit'),
+      path('update-credit/<int:pk>', views.UpdateCredit.as_view(), name='update-credit'),
+      path('list-credit/<int:pk>', views.ListCredit.as_view(), name='list-credit'),
 
 
       # Views Ajax
