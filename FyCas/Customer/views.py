@@ -124,7 +124,7 @@ class CardCustomer(UpdateView, Options):
         customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
         context['c'] = self.model.objects.get(id=self.kwargs.get('pk'))
         try:
-            credit = models.Credit.objects.get(customer=customer) 
+            credit = models.Credit.objects.get(customer=customer, id=self.kwargs.get('credit_id')) 
             context["amount"] = self.Amount(credit.amount)
             context["day_pay"] = self.DayNow(credit.day_pay)
 
@@ -154,7 +154,7 @@ class NotaryCustomer(UpdateView, Options):
         customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
         context['c'] = self.model.objects.get(id=self.kwargs.get('pk'))
         try:
-            credit = models.Credit.objects.get(customer=customer) 
+            credit = models.Credit.objects.get(customer=customer, id=self.kwargs.get('notary_id')) 
             context["amount"] = self.Amount(credit.amount)
             context["day_pay"] = self.DayNow(credit.day_pay)
 
