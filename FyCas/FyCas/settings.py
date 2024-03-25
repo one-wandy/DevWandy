@@ -31,7 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Maps.apps.MapsConfig',
     'Customer.apps.CustomerConfig',
+    # Apps OneWandy
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

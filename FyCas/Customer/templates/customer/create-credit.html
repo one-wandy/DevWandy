@@ -94,10 +94,10 @@
 
       <div class="form- mb-3 w-100 " >
           <div >
-            <h6 class="ms-1"> Ganancias RD$: <span class="text-black" id="resultado-div"></span>.00</h6>
+            <h6 class="ms-1"> Ganancias: <span class="text-black" id="resultado-div"></span>.00</h6>
           </div>
           <div class="">
-            <h6 class="ms-1"> Cuota Mensual RD$: <span class="text-black" id="valor-div"></span></h6>
+            <h6 class="ms-1"> Cuota Mensual: <span class="text-black" id="valor-div"></span></h6>
           </div>
           <div class="form-floating mb-3 " >
             {{form.amount_feed}}
@@ -150,8 +150,8 @@
             let total = cuotas + amounts
             let tt = total / p 
             let total_c = Math.round(cuotas);
-            document.querySelector("#resultado-div").textContent = total.toLocaleString() ;
-            document.querySelector("#valor-div").textContent =  tt.toLocaleString()
+            document.querySelector("#resultado-div").textContent ='RD$' + total.toLocaleString() ;
+            document.querySelector("#valor-div").textContent = 'RD$' + tt.toLocaleString()
 }
 
 
