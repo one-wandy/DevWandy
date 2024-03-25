@@ -130,8 +130,8 @@
                   <div class="w-100 d-flex justify-content-end">
                         <div class="form-check">
                               <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                              <label class="form-check-label" style="font-size: 12px;" for="defaultCheck1">
-                                    Crear Solicitud de Credito
+                              <label class="form-check-label" onclick="CaptureLocation()" id="code" style="font-size: 12px;" for="defaultCheck1">
+                                    Aceptar Terminos 
                               </label>
                             </div>
                   </div>
@@ -196,5 +196,15 @@
     reader.readAsDataURL(file);
   };
 
-      </script>
+//   Capture Code Geolcalitation
+
+let CaptureLocation = ()=> {
+      navigator.geolocation.getCurrentPosition((position) => {
+            const latitud = position.coords.latitude;
+            const longitud = position.coords.longitude;
+            alert(`Latitud: ${latitud}, Longitud: ${longitud}`);
+      });
+}
+
+</script>
 {% endblock  %}

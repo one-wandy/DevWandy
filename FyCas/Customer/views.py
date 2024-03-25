@@ -11,7 +11,7 @@ from datetime import datetime
 class AddCustomer(CreateView, Options):
     model = models.Customer
     form_class = forms.CustomerForm
-    template_name = "customer/add-customer.html"
+    template_name = "customer/create-customer.html"
     
     def post(self, request, *args, **kwargs):
         f = self.form_class(request.POST, request.FILES)
