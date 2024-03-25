@@ -1,40 +1,69 @@
-{% include "base/base.html" %}
-{% block content %}
-{% load static %}
-
-<section class='container mt-1'>
-      <div>
-            <header class="w-100" style=' height: 9rem; 
-            background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%); border-radius: 1rem;'>
-            </header>
-            <section class='position-absolute d-flex  p-2 ' style='top:5rem; width: 69.8rem;'>
-                  <div class="card  border-0" style="width: 15rem; border-radius:1rem;">
-                        <img src="{{c.img1.url}}" style='height: ; width: 15rem; border-radius: 0.9rem; ' class="img card-img-top object-fit-cover" alt="...">
-                        <div class="card-body">
-                              <strong style='text'>
-                                    {{c.name}} {{c.last_name}}
-                              </strong>
-                              <span>
-                                    {{c.dni}}
-                              </span>
-                              
-                          <p class="card-text"> </p>
-                        </div>
-                      </div>
-                      <div class='bg-white d-none p-2 ms-2 ' style='width: 52.6rem; border-radius:1rem;'>
-                        <strong>
-                              Informacion
-                        </strong>
-                        <p style='font-size: 13px;' class='text-black-50'>
-                              RENATO ARTURO CABRERA SANTOS , dominicano, mayor de edad, portador(a) de la cedula de identidad y Electoral No. 402-3707526-8, domiciliado y residente en la alle, número de casa, sector, municipio, provincia. Manzana 36-12 casa #11 urb. Franconia, República Dominicana, quien en lo adelante en el presente contrato se denominará ´´EL DEUDOR o por su nombre completo´´
-                        </p>
-                      </div>
-            </section>
-      </div>
-      <section class='' style='margin-top: 10rem;'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga pariatur earum nulla iste qui, repellendus atque necessitatibus vel omnis voluptate, natus nemo, illum ipsum magni? Ullam sapiente ea voluptatibus architecto?
-      </section>
-</section>
 
 
-{% endblock  %}
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <!--The div element for the map -->
+    <div id="map"></div>
+      <input type="text" name="" id="lat-one" value='{{c.lat}}'>
+      <input type="text" name="" id="lon-one" value='{{c.lon}}'>
+
+    <!-- prettier-ignore -->
+    <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
+        ({key: "AIzaSyAfnJbgtHm5EZLkozG5Dzo_cgkeJndxNjA", v: "beta"});</script>
+  </body>
+</html>
+<style>
+      /*
+ * Always set the map height explicitly to define the size of the div element
+ * that contains the map.
+ */
+#map {
+  height: 100%;
+}
+
+/*
+ * Optional: Makes the sample page fill the window.
+ */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+</style>
+<script>
+
+
+
+
+      // Initialize and add the map
+let map;
+
+async function initMap() {
+  // The location of Uluru
+  let lat_one = document.getElementById("lat-one").value
+  let lon_one = document.getElementById("lon-one").value
+  const position = { lat: parseFloat(lat_one), lng: parseFloat(lon_one) };
+  // Request needed libraries.
+  //@ts-ignore
+  const { Map } = await google.maps.importLibrary("maps");
+  const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
+
+  // The map, centered at Uluru
+  map = new Map(document.getElementById("map"), {
+    zoom: 4,
+    center: position,
+    mapId: "DEMO_MAP_ID",
+  });
+
+  // The marker, positioned at Uluru
+  const marker = new AdvancedMarkerView({
+    map: map,
+    position: position,
+    title: "Uluru",
+  });
+}
+
+initMap();
+</script>
