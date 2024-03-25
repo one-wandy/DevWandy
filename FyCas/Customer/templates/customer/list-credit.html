@@ -29,20 +29,25 @@
           <span class="ms-1">Atras</span>
       </a>
 </div>
-<section class='p-3 section m-2 d-flex flex-wrap justify-content-between'>
+<section class='p-3 section m-2 d-flex flex-wrap '>
+      <div class="w-100 d-flex justify-content-end">
+            <input type="text"  style="max-height: 3rem; width: 10rem;" class="form-control  p-3  m-0 mb-3"  id="searching-credit" placeholder=" Buscar...">
+      </div>
       {% for credit in credit %}
-      <div class='bg-white p-2 text-black-50 bg-opacity-50' style="width: 23rem;
+      <div class='bg-white p-2 m-2 text-black-50 bg-opacity-50' style="width: 27rem;
       border-radius: 1rem; box-shadow: var(--shadow-one);">
-      <strong style='color: var(--color-one);'>
-            {% if credit.is_active == True %}
-                  Activo 
-                  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi text-danger bi-circle-fill" viewBox="0 0 16 16">
-                        <circle cx="8" cy="8" r="8"/>
-                  </svg>
-            {% else %}
-                  Saldado
-            {% endif %}
-      </strong>
+      <div>
+            <strong  class="">
+                  {% if credit.is_active == True %}
+                    <span style='color: red;'>
+                        Activo 
+                    </span>
+                  {% else %}
+                        Saldado
+                  {% endif %}
+            </strong>
+            <hr>
+      </div>
 
                         <div class="mt-2">
                               {% if credit.is_active == True %}
@@ -74,6 +79,17 @@
                         {% endif %}
                   </div>
                   <div>
+                        <hr>
+                  </div>
+                  <div class='mt-4 mb-4 w-100 '>
+                        <h6 style='color: var(--color-one); font-family: var(--font-one);'> 
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+                                    <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1"/>
+                                    <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
+                                  </svg> Imprimir 
+                        </h6>
+                  </div>
+                  <div class='d-flex   justify-content-end'>
                         <a href="{% url "customer:card-customer" credit.customer.id credit.id %}">
                               <button>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
