@@ -4,7 +4,9 @@ from . import models  # Asegúrate de importar correctamente el modelo
 class CustomerForm(forms.ModelForm):
     class Meta:
       model = models.Customer
-      fields = ['name', 'last_name', 'number', 'address',  'work_information',  'dni',  "img2", "img1", "name_r1", "name_r2", "number_r1", "number_r2"]
+      fields = ['name', 'last_name', 'number', 'address',  'work_information',  'dni',  "img2", "img1", "name_r1", "name_r2", "number_r1", "number_r2",
+        'lat', 'lon'
+        ]
 
       widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Nombre Completo"}),

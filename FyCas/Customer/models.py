@@ -21,6 +21,10 @@ class Customer(models.Model):
     number_r1 = models.IntegerField( )#Numero local o Movile
     number_r2 = models.IntegerField( )#Numero local o Movile
     
+    # CaptureLocation
+    lat = models.CharField(max_length=1055, default='')
+    lon = models.CharField(max_length=1055, default='')
+    
     def __str__(self):
         return self.name
 

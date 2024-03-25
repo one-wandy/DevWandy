@@ -119,6 +119,7 @@
                                           <label for="id_work_information">Nombre de la primera referencia
                                           </label>
                                     </div>
+                                    {{form.lat}} {{form.lon}}
                                     <div class="form-floating mb-3 w-50" >
                                           {{form.number_r2}}
                                           <label for="id_work_information">Numero de la primera 
@@ -200,9 +201,8 @@
 
 let CaptureLocation = ()=> {
       navigator.geolocation.getCurrentPosition((position) => {
-            const latitud = position.coords.latitude;
-            const longitud = position.coords.longitude;
-            alert(`Latitud: ${latitud}, Longitud: ${longitud}`);
+            document.getElementById("id_lat").value = position.coords.latitude;
+            document.getElementById("id_lon").value = position.coords.longitude;
       });
 }
 
