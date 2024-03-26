@@ -133,14 +133,14 @@
                         <a href="{% url "customer:list-customer" %}" class="btn-cancel">
                               Cancelar
                         </a>
-                        <button class='border-0'>
+                        <button class='border-0 text-primary bg-white border-1'>
                               Si, Acepto Registrame
                         </button>
                   </div>
                   <div class="w-100 d-flex justify-content-end mt-3">
                         <div class="form-check">
                               {% comment %} <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"> {% endcomment %}
-                              <label  style='cursor: pointer;             background-color: var(--bg-one);
+                              <label id='label-acep'  style='cursor: pointer;             background-color: var(--bg-one);
                               border-radius: 0.7rem;
                               padding:0.5rem 1rem;
                               font-weight: bold;
@@ -150,7 +150,7 @@
                               margin: 0.1rem;
                               width: 17rem;
                               font-size: 14px;
-                              border:  1px solid;
+                             
                               border-color: var(--color-one);'    onclick="CaptureLocation()" class='d-flex text-center justify-content-center'>
                                     <span id="acep">
                                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
@@ -224,8 +224,11 @@
 
 let CaptureLocation = ()=> {
       navigator.geolocation.getCurrentPosition((position) => {
-            document.getElementById("id_lat").value = position.coords.latitude;
-            document.getElementById("id_lon").value = position.coords.longitude;
+            if(document.getElementById("id_lat").value){
+            }else{
+                  document.getElementById("id_lat").value = position.coords.latitude;
+                  document.getElementById("id_lon").value = position.coords.longitude;
+            }
             let acept = document.getElementById("acep")
             
             if (acept.style.display === "none") {
