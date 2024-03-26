@@ -20,7 +20,7 @@ class AddCustomer(CreateView, Options):
             f.save()
             # Creando Carpeta para el Cliente
             self.FileCreate(f.instance.name, f.instance.last_name)
-            return self.List_Redirect()
+            return redirect(reverse('maps:maps-customer'))
         else:
             return redirect(reverse('customer:add-customer'))
 

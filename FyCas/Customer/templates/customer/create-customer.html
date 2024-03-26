@@ -2,8 +2,11 @@
 {% block content %}
 {% load static %}
 
-      <div class="p-3 d-flex  ">
-            <div class="w-50 d-flex flex-wrap align-content-center  flex-wrap">
+      <div class="p-3 d-flex  flex-wrap">
+            <div class="d-flex justify-content-end w-100">
+                  <img src="{% static "icons/fycas.jpg" %}" weight="300" alt="" srcset="">
+            </div>
+            <div class="w-100 d-flex flex-wrap align-content-center  flex-wrap">
                   <h3 class="p-0 m-0">
                         Para continuar, debes completar todos los campos.
                   </h3>
@@ -11,10 +14,8 @@
                         Asegúrate de que toda la información que proporciones sea precisa y actual.
                   </p>
             </div>
-            <div class="d-flex justify-content-end w-50">
-                  <img src="{% static "icons/fycas.jpg" %}" weight="300" alt="" srcset="">
-            </div>
       </div>
+
 <section class="section p-2 m-2 ms-4 me-4 " >
       <form action="" method="post" enctype='multipart/form-data'>
                   {% csrf_token %}
@@ -98,8 +99,8 @@
                               ~Asegúrese de que sus referencias estén al tanto de que las proporcionará como referencia.
                         </p>
                         <div class="w-100">
-                              <div class="w-100 d-flex">
-                                    <div class="form-floating mb-3 w-50" >
+                              <div class="w-100 d-flex flex-wrap">
+                                    <div class="form-floating mb-3 d-flex flex-wrap " >
                                           {{form.name_r1}}
                                           <label for="id_work_information">Nombre de la primera referencia
                                           </label>
@@ -113,14 +114,14 @@
                               <p class="text-black-50 m-0 ms-2">
                                     ~Dos referentes pueden proporcionar una descripción más precisa y completa que uno solo.
                               </p>
-                              <div class="w-100 d-flex">
-                                    <div class="form-floating mb-3 w-50" >
+                              <div class="w-100 d-flex flex-wrap">
+                                    <div class="form-floating mb-3 " >
                                           {{form.name_r2}}
                                           <label for="id_work_information">Nombre de la primera referencia
                                           </label>
                                     </div>
                                     {{form.lat}} {{form.lon}}
-                                    <div class="form-floating mb-3 w-50" >
+                                    <div class="form-floating mb-3 " >
                                           {{form.number_r2}}
                                           <label for="id_work_information">Numero de la primera 
                                           </label>
@@ -128,10 +129,18 @@
                               </div>
                         </div>
                   </section>
-                  <div class="w-100 d-flex justify-content-end">
+                  <div style='display: none;'  id='btn-add' class=" w-100 pt-4 justify-content-end">
+                        <a href="{% url "customer:list-customer" %}" class="btn-cancel">
+                              Cancelar
+                        </a>
+                        <button class='border-0'>
+                              Si, Acepto Registrame
+                        </button>
+                  </div>
+                  <div class="w-100 d-flex justify-content-end mt-3">
                         <div class="form-check">
                               {% comment %} <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"> {% endcomment %}
-                              <label style='cursor: pointer;             background-color: var(--bg-one);
+                              <label  style='cursor: pointer;             background-color: var(--bg-one);
                               border-radius: 0.7rem;
                               padding:0.5rem 1rem;
                               font-weight: bold;
@@ -139,9 +148,10 @@
                               font-family: "Righteous", sans-serif;
                               font-weight: 100;
                               margin: 0.1rem;
+                              width: 17rem;
                               font-size: 14px;
                               border:  1px solid;
-                              border-color: var(--color-one);'    onclick="CaptureLocation()" class='d-flex'>
+                              border-color: var(--color-one);'    onclick="CaptureLocation()" class='d-flex text-center justify-content-center'>
                                     <span id="acep">
                                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
                                                 <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
@@ -156,14 +166,6 @@
                               </label>
                     
                             </div>
-                  </div>
-                  <div style='display: none;'  id='btn-add' class=" w-100 pt-4 justify-content-end">
-                        <a href="{% url "customer:list-customer" %}" class="btn-cancel">
-                              Cancelar
-                        </a>
-                        <button class="btn-save">
-                              Si, Acepto Registrame
-                        </button>
                   </div>
             </div>
       </form>
