@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
 <style>
-      #id_name_r1 {
+      #id_name_r1, #id_name_r2 {
             margin: 0 !important;
       }
 </style>
@@ -118,57 +118,64 @@
                               <p class="text-black-50 m-0 ms-2">
                                     ~Dos referentes pueden proporcionar una descripción más precisa y completa que uno solo.
                               </p>
-                              <div class="w-100 d-flex flex-wrap">
-                                    <div class="form-floating mb-3 " >
-                                          {{form.name_r2}}
-                                          <label for="id_work_information">Nombre de la primera referencia
-                                          </label>
-                                    </div>
-                                    {{form.lat}} {{form.lon}}
-                                    <div class="form-floating mb-3 " >
-                                          {{form.number_r2}}
-                                          <label for="id_work_information">Numero de la primera 
-                                          </label>
+                              {{form.lat}} {{form.lon}}
+                              <div class="w-100 d-flex flex-wrap ">
+                                    <div class="w-100 d-flex flex-wrap">
+                                          <div class="form-floating m-0 mb-3  " >
+                                                {{form.name_r2}}
+                                                <label for="id_work_information">Nombre de la segunda referencia
+                                                </label>
+                                          </div>
+                                          <div class="form-floating mb-3 " >
+                                                {{form.number_r2}}
+                                                <label for="id_number_r2">Numero de la segunda 
+                                                </label>
+                                          </div>
                                     </div>
                               </div>
                         </div>
                   </section>
-                  <div style='display: none;'  id='btn-add' class=" w-100 mt-4 pt-4 justify-content-center">
-                        <a href="{% url "customer:list-customer" %}" class="btn-cancel">
-                              Cancelar
-                        </a>
-                        <button class='border-0 text-primary bg-white border-1'>
-                              Si, Acepto Registrame
+                  <div class="container">
+                        <hr class="">
+                  </div>
+                  <div style='display: none;'  id='btn-add' class=" w-100  pt-4 justify-content-center">
+                        <label style="cursor: pointer; " class=" d-flex flex-wrap flex-wrap align-content-center justify-content-center " onclick="Acept()"><span style=" font-family: Righteous, sans-serif;">Cancelar</span></label>
+                        <button class='border-0 d-flex align-content-center justify-content-center text-primary bg-white border-1'>
+                              <span id="acep-yes"   style='display: none; '>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill text-primary" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5m8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
+                                    </svg>
+                              </span> Si, Acepto 
                         </button>
                   </div>
+                
                   <div class="w-100 d-flex justify-content-center mt-3 mb-4">
-                        <div class="form-check">
+                        <div class="form-check" id="div-acept">
                               {% comment %} <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"> {% endcomment %}
-                              <label id='label-acep'  style='cursor: pointer;             background-color: var(--bg-one);
+                              <label   
+                              style='cursor: pointer;             
+                              width: 17rem;
                               border-radius: 0.7rem;
                               padding:0.5rem 1rem;
                               font-weight: bold;
-                              color: var(--color-one);
-                              font-family: "Righteous", sans-serif;
                               font-weight: 100;
                               margin: 0.1rem;
-                              width: 17rem;
                               font-size: 14px;
-                             
-                              border-color: var(--color-one);'    onclick="CaptureLocation()" class='d-flex text-center justify-content-center'>
+                              color: var(--color-one);
+                              font-family: "Righteous", sans-serif;
+                              background-color: var(--bg-one);
+                              border-color: var(--color-one);'   
+                              onclick="CaptureLocation()" class='d-flex text-center justify-content-center'>
                                     <span id="acep">
                                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
-                                                <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
-                                              </svg>
+                                          <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
+                                          </svg>
                                     </span>
-                                    <span id="acep-yes"  style='display: none;'>
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill text-primary" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5m8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
-                                              </svg>
+
+                                    <span>
+                                          Aceptar Terminos
                                     </span>
-                                         Aceptar Terminos y Condiciones
                               </label>
-                    
                             </div>
                   </div>
             </div>
@@ -227,24 +234,32 @@
 //   Capture Code Geolcalitation
 
 let CaptureLocation = ()=> {
+      Acept()
+      document.getElementById("div-acept").style.display = 'none';
       navigator.geolocation.getCurrentPosition((position) => {
             if(document.getElementById("id_lat").value){
-            }else{
+            }
+            else{
                   document.getElementById("id_lat").value = position.coords.latitude;
                   document.getElementById("id_lon").value = position.coords.longitude;
             }
-            let acept = document.getElementById("acep")
-            
+      });
+}
+
+let Acept = () =>{
+      
+      let acept = document.getElementById("acep")
             if (acept.style.display === "none") {
                   document.getElementById("btn-add").style.display = 'none'
                   document.getElementById("acep-yes").style.display = 'none';
+                  document.getElementById("div-acept").style.display = 'block';
                   acept.style.display = "block";
             } else {
                   document.getElementById("acep-yes").style.display = 'block';
                   document.getElementById("btn-add").style.display = 'flex'
                   acept.style.display = "none";
             }
-      });
+            
 }
 
 </script>
