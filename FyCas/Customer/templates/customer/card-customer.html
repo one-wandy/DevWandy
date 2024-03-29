@@ -7,16 +7,15 @@
       @page {
       /* margin: 100px 65px 90px 65px; */
       size: card;
-      min-width: 70rem !important;
 }
 header, footer {
-      height: 20rem !important;
+      height: 2rem !important;
 
 }
 </style>
 <header></header>
 <section class="container w-100" style="font-family: Times New Roman; font-size: 16px; line-height: 17px; color: black; text-align: justify;">
-      <div class="text-center mt-2 pt-3 mb-4" >
+      <div class="text-center mb-4" >
             <span class="black">
                   CONTRATO DE PRESTAMO
             </span> 
@@ -29,7 +28,7 @@ header, footer {
       </span>
 </div>
 
-De una parte, <span class="black text-uppercase"> GRUPO FYCAS, SRL, </span> sociedad constituida conforme a las leyes de la Republica Dominicana, con su domicilio social y asiento principal en la Carretera de Mendoza, esquina 23, Municipio Santo Domingo Este, Provincia Santo Domingo, provista del Registro Nacional del Contribuyente (RNC) número 1-32-42163-9 y del Registro mercantil número 168478PSD, quien en lo adelante en el presente contrato se denominará ´´ <span class="black">GRUPO FYCAS</span> o por su nombre completo´´;    
+De una parte, <span class="black text-uppercase"> GRUPO FYCAS, SRL, </span> sociedad constituida conforme a las leyes de la Republica Dominicana, con su domicilio social y asiento principal en la Carretera de Mendoza, esquina 23, Municipio Santo Domingo Este, Provincia Santo Domingo, provista del Registro Nacional del Contribuyente (RNC) número 1-32-42163-9 y del Registro mercantil número 168478PSD, quien en lo adelante en el presente contrato se denominará  <span class="black">GRUPO FYCAS</span> o por su nombre completo.    
 
    
 <br><br>
@@ -38,7 +37,7 @@ Y de la otra parte el señor(a), <span class="black text-uppercase"> {{c.name}} 
   
 
    
-<div class="text-center mt-5 mb-3">
+<div class="text-center mt-5 mb-5">
       <span class="black">
             PREAMBULO   
       </span>
@@ -55,19 +54,19 @@ Y de la otra parte el señor(a), <span class="black text-uppercase"> {{c.name}} 
 
    
 
-<div class="text-center w-100 mt-5 mb-3">
-      <span class="black">HAN CONVENIDO Y PACTADO LO SIGUIENTE:</span>
+<div class="text-center w-100 mt-5 mb-5">
+      <span class="black">HAN CONVENIDO Y PACTADO LO SIGUIENTE</span>
 
 </div>
    
 
 <span class="black">PRIMERO:</span> Por medio del presente contrato <span class="black">GRUPOS FYCAS</span> otorga a favor de <span class="black">EL DEUDOR,</span> a quien acepta conforme, un préstamo por la suma de <span  class="black"> <span class="text-uppercase black"> {{amount}}</span> CON 00/100 (RD${{credit.amount|intcomma}}.00).</span> 
-<br><br>
+
   
 
 <span  class="black">Suma que EL DEUDOR</span> declara haberlas recibido a su entera satisfacción a la firma del presente contrato.     
-<br><br>
-   
+ 
+ <br><br>  
 <span  class="black">SEGUNDO: EL DEUDOR</span> declara que el concepto de los fondos otorgados en el presente contrato será utilizado para los fines de una receta médica.   
 
   <br><br>
@@ -99,8 +98,9 @@ Que deberán ser pagados el día {{day_pay}} ({{credit.day_pay}}) de cada mes.
 
 <span class="black">SEPTIMO:</span> como prueba de este préstamo <span class="black">EL DEUDOR</span>  suscribe un Pagare Notarial en favor de <span class="black">GRUPOS FYCAS</span>, el cual forma parte integral y cuyo pago está garantizado por las condiciones y estipulaciones de este contrato.    
 
-   
-<br><br> <br><br>
+<!--    
+<br><br> <br><br> -->
+<br><br>
 <span class="black">OCTAVO:</span> Es de conocimiento para <span class="black">EL DEUDOR</span>  que <span class="black">GRUPO FYCAS</span> tendrá el acceso al historial crediticio mediante la plataforma de Data crédito en el cual podrá verificar y realizar los reportes del comportamiento mensual en el pago de las cuotas.   
 
    
@@ -149,11 +149,13 @@ Que deberán ser pagados el día {{day_pay}} ({{credit.day_pay}}) de cada mes.
 
 </div>
 </section>
-<footer></footer>
+<footer>
+
+</footer>
 <script>
 window.onload = function() {
-      const footer = document.querySelector("footer");
-     window.print();
+      // const footer = document.querySelector("footer");
+//      window.print();
 };
 </script>
 {% endblock  %}
