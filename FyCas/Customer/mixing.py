@@ -4,6 +4,12 @@ from . import models
 import os
 import copy
 from num2words import num2words
+from xhtml2pdf import pisa
+from django.http import HttpResponse
+from datetime import datetime
+from django.template.loader import get_template
+from django.template import Context
+
 
 class Options:
       def List_Credit(self):
@@ -311,3 +317,33 @@ class Options:
 
       def Count(self, N):
             return num2words(N, lang='es')
+      
+      
+      
+      
+      def CreatePdf(self, template, name):
+
+            """
+            Función para generar un PDF a partir de una plantilla HTML.
+            Parámetros:
+                  request: La solicitud HTTP.
+                  template: La ruta de la plantilla HTML.
+                  filename: El nombre del archivo PDF.
+
+            Retorno:
+                  Un objeto HttpResponse con el contenido del PDF.
+            """
+
+            # Renderizar la plantilla
+            template = get_template(template)
+            html = template.render()
+            # Crear el objeto HttpResponse con el contenido generado
+            response = HttpResponse(content_type='application/pdf')
+            response['Content-Disposition'] = f'inline; filename="{name}.pdf"'
+
+            # Convertir HTML a PDF
+            pisa_status = pisa.CreatePDF(html, dest=response)
+            if pisa_status.err:
+                  return HttpResponse('Error al generar PDF', status=500)
+
+            return response
