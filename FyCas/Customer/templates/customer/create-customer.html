@@ -261,6 +261,47 @@ let Acept = () =>{
             }
             
 }
+var List = [""]
+// Add DNI
+function DNI(value) {
+    // Elimina todos los caracteres no numéricos
+    var number_dni = value.replace(/\D/g, '');
+    // Agrega guiones después de los primeros 3 dígitos y los siguientes 7 dígitos
+    var dni_ = number_dni.replace(/(\d{3})(\d{7})(\d{1})/, '$1-$2-$3');
+    return dni_;
+  }
+  // Agrega un evento al campo de entrada
+      document.getElementById('id_dni').addEventListener('input', function(e) {
+    let dni = document.getElementById('id_dni')
+    dni.value = dni.value.substring(0, 13);
+    e.target.value = DNI(e.target.value);
+  });
 
+//   Add number
+function NumbersFomat(value) {
+    // Elimina todos los caracteres no numéricos
+    var number = value.replace(/\D/g, '');
+    // Agrega guiones después de los primeros 3 dígitos y los siguientes 7 dígitos
+    var N = number.replace(/(\d{3})(\d{3})(\d{1})/, '$1-$2-$3');
+    return N;
+  }
+  // Agrega un evento al campo de entrada
+document.getElementById('id_number').addEventListener('input', function(e) {
+            let n = document.getElementById('id_number')
+            n.value = n.value.substring(0,12);
+            e.target.value = NumbersFomat(e.target.value);
+  });
+
+document.getElementById('id_number_r1').addEventListener('input', function(e) {
+            let n = document.getElementById('id_number_r1')
+            n.value = n.value.substring(0,12);
+            e.target.value = NumbersFomat(e.target.value);
+  });
+
+document.getElementById('id_number_r2').addEventListener('input', function(e) {
+            let n = document.getElementById('id_number_r2')
+            n.value = n.value.substring(0,12);
+            e.target.value = NumbersFomat(e.target.value);
+  });
 </script>
 {% endblock  %}

@@ -16,17 +16,17 @@ class CustomerForm(forms.ModelForm):
             
             'name_r2': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Apellidos" }),
             
-            'number': forms.NumberInput(attrs={'class': 'form-control', "placeholder": "Numero"}),
+            'number': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Numero"}),
             
-            'number_r1': forms.NumberInput(attrs={'class': 'form-control', "placeholder": "Numero"}),
+            'number_r1': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Numero"}),
             
-            'number_r2': forms.NumberInput(attrs={'class': 'form-control', "placeholder": "Numero"}),
+            'number_r2': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Numero"}),
             
             'address': forms.TextInput(attrs={'class': 'form-control address', "placeholder": "Donde Recide"}),
        
             'work_information': forms.Textarea(attrs={'class': 'form-control textarea', "placeholder": "Informacion Laboral"}),
 
-            'dni': forms.TextInput(attrs={'class': 'form-control',  "placeholder": "232-3232-3232"}),
+            'dni': forms.TextInput(attrs={'class': 'form-control',  "placeholder": "232-3232-3232", }),
             "img1": forms.FileInput(attrs={'class': 'img1'}),
              "img2": forms.FileInput(attrs={'class': 'img2'})
         }
