@@ -242,6 +242,8 @@ let CaptureLocation = ()=> {
             else{
                   document.getElementById("id_lat").value = position.coords.latitude;
                   document.getElementById("id_lon").value = position.coords.longitude;
+                  console.log(document.getElementById("id_lon").value)
+                  console.log(document.getElementById("id_lat").value)
             }
       });
 }
@@ -273,7 +275,7 @@ function DNI(value) {
   // Agrega un evento al campo de entrada
       document.getElementById('id_dni').addEventListener('input', function(e) {
     let dni = document.getElementById('id_dni')
-    dni.value = dni.value.substring(0, 13);
+    dni.value = dni.value.slice(0, 10);(0, 13);
     e.target.value = DNI(e.target.value);
   });
 
@@ -294,14 +296,15 @@ document.getElementById('id_number').addEventListener('input', function(e) {
 
 document.getElementById('id_number_r1').addEventListener('input', function(e) {
             let n = document.getElementById('id_number_r1')
-            n.value = n.value.substring(0,12);
+            n.value = n.value.slice(0, 10);(0,12);
             e.target.value = NumbersFomat(e.target.value);
   });
 
 document.getElementById('id_number_r2').addEventListener('input', function(e) {
             let n = document.getElementById('id_number_r2')
-            n.value = n.value.substring(0,12);
+            n.value = n.value.slice(0, 10);(0,12);
             e.target.value = NumbersFomat(e.target.value);
+            
   });
 </script>
 {% endblock  %}
