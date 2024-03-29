@@ -1,6 +1,20 @@
 {% include "base/base.html" %}
 {% block content %}
 {% load humanize %}
+
+
+<style>
+      @page {
+      /* margin: 100px 65px 90px 65px; */
+      size: card;
+      min-width: 70rem !important;
+}
+header, footer {
+      height: 20rem !important;
+
+}
+</style>
+<header></header>
 <section class="container w-100" style="font-family: Times New Roman; font-size: 16px; line-height: 17px; color: black; text-align: justify;">
       <div class="text-center mt-2 pt-3 mb-4" >
             <span class="black">
@@ -86,7 +100,7 @@ Que deberán ser pagados el día {{day_pay}} ({{credit.day_pay}}) de cada mes.
 <span class="black">SEPTIMO:</span> como prueba de este préstamo <span class="black">EL DEUDOR</span>  suscribe un Pagare Notarial en favor de <span class="black">GRUPOS FYCAS</span>, el cual forma parte integral y cuyo pago está garantizado por las condiciones y estipulaciones de este contrato.    
 
    
-<br><br>
+<br><br> <br><br>
 <span class="black">OCTAVO:</span> Es de conocimiento para <span class="black">EL DEUDOR</span>  que <span class="black">GRUPO FYCAS</span> tendrá el acceso al historial crediticio mediante la plataforma de Data crédito en el cual podrá verificar y realizar los reportes del comportamiento mensual en el pago de las cuotas.   
 
    
@@ -135,6 +149,7 @@ Que deberán ser pagados el día {{day_pay}} ({{credit.day_pay}}) de cada mes.
 
 </div>
 </section>
+<footer></footer>
 <script>
 window.onload = function() {
       const footer = document.querySelector("footer");

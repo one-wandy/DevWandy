@@ -339,7 +339,7 @@ class Options:
             html = template.render()
             # Crear el objeto HttpResponse con el contenido generado
             response = HttpResponse(content_type='application/pdf')
-            response['Content-Disposition'] = f'inline; filename="{name}.pdf"'
+            response['Content-Disposition'] = f'inline; filename="{name}.docx"'
 
             # Convertir HTML a PDF
             pisa_status = pisa.CreatePDF(html, dest=response)
