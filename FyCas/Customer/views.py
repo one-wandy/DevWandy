@@ -186,7 +186,7 @@ class CreateCredit(CreateView, Options):
     def get(self, request, *args, **kwargs):
         customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
         try:
-            credit = self.model.objects.get(customer=customer, id=self.kwargs.get('credit_id'), is_active=True)
+            credit = self.model.objects.get(customer=customer, is_active=True)
             return self.UpdateCredit(credit.id)
         except self.model.DoesNotExist:
             return super().get(request, *args, **kwargs)
