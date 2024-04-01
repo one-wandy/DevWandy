@@ -1,6 +1,36 @@
 {% include "base/base.html" %}
 {% block content %}
 {% load static %}
+<div class="position-absolute card  p-2 m-2 end-0  top-0"
+      style="width: 20rem; background-color: var(--bg-one);
+      border-radius: 1.5rem ;">
+      <div class=" d-none  mb-2">
+          <span  style="color: var(--color-one); font-family: var(--font-one); font-size: 12px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                  <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                  <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
+                </svg>  Nuevo Cliente
+          </span>  
+      </div>
+      <hr class="p-0 m-0 d-none">
+      <div class=" d-flex bg-white w-100 rounded-3 pt-3 pb-3 p-1 ">
+            <img src="https://el-socio.com/wp-content/uploads/2020/08/3377-scaled.jpg" alt="" style="width: 50px; max-height: 50px;"  class="card rounded-circle" srcset="">
+            <span class="d-flex ms-2  w-100">
+                  <Strong>
+                        Giselle Olivares <br>
+                        <span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
+                              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
+                            </svg> 402-223213-2</span>
+                  </Strong><br>
+            </span>
+      </div>
+      <hr class="m-0 mb-2">
+      <div class=" d-flex justify-content-end">
+            <button class="border-0 text-black d-none">Cancelar</button>
+            <button class="bg-black  text-white border-0">Negar Solicitud</button>
+            <button class="bg-primary text-white border-0">Aprobar</button>
+      </div>
+</div>
 <div class="p-3 d-flex  ">
       <div class="w-50 d-flex flex-wrap align-content-center  flex-wrap">
             <h3 class="p-0 m-0">
@@ -23,9 +53,9 @@
           <div class="d-flex w-100 justify-content-end">
             <a href="{% url "customer:add-customer" %}">
                   <button class="border-0  bg-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                              <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                              <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                              <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                              <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
                             </svg> Cliente
                   </button>
             </a>
@@ -74,7 +104,7 @@
                                                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                                                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
                                                           </svg>
-                                                          Perfil de Usuario
+                                                          Perfil 
                                                 </button>
                                           </a>
                                           <a href="{% url "customer:update-customer" c.id %}">

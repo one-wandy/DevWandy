@@ -144,6 +144,12 @@ class NotaryCustomer(UpdateView, Options):
     form_class = forms.CustomerForm
     template_name = "customer/notary-customer.html"
     
+    
+    # def get(self, request, *args, **kwargs):
+    #     name = "Contrato " + str(datetime.today().date())
+    #     print(name)
+    #     return self.CreatePdf( template=self.template_name, name=name)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['mont'] = self.MontNow(datetime.now().month)
@@ -157,7 +163,6 @@ class NotaryCustomer(UpdateView, Options):
             credit = models.Credit.objects.get(customer=customer, id=self.kwargs.get('notary_id')) 
             context["amount"] = self.Amount(credit.amount)
             context["day_pay"] = self.DayNow(credit.day_pay)
-
             context["credit"] = credit
             if credit.amount_feed:
                 print(credit.amount_feed)
@@ -169,6 +174,7 @@ class NotaryCustomer(UpdateView, Options):
             return redirect(reverse('customer:create-credit'))
         return context
     
+
     
     
     
@@ -180,7 +186,7 @@ class CreateCredit(CreateView, Options):
     def get(self, request, *args, **kwargs):
         customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
         try:
-            credit = self.model.objects.get(customer=customer, id=self.kwargs.get('credit_id'), is_active=True)
+            credit = self.model.objects.get(customer=customer, is_active=True)
             return self.UpdateCredit(credit.id)
         except self.model.DoesNotExist:
             return super().get(request, *args, **kwargs)

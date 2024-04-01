@@ -18,12 +18,12 @@ class Customer(models.Model):
     img2 = models.ImageField(upload_to="media/", blank=True, null=True)#Foto de Cedula tracera
     name_r1 = models.CharField(max_length=255,  )#Nombre
     name_r2 = models.CharField(max_length=255,  )#Nombre
-    number_r1 = models.IntegerField( )#Numero local o Movile
-    number_r2 = models.IntegerField( )#Numero local o Movile
+    number_r1 = models.CharField(default="", max_length=30)#Numero local o Movile
+    number_r2 = models.CharField(default="", max_length=30  )#Numero local o Movile
     
     # CaptureLocation
-    lat = models.CharField(max_length=1055, default='')
-    lon = models.CharField(max_length=1055, default='')
+    lat = models.CharField(max_length=100000000050005, default='')
+    lon = models.CharField(max_length=100000000000000055, default='')
     
     def __str__(self):
         return self.name
