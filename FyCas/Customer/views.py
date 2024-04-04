@@ -88,13 +88,15 @@ class UpdateCustomer(UpdateView, Options):
         print(form.errors) 
 
 
-class DetailCustomer(DetailView):
+class DetailCustomer(DetailView, Options):
     model = models.Customer
     template_name = "customer/detail-customer.html"
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['c'] = self.model.objects.get(id=self.kwargs.get('pk'))
+        context['credit'] = models.Credit.objects.filter(customer__id=self.kwargs.get('pk'))
+
         return context
     
 

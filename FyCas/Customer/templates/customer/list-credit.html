@@ -1,5 +1,3 @@
-{% include "base/base.html" %}
-{% block content %}
 {% load static %}
 {% load humanize %}
 
@@ -9,141 +7,82 @@
             color: grey;
       }
 </style>
-<div class="d-flex p-2 " style="width: 20rem; height: 4rem;
-border-radius: 1rem;">
-   <div class="d-flex" >
-        <div class="ms-2  d-flex text-black-50 flex-wrap">
-            <span class="w-100  "> {{c.name}} {{c.last_name}} </span>
-            <span class="w-100"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
-            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
-            </svg> {{c.dni}} </span>
-       </div>
-      </div>
-</div>
-<div class="p-3  d-flex  ">
-      
-      <div class="w-50 d-flex flex-wrap align-content-center  flex-wrap">
-        
-            <h3 class="p-0  m-0">
-                  Lista de Creditos
-            </h3>
-            <p class="text-black-50 w-100 " style="text-align: justify;">
-                  Permite a las entidades financieras realizar un seguimiento de los créditos otorgados, incluyendo el saldo pendiente, la fecha de vencimiento y el estado de los pagos.
-            </p>
-      </div>
-      <div class="d-flex justify-content-end w-50 flex-wrap">
-            <img src="{% static "icons/fycas.jpg" %}" class="rounded-circle" weight="300" alt="" srcset="">
 
-
-      </div>
-</div>
-<div class="p-3 m-2 d-flex align-content-center ">
-
-</div>
-<section class='p-3 section m-2  d-flex flex-wrap '>
-
-      <div class="w-100 d-flex justify-content-end align-content-center flex-wrap">
-            
-            <a href="{% url "customer:list-customer" %}"
-            class="d-flex  align-content-center flex-wrap me-2" style="color: var(--color-one);"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-left-circle p-0  m-0 " viewBox="0 0 16 16">
-      
-      
-            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
-          </svg> 
-          <span class="ms-1"></span>
-      </a>
-            <input type="text"  style="max-height: 3rem; width: 10rem;" class="form-control  p-3  m-0 mt-3 mb-3 me-2"  id="searching-credit" placeholder=" Buscar por fecha...">
-            <div class="d-flex align-content-center flex-wrap">
-                  <a href="{% url "customer:create-credit" c.id %}">
-                        <button>
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 16 16">
-                              <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8m5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0"/>
-                              <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195z"/>
-                              <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083q.088-.517.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1z"/>
-                              <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 6 6 0 0 1 3.13-1.567"/>
-                              </svg>
-                              Nuevo Credito
-                        </button>
-                  </a>
-            </div>
-      </div>
-      {% for credit in credit %}
-      <div class='bg-white p-2 m-2 text-black-50 bg-opacity-50' style="width: 27rem;
-      border-radius: 1rem; box-shadow: var(--shadow-one);">
-      <div>
-            <strong  class="">
-                  {% if credit.is_active == True %}
-                    <span style='color: red;'>
-                        Activo 
-                    </span>
-                  {% else %}
-                        Saldado
-                  {% endif %}
-            </strong>
-            <hr>
-      </div>
-
-                        <div class="mt-2">
+                  {% for credit in credit %}
+                  <div class='bg-white p-2 m-2 text-black-50 bg-opacity-50' style="width: 27rem;
+                  border-radius: 1rem; box-shadow: var(--shadow-one);">
+                  <div>
+                        <strong  class="">
                               {% if credit.is_active == True %}
-
-                              <a href="{% url "customer:update-credit" credit.id %}">
-                              <span class="black">Nombre y Apellidos:</span>
-                                    {{credit.name}}
-                              </a>
+                              <span style='color: red;'>
+                                    Activo 
+                              </span>
                               {% else %}
-                              <span class="black">Nombre y Apellidos:</span>
-                              {{credit.name}}
+                                    Saldado
                               {% endif %}
-
-                        </div>
-                        <div>
-                              <span class="black">Cedula:</span>
-                                    {{credit.dni}}
-                        </div>
-                  <div>
-                        <span class="black">Cuenta:</span>
-                              {{credit.no_account}}
-                  </div>
-                  <div>
-                        <span class="black">Monto:</span>
-                           RD${{credit.amount|intcomma}}.00
-                  </div>
-                  <div>
-                        <span class="black">Cuotas:</span>
-                        ({{credit.price_feed}}) a RD${{credit.amount_feed|intcomma}} los dias {% if credit.mode_pay == True %}
-                        (15) - (30)
-                        {% else %}
-                        ({{credit.day_pay}})
-                        {% endif %}
-                  </div>
-                  <div>
+                        </strong>
                         <hr>
                   </div>
-                  <div class='mt-4 mb-4 w-100 '>
-                        <h6 style='color: var(--color-one); font-family: var(--font-one);'> 
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
-                                    <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1"/>
-                                    <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
-                                  </svg> Imprimir 
-                        </h6>
-                  </div>
-                  <div class='d-flex   justify-content-end'>
-                        <a href="{% url "customer:card-customer" credit.customer.id credit.id %}">
-                              <button>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
-                                          <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1z"/>
-                                    </svg> Contrato
-                              </button>
+
+                  <div class="mt-2">
+                        {% if credit.is_active == True %}
+
+                        <a href="{% url "customer:update-credit" credit.id %}">
+                        <span class="black">Nombre y Apellidos:</span>
+                              {{credit.name}}
                         </a>
-                        <a href="{% url "customer:notary-customer" credit.customer.id  credit.id %}">
-                              <button>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text-fill" viewBox="0 0 16 16">
-                                          <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1m-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5M5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1m0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1"/>
-                                    </svg> Pagare Notarial
-                              </button>
+                        {% else %}
+                        <span class="black">Nombre y Apellidos:</span>
+                        {{credit.name}}
+                        {% endif %}
+
                   </div>
+                  <div>
+                        <span class="black">Cedula:</span>
+                              {{credit.dni}}
+                  </div>
+            <div>
+                  <span class="black">Cuenta:</span>
+                        {{credit.no_account}}
             </div>
-      </a>
-      {% endfor %}
-</section>
-{% endblock  %}
+            <div>
+                  <span class="black">Monto:</span>
+                     RD${{credit.amount|intcomma}}.00
+            </div>
+            <div>
+                  <span class="black">Cuotas:</span>
+                  ({{credit.price_feed}}) a RD${{credit.amount_feed|intcomma}} los dias {% if credit.mode_pay == True %}
+                  (15) - (30)
+                  {% else %}
+                  ({{credit.day_pay}})
+                  {% endif %}
+            </div>
+            <div>
+                  <hr>
+            </div>
+            <div class='mt-4 mb-4 w-100 '>
+                  <h6 style='color: var(--color-one); font-family: var(--font-one);'> 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+                              <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1"/>
+                              <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
+                            </svg> Imprimir 
+                  </h6>
+            </div>
+            <div class='d-flex   justify-content-end'>
+                  <a href="{% url "customer:card-customer" credit.customer.id credit.id %}">
+                        <button>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+                                    <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1z"/>
+                              </svg> Contrato
+                        </button>
+                  </a>
+                  <a href="{% url "customer:notary-customer" credit.customer.id  credit.id %}">
+                        <button>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text-fill" viewBox="0 0 16 16">
+                                    <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1m-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5M5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1m0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1"/>
+                              </svg> Pagare Notarial
+                        </button>
+            </div>
+      </div>
+</a>
+{% endfor %}

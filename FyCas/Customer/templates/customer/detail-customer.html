@@ -51,12 +51,35 @@
     </div>
   </div>
 
-
 </div>
+
 
 <section class="section m-2 p-2">
   <div id="map" style="width: 20rem; height: 15rem; border-radius: 1rem;  transition: 0s !important;"></div>
 </section>
+<section class='p-2 m-2'>
+  {% if credit %}
+  <div class="d-flex w-100 mb-3 align-content-center flex-wrap">
+    <h3 class="p-0 m-0">
+          Historial de Creditos
+    </h3>
+    <p class="text-black-50 w-100  ">
+      Un Historial de Creditos es un registro detallado de todos los préstamos que has obtenido a lo largo del tiempo.
+    </p>
+</div>
+      {% include "customer/list-credit.html " %}
+  {% else %}
+
+  {% endif %}
+</section>
+<a href="{% url "customer:delete-customer" c.id %}">
+  <button class='text-white bg-black'>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5"/>
+              <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+            </svg>    Eliminar Cliente
+  </button>
+</a>
 
 <!--The div element for the map -->
 <div class="d-none">
