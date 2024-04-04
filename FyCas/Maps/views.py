@@ -36,7 +36,7 @@ class Maps(TemplateView, Options):
                   A JsonResponse containing the message ID if successful, otherwise an error message.
             """
             # account_sid = 'AC32b5e94ce632aabd0a278a56e16bd44a'
-            # auth_token = 'a61c8b622e93ada5958d69dacef7c461'
+            auth_token = 'a61c8b622e93ada5958d69dacef7c461'
             client = Client(account_sid, auth_token)
 
             message = client.messages.create(
