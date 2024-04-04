@@ -209,8 +209,7 @@ a
   position: absolute;
   top: 50px;
   left: 50px;
-  width: 353px;
-  height: 200px;
+  width: 293px;
   border: 1px solid rgb(243, 243, 243);
   user-select: none;
   z-index: 100;
@@ -226,7 +225,7 @@ a
       }
 #Calculadora 
       {
-            display: none;
+      display: none;
       -webkit-backdrop-filter: blur(30px) !important;
       backdrop-filter: blur(30px) !important;
       }
@@ -268,6 +267,11 @@ a
 {
       text-transform: uppercase;
 }
+.blur
+{
+      -webkit-backdrop-filter: blur(30px) !important;
+      backdrop-filter: blur(30px) !important;
+}
   </style>
   <body data-aos="fade-up">
       <section class="load flex-wrap bg-white align-content-center w-100 h-100 position-absolute top-0" style="z-index: 10000;">
@@ -292,7 +296,7 @@ a
                   <div class="d-flex align-content-center flex-wrap">
                         <input type="number" style="border-radius: 0.5rem; outline: none; max-height: 2rem; max-width: 6rem;" class=" btn-outline-light  p-2  m-0 mb-3 border-0 m-1"  id="plazo" placeholder="Cuotas">
 
-                        <input type="number" style=" outline: none; max-height: 2rem; border-radius: 0.5rem; max-width: 10rem;" class="  p-2  m-0  border-0 m-1"  id="numero" placeholder="Cantidad">
+                        <input type="number" style=" outline: none; max-height: 2rem; border-radius: 0.5rem; max-width: 6rem;" class="  p-2  m-0  border-0 m-1"  id="numero" placeholder="Cantidad">
                         <button id="calcular"  class="d-flex d-none align-content-center flex-wrap " style="height: 2.2rem;">Calcular</button>
                   </div>
                   <div>
