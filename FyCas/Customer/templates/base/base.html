@@ -39,6 +39,11 @@
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
+      <!--
+            AOS
+      -->
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <style>
       p
       {
@@ -171,6 +176,10 @@ h6, h5, h4, h3
             border:  1px solid;
             border-color: var(--color-one);
       }
+      button:hover 
+      {
+            box-shadow: rgb(238, 238, 238) 1px 2px 6px 1px;
+      }
 .stag 
       {
             width: 20px;
@@ -260,7 +269,7 @@ a
       text-transform: uppercase;
 }
   </style>
-  <body>
+  <body data-aos="fade-up">
       <section class="load flex-wrap bg-white align-content-center w-100 h-100 position-absolute top-0" style="z-index: 10000;">
             <div class="w-100 d-flex justify-content-center">
                   <img src="{% static "icons/fycas.jpg" %}" width="200" alt="" srcset="">
@@ -271,17 +280,19 @@ a
                   </div>
             </div>
       </section>
-      <div class="card  bg-white bg-opacity-50" id="Calculadora">
-            <div class="card-header" >
+      <div class="card  bg-white bg-opacity-50 p-2" id="Calculadora">
+            <div class="card-header text-center border-0 mb-2 bg-transparent"  style="border-radius: 1rem;">
                   <h6>
-                        Calculadora de Intereses
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calculator-fill" viewBox="0 0 16 16">
+                              <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm2 .5v2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5m0 4v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M4.5 9a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 12.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M7.5 6a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM7 9.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM10 6.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-.5-.5z"/>
+                            </svg> Calculadora de Intereses
                   </h6>
             </div>
-            <div class="card-body">
+            <div class="card-body  card" style="border-radius: 1rem;" >
                   <div class="d-flex align-content-center flex-wrap">
                         <input type="number" style="border-radius: 0.5rem; outline: none; max-height: 2rem; max-width: 6rem;" class=" btn-outline-light  p-2  m-0 mb-3 border-0 m-1"  id="plazo" placeholder="Cuotas">
 
-                        <input type="number" style=" outline: none; max-height: 2rem; border-radius: 0.5rem; max-width: 10rem;" class="  p-2  m-0 mb-3 border-0 m-1"  id="numero" placeholder="Cantidad">
+                        <input type="number" style=" outline: none; max-height: 2rem; border-radius: 0.5rem; max-width: 10rem;" class="  p-2  m-0  border-0 m-1"  id="numero" placeholder="Cantidad">
                         <button id="calcular"  class="d-flex d-none align-content-center flex-wrap " style="height: 2.2rem;">Calcular</button>
                   </div>
                   <div>
@@ -375,16 +386,18 @@ function Cal() {
   const div = document.getElementById("Calculadora");
   if (div.style.display === "none") {
     div.style.display = "block";
+    plazoInput.focus()
+
   } else {
     div.style.display = "none";
   }}
 
   document.addEventListener('keydown', function(event) {
-    if (event.ctrlKey && event.altKey && event.key === '1') {
-        // Llamar a la función "Cal"
+  if (event.altKey && event.key === 'c') {
         Cal();
-    }
-});
+      }
+      });
+AOS.init();
 
       </script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

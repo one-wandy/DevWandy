@@ -14,7 +14,7 @@
 
 </div>
 
-<section class="section p-2 m-2   overflow-hidden overflow-scroll" style="max-height: 25rem;">
+<section  class="section p-2 m-2   overflow-hidden overflow-scroll" style="max-height: 25rem;">
       <div class="d-flex p-2  flex-wrap  justify-content-end position-fixed w-100 pe-5" style="z-index: 4; top: 2rem;" >
                   <div class="d-flex  flex-wrap w-100 justify-content-end">
                         <strong style="  font-family: Quicksand, sans-serif;
@@ -24,16 +24,15 @@
                          </svg>
                         GRUPO FYCAS</strong>
                   </div>
-            <input type="text"  style="min-height: 3rem; max-height: 3rem; width: 10rem;" class="form-control  p-3  mt-3 m-0 mb-2"  id="searching-config" placeholder=" Buscar...">
+            <input type="text"  style="min-height: 3rem; max-height: 3rem; width: 10rem;" class="form-control  p-3  mt-3 m-0 mb-2"  id="searching-config" placeholder=" Buscar (Alt + b) ">
           <div class="d-flex w-100 justify-content-end">
-            <button class="border-0  bg-black text-white">
+            <button class="border-0 text-white me-1" style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                         <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
                       </svg> Maps de Clientes
             </button>
             <a href="{% url "customer:add-customer" %}">
-                  <button class="border-0  bg-primary text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                  <button class="border-0 text-white me-1" style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);">                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
                               <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                               <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
                             </svg> Nuevo Cliente
@@ -135,7 +134,12 @@
     let config_list = document.getElementById('config-list')
     let config_data;
 
-    searching_config.focus();
+    document.addEventListener('keydown', function(event) {
+  if (event.altKey && event.key === 'b') {
+      searching_config.focus();
+      }
+      });
+
     window.addEventListener("DOMContentLoaded", function() {
         ConfigData()
         function ConfigData() {
