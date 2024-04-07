@@ -1,21 +1,38 @@
 {% include "base/base.html" %}
 {% block content %}
 {% load static %}
-<div class="p-2 m-2 mt-4 d-flex  flex-wrap w-50" style=" height: 12rem;"  >
+
+<style>
+      #searching-config {
+            padding: 0 !important;
+            outline: none;
+            border: 1px rgb(233, 233, 233) solid !important;
+            border-bottom: 0 !important;
+            border-top: 0 !important;
+      }
+      #searching-config:hover{
+      }
+      .zoom
+      {
+            width: 10rem !important;
+            border: 1px rgb(233, 233, 233) solid !important;
+      }
+</style>
+<div class=" m-2  d-flex  flex-wrap w-50" style=" height: 12rem;"  >
 
       <div class="d-flex w-100 mb-3 align-content-center flex-wrap">
             <h3 class="p-0 m-0">
                   <i class="fi fi-brands-whatsapp"></i> Clientes
             </h3>
-            <p class="text-black-50 w-100  ">
+            <p class="text-black-50 w-100  " style="font-size: 12px;">
                   Permite encontrar fácilmente los datos de contacto de cualquier cliente.
             </p>
       </div>
 
 </div>
 
-<section  class="section p-2 m-2   overflow-hidden overflow-scroll" style="max-height: 25rem;">
-      <div class="d-flex p-2  flex-wrap  justify-content-end position-fixed w-100 pe-5" style="z-index: 4; top: 2rem;" >
+<section  class="section p-2 m-1    overflow-hidden overflow-scroll" style="max-height: 25rem;">
+      <div class="d-flex p-2  flex-wrap  justify-content-end position-fixed w-100 pe-4" style="z-index: 4; top: 2.8rem;" >
                   <div class="d-flex  flex-wrap w-100 justify-content-end">
                         <strong style="  font-family: Quicksand, sans-serif;
                         color: var(--color-one);
@@ -24,15 +41,13 @@
                          </svg>
                         GRUPO FYCAS</strong>
                   </div>
-            <input type="text"  style="min-height: 3rem; max-height: 3rem; width: 10rem;" class="form-control  p-3  mt-3 m-0 mb-2"  id="searching-config" placeholder=" Buscar (Alt + b) ">
+            <label for="searching-config" id="label-config"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi text-black-50 d-none bi-search mt-4 me-2 pt-1" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+            </svg></label>
+            <input type="text"  style="min-height: 3rem; max-height: 3rem; width: 9rem;" class="form-search  p-3  mt-3 m-0 mb-2"  id="searching-config" placeholder=" Buscar (Alt + b) ">
           <div class="d-flex w-100 justify-content-end">
-            <button class="border-0 text-white me-1" style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-                      </svg> Maps de Clientes
-            </button>
             <a href="{% url "customer:add-customer" %}">
-                  <button class="border-0 text-white me-1" style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);">                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                  <button class="border-0 text-white " style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);">                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
                               <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                               <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
                             </svg> Nuevo Cliente
@@ -46,26 +61,27 @@
       </div>
       <ul id="list-customer" class="list-group  list-group-flush">
             {% for c in customer %}
-            
-                  <li class="list-group-item bg-white bg-opacity-75  mb-1 p-4" style=" border-radius:1.5rem;">
-                        <div class="d-flex  p-2" style="font-size: 15px !important;">
-                              <div class="d-flex flex-wrap w-50">
-                                    <img src="{{c.img1}}" style="width: 210px; height: 150px; border-radius: 12px; margin-right: 0.3rem;" alt="Imagen ccon Problemas" class="img object-fit-cover">
-                                    <!-- <img src="{{c.img2}}" style="width: 230px; height: 150px; border-radius: 12px; margin-right: 0.3rem;" alt="Imagen con" class="img object-fit-cover"> -->
+                  <li class="list-group-item bg-white bg-opacity-75  mb-3 p-1" style=" border-radius:1.5rem; box-shadow: var(--shadow-one);">
+                        <div class="d-flex  p-2" style="font-size: 14px !important;">
+                              <div class="d-flex flex-wrap ">
+                                    <a href="{% url "customer:detail-customer" c.id %}">                                          
+                                          <img src="{{c.img1}}" style="width: 210px; height: 150px; border-radius: 12px; margin-right: 0.3rem;" alt="Imagen ccon Problemas" class="img object-fit-cover">
+                                    </a>
+                                          <!-- <img src="{{c.img2}}" style="width: 230px; height: 150px; border-radius: 12px; margin-right: 0.3rem;" alt="Imagen con" class="img object-fit-cover"> -->
                                     <div class="d-flex align-content-center flex-wrap">
-                                          <span class="w-100"  style="font-size: 16px; " >
-                                               <strong>Nombre y Apellidos:</strong> 
+                                          <span class="w-100"  style="font-size: 14px; " >
+                                               <strong>Nombre:</strong> 
                                                <span> {{c.name}} {{c.last_name}}
                                                 </span> 
                                          </span> 
                                          <span class="w-100">
-                                                <strong>No. Cedula:</strong> {{c.dni}} 
+                                                <strong>Cedula:</strong> {{c.dni}} 
                                          </span>
                                          <span class="w-100">
-                                          <strong>Recide en <span class="text-black-50">(BETTA)</span>:</strong> <a style="text-transform: capitalize;" href="https://www.google.com.do/maps/search/{{c.address}}">
-                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                          <strong>Recidente                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                                                 <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-                                              </svg> {{c.address}}</a>
+                                              </svg> <span class="text-black-50"></span>:</strong> <a style="text-transform: capitalize;" href="https://www.google.com.do/maps/search/{{c.address}}">
+                                           {{c.address}}</a>
                                           </span>
                                           <span class="w-100">
                                                 <strong>Informacion Laborar:</strong> {{c.work_information}}
@@ -78,7 +94,7 @@
                                           </span>
                                     </div>
                               </div>
-                              <div class="d-flex justify-content-end align-content-center flex-wrap w-50">
+                              <div class="d-flex justify-content-end align-content-center flex-wrap w-50 d-none">
                                     <div style="width: 25rem;">
                                           <a href="{% url "customer:detail-customer" c.id %}">
                                                 <button class='border-0'>
@@ -96,29 +112,7 @@
                                                 </button>
                                           </a>
 
-                                    <a href="">
-                                          {% if c.credit  %}
-                                                <a href="{% url "customer:list-credit" c.id %}">
-                                                      <button class='border-0'>
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-stack" viewBox="0 0 16 16">
-                                                                  <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
-                                                                  <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z"/>
-                                                                </svg>
-                                                            Creditos  
-                                                      </button>
-                                                </a>
-                                                {% else %}
-                                                <a href="{% url "customer:create-credit" c.id %}">
-                                                      <button class=' border-0'>
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
-                                                            </svg>
-                                                            Crear Credito
-                                                      </button>
-                                                </a>
-                                              
-                                          {% endif %}
-                                    </a>
+                                    
                                     </div>
                               </div>
                        </div>
@@ -132,8 +126,8 @@
 </section>
 <script>
       let searching_config = document.getElementById('searching-config');
-    let config_list = document.getElementById('config-list')
-    let config_data;
+      let config_list = document.getElementById('config-list')
+      let config_data;
 
     document.addEventListener('keydown', function(event) {
   if (event.altKey && event.key === 'b') {
@@ -166,7 +160,7 @@
                                     divI.appendChild(img)
                               let divL = document.createElement("div")
                               let stronL = document.createElement("strong")
-                                    stronL.textContent = "Nombre y Apellido: "
+                                    stronL.textContent = "Nombre: "
                               let spanL = document.createElement("span")
                               spanL.classList.add("capitalize")
                                     spanL.textContent = c.name
