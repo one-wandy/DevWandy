@@ -9,7 +9,9 @@
 </style>
 
                   {% for credit in credit %}
-                  <div class='bg-white p-2 m-2 text-black-50 bg-opacity-50' style="width: 27rem;
+                  <div class='bg-white p-2 m-1 text-black-50 bg-opacity-50' 
+                  style=" width: 100%; max-width: 27rem;
+                  font-size: 14px;
                   border-radius: 1rem; box-shadow: var(--shadow-one);">
                   <div>
                         <strong  class="">
@@ -28,7 +30,7 @@
                         {% if credit.is_active == True %}
 
                         <a href="{% url "customer:update-credit" credit.id %}">
-                        <span class="black">Nombre y Apellidos:</span>
+                        <span class="black">Nombre: </span>
                               {{credit.name}}
                         </a>
                         {% else %}
@@ -60,14 +62,7 @@
             <div>
                   <hr>
             </div>
-            <div class='mt-4 mb-4 w-100 '>
-                  <h6 style='color: var(--color-one); font-family: var(--font-one);'> 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
-                              <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1"/>
-                              <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
-                            </svg> Imprimir 
-                  </h6>
-            </div>
+
             <div class='d-flex   justify-content-end'>
                   <a href="{% url "customer:card-customer" credit.customer.id credit.id %}">
                         <button>
