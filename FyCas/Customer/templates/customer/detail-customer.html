@@ -31,8 +31,8 @@
     GRUPO FYCAS</strong>
 </div>
 
-  <div class="d-flex w-100 mt-3 p-2  mb-3 align-content-center flex-wrap " 
-  style="background-color: var(--bg-one);
+  <div class="d-flex w-100 mt-3 p-2   align-content-center flex-wrap " 
+  style="background-color: var(--bg-one); box-shadow: var(--shadow-one);
     border-radius: 1rem;" >
       <img src="{{c.img1.url}}" width="40" height="40" class="rounded-circle object-fit-cover" alt="">    
         <h6 class="p-0 m-0  ms-2">
@@ -49,23 +49,23 @@
         <section class="section  w-100 d-flex flex-wrap justify-content-center">
           <div id="map" style="width: 100%; height: 10rem; border-radius: 1rem;  transition: 0s !important;"></div>
         </section>
-        <div class="d-flex w-100 justify-content-end"> 
-          <button class="border-0 text-white me-1 mt-2" style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-fill" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.3 1.3 0 0 0-.37.265.3.3 0 0 0-.057.09V14l.002.008.016.033a.6.6 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.6.6 0 0 0 .146-.15l.015-.033L12 14v-.004a.3.3 0 0 0-.057-.09 1.3 1.3 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465s-2.462-.172-3.34-.465c-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411"/>
-            </svg> Obtener ruta
-          </button>
-        </div>
+      </div>
+      <div class="d-flex w-100 justify-content-end"> 
+        <button class="border-0 text-white me-1 mt-2" style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.3 1.3 0 0 0-.37.265.3.3 0 0 0-.057.09V14l.002.008.016.033a.6.6 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.6.6 0 0 0 .146-.15l.015-.033L12 14v-.004a.3.3 0 0 0-.057-.09 1.3 1.3 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465s-2.462-.172-3.34-.465c-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411"/>
+          </svg> Obtener ruta
+        </button>
       </div>
 
 
-<section class='  w-100'>
+<section class='  w-100 mt-1'>
   {% if credit %}
-  <div class="d-flex w-100 mb-3 align-content-center flex-wrap">
-    <h6 class="p-0 m-0">
+  <div class="d-flex w-100 mb-1 align-content-center flex-wrap">
+    <!-- <h6 class="p-0 m-0">
           Creditos
-    </h6>
-    <p class="text-black-50 w-100 " style="font-size: 12px;">
+    </h6> -->
+    <p class="text-black-50 d-none w-100  mt-3" style="font-size: 12px;">
      ~ Un Historial de Creditos es un registro detallado de todos los préstamos que has obtenido a lo largo del tiempo.
     </p>
 </div>
