@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title id="title">FyCas</title>
     <link rel="icon"  href="{% static "icons/fycas.jpg" %}">
+    
     <!--
 
     -->
@@ -60,6 +61,9 @@
       --font-one:"Righteous", sans-serif;
 
 }
+
+@import url('https://cdn-uicons.flaticon.com/2.2.0/uicons-thin-rounded/css/uicons-thin-rounded.css')
+
 
 span
 {
@@ -272,17 +276,109 @@ a
       -webkit-backdrop-filter: blur(30px) !important;
       backdrop-filter: blur(30px) !important;
 }
+#page {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    #container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    
+    #ring {
+      width: 300px;
+      height: 300px;
+      border-radius: 50% !important;
+      border: 0px transparent !important;
+      position: absolute;
+    }
+    
+    #ring:nth-child(1) {
+      border-bottom: 8px solid rgb(233, 177, 255) !important;
+      animation: rotate1 4s linear infinite;
+    }
+    
+    @keyframes rotate1 {
+      from {
+        transform: rotateX(50deg) rotateZ(110deg);
+      }
+    
+      to {
+        transform: rotateX(50deg) rotateZ(470deg);
+      }
+    }
+    
+    #ring:nth-child(2) {
+      border-bottom: 8px solid rgb(255, 241, 164) !important;
+      animation: rotate2 2s linear infinite;
+    }
+    
+    @keyframes rotate2 {
+      from {
+        transform: rotateX(20deg) rotateY(50deg) rotateZ(20deg);
+      }
+    
+      to {
+        transform: rotateX(20deg) rotateY(50deg) rotateZ(380deg);
+      }
+    }
+    
+    #ring:nth-child(3) {
+      border-bottom: 8px solid rgb(181, 210, 255) !important;
+      animation: rotate3 2.6s linear infinite;
+    }
+    
+    @keyframes rotate3 {
+      from {
+        transform: rotateX(40deg) rotateY(130deg) rotateZ(450deg);
+      }
+    
+      to {
+        transform: rotateX(40deg) rotateY(130deg) rotateZ(90deg);
+      }
+    }
+    
+
+    /* Improving visualization in light mode */
   </style>
-  <body data-aos="fade-up">
-      <section class="load flex-wrap bg-white align-content-center w-100 h-100 position-absolute top-0" style="z-index: 10000;">
-            <div class="w-100 d-flex justify-content-center">
-                  <img src="{% static "icons/fycas.jpg" %}" width="200" alt="" srcset="">
-            </div>
-            <div class="w-100 d-flex justify-content-center">
-                  <div class="spinner-border  text-primary" role="status">
-                        <span class="visually-hidden">Loading...</span>
+  <body>
+      <section class=" flex-wrap load bg-white bg-opacity-75 blur align-content-center w-100 h-100 position-absolute  top-0" style="z-index: 1000;">
+
+            <div class="d-flex  justify-content-center h-100">
+                  <div id="page">
+                        <div id="container">
+                            <div id="ring"></div>
+                            <div id="ring"></div>
+                            <div id="ring"></div>
+                            <div class=" text-center" style="font-family: Righteous, sans-serif;" >
+                              <div class="d-flex w-100 justify-content-center align-content-center flex-wrap">
+                              <h6 class="p-0 m-0 mt-2" 
+                              style="
+                              font-size: 21px;
+                              margin: 0;
+                              padding: 0.5rem 1rem;
+                              background: linear-gradient(to right, rgb(255, 133, 133), rgb(221, 137, 255), rgb(128, 179, 255));
+                              -webkit-background-clip: text;
+                              -webkit-text-fill-color: transparent;">
+                                    Grupo Fycas
+                              </h6>
+                                    <!-- <img src="{% static "icons/up.png" %}"  width="30" alt="" srcset=""> -->
+                              </div>
+                              <p class="text-black-50 p-0 m-0" style="font-family: Poppins, sans-serif;
+                              font-size: 12px;">
+                                    <!-- Tu Solucion Financiera -->
+                              </p>
+              
+                        </div>
                   </div>
             </div>
+      </div>
+
       </section>
       <div class="card  bg-white bg-opacity-50 p-2" id="Calculadora">
             <div class="card-header text-center border-0 mb-2 bg-transparent"  style="border-radius: 1rem;">
@@ -339,7 +435,13 @@ a
             </main>
       {% endblock  %}
       <script>
-window.onload = document.querySelector(".load").style.display = "none"
+window.onload = ONLOAD()
+function ONLOAD() {
+      setTimeout(() => {
+    // ocultamos el elemento
+    document.querySelector(".load").style.display = "none"
+  }, 2000);
+}
 
 const calcularButton = document.getElementById("calcular");
 const resultadoParrafo = document.getElementById("resultado");
