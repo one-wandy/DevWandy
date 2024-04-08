@@ -88,12 +88,14 @@
 
       <ul id="list-customer" class="list-group m-1  list-group-flush ">
             {% for c in customer %}
-                  <li class="list-group-item bg-white bg-opacity-75  mb-3 p-1 h-auto" style=" border-radius:1.5rem; box-shadow: var(--shadow-one); max-width: 20rem;">
+                  <li class="list-group-item bg-white bg-opacity-75  mb-3 p-1 h-auto" style=" border-radius:1.5rem;  max-width: 20rem;">
                         <div class="d-flex  p-2" style="font-size: 14px !important;">
                               <div class="d-flex flex-wrap ">
-                                    <a href="{% url "customer:detail-customer" c.id %}">                                          
-                                          <img src="{{c.img1}}" style="width: 210px; height: 150px; border-radius: 12px; margin-right: 0.3rem;" alt="Imagen ccon Problemas" class="img object-fit-cover">
-                                    </a>
+                                    <div class="w-100">
+                                          <a href="{% url "customer:detail-customer" c.id %}">                                          
+                                                <img src="{{c.img1}}" style="width: 310px; height: 190px; border-radius: 12px; margin-right: 0.3rem;" alt="Imagen ccon Problemas" class="img object-fit-cover">
+                                          </a>
+                                    </div>
                                           <!-- <img src="{{c.img2}}" style="width: 230px; height: 150px; border-radius: 12px; margin-right: 0.3rem;" alt="Imagen con" class="img object-fit-cover"> -->
                                     <div class="d-flex align-content-center flex-wrap">
                                           <span class="w-100"  style="font-size: 14px; " >
