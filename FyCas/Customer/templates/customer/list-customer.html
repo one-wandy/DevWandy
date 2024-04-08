@@ -17,6 +17,31 @@
             width: 10rem !important;
             border: 1px rgb(233, 233, 233) solid !important;
       }
+      .contDiv
+      {
+            border-radius: 1.5rem;
+            margin-bottom: 4px;
+            padding: 1px;
+      }
+.contDiv {
+  background-image: linear-gradient(
+    to right,
+    rgb(255, 133, 133) 0%,
+    rgb(221, 137, 255) 50%,
+    rgb(128, 179, 255) 100%
+  );
+  animation: rou 1s linear infinite;
+}
+
+@keyframes rou {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
 </style>
 <div class=" m-2  d-flex  flex-wrap w-50" style=" height: 12rem;"  >
 
@@ -31,7 +56,7 @@
 
 </div>
 
-<section  class="section p-2 m-1    overflow-hidden overflow-scroll" style="max-height: 25rem;">
+<section  class="section p-2 m-1  d-flex flex-wrap   overflow-hidden overflow-scroll" style="max-height: 25rem;">
       <div class="d-flex p-2  flex-wrap  justify-content-end position-fixed w-100 pe-4" style="z-index: 4; top: 2.8rem;" >
                   <div class="d-flex  flex-wrap w-100 justify-content-end">
                         <strong style="  font-family: Quicksand, sans-serif;
@@ -59,9 +84,10 @@
     <div>
         <div id="config-list" >
       </div>
-      <ul id="list-customer" class="list-group  list-group-flush">
+
+      <ul id="list-customer" class="list-group m-1  list-group-flush ">
             {% for c in customer %}
-                  <li class="list-group-item bg-white bg-opacity-75  mb-3 p-1" style=" border-radius:1.5rem; box-shadow: var(--shadow-one);">
+                  <li class="list-group-item bg-white bg-opacity-75  mb-3 p-1 h-auto" style=" border-radius:1.5rem; box-shadow: var(--shadow-one); max-width: 20rem;">
                         <div class="d-flex  p-2" style="font-size: 14px !important;">
                               <div class="d-flex flex-wrap ">
                                     <a href="{% url "customer:detail-customer" c.id %}">                                          
@@ -152,7 +178,9 @@
                     config_list.innerHTML = ''
                     for (const c  of filtered_data) {
                         const div = document.createElement('div');
-                        div.classList.add("divCon", "p-4", "m-1")
+                        const divCont = document.createElement('div');
+                        divCont.classList.add('contDiv',  )
+                        div.classList.add("divCon", "p-4", 'card')
                               let divI = document.createElement("div")
                               let img = document.createElement("img")
                                     img.classList.add("img")
@@ -210,8 +238,8 @@
                         div.appendChild(divK);
 
 
-
-                        config_list.appendChild(div);
+                        divCont.appendChild(div)
+                        config_list.appendChild(divCont);
                     }
                     if (searching_config.value.trim() === "") {
                         config_list.innerHTML = ''
