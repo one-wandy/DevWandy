@@ -3,6 +3,20 @@
 {% load static %}
 
 <style>
+      .datos span
+      {
+            color: #383838;
+            font-weight: normal !important;
+            font-size: 13px;
+            font-weight: 400;
+      }
+      .datos strong
+      {
+            color: #383838;
+            font-family: "Righteous", sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+      }
       #searching-config {
             padding: 0 !important;
             outline: none;
@@ -88,8 +102,8 @@
 
       <ul id="list-customer" class="list-group m-1  list-group-flush ">
             {% for c in customer %}
-                  <li class="list-group-item bg-white bg-opacity-75  mb-3 p-1 h-auto" style=" border-radius:1.5rem;  max-width: 20rem;">
-                        <div class="d-flex  p-2" style="font-size: 14px !important;">
+                  <li class="list-group-item bg-white bg-opacity-75   mb-3 p-1 h-auto" style=" border-radius:1.5rem;  max-width: 20rem;">
+                        <div class="d-flex  p-2" style="font-size: 14px !important;  ">
                               <div class="d-flex flex-wrap ">
                                     <div class="w-100">
                                           <a href="{% url "customer:detail-customer" c.id %}">                                          
@@ -97,19 +111,21 @@
                                           </a>
                                     </div>
                                           <!-- <img src="{{c.img2}}" style="width: 230px; height: 150px; border-radius: 12px; margin-right: 0.3rem;" alt="Imagen con" class="img object-fit-cover"> -->
-                                    <div class="d-flex align-content-center flex-wrap">
+                                    <div class="d-flex align-content-center flex-wrap datos" >
                                           <span class="w-100"  style="font-size: 14px; " >
                                                <strong>Nombre:</strong> 
                                                <span> {{c.name}} {{c.last_name}}
                                                 </span> 
                                          </span> 
                                          <span class="w-100">
-                                                <strong>Cedula:</strong> {{c.dni}} 
+                                                <strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
+                                                      <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
+                                                    </svg></strong> {{c.dni}} 
                                          </span>
                                          <span class="w-100">
-                                          <strong>Recidente                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                          <strong>                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                                                 <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-                                              </svg> <span class="text-black-50"></span>:</strong> <a style="text-transform: capitalize;" href="https://www.google.com.do/maps/search/{{c.address}}">
+                                              </svg> <span class="text-black-50"></span></strong> <a style="text-transform: capitalize;" href="https://www.google.com.do/maps/search/{{c.address}}">
                                            {{c.address}}</a>
                                           </span>
                                           <span class="w-100">

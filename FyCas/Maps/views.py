@@ -20,7 +20,7 @@ class Maps(TemplateView, Options):
       def get(self, request, *args, **kwargs):
             nombre_archivo = "Info.docx"
             ruta_carpeta =  os.getcwd() + "\Clientes"
-            # self.Send_WhatsApp_Message()
+            self.Send_WhatsApp_Message()
             return super().get(request, *args, **kwargs)
       
 
@@ -29,10 +29,14 @@ class Maps(TemplateView, Options):
             auth_token = 'a61c8b622e93ada5958d69dacef7c461'
             client = Client(account_sid, auth_token)
 
-            Msm = "Recordario de Grupo Fycas \n \n Buenos días estimado(a), este es un recordatorio de su saldo pendiente \n \n Nombre: Yunior Carmona \n Cedula: 302-234433-0 \n Numero: (809)299-8306 \n \n Nos ponemos en contacto con usted para dar seguimiento al pago Numero dos (2) de veinte (20) cuotas. \n\n La fecha de vencimiento de su ultimo pago fue el 30/3/2024, a dia de hoy 6/4/2024 no hemos recibido el pago correspondiente. \n \n Para realizar el pago de la cuota pendiente mas mora actualmente es de; RD$5,500.00, puede llamar o dejar un mensaje via WhatsApp al +1 (809)870-7852. \n \n Te recordamos que pagar a tiempo tus cuotas es fundamental para: \n \n 1) Mantener un buen historial crediticio. \n 2 Acceder a mayores montos de financiamiento en el futuro. \n 3) Disfrutar de los beneficios exclusivos que ofrecemos a nuestros clientes cumplidos. \n \nAtentamente: \n El departamento de Inteligencias (Wandy Olivares)"
-            message = client.messages.create(
-                  body= Msm,
-                  from_= '+13344384583',
-                  to= '+18295577196' )
-            print(message.sid)
+            # Msm = "Recordario de Grupo Fycas \n \n Buenos días estimado(a), este es un recordatorio de su saldo pendiente \n \n Nombre: Xavier Torrero \n Cedula: 302-234433-0 \n Numero: (809)299-8306 \n \n Nos ponemos en contacto con usted para dar seguimiento al pago Numero dos (2) de veinte (20) cuotas. \n\n La fecha de vencimiento de su ultimo pago fue el 30/3/2024, a dia de hoy 6/4/2024 no hemos recibido el pago correspondiente. \n \n Para realizar el pago de la cuota pendiente mas mora actualmente es de; RD$5,500.00, puede llamar o dejar un mensaje via WhatsApp al +1 (809)870-7852. \n Atentamente: \n (Grupo Fycas)"
+            # message = client.messages.create(
+            #       body= Msm,
+            #       from_= '+13344384583',
+            #       to= '+18098707846' )
+            
+            msg = client.messages.create(
+                  from_='whatsapp:+18295577196',
+                  body='Mensaje enviado por Wandy Olivares',
+                  to='whatsapp:+18295577196')
             return True
