@@ -11,6 +11,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from fpdf import FPDF
 from django.http import JsonResponse
 from twilio.rest import Client  
+from Customer import models
+from openpyxl import Workbook
 
 class Maps(TemplateView, Options):
       template_name = "maps/information.html"
@@ -20,8 +22,9 @@ class Maps(TemplateView, Options):
       def get(self, request, *args, **kwargs):
             nombre_archivo = "Info.docx"
             ruta_carpeta =  os.getcwd() + "\Clientes"
-            self.Send_WhatsApp_Message()
-            return super().get(request, *args, **kwargs)
+            # self.Send_WhatsApp_Message()
+            return  self.Excel()
+            # return super().get(request, *args, **kwargs)
       
 
       def Send_WhatsApp_Message(self):
@@ -29,14 +32,34 @@ class Maps(TemplateView, Options):
             auth_token = 'a61c8b622e93ada5958d69dacef7c461'
             client = Client(account_sid, auth_token)
 
-            # Msm = "Recordario de Grupo Fycas \n \n Buenos días estimado(a), este es un recordatorio de su saldo pendiente \n \n Nombre: Xavier Torrero \n Cedula: 302-234433-0 \n Numero: (809)299-8306 \n \n Nos ponemos en contacto con usted para dar seguimiento al pago Numero dos (2) de veinte (20) cuotas. \n\n La fecha de vencimiento de su ultimo pago fue el 30/3/2024, a dia de hoy 6/4/2024 no hemos recibido el pago correspondiente. \n \n Para realizar el pago de la cuota pendiente mas mora actualmente es de; RD$5,500.00, puede llamar o dejar un mensaje via WhatsApp al +1 (809)870-7852. \n Atentamente: \n (Grupo Fycas)"
-            # message = client.messages.create(
-            #       body= Msm,
-            #       from_= '+13344384583',
-            #       to= '+18098707846' )
+            Msm = "Recordario de Grupo Fycas \n \n Buenos días estimado(a), este es un recordatorio de su saldo pendiente \n \n Nombre: Xavier Torrero \n Cedula: 302-234433-0 \n Numero: (809)299-8306 \n \n Nos ponemos en contacto con usted para dar seguimiento al pago Numero dos (2) de veinte (20) cuotas. \n\n La fecha de vencimiento de su ultimo pago fue el 30/3/2024, a dia de hoy 6/4/2024 no hemos recibido el pago correspondiente. \n \n Para realizar el pago de la cuota pendiente mas mora actualmente es de; RD$5,500.00, puede llamar o dejar un mensaje via WhatsApp al +1 (809)870-7852. \n Atentamente: \n (Grupo Fycas)"
+            message = client.messages.create(
+                  body= Msm,
+                  from_= '+13344384583',
+                  to= '+18295577196' )
             
-            msg = client.messages.create(
-                  from_='whatsapp:+18295577196',
-                  body='Mensaje enviado por Wandy Olivares',
-                  to='whatsapp:+18295577196')
+            # msg = client.messages.create(
+            #       from_='whatsapp:+18295577196',
+            #       body='Mensaje enviado por Wandy Olivares',
+            #       to='whatsapp:+18295577196')
             return True
+
+
+
+      def Excel(self):
+            # Consultar el modelo de Django para obtener los datos.
+            data = models.Customer.objects.all()
+            date = datetime.now()
+            # Crear un nuevo archivo Excel.
+            workbook = Workbook()
+
+            # Escribir los datos en el archivo Excel.
+            worksheet = workbook.active
+            for row in data:
+                  worksheet.append([row.name, row.last_name, row.dni])
+
+            # Enviar el archivo Excel al usuario como respuesta HTTP.
+            response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+            response['Content-Disposition'] = f'attachment; filename=Grupo Fycas SRL {date}.xlsx'
+            workbook.save(response)
+            return response
