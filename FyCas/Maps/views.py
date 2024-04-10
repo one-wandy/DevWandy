@@ -117,10 +117,6 @@ class Maps(TemplateView, Options):
                         cell = worksheet.cell(row=6, column=col)
                         cell.font = Font(name="Calibri", size=14,  bold=True)
                         
-                        opciones = ["Opción 1", "Opción 2", "Opción 3"]
-                        dv = DataValidation(type="list", formula1='"{}"'.format(','.join(opciones)), showDropDown=True)
-                        worksheet.add_data_validation(dv)
-                        dv.add(cell)
                   for row in data:
                         worksheet.append([row.type_input, row.name, row.last_name, row.dni, row.sexo, row.estado_civil, row.ocupacion])
                         
