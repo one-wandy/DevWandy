@@ -13,6 +13,7 @@ from django.http import JsonResponse
 from twilio.rest import Client  
 from Customer import models
 from openpyxl import Workbook
+from openpyxl.styles import Font, Alignment
 
 class Maps(TemplateView, Options):
       template_name = "maps/information.html"
@@ -55,8 +56,41 @@ class Maps(TemplateView, Options):
 
             # Escribir los datos en el archivo Excel.
             worksheet = workbook.active
+            bold_font = Font(bold=True)
+            worksheet.column_dimensions["A"].width = 20
+            worksheet.column_dimensions["B"].width = 20
+            worksheet.column_dimensions["C"].width = 15
+            worksheet.column_dimensions["D"].width = 15
+            worksheet.column_dimensions["E"].width = 10
+            worksheet.column_dimensions["F"].width = 15
+            worksheet.column_dimensions["G"].width = 20
+
+
+
+            worksheet.column_dimensions["A"].font = bold_font
+            worksheet.append(["TIPO DE ENTIDAD", "NOMBRE DEL CLIENTE", "APELLIDOS", "CEDULA O RNC", "SEXO", "ESTADO CIVIL", "OCUPACION"])
+
+            worksheet.insert_rows(1)
+
+            # Combinar las celdas de la fila 1
+            worksheet.merge_cells(start_row=1, start_column=1, end_row=1, end_column=7)
+            worksheet.insert_rows(2)
+            # Combinar las celdas de la fila 1
+            worksheet.merge_cells(start_row=2, start_column=1, end_row=1, end_column=7)
+
+            # Agregar el texto "Grupo Fycas" en la celda A1
+            worksheet.cell(row=1, column=1).value = "Grupo Fycas"
+            worksheet.cell(row=2, column=1).value = "Grupo Fycas2"
+
+            bold_font = Font(bold=True)
+            for col in range(1, 8):  # Iterate from column B to G (1-based indexing)
+                  cell = worksheet.cell(row=1, column=col)
+                  cell.font = bold_font
+
+
+            
             for row in data:
-                  worksheet.append([row.name, row.last_name, row.dni])
+                  worksheet.append([ row.type_input, row.name, row.last_name, row.dni, row.sexo, row.estado_civil, row.ocupacion])
 
             # Enviar el archivo Excel al usuario como respuesta HTTP.
             response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
