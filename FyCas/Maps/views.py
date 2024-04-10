@@ -105,7 +105,7 @@ class Maps(TemplateView, Options):
                   for cell in worksheet[4]:
                      cell.fill = PatternFill(start_color="FFFFFF", end_color="FFFFFF", fill_type="solid")
                   for cell in worksheet[5]:
-                     cell.fill = PatternFill(start_color="4c4cff", end_color="4c4cff", fill_type="solid")
+                     cell.fill = PatternFill(start_color="0080ff", end_color="0080ff", fill_type="solid")
                   
                   
                   worksheet.cell(row=5, column=1).value = "Datos Personales"
