@@ -3,6 +3,11 @@
 {% load static %}
 
 <style>
+      .img-border
+      {
+            border: #e4e4e4 1px solid;
+            margin-bottom: 2px;
+      }
       .referencias:hover{
             height: auto !important;
             transition: 0.10ms !important;
@@ -30,9 +35,10 @@
       #searching-config {
             padding: 0 !important;
             outline: none;
-            border: 1px rgb(233, 233, 233) solid !important;
-            border-bottom: 0 !important;
-            border-top: 0 !important;
+            border: 0px rgb(233, 233, 233) solid !important;
+            background-color: rgb(250, 249, 230);
+            border-bottom: 1px !important;
+            z-index: 2;
       }
       #searching-config:hover{
       }
@@ -71,10 +77,10 @@
 <div class=" m-2  d-flex  flex-wrap w-50" style=" height: 12rem;"  >
 
       <div class="d-flex w-100 mb-3 align-content-center flex-wrap">
-            <h3 class="p-0 m-0">
+            <h3 class="p-0 m-0" style="font-family: Quicksand, sans-serif;">
                   <i class="fi fi-brands-whatsapp"></i> Clientes
             </h3>
-            <p class="text-black-50 w-100  " style="font-size: 12px;">
+            <p class="text-black-50 w-100  " style="font-size: 12px; font-family: Quicksand, sans-serif;">
                   Permite encontrar fácilmente los datos de contacto de cualquier cliente.
             </p>
       </div>
@@ -93,14 +99,16 @@
                   </div>
             <label for="searching-config" id="label-config"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi text-black-50 d-none bi-search mt-4 me-2 pt-1" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-            </svg></label>
-            <input type="text"  style="min-height: 3rem; max-height: 3rem; width: 9rem;" class="form-search  p-3 ps-5  mt-3 m-0 mb-2"  id="searching-config" placeholder=" Buscar ( Alt + b ) ">
-          <div class="d-flex w-100 justify-content-end">
-            <a href="{% url "customer:add-customer" %}">
-                  <button class="border-0 text-white " style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);">                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+      </svg></label>
+      <div class="d-flex w-100 mt-3 justify-content-end align-content-center flex-wrap">
+            <input type="text"  style="font-size: 14px; min-height: 2.5rem; max-height: 2.5rem; width: 14rem;" class="form-search text-center  p-3 ps-5  m-0 mb-2 "  id="searching-config" placeholder=" Buscar ( Alt + b ) ">
+            <a href="{% url "customer:add-customer" %}" class="d-flex align-content-center" >
+                  <button class="border-0 text-white " style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+                  max-height: 2.5rem !important;
+                  border-radius: 1.5rem;">                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
                               <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                               <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
-                            </svg> Nuevo Cliente
+                            </svg> Agregar 
                   </button>
             </a>
           </div>
@@ -112,21 +120,33 @@
 
       <ul id="list-customer" class="list-group m-1  list-group-flush ">
             {% for c in customer %}
-                  <li class="list-group-item bg-white  bg-opacity-75    mb-3 p-1 h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;">
+                  <li class="list-group-item bg-white  bg-opacity-75   mb-3 p-1 h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  ">
                         <div class="d-flex  p-2" style="font-size: 14px !important;  ">
                               <div class="d-flex flex-wrap ">
                                     <div class="w-100">
                                           <a href="{% url "customer:detail-customer" c.id %}">                                          
-                                                <img src="{{c.img1}}" style="width: 310px; min-height: 190px; border-radius: 12px; margin-right: 0.3rem;" alt="Imagen ccon Problemas" class="img object-fit-cover">
+                                                {% if c.img1.url == "/media/img-default/img.png" %}
+                                                <img src="{{c.img1}}" style="width: 90px; max-height: 90px;   border-radius: 12px; margin-right: 0.3rem;" alt="Imagen ccon Problemas" class="img overflow-visible rounded-circle object-fit-cover ">
+                                              {% else %}
+                                              <img src="{{c.img1}}" style="width: 90px; max-height: 90px;   border-radius: 12px; " alt="Imagen ccon Problemas" class="img rounded-circle object-fit-cover img-border">
+                                              {% endif %}
                                           </a>
+                                          <hr class='m-0 p-0'>
                                     </div>
                                           <!-- <img src="{{c.img2}}" style="width: 230px; height: 150px; border-radius: 12px; margin-right: 0.3rem;" alt="Imagen con" class="img object-fit-cover"> -->
                                     <div class="d-flex align-content-center flex-wrap datos" >
-                                          <span class="w-100"  style="font-size: 14px; " >
+                                          <span class="w-100 text-black" 
+                                          style="font-size: 14px;
+                                          color: #383838;
+                                          font-family: Righteous, sans-serif;
+                                          font-size: 13px;
+                                          font-weight: 400; " >
                                                 <!-- <a href="{% url "customer:update-customer" c.id %}" class="d-flex "> -->
 
+                                    
+
                                                <strong class="d-none">Nombre:</strong> 
-                                               <span>~ {{ c.name}}
+                                               <span> {{ c.name}}
                                                 {{c.last_name}}
                                                 <!-- </a> -->
                                                 </span> 
@@ -139,7 +159,7 @@
                                          <span class="w-100 address overflow-hidden d-flex" style="height: 1.2rem ">
                                           <strong class="">                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                                                 <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-                                              </svg> <span class=" "></span></strong> <a class="" style=" text-transform: capitalize;" href="https://www.google.com.do/maps/search/{{c.address}}">
+                                              </svg> <span class=" "></span></strong> <a class="" target="_blank" style=" text-transform: capitalize;" href="https://www.google.com.do/maps/search/{{c.address}}">
                                            {{c.address}}</a>
                                           </span>
                                           <span class="w-100 info-laboral overflow-hidden" style="height: 1rem;">

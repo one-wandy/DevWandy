@@ -14,8 +14,8 @@ class Customer(models.Model):
     dni = models.CharField(max_length=100) #Numero de Identidad
     amount = models.IntegerField(null=True)#Monto 
     no_account = models.IntegerField(default=0) #Numero de Cuenta
-    img1 = models.ImageField(upload_to="media/", blank=True, null=True)#Foto de Cedula delantera
-    img2 = models.ImageField(upload_to="media/", blank=True, null=True)#Foto de Cedula tracera
+    img1 = models.ImageField(upload_to="media/",  blank=True, null=True, default="media/img-default/img.png")#Foto de Cedula delantera
+    img2 = models.ImageField(upload_to="media/", blank=True, null=True, default="media/img-default/img.png")#Foto de Cedula tracera
     name_r1 = models.CharField(max_length=255,  )#Nombre
     name_r2 = models.CharField(max_length=255,  )#Nombre
     number_r1 = models.CharField(default="", max_length=30)#Numero local o Movile
