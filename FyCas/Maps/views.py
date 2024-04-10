@@ -12,8 +12,9 @@ from fpdf import FPDF
 from django.http import JsonResponse
 from twilio.rest import Client  
 from Customer import models
-from openpyxl import Workbook
+from openpyxl import Workbook, load_workbook
 from openpyxl.styles import Font, Alignment, Border, Side,PatternFill
+from openpyxl.worksheet.datavalidation import DataValidation
 
 class Maps(TemplateView, Options):
       template_name = "maps/information.html"
@@ -111,14 +112,19 @@ class Maps(TemplateView, Options):
                   worksheet.cell(row=5, column=1).value = "Datos Personales"
                   worksheet.cell(row=5, column=1).font =  Font(name="Cambria", size=16, bold=True, color="FFFFFF")
                   
-        
-
+         
                   for col in range(1, 8):  # Iterate from column B to G (1-based indexing)
                         cell = worksheet.cell(row=6, column=col)
                         cell.font = Font(name="Calibri", size=14,  bold=True)
                         
+                        opciones = ["Opción 1", "Opción 2", "Opción 3"]
+                        dv = DataValidation(type="list", formula1='"{}"'.format(','.join(opciones)), showDropDown=True)
+                        worksheet.add_data_validation(dv)
+                        dv.add(cell)
                   for row in data:
                         worksheet.append([row.type_input, row.name, row.last_name, row.dni, row.sexo, row.estado_civil, row.ocupacion])
+                        
+                        
 
             # Enviar el archivo Excel al usuario como respuesta HTTP.
             response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
