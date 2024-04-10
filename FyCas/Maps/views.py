@@ -80,7 +80,7 @@ class Maps(TemplateView, Options):
                   # Insertar una nueva fila en la fila 1
                   worksheet.insert_rows(1)
                   # Combinar las celdas de la fila 1
-                  worksheet.merge_cells(start_row=1, start_column=1, end_row=1, end_column=7)
+                  worksheet.merge_cells(start_row=1, start_column=1, end_row=1, end_column=15)
          
                   # Insertar una nueva fila en la fila 2
                   worksheet.insert_rows(2)
@@ -88,7 +88,7 @@ class Maps(TemplateView, Options):
                   worksheet.insert_rows(4)
                   worksheet.insert_rows(5)
                   # Combinar las celdas de la fila 2
-                  worksheet.merge_cells(start_row=2, start_column=1, end_row=2, end_column=7)
+                  worksheet.merge_cells(start_row=2, start_column=1, end_row=2, end_column=15)
 
                   worksheet.cell(row=1, column=1).value = "GRUPO FYCAS, SRL"
                   worksheet.cell(row=1, column=1).font = Font(name="Arial", size=18, bold=True, color="000000")
@@ -106,7 +106,7 @@ class Maps(TemplateView, Options):
                      cell.fill = PatternFill(start_color="FFFFFF", end_color="FFFFFF", fill_type="solid")
                   for cell in worksheet[5]:
                      cell.fill = PatternFill(start_color="0080ff", end_color="0080ff", fill_type="solid")
-                  
+   
                   
                   worksheet.cell(row=5, column=1).value = "Datos Personales"
                   worksheet.cell(row=5, column=1).font =  Font(name="Cambria", size=16, bold=True, color="FFFFFF")
@@ -116,10 +116,10 @@ class Maps(TemplateView, Options):
                   for col in range(1, 8):  # Iterate from column B to G (1-based indexing)
                         cell = worksheet.cell(row=6, column=col)
                         cell.font = Font(name="Calibri", size=14,  bold=True)
-
+                        
                   for row in data:
                         worksheet.append([row.type_input, row.name, row.last_name, row.dni, row.sexo, row.estado_civil, row.ocupacion])
-            
+
             # Enviar el archivo Excel al usuario como respuesta HTTP.
             response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
             response['Content-Disposition'] = f'attachment; filename=Grupo Fycas SRL {date}.xlsx'
