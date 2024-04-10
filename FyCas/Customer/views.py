@@ -203,12 +203,14 @@ class CreateCredit(CreateView, Options):
         return context
     
     def post(self, request, *args, **kwargs):
+        c = models.Customer.objects.get(id=self.kwargs.get('pk'))
         f = self.form_class(request.POST)
         if f.is_valid():
             credit = f.save()
-            credit.customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
+            credit.customer = c
             credit.save()
-        return self.List_Redirect()
+            URL = reverse('customer:detail-customer',  kwargs={'pk': c.id})
+            return redirect(URL)
     
     
 class UpdateCredit(UpdateView, Options):
