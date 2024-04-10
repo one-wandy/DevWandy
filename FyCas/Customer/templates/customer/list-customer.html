@@ -94,7 +94,7 @@
             <label for="searching-config" id="label-config"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi text-black-50 d-none bi-search mt-4 me-2 pt-1" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
             </svg></label>
-            <input type="text"  style="min-height: 3rem; max-height: 3rem; width: 9rem;" class="form-search  p-3  mt-3 m-0 mb-2"  id="searching-config" placeholder=" Buscar (Alt + b) ">
+            <input type="text"  style="min-height: 3rem; max-height: 3rem; width: 9rem;" class="form-search  p-3 ps-5  mt-3 m-0 mb-2"  id="searching-config" placeholder=" Buscar ( Alt + b ) ">
           <div class="d-flex w-100 justify-content-end">
             <a href="{% url "customer:add-customer" %}">
                   <button class="border-0 text-white " style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);">                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
@@ -123,8 +123,12 @@
                                           <!-- <img src="{{c.img2}}" style="width: 230px; height: 150px; border-radius: 12px; margin-right: 0.3rem;" alt="Imagen con" class="img object-fit-cover"> -->
                                     <div class="d-flex align-content-center flex-wrap datos" >
                                           <span class="w-100"  style="font-size: 14px; " >
-                                               <strong>Nombre:</strong> 
-                                               <span> {{c.name}} {{c.last_name}}
+                                                <!-- <a href="{% url "customer:update-customer" c.id %}" class="d-flex "> -->
+
+                                               <strong class="d-none">Nombre:</strong> 
+                                               <span>~ {{ c.name}}
+                                                {{c.last_name}}
+                                                <!-- </a> -->
                                                 </span> 
                                          </span> 
                                          <span class="w-100">
