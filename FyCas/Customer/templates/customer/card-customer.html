@@ -154,8 +154,11 @@ Que deberán ser pagados el día {{day_pay}} ({{credit.day_pay}}) de cada mes.
 </footer>
 <script>
 window.onload = function() {
-      // const footer = document.querySelector("footer");
-//      window.print();
+      const footer = document.querySelector("footer");
+      setTimeout(() => {
+            // ocultamos el elemento
+            window.print();
+  }, 2000);
 };
 </script>
 {% endblock  %}
