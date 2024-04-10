@@ -17,6 +17,8 @@ class AddCustomer(CreateView, Options):
         f = self.form_class(request.POST, request.FILES)
         print(f)
         if f.is_valid():
+            f.instance.name = f.instance.name.title()
+            f.instance.last_name = f.instance.last_name.title()
             f.save()
             # Creando Carpeta para el Cliente
             self.FileCreate(f.instance.name, f.instance.last_name)
@@ -47,7 +49,7 @@ class ListCustomer(ListView):
    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['customer'] = self.model.objects.all().order_by('name')[:20]
+        context['customer'] = self.model.objects.all().order_by('-id')[:20]
         cu = self.model.objects.all()
         for c in cu:
             print(c.credit.all())

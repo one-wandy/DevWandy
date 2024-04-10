@@ -25,8 +25,8 @@ class Maps(TemplateView, Options):
             nombre_archivo = "Info.docx"
             ruta_carpeta =  os.getcwd() + "\Clientes"
             # self.Send_WhatsApp_Message()
-            return  self.Excel()
-            # return super().get(request, *args, **kwargs)
+            # return  self.Excel()
+            return super().get(request, *args, **kwargs)
       
 
       def Send_WhatsApp_Message(self):
