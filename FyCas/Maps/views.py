@@ -71,20 +71,20 @@ class Maps(TemplateView, Options):
             worksheet.append(["TIPO DE ENTIDAD", "NOMBRE DEL CLIENTE", "APELLIDOS", "CEDULA O RNC", "SEXO", "ESTADO CIVIL", "OCUPACION"])
 
             worksheet.insert_rows(1)
-
             # Combinar las celdas de la fila 1
-            worksheet.merge_cells(start_row=1, start_column=1, end_row=1, end_column=7)
-            worksheet.insert_rows(2)
+            worksheet.merge_cells(start_row=1, start_column=1, end_row=2, end_column=7)
             # Combinar las celdas de la fila 1
-            worksheet.merge_cells(start_row=2, start_column=1, end_row=1, end_column=7)
 
             # Agregar el texto "Grupo Fycas" en la celda A1
+  # Aplicar negrita, tamaño de 26px y centrado al texto
+            bold_font = Font(bold=True, size=26)
             worksheet.cell(row=1, column=1).value = "Grupo Fycas"
-            worksheet.cell(row=2, column=1).value = "Grupo Fycas2"
+            worksheet.cell(row=1, column=1).font = bold_font
+            # worksheet.cell(row=1, column=1).value = "AF000024759"
 
             bold_font = Font(bold=True)
             for col in range(1, 8):  # Iterate from column B to G (1-based indexing)
-                  cell = worksheet.cell(row=1, column=col)
+                  cell = worksheet.cell(row=3, column=col)
                   cell.font = bold_font
 
 
