@@ -13,7 +13,7 @@ from django.http import JsonResponse
 from twilio.rest import Client  
 from Customer import models
 from openpyxl import Workbook
-from openpyxl.styles import Font, Alignment
+from openpyxl.styles import Font, Alignment, Border, Side,PatternFill
 
 class Maps(TemplateView, Options):
       template_name = "maps/information.html"
@@ -51,50 +51,75 @@ class Maps(TemplateView, Options):
             # Consultar el modelo de Django para obtener los datos.
             data = models.Customer.objects.all()
             date = datetime.now()
+            
             # Crear un nuevo archivo Excel.
             workbook = Workbook()
 
             # Escribir los datos en el archivo Excel.
-            worksheet = workbook.active
-            bold_font = Font(bold=True)
-            worksheet.column_dimensions["A"].width = 20
-            worksheet.column_dimensions["B"].width = 20
-            worksheet.column_dimensions["C"].width = 15
-            worksheet.column_dimensions["D"].width = 15
-            worksheet.column_dimensions["E"].width = 10
-            worksheet.column_dimensions["F"].width = 15
-            worksheet.column_dimensions["G"].width = 20
+            for nombre_hoja in workbook.sheetnames:
+                  worksheet = workbook[nombre_hoja]
+                  bold_font = Font(bold=True)
+                  
+                  # Ajustar el ancho de las columnas
+                  columnas = ["A", "B", "C", "D", "E", "F", "G"]
+                  for columna in columnas:
+                        worksheet.column_dimensions[columna].width = 20
+                  worksheet.column_dimensions["A"].width = 25
+                  worksheet.column_dimensions["B"].width = 30
+                  worksheet.column_dimensions["C"].width = 20
+                  worksheet.column_dimensions["D"].width = 20
+                  worksheet.column_dimensions["E"].width = 10
+                  worksheet.column_dimensions["F"].width = 20
+                  worksheet.column_dimensions["G"].width = 20
+                  worksheet.column_dimensions["A"].font = bold_font
+                  # Aplicar formato de fuente a la fila 3
 
 
+                  worksheet.append(["TIPO DE ENTIDAD", "NOMBRE DEL CLIENTE", "APELLIDOS", "CEDULA O RNC", "SEXO", "ESTADO CIVIL", "OCUPACION"])
 
-            worksheet.column_dimensions["A"].font = bold_font
-            worksheet.append(["TIPO DE ENTIDAD", "NOMBRE DEL CLIENTE", "APELLIDOS", "CEDULA O RNC", "SEXO", "ESTADO CIVIL", "OCUPACION"])
+                  # Insertar una nueva fila en la fila 1
+                  worksheet.insert_rows(1)
+                  # Combinar las celdas de la fila 1
+                  worksheet.merge_cells(start_row=1, start_column=1, end_row=1, end_column=7)
+         
+                  # Insertar una nueva fila en la fila 2
+                  worksheet.insert_rows(2)
+                  worksheet.insert_rows(3)
+                  worksheet.insert_rows(4)
+                  worksheet.insert_rows(5)
+                  # Combinar las celdas de la fila 2
+                  worksheet.merge_cells(start_row=2, start_column=1, end_row=2, end_column=7)
 
-            worksheet.insert_rows(1)
+                  worksheet.cell(row=1, column=1).value = "GRUPO FYCAS, SRL"
+                  worksheet.cell(row=1, column=1).font = Font(name="Arial", size=18, bold=True, color="000000")
 
-            # Combinar las celdas de la fila 1
-            worksheet.merge_cells(start_row=1, start_column=1, end_row=1, end_column=7)
-            # Combinar las celdas de la fila 1
-            worksheet.insert_rows(2)
+                  worksheet.cell(row=2, column=1).value = "AF000024759"
+                  worksheet.cell(row=2, column=1).font = Font(name="Arial", size=14)
+                            
+                  for cell in worksheet[1]:
+                     cell.fill = PatternFill(start_color="FFFFFF", end_color="FFFFFF", fill_type="solid")
+                  for cell in worksheet[2]:
+                     cell.fill = PatternFill(start_color="FFFFFF", end_color="FFFFFF", fill_type="solid")
+                  for cell in worksheet[3]:
+                     cell.fill = PatternFill(start_color="FFFFFF", end_color="FFFFFF", fill_type="solid")
+                  for cell in worksheet[4]:
+                     cell.fill = PatternFill(start_color="FFFFFF", end_color="FFFFFF", fill_type="solid")
+                  for cell in worksheet[5]:
+                     cell.fill = PatternFill(start_color="4c4cff", end_color="4c4cff", fill_type="solid")
+                  
+                  
+                  worksheet.cell(row=5, column=1).value = "Datos Personales"
+                  worksheet.cell(row=5, column=1).font =  Font(name="Cambria", size=16, bold=True, color="FFFFFF")
+                  
+        
 
-            # Agregar el texto "Grupo Fycas" en la celda A1
-  # Aplicar negrita, tamaño de 26px y centrado al texto
-            bold_font = Font(bold=True, size=26)
-            worksheet.cell(row=1, column=1).value = "Grupo Fycas"
-            worksheet.cell(row=1, column=1).font = bold_font
+                  for col in range(1, 8):  # Iterate from column B to G (1-based indexing)
+                        cell = worksheet.cell(row=6, column=col)
+                        cell.font = Font(name="Calibri", size=14,  bold=True)
 
-            worksheet.cell(row=2, column=1).value = "AF000024759"
-
-            bold_font = Font(bold=True)
-            for col in range(1, 8):  # Iterate from column B to G (1-based indexing)
-                  cell = worksheet.cell(row=3, column=col)
-                  cell.font = bold_font
-
-
+                  for row in data:
+                        worksheet.append([row.type_input, row.name, row.last_name, row.dni, row.sexo, row.estado_civil, row.ocupacion])
             
-            for row in data:
-                  worksheet.append([ row.type_input, row.name, row.last_name, row.dni, row.sexo, row.estado_civil, row.ocupacion])
-
             # Enviar el archivo Excel al usuario como respuesta HTTP.
             response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
             response['Content-Disposition'] = f'attachment; filename=Grupo Fycas SRL {date}.xlsx'
