@@ -3,9 +3,18 @@
 {% load static %}
 
 <style>
+      .contdiv 
+      {
+            background-color: rgb(250, 249, 230);
+
+      }
+      .img-js
+      {
+            border-radius: 1.5rem;
+      }
       .img-border
       {
-            border: #e4e4e4 1px solid;
+            /* border: #e4e4e4 1px solid; */
             margin-bottom: 2px;
       }
       .referencias:hover{
@@ -52,26 +61,42 @@
             border-radius: 1.5rem;
             margin-bottom: 4px;
             padding: 1px;
+            font-size: 14px;
+
+
       }
+      @keyframes rotarColores {
+  0% {
+    background-image: linear-gradient(
+      to right,
+      rgb(255, 133, 133) 0%,
+      rgb(221, 137, 255) 50%,
+      rgb(128, 179, 255) 100%
+    );
+  }
+  100% {
+    background-image: linear-gradient(
+      to right,
+      rgb(128, 179, 255) 0%,
+      rgb(255, 133, 133) 50%,
+      rgb(221, 137, 255) 100%
+    );
+  }
+}
+
 .contDiv {
-      width: 40rem;
+  width: 40rem;
   background-image: linear-gradient(
     to right,
     rgb(255, 133, 133) 0%,
     rgb(221, 137, 255) 50%,
     rgb(128, 179, 255) 100%
   );
-  animation: rou 1s linear infinite;
+  animation: rotarColores 1s infinite linear;
 }
 
-@keyframes rou {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
-}
+
+
 
 </style>
 <div class=" m-2  d-flex  flex-wrap w-50" style=" height: 12rem;"  >
@@ -236,12 +261,13 @@
                     config_list.innerHTML = ''
                     for (const c  of filtered_data) {
                         const div = document.createElement('div');
+                        div.classList.add("contdiv")
                         const divCont = document.createElement('div');
                         divCont.classList.add('contDiv',  )
                         div.classList.add("divCon", "p-4", 'card')
                               let divI = document.createElement("div")
                               let img = document.createElement("img")
-                                    img.classList.add("img")
+                                    img.classList.add("img", "img-js")
                                     img.src = c.img
                                     divI.appendChild(img)
                               let divL = document.createElement("div")
@@ -255,7 +281,7 @@
 
                               let divN = document.createElement("div")
                                     let stronN = document.createElement("strong")
-                                          stronN.textContent = "No. Cedula: "
+                                          stronN.textContent = "Cedula: "
                                     let spanN = document.createElement("span")
                                           spanN.textContent = c.dni
                               divN.appendChild(stronN)
@@ -273,7 +299,8 @@
                                     let stronR = document.createElement("strong")
                                           stronR.textContent = "Recide en: "
                                     let spanR = document.createElement("a")
-                                          spanR.href = c.recide
+                                          spanR.href = "https://www.google.com.do/maps/search/" + c.recide
+                                          spanR.target = '_blank';
                                           spanR.textContent = c.recide
                               divR.appendChild(stronR)
                               divR.appendChild(spanR)
