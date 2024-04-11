@@ -3,7 +3,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
     <title id="title">FyCas</title>
     <link rel="icon"  href="{% static "icons/fycas.png" %}">
     
@@ -107,6 +108,8 @@ h6, h5, h4, h3
     {
       transition: 0.4s; 
       scrollbar-width: none;
+      touch-action: pan-x pan-y;
+
     }
     
     #amount_purpose 
