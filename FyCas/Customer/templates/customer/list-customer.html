@@ -284,10 +284,14 @@ searching_config.style.width = '14rem'
                         divCont.classList.add('contDiv',  )
                         div.classList.add("divCon", "p-4", 'card')
                               let divI = document.createElement("div")
+                              const imgLink = document.createElement('a');
+                              imgLink.href = "/detail-customer/" + c.id
+                              imgLink.target = '_blank';
                               let img = document.createElement("img")
                                     img.classList.add("img", "img-js")
                                     img.src = c.img
-                                    divI.appendChild(img)
+                                    imgLink.appendChild(img)
+                                    divI.appendChild(imgLink)
                               let divL = document.createElement("div")
                               let stronL = document.createElement("strong")
                                     stronL.textContent = "Nombre: "
