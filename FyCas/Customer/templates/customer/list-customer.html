@@ -6,7 +6,6 @@
       .contdiv 
       {
             background-color: rgb(250, 249, 230);
-
       }
       .img-js
       {
@@ -62,7 +61,7 @@
             margin-bottom: 4px;
             padding: 1px;
             font-size: 14px;
-
+            width: auto !important;
 
       }
       @keyframes rotarColores {
@@ -99,21 +98,20 @@
 
 
 </style>
-<div class=" m-2  d-flex  flex-wrap w-50" style=" height: 12rem;"  >
 
-      <div class="d-flex w-100 mb-3 align-content-center flex-wrap">
-            <h3 class="p-0 m-0" style="font-family: Quicksand, sans-serif;">
-                  <i class="fi fi-brands-whatsapp"></i> Clientes
-            </h3>
-            <p class="text-black-50 w-100  " style="font-size: 12px; font-family: Quicksand, sans-serif;">
-                  Permite encontrar fácilmente los datos de contacto de cualquier cliente.
-            </p>
-      </div>
+<section  class="section p-2  d-flex flex-wrap  justify-content-evenly  overflow-hidden overflow-scroll" style="margin-top: 15rem">
 
-</div>
+      <div class="d-flex p-2  flex-wrap blur bg-white bg-opacity-75  justify-content-end position-fixed w-100 pe-4" style="z-index: 4; top: 0;" >
 
-<section  class="section p-2 m-1  d-flex flex-wrap  justify-content-evenly  overflow-hidden overflow-scroll" style="max-height: 25rem;">
-      <div class="d-flex p-2  flex-wrap  justify-content-end position-fixed w-100 pe-4" style="z-index: 4; top: 2.8rem;" >
+            <div class="d-flex w-100 mb-2 align-content-center flex-wrap">
+                  <h3 class="p-0 m-0" style="font-family: Quicksand, sans-serif;">
+                        <i class="fi fi-brands-whatsapp"></i> Clientes
+                  </h3>
+                  <p class="text-black-50 w-100  " style="font-size: 12px; font-family: Quicksand, sans-serif;">
+                        Permite encontrar fácilmente los datos de contacto de cualquier cliente.
+                  </p>
+            </div>
+
                   <div class="d-flex  flex-wrap w-100 justify-content-end">
                         <strong style="  font-family: Quicksand, sans-serif;
                         color: var(--color-one);
@@ -141,7 +139,8 @@
       </div>
       
     <div>
-        <div id="config-list" >
+
+      <div id="config-list" >
       </div>
 
       <ul id="list-customer" class="list-group m-1  list-group-flush ">
@@ -262,7 +261,7 @@
                     config_list.innerHTML = ''
                     for (const c  of filtered_data) {
                         const div = document.createElement('div');
-                        div.classList.add("contdiv")
+                        div.classList.add("contdiv", )
                         const divCont = document.createElement('div');
                         divCont.classList.add('contDiv',  )
                         div.classList.add("divCon", "p-4", 'card')
