@@ -145,13 +145,13 @@
 
       <ul id="list-customer" class="list-group m-1  list-group-flush ">
             {% for c in customer %}
-                  <li class="list-group-item bg-white  bg-opacity-75   mb-3 p-1 h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  ">
-                        <div class="d-flex  p-2" style="font-size: 14px !important;  ">
+                  <li class="list-group-item bg-white  bg-opacity-75   mb-3  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  ">
+                        <div class="d-flex  " style="font-size: 14px !important;  ">
                               <div class="d-flex flex-wrap ">
                                     <div class="w-100">
                                           <a href="{% url "customer:detail-customer" c.id %}">                                          
                                                 {% if c.img1.url == "/media/img-default/img.png" %}
-                                                <img src="{{c.img1}}" style="width: 90px; max-height: 90px;   border-radius: 12px; margin-right: 0.3rem;" alt="Imagen ccon Problemas" class="img overflow-visible rounded-circle object-fit-cover ">
+                                                <img src="{{c.img1}}" style="width: 90px; max-height: 90px;   border-radius: 12px; " alt="Imagen ccon Problemas" class="img rounded-circle object-fit-cover img-border">
                                               {% else %}
                                               <img src="{{c.img1}}" style="width: 90px; max-height: 90px;   border-radius: 12px; " alt="Imagen ccon Problemas" class="img rounded-circle object-fit-cover img-border">
                                               {% endif %}
