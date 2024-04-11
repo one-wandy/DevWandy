@@ -15,6 +15,11 @@ from Customer import models
 from openpyxl import Workbook, load_workbook
 from openpyxl.styles import Font, Alignment, Border, Side,PatternFill
 from openpyxl.worksheet.datavalidation import DataValidation
+# App Account
+from googleapiclient.discovery import build
+from oauth2client.service_account import ServiceAccountCredentials
+from allauth.socialaccount.models import SocialAccount
+
 
 class Maps(TemplateView, Options):
       template_name = "maps/information.html"
@@ -26,6 +31,7 @@ class Maps(TemplateView, Options):
             ruta_carpeta =  os.getcwd() + "\Clientes"
             # self.Send_WhatsApp_Message()
             # return  self.Excel()
+            # self.AddContact("Luna", "Mercurio", "Luna" )
             return super().get(request, *args, **kwargs)
       
 
@@ -127,3 +133,42 @@ class Maps(TemplateView, Options):
             response['Content-Disposition'] = f'attachment; filename=Grupo Fycas SRL {date}.xlsx'
             workbook.save(response)
             return response
+      
+      
+      
+      def AddContact(self, usuario, nombre, apellido):
+            try:
+                  # Obtener las credenciales de Google del usuario
+                  google_account = SocialAccount.objects.get(provider='google', user="Federico")
+                  credentials = Credentials(
+                        token=google_account.socialtoken_set.get().token,
+                        refresh_token=google_account.socialtoken_set.get().token_secret,
+                        client_id=settings.SOCIALACCOUNT_PROVIDERS['google']['824492660467-c2cus9id11u816sln67sjja78i0mg5qs.apps.googleusercontent.com'],
+                        client_secret=settings.SOCIALACCOUNT_PROVIDERS['google']['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'],
+                        scopes=settings.SOCIALACCOUNT_PROVIDERS['google']['SCOPE']
+                  )
+
+                  # Si las credenciales han expirado, refrescarlas
+                  if credentials.expired:
+                        credentials.refresh(Request())
+            except (SocialAccount.DoesNotExist, RefreshError):
+                  # Manejar el caso en que no se encuentren las credenciales o estén vencidas
+                  return False, 'No se encontraron las credenciales de Google o están vencidas.'
+
+            # Inicializar el servicio de Google Contacts
+            service = build('people', 'v1', credentials=credentials)
+
+            # Crear el cuerpo del contacto
+            nuevo_contacto = {
+                  "names": [
+                        {"givenName": nombre, "familyName": apellido}
+                  ]
+            }
+
+            try:
+                  # Llamar al método para agregar el contacto
+                  service.people().createContact(body=nuevo_contacto).execute()
+                  return True, 'Contacto agregado exitosamente.'
+            except Exception as e:
+                  # Manejar cualquier error que ocurra durante la creación del contacto
+                  return False, f'Error al agregar el contacto: {str(e)}'
