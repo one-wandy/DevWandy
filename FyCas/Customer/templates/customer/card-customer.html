@@ -6,15 +6,15 @@
 <style>
       @page {
       /* margin: 100px 65px 90px 65px; */
-      size: card;
+      size: card !important;
 }
 header, footer {
       height: 2rem !important;
 
 }
 </style>
-<header></header>
-<section class="container w-100" style="font-family: Times New Roman; font-size: 16px; line-height: 17px; color: black; text-align: justify;">
+
+<section id="contrato" class="container w-100" style="font-family: Times New Roman; font-size: 16px; line-height: 17px; color: black; text-align: justify;">
       <div class="text-center mb-5 mt-2" >
             <span class="black">
                   CONTRATO DE PRESTAMO
@@ -152,13 +152,25 @@ Que deberán ser pagados el día {{day_pay}} ({{credit.day_pay}}) de cada mes.
 <footer>
 
 </footer>
-<script>
+
+
+<script src="print.js"></script>
+<script> 
 window.onload = function() {
       const footer = document.querySelector("footer");
       setTimeout(() => {
             // ocultamos el elemento
-            window.print();
-  }, 2000);
+            printJS({
+    printable: 'contrato', // Puede ser un selector CSS o un ID de elemento
+    type: 'pdf',
+    header: 'C',
+    documentTitle: 'Contrato',
+    scanStyles: false, // Si quieres incluir estilos CSS en el documento impreso
+//     css: 'ruta_al_archivo_de_estilos.css', // Ruta al archivo de estilos CSS
+    style: '@page { size: letter; margin: 20mm 15mm; }', // Estilo CSS para la página de impresión
+});
+      }, 2000);
 };
+
 </script>
 {% endblock  %}

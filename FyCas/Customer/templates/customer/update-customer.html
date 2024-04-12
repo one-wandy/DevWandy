@@ -15,7 +15,7 @@
                   <img src="{% static "icons/fycas.jpg" %}" weight="300" alt="" srcset="">
             </div>
       </div>
-<section class="section p-2 m-2 ms-4 me-4 " >
+<section class="section p-2 m-2 ms-4 me-4  d-none" >
       <form action="" method="post" enctype='multipart/form-data'>
                   {% csrf_token %}
             <div class="m-1">
@@ -138,6 +138,19 @@
             </div>
       </form>
       </section>
+
+      <form method="post">
+            {% csrf_token %}
+            <div class="d-flex flex-wrap w-100 justify-content-between">
+                  {{ form.as_p }}
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+        
+
+
+
+
       <script>
 
   // Obtener el input y la div de la imagen

@@ -13,7 +13,7 @@ class Customer(models.Model):
     references_peopple = models.TextField(max_length=500)#Personas referentes
     dni = models.CharField(max_length=100) #Numero de Identidad
     amount = models.IntegerField(null=True)#Monto 
-    no_account = models.IntegerField(default=0) #Numero de Cuenta
+    no_account = models.IntegerField(default=0) #Numero de Cuentaloooo
     img1 = models.ImageField(upload_to="media/",  blank=True, null=True, default="media/img-default/img.png")#Foto de Cedula delantera
     img2 = models.ImageField(upload_to="media/", blank=True, null=True, default="media/img-default/img.png")#Foto de Cedula tracera
     name_r1 = models.CharField(max_length=255,  )#Nombre
@@ -32,7 +32,7 @@ class Customer(models.Model):
     # Estado Civil 
     estado_civil = models.CharField(max_length=2, default='')
     # Ocupacion 
-    ocupacion = models.CharField(max_length=2, default='Estudiante')
+    ocupacion = models.CharField(max_length=25, default='Estudiante')
     # Codigo de cliente
     code_customer = models.CharField(max_length=122000, default='')
     # Date 
@@ -56,7 +56,7 @@ class Customer(models.Model):
     # dir_referencia
     dir_referencia = models.CharField(max_length=255, default='')
     # Numero de telefono
-    phone = models.CharField(max_length=15, default='')
+    phone = models.CharField(max_length=18, default='')
     
     # Datos donde labura
     # Empresa donde trabaja  
@@ -82,7 +82,7 @@ class Customer(models.Model):
     #Salario de M
     salario_m = models.CharField(max_length=233, default='')
     # Moneda 
-    moneda = models.CharField(max_length=2, default='RD$')  
+    moneda = models.CharField(max_length=3, default='RD$')  
     # Datos de la cuantas 
     # Realcion tipo uno
     relacion_tipo = models.CharField(max_length=233, default='1')

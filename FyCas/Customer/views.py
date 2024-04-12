@@ -68,23 +68,25 @@ class UpdateCustomer(UpdateView, Options):
     
     
     def post(self, request, *args, **kwargs):        
-        customer = self.model.objects.get(id=self.kwargs.get('pk'))
-        customer.name = request.POST.get("name").title()
-        customer.last_name = request.POST.get("last_name").title()
-        customer.dni = request.POST.get("dni")
-        customer.number = request.POST.get("number")
-        customer.address = request.POST.get("address")
-        customer.name_r1 = request.POST.get("name_r1")
-        customer.number_r1 = request.POST.get("number_r1")
-        customer.name_r2 = request.POST.get("name_r1")
-        customer.number_r2 = request.POST.get("number_r2")
+        c = self.model.objects.get(id=self.kwargs.get('pk'))
+        c.name = request.POST.get("name").title()
+        c.last_name = request.POST.get("last_name").title()
+        c.dni = request.POST.get("dni")
+        c.number = request.POST.get("number")
+        c.address = request.POST.get("address")
+        c.name_r1 = request.POST.get("name_r1")
+        c.number_r1 = request.POST.get("number_r1")
+        c.name_r2 = request.POST.get("name_r1")
+        c.number_r2 = request.POST.get("number_r2")
 
-        customer.work_information = request.POST.get("work_information")
+        c.work_information = request.POST.get("work_information")
         if request.FILES.get("img1"):
-            customer.img1 = request.FILES.get("img1")
+            c.img1 = request.FILES.get("img1")
         if request.FILES.get("img2"):
-            customer.img2 = request.FILES.get("img2")
-        customer.save()
+            c.img2 = request.FILES.get("img2")
+            
+        
+        c.save()
         return self.List_Redirect()
             
         print(form.errors) 

@@ -1,6 +1,10 @@
 {% include "base/base.html" %}
 {% block content %}
 {% load humanize %}
+// Añade Print.js a tu proyecto
+
+// Luego, puedes imprimir un elemento por su ID
+printJS('ID_DEL_ELEMENTO', 'html');
 
 
 <style>
@@ -14,7 +18,7 @@ header, footer {
 }
 </style>
 <header></header>
-<section class="container w-100" style="font-family: Times New Roman; font-size: 16px; line-height: 17px; color: black; text-align: justify;">
+<section id="Contrato" class="container w-100" style="font-family: Times New Roman; font-size: 16px; line-height: 17px; color: black; text-align: justify;">
       <div class="text-center mb-4" >
             <span class="black">
                   CONTRATO DE PRESTAMO
@@ -154,6 +158,9 @@ Que deberán ser pagados el día {{day_pay}} ({{credit.day_pay}}) de cada mes.
 </footer>
 <script>
 window.onload = function() {
+      // printJS('ID_DEL_ELEMENTO', 'html');
+
+
       // const footer = document.querySelector("footer");
 //      window.print();
 };
