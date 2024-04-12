@@ -124,18 +124,20 @@
             <label for="searching-config" id="label-config"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi text-black-50 d-none bi-search mt-4 me-2 pt-1  " viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
       </svg></label>
-      <div class="d-flex w-100 mt-3 justify-content-end align-content-center flex-wrap">
+      <div class="d-flex w-100 mt-3 justify-content-center align-content-center ">
 
-            <input type="text"  style="font-size: 14px; min-height: 2.5rem; max-height: 2.5rem; width: 14rem;" class="form-search text-center  p-3 ps-5  m-0 mb-2 "  id="searching-config" placeholder=" Buscar ( Alt + b ) ">
+            <input type="text"  style="font-size: 14px; min-height: 2.5rem; max-height: 2.5rem; max-width: 20rem;" class="form-search text-center w-100   m-0 mb-2 "  id="searching-config" placeholder=" Buscar ( Alt + b ) ">
             <a href="{% url "customer:add-customer" %}" class="d-flex align-content-center" >
                   <button id="agregar" class="border-0 text-white " style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
                   max-height: 2.5rem !important;
+                  min-width: 8rem ;
                   border-radius: 1.5rem;">                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
                               <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                               <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
                             </svg> Agregar 
-                  </button>
+                  </button> 
             </a>
+            
           </div>
       </div>
       
@@ -247,7 +249,7 @@
 
 searching_config.addEventListener('focus', function() {
   document.getElementById('clientes').style.display = 'none';
-  document.getElementById('section').style.marginTop = '7rem'
+  document.getElementById('section').style.marginTop = '4.5rem'
   document.getElementById('agregar').style.display = 'none'
   document.getElementById('fycas').style.display = 'none'
   searching_config.style.width = '100%'
