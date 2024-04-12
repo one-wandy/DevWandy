@@ -3,6 +3,10 @@
 {% load static %}
 
 <style>
+      a
+      {
+            color: #383838 !important;
+      }
       .contdiv 
       {
             background-color: rgb(250, 249, 230);
@@ -108,8 +112,8 @@
                   <h3 class="p-0 m-0" style="font-family: Quicksand, sans-serif;">
                         <i class="fi fi-brands-whatsapp"></i> Clientes
                   </h3>
-                  <p class="text-black-50 w-100  p-0 m-0 " style="font-size: 12px; font-family: Quicksand, sans-serif;">
-                        Permite encontrar fácilmente los datos de contacto de cualquier cliente.
+                  <p class="text-black-50 w-100  p-0 m-0 mb-1 " style="font-size: 12px; font-family: Quicksand, sans-serif;">
+                        Permite encontrar fácilmente los datos de cualquier cliente.
                   </p>
             </div>
 
@@ -174,15 +178,15 @@
                                     
 
                                                <strong class="d-none">Nombre:</strong> 
-                                               <span> {{ c.name}}
+                                               <span class="text-black"> {{ c.name}}
                                                 {{c.last_name}}
                                                 <!-- </a> -->
                                                 </span> 
                                          </span> 
-                                         <span class="w-100">
+                                         <span class="w-100 text-black" >
                                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill "  viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
-                                              </svg> +1 {{c.number}}
+                                              </svg>  {{c.number}}
                                          </span>
                                          <span class="w-100">
                                                 <strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
@@ -196,11 +200,11 @@
                                            {{c.address}}</a>
                                           </span>
                                           <span class="w-100 info-laboral overflow-hidden" style="height: 1rem;">
-                                                <strong>Informacion Laborar:</strong> {{c.work_information}}
+                                                <strong>Descripción Laborar:</strong> {{c.work_information}}
                                          </span>
                                           <span class="w-100 referencias overflow-hidden" style="height: 1rem;" >
                                                 <strong>
-                                                      Referencias:
+                                                      Personas Referentes:
                                                 </strong>
                                                 {{c.name_r1}} ({{c.number_r1}}) - {{c.name_r2}} ({{c.number_r2}})
                                           </span>
