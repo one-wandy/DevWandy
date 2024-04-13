@@ -101,7 +101,8 @@
 
 
 <section id="section"  class="section p-2  align-content-center  d-flex flex-wrap  justify-content-evenly  overflow-hidden overflow-scroll" >
-      <div class="d-flex p-2 pt-1  flex-wrap blur bg-white bg-opacity-75  justify-content-end position-fixed w-100 " style="z-index: 4; bottom: 0;  
+
+      <div class="d-flex   flex-wrap blur bg-white bg-opacity-75  justify-content-end position-fixed w-100 " style="z-index: 4; bottom: 0;  
        border: 1px rgb(228, 228, 228)  solid; border-top: 0; border-left: 0; border-right: 0;" >
 
             <div id="clientes" class=" d-none w-100  align-content-center flex-wrap">
@@ -121,9 +122,9 @@
             <label for="searching-config" id="label-config"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi text-black-50 d-none bi-search mt-4 me-2 pt-1  " viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
       </svg></label>
-      <div class="d-flex w-100 mt-3 justify-content-center align-content-center ">
+      <div class="d-flex w-100 mt-1 justify-content-center align-content-center ">
 
-            <input type="text"  style="font-size: 14px; width: auto; min-height: 2.5rem; max-height: 2.5rem; max-width: 10rem;" class="form-search text-center  m-0 mb-2 "  id="searching-config" placeholder=" Escribe un nombre ( Alt + b ) ">
+            <input type="text"  style="font-size: 14px; width: auto; min-height: 2.5rem; max-height: 2.5rem; max-width: 10rem;" class="form-search text-center  m-0 mb-1 "  id="searching-config" placeholder=" Escribe un nombre ( Alt + b ) ">
             <a href="{% url "customer:add-customer" %}" class="d-flex align-content-center " >
                   <button id="agregar" class="border-0 text-white  m-0 p-0" style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
                   max-height: 2.5rem !important;
@@ -153,15 +154,15 @@
 </div>
     <div id="for-c" style="display: flex;" class="w-100  h-auto  flex-wrap  justify-content-center">
       <div class="d-flex justify-content-center mb-5 w-100">
-            <h4>
-                  Clientes
+            <h4 style="">
+                   Clientes  
             </h4>
       </div>
             {% for c in customer %}
                   <li  class="list-group-item bg-white m-1  bg-opacity-75 p-0  m-0 mb-5  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  ">
                         <div class="d-flex  " style="font-size: 14px !important;  ">
                               <div class="d-flex flex-wrap ">
-                                    <div class="w-100">
+                                    <div class="w-100 d-flex">
                                           <a href="{% url "customer:detail-customer" c.id %}">                                          
                                                 {% if c.img1.url == "/media/img-default/img.png" %}
                                                 <img src="{{c.img1}}" style="width: 90px; max-height: 90px;   border-radius: 12px; " alt="Imagen ccon Problemas" class="img rounded-circle object-fit-cover img-border">
@@ -241,13 +242,13 @@
       </div>
 </section>
 
-<div class="w-100  position-fixed bottom-0 justify-content-center d-flex align-content-center justify-content-between" style="min-height: 2rem;">
-      <span class="span-animation" style="min-width: 6rem; min-height:3rem; background-color: rgba(255, 133, 133, 0.473);">s</span>
-      <span class="span-animation" style="min-width: 2rem; min-height:3rem; background-color: rgba(222, 137, 255, 0.438);">s</span>
-      <span class="span-animation" style="min-width: 1rem; min-height:3rem; background-color: rgba(128, 179, 255, 0.404);">s</span>
-      <span class="span-animation" style="min-width: 10rem; min-height:3rem; background-color: rgba(128, 255, 244, 0.445);">s</span>
-      <span class="span-animation mt-2" style="min-width: 4rem; min-height:3rem; background-color: rgba(255, 128, 177, 0.404);">s</span>
-      <span class="span-animation mb-2" style="min-width: 4rem; min-height:3rem; background-color: rgba(153, 255, 128, 0.349);">s</span>
+<div class="w-100  position-fixed bottom-0  justify-content-center d-flex align-content-center justify-content-between" style="min-height: 2rem;">
+      <span class="span-animation" style="min-width: 6rem; min-height:2rem; background-color: rgba(255, 133, 133, 0.473);">s</span>
+      <span class="span-animation" style="min-width: 2rem; min-height:2rem; background-color: rgba(222, 137, 255, 0.438);">s</span>
+      <span class="span-animation" style="min-width: 1rem; min-height:1.3rem; background-color: rgba(128, 179, 255, 0.404);">s</span>
+      <span class="span-animation" style="min-width: 10rem; min-height:1.3rem; background-color: rgba(128, 255, 244, 0.445);">s</span>
+      <span class="span-animation mt-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(255, 128, 177, 0.404);">s</span>
+      <span class="span-animation mb-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(153, 255, 128, 0.349);">s</span>
 </div>
     
 <script>
@@ -296,8 +297,8 @@ searching_config.addEventListener('blur', function() {
                     if(filtered_data == ''){
                         document.getElementById("text-c").style.display = 'flex'
                         document.getElementById('user-no').innerHTML = searching_config.value
-                    }
-                    else{
+                  }
+                  else{
                         document.getElementById("text-c").style.display = 'none'
 
                     }
@@ -376,12 +377,16 @@ searching_config.addEventListener('blur', function() {
                     if (searching_config.value.trim() === "") {
                         config_list.innerHTML = ''
                         config_list.style.display = 'none'
+                        document.getElementById('for-c').style.display = 'flex'
+
                         
                         // document.getElementById("list-customer").style.display = "block"
                         
                   }
                   else {
                         config_list.style.display = 'block'
+                        document.getElementById('for-c').style.display = 'none'
+
 
                         // document.getElementById("list-customer").style.display = "none"
                         
