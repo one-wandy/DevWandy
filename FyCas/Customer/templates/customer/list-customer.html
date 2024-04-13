@@ -97,62 +97,68 @@
   );
   animation: rotarColores 1s infinite linear;
 }
-
-
-
-
 </style>
 
-<section id="section"  class="section p-2  d-flex flex-wrap  justify-content-evenly  overflow-hidden overflow-scroll" style="margin-top: 13rem">
 
-      <div class="d-flex p-2 pt-1  flex-wrap blur bg-white bg-opacity-75  justify-content-end position-fixed w-100 pe-4" style="z-index: 4; top: 0;  border-bottom-left-radius: 1.5rem;
-      border-bottom-right-radius: 1.5rem;" >
+<section id="section"  class="section p-2  align-content-center  d-flex flex-wrap  justify-content-evenly  overflow-hidden overflow-scroll" >
+      <div class="d-flex p-2 pt-1  flex-wrap blur bg-white bg-opacity-75  justify-content-end position-fixed w-100 " style="z-index: 4; bottom: 0;  
+       border: 1px rgb(228, 228, 228)  solid; border-top: 0; border-left: 0; border-right: 0;" >
 
-            <div id="clientes" class=" w-100  align-content-center flex-wrap">
-                  <h3 class="p-0 m-0" style="font-family: Quicksand, sans-serif;">
-                        <i class="fi fi-brands-whatsapp"></i> Clientes
-                  </h3>
-                  <p class="text-black-50 d-none w-100  p-0 m-0 mb-1 " style="font-size: 12px; font-family: Quicksand, sans-serif;">
-                        Permite encontrar fácilmente los datos de cualquier cliente.
-                  </p>
+            <div id="clientes" class=" d-none w-100  align-content-center flex-wrap">
+                  <span  style="  
+                        font-family: Righteous, sans-serif;
+                        /* color: var(--color-one); */
+                        font-optical-sizing: auto;">   
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                              <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                            </svg>
+                        Clientes
+                        </span>
+                        <p class="text-black-50 d-none w-100  p-0 m-0 mb-1 " style="font-size: 12px; font-family: Quicksand, sans-serif;">
+                              Permite encontrar fácilmente los datos de cualquier cliente.
+                        </p>
             </div>
-
-                  <div  class="d-flex  flex-wrap w-100 justify-content-end">
-                        <strong id="fycas" style="  font-family: Quicksand, sans-serif;
-                        color: var(--color-one);
-                        font-optical-sizing: auto;">                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-diamond-half m-0 p-0" viewBox="0 0 16 16">
-                         <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098zM8 .989c.127 0 .253.049.35.145l6.516 6.516a.495.495 0 0 1 0 .7L8.35 14.866a.5.5 0 0 1-.35.145z"/>
-                         </svg>
-                        GRUPO FYCAS</strong>
-                  </div>
             <label for="searching-config" id="label-config"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi text-black-50 d-none bi-search mt-4 me-2 pt-1  " viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
       </svg></label>
       <div class="d-flex w-100 mt-3 justify-content-center align-content-center ">
 
-            <input type="text"  style="font-size: 14px; min-height: 2.5rem; max-height: 2.5rem; max-width: 20rem;" class="form-search text-center w-100   m-0 mb-2 "  id="searching-config" placeholder=" Buscar ( Alt + b ) ">
-            <a href="{% url "customer:add-customer" %}" class="d-flex align-content-center" >
-                  <button id="agregar" class="border-0 text-white " style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+            <input type="text"  style="font-size: 14px; width: auto; min-height: 2.5rem; max-height: 2.5rem; max-width: 10rem;" class="form-search text-center  m-0 mb-2 "  id="searching-config" placeholder=" Escribe un nombre ( Alt + b ) ">
+            <a href="{% url "customer:add-customer" %}" class="d-flex align-content-center " >
+                  <button id="agregar" class="border-0 text-white  m-0 p-0" style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
                   max-height: 2.5rem !important;
-                  min-width: 8rem ;
-                  border-radius: 1.5rem;">                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                  min-width: 4rem ;
+                  border-radius: 1.5rem;">               
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
                               <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                               <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
-                            </svg> Agregar 
+                            </svg> 
                   </button> 
             </a>
             
           </div>
       </div>
       
-    <div>
+      <div id="config-list" class=" h-100  position-absolute  d-flex flex-wrap " 
+      style="justify-content: center;
+      /* Alinea horizontalmente al centro */
+      align-content: flex-end; bottom: 4rem;">
+      
+</div>
+<div style="display: none;" class=" w-100 justify-content-center vh-100 align-content-center flex-wrap  " id="text-c">
+      <h5>
+            Ups! "<span id="user-no"></span>" no encontrado
+      </h5>
 
-      <div id="config-list" >
+</div>
+    <div id="for-c" style="display: flex;" class="w-100  h-auto  flex-wrap  justify-content-center">
+      <div class="d-flex justify-content-center mb-5 w-100">
+            <h4>
+                  Clientes
+            </h4>
       </div>
-
-      <ul id="list-customer" class="list-group m-0  list-group-flush ">
             {% for c in customer %}
-                  <li class="list-group-item bg-white  bg-opacity-75 p-0  m-0 mb-5  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  ">
+                  <li  class="list-group-item bg-white m-1  bg-opacity-75 p-0  m-0 mb-5  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  ">
                         <div class="d-flex  " style="font-size: 14px !important;  ">
                               <div class="d-flex flex-wrap ">
                                     <div class="w-100">
@@ -173,12 +179,10 @@
                                           font-family: Righteous, sans-serif;
                                           font-size: 13px;
                                           font-weight: 400; " >
-                                                <!-- <a href="{% url "customer:update-customer" c.id %}" class="d-flex "> -->
-
-                                    
-
+                                          <!-- <a href="{% url "customer:update-customer" c.id %}" class="d-flex "> -->
                                                <strong class="d-none">Nombre:</strong> 
-                                               <span class="text-black"> {{ c.name}}
+                                               <span class="text-black">
+                                                {{ c.name}}
                                                 {{c.last_name}}
                                                 <!-- </a> -->
                                                 </span> 
@@ -186,22 +190,22 @@
                                          <span class="w-100 text-black" >
                                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill "  viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
-                                              </svg>  {{c.number}}
+                                              </svg> {{c.number}}
                                          </span>
                                          <span class="w-100">
-                                                <strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
+                                                <strong>
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
                                                       <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
-                                                    </svg></strong> {{c.dni}} 
+                                                    </svg>
+                                                </strong> {{c.dni}} 
                                          </span>
                                          <span class="w-100 address overflow-hidden d-flex" style="height: 1.2rem ">
                                           <strong class="">                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                                                 <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-                                              </svg> <span class=" "></span></strong> <a class="" style=" text-transform: capitalize;"
-                           
-                                              >
+                                              </svg> <span class=" "></span></strong> <a class="" style=" text-transform: capitalize;" >
                                            {{c.address}}</a>
                                           </span>
-                                          <span class="w-100 info-laboral overflow-hidden" style="height: 1rem;">
+                                          <szzzzzzpan class="w-100 info-laboral overflow-hidden" style="height: 1rem;">
                                                 <strong>Descripción Laborar:</strong> {{c.work_information}}
                                          </span>
                                           <span class="w-100 referencias overflow-hidden" style="height: 1rem;" >
@@ -229,19 +233,23 @@
                                                           </svg> Editar
                                                 </button>
                                           </a>
-
-                                    
                                     </div>
                               </div>
                        </div>
-                        <div class="d-flex justify-content-end">
-
-                        </div>
-    </div>
                   </li>
             {% endfor %}
-          </ul>
+      </div>
 </section>
+
+<div class="w-100  position-fixed bottom-0 justify-content-center d-flex align-content-center justify-content-between" style="min-height: 2rem;">
+      <span class="span-animation" style="min-width: 6rem; min-height:3rem; background-color: rgba(255, 133, 133, 0.473);">s</span>
+      <span class="span-animation" style="min-width: 2rem; min-height:3rem; background-color: rgba(222, 137, 255, 0.438);">s</span>
+      <span class="span-animation" style="min-width: 1rem; min-height:3rem; background-color: rgba(128, 179, 255, 0.404);">s</span>
+      <span class="span-animation" style="min-width: 10rem; min-height:3rem; background-color: rgba(128, 255, 244, 0.445);">s</span>
+      <span class="span-animation mt-2" style="min-width: 4rem; min-height:3rem; background-color: rgba(255, 128, 177, 0.404);">s</span>
+      <span class="span-animation mb-2" style="min-width: 4rem; min-height:3rem; background-color: rgba(153, 255, 128, 0.349);">s</span>
+</div>
+    
 <script>
       let searching_config = document.getElementById('searching-config');
       let config_list = document.getElementById('config-list')
@@ -254,20 +262,18 @@
       });
 
 searching_config.addEventListener('focus', function() {
-  document.getElementById('clientes').style.display = 'none';
-  document.getElementById('section').style.marginTop = '4.5rem'
-  document.getElementById('agregar').style.display = 'none'
-  document.getElementById('fycas').style.display = 'none'
-  searching_config.style.width = '100%'
+      searching_config.style.width = '100%'
+      document.getElementById('for-c').style.display = 'none'
+      document.getElementById('agregar').style.display = 'none'
+      document.getElementById('clientes').style.display = 'none';
+
 });
 
 searching_config.addEventListener('blur', function() {
-document.getElementById('section').style.marginTop = '15rem'
-document.getElementById('agregar').style.display = 'block'
-document.getElementById('fycas').style.display = 'block'
-searching_config.style.width = '14rem'
-
-  document.getElementById('clientes').style.display = 'flex';
+      searching_config.style.width = '14rem'
+      document.getElementById('for-c').style.display = 'flex'
+      document.getElementById('agregar').style.display = 'block'
+      document.getElementById('clientes').style.display = 'flex';
 });
 
 
@@ -286,6 +292,16 @@ searching_config.style.width = '14rem'
                         return config.name.toLowerCase().includes(input_value.toLowerCase());
                     });
                     config_list.innerHTML = ''
+
+                    if(filtered_data == ''){
+                        document.getElementById("text-c").style.display = 'flex'
+                        document.getElementById('user-no').innerHTML = searching_config.value
+                    }
+                    else{
+                        document.getElementById("text-c").style.display = 'none'
+
+                    }
+
                     for (const c  of filtered_data) {
                         const div = document.createElement('div');
                         div.classList.add("contdiv", )
@@ -360,12 +376,14 @@ searching_config.style.width = '14rem'
                     if (searching_config.value.trim() === "") {
                         config_list.innerHTML = ''
                         config_list.style.display = 'none'
-                        document.getElementById("list-customer").style.display = "block"
                         
-                    }
-                    else {
+                        // document.getElementById("list-customer").style.display = "block"
+                        
+                  }
+                  else {
                         config_list.style.display = 'block'
-                        document.getElementById("list-customer").style.display = "none"
+
+                        // document.getElementById("list-customer").style.display = "none"
                         
                     }
                     });
