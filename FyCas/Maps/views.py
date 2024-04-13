@@ -16,10 +16,20 @@ from openpyxl import Workbook, load_workbook
 from openpyxl.styles import Font, Alignment, Border, Side,PatternFill
 from openpyxl.worksheet.datavalidation import DataValidation
 # App Account
-from googleapiclient.discovery import build
 from oauth2client.service_account import ServiceAccountCredentials
 from allauth.socialaccount.models import SocialAccount
+from google.oauth2.credentials import Credentials
 
+      
+from google.oauth2 import service_account
+
+
+from google.auth.transport.requests import Request
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+
+
+# Suponiendo que ya tienes un objeto 'credentials' válido
 
 class Maps(TemplateView, Options):
       template_name = "maps/information.html"
@@ -31,7 +41,11 @@ class Maps(TemplateView, Options):
             ruta_carpeta =  os.getcwd() + "\Clientes"
             # self.Send_WhatsApp_Message()
             # return  self.Excel()
-            # self.AddContact("Luna", "Mercurio", "Luna" )
+            # # Ejemplo de uso
+            nombre_contacto = "Juan Perez"
+            telefono_contacto = "+1234567890"
+            self.agregar_contacto(nombre_contacto, telefono_contacto)
+
             return super().get(request, *args, **kwargs)
       
 
@@ -135,40 +149,52 @@ class Maps(TemplateView, Options):
             return response
       
       
-      
-      def AddContact(self, usuario, nombre, apellido):
-            try:
-                  # Obtener las credenciales de Google del usuario
-                  google_account = SocialAccount.objects.get(provider='google', user="Federico")
-                  credentials = Credentials(
-                        token=google_account.socialtoken_set.get().token,
-                        refresh_token=google_account.socialtoken_set.get().token_secret,
-                        client_id=settings.SOCIALACCOUNT_PROVIDERS['google']['824492660467-c2cus9id11u816sln67sjja78i0mg5qs.apps.googleusercontent.com'],
-                        client_secret=settings.SOCIALACCOUNT_PROVIDERS['google']['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'],
-                        scopes=settings.SOCIALACCOUNT_PROVIDERS['google']['SCOPE']
-                  )
 
-                  # Si las credenciales han expirado, refrescarlas
-                  if credentials.expired:
-                        credentials.refresh(Request())
-            except (SocialAccount.DoesNotExist, RefreshError):
-                  # Manejar el caso en que no se encuentren las credenciales o estén vencidas
-                  return False, 'No se encontraron las credenciales de Google o están vencidas.'
+# Define los alcances que necesitas para acceder a los contactos
 
-            # Inicializar el servicio de Google Contacts
-            service = build('people', 'v1', credentials=credentials)
 
-            # Crear el cuerpo del contacto
-            nuevo_contacto = {
+
+      def obtener_credenciales(self):
+            SCOPES = ['https://www.googleapis.com/auth/contacts']
+            
+            # Intenta cargar las credenciales desde el archivo token.json
+            creds = None
+            if os.path.exists('credentials.json'):
+                  creds = Credentials.from_authorized_user_file('credentials.json')
+
+            # Si no hay credenciales disponibles o no son válidas, inicia el flujo de autorización
+            if not creds or not creds.valid:
+                  if creds and creds.expired and creds.refresh_token:
+                        creds.refresh(Request())
+                  else:
+                        # Si no hay credenciales disponibles, inicia el flujo de autorización
+                        flow = InstalledAppFlow.from_client_secrets_file('Customer/Credentials-Apis/credentials.json', SCOPES)
+                        creds = flow.run_local_server(port=0)
+
+                  # Guarda las credenciales en credentials.json para futuros usos
+                  with open('credentials.json', 'w') as token:
+                        token.write(creds.to_json())
+
+            return creds
+
+      def agregar_contacto(self, nombre, telefono):
+            creds = self.obtener_credenciales()
+            # Crea un objeto de servicio para interactuar con la API de Google Contacts
+            service = build('people', 'v1', credentials=creds)
+            # Define el contacto
+            contacto = {
                   "names": [
-                        {"givenName": nombre, "familyName": apellido}
+                        {
+                        "givenName": nombre
+                        }
+                  ],
+                  "phoneNumbers": [
+                        {
+                        "value": telefono,
+                        "type": "mobile"
+                        }
                   ]
             }
-
-            try:
-                  # Llamar al método para agregar el contacto
-                  service.people().createContact(body=nuevo_contacto).execute()
-                  return True, 'Contacto agregado exitosamente.'
-            except Exception as e:
-                  # Manejar cualquier error que ocurra durante la creación del contacto
-                  return False, f'Error al agregar el contacto: {str(e)}'
+            # Agrega el contacto
+            service.people().createContact(body=contacto).execute()
+            print("Contacto agregado exitosamente.")
