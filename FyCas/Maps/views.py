@@ -86,17 +86,18 @@ class Maps(TemplateView, Options):
                   for columna in columnas:
                         worksheet.column_dimensions[columna].width = 20
                   worksheet.column_dimensions["A"].width = 25
+                  worksheet.column_dimensions["A"].font = bold_font
+                  
                   worksheet.column_dimensions["B"].width = 30
                   worksheet.column_dimensions["C"].width = 20
                   worksheet.column_dimensions["D"].width = 20
                   worksheet.column_dimensions["E"].width = 10
                   worksheet.column_dimensions["F"].width = 20
                   worksheet.column_dimensions["G"].width = 20
-                  worksheet.column_dimensions["A"].font = bold_font
                   # Aplicar formato de fuente a la fila 3
 
 
-                  worksheet.append(["TIPO DE ENTIDAD", "NOMBRE DEL CLIENTE", "APELLIDOS", "CEDULA O RNC", "SEXO", "ESTADO CIVIL", "OCUPACION"])
+                  worksheet.append(["TIPO DE ENTIDAD", "NOMBRE DEL CLIENTE", "APELLIDOS", "CEDULA O RNC", "SEXO", "ESTADO CIVIL", "OCUPACION", "CODIGO DE CLIENTE", "FECHA DE NACIMIENTO", "NACIONALIDAD", "DIRECCION", "SECTOR", "CALLE/NUMERO", "MUNICIPIO", "CIUDAD", "PROVINCIA", "PAIS", "DIR_Referencia", "TELEFONO", 'EMPRESA DONDE TRABAJA', "CARGO", "DIRECCION", "SECTOR", "CALLE/NUMERO", "MUNICIPIO", "CIUDAD", "PROVINCIA", "PAIS"])
 
                   # Insertar una nueva fila en la fila 1
                   worksheet.insert_rows(1)
