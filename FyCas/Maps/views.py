@@ -168,8 +168,9 @@ class Maps(TemplateView, Options):
                         creds.refresh(Request())
                   else:
                         # Si no hay credenciales disponibles, inicia el flujo de autorización
-                        flow = InstalledAppFlow.from_client_secrets_file('Customer/Credentials-Apis/credentials.json', SCOPES)
-                        creds = flow.run_local_server(port=0)
+                        flow = InstalledAppFlow.from_client_secrets_file('Customer/Credentials-Apis/credentials.json', SCOPES, redirect_uri='http://localhost:56083')
+                        
+                        creds = flow.run_local_server(port=56083)
 
                   # Guarda las credenciales en credentials.json para futuros usos
                   with open('credentials.json', 'w') as token:
