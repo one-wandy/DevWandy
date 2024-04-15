@@ -6,8 +6,14 @@ class CustomerForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # Aquí puedes asignar la clase CSS a todos los campos
+        # widgets = { 
+              # "img1": forms.FileInput(attrs={'class': 'img1'}),
+            #  "img2": forms.FileInput(attrs={'class': 'img2'})
+      # }
         for field_name, field in self.fields.items():
-            field.widget.attrs.update({'class': 'tu-clase-form'})
+            field.widget.attrs.update({'class': 'form-control'})
+            
+        
     class Meta:
       model = models.Customer
       fields = ['name', 'last_name', 'number', 'address',  'work_information',  'dni',  "img2", "img1", "name_r1", "name_r2", "number_r1", "number_r2",
@@ -71,28 +77,27 @@ class CustomerForm(forms.ModelForm):
     
     ]
 
-      widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Nombre Completo"}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Apellidos" }),
-            
-            'name_r1': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Nombre" }),
-            
-            'name_r2': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Apellidos" }),
-            
-            'number': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Numero"}),
-            
-            'number_r1': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Numero"}),
-            
-            'number_r2': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Numero"}),
-            
-            'address': forms.TextInput(attrs={'class': 'form-control address', "placeholder": "Donde Recide"}),
-       
-            'work_information': forms.Textarea(attrs={'class': 'form-control textarea', "placeholder": "Informacion Laboral"}),
 
-            'dni': forms.TextInput(attrs={'class': 'form-control',  "placeholder": "232-3232-3232", }),
-            "img1": forms.FileInput(attrs={'class': 'img1'}),
-             "img2": forms.FileInput(attrs={'class': 'img2'})
-        }
+      #       'name': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Nombre Completo"}),
+      #       'last_name': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Apellidos" }),
+            
+      #       'name_r1': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Nombre" }),
+            
+      #       'name_r2': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Apellidos" }),
+            
+      #       'number': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Numero"}),
+            
+      #       'number_r1': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Numero"}),
+            
+      #       'number_r2': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Numero"}),
+            
+      #       'address': forms.TextInput(attrs={'class': 'form-control address', "placeholder": "Donde Recide"}),
+       
+      #       'work_information': forms.Textarea(attrs={'class': 'form-control textarea', "placeholder": "Informacion Laboral"}),
+
+      #       'dni': forms.TextInput(attrs={'class': 'form-control',  "placeholder": "232-3232-3232", }),
+
+      #   }
       
       
 class CreditForm(forms.ModelForm):

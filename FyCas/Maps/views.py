@@ -40,11 +40,11 @@ class Maps(TemplateView, Options):
             nombre_archivo = "Info.docx"
             ruta_carpeta =  os.getcwd() + "\Clientes"
             # self.Send_WhatsApp_Message()
-            # return  self.Excel()
+            return  self.Excel()
             # # Ejemplo de uso
             nombre_contacto = "Juan Perez"
             telefono_contacto = "+1234567890"
-            self.agregar_contacto(nombre_contacto, telefono_contacto)
+            # self.agregar_contacto(nombre_contacto, telefono_contacto)
 
             return super().get(request, *args, **kwargs)
       

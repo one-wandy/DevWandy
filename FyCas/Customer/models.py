@@ -55,7 +55,7 @@ class Customer(models.Model):
     pais = models.CharField(max_length=255, default='REPUBLICA DOMINICANA')
     # dir_referencia
     dir_referencia = models.CharField(max_length=255, default='')
-    # Numero de telefono
+    # Numero de telefono de la empresa
     phone = models.CharField(max_length=18, default='')
     
     # Datos donde labura

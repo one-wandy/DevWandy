@@ -123,6 +123,14 @@ input
 
     }
     
+
+.no-select {
+  -webkit-user-select: none !important; /* Safari */
+  -moz-user-select: none !important;    /* Firefox */
+  -ms-user-select: none !important;     /* IE10+/Edge */
+  user-select: none !important;         /* Standard */
+}
+
     #amount_purpose 
       {
             min-height: 10rem !important ;
@@ -177,7 +185,7 @@ input
       {
             max-width: 40.4rem !important;
       }
-      .img1, .img2
+      .id_img1, .id_img2
       {
             display: none;
       }

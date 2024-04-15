@@ -8,6 +8,12 @@ from django.shortcuts import redirect
 from .mixing import *
 import os
 from datetime import datetime
+
+
+class Dashboard(TemplateView, Options):
+    template_name = "base/dashboard.html"
+    
+    
 class AddCustomer(CreateView, Options):
     model = models.Customer
     form_class = forms.CustomerForm
@@ -261,3 +267,5 @@ class ListCredit(ListView, Options):
             context['credit'] = self.model.objects.filter(customer__id=self.kwargs.get('pk'))
 
             return context
+        
+        

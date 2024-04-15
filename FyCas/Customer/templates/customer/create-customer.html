@@ -8,6 +8,7 @@
       #id_name_r1, #id_name_r2 {
             margin: 0 !important;
       }
+
 </style>
       <div class="p-4 d-flex  flex-wrap mt-1 mb-5">
             <div class="d-flex justify-content-end w-100">
@@ -73,7 +74,9 @@
                   </div>
                   <div class="w-100 d-flex flex-wrap ">
                         <div class="div-label d-flex text-center flex-wrap justify-content-center position-relative aling-content-center "> 
+                             <span class="d-none">
                               {{form.img1}}
+                             </span>
                               <img src=""   id="img-views1" style="display: none;" class="w-100  img h-100 object-fit-cover position-absolute top-0">
                               <label style="z-index: 1;" for="id_img1"  class="img-label position-absolute w-100 h-100 d-flex top-0 bg-opacity-10 bg-white justify-content-center align-content-center flex-wrap">
                                     <span class="bg-white  blur text-black d-flex align-content-center flex-wrap justify-content-center rounded-circle bg-opacity-50" style="width: 40px; height: 40px;">
@@ -85,7 +88,9 @@
                               </label>
                         </div>
                         <div class="div-label text-center position-relative  d-flex flex-wrap justify-content-center aling-content-center"> 
-                              {{form.img2}}
+                              <span class="d-none">
+                                    {{form.img2}}
+                              </span>
                               <label style="z-index: 1;" for="id_img2"  class="img-label position-absolute w-100 h-100 d-flex top-0 bg-opacity-25 bg-white justify-content-center align-content-center flex-wrap">
                                     <span class="bg-white  blur text-black d-flex align-content-center flex-wrap justify-content-center rounded-circle bg-opacity-50" style="width: 40px; height: 40px;">
                                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-patch-plus" viewBox="0 0 16 16">
@@ -101,14 +106,32 @@
                         Informacion Laboral
                   </h6>
                   <section class="w-100 d-flex flex-wrap  ">
-                        <p class="text-black-50 m-0 ms-2">
-                              ~Lugar de Trabajo, Cargo o (Funcion), Ingresos Mensuales y Numero de Contacto de la Empresa.
-                        </p>
-                        <div class="form-floating mb-3 w-100" >
-                              {{form.work_information}}
-                              <label for="id_work_information">Información Laboral
-                              </label>
-                        </div>
+                                    <div class="w-100">
+                                          <p class="text-black-50 m-0 ms-2">
+                                                ~Lugar de Trabajo, Cargo o (Funcion), Ingresos Mensuales y Numero de Contacto de la Empresa.
+                                          </p>
+                                    </div>
+                                    <div class="form-floating mb-3 " >
+                                          {{form.work_information}}
+                                          <label for="id_work_information">Información Laboral</label>
+                                    </div>
+                                    <div class="form-floating mb-3 " >
+                                          {{form.empresa_trabaja}}
+                                          <label for="id_work_information">Luegar de Trabajo</label>
+                                    </div>
+                                    <div class="form-floating mb-3 " >
+                                          {{form.cargo}}
+                                          <label for="id_work_information">Cargo o (Funcion)</label>
+                                    </div>
+                                    <div class="form-floating mb-3 " >
+                                          {{form.salario_m}}
+                                          <label for="id_work_information">Ingresos Mensuales</label>
+                                    </div>
+                                    <div class="form-floating mb-3 " >
+                                          {{form.phone}}
+                                          <label for="id_work_information"> Numero de Contacto de la Empresa</label>
+                                    </div>
+
                   </section>
                   <h6 class="p-0  mt-5">
                         Referencias Personales
