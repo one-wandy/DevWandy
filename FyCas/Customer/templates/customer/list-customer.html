@@ -212,7 +212,17 @@
                                               </svg> <span class=" "></span></strong> <a class="" style=" text-transform: capitalize;" >
                                            {{c.address}}</a>
                                           </span>
-                                          <szzzzzzpan class="w-100 info-laboral overflow-hidden" style="height: 1rem;">
+                                          <span class='w-100'>
+                                                <strong class="">Company:</strong>
+                                                      <span class='text-black'>
+                                                            {% if c.company == "ThomFin Group" %}
+                                                            ThomFin Group
+                                                            {% else %}
+                                                            Grupo Fycas
+                                                            {% endif %}
+                                                      </span>
+                                               </span>
+                                          <span class="w-100 info-laboral overflow-hidden" style="height: 1rem;">
                                                 <strong class="no-select">Descripción Laborar:</strong> {{c.work_information}}
                                          </span>
                                           <span class="w-100 referencias overflow-hidden" style="height: 1rem;" >

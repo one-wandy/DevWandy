@@ -122,8 +122,15 @@ class DeleteCustomer(DeleteView, Options):
     
 class CardCustomer(UpdateView, Options):
     model = models.Customer
-    form_class = forms.CustomerForm
-    template_name = "customer/card-customer.html"
+    form_class = forms.CustomerForm 
+    template_name = "customer/card-fycas.html"
+    
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.model.objects.get(id=self.kwargs.get('pk')).company == "ThomFin Group":
+            # Aquí puedes cambiar la plantilla si es necesario
+            self.template_name = "base/dashboard.html"
+        return super().get(request, *args, **kwargs)
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
