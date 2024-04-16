@@ -107,13 +107,16 @@
 
             <div id="clientes" class=" d-none w-100  align-content-center flex-wrap">
                   <span  style="  
-                        font-family: Righteous, sans-serif;
-                        /* color: var(--color-one); */
                         font-optical-sizing: auto;">   
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
                               <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
                             </svg>
-                        Clientes
+                            <strong style=' 
+                              font-family: Righteous, sans-serif !important; 
+                              font-width: 100 !important;
+                            '>             
+                                    Clientes
+                        </strong>
                         </span>
                         <p class="text-black-50 d-none w-100  p-0 m-0 mb-1 " style="font-size: 12px; font-family: Quicksand, sans-serif;">
                               Permite encontrar fácilmente los datos de cualquier cliente.
@@ -154,9 +157,11 @@
 </div>
     <div id="for-c" style="display: flex;" class="w-100  h-auto  flex-wrap  justify-content-center">
       <div class="d-flex justify-content-center mb-5 w-100">
-            <h4 style="" class='no-select'>
+            <span style="
+            font-family: Righteous, sans-serif !important; 
+            " class='no-select'>
                    Clientes  
-            </h4>
+            </span>
       </div>
             {% for c in customer %}
                   <li  class="list-group-item no-select bg-white m-1  bg-opacity-75 p-0  m-0 mb-5  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  ">
