@@ -40,7 +40,7 @@ class Maps(TemplateView, Options):
             nombre_archivo = "Info.docx"
             ruta_carpeta =  os.getcwd() + "\Clientes"
             # self.Send_WhatsApp_Message()
-            # return  self.Excel()
+            return  self.Excel()
             # # Ejemplo de uso
             nombre_contacto = "Juan Perez"
             telefono_contacto = "+1234567890"
@@ -97,7 +97,7 @@ class Maps(TemplateView, Options):
                   # Aplicar formato de fuente a la fila 3
 
 
-                  worksheet.append(["TIPO DE ENTIDAD", "NOMBRE DEL CLIENTE", "APELLIDOS", "CEDULA O RNC", "SEXO", "ESTADO CIVIL", "OCUPACION", "CODIGO DE CLIENTE", "FECHA DE NACIMIENTO", "NACIONALIDAD", "DIRECCION", "SECTOR", "CALLE/NUMERO", "MUNICIPIO", "CIUDAD", "PROVINCIA", "PAIS", "DIR_Referencia", "TELEFONO", 'EMPRESA DONDE TRABAJA', "CARGO", "DIRECCION", "SECTOR", "CALLE/NUMERO", "MUNICIPIO", "CIUDAD", "PROVINCIA", "PAIS", "Dir_Referencia", "TELEFONO", "TELEFONO", "EMPRESA DONDE TRABAJA, 'CARGO", 'DIRECCION', 'SECTOR', 'CALLE/NUMERO', 'MUNICIPIO', "CIUDAD", "PROVINCIA", "Pais", "Dir_Referencia", "SALARIO MENSUAL", "MONEDA SALARIO", "RELACION TIPO", "FECHA APERTURA", "FECHA VENCIMIENTO", "FECHA ULTIMO PAGO", "NUMERO CUENTA", "ESTATUS", "TIPO DE PRESTAMO", "MONEDA", "CREDITO APROBADO", "BALANCE AL CORTE MONTO ADEUDADO", "PAGO MANDATORIO O CUOTA", "MONTO ULTIMO PAGO", "TOTAL DE ATRASO", "TASA DE INTERES", "FORMA DE PAGO", "CANTIDAD DE CUOTA", "ATRASO 1 A 30 DIAS", "ATRASO 31 A 60 DIAS", "ATRASO 61 A 90 DIAS", "ATRASO 91 A 120 DIAS", "ATRASO 121 A 150 DIAS", "ATRASO 151 A 180 DIAS", "ATRASO 181 Dias o MAS "  ])
+                  worksheet.append(["TIPO DE ENTIDAD", "NOMBRE DEL CLIENTE", "APELLIDOS", "CEDULA O RNC", "SEXO", "ESTADO CIVIL", "OCUPACION", "CODIGO DE CLIENTE", "FECHA DE NACIMIENTO", "NACIONALIDAD", "DIRECCION", "SECTOR", "CALLE/NUMERO", "MUNICIPIO", "CIUDAD", "PROVINCIA", "PAIS", "DIR_Referencia", "TELEFONO", "TELEFONO", 'EMPRESA DONDE TRABAJA', "CARGO", "DIRECCION", "SECTOR", "CALLE/NUMERO", "MUNICIPIO", "CIUDAD", "PROVINCIA", "PAIS", "Dir_Referencia",  "EMPRESA DONDE TRABAJA, 'CARGO", 'DIRECCION', 'SECTOR', 'CALLE/NUMERO', 'MUNICIPIO', "CIUDAD", "PROVINCIA", "Pais", "Dir_Referencia", "SALARIO MENSUAL", "MONEDA SALARIO", "RELACION TIPO", "FECHA APERTURA", "FECHA VENCIMIENTO", "FECHA ULTIMO PAGO", "NUMERO CUENTA", "ESTATUS", "TIPO DE PRESTAMO", "MONEDA", "CREDITO APROBADO", "BALANCE AL CORTE MONTO ADEUDADO", "PAGO MANDATORIO O CUOTA", "MONTO ULTIMO PAGO", "TOTAL DE ATRASO", "TASA DE INTERES", "FORMA DE PAGO", "CANTIDAD DE CUOTA", "ATRASO 1 A 30 DIAS", "ATRASO 31 A 60 DIAS", "ATRASO 61 A 90 DIAS", "ATRASO 91 A 120 DIAS", "ATRASO 121 A 150 DIAS", "ATRASO 151 A 180 DIAS", "ATRASO 181 Dias o MAS "  ])
 
                   # Insertar una nueva fila en la fila 1
                   worksheet.insert_rows(1)
@@ -134,12 +134,12 @@ class Maps(TemplateView, Options):
                   worksheet.cell(row=5, column=1).font =  Font(name="Cambria", size=16, bold=True, color="FFFFFF")
                   
          
-                  for col in range(1, 8):  # Iterate from column B to G (1-based indexing)
+                  for col in range(1, 68):  # Iterate from column B to G (1-based indexing)
                         cell = worksheet.cell(row=6, column=col)
                         cell.font = Font(name="Calibri", size=14,  bold=True)
                         
                   for row in data:
-                        worksheet.append([row.type_input, row.name, row.last_name, row.dni, row.sexo, row.estado_civil, row.ocupacion])
+                        worksheet.append([row.type_input, row.name, row.last_name, row.dni, row.sexo, row.estado_civil, row.ocupacion, row.code_customer, row.nacimiento, row.nacionalidad,  row.direccion, row.sector, row.calle_numero, row.municipio,  row.ciudad, row.provincia, row.pais, row.dir_referencia, row.number, row.phone, row.empresa_trabaja, row.cargo, row.direccion_trabajo, row.sector, row.calle_numero_trabajo, row.municipio_trabaja, row.ciudad_trabaja, row.provincia_trabajo, row.pais_trabajo, row.dir_referencia_trabajo, row.salario_m, row.moneda, row.relacion_tipo, row.fecha_apertura, row.fecha_vencimiento, row.fecha_ultimo_pago, row.numeoro_cuenta, row.estatus, row.tipo_prestamo, row.moneda_prestamo, row.credito_aprovado, row.balance_corte, row.monto_adeudado, row.pago_mandatorio_cuota, row.monto_ultimo_pago, row.total_atraso, row.tasa_interes, row.forma_pago, row.cantidad_cuota, row.atraso1_30, row.atraso31_60, row.atraso61_90, row.atraso91_120, row.atraso121_150, row.atraso151_180, row.atraso181_o_mas])
                         
                         
 
