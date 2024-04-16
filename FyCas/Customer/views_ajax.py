@@ -20,3 +20,36 @@ def SearchCustomer(request):
       return JsonResponse(list_cutomers,  safe=False)
 
 
+""""
+from django.shortcuts import render
+from .models import Contacto
+from googleapiclient.discovery import build
+from google.oauth2.service_account import Credentials
+
+def migrar_contactos(request):
+    # Leer contactos de la base de datos
+    contactos = Contacto.objects.all()
+
+    # Transformar datos
+    contactos_google = []
+    for contacto in contactos:
+        contacto_google = {
+            "givenName": contacto.nombre,
+            "familyName": contacto.apellido,
+            "emails": [{"value": contacto.correo_electronico}],
+            "phones": [{"value": contacto.numero_telefono}],
+        }
+        contactos_google.append(contacto_google)
+
+    # Autenticarse con la API de Google Contacts
+    credenciales = Credentials.from_service_account_file('credentials.json')
+    cliente = build('people', 'v1', credentials=credenciales)
+
+    # Crear o actualizar contactos en Google Contacts
+    for contacto_google in contactos_google:
+        persona = cliente.people().resource().create(body=contacto_google).execute()
+        print(f"Contacto creado: {persona.resourceName}")
+
+    return render(request, 'contacto/migracion_exitosa.html')
+
+"""""

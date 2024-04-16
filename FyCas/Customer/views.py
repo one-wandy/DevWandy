@@ -10,6 +10,7 @@ import os
 from datetime import datetime
 
 
+
 class Dashboard(TemplateView, Options):
     template_name = "base/dashboard.html"
     
@@ -55,10 +56,8 @@ class ListCustomer(ListView):
    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['customer'] = self.model.objects.all().order_by('-id')[:20]
-        cu = self.model.objects.all()
-        for c in cu:
-            print(c.credit.all())
+        context['customer'] = self.model.objects.filter(is_active = True).order_by('-id')[:20]
+        # cu = self.model.objects.all()
         return context
     
     
@@ -70,32 +69,28 @@ class UpdateCustomer(UpdateView, Options):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['c'] = self.model.objects.get(id=self.kwargs.get('pk'))
+        context['credit'] = models.Credit.objects.filter(customer__id=self.kwargs.get('pk'))
         return context
     
-    
-    def post(self, request, *args, **kwargs):        
-        c = self.model.objects.get(id=self.kwargs.get('pk'))
-        c.name = request.POST.get("name").title()
-        c.last_name = request.POST.get("last_name").title()
-        c.dni = request.POST.get("dni")
-        c.number = request.POST.get("number")
-        c.address = request.POST.get("address")
-        c.name_r1 = request.POST.get("name_r1")
-        c.number_r1 = request.POST.get("number_r1")
-        c.name_r2 = request.POST.get("name_r1")
-        c.number_r2 = request.POST.get("number_r2")
+    def form_valid(self, form_class):
+        form_class.save()
+        return HttpResponseRedirect(reverse('customer:list-customer')) 
+        # c.last_name = request.POST.get("last_name").title()
+        # c.dni = request.POST.get("dni")
+        # c.number = request.POST.get("number")
+        # c.address = request.POST.get("address")
+        # c.name_r1 = request.POST.get("name_r1")
+        # c.number_r1 = request.POST.get("number_r1")
+        # c.name_r2 = request.POST.get("name_r1")
+        # c.number_r2 = request.POST.get("number_r2")
 
-        c.work_information = request.POST.get("work_information")
-        if request.FILES.get("img1"):
-            c.img1 = request.FILES.get("img1")
-        if request.FILES.get("img2"):
-            c.img2 = request.FILES.get("img2")
+        # c.work_information = request.POST.get("work_information")
+        # if request.FILES.get("img1"):
+        #     c.img1 = request.FILES.get("img1")
+        # if request.FILES.get("img2"):
+        #     c.img2 = request.FILES.get("img2")
             
         
-        c.save()
-        return self.List_Redirect()
-            
-        print(form.errors) 
 
 
 class DetailCustomer(DetailView, Options):
@@ -134,7 +129,6 @@ class CardCustomer(UpdateView, Options):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        
         context['mont'] = self.MontNow(datetime.now().month)
         context['day'] = self.DayNow(datetime.now().day)
         context['day_number'] = datetime.now().day
@@ -162,7 +156,6 @@ class NotaryCustomer(UpdateView, Options):
     model = models.Customer
     form_class = forms.CustomerForm
     template_name = "customer/notary-customer.html"
-    
     
     # def get(self, request, *args, **kwargs):
     #     name = "Contrato " + str(datetime.today().date())
@@ -276,3 +269,14 @@ class ListCredit(ListView, Options):
             return context
         
         
+
+# Data Credito del Cliente 
+class DataCredit(UpdateView):
+    model = models.Customer
+    form_class = forms.CustomerForm
+    template_name = "customer/data-credit-customer.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['c'] = self.model.objects.get(id=self.kwargs.get('pk'))
+        return context

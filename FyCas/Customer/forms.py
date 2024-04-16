@@ -12,8 +12,8 @@ class CustomerForm(forms.ModelForm):
       # }
         for field_name, field in self.fields.items():
             field.widget.attrs.update({'class': 'form-control'})
-            
         
+   
     class Meta:
       model = models.Customer
       fields = ['name', 'last_name', 'number', 'address',  'work_information',  'dni',  "img2", "img1", "name_r1", "name_r2", "number_r1", "number_r2",
@@ -73,10 +73,14 @@ class CustomerForm(forms.ModelForm):
     'atraso91_120',
     'atraso121_150',
     'atraso151_180',
-    'atraso181_o_mas'
+    'atraso181_o_mas',
+    
+    'company',
+
     
     ]
-
+      
+ 
 
       #       'name': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Nombre Completo"}),
       #       'last_name': forms.TextInput(attrs={'class': 'form-control', "placeholder": "Apellidos" }),

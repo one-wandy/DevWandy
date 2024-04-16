@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Customer(models.Model):
+    is_active = models.BooleanField(default=True)
     company = models.CharField(max_length=255, default='Grupo Fycas', blank=True )
     name = models.CharField(blank=True, max_length=255, )#Nombre
     last_name = models.CharField(blank=True, max_length=255)#Apellido

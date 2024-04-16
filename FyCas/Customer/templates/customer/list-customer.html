@@ -154,12 +154,12 @@
 </div>
     <div id="for-c" style="display: flex;" class="w-100  h-auto  flex-wrap  justify-content-center">
       <div class="d-flex justify-content-center mb-5 w-100">
-            <h4 style="">
+            <h4 style="" class='no-select'>
                    Clientes  
             </h4>
       </div>
             {% for c in customer %}
-                  <li  class="list-group-item bg-white m-1  bg-opacity-75 p-0  m-0 mb-5  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  ">
+                  <li  class="list-group-item no-select bg-white m-1  bg-opacity-75 p-0  m-0 mb-5  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  ">
                         <div class="d-flex  " style="font-size: 14px !important;  ">
                               <div class="d-flex flex-wrap ">
                                     <div class="w-100 d-flex">
@@ -416,6 +416,13 @@ searching_config.addEventListener('blur', function() {
             });
         }
     });
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') { // Detecta la tecla ESC
+          window.location.href = '/'; // Cambia la URL a la que deseas redirigir
+      }
+  });
+  
 </script>
 </script>
 {% endblock  %}
