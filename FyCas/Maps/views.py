@@ -20,14 +20,14 @@ from oauth2client.service_account import ServiceAccountCredentials
 from allauth.socialaccount.models import SocialAccount
 from google.oauth2.credentials import Credentials
 
-      
+import shutil
+
 from google.oauth2 import service_account
 
 
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
-
 
 # Suponiendo que ya tienes un objeto 'credentials' válido
 
@@ -40,7 +40,9 @@ class Maps(TemplateView, Options):
             nombre_archivo = "Info.docx"
             ruta_carpeta =  os.getcwd() + "\Clientes"
             # self.Send_WhatsApp_Message()
-            return  self.Excel()
+            load_excel = 'Customer/Archivos/DataCredit.xlsx'
+
+            return  self.LoadExcel(load_excel)
             # # Ejemplo de uso
             nombre_contacto = "Juan Perez"
             telefono_contacto = "+1234567890"
@@ -67,6 +69,55 @@ class Maps(TemplateView, Options):
             return True
 
 
+      def LoadExcel(self, existing_excel_path):
+            # Obtener la fecha y hora actual
+            date = datetime.now()
+            formatted_date = date.strftime("%Y-%m-%d_%H-%M-%S")
+
+            # Crear una copia del archivo existente
+            new_excel_path = f"Copia{formatted_date}.xlsx"
+            shutil.copy(existing_excel_path, new_excel_path)
+
+            # Cargar la copia del archivo Excel existente.
+            workbook = load_workbook(new_excel_path)
+
+            # Seleccionar la primera hoja del libro de trabajo.
+            worksheet = workbook.active
+
+            # Obtener los datos de Django.
+            data = models.Customer.objects.all()
+            print(data)
+
+            # Obtener la última fila ocupada en la hoja de cálculo.
+            last_row = worksheet.max_row
+
+            # Iterar sobre los datos y escribirlos en la copia del archivo Excel a partir de la última fila.
+            for row_data in data:
+                  worksheet.append([
+                        row_data.type_input, row_data.name, row_data.last_name, row_data.dni, row_data.sexo, row_data.estado_civil,
+                        row_data.ocupacion, row_data.code_customer, row_data.nacimiento, row_data.nacionalidad, row_data.direccion,
+                        row_data.sector, row_data.calle_numero, row_data.municipio, row_data.ciudad, row_data.provincia, row_data.pais,
+                        row_data.dir_referencia, row_data.number, row_data.phone, row_data.empresa_trabaja, row_data.cargo,
+                        row_data.direccion_trabajo, row_data.sector, row_data.calle_numero_trabajo, row_data.municipio_trabaja,
+                        row_data.ciudad_trabaja, row_data.provincia_trabajo, row_data.pais_trabajo, row_data.dir_referencia_trabajo,
+                        row_data.salario_m, row_data.moneda, row_data.relacion_tipo, row_data.fecha_apertura, row_data.fecha_vencimiento,
+                        row_data.fecha_ultimo_pago, row_data.numeoro_cuenta, row_data.estatus, row_data.tipo_prestamo, row_data.moneda_prestamo,
+                        row_data.credito_aprovado, row_data.balance_corte, row_data.monto_adeudado, row_data.pago_mandatorio_cuota,
+                        row_data.monto_ultimo_pago, row_data.total_atraso, row_data.tasa_interes, row_data.forma_pago, row_data.cantidad_cuota,
+                        row_data.atraso1_30, row_data.atraso31_60, row_data.atraso61_90, row_data.atraso91_120, row_data.atraso121_150,
+                        row_data.atraso151_180, row_data.atraso181_o_mas
+                  ])
+
+            # Guardar los cambios en la copia del archivo Excel.
+            workbook.save(new_excel_path)
+
+            # Preparar la respuesta HTTP con la copia del archivo Excel para descargar.
+            response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+            response['Content-Disposition'] = f'attachment; filename=DataCredit{formatted_date}.xlsx'
+            with open(new_excel_path, 'rb') as file:
+                  response.write(file.read())
+
+            return response
 
       def Excel(self):
             # Consultar el modelo de Django para obtener los datos.
