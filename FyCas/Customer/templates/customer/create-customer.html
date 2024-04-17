@@ -10,28 +10,40 @@
       }
 
 </style>
-      <div class="p-4 d-flex  flex-wrap mt-1 mb-5">
-            <div class="d-flex justify-content-end w-100">
-                  <div class="d-flex  flex-wrap w-100 justify-content-end">
-                        <strong style="  font-family: Quicksand, sans-serif;
-                        color: var(--color-one);
-                        font-optical-sizing: auto;">                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-diamond-half m-0 p-0" viewBox="0 0 16 16">
-                         <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098zM8 .989c.127 0 .253.049.35.145l6.516 6.516a.495.495 0 0 1 0 .7L8.35 14.866a.5.5 0 0 1-.35.145z"/>
-                         </svg>
-                        GRUPO FYCAS</strong>
+<section  class="position-relative w-100 h-100">
+
+      <div class="w-100 container  justify-content-center d-flex align-content-center justify-content-between" style="min-height: 2rem;">
+            <span class="span-animation" style="min-width: 6rem; min-height:2rem; background-color: rgba(255, 133, 133, 0.473);">s</span>
+            <span class="span-animation" style="min-width: 2rem; min-height:2rem; background-color: rgba(222, 137, 255, 0.438);">s</span>
+            <span class="span-animation" style="min-width: 1rem; min-height:1.3rem; background-color: rgba(128, 179, 255, 0.404);">s</span>
+            <span class="span-animation" style="min-width: 10rem; min-height:1.3rem; background-color: rgba(128, 255, 244, 0.445);">s</span>
+            <span class="span-animation mt-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(255, 128, 177, 0.404);">s</span>
+            <span class="span-animation mb-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(153, 255, 128, 0.349);">s</span>
+      </div>
+      <section class="section rounded-0 p-2 m-2   ms-1 me-1 mt-0  position-absolute top-0 bg-transparent blur" >
+            <div class="p-4 d-flex  flex-wrap mt-1 mb-5">
+                  <div class="d-flex justify-content-end w-100">
+                        <div class="d-flex  flex-wrap mb-3 w-100 justify-content-center">
+                              <strong style="  font-family: Quicksand, sans-serif;
+                              color: black;
+                              font-optical-sizing: auto;">              
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-diamond-half m-0 p-0" viewBox="0 0 16 16">
+                               <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098zM8 .989c.127 0 .253.049.35.145l6.516 6.516a.495.495 0 0 1 0 .7L8.35 14.866a.5.5 0 0 1-.35.145z"/>
+                               </svg>
+                              GRUPO FYCAS
+                        </strong>
+                        </div>
+                  </div>
+                  <div class="w-100 d-flex flex-wrap align-content-center justify-content-center  flex-wrap">
+                        <h3 class="p-0 m-0">
+                              Debes completar todos los campos.
+                        </h3>
+                        <p class="text-black-50 w-100 text-center">
+                              Este formulario solo se completará una vez
+                        </p>
                   </div>
             </div>
-            <div class="w-100 d-flex flex-wrap align-content-center  flex-wrap">
-                  <h3 class="p-0 m-0">
-                        Para continuar, debes completar todos los campos.
-                  </h3>
-                  <p class="text-black-50 w-100">
-                        Asegúrate de que toda la información que proporciones sea precisa y actual.
-                  </p>
-            </div>
-      </div>
 
-<section class="section p-2 m-2 mt-4  ms-1 me-1 " >
       <form action="" method="post" enctype='multipart/form-data'>
                   {% csrf_token %}
             <div class="m-1">
@@ -59,10 +71,21 @@
                         {{form.number}}
                         <label for="id_number">Numero</label>
                   </div>
-
                   <div class="form-floating mb-3 ">
-                        {{form.address}}
-                        <label for="id_address">Direccion de recidencia</label>
+                        {{form.calle_numero}}
+                        <label for="id_address">Calle/Numero</label>
+                  </div>
+                  <div class="form-floating mb-3 ">
+                        {{form.sector}}
+                        <label for="id_address">sector</label>
+                  </div>
+                  <div class="form-floating mb-3 ">
+                        {{form.ciudad}}
+                        <label for="id_address">Ciudad</label>
+                  </div>
+                  <div class="form-floating mb-3 ">
+                        {{form.municipio}}
+                        <label for="id_address">Municipio</label>
                   </div>
                   <div class="w-100 mt-4 ">
                         <h6>
@@ -111,21 +134,22 @@
                                                 ~Lugar de Trabajo, Cargo o (Funcion), Ingresos Mensuales y Numero de Contacto de la Empresa.
                                           </p>
                                     </div>
-                                    <div class="form-floating mb-3 " >
-                                          {{form.work_information}}
-                                          <label for="id_work_information">Información Laboral</label>
-                                    </div>
+                                    <!-- <div class="form-floating mb-3 " >
+                                          {{form.empresa_trabaja}}
+                                          <label for="id_work_information">Empresa donde  Trabaja</label>
+                                    </div> -->
                                     <div class="form-floating mb-3 " >
                                           {{form.empresa_trabaja}}
-                                          <label for="id_work_information">Luegar de Trabajo</label>
+                                          <label for="id_work_information">
+                                                Empresa donde  Trabaja</label>
                                     </div>
                                     <div class="form-floating mb-3 " >
                                           {{form.cargo}}
                                           <label for="id_work_information">Cargo o (Funcion)</label>
                                     </div>
-                                    <div class="form-floating mb-3 " >
+                                    <div class="form-floating mb-3  " >
                                           {{form.salario_m}}
-                                          <label for="id_work_information">Ingresos Mensuales</label>
+                                          <label for="id_work_information">Ingresos Mensuales RD$</label>
                                     </div>
                                     <div class="form-floating mb-3 " >
                                           {{form.phone}}
@@ -184,6 +208,8 @@
                                     </svg>
                               </span> Si, Acepto 
                         </button>
+
+
                   </div>
                 
                   <div class="w-100 d-flex justify-content-center mt-3 mb-4">
@@ -218,6 +244,10 @@
             </div>
       </form>
       </section>
+
+</section>
+
+
       <script>
 
   // Obtener el input y la div de la imagen
@@ -324,6 +354,15 @@ function NumbersFomat(value) {
     var N = number.replace(/(\d{3})(\d{3})(\d{1})/, '$1-$2-$3');
     return N;
   }
+
+  
+      document.getElementById('id_phone').addEventListener('input', function(e) {
+            let n = document.getElementById('id_phone')
+            n.value = n.value.slice(0, 12);
+            e.target.value = NumbersFomat(e.target.value);
+      });
+  
+
   // Agrega un evento al campo de entrada
 document.getElementById('id_number').addEventListener('input', function(e) {
             let n = document.getElementById('id_number')
@@ -343,5 +382,13 @@ document.getElementById('id_number_r2').addEventListener('input', function(e) {
             e.target.value = NumbersFomat(e.target.value);
             
   });
+
+  document.getElementById('id_phone').addEventListener('input', function(e) {
+            let n = document.getElementById('id_phone')
+            n.value = n.value.slice(0, 12);
+            e.target.value = NumbersFomat(e.target.value);
+            
+  });
+
 </script>
 {% endblock  %}
