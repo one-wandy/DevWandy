@@ -69,6 +69,7 @@ class Maps(TemplateView, Options):
             return True
 
 
+
       def LoadExcel(self, existing_excel_path):
             # Obtener la fecha y hora actual
             date = datetime.now()
@@ -84,29 +85,72 @@ class Maps(TemplateView, Options):
             # Seleccionar la primera hoja del libro de trabajo.
             worksheet = workbook.active
 
+            # Definir la fila inicial para escribir los datos (fila 7 en este caso)
+            start_row = 7
+
             # Obtener los datos de Django.
             data = models.Customer.objects.all()
             print(data)
 
-            # Obtener la última fila ocupada en la hoja de cálculo.
-            last_row = worksheet.max_row
+            # Iterar sobre los datos y escribirlos en la copia del archivo Excel a partir de la fila inicial.
+            for index, row_data in enumerate(data, start=start_row):
+                  worksheet.cell(row=index, column=1).value = row_data.type_input
+                  worksheet.cell(row=index, column=2).value = row_data.name
+                  worksheet.cell(row=index, column=3).value = row_data.last_name
+                  worksheet.cell(row=index, column=4).value = row_data.dni
+                  worksheet.cell(row=index, column=5).value = row_data.sexo
+                  worksheet.cell(row=index, column=6).value = row_data.estado_civil
+                  worksheet.cell(row=index, column=7).value = row_data.ocupacion
+                  worksheet.cell(row=index, column=8).value = row_data.code_customer
+                  worksheet.cell(row=index, column=9).value = row_data.nacimiento
+                  worksheet.cell(row=index, column=10).value = row_data.nacionalidad
+                  worksheet.cell(row=index, column=11).value = row_data.direccion
+                  worksheet.cell(row=index, column=12).value = row_data.sector
+                  worksheet.cell(row=index, column=13).value = row_data.calle_numero
+                  worksheet.cell(row=index, column=14).value = row_data.municipio
+                  worksheet.cell(row=index, column=15).value = row_data.ciudad
+                  worksheet.cell(row=index, column=16).value = row_data.provincia
+                  worksheet.cell(row=index, column=17).value = row_data.pais
+                  worksheet.cell(row=index, column=18).value = row_data.dir_referencia
+                  worksheet.cell(row=index, column=19).value = row_data.number
+                  worksheet.cell(row=index, column=20).value = row_data.phone
+                  worksheet.cell(row=index, column=21).value = row_data.empresa_trabaja
+                  worksheet.cell(row=index, column=22).value = row_data.cargo
+                  worksheet.cell(row=index, column=23).value = row_data.direccion_trabajo
+                  worksheet.cell(row=index, column=24).value = row_data.sector
+                  worksheet.cell(row=index, column=25).value = row_data.calle_numero_trabajo
+                  worksheet.cell(row=index, column=26).value = row_data.municipio_trabaja
+                  worksheet.cell(row=index, column=27).value = row_data.ciudad_trabaja
+                  worksheet.cell(row=index, column=28).value = row_data.provincia_trabajo
+                  worksheet.cell(row=index, column=29).value = row_data.pais_trabajo
+                  worksheet.cell(row=index, column=30).value = row_data.dir_referencia_trabajo
+                  worksheet.cell(row=index, column=31).value = row_data.salario_m
+                  worksheet.cell(row=index, column=32).value = row_data.moneda
+                  worksheet.cell(row=index, column=33).value = row_data.relacion_tipo
+                  worksheet.cell(row=index, column=34).value = row_data.fecha_apertura
+                  worksheet.cell(row=index, column=35).value = row_data.fecha_vencimiento
+                  worksheet.cell(row=index, column=36).value = row_data.fecha_ultimo_pago
+                  worksheet.cell(row=index, column=37).value = row_data.numeoro_cuenta
+                  worksheet.cell(row=index, column=38).value = row_data.estatus
+                  worksheet.cell(row=index, column=39).value = row_data.tipo_prestamo
+                  worksheet.cell(row=index, column=40).value = row_data.moneda_prestamo
+                  worksheet.cell(row=index, column=41).value = row_data.credito_aprovado
+                  worksheet.cell(row=index, column=42).value = row_data.balance_corte
+                  worksheet.cell(row=index, column=43).value = row_data.monto_adeudado
+                  worksheet.cell(row=index, column=44).value = row_data.pago_mandatorio_cuota
+                  worksheet.cell(row=index, column=45).value = row_data.monto_ultimo_pago
+                  worksheet.cell(row=index, column=46).value = row_data.total_atraso
+                  worksheet.cell(row=index, column=47).value = row_data.tasa_interes
+                  worksheet.cell(row=index, column=48).value = row_data.forma_pago
+                  worksheet.cell(row=index, column=49).value = row_data.cantidad_cuota
+                  worksheet.cell(row=index, column=50).value = row_data.atraso1_30
+                  worksheet.cell(row=index, column=51).value = row_data.atraso31_60
+                  worksheet.cell(row=index, column=52).value = row_data.atraso61_90
+                  worksheet.cell(row=index, column=53).value = row_data.atraso91_120
+                  worksheet.cell(row=index, column=54).value = row_data.atraso121_150
+                  worksheet.cell(row=index, column=55).value = row_data.atraso151_180
+                  worksheet.cell(row=index, column=56).value = row_data.atraso181_o_mas
 
-            # Iterar sobre los datos y escribirlos en la copia del archivo Excel a partir de la última fila.
-            for row_data in data:
-                  worksheet.append([
-                        row_data.type_input, row_data.name, row_data.last_name, row_data.dni, row_data.sexo, row_data.estado_civil,
-                        row_data.ocupacion, row_data.code_customer, row_data.nacimiento, row_data.nacionalidad, row_data.direccion,
-                        row_data.sector, row_data.calle_numero, row_data.municipio, row_data.ciudad, row_data.provincia, row_data.pais,
-                        row_data.dir_referencia, row_data.number, row_data.phone, row_data.empresa_trabaja, row_data.cargo,
-                        row_data.direccion_trabajo, row_data.sector, row_data.calle_numero_trabajo, row_data.municipio_trabaja,
-                        row_data.ciudad_trabaja, row_data.provincia_trabajo, row_data.pais_trabajo, row_data.dir_referencia_trabajo,
-                        row_data.salario_m, row_data.moneda, row_data.relacion_tipo, row_data.fecha_apertura, row_data.fecha_vencimiento,
-                        row_data.fecha_ultimo_pago, row_data.numeoro_cuenta, row_data.estatus, row_data.tipo_prestamo, row_data.moneda_prestamo,
-                        row_data.credito_aprovado, row_data.balance_corte, row_data.monto_adeudado, row_data.pago_mandatorio_cuota,
-                        row_data.monto_ultimo_pago, row_data.total_atraso, row_data.tasa_interes, row_data.forma_pago, row_data.cantidad_cuota,
-                        row_data.atraso1_30, row_data.atraso31_60, row_data.atraso61_90, row_data.atraso91_120, row_data.atraso121_150,
-                        row_data.atraso151_180, row_data.atraso181_o_mas
-                  ])
 
             # Guardar los cambios en la copia del archivo Excel.
             workbook.save(new_excel_path)

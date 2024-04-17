@@ -15,6 +15,8 @@ class Dashboard(TemplateView, Options):
     template_name = "base/dashboard.html"
     
     
+    
+    
 class AddCustomer(CreateView, Options):
     model = models.Customer
     form_class = forms.CustomerForm

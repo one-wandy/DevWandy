@@ -4,9 +4,9 @@
 <style>
       .grafico {
         display: flex;
-        justify-content: space-between;
+        justify-content:space-between;
         align-items: flex-end;
-        height: 200px; /* Altura del gráfico */
+        height: 300px; /* Altura del gráfico */
         padding: 10px;
         background-color: #f8f9fa;
         border-radius: 8px;
@@ -30,26 +30,27 @@
       .martes {background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%); height: 80%; } /* Ejemplo de 80% para martes */
       .miercoles { background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%); height: 75%; } /* Ejemplo de 75% para miércoles */
       .jueves { background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); height: 50%; } /* Ejemplo de 50% para jueves */
-      .viernes { background-image: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);; height: 20%; } /* Ejemplo de 90% para viernes */
+      .viernes { background-image: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);; height: 30%; } /* Ejemplo de 90% para viernes */
       .lunes, .martes, .miercoles, .jueves, .viernes
       {
-            border-radius: 1rem;
-            width: 5rem;
-            margin-left: 6px;
+      padding: 8px;
+      border-radius: 1rem;
+      margin-left: 6px;
       }
       .grafico-rosquilla {
-    display: block;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background-image: conic-gradient(
-      #ff6384 0% 20%, /* Lunes */
-      #36a2eb 20% 40%, /* Martes */
-      #fffc56 40% 60%, /* Miércoles */
-      #4bc0c0 60% 80%, /* Jueves */
-      #9966ff 80% 100% /* Viernes */
-    );
-    position: relative;
+      display: block;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-image: conic-gradient(
+            #ff6384 0% 20%, /* Lunes */
+            #36a2eb 20% 40%, /* Martes */
+            #fffc56 40% 60%, /* Miércoles */
+            #4bc0c0 60% 80%, /* Jueves */
+            #9966ff 80% 100% /* Viernes */
+      
+            );
+      position: relative;
   }
   .centro {
     position: absolute;
@@ -60,6 +61,29 @@
     top: 50px;
     left: 50px;
   }
+
+  .circle {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color: #fff; /* Color de fondo del circle */
+}
+
+.circle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 4px solid red;
+  border-radius: 50%;
+  border-color: red rgb(255, 199, 199) red transparent; /* Tres lados rojos, uno transparente */
+  transform: rotate(-45deg); /* Ajusta este valor para cambiar el ángulo del borde */
+}
+
+
+
     </style>
 <div class="container mt-2">
       <strong style="                                         
@@ -124,8 +148,8 @@
 
       </section>
 
-      <div class="grafico-rosquilla">
-            <div class="centro"></div>
+      <div class="">
+            <div class="circle"></div>
           </div>
 
       <div class="position-fixed bottom-0 d-flex">
@@ -137,13 +161,48 @@
                         <span class="w-100">Cliente</span>
                   </button>
             </a>
-            <button style="border-radius: 1rem;" class="border-0 shadow-none d-flex justify-content-center flex-wrap">
-                  <svg xmlns="http://www.w3.org/2000/svg" style="" width="23" height="23" fill="currentColor" class="bi bi-file-earmark-spreadsheet-fill" viewBox="0 0 16 16">
-                        <path d="M6 12v-2h3v2z"/>
-                        <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M3 9h10v1h-3v2h3v1h-3v2H9v-2H6v2H5v-2H3v-1h2v-2H3z"/>
-                      </svg>                 
-                       <span class="w-100">DataCredito</span>
-            </button>
+
+            <a href="{% url "maps:maps-customer" %}">
+
+                  <button style="border-radius: 1rem;" onclick="DataCredit()" class="border-0 shadow-none d-flex justify-content-center flex-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" style="" width="23" height="23" fill="currentColor" class="bi bi-file-earmark-spreadsheet-fill" viewBox="0 0 16 16">
+                              <path d="M6 12v-2h3v2z"/>
+                              <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M3 9h10v1h-3v2h3v1h-3v2H9v-2H6v2H5v-2H3v-1h2v-2H3z"/>
+                        </svg>                 
+                        <span class="w-100">DataCredito</span>
+                  </button>
+            </a>
       </div>
 </div>
+
+<script src="
+https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js
+"></script>
+<script>
+
+      let DataCredit = () => {
+
+            // Crear una nueva instancia de XMLHttpRequest
+            var xhr = new XMLHttpRequest();
+            
+            // Configurar la petición GET a la URL deseada
+            xhr.open('GET', 'maps/customer', true);
+            
+            // Definir la función que manejará la respuesta
+            xhr.onload = function() {
+                  // Verificar si la petición fue exitosa
+                  if (xhr.status >= 200 && xhr.status < 300) {
+    // Procesar la respuesta
+    console.log('Respuesta recibida:');
+} else {
+      // Manejar errores
+      console.error('La petición ha fallado:', );
+}
+};
+
+// Enviar la petición
+xhr.send();
+
+}
+</script>
 {% endblock  %}
