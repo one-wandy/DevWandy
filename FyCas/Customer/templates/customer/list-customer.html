@@ -204,11 +204,23 @@
 
 </style>
 
+<div class="w-100 container  justify-content-center d-flex align-content-center justify-content-between" style="min-height: 2rem;">
+      <span class="span-animation" style="min-width: 6rem; min-height:2rem; background-color: rgba(255, 133, 133, 0.473);">s</span>
+      <span class="span-animation" style="min-width: 2rem; min-height:2rem; background-color: rgba(222, 137, 255, 0.438);">s</span>
+      <span class="span-animation" style="min-width: 1rem; min-height:1.3rem; background-color: rgba(128, 179, 255, 0.404);">s</span>
+      <span class="span-animation" style="min-width: 10rem; min-height:1.3rem; background-color: rgba(128, 255, 244, 0.445);">s</span>
+      <span class="span-animation mt-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(255, 128, 177, 0.404);">s</span>
+      <span class="span-animation mb-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(153, 255, 128, 0.349);">s</span>
+</div>
 
-<section id="section"  class="section p-2  align-content-center  d-flex flex-wrap  justify-content-evenly  overflow-hidden overflow-scroll" >
-
-      <div class="d-flex   flex-wrap blur bg-white bg-opacity-75  justify-content-end position-fixed w-100 " style="z-index: 4; bottom: 0;  
+<div class="d-flex   flex-wrap blur bg-white bg-opacity-75  justify-content-end position-fixed w-100 " style="z-index: 4; bottom: 0;  
        border: 1px rgb(228, 228, 228)  solid; border-top: 0; border-left: 0; border-right: 0;" >
+       
+      <div id="config-list" class=" h-100  d-flex flex-wrap " 
+      style="justify-content: center;
+      /* Alinea horizontalmente al centro */">
+      
+</div>
 
             <div id="clientes" class=" d-none w-100  align-content-center flex-wrap">
                   <span  style="  
@@ -248,31 +260,23 @@
           </div>
       </div>
       
-      <div id="config-list" class=" h-100  position-absolute  d-flex flex-wrap " 
-      style="justify-content: center;
-      /* Alinea horizontalmente al centro */
-      align-content: flex-end; bottom: 4rem;">
       
-</div>
+<section id="section"  class="section p-2 bg-transparent blur  align-content-center  position-absolute top-0 d-flex flex-wrap  justify-content-evenly  overflow-hidden overflow-scroll" >
+
 <div style="display: none;" class=" w-100 justify-content-center vh-100 align-content-center flex-wrap  " id="text-c">
       <h5>
             Ups! "<span id="user-no"></span>" no encontrado
       </h5>
 
 </div>
-    <div id="for-c" style="display: flex;" class="w-100  h-auto  flex-wrap  justify-content-center">
+    <div id="for-c" style="display: flex
+    ;" class="w-100  h-auto  flex-wrap  justify-content-center">
       <div class="d-flex flex-wrap justify-content-center mb-5 w-100">
             <span style="font-family: Righteous, sans-serif !important; 
             " class='no-select'>
                    Clientes  
                   </span>
-                  <div class="w-100 justify-content-center d-flex">
-                        <div class="three-body">
-                              <div class="three-body__dot"></div>
-                              <div class="three-body__dot"></div>
-                              <div class="three-body__dot"></div>
-                        </div>
-                  </div>
+
       </div>
             {% for c in customer %}
                   <li  class="list-group-item no-select bg-white m-1  bg-opacity-75 p-0  m-0 mb-5  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  ">
@@ -373,15 +377,6 @@
             {% endfor %}
       </div>
 </section>
-
-<div class="w-100  position-fixed bottom-0  justify-content-center d-flex align-content-center justify-content-between" style="min-height: 2rem;">
-      <span class="span-animation" style="min-width: 6rem; min-height:2rem; background-color: rgba(255, 133, 133, 0.473);">s</span>
-      <span class="span-animation" style="min-width: 2rem; min-height:2rem; background-color: rgba(222, 137, 255, 0.438);">s</span>
-      <span class="span-animation" style="min-width: 1rem; min-height:1.3rem; background-color: rgba(128, 179, 255, 0.404);">s</span>
-      <span class="span-animation" style="min-width: 10rem; min-height:1.3rem; background-color: rgba(128, 255, 244, 0.445);">s</span>
-      <span class="span-animation mt-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(255, 128, 177, 0.404);">s</span>
-      <span class="span-animation mb-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(153, 255, 128, 0.349);">s</span>
-</div>
     
 <script>
       let searching_config = document.getElementById('searching-config');
@@ -396,7 +391,7 @@
 
 searching_config.addEventListener('focus', function() {
       searching_config.style.width = '100%'
-      document.getElementById('for-c').style.display = 'none'
+      document.getElementById('for-c').style.display = 'block'
       document.getElementById('agregar').style.display = 'none'
       document.getElementById('clientes').style.display = 'none';
 
