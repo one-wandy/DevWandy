@@ -519,13 +519,6 @@ function NumbersFomat(value) {
     return N;
   }
 
-  function CantidadFormat(value) {
-    // Elimina todos los caracteres no numéricos
-    var number = value.replace(/\D/g, '');
-    // Agrega guiones después de los primeros 3 dígitos y los siguientes 7 dígitos
-    var N = number.replace(/(\d{3})(\d{3})(\d{1})/, '$1-$2-$3');
-    return N;
-  }
   
       document.getElementById('id_phone').addEventListener('input', function(e) {
             let n = document.getElementById('id_phone')
@@ -533,12 +526,7 @@ function NumbersFomat(value) {
             e.target.value = NumbersFomat(e.target.value);
       });
   
-      document.getElementById('salario_m').addEventListener('input', function(e) {
-            let n = document.getElementById('salario_m')
-            n.value = n.value.slice(0, 12);
-            e.target.value = CantidadFormat(e.target.value);
-      });
-  
+
 
 
   // Agrega un evento al campo de entrada
