@@ -42,7 +42,7 @@ class Maps(TemplateView, Options):
             # self.Send_WhatsApp_Message()
             load_excel = 'Customer/Archivos/DataCredit.xlsx'
 
-            return  self.LoadExcel(load_excel)
+            # return  self.LoadExcel(load_excel)
             # # Ejemplo de uso
             nombre_contacto = "Juan Perez"
             telefono_contacto = "+1234567890"

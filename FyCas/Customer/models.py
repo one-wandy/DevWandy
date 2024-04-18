@@ -3,6 +3,20 @@ from django.db import models
 # Create your models here.
 
 class Customer(models.Model):
+    # Para el tema de las solicitudes, cuando el user ingresa por primera vez el estado permanece false durante los proximos 7 dias, sera descartado y eliminado de la base de datos ya que su aprobacion no fue verificada por lo tanto no cambio a " True " pero se guardada su DNI en una base de datos adicional mas adelante p
+    aprobado = models.BooleanField(default=False)
+    
+    # Datos Opcionales
+    vehiculo = models.BooleanField(default=False)
+    casa = models.BooleanField(default=False)
+    tierra = models.BooleanField(default=False)
+    
+    # Preguntas 
+    familiar_en_fycas = models.BooleanField(default=False)
+    fue_recomendado = models.BooleanField(default=False)
+    
+    
+
     is_active = models.BooleanField(default=True)
     company = models.CharField(max_length=255, default='Grupo Fycas', blank=True )
     name = models.CharField(blank=True, max_length=255, )#Nombre

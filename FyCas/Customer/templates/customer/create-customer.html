@@ -8,9 +8,18 @@
       #id_name_r1, #id_name_r2 {
             margin: 0 !important;
       }
+      @media (max-width: 730px){
+            input{
+                  min-width: 100% !important;
+            }
+            .form-floating {
+                  width: 100% !important;
+            }
+      }
+
 
 </style>
-<section  class="position-relative w-100 h-100">
+<section  class="position-relative   container-fluid ">
 
       <div class="w-100 container  justify-content-center d-flex align-content-center justify-content-between" style="min-height: 2rem;">
             <span class="span-animation" style="min-width: 6rem; min-height:2rem; background-color: rgba(255, 133, 133, 0.473);">s</span>
@@ -20,9 +29,10 @@
             <span class="span-animation mt-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(255, 128, 177, 0.404);">s</span>
             <span class="span-animation mb-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(153, 255, 128, 0.349);">s</span>
       </div>
-      <section class="section rounded-0 p-2 m-2   ms-1 me-1 mt-0  position-absolute top-0 bg-transparent blur" >
-            <div class="p-4 d-flex  flex-wrap mt-1 mb-5">
-                  <div class="d-flex justify-content-end w-100">
+
+      <section class="section rounded-0 d-flex flex-wrap justify-content-center position-fixed top-0 overflow-scroll p-1 end-0 w-100  vh-100  mt-0  bg-transparent blur" >
+            <div class="p-4 d-flex  flex-wrap  mb-5">
+                  <div class="d-flex justify-content-center w-100">
                         <div class="d-flex  flex-wrap mb-3 w-100 justify-content-center">
                               <strong style="  font-family: Quicksand, sans-serif;
                               color: black;
@@ -35,16 +45,16 @@
                         </div>
                   </div>
                   <div class="w-100 d-flex flex-wrap align-content-center justify-content-center  flex-wrap">
-                        <h3 class="p-0 m-0">
-                              Debes completar todos los campos.
-                        </h3>
+                        <h4 class="p-0 m-0">
+                              Debes completar todos los campos
+                        </h4>
                         <p class="text-black-50 w-100 text-center">
                               Este formulario solo se completará una vez
                         </p>
                   </div>
             </div>
 
-      <form action="" method="post" enctype='multipart/form-data'>
+      <form action=""  method="post" enctype='multipart/form-data'>
                   {% csrf_token %}
             <div class="m-1">
                 <h6 class=" d-flex">
@@ -197,20 +207,67 @@
                               </div>
                         </div>
                   </section>
+                  <h6 class="p-0  mt-5">
+                        Opcionales
+                  </h6>
+                  
+                  <section class="w-100 d-flex flex-wrap justify-content-around">
+                        <p class="text-black-50 m-0 w-100 ms-2">
+                              ~Cabe destacar que esta información no afecta la decisión de aprobación de su préstamo.
+                        </p>
+                        <div class="form-check   mt-2 " >
+                              <label for="id_vehiculo"> ¿Posee usted un vehículo?</label>
+                              {{form.vehiculo}}
+                        </div>
+                        <div class="form-check mt-2  mb-3 " >
+                              <label for="id_tierra">¿Posee usted un terreno?</label>
+                              {{form.tierra}}
+                        </div>
+                        <div class="form-check mt-2  mb-3 " >
+                              <label for="id_casa"> ¿Posee usted una casa de su propiedad?</label>
+                              {{form.casa}}
+                        </div>
+
+                        
+                  </section>
                   <div class="container">
                   </div>
-                  <div style='display: none;'  id='btn-add' class=" w-100  pt-4 justify-content-center">
-                        <label style="cursor: pointer; " class=" d-flex flex-wrap flex-wrap align-content-center justify-content-center " onclick="Acept()"><span style=" font-family: Righteous, sans-serif;">Cancelar</span></label>
-                        <button class='border-0 d-flex align-content-center justify-content-center text-primary bg-white border-1'>
-                              <span id="acep-yes"   style='display: none; '>
+                 
+                  <div style='display: none;'  id='btn-add' class=" w-100  pt-4 justify-content-center flex-wrap">
+                        <button class='border-0 d-flex d-none justify-content-center text-primary bg-white border-1'>
+                              <span id="acep-yes"   class="d-none" 
+                                    style='display: none; '>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill text-primary" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5m8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
                                     </svg>
-                              </span> Si, Acepto 
-                        </button>
-
-
+                              </span> 
+                              <button>
+                                    <div class="svg-wrapper-1">
+                                      <div class="svg-wrapper">
+                                        <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          viewBox="0 0 24 24"
+                                          width="24"
+                                          height="24"
+                                        >
+                                          <path fill="none" d="M0 0h24v24H0z"></path>
+                                          <path
+                                            fill="currentColor"
+                                            d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                                          ></path>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <span>Aceptar y Enviar</span>
+                                  </button>
+                              </button>
+                                  
+                        
+                        <div class="w-100 d-flex justify-content-center mb-4 mt-3">
+                              <label style="cursor: pointer; width: 10rem; height: 2rem; border-radius: 1rem; " class=" bg-black text-white d-flex flex-wrap flex-wrap align-content-center justify-content-center " onclick="Acept()"><span style=" font-family: Righteous, sans-serif;">Cancelar</span></label>
+                        </div>
                   </div>
+      
                 
                   <div class="w-100 d-flex justify-content-center mt-3 mb-4">
                         <div class="form-check" id="div-acept">
@@ -218,18 +275,16 @@
                               <label   
                               style='cursor: pointer;             
                               width: 17rem;
-                              border-radius: 0.7rem;
+                              border-radius: 1.5rem;
                               padding:0.5rem 1rem;
                               font-weight: bold;
                               font-weight: 100;
                               margin: 0.1rem;
-                              font-size: 14px;
-                              color: var(--color-one);
+                              font-size: 18px;
                               font-family: "Righteous", sans-serif;
-                              background-color: var(--bg-one);
-                              border-color: var(--color-one);'   
-                              onclick="CaptureLocation()" class='d-flex text-center justify-content-center'>
-                                    <span id="acep">
+                              background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);                              border-color: var(--color-one);'   
+                              onclick="CaptureLocation()" class='d-flex text-white text-center justify-content-center'>
+                                    <span id="acep"  class="d-none">
                                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
                                           <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
                                           </svg>
@@ -240,13 +295,67 @@
                                     </span>
                               </label>
                             </div>
+                            
                   </div>
             </div>
       </form>
       </section>
 
 </section>
+<style>
+      button {
+  font-size: 18px;
+  background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);  color: white;
+  padding: 0.2em 1em;
+  padding-left: 0.9em;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.2s;
+  cursor: pointer;
+}
 
+button span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+
+button svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+button:hover .svg-wrapper {
+  animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+button:hover svg {
+  transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+button:hover span {
+  transform: translateX(10em);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
+  }
+
+  to {
+    transform: translateY(-0.1em);
+  }
+}
+
+</style>
 
       <script>
 

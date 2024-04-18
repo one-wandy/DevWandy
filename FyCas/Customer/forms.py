@@ -7,11 +7,13 @@ class CustomerForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs.update({'class': 'form-control'})
-        
-   
+            if isinstance(field.widget, forms.CheckboxInput):
+                          field.widget.attrs.update({'class': 'form-check-input'})
+                          
+
     class Meta:
       model = models.Customer
-      fields = ['name', 'last_name', 'number', 'address',  'work_information',  'dni',  "img2", "img1", "name_r1", "name_r2", "number_r1", "number_r2",
+      fields = [ 'tierra', 'vehiculo', 'casa', 'name', 'last_name', 'number', 'address',  'work_information',  'dni',  "img2", "img1", "name_r1", "name_r2", "number_r1", "number_r2",
         'lat', 'lon',
         # Datos personales
         'type_input',
