@@ -4,38 +4,40 @@ from django.db import models
 
 class Customer(models.Model):
     # Para el tema de las solicitudes, cuando el user ingresa por primera vez el estado permanece false durante los proximos 7 dias, sera descartado y eliminado de la base de datos ya que su aprobacion no fue verificada por lo tanto no cambio a " True " pero se guardada su DNI en una base de datos adicional mas adelante p
-    aprobado = models.BooleanField(default=False)
+    aprobado = models.BooleanField(default=False,  blank=True)
     
     # Datos Opcionales
-    vehiculo = models.BooleanField(default=False)
-    casa = models.BooleanField(default=False)
-    tierra = models.BooleanField(default=False)
+    vehiculo = models.BooleanField(default=False,  blank=True)
+    casa = models.BooleanField(default=False,  blank=True)
+    tierra = models.BooleanField(default=False,  blank=True)
     
     # Preguntas 
-    familiar_en_fycas = models.BooleanField(default=False)
-    fue_recomendado = models.BooleanField(default=False)
+    familiar_en_fycas = models.BooleanField(default=False, blank=True)
+    fue_recomendado = models.BooleanField(default=False,  blank=True)
     
+    monto_requerido = models.CharField(max_length=255, default='',  blank=True)
+    fines = models.CharField(max_length=255, default='',  blank=True)
     
 
     is_active = models.BooleanField(default=True)
     company = models.CharField(max_length=255, default='Grupo Fycas', blank=True )
-    name = models.CharField(blank=True, max_length=255, )#Nombre
-    last_name = models.CharField(blank=True, max_length=255)#Apellido
-    number = models.CharField(blank=True, max_length=20, )#Numero local o Movile
-    address = models.CharField(blank=True, max_length=255)#Direccion de donde recide
-    email = models.EmailField(null=True)#Correo electronico
+    name = models.CharField( max_length=255, )#Nombre
+    last_name = models.CharField( max_length=255)#Apellido
+    number = models.CharField( max_length=20, )#Numero local o Movile
+    address = models.CharField( max_length=255, blank=True)#Direccion de donde recide
+    email = models.EmailField(null=True, blank=True)#Correo electronico
     amount_purpose = models.TextField(blank=True, max_length=355)#Proposito por el que se solicita el prestamo
     work_information = models.TextField(blank=True, max_length=300)#Informacion donde trabaja
     references_peopple = models.TextField(blank=True, max_length=500)#Personas referentes
-    dni = models.CharField(blank=True, max_length=100) #Numero de Identidad
+    dni = models.CharField( max_length=100) #Numero de Identidad
     amount = models.IntegerField(null=True)#Monto 
     no_account = models.IntegerField(default=0) #Numero de Cuentaloooo
     img1 = models.ImageField(upload_to="media/",  blank=True, null=True, default="media/img-default/img.png")#Foto de Cedula delantera
     img2 = models.ImageField(upload_to="media/", blank=True, null=True, default="media/img-default/img.png")#Foto de Cedula tracera
-    name_r1 = models.CharField(blank=True, max_length=255,  )#Nombre
-    name_r2 = models.CharField(blank=True, max_length=255,  )#Nombre
-    number_r1 = models.CharField(default="", blank=True, max_length=30)#Numero local o Movile
-    number_r2 = models.CharField(default="", blank=True, max_length=30  )#Numero local o Movile
+    name_r1 = models.CharField( max_length=255,  )#Nombre
+    name_r2 = models.CharField( max_length=255,  )#Nombre
+    number_r1 = models.CharField(default="",  max_length=30)#Numero local o Movile
+    number_r2 = models.CharField(default="",  max_length=30  )#Numero local o Movile
     
     # CaptureLocation
     lat = models.CharField(blank=True, max_length=100000000050005, default='')
@@ -44,7 +46,7 @@ class Customer(models.Model):
     # Tipo de Entrada
     type_input = models.CharField(blank=True, max_length=2, default='P')
     #Sexo
-    sexo = models.CharField(blank=True, max_length=2, default='')
+    sexo = models.CharField(blank=True, max_length=2, default='M')
     # Estado Civil 
     estado_civil = models.CharField(blank=True, max_length=2, default='')
     # Ocupacion 
@@ -78,7 +80,7 @@ class Customer(models.Model):
     # Empresa donde trabaja  
     empresa_trabaja = models.CharField(blank=True, max_length=255, default='')
     # Cargo
-    cargo = models.CharField(blank=True, max_length=255, default='')
+    cargo = models.CharField( max_length=255, default='')
     # Direccion 
     direccion_trabajo = models.CharField(blank=True, max_length=255, default='')
     # Sector 
@@ -96,7 +98,7 @@ class Customer(models.Model):
     # dir_referencia
     dir_referencia_trabajo = models.CharField(blank=True, max_length=244, default='')
     #Salario de M
-    salario_m = models.CharField(blank=True, max_length=233, default='')
+    salario_m = models.CharField( max_length=233, default='')
     # Moneda 
     moneda = models.CharField(blank=True, max_length=3, default='RD$')  
     # Datos de la cuantas 

@@ -10,9 +10,14 @@
       }
       @media (max-width: 730px){
             input{
-                  min-width: 100% !important;
+                  /* min-width: 100% !important; */
             }
-            .form-floating {
+            
+.form-check  .form-check-input {
+
+      max-width: 60px !important;
+}
+      .form-floating {
                   width: 100% !important;
             }
       }
@@ -97,6 +102,25 @@
                         {{form.municipio}}
                         <label for="id_address">Municipio</label>
                   </div>
+                  <span class="w-100 ms-2"> <p class="text-black-50">~Sexo</p></span>
+                  <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label style="color: #65b2ff;" class="form-check-label" for="flexRadioDefault1">
+                              <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-standing" viewBox="0 0 16 16">
+                                    <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M6 6.75v8.5a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v2.75a.75.75 0 0 0 1.5 0v-2.5a.25.25 0 0 1 .5 0"/>
+                                  </svg>
+                          Masculino
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label style="color: #ff82dc;" class="form-check-label" for="flexRadioDefault2">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-standing-dress" viewBox="0 0 16 16">
+                                    <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m-.5 12.25V12h1v3.25a.75.75 0 0 0 1.5 0V12h1l-1-5v-.215a.285.285 0 0 1 .56-.078l.793 2.777a.711.711 0 1 0 1.364-.405l-1.065-3.461A3 3 0 0 0 8.784 3.5H7.216a3 3 0 0 0-2.868 2.118L3.283 9.079a.711.711 0 1 0 1.365.405l.793-2.777a.285.285 0 0 1 .56.078V7l-1 5h1v3.25a.75.75 0 0 0 1.5 0Z"/>
+                                  </svg>
+                          Femenino
+                        </label>
+                      </div>
                   <div class="w-100 mt-4 ">
                         <h6>
                               Fotos de Cedula (Delantera y Tracera)
@@ -159,7 +183,7 @@
                                     </div>
                                     <div class="form-floating mb-3  " >
                                           {{form.salario_m}}
-                                          <label for="id_work_information">Ingresos Mensuales RD$</label>
+                                          <label for="id_work_information">Ingresos Mensuales RD$00,000,00</label>
                                     </div>
                                     <div class="form-floating mb-3 " >
                                           {{form.phone}}
@@ -188,7 +212,7 @@
                                     </div>
                               </div>
                               <p class="text-black-50 m-0 ms-2">
-                                    ~Dos referentes pueden proporcionar una descripción más precisa y completa que uno solo.
+                                    ~Dos referentes pueden proporcionar una descripción más precisa y completa que uno.
                               </p>
                               {{form.lat}} {{form.lon}}
                               <div class="w-100 d-flex flex-wrap ">
@@ -211,25 +235,56 @@
                         Opcionales
                   </h6>
                   
-                  <section class="w-100 d-flex flex-wrap justify-content-around">
+                  <section class="w-100 d-flex flex-wrap justify-content-start">
                         <p class="text-black-50 m-0 w-100 ms-2">
-                              ~Cabe destacar que esta información no afecta la decisión de aprobación de su préstamo.
+                              ~Cabe destacar que esta información no afecta la decisión de aprobación de su préstamo. 
                         </p>
+                        <strong  class="w-100 mt-3 ms-2
+                        ">Marque la casilla si corresponde</strong>
                         <div class="form-check   mt-2 " >
-                              <label for="id_vehiculo"> ¿Posee usted un vehículo?</label>
+                              <label for="id_vehiculo"> ¿Posee usted un vehículo de su propiedad?</label>
                               {{form.vehiculo}}
                         </div>
-                        <div class="form-check mt-2  mb-3 " >
-                              <label for="id_tierra">¿Posee usted un terreno?</label>
+                        <div class="form-check mt-2   " >
+                              <label for="id_tierra">¿Posee usted un terreno de su propiedad?</label>
                               {{form.tierra}}
                         </div>
-                        <div class="form-check mt-2  mb-3 " >
+                        <div class="form-check mt-2   " >
                               <label for="id_casa"> ¿Posee usted una casa de su propiedad?</label>
                               {{form.casa}}
+                        </div>
+                         <div class="form-check mt-2   " >
+                              <label for="id_familiar_en_fycas"> ¿Algun Familiar es cliente de <strong>Grupo Fycas</strong>?</label>
+                              {{form.familiar_en_fycas}}
+                        </div>
+                        
+                        <div class="form-check mt-2  mb-3 " >
+                              <label for="id_fue_recomendado"> ¿Fuiste recomendado por alguien?</label>
+                              {{form.fue_recomendado}}
                         </div>
 
                         
                   </section>
+
+
+                  <!-- <h6 class="p-0  mt-5">
+                        Solicitud de Información de Préstamo
+                  </h6>
+                  <section class="w-100 d-flex flex-wrap  ">
+                        <p class="text-black-50 m-0 ms-2">
+                              Este formulario se emplea para solicitar información detallada sobre el préstamo.
+                        </p>
+
+                        <div class="form-floating m-0 mb-3  " >
+                              {{form.monto_requerido}}
+                              <label for="id_monto_requerido">Monto Requerido
+                              </label>
+                        </div>
+                        <div class="form-floating">
+                              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                              <label for="floatingTextarea2"></label>
+                            </div>
+                  </section> -->
                   <div class="container">
                   </div>
                  
@@ -464,6 +519,13 @@ function NumbersFomat(value) {
     return N;
   }
 
+  function CantidadFormat(value) {
+    // Elimina todos los caracteres no numéricos
+    var number = value.replace(/\D/g, '');
+    // Agrega guiones después de los primeros 3 dígitos y los siguientes 7 dígitos
+    var N = number.replace(/(\d{3})(\d{3})(\d{1})/, '$1-$2-$3');
+    return N;
+  }
   
       document.getElementById('id_phone').addEventListener('input', function(e) {
             let n = document.getElementById('id_phone')
@@ -471,6 +533,13 @@ function NumbersFomat(value) {
             e.target.value = NumbersFomat(e.target.value);
       });
   
+      document.getElementById('salario_m').addEventListener('input', function(e) {
+            let n = document.getElementById('salario_m')
+            n.value = n.value.slice(0, 12);
+            e.target.value = CantidadFormat(e.target.value);
+      });
+  
+
 
   // Agrega un evento al campo de entrada
 document.getElementById('id_number').addEventListener('input', function(e) {
