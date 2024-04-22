@@ -205,14 +205,15 @@
  }
 }
 </style>
-<!-- <div class="w-100 container  justify-content-center d-flex align-content-center justify-content-between" style="min-height: 2rem;">
+
+ <div class="w-100 container  justify-content-center d-flex align-content-center justify-content-between" style="min-height: 2rem;">
       <span class="span-animation" style="min-width: 6rem; min-height:2rem; background-color: rgba(255, 133, 133, 0.473);">s</span>
       <span class="span-animation" style="min-width: 2rem; min-height:2rem; background-color: rgba(222, 137, 255, 0.438);">s</span>
       <span class="span-animation" style="min-width: 1rem; min-height:1.3rem; background-color: rgba(128, 179, 255, 0.404);">s</span>
       <span class="span-animation" style="min-width: 10rem; min-height:1.3rem; background-color: rgba(128, 255, 244, 0.445);">s</span>
       <span class="span-animation mt-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(255, 128, 177, 0.404);">s</span>
       <span class="span-animation mb-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(153, 255, 128, 0.349);">s</span>
-</div> -->
+</div> 
 
 <div id="config-list" 
       class="position-fixed d-flex flex-wrap" 
@@ -225,7 +226,6 @@
       border-top: 0;
       border-left: 0;
       border-right: 0;" >
-
 
       <label for="searching-config" id="label-config"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi text-black-50 d-none bi-search mt-4 me-2 pt-1  " viewBox="0 0 16 16">
       <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
@@ -248,24 +248,21 @@
 </div>
       
       
-<section id="section"  class="section p-1 bg-transparent blur  align-content-center  d-flex flex-wrap  justify-content-evenly  "  >
-      
+<section id="section" class="section rounded-0 d-flex flex-wrap justify-content-center position-fixed top-0 overflow-scroll p-1 end-0 w-100  vh-100  mt-0  bg-transparent blur" >
 
       <div style="display: none;" class=" w-100 justify-content-center align-content-center flex-wrap  " id="text-c">
             <h5>
                   Ups! "<span id="user-no"></span>" no encontrado
             </h5>
-
       </div>
 
-
-    <div  style="display: flex; z-index: 9;" class="w-100  blur   position-fixed top-0  h-auto  flex-wrap   justify-content-center">
+      <div style="display: flex; z-index: 9;" 
+            class="w-100  blur position-fixed top-0  h-auto  flex-wrap   justify-content-center">
             <div class="d-flex flex-wrap justify-content-center  w-100">
                   <span style="font-family: Righteous, sans-serif !important; 
                   " class='no-select mb-5'>
                         Clientes  
                   </span>
-
             </div>
             {% for c in customer %}
                   <li  class="list-group-item no-select bg-transparent m-1   p-0  m-0 mb-5  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  ">
@@ -316,19 +313,22 @@
                                                 </strong> {{c.dni}} 
                                          </span>
                                          <span class="w-100 no-select address overflow-hidden d-flex" style="height: 1.2rem ">
-                                          <strong class="">     
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-                                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-                                              </svg> <span class=" "></span></strong> <a class="" style=" text-transform: capitalize;" >
-                                           {{c.address}}</a>
+                                                <strong class="">     
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                                      <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
+                                                      <span class=" "></span>
+                                                </strong>
+                                                <a class="" style=" text-transform: capitalize;" >
+                                                {{c.address}}
+                                                </a>
                                           </span>
                                           <span class='w-100'>
                                                 <strong class="">Company:</strong>
                                                       <span class='text-black'>
-                                                            {% if c.company == "ThomFin Group" %}
-                                                            ThomFin Group
+                                                            {% if c.company == "ThomFin   Group" %}
+                                                                  ThomFin Group
                                                             {% else %}
-                                                            Grupo Fycas
+                                                                  Grupo Fycas
                                                             {% endif %}
                                                       </span>
                                                </span>
@@ -354,18 +354,17 @@
       let config_list = document.getElementById('config-list')
       let config_data;
 
-    document.addEventListener('keydown', function(event) {
-  if (event.altKey && event.key === 'b') {
-      searching_config.focus();
+document.addEventListener('keydown', function(event) {
+      if (event.altKey && event.key === 'b') {
+            searching_config.focus();
       }
-      });
+});
 
 searching_config.addEventListener('focus', function() {
       searching_config.style.width = '100%'
       document.getElementById('for-c').style.display = 'block'
       document.getElementById('agregar').style.display = 'none'
       document.getElementById('clientes').style.display = 'none';
-
 });
 
 searching_config.addEventListener('blur', function() {
@@ -373,11 +372,10 @@ searching_config.addEventListener('blur', function() {
       document.getElementById('for-c').style.display = 'flex'
       document.getElementById('agregar').style.display = 'block'
       document.getElementById('clientes').style.display = 'flex';
-
 });
 
 
-    window.addEventListener("DOMContentLoaded", function() {
+window.addEventListener("DOMContentLoaded", function() {
         ConfigData()
         function ConfigData() {
             const url = 'searching/customer';
@@ -477,18 +475,12 @@ searching_config.addEventListener('blur', function() {
                         config_list.innerHTML = ''
                         config_list.style.display = 'none'
                         document.getElementById('for-c').style.display = 'flex'
-
-                        
                         // document.getElementById("list-customer").style.display = "block"
-                        
                   }
                   else {
                         config_list.style.display = 'block'
                         document.getElementById('for-c').style.display = 'none'
-
-
                         // document.getElementById("list-customer").style.display = "none"
-                        
                     }
                     });
                 },
