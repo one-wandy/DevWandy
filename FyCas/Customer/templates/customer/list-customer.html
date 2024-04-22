@@ -205,10 +205,19 @@
  }
 }
 </style>
-      <div id="config-list" 
+<!-- <div class="w-100 container  justify-content-center d-flex align-content-center justify-content-between" style="min-height: 2rem;">
+      <span class="span-animation" style="min-width: 6rem; min-height:2rem; background-color: rgba(255, 133, 133, 0.473);">s</span>
+      <span class="span-animation" style="min-width: 2rem; min-height:2rem; background-color: rgba(222, 137, 255, 0.438);">s</span>
+      <span class="span-animation" style="min-width: 1rem; min-height:1.3rem; background-color: rgba(128, 179, 255, 0.404);">s</span>
+      <span class="span-animation" style="min-width: 10rem; min-height:1.3rem; background-color: rgba(128, 255, 244, 0.445);">s</span>
+      <span class="span-animation mt-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(255, 128, 177, 0.404);">s</span>
+      <span class="span-animation mb-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(153, 255, 128, 0.349);">s</span>
+</div> -->
+
+<div id="config-list" 
       class="position-fixed d-flex flex-wrap" 
       style="justify-content: center; bottom: 3rem; z-index: 10;">
-      </div>
+</div>
 
 <div class="d-flex flex-wrap bg-white bg-opacity-75 blur    justify-content-around position-fixed w-100" 
       style="z-index: 4; bottom: 0;  
@@ -239,24 +248,27 @@
 </div>
       
       
-<section id="section"  class="section p-1   bg-transparent blur  align-content-center   overflow-scroll  h-100 top-0 d-flex flex-wrap  justify-content-evenly " >
+<section id="section"  class="section p-1 bg-transparent blur  align-content-center  d-flex flex-wrap  justify-content-evenly  "  >
+      
 
-      <div style="display: none;" class=" w-100 justify-content-center vh-100 align-content-center flex-wrap  " id="text-c">
+      <div style="display: none;" class=" w-100 justify-content-center align-content-center flex-wrap  " id="text-c">
             <h5>
                   Ups! "<span id="user-no"></span>" no encontrado
             </h5>
 
       </div>
-    <div  style="display: flex;" class="w-100  h-auto   flex-wrap   justify-content-center">
-      <div class="d-flex flex-wrap justify-content-center  w-100">
-            <span style="font-family: Righteous, sans-serif !important; 
-            " class='no-select mb-5'>
-                   Clientes  
-            </span>
 
-      </div>
+
+    <div  style="display: flex; z-index: 9;" class="w-100  blur   position-fixed top-0  h-auto  flex-wrap   justify-content-center">
+            <div class="d-flex flex-wrap justify-content-center  w-100">
+                  <span style="font-family: Righteous, sans-serif !important; 
+                  " class='no-select mb-5'>
+                        Clientes  
+                  </span>
+
+            </div>
             {% for c in customer %}
-                  <li  class="list-group-item no-select bg-white m-1  bg-opacity-75 p-0  m-0 mb-5  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  ">
+                  <li  class="list-group-item no-select bg-transparent m-1   p-0  m-0 mb-5  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  ">
                         <div class="d-flex  " style="font-size: 14px !important;  ">
                               <div class="d-flex flex-wrap ">
                                     <div class="w-100 d-flex">
