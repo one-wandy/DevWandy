@@ -1,4 +1,4 @@
 import subprocess
 # Ruta al archivo requirements.txt
-subprocess.run(["py", "manage.py", "makemigrations"])
-subprocess.run(["py", "manage.py", "migrate"])
+subprocess.run(["python3", "manage.py", "makemigrations"])
+subprocess.run(["python3", "manage.py", "migrate"])
