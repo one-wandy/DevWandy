@@ -9,11 +9,14 @@
       }
       .contdiv 
       {
+            width: 100%;
+            max-width: 30rem;
+            min-width: 320px;
             background-color: rgb(250, 249, 230);
       }
       .img-js
       {
-            border-radius: 1.5rem;
+            border-radius: 1.2rem;
       }
       .img-border
       {
@@ -89,6 +92,7 @@
 
 .contDiv {
   width: 40rem;
+  height: max-content;
   background-image: linear-gradient(
     to right,
     rgb(255, 133, 133) 0%,
@@ -201,81 +205,55 @@
   opacity: 0.8;
  }
 }
-
 </style>
 
-<div class="w-100 container  justify-content-center d-flex align-content-center justify-content-between" style="min-height: 2rem;">
-      <span class="span-animation" style="min-width: 6rem; min-height:2rem; background-color: rgba(255, 133, 133, 0.473);">s</span>
-      <span class="span-animation" style="min-width: 2rem; min-height:2rem; background-color: rgba(222, 137, 255, 0.438);">s</span>
-      <span class="span-animation" style="min-width: 1rem; min-height:1.3rem; background-color: rgba(128, 179, 255, 0.404);">s</span>
-      <span class="span-animation" style="min-width: 10rem; min-height:1.3rem; background-color: rgba(128, 255, 244, 0.445);">s</span>
-      <span class="span-animation mt-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(255, 128, 177, 0.404);">s</span>
-      <span class="span-animation mb-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(153, 255, 128, 0.349);">s</span>
-</div>
+<div class="d-flex flex-wrap blur bg-white  bg-opacity-75  justify-content-around position-fixed w-100" 
+      style="z-index: 4; bottom: 0;  
+      border: 1px rgb(228, 228, 228) solid; 
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;" >
 
-<div class="d-flex   flex-wrap blur bg-white bg-opacity-75  justify-content-end position-fixed w-100 " style="z-index: 4; bottom: 0;  
-       border: 1px rgb(228, 228, 228)  solid; border-top: 0; border-left: 0; border-right: 0;" >
+      <div id="config-list" 
+            class="position-fixed d-flex flex-wrap " 
+            style="justify-content: center; bottom: 3rem;">
+      </div>
        
-      <div id="config-list" class=" h-100  d-flex flex-wrap " 
-      style="justify-content: center;
-      /* Alinea horizontalmente al centro */">
-      
-</div>
-
-            <div id="clientes" class=" d-none w-100  align-content-center flex-wrap">
-                  <span  style="  
-                        font-optical-sizing: auto;">   
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
-                              <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
-                            </svg>
-                            <strong style=' 
-                              font-family: Righteous, sans-serif !important; 
-                              font-width: 100 !important;
-                            '>             
-                                    Clientes
-                        </strong>
-                        </span>
-                        <p class="text-black-50 d-none w-100  p-0 m-0 mb-1 " style="font-size: 12px; font-family: Quicksand, sans-serif;">
-                              Permite encontrar fácilmente los datos de cualquier cliente.
-                        </p>
-            </div>
-            <label for="searching-config" id="label-config"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi text-black-50 d-none bi-search mt-4 me-2 pt-1  " viewBox="0 0 16 16">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+      <label for="searching-config" id="label-config"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi text-black-50 d-none bi-search mt-4 me-2 pt-1  " viewBox="0 0 16 16">
+      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
       </svg></label>
-      <div class="d-flex w-100 mt-1 justify-content-center align-content-center ">
 
-            <input type="text"  style="font-size: 14px; width: auto; min-width: 300px; min-height: 2.5rem; max-height: 2.5rem; max-width: 10rem;" class="form-search text-center  m-0 mb-1 "  id="searching-config" placeholder=" Buscar ( Alt + b ) ">
+      <div class="d-flex w-100 mt-1 justify-content-center align-content-center ">
+            <input type="text"  style="font-size: 14px; width: auto; min-width: 300px; min-height: 2.5rem; max-height: 2.5rem; max-width: 10rem;" class="form-search text-center  m-0 mb-1"  id="searching-config" 
+            placeholder=" Buscar ( Alt + b ) ">
             <a href="{% url "customer:add-customer" %}" class="d-flex align-content-center " >
-                  <button id="agregar" class="border-0 text-white  m-0 p-0" style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
-                  max-height: 2.5rem !important;
-                  min-width: 4rem ;
-                  border-radius: 1.5rem;">               
-                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
-                              <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                              <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
-                            </svg> 
+                  <button id="agregar" class="border-0 text-white  m-0 p-0" 
+                        style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); max-height: 2.5rem !important;
+                        min-width: 4rem;border-radius: 1.5rem;">               
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                        <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
+                        </svg> 
                   </button> 
             </a>
-            
-          </div>
       </div>
-      
-      
-<section id="section"  class="section p-1 mt-5 bg-transparent blur  align-content-center  position-fixed vh-100 top-0 d-flex flex-wrap  justify-content-evenly " >
-
-<div style="display: none;" class=" w-100 justify-content-center vh-100 align-content-center flex-wrap  " id="text-c">
-      <h5>
-            Ups! "<span id="user-no"></span>" no encontrado
-      </h5>
-
 </div>
-    <div id="for-c" style="display: flex
-    ;" class="w-100  h-auto  flex-wrap  justify-content-center">
-      <div class="d-flex flex-wrap justify-content-center mb-5 w-100">
+      
+      
+<section id="section"  class="section p-1   bg-transparent blur  align-content-center   overflow-scroll  h-100 top-0 d-flex flex-wrap  justify-content-evenly " >
+
+      <div style="display: none;" class=" w-100 justify-content-center vh-100 align-content-center flex-wrap  " id="text-c">
+            <h5>
+                  Ups! "<span id="user-no"></span>" no encontrado
+            </h5>
+
+      </div>
+    <div  style="display: flex;" class="w-100  h-auto   flex-wrap   justify-content-center">
+      <div class="d-flex flex-wrap justify-content-center  w-100">
             <span style="font-family: Righteous, sans-serif !important; 
-            " class='no-select'>
+            " class='no-select mb-5'>
                    Clientes  
-                  </span>
+            </span>
 
       </div>
             {% for c in customer %}
@@ -327,7 +305,8 @@
                                                 </strong> {{c.dni}} 
                                          </span>
                                          <span class="w-100 no-select address overflow-hidden d-flex" style="height: 1.2rem ">
-                                          <strong class="">                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                          <strong class="">     
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                                                 <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
                                               </svg> <span class=" "></span></strong> <a class="" style=" text-transform: capitalize;" >
                                            {{c.address}}</a>
@@ -351,25 +330,6 @@
                                                 </strong>
                                                 {{c.name_r1}} ({{c.number_r1}}) - {{c.name_r2}} ({{c.number_r2}})
                                           </span>
-                                    </div>
-                              </div>
-                              <div class="d-flex justify-content-end align-content-center flex-wrap w-50 d-none">
-                                    <div style="width: 25rem;">
-                                          <a href="{% url "customer:detail-customer" c.id %}">
-                                                <button class='border-0'>
-                                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                                                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                                                          </svg>
-                                                          Perfil 
-                                                </button>
-                                          </a>
-                                          <a href="{% url "customer:update-customer" c.id %}">
-                                                <button class='border-0'>
-                                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brush-fill" viewBox="0 0 16 16">
-                                                            <path d="M15.825.12a.5.5 0 0 1 .132.584c-1.53 3.43-4.743 8.17-7.095 10.64a6.1 6.1 0 0 1-2.373 1.534c-.018.227-.06.538-.16.868-.201.659-.667 1.479-1.708 1.74a8.1 8.1 0 0 1-3.078.132 4 4 0 0 1-.562-.135 1.4 1.4 0 0 1-.466-.247.7.7 0 0 1-.204-.288.62.62 0 0 1 .004-.443c.095-.245.316-.38.461-.452.394-.197.625-.453.867-.826.095-.144.184-.297.287-.472l.117-.198c.151-.255.326-.54.546-.848.528-.739 1.201-.925 1.746-.896q.19.012.348.048c.062-.172.142-.38.238-.608.261-.619.658-1.419 1.187-2.069 2.176-2.67 6.18-6.206 9.117-8.104a.5.5 0 0 1 .596.04"/>
-                                                          </svg> Editar
-                                                </button>
-                                          </a>
                                     </div>
                               </div>
                        </div>
@@ -436,7 +396,7 @@ searching_config.addEventListener('blur', function() {
                         div.classList.add("contdiv", )
                         const divCont = document.createElement('div');
                         divCont.classList.add('contDiv',  )
-                        div.classList.add("divCon", "p-4", 'card')
+                        div.classList.add("divCon", "p-3", 'card')
                               let divI = document.createElement("div")
                               const imgLink = document.createElement('a');
                               imgLink.href = "/detail-customer/" + c.id
@@ -464,31 +424,31 @@ searching_config.addEventListener('blur', function() {
                               divN.appendChild(spanN)
 
                               let divA = document.createElement("div")
-                                    let stronA = document.createElement("strong")
-                                          stronA.textContent = "Informacion Laboral: "
-                                    let spanA = document.createElement("span")
-                                          spanA.textContent = c.inf
-                              divA.appendChild(stronA)
-                              divA.appendChild(spanA)
+                                    // let stronA = document.createElement("strong")
+                                          // stronA.textContent = "Informacion Laboral: "
+                                    // let spanA = document.createElement("span")
+                                          // spanA.textContent = c.inf
+                              // divA.appendChild(stronA)
+                              // divA.appendChild(spanA)
 
                               let divR = document.createElement("div")
-                                    let stronR = document.createElement("strong")
-                                          stronR.textContent = "Recide en: "
-                                    let spanR = document.createElement("a")
-                                          spanR.href = "https://www.google.com.do/maps/search/" + c.recide
-                                          spanR.target = '_blank';
-                                          spanR.textContent = c.recide
-                              divR.appendChild(stronR)
-                              divR.appendChild(spanR)
+                                    // let stronR = document.createElement("strong")
+                                          // stronR.textContent = "Recide en: "
+                                    // let spanR = document.createElement("a")
+                                          // spanR.href = "https://www.google.com.do/maps/search/" + c.recide
+                                          // spanR.target = '_blank';
+                                          // spanR.textContent = c.recide
+                              // divR.appendChild(stronR)
+                              // divR.appendChild(spanR)
 
                               
                               let divK = document.createElement("div")
-                                    let stronK = document.createElement("strong")
-                                          stronK.textContent = "Referencias: "
-                                    let spanK = document.createElement("span")
-                                          spanK.textContent = c.refers
-                              divK.appendChild(stronK)
-                              divK.appendChild(spanK)
+                                    // let stronK = document.createElement("strong")
+                                          // stronK.textContent = "Referencias: "
+                                    // let spanK = document.createElement("span")
+                                          // spanK.textContent = c.refers
+                              // divK.appendChild(stronK)
+                              // divK.appendChild(spanK)
 
 
                         div.appendChild(divI);

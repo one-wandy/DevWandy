@@ -11,8 +11,8 @@ def SearchCustomer(request):
                   'id': c.id,
                   'name': c.name + " " + c.last_name,
                   "dni": c.dni,
-                  "img": c.img1.url,
-                  "inf": c.work_information,
+                    "img": c.img1.url if c.img1 else None,              
+                    "inf": c.work_information,
                   "refers": c.name_r1 + " " + " " + str(c.number_r1) + " - " + c.name_r2 + " " + str(c.number_r2) ,
                   "recide": c.address,
             }
