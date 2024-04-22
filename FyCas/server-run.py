@@ -1,3 +1,3 @@
 import subprocess
 # Ruta al archivo requirements.txt
-subprocess.run(["py", "manage.py", "runserver"])
+subprocess.run(["python3", "manage.py", "runserver"])
