@@ -206,6 +206,59 @@
 }
 </style>
 
+<div id="div-gregar" class="position-fixed  w-100 justify-content-center"  
+      style="display: none; z-index: 11; bottom: 3.1rem;">
+      <div class="div shadow bg-white d-flex  flex-wrap p-2 w-100 m-1 blur bg-opacity-75" style=" border-radius: 1.3rem; 
+            max-width: 420px; height: 10rem;">
+
+            <!-- <div class="w-100">
+                  <h6 style="font-family: Righteous, sans-serif !important; ">
+                        Menu
+                  </h6> -->
+                  <!-- <hr> -->
+            <!-- </div> --> 
+
+            <a href="{% url "customer:add-customer" %}" class="d-flex  justify-content-center flex-wrap align-content-center " >
+                  <button  class="border-0 text-white  rounded-circle m-0 p-0" 
+                        style="background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+                        height: 2.7rem !important;
+                        width: 2.7rem;">               
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                        <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
+                        </svg> 
+                  </button> 
+                  <span class="w-100 text-center" style="font-size: 12px;">Agregar</span>
+            </a>
+
+            <a href="" class="d-flex  flex-wrap justify-content-center align-content-center " >
+                  <button  class="border-0 text-white  rounded-circle m-0 p-0" 
+                        style="background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+                        height: 2.7rem !important;
+                        width: 2.7rem;">               
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-calculator-fill" viewBox="0 0 16 16">
+                        <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm2 .5v2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5m0 4v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M4.5 9a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 12.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M7.5 6a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM7 9.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM10 6.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-.5-.5z"/>
+                        </svg>
+                  </button> 
+                  <span class="w-100 text-center" style="font-size: 12px;">Calculadora</span>
+            </a>
+
+
+            <a href="{% url "customer:add-customer" %}" class="d-flex  justify-content-center flex-wrap align-content-center " >
+                  <button  class="border-0 text-white  rounded-circle m-0 p-0" 
+                        style="background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+                        height: 2.7rem !important;
+                        width: 2.7rem;">               
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">
+                        <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
+                        </svg>
+                  </button> 
+                  <span class="w-100 text-center" style="font-size: 12px;">Lorena</span>
+            </a>
+
+      </div>
+</div>
+
  <div class="w-100 container  justify-content-center d-flex align-content-center justify-content-between" style="min-height: 2rem;">
       <span class="span-animation" style="min-width: 6rem; min-height:2rem; background-color: rgba(255, 133, 133, 0.473);">s</span>
       <span class="span-animation" style="min-width: 2rem; min-height:2rem; background-color: rgba(222, 137, 255, 0.438);">s</span>
@@ -233,20 +286,39 @@
 
       <div class="d-flex w-100 mt-1 justify-content-center align-content-center ">
             <input type="text"  style="font-size: 14px; width: auto; min-width: 300px; min-height: 2.5rem; max-height: 2.5rem; max-width: 10rem;" class="form-search text-center  m-0 mb-1"  id="searching-config" 
-            placeholder=" Buscar ( Alt + b ) ">
-            <a href="{% url "customer:add-customer" %}" class="d-flex align-content-center " >
-                  <button id="agregar" class="border-0 text-white  m-0 p-0" 
+            placeholder=" Buscar  ">
+            <!-- <a href="{% url "customer:add-customer" %}" class="d-flex align-content-center " > -->
+                  <button id="agregar" class="border-0 d-flex justify-content-center align-content-center flex-wrap text-white  m-0 p-0" 
                         style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); max-height: 2.5rem !important;
                         min-width: 4rem;border-radius: 1.5rem;">               
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
-                        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                        <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
-                        </svg> 
+                        <svg xmlns="http://www.w3.org/2000/svg" id="m" width="16" height="16" fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
+                        <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;" id="x" width="24" height="24" fill="currentColor" class="bi bi-x " viewBox="0 0 16 16">
+                              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                            </svg>
                   </button> 
-            </a>
+            <!-- </a> -->
       </div>
 </div>
       
+<script>
+      document.getElementById('agregar').addEventListener('click', function() {
+    var div = document.getElementById('div-gregar');
+    if (div.style.display === 'none') {
+        div.style.display = 'flex';
+        document.getElementById('x').style.display = 'block'
+        document.getElementById('m').style.display = 'none'
+
+    } else {
+        div.style.display = 'none';
+        document.getElementById('x').style.display = 'none'
+        document.getElementById('m').style.display = 'block'
+
+    }
+});
+
+</script>
       
 <section id="section" class="section rounded-0 d-flex flex-wrap justify-content-center position-fixed top-0 overflow-scroll p-1 end-0 w-100  vh-100  mt-0  bg-transparent blur" >
 
@@ -269,7 +341,7 @@
                         <div class="d-flex  " style="font-size: 14px !important;  ">
                               <div class="d-flex flex-wrap ">
                                     <div class="w-100 d-flex">
-                                          2<a href="{% url "customer:detail-customer" c.id %}">                                          
+                                          <a href="{% url "customer:detail-customer" c.id %}">                                          
                                                 {% if c.img1.url == "/media/img-default/img.png" %}
                                                 <img src="{{c.img1}}" style="width: 90px; max-height: 90px;   border-radius: 12px; " alt="Imagen ccon Problemas" class="img rounded-circle object-fit-cover img-border">
                                               {% else %}
