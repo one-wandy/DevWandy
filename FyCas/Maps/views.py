@@ -46,6 +46,16 @@ class Maps(TemplateView, Options):
             # # Ejemplo de uso
             nombre_contacto = "Juan Perez"
             telefono_contacto = "+1234567890"
+            try:
+            # Llamada a la función para agregar un contacto
+                  resultado = self.add_contacts_to_google_contact()
+
+            # Si no se lanza ninguna excepción, se asume que la creación del contacto fue exitosa
+                  print("El contacto se agregó correctamente:", resultado)
+            except Exception as e:
+            # Si se produce una excepción, se captura y se imprime el mensaje de error
+                  print("Error al agregar el contacto:", e)
+
             # self.agregar_contacto(nombre_contacto, telefono_contacto)
 
             return super().get(request, *args, **kwargs)
@@ -244,9 +254,81 @@ class Maps(TemplateView, Options):
             workbook.save(response)
             return response
       
+            # views.py
       
+      # Define los ámbitos de la API de Google Contacts que necesitas
 
-# Define los alcances que necesitas para acceder a los contactos
+      def add_contacts_to_google(self):
+            SCOPES = ['https://www.googleapis.com/auth/contacts']
+            # Carga las credenciales almacenadas (si existen)
+            creds = None
+            if os.path.exists('credentials.json'):
+                  creds = Credentials.from_authorized_user_file('credentials.json')
+
+            # Si no hay credenciales disponibles o están vencidas, solicita al usuario que inicie sesión
+            if not creds or not creds.valid:
+                  if creds and creds.expired and creds.refresh_token:
+                        creds.refresh(Request())
+                  else:
+                        flow = InstalledAppFlow.from_client_secrets_file('Customer/Credentials-Apis/credentials.json', SCOPES, redirect_uri='http://localhost:56083')
+                        creds = flow.run_local_server(port=63880)
+
+                  # Guarda las credenciales para futuros usos
+                  with open('token.json', 'w') as token:
+                        token.write(creds.to_json())
+
+            # Construye el servicio de la API de Google Contacts
+            service = build('people', 'v1', credentials=creds)
+
+            # Obtiene los contactos desde tu modelo Django
+            # customers = Customer.objects.all()
+
+            # Agrega cada contacto a Google Contacts
+            # for customer in customers:
+            contact = {
+                  'names': [
+                  {
+                        'givenName': 'Federico',
+                        'familyName': 'Almanzar'
+                  }
+                  ],
+                  'emailAddresses': [
+                  {
+                        'value': 'federico@gmail.com'
+                  }
+                  ]
+                              # Puedes agregar más campos del contacto aquí según sea necesario
+                  }
+
+                  # Llama al método 'createContact' de la API de Google Contacts para agregar el contacto
+            contact = service.people().createContact(body=contact).execute()
+            print('Contacto agregado:', contact)
+            return True
+# Llama a la función para agregar los contactos a Google Contacts
+# add_contacts_to_google()
+
+
+      def add_contacts_to_google_contact(self):
+            credenciales = service_account.Credentials.from_service_account_file('Customer/Credentials-Apis/credentials.json')
+
+            persona =  {
+                  'names': [{
+                        'givenName': 'Wandys',
+                  }],
+                  'emailAddresses': [{
+                        'value': 'wandy.one@gmail.com',
+                        'type': 'home',
+                  }],
+                  'phoneNumbers': [{
+                        'value': '809-001-0011',
+                        'type': 'home',
+                  }],
+            }
+            cliente = build('people', 'v1', credentials=credenciales)
+            cliente.people().createContact(body=persona).execute()
+            # contact = service.people().createContact(body=new_contact).execute()
+            return True
+
 
 
 
