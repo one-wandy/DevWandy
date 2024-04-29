@@ -2,6 +2,7 @@
 
 {% include "base/base.html" %}
 {% block content %}
+{% load static %}
 <style>
 
   /* #map:hover {
@@ -10,113 +11,135 @@
     transition: 9ms ease !important;
   } */
 </style>
-<div class=" m-2 mt-3 d-flex  flex-wrap  " style=" height: 12rem;"  >
-  <span class="w-50">
-    <a href="{% url "customer:list-customer" %}"
-    class="d-flex  align-content-center flex-wrap me-2" style="color: var(--color-one);"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-left-circle p-0  m-0 " viewBox="0 0 16 16">
-      <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
-    </svg> 
-    <span class="d-flex align-content-center  ms-2 flex-wrap">
-      Atras
-    </span>
-  </a>
-  </span>
-  <div class="d-flex  flex-wrap w-50  justify-content-end">
+<div class="w-100 container  justify-content-center d-flex align-content-center justify-content-between" style="min-height: 2rem;">
+  <span class="span-animation" style="min-width: 6rem; min-height:2rem; background-color: rgba(255, 133, 133, 0.473);">s</span>
+  <span class="span-animation" style="min-width: 2rem; min-height:2rem; background-color: rgba(222, 137, 255, 0.438);">s</span>
+  <span class="span-animation" style="min-width: 1rem; min-height:1.3rem; background-color: rgba(128, 179, 255, 0.404);">s</span>
+  <span class="span-animation" style="min-width: 10rem; min-height:1.3rem; background-color: rgba(128, 255, 244, 0.445);">s</span>
+  <span class="span-animation mt-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(255, 128, 177, 0.404);">s</span>
+  <span class="span-animation mb-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(153, 255, 128, 0.349);">s</span>
+</div> 
 
-    <strong class="fycas" style="  font-family: Quicksand, sans-serif;
-    color: var(--color-one);
-    font-optical-sizing: auto;">                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-diamond-half m-0 p-0" viewBox="0 0 16 16">
-     <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098zM8 .989c.127 0 .253.049.35.145l6.516 6.516a.495.495 0 0 1 0 .7L8.35 14.866a.5.5 0 0 1-.35.145z"/>
-     </svg>
-    GRUPO FYCAS</strong>
-</div>
-<div class="d-flex w-100 mt-3 p-2   align-content-center flex-wrap " 
-style="background-color: var(--bg-one); box-shadow: var(--shadow-one);
-    border-radius: 1rem;" >
-  <a href="{% url "customer:update-customer" c.id %}" class="d-flex ">
-      <img src="{{c.img1.url}}" width="40" height="40" class="rounded-circle object-fit-cover" alt="">    
-        <h6 class="p-0 m-0  ms-2">
-        {{c.name}} {{c.last_name}} <br> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
-          <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
-          </svg>  {{c.dni}}
-        </h6>
-    </a>
-        <p class="text-black-50 w-100 ">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-          </svg> {{c.address}}
-        </p>
+<section class="section rounded-0 d-flex flex-wrap justify-content-center position-fixed top-0 overflow-scroll p-1 end-0 w-100  h-100  mt-0  bg-transparent blur" >
+  
+  
+  <div style="margin-top: 4rem; border-radius: 1.5rem; background-color: rgba(255, 255, 255, 0.932);">
 
-        <section class="section  w-100 d-flex flex-wrap justify-content-center">
-          <div id="map" style="width: 100%; height: 10rem; border-radius: 1rem;  transition: 0s !important;"></div>
-        </section>
-      </div>
-      <div class="d-flex w-100 justify-content-end"> 
-        <button class="border-0 text-white me-1 mt-2" style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-fill" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.3 1.3 0 0 0-.37.265.3.3 0 0 0-.057.09V14l.002.008.016.033a.6.6 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.6.6 0 0 0 .146-.15l.015-.033L12 14v-.004a.3.3 0 0 0-.057-.09 1.3 1.3 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465s-2.462-.172-3.34-.465c-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411"/>
-          </svg> Obtener ruta
-        </button>
-      </div>
-
-
-<section class='  w-100 mt-1'>
-  {% if credit %}
-  <div class="d-flex w-100 mb-1 align-content-center flex-wrap">
-    <h6 class="p-0 m-0 mt-4">
-          Creditos
-    </h6> 
-    <p class="text-black-50  w-100  " style="font-size: 14px;">
-      Un Historial de Creditos es un registro detallado de todos los préstamos que has obtenido a lo largo del tiempo.
-    </p>
-</div>
-      {% include "customer/list-credit.html " %}
-  {% else %}
-</section>
-  <div class="w-100 d-flex flex-wrap">
-    <h6>
-      No existen creditos
-    </h6>
-    <div class="w-100 d-flex ">
-      <a href="{% url "customer:create-credit" c.id %}">
-
-      <button>
-        Solicitar Credito
-      </button>
-      </a>
+    <div class="w-100 d-flex justify-content-center mt-1 position-absolute top-0 " style="margin: 0; right: 0; left: 0;">
+      <img src="{% static "icons/img.png" %}" class="d-flex object-fit-cover  " style="border-radius: 1rem;" width="120"  height="120" alt="">
     </div>
+
+  <div class=" m-2 mt-3 d-flex  flex-wrap  " style=" height: 12rem;"  >
+    <span class="w-50 d-none">
+      <a href="{% url "customer:list-customer" %}"
+      class="d-flex  align-content-center flex-wrap me-2" style="color: var(--color-one);"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-left-circle p-0  m-0 " viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+      </svg> 
+      <span class="d-flex  ms-2 flex-wrap">
+        Atras
+      </span>
+    </a>
+    </span>
+    <div class="d-flex  flex-wrap w-100  justify-content-center">
+      <span style="font-family: Righteous, sans-serif !important; 
+      " class='no-select mb-5'>
+            Perfil
+      </span>
+    </div>
+
+  <div class="d-flex w-100 mt-3 p-2   align-content-center flex-wrap " 
+  style="background-color: var(--bg-one); box-shadow: var(--shadow-one);
+      border-radius: 1rem;" >
+    <a href="{% url "customer:update-customer" c.id %}" class="d-flex ">
+          <h6 class="p-0 m-0  ms-2">
+          {{c.name}} {{c.last_name}} <br> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
+            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
+            </svg>  {{c.dni}}
+          </h6>
+      </a>
+          <p class="text-black-50 w-100  ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill ms-2 text-black" viewBox="0 0 16 16">
+              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+            </svg> {{c.address}}
+          </p>
+  
+          <section class="section  d-none w-100 d-flex flex-wrap justify-content-center">
+            <div id="map" style="width: 100%; height: 10rem; border-radius: 1rem;  transition: 0s !important;"></div>
+          </section>
+        </div>
+        <div class="d-flex  d-none justify-content-end"> 
+          <button class="border-0 text-white me-1 mt-2" style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.3 1.3 0 0 0-.37.265.3.3 0 0 0-.057.09V14l.002.008.016.033a.6.6 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.6.6 0 0 0 .146-.15l.015-.033L12 14v-.004a.3.3 0 0 0-.057-.09 1.3 1.3 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465s-2.462-.172-3.34-.465c-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411"/>
+            </svg> Obtener ruta
+          </button>
+        </div>
+  
+  
+  <section class='  w-100 mt-1'>
+    {% if credit %}
+    <div class="d-flex w-100 mb-1 align-content-center flex-wrap">
+      <h6 class="p-0 m-0 mt-4">
+            Creditos
+      </h6> 
+      <p class="text-black-50  w-100  " style="font-size: 14px;">
+        Un Historial de Creditos es un registro detallado de todos los préstamos que has obtenido a lo largo del tiempo.
+      </p>
   </div>
-  {% endif %}
-<p class="d-inline-flex gap-1 mt-3 w-100 justify-content-center ">
-  <h6>
-    Eliminar
-  </h6>
-  <p class="text-black-50 " style="text-align: justify;">Se eliminará toda la información del cliente, incluyendo su nombre, contacto, historial de compras, referencias, etc.
-    Esta información puede ser necesaria para fines legales, contables o de marketing.</p>
-  <a class="" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    <button class="bg-black text-white">
-      Eliminar Cliente
+        {% include "customer/list-credit.html " %}
+    {% else %}
+  </section>
+    <div class="w-100 d-flex flex-wrap">
+      <h6>
+        No existen creditos
+      </h6>
+      <div class="w-100 d-flex ">
+        <a href="{% url "customer:create-credit" c.id %}">
+  
+        <button>
+          Solicitar Credito
+        </button>
+        </a>
+      </div>
+    </div>
+    {% endif %}
+  <p class="d-inline-flex d-none gap-1 mt-3 w-100 justify-content-center ">
+    <h6 class="d-none">
+      Eliminar
+    </h6>
+    <p class="text-black-50 d-none" style="text-align: justify;">Se eliminará toda la información del cliente, incluyendo su nombre, contacto, historial de compras, referencias, etc.
+      Esta información puede ser necesaria para fines legales, contables o de marketing.</p>
+    <a class=" d-none" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      <button class="bg-black text-white">
+        Desactivar Cliente
+      </button>
+    </a>
+  
+  </p>
+  <div class="collapse justify-content-center w-100" id="collapseExample">
+    <div class="card border-0  card-body">
+      <a href="{% url "customer:delete-customer" c.id %}">
+        <button class='text-white bg-danger'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5"/>
+                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+              </svg>    Confirmar Eliminacion
     </button>
   </a>
-
-</p>
-<div class="collapse justify-content-center w-100" id="collapseExample">
-  <div class="card border-0  card-body">
-    <a href="{% url "customer:delete-customer" c.id %}">
-      <button class='text-white bg-danger'>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5"/>
-              <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-            </svg>    Confirmar Eliminacion
-  </button>
-</a>
+    </div>
   </div>
-</div>
-<!--The div element for the map -->
-<div class="d-none">
-  <input type="text" name="" class="d-none"  id="lat-one" value='{{c.lat}}'>
-  <input type="text" name="" class="d-none" id="lon-one" value='{{c.lon}}'>
-</div>
+  <!--The div element for the map -->
+  <div class="d-none">
+    <input type="text" name="" class="d-none"  id="lat-one" value='{{c.lat}}'>
+    <input type="text" name="" class="d-none" id="lon-one" value='{{c.lon}}'>
+  </div>
+
+
+  </div>
+</section>
+
+
+
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <!-- prettier-ignore -->
     <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})

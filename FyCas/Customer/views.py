@@ -283,3 +283,7 @@ class DataCredit(UpdateView):
         context = super().get_context_data(**kwargs)
         context['c'] = self.model.objects.get(id=self.kwargs.get('pk'))
         return context
+    
+    
+    
+    
