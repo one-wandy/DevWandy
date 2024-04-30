@@ -56,9 +56,7 @@
                               <strong style="  font-family: Quicksand, sans-serif;
                               color: black;
                               font-optical-sizing: auto;">              
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-diamond-half m-0 p-0" viewBox="0 0 16 16">
-                               <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098zM8 .989c.127 0 .253.049.35.145l6.516 6.516a.495.495 0 0 1 0 .7L8.35 14.866a.5.5 0 0 1-.35.145z"/>
-                               </svg>
+                              <img src="{% static "icons/up.png" %}" width="30" alt="">
                               GRUPO FYCAS
                         </strong>
                         </div>
@@ -197,7 +195,7 @@
                                     </div>
                                     <div class="form-floating mb-3  " >
                                           {{form.salario_m}}
-                                          <label for="id_work_information">Ingresos Mensuales RD$00,000,00</label>
+                                          <label for="id_work_information">Ingresos Mensuales</label>
                                     </div>
                                     <div class="form-floating mb-3 " >
                                           {{form.phone}}
@@ -253,27 +251,27 @@
                         <p class="text-black-50 m-0 w-100 ms-2">
                               Cabe destacar que esta información no afecta la decisión de aprobación de su préstamo. 
                         </p>
-                        <strong  class="w-100 mt-3 ms-2
-                        ">" Marque la casilla si corresponde "</strong>
+                        <strong  style="font-style: oblique;" class="w-100 mt-3 ms-2
+                        ">Seleccione todas las opciones que apliquen a ti</strong>
                         <div class="form-check   mt-2 " >
-                              <label class="ms-3" for="id_vehiculo"> ¿Posee usted un <strong class="text-black-50">Vehículo</strong> de su propiedad?</label>
+                              <label class="ms-3" for="id_vehiculo"> ¿Posee usted un Vehículo</strong> de su propiedad?</label>
                               {{form.vehiculo}}
                         </div>
                         <div class="form-check mt-2   " >
-                              <label class="ms-3" for="id_tierra">¿Posee usted un <strong class="text-black-50">Terreno</strong> de su propiedad?</label>
+                              <label class="ms-3" for="id_tierra">¿Posee usted un Terreno de su propiedad?</label>
                               {{form.tierra}}
                         </div>
                         <div class="form-check mt-2   " >
-                              <label class="ms-3" for="id_casa"> ¿Posee usted una <strong class="text-black-50">Casa </strong> de su propiedad?</label>
+                              <label class="ms-3" for="id_casa"> ¿Posee usted una Casa  de su propiedad?</label>
                               {{form.casa}}
                         </div>
                          <div class="form-check mt-2   " >
-                              <label class="ms-3" for="id_familiar_en_fycas"> ¿Algun <strong class="text-black-50">Familiar</strong> es cliente de <strong>Grupo Fycas</strong>?</label>
+                              <label class="ms-3" for="id_familiar_en_fycas"> ¿Algun Familiar es cliente de Grupo Fycas?</label>
                               {{form.familiar_en_fycas}}
                         </div>
                         
                         <div class="form-check mt-2  mb-3 " >
-                              <label class="ms-3" for="id_fue_recomendado"> ¿Fuiste recomendado por <strong class="text-black-50">Alguien</strong>?</label>
+                              <label class="ms-3" for="id_fue_recomendado"> ¿Fuiste recomendado por Alguien?</label>
                               {{form.fue_recomendado}}
                         </div>
 
@@ -533,17 +531,19 @@ function NumbersFomat(value) {
     return N;
   }
 
+
+  //   Add number
+function NumbersFomatSalari(value) {
+    var N = value.replace(/\D/g, '');
+    return N;
+  }
+
   
-      document.getElementById('id_phone').addEventListener('input', function(e) {
+document.getElementById('id_phone').addEventListener('input', function(e) {
             let n = document.getElementById('id_phone')
-            n.value = n.value.slice(0, 12);
             e.target.value = NumbersFomat(e.target.value);
-      });
-  
+});
 
-
-
-  // Agrega un evento al campo de entrada
 document.getElementById('id_number').addEventListener('input', function(e) {
             let n = document.getElementById('id_number')
             n.value = n.value.substring(0,12);
@@ -567,6 +567,14 @@ document.getElementById('id_number_r2').addEventListener('input', function(e) {
             let n = document.getElementById('id_phone')
             n.value = n.value.slice(0, 12);
             e.target.value = NumbersFomat(e.target.value);
+            
+  });
+
+
+    document.getElementById('id_salario_m').addEventListener('input', function(e) {
+            let n = document.getElementById('id_salario_m')
+            n.value = n.value.slice(0, 29);
+            e.target.value = NumbersFomatSalari(e.target.value);
             
   });
 
