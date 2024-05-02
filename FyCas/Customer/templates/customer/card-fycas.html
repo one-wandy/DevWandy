@@ -32,7 +32,7 @@ De una parte, <span class="black text-uppercase"> GRUPO FYCAS, SRL, </span> soci
 
    
 <br><br>
-Y de la otra parte el señor(a), <span class="black text-uppercase"> {{c.name}} {{c.last_name}} </span>, dominicano, mayor de edad, portador(a) de la cedula de identidad y Electoral No. {{c.dni}}, domiciliado y residente en la {{c.address}}, República Dominicana, quien en lo adelante en el presente contrato se denominará <span class="black">´´EL DEUDOR</span> o por su nombre completo´´.   
+Y de la otra parte el señor(a), <span class="black text-uppercase"> {{c.name}} {{c.last_name}} </span>, dominicano, mayor de edad, portador(a) de la cedula de identidad y Electoral No. {{c.dni}}, domiciliado y residente en la {{c.calle_numero}}, {{c.sector}}, {{c.municipio}}, {{c.ciudad}}, República Dominicana, quien en lo adelante en el presente contrato se denominará <span class="black">´´EL DEUDOR</span> o por su nombre completo´´.   
 
   
 
@@ -157,20 +157,11 @@ Que deberán ser pagados el día {{day_pay}} ({{credit.day_pay}}) de cada mes.
 <script src="print.js"></script>
 <script> 
 window.onload = function() {
-      const footer = document.querySelector("footer");
       setTimeout(() => {
             // ocultamos el elemento
-            printJS({
-    printable: 'contrato', // Puede ser un selector CSS o un ID de elemento
-    type: 'pdf',
-    header: 'C',
-    documentTitle: 'Contrato',
-    scanStyles: false, // Si quieres incluir estilos CSS en el documento impreso
-//     css: 'ruta_al_archivo_de_estilos.css', // Ruta al archivo de estilos CSS
-    style: '@page { size: letter; margin: 20mm 15mm; }', // Estilo CSS para la página de impresión
-});
-      }, 2000);
-};
+            window.print();
+  }, 2000);
+      };
 
 </script>
 {% endblock  %}
