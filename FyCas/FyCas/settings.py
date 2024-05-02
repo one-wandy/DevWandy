@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://6617-2001-1308-2675-5f00-a42e-c16b-3afe-3387.ngrok-free.app ']
+CSRF_TRUSTED_ORIGINS = ['https://8000-cs-764470ba-73bf-4820-b736-e9a1023a88b7.cs-us-east1-pkhd.cloudshell.dev']
 # Application definition
 
 INSTALLED_APPS = [
