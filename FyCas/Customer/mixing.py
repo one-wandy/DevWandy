@@ -29,7 +29,7 @@ class Options:
             return redirect(URL)
       
       def FileCreate(self, Name, Last):
-            path = os.getcwd() + "Clientes"
+            path = os.getcwd() + "/Clientes"
             name_file = Name + " " + Last
             sub_file = os.path.join(path, name_file)
             try:
