@@ -38,7 +38,7 @@ class Maps(TemplateView, Options):
       
       def get(self, request, *args, **kwargs):
             nombre_archivo = "Info.docx"
-            ruta_carpeta =  os.getcwd() + "\Clientes"
+            ruta_carpeta =  os.getcwd() + "/Clientes"
             # self.Send_WhatsApp_Message()
             load_excel = 'Customer/Archivos/DataCredit.xlsx'
 
