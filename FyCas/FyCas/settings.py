@@ -137,3 +137,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 GOOGLE_MAPS_API_KEY  = 'AIzaSyAfnJbgtHm5EZLkozG5Dzo_cgkeJndxNjA'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# Se
