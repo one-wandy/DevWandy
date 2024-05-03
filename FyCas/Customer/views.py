@@ -14,6 +14,10 @@ from datetime import datetime
 class Dashboard(TemplateView, Options):
     template_name = "base/dashboard.html"
     
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+               return redirect(reverse('customer:add-customer'))
+        return super().get(request, *args, **kwargs)
     
     
     
@@ -21,7 +25,7 @@ class AddCustomer(CreateView, Options):
     model = models.Customer
     form_class = forms.CustomerForm
     template_name = "customer/create-customer.html"
-    
+        
     
         
     def get_context_data(self, **kwargs):
@@ -64,6 +68,11 @@ class AddCustomer(CreateView, Options):
 class ListCustomer(ListView):
     model = models.Customer
     template_name = "customer/list-customer.html"
+    
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+               return redirect(reverse('customer:add-customer'))
+        return super().get(request, *args, **kwargs)
    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -107,6 +116,12 @@ class UpdateCustomer(UpdateView, Options):
 class DetailCustomer(DetailView, Options):
     model = models.Customer
     template_name = "customer/detail-customer.html"
+    
+    def get(self, request, *args, **kwargs):
+        print(request.user)
+        if not request.user.is_authenticated:
+               return redirect(reverse('customer:add-customer'))
+        return super().get(request, *args, **kwargs)
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
