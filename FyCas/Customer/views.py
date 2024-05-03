@@ -33,11 +33,11 @@ class AddCustomer(CreateView, Options):
     def post(self, request, *args, **kwargs):
         f = self.form_class(request.POST, request.FILES)
         if f.is_valid():
-            if request.POST.get('sex-man') != 'on':
+            if request.POST.get('sex-man') != 'man':
                 f.sexo = 'F'
             f.instance.name = f.instance.name.title()
             f.instance.last_name = f.instance.last_name.title()
-            f.save()
+            # f.save()
             # Creando Carpeta para el Cliente
             self.FileCreate(f.instance.name, f.instance.last_name)
             return redirect(reverse('maps:maps-customer'))

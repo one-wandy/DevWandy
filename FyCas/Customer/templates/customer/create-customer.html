@@ -73,7 +73,7 @@
                   </div>
             </div>
 
-      <form action=""  method="post" class="form-add-c" enctype='multipart/form-data'>
+      <form action=""  method="post" class="form-add-c mt-5" enctype='multipart/form-data'>
                   {% csrf_token %}
             <div class="m-1">
                 <h6 class=" d-flex">
@@ -118,8 +118,8 @@
                   </div>
                   <span class="w-100 ms-2"> <p class="text-black-50">Sexo</p></span>
                   <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sex-man" id="flexRadioDefault1">
-                        <label style="color: #65b2ff;" class="form-check-label" for="flexRadioDefault1">
+                        <input class="form-check-input" value="man" type="radio" name="sex-man" id="flexRadioDefault1">
+                        <label style="color: #000000;" class="form-check-label" for="flexRadioDefault1">
                               <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-standing" viewBox="0 0 16 16">
                                     <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M6 6.75v8.5a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v2.75a.75.75 0 0 0 1.5 0v-2.5a.25.25 0 0 1 .5 0"/>
                                   </svg>
@@ -127,8 +127,8 @@
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                        <label style="color: #ff82dc;" class="form-check-label" for="flexRadioDefault2">
+                        <input class="form-check-input" type="radio" name="sex-man" id="flexRadioDefault2" >
+                        <label style="color: #000000;" class="form-check-label" for="flexRadioDefault2">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-standing-dress" viewBox="0 0 16 16">
                                     <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m-.5 12.25V12h1v3.25a.75.75 0 0 0 1.5 0V12h1l-1-5v-.215a.285.285 0 0 1 .56-.078l.793 2.777a.711.711 0 1 0 1.364-.405l-1.065-3.461A3 3 0 0 0 8.784 3.5H7.216a3 3 0 0 0-2.868 2.118L3.283 9.079a.711.711 0 1 0 1.365.405l.793-2.777a.285.285 0 0 1 .56.078V7l-1 5h1v3.25a.75.75 0 0 0 1.5 0Z"/>
                                   </svg>
@@ -249,30 +249,31 @@
                         Opcionales
                   </h6>
                   
-                  <section class="w-100 d-flex flex-wrap text-black-50 justify-content-start">
-                        <p class="text-black-50 m-0 w-100 ms-2">
-                              Cabe destacar que esta información no afecta la decisión de aprobación de su préstamo. 
-                        </p>
+                  <p class="text-black-50 m-0 w-100 ms-2">
+                        Cabe destacar que esta información no afecta la decisión de aprobación de su préstamo. 
+                  </p>
+                  <section class="w-100 d-flex flex-wrap text-black-50 justify-content-start" style="text-align: justify; width: 330px;">
                         <strong  style="font-style: oblique;" class="w-100 mt-3 ms-2
                         ">Seleccione todas las opciones que apliquen a ti</strong>
-                        <div class="form-check   mt-2 " >
-                              <label class="ms-3" for="id_vehiculo"> ¿Posee usted un Vehículo</strong> de su propiedad?</label>
-                              {{form.vehiculo}}
-                        </div>
-                        <div class="form-check mt-2   " >
-                              <label class="ms-3" for="id_tierra">¿Posee usted un Terreno de su propiedad?</label>
-                              {{form.tierra}}
-                        </div>
-                        <div class="form-check mt-2   " >
-                              <label class="ms-3" for="id_casa"> ¿Posee usted una Casa  de su propiedad?</label>
-                              {{form.casa}}
-                        </div>
-                         <div class="form-check mt-2   " >
+                        <div class="form-check w-100 mt-2   " >
                               <label class="ms-3" for="id_familiar_en_fycas"> ¿Algun Familiar es cliente de Grupo Fycas?</label>
                               {{form.familiar_en_fycas}}
                         </div>
                         
-                        <div class="form-check mt-2  mb-3 " >
+                        <div class="form-check w-100   mt-2 " >
+                              <label class="ms-3" for="id_vehiculo"> ¿Posee usted un Vehículo</strong> de su propiedad?</label>
+                              {{form.vehiculo}}
+                        </div>
+                        <div class="form-check w-100 mt-2   " >
+                              <label class="ms-3" for="id_tierra">¿Posee usted un Terreno de su propiedad?</label>
+                              {{form.tierra}}
+                        </div>
+                        <div class="form-check w-100 mt-2   " >
+                              <label class="ms-3" for="id_casa"> ¿Posee usted una Casa  de su propiedad?</label>
+                              {{form.casa}}
+                        </div>
+      
+                        <div class="form-check w-100 mt-2  mb-3 " >
                               <label class="ms-3" for="id_fue_recomendado"> ¿Fuiste recomendado por Alguien?</label>
                               {{form.fue_recomendado}}
                         </div>
@@ -407,7 +408,7 @@ button:hover svg {
 }
 
 button:hover span {
-  transform: translateX(10em);
+  transform: translateX(15em);
 }
 
 button:active {
