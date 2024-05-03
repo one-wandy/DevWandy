@@ -34,7 +34,12 @@ from googleapiclient.discovery import build
 class Maps(TemplateView, Options):
       template_name = "maps/information.html"
 
-      
+              
+      def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['setting'] = self.Setting()
+        return context
+    
       
       def get(self, request, *args, **kwargs):
             nombre_archivo = "Info.docx"
