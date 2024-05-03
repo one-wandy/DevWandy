@@ -167,3 +167,12 @@ class Credit(models.Model):
     
     def __str__(self):
         return self.name
+
+
+
+class SettingApp(models.Model):
+    name = models.CharField(blank=True, max_length=233, default='Grupo Fycas')
+    Icon = models.ImageField(upload_to="media/", blank=True, null=True, default="media/img-default/img.png") #Foto de Cedula tracera
+    
+    def __str__(self):
+        return self.name

@@ -22,6 +22,14 @@ class AddCustomer(CreateView, Options):
     form_class = forms.CustomerForm
     template_name = "customer/create-customer.html"
     
+    
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['setting'] = self.Setting()
+        return context
+    
+    
     def post(self, request, *args, **kwargs):
         f = self.form_class(request.POST, request.FILES)
         if f.is_valid():

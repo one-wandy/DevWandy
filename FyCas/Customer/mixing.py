@@ -108,3 +108,7 @@ class Options:
                   return HttpResponse('Error al generar PDF', status=500)
 
             return response
+
+      def Setting(self):
+            setting = models.SettingApp.objects.get(id=1)
+            return setting
