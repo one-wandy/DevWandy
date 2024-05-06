@@ -41,7 +41,7 @@ class AddCustomer(CreateView, Options):
                 f.sexo = 'F'
             f.instance.name = f.instance.name.title()
             f.instance.last_name = f.instance.last_name.title()
-            # f.save()
+            f.save()
             # Creando Carpeta para el Cliente
             self.FileCreate(f.instance.name, f.instance.last_name)
             return redirect(reverse('maps:maps-customer'))
