@@ -115,7 +115,7 @@ class UpdateCustomer(UpdateView, Options):
 
 class DetailCustomer(DetailView, Options):
     model = models.Customer
-    template_name = "customer/detail-customer.html"
+    template_name = "customer/user-profile.html"
     
     def get(self, request, *args, **kwargs):
         print(request.user)
