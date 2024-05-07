@@ -307,7 +307,7 @@ class ListCredit(ListView, Options):
 
             return context
         
-        
+         
 
 # Data Credito del Cliente 
 class DataCredit(UpdateView):
