@@ -155,22 +155,23 @@ class CardCustomer(UpdateView, Options):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['mont'] = self.MontNow(datetime.now().month)
-        context['day'] = self.DayNow(datetime.now().day)
-        context['day_number'] = datetime.now().day
-        context['year'] = self.YearNow(datetime.now().year)
-        context['year_number'] = datetime.now().year
         customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
+        c = models.Credit.objects.get(customer=customer, id=self.kwargs.get('credit_id')) 
         context['c'] = self.model.objects.get(id=self.kwargs.get('pk'))
+        context['mont'] = c.mont
+        context['day'] = c.day
+        context['day_number'] = c.day_number
+        context['year'] = c.year
+        context['year_number'] = c.year_number
+        context["amount"] = c.amount
+        context["day_pay"] = c.day_pay
+        context["credit"] = c
         try:
-            credit = models.Credit.objects.get(customer=customer, id=self.kwargs.get('credit_id')) 
-            context["amount"] = self.Amount(credit.amount)
-            context["day_pay"] = self.DayNow(credit.day_pay)
-
-            context["credit"] = credit
-            if credit.amount_feed:
-                print(credit.amount_feed)
-                v_amount = str(credit.amount_feed)
+            context["amount"] = self.Amount(c.amount)
+            context["day_pay"] = self.DayNow(c.day_pay)
+            context["credit"] = c
+            if c.amount_feed:
+                v_amount = str(c.amount_feed)
                 # print(v_amount[:v_amount.index(".")])
                 context["amount_feed_int"] = int(v_amount[:v_amount.index(".")])
                 context["amount_feed"] = self.Count(int(v_amount[:v_amount.index(".")]))
@@ -190,21 +191,21 @@ class NotaryCustomer(UpdateView, Options):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['mont'] = self.MontNow(datetime.now().month)
-        context['day'] = self.DayNow(datetime.now().day)
-        context['day_number'] = datetime.now().day
-        context['year'] = self.YearNow(datetime.now().year)
-        context['year_number'] = datetime.now().year
+
         customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
         context['c'] = self.model.objects.get(id=self.kwargs.get('pk'))
         try:
-            credit = models.Credit.objects.get(customer=customer, id=self.kwargs.get('notary_id')) 
-            context["amount"] = self.Amount(credit.amount)
-            context["day_pay"] = self.DayNow(credit.day_pay)
-            context["credit"] = credit
-            if credit.amount_feed:
-                print(credit.amount_feed)
-                v_amount = str(credit.amount_feed)
+            c = models.Credit.objects.get(customer=customer, id=self.kwargs.get('notary_id')) 
+            context['mont'] = c.mont
+            context['day'] = c.day
+            context['day_number'] = c.day_number
+            context['year'] = c.year
+            context['year_number'] = c.year_number
+            context["amount"] = c.amount
+            context["day_pay"] = c.day_pay
+            context["credit"] = c
+            if c.amount_feed:
+                v_amount = str(c.amount_feed)
                 # print(v_amount[:v_amount.index(".")])
                 context["amount_feed_int"] = int(v_amount[:v_amount.index(".")])
                 context["amount_feed"] = self.Count(int(v_amount[:v_amount.index(".")]))
@@ -239,10 +240,15 @@ class CreateCredit(CreateView, Options):
     def post(self, request, *args, **kwargs):
         c = models.Customer.objects.get(id=self.kwargs.get('pk'))
         f = self.form_class(request.POST)
+        v_amount = str(f.instance.amount_feed)
         if f.is_valid():
-            credit = f.save()
-            credit.customer = c
-            credit.save()
+            f.instance.customer = c
+            f.instance.mont = self.MontNow(datetime.now().month)
+            f.instance.day = self.DayNow(datetime.now().day)
+            f.instance.day_number =  datetime.now().day
+            f.instance.year = self.YearNow(datetime.now().year)
+            f.instance.year_number = datetime.now().year
+            f.save()
             URL = reverse('customer:detail-customer',  kwargs={'pk': c.id})
             return redirect(URL)
     
@@ -272,6 +278,13 @@ class UpdateCredit(UpdateView, Options):
         credit.no_account = request.POST.get("no_account")
         credit.amount_feed = request.POST.get("amount_feed")
         credit.mode_pay = True if request.POST.get("mode_pay") == "on" else False
+                
+        f.instance.customer = c
+        f.instance.mont = self.MontNow(datetime.now().month)
+        f.instance.day = self.DayNow(datetime.now().day)
+        f.instance.day_number =  datetime.now().day
+        f.instance.year = self.YearNow(datetime.now().year)
+        f.instance.year_number = datetime.now().year
         credit.save()
         return self.List_Redirect()
 

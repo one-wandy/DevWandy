@@ -163,7 +163,18 @@ class Credit(models.Model):
     day_pay = models.IntegerField(default=30)
     is_active = models.BooleanField(default=True)#is active rederict at diferens view
 
+    
+    # 
+    mont = models.CharField(max_length=100, default="")
+    day = models.CharField(max_length=100, default="")
+    day_number = models.CharField(max_length=100, default="")
+    year = models.CharField(max_length=100, default="")
+    year_number = models.CharField(max_length=100, default="")
+    amount_str = models.CharField(max_length=100, default="")
+    amount_feed_int = models.CharField(max_length=100, default="")
     amount_feed = models.CharField(max_length=100, default="")
+    
+    
     
     def __str__(self):
         return self.name
