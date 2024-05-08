@@ -345,11 +345,16 @@
 
       <div style="display: flex; z-index: 9;" 
             class="w-100  blur position-fixed top-0  h-auto  flex-wrap   justify-content-center">
-            <div class="d-flex flex-wrap justify-content-center  w-100">
+            <div class="d-flex flex-wrap justify-content-end align-content-center   w-100">
                   <span style="font-family: Righteous, sans-serif !important; 
-                  " class='no-select mb-5'>
+                  " class='no-select d-none mb-5'>
                         Clientes  
                   </span>
+                  <button  class="border-0" style="height: 0.5rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+                      </svg>
+                  </button>
             </div>
             {% for c in customer %}
                   <li  class="list-group-item no-select bg-transparent m-1   p-0  m-0 mb-5  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  ">
@@ -406,7 +411,7 @@
                                                       <span class=" "></span>
                                                 </strong>
                                                 <a class="" style=" text-transform: capitalize;" >
-                                                {{c.address}}
+                                                      {{c.calle_numero}}, {{c.sector}}, {{c.municipio}}, {{c.ciudad}}
                                                 </a>
                                           </span>
                                           <span class='w-100'>
@@ -497,14 +502,14 @@ window.addEventListener("DOMContentLoaded", function() {
                               const imgLink = document.createElement('a');
                               imgLink.href = "/detail-customer/" + c.id
                               imgLink.target = '_blank';
-                              let img = document.createElement("img")
-                                    img.classList.add("img", "img-js")
-                                    img.src = c.img
-                                    imgLink.appendChild(img)
-                                    divI.appendChild(imgLink)
                               let divL = document.createElement("div")
                               let stronL = document.createElement("strong")
-                                    stronL.textContent = "Nombre: "
+                              stronL.textContent = "Nombre: "
+                              let img = document.createElement("img")
+                                    // img.classList.add("img", "img-js")
+                                    // img.src = c.img
+                                    imgLink.appendChild(stronL)
+                                    divI.appendChild(imgLink)
                               let spanL = document.createElement("span")
                               spanL.classList.add("capitalize")
                                     spanL.textContent = c.name
@@ -584,6 +589,5 @@ window.addEventListener("DOMContentLoaded", function() {
       }
   });
   
-</script>
 </script>
 {% endblock  %}

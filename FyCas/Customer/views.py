@@ -76,7 +76,7 @@ class ListCustomer(ListView):
    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['customer'] = self.model.objects.filter(is_active = True).order_by('-id')[:20]
+        context['customer'] = self.model.objects.filter(is_active = True).order_by('-id')[:8]
         # cu = self.model.objects.all()
         return context
     
@@ -201,7 +201,7 @@ class NotaryCustomer(UpdateView, Options):
             context['day_number'] = c.day_number
             context['year'] = c.year
             context['year_number'] = c.year_number
-            context["amount"] = c.amount
+            context["amount"] = self.Amount(c.amount)
             context["day_pay"] = c.day_pay
             context["credit"] = c
             if c.amount_feed:
