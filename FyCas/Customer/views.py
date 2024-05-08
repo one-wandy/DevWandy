@@ -258,35 +258,25 @@ class UpdateCredit(UpdateView, Options):
     form_class = forms.CreditForm
     template_name = "customer/update-credit.html"
     
-                
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        credit =  self.model.objects.get(id=self.kwargs.get('pk'))
-        context['c'] = models.Customer.objects.get(id=credit.customer.id)
+        context['c'] = self.model.objects.get(id=self.kwargs.get('pk')).customer 
         return context
     
+    def form_valid(self, form_class):
+            form_class.instance.customer = self.model.objects.get(id=self.kwargs.get('pk')).customer 
+            form_class.instance.mont = self.MontNow(datetime.now().month)
+            form_class.instance.day = self.DayNow(datetime.now().day)
+            form_class.instance.day_number =  datetime.now().day
+            form_class.instance.year = self.YearNow(datetime.now().year)
+            form_class.instance.year_number = datetime.now().year
+            form_class.save()
+            return self.List_Redirect()
     
-    
-    def post(self, request, *args, **kwargs):        
-        credit = self.model.objects.get(id=self.kwargs.get('pk'))
-        credit.customer = models.Customer.objects.get(id=credit.customer.id)
-        credit.name = request.POST.get("name")
-        credit.dni = request.POST.get("dni")
-        credit.price_feed = request.POST.get("price_feed")
-        credit.day_pay = request.POST.get("day_pay")
-        credit.amount = request.POST.get("amount")
-        credit.no_account = request.POST.get("no_account")
-        credit.amount_feed = request.POST.get("amount_feed")
-        credit.mode_pay = True if request.POST.get("mode_pay") == "on" else False
-                
-        f.instance.customer = c
-        f.instance.mont = self.MontNow(datetime.now().month)
-        f.instance.day = self.DayNow(datetime.now().day)
-        f.instance.day_number =  datetime.now().day
-        f.instance.year = self.YearNow(datetime.now().year)
-        f.instance.year_number = datetime.now().year
-        credit.save()
-        return self.List_Redirect()
+    # def post(self, request, *args, **kwargs):   
+    #     f = self.form_class(request.POST)
+    #     if f.is_valid():     
+    #     
 
 class ListCredit(ListView, Options):
         model = models.Credit
@@ -304,7 +294,6 @@ class ListCredit(ListView, Options):
             context = super().get_context_data(**kwargs)
             context['c'] = models.Customer.objects.get(id=self.kwargs.get('pk'))
             context['credit'] = self.model.objects.filter(customer__id=self.kwargs.get('pk'))
-
             return context
         
          
