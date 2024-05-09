@@ -13,7 +13,7 @@ class CustomerForm(forms.ModelForm):
 
     class Meta:
       model = models.Customer
-      fields = [ 'fue_recomendado', 'familiar_en_fycas', 'tierra', 'vehiculo', 'casa', 'name', 'last_name', 'number', 'address',  'work_information',  'dni',  "img2", "img1", "name_r1", "name_r2", "number_r1", "number_r2",
+      fields = ['fines', 'monto_requerido', 'saldar_deudas', 'hijos', 'fue_recomendado', 'familiar_en_fycas', 'tierra', 'vehiculo', 'casa', 'name', 'last_name', 'number', 'address',  'work_information',  'dni',  "img2", "img1", "name_r1", "name_r2", "number_r1", "number_r2",
         'lat', 'lon',
         # Datos personales
         'type_input',

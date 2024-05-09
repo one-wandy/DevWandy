@@ -205,7 +205,7 @@
                                     </div>
 
                   </section>
-                  <h6 class="p-0  mt-5">
+                  <h6 class="p-0  mt-5 w-100">
                         Referencias Personales
                   </h6>
                   <section class="w-100 d-flex flex-wrap  ">
@@ -250,35 +250,70 @@
                   </h6>
                   
                   <p class="text-black-50 m-0 w-100 ms-2">
-                        Cabe destacar que esta información no afecta la decisión de aprobación de su préstamo. 
+                        Cabe destacar que esta información no afecta la decisión de aprobación de su préstamo. <br><span  style="font-style: oblique;" class="w-100 mt-3 ms-2
+                        ">Seleccione todas las opciones que apliquen a ti</span>
                   </p>
                   <section class="w-100 d-flex flex-wrap text-black-50 justify-content-start" style="text-align: justify; width: 330px;">
-                        <strong  style="font-style: oblique;" class="w-100 mt-3 ms-2
-                        ">Seleccione todas las opciones que apliquen a ti</strong>
-                        <div class="form-check w-100 mt-2   " >
+                    
+                        <div class="form-check w-100  mt-3  " >
                               <label class="ms-3" for="id_familiar_en_fycas"> ¿Algun Familiar es cliente de Grupo Fycas?</label>
                               {{form.familiar_en_fycas}}
                         </div>
                         
-                        <div class="form-check w-100   mt-2 " >
+                        <div class="form-check w-100   " >
                               <label class="ms-3" for="id_vehiculo"> ¿Posee usted un Vehículo</strong> de su propiedad?</label>
                               {{form.vehiculo}}
                         </div>
-                        <div class="form-check w-100 mt-2   " >
-                              <label class="ms-3" for="id_tierra">¿Posee usted un Terreno de su propiedad?</label>
-                              {{form.tierra}}
-                        </div>
-                        <div class="form-check w-100 mt-2   " >
-                              <label class="ms-3" for="id_casa"> ¿Posee usted una Casa  de su propiedad?</label>
-                              {{form.casa}}
-                        </div>
-      
-                        <div class="form-check w-100 mt-2  mb-3 " >
+                        <div class="form-check w-100    " >
                               <label class="ms-3" for="id_fue_recomendado"> ¿Fuiste recomendado por Alguien?</label>
                               {{form.fue_recomendado}}
                         </div>
+                        <div class="form-check w-100    " >
+                              <label class="ms-3" for="id_tierra">¿Posee usted un Terreno de su propiedad?</label>
+                              {{form.tierra}}
+                        </div>
+      
+                        <div class="form-check w-100   " >
+                              <label class="ms-3" for="id_saldar_deudas"> ¿Te gustaria saldar deudas con esta solicitud?</label>
+                              {{form.saldar_deudas}}
+                        </div>
+
+                              
+                        <div class="form-check w-100    " >
+                              <label class="ms-3" for="id_hijos"> ¿Tienes hijos?</label>
+                              {{form.hijos}}
+                        </div>
+                        
+                        <div class="form-check w-100   mb-4" >
+                              <label class="ms-3" for="id_casa"> ¿Posee usted una Casa  de su propiedad?</label>
+                              {{form.casa}}
+                        </div>
 
                         
+                  </section>
+                  <h6 class="p-0  mt-5 w-100">
+                        Monto que solicita y Fines
+                  </h6>
+                  <p class="text-black-50 m-0 ms-2">
+                        El monto minimo que puede solicitar es de RD$10,000.00
+                  </p>
+                  <section   class="w-100 d-flex flex-wrap">
+                        <div class="form-floating mb-3  " >
+                              {{form.monto_requerido}}
+                              <label for="id_monto_requerido">Monto que solicita</label>
+                        </div>
+                        <!-- <div class="form-floating mb-3  " >
+                              {{form.fines}}
+                              <label for="id_fines">Para que fines</label>
+                        </div> -->
+                        <select name="form-select" style="border-radius: 1rem !important; width: 320px; height: 3.8rem;" class="form-select"  aria-label="Default select example">
+                              <option selected>Gastos Personales</option>
+                              <option value="1">Saldar deudas</option>
+                              <option value="2">Compra inmobilaria</option>
+                              <option value="3">Inversion para un negocio</option>
+                              <option value="3">Gastos personales</option>
+
+                            </select>
                   </section>
 
 
@@ -370,7 +405,7 @@
             </div>
       </form>
       <div class="w-100 mt-5">
-            <hr class="container">
+            <hr class="container text-white">
 
       </div>
 </section>

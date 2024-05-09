@@ -11,6 +11,10 @@ class Customer(models.Model):
     casa = models.BooleanField(default=False,  blank=True)
     tierra = models.BooleanField(default=False,  blank=True)
     
+    hijos = models.BooleanField(default=False,  blank=True)
+    saldar_deudas = models.BooleanField(default=False,  blank=True)
+
+    
     # Preguntas 
     familiar_en_fycas = models.BooleanField(default=False, blank=True)
     fue_recomendado = models.BooleanField(default=False,  blank=True)
