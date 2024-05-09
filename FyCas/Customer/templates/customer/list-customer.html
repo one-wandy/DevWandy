@@ -9,8 +9,8 @@
       }
       .contdiv 
       {
-            width: 30rem;
-            background-color: rgb(255, 249, 249);
+            width: 320px;
+            background-color: rgb(255, 255, 255);
       }
       .img-js
       {
@@ -48,12 +48,17 @@
       #searching-config {
             padding: 0 !important;
             outline: none;
-            border: 0px rgb(233, 233, 233) solid !important;
-            background-color: rgb(250, 249, 230);
-            border-bottom: 1px !important;
+            border: 0px rgba(185, 185, 185, 0.849) solid !important;
+            background-color: rgba(252, 252, 252, 0.589);
             z-index: 2;
+            margin-left: 1px !important;
+            box-shadow: #e6e6e6 1px 2px 4px 1px;
+            border-radius: 1.4rem !important;
+            /* max-height: 2.2rem !important; */
       }
       #searching-config:hover{
+            /* border: 0px rgb(185, 185, 185) solid !important; */
+
       }
       .zoom
       {
@@ -294,18 +299,17 @@
       border-top: 0;
       border-left: 0;
       border-right: 0;" >
-
       <label for="searching-config" id="label-config"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi text-black-50 d-none bi-search mt-4 me-2 pt-1  " viewBox="0 0 16 16">
       <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
       </svg></label>
 
       <div class="d-flex w-100 mt-1 justify-content-center align-content-center ">
-            <input type="text"  style="font-size: 14px; width: auto; min-width: 300px; min-height: 2.5rem; max-height: 2.5rem; max-width: 10rem;" class="form-search text-center  m-0 mb-1"  id="searching-config" 
+            <input type="text"  style="font-size: 14px; width: auto; min-width: 300px; min-height: 2.5rem; max-height: 2.5rem; max-width: 10rem;" class="form-search text-center  m-0 mb-1 blur"  id="searching-config" 
             placeholder=" Buscar  ">
             <!-- <a href="{% url "customer:add-customer" %}" class="d-flex align-content-center " > -->
-                  <button id="agregar" class="border-0 d-flex justify-content-center align-content-center flex-wrap text-white  m-0 p-0" 
-                        style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); max-height: 2.5rem !important;
-                        min-width: 4rem;border-radius: 1.5rem;">               
+                  <button id="agregar" class="border-0 rounded-circle ms-1 d-flex justify-content-center align-content-center flex-wrap text-white  m-0 p-0" 
+                        style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); margin-top: 0px !important; max-height: 2.6rem !important;
+                        min-width: 2.6rem;">               
                         <svg xmlns="http://www.w3.org/2000/svg" id="m" width="16" height="16" fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
                         <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z"/>
                         </svg>
@@ -334,7 +338,29 @@
 });
 
 </script>
+<button onclick="NotifyCation()" id="btn-notifycation"  class="border-0 position-fixed top-0 end-0 position-relative" style="height: 0.5rem; z-index: 10; box-shadow: none !important;">
+      <span class="position-absolute top-50 p-1 rounded-circle " style=" left: 1.3rem;color: white; font-size: 12px;">6</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+          </svg>
+</button>
+<div id="div-notifycations"  class="bg-white bg-opacity-75 blur me-3 p-2 position-fixed end-0 card" style="display: none; z-index: 10; top: 3rem; max-width: 320px; border-radius: 1.3rem !important;">
+      <h6 class='mt-1'>
+            Solicitudes
+      </h6>
+      {% if solicitud %}
       
+
+      {% else %}
+      <p class='text-black-50'>
+            Aun no hay nuevos usuarios, recargue la pagina puede solucionar algun problema <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+                  <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+                </svg>
+      </p>
+      {% endif %}
+      
+</div>
 <section id="section" class="section rounded-0 d-flex flex-wrap justify-content-center position-fixed top-0 overflow-scroll p-1 end-0 w-100  vh-100  mt-0  bg-transparent blur" >
 
       <div style="display: none;" class=" w-100 justify-content-center align-content-center flex-wrap  " id="text-c">
@@ -350,11 +376,12 @@
                   " class='no-select d-none mb-5'>
                         Clientes  
                   </span>
-                  <button  class="border-0" style="height: 0.5rem;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
-                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
-                      </svg>
-                  </button>
+
+            </div>
+            <div class="w-100 container-fluid mb-4 mt-3">
+                  <h6>
+                        Clientes Recientes 
+                  </h6>
             </div>
             {% for c in customer %}
                   <li  class="list-group-item no-select bg-transparent m-1   p-0  m-0 mb-5  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  ">
@@ -399,14 +426,14 @@
                                          </span>
                                          <span class="w-100">
                                                 <strong>
-                                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill text-black" viewBox="0 0 16 16">
                                                       <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
                                                     </svg>
                                                 </strong> {{c.dni}} 
                                          </span>
                                          <span class="w-100 no-select address overflow-hidden d-flex" style="height: 1.2rem ">
                                                 <strong class="">     
-                                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill text-black" viewBox="0 0 16 16">
                                                       <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
                                                       <span class=" "></span>
                                                 </strong>
@@ -415,7 +442,11 @@
                                                 </a>
                                           </span>
                                           <span class='w-100'>
-                                                <strong class="">Company:</strong>
+                                                      <strong class="">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-buildings-fill  text-black" viewBox="0 0 16 16">
+                                                            <path d="M15 .5a.5.5 0 0 0-.724-.447l-8 4A.5.5 0 0 0 6 4.5v3.14L.342 9.526A.5.5 0 0 0 0 10v5.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V14h1v1.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zM2 11h1v1H2zm2 0h1v1H4zm-1 2v1H2v-1zm1 0h1v1H4zm9-10v1h-1V3zM8 5h1v1H8zm1 2v1H8V7zM8 9h1v1H8zm2 0h1v1h-1zm-1 2v1H8v-1zm1 0h1v1h-1zm3-2v1h-1V9zm-1 2h1v1h-1zm-2-4h1v1h-1zm3 0v1h-1V7zm-2-2v1h-1V5zm1 0h1v1h-1z"/>
+                                                      </svg>
+                                                      </strong>
                                                       <span class='text-black'>
                                                             {% if c.company == "ThomFin   Group" %}
                                                                   ThomFin Group
@@ -424,7 +455,7 @@
                                                             {% endif %}
                                                       </span>
                                                </span>
-                                          <span class="w-100 info-laboral overflow-hidden" style="height: 1rem;">
+                                          <!-- <span class="w-100 info-laboral overflow-hidden" style="height: 1rem;">
                                                 <strong class="no-select">Descripción Laborar:</strong> {{c.work_information}}
                                          </span>
                                           <span class="w-100 referencias overflow-hidden" style="height: 1rem;" >
@@ -432,7 +463,11 @@
                                                       Personas Referentes:
                                                 </strong>
                                                 {{c.name_r1}} ({{c.number_r1}}) - {{c.name_r2}} ({{c.number_r2}})
-                                          </span>
+                                          </span> -->
+                                          <div  class="w-100 p-2" style="background-color: #fcfcfc;">
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, obcaecati ex cum dolorum officiis id fugit molestias 
+                                          </div>
+
                                     </div>
                               </div>
                        </div>
@@ -589,5 +624,19 @@ window.addEventListener("DOMContentLoaded", function() {
       }
   });
   
+
+
+
+//   btn-notifycation
+function NotifyCation() {
+      let div = document.getElementById('div-notifycations');
+    // Con cada clic, alternamos la propiedad de display del div
+    if (div.style.display === 'none') {
+      div.style.display = 'block';
+    } else {
+      div.style.display = 'none';
+    }
+
+  }
 </script>
 {% endblock  %}
