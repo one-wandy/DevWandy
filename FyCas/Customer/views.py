@@ -37,8 +37,10 @@ class AddCustomer(CreateView, Options):
     def post(self, request, *args, **kwargs):
         f = self.form_class(request.POST, request.FILES)
         if f.is_valid():
-            if request.POST.get('sex-man') != 'man':
-                f.sexo = 'F'
+            f.instance.monto_requerido = request.POST.get('form-select-monto')
+            f.instance.fines = request.POST.get('form-select')
+            print(request.POST.get('form-select-sexo'))
+            f.instance.sexo =  request.POST.get('form-select-sexo')
             f.instance.name = f.instance.name.title()
             f.instance.last_name = f.instance.last_name.title()
             f.save()
