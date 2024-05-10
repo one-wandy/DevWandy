@@ -13,17 +13,21 @@
                   display: flex;
                   flex-wrap: wrap;
                   justify-content: center !important;
-                  background-color: #f5faff !important;
+                  background-color: #f5faff70 !important;
                   /* background-color: #a1d0ff !important; */
 
                   /* min-width: 100% !important; */
             }
-            .form-add-c .form-floating   {
+            .form-add-c .form-floating    {
                   width: 100%;
                   display: flex;
                   flex-wrap: wrap;
                   justify-content: center;
-                  margin: 0 0.4rem;
+                  margin: 0 0.3rem;
+            }
+            .form-select {
+                  width: 100% !important;
+                  
             }
 
             
@@ -36,7 +40,10 @@
             }
       }
 
-
+.section p 
+{
+      font-size: 13px !important;
+}
 </style>
 <section  class="position-relative   container-fluid  mb-5 pb-5">
 
@@ -106,7 +113,7 @@
                   </div>
                   <div class="form-floating mb-3 ">
                         {{form.sector}}
-                        <label for="id_address">sector</label>
+                        <label for="id_address">Sector</label>
                   </div>
                   <div class="form-floating mb-3 ">
                         {{form.ciudad}}
@@ -306,7 +313,7 @@
                               {{form.fines}}
                               <label for="id_fines">Para que fines</label>
                         </div> -->
-                        <select name="form-select" style="border-radius: 1rem !important; width: 320px; height: 3.8rem;" class="form-select"  aria-label="Default select example">
+                        <select name="form-select" style="" class="form-select"  aria-label="Default select example">
                               <option selected>Gastos Personales</option>
                               <option value="1">Saldar deudas</option>
                               <option value="2">Compra inmobilaria</option>
@@ -404,7 +411,7 @@
                   </div>
             </div>
       </form>
-      <div class="w-100 mt-5">
+      <div class="w-100 mt-5 mb-4">
             <hr class="container text-white">
 
       </div>
