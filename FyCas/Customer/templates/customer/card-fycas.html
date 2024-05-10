@@ -96,6 +96,7 @@ Que deberán ser pagados el día {{day_pay}} ({{credit.day_pay}}) de cada mes.
 <span class="black">SEXTO:</span> Es entendido para las partes que el pago de otros montos correspondería a un valor menor que el indicado por las cuotas y que excede el pago mínimo, por lo que, si <span class="black">EL DEUDOR</span>  realizara el pago cumpliendo con las características antes mencionadas, el monto excedente al mínimo se tomara en abono al capital, pudiendo incluso saldar sin ningún cobro por penalidad.   
 <br><br>
 
+<br>
 <span class="black">SEPTIMO:</span> como prueba de este préstamo <span class="black">EL DEUDOR</span>  suscribe un Pagare Notarial en favor de <span class="black">GRUPOS FYCAS</span>, el cual forma parte integral y cuyo pago está garantizado por las condiciones y estipulaciones de este contrato.    
 
 <!--    
@@ -146,22 +147,35 @@ Que deberán ser pagados el día {{day_pay}} ({{credit.day_pay}}) de cada mes.
       </span> 
       El deudor 
   
-
 </div>
 </section>
 <footer>
 
 </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-
-<script src="print.js"></script>
+<!-- <script src="print.js"></script> -->
 <script> 
 window.onload = function() {
       setTimeout(() => {
             // ocultamos el elemento
-            window.print();
+            CartaSave()
   }, 2000);
       };
+
+function CartaSave() {
+      const element = document.body; // Captura todo el contenido del body para el PDF
+    const options = {
+      margin: [10, 10, 10, 10],
+      filename: 'Carta.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' }
+    };
+
+    // Usa html2pdf para guardar el contenido como PDF
+    html2pdf().set(options).from(element).save();
+}
 
 </script>
 {% endblock  %}

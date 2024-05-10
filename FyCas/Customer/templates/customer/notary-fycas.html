@@ -3,11 +3,11 @@
 {% load humanize %}
 <section class="container w-100" style="font-family: Times New Roman; font-size: 16px;  color: black; text-align: justify;"> 
       
-      <div class="text-center  mb-4 mt-2">
+      <div class="text-center  mb-5 mt-1">
             <span class="black">PAGARE NOTARIAL </span>
       </div>
 
-      <div>
+      <div class="mt-5 ">
             <span class="black">
                   ACTO NÚMERO: __________         
             </span>
@@ -24,7 +24,7 @@
       </div>
       
       <div class="text-center mt-5 w-100  mb-3 d-flex justify-content-center flex-wrap">
-            <div class='mt-5 w-100 text-start'>
+            <div class='mt-5 w-100 text-start pt-1'>
                   POR GRUPOS FYCAS   
             </div>
 
@@ -84,12 +84,27 @@
 <footer>
 
 </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
 window.onload = function() {
       setTimeout(() => {
             // ocultamos el elemento
-            window.print();
+            NotarialSave()
   }, 2000);
       };
+
+function NotarialSave() {
+      const element = document.body; // Captura todo el contenido del body para el PDF
+    const options = {
+      margin: [10, 13, 10, 13],
+      filename: 'Notarial.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'mm', format: 'legal', orientation: 'portrait' }
+    };
+
+    // Usa html2pdf para guardar el contenido como PDF
+    html2pdf().set(options).from(element).save();
+}
 </script>
 {% endblock  %}
