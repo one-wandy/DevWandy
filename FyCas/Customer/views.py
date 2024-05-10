@@ -166,7 +166,7 @@ class CardCustomer(UpdateView, Options):
         context['year'] = c.year
         context['year_number'] = c.year_number
         context["amount"] = c.amount
-        context["day_pay"] = c.day_pay
+        # context["day_pay"] = c.day_pay
         context["credit"] = c
         try:
             context["amount"] = self.Amount(c.amount)
@@ -204,7 +204,7 @@ class NotaryCustomer(UpdateView, Options):
             context['year'] = c.year
             context['year_number'] = c.year_number
             context["amount"] = self.Amount(c.amount)
-            context["day_pay"] = c.day_pay
+            context["day_pay"] = self.DayNow(c.day_pay)
             context["credit"] = c
             if c.amount_feed:
                 v_amount = str(c.amount_feed)
