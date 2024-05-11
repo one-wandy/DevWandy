@@ -129,7 +129,6 @@ class DetailCustomer(DetailView, Options):
         context = super().get_context_data(**kwargs)
         context['c'] = self.model.objects.get(id=self.kwargs.get('pk'))
         context['credit'] = models.Credit.objects.filter(customer__id=self.kwargs.get('pk'))
-
         return context
     
 
@@ -311,6 +310,15 @@ class DataCredit(UpdateView):
         context['c'] = self.model.objects.get(id=self.kwargs.get('pk'))
         return context
     
+    # Detalle del prestamo para enviar a quien va aprobar el prestamo
+class DetailCreditCustomer(DetailView, Options):
+    model = models.Credit
+    template_name = "customer/detail-credit-customer.html"
     
-    
-    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['credit'] = self.model.objects.get(id=self.kwargs.get('pk'))
+        context['setting'] = self.Setting()
+
+        return context
+        

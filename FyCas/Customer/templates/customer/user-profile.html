@@ -105,6 +105,7 @@
    <section>
       
     {% for credit in credit %}
+    
     <div class='bg-white p-2 m-1 text-black-50 bg-opacity-50' 
     style=" width: 100%; max-width: 27rem;
     font-size: 14px;
@@ -158,6 +159,13 @@
 <div>
     <hr>
 </div>
+
+<div>
+  <a href="{% url "customer:detail-credit-cutomer" credit.id %}">
+    Compartir
+  </a>
+</div>
+
 <div class='d-flex   justify-content-end'>
     <a  target="_blank" href="{% url "customer:card-customer" credit.customer.id credit.id %}">
           <button>
