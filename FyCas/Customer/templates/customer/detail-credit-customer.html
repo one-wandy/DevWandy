@@ -17,7 +17,7 @@
 <section class="container-fluid d-flex flex-wrap justify-content-center h-100 w-100 position-fixed top-0 blur bg-white bg-opacity-75">
 
       
-      <div class="" style="border-radius: 1.3rem; height: max-content; min-width: 300px; max-width: 450px;">
+      <div class="text-white" style="border-radius: 1.3rem; height: max-content; min-width: 320px; max-width: 550px;">
             <div class="p-4 d-flex  flex-wrap   w-100">
                   <div class="d-flex justify-content-center w-100">
                         <div class="d-flex  flex-wrap  w-100 justify-content-center">
@@ -30,24 +30,40 @@
                         </div>
                   </div>
             </div> 
-      <h4 class="p-0 m-0 text-center mb-2" style="font-family: Quicksand, sans-serif;
+      <h4 class="p-0 m-0 text-center mb-4" style="font-family: Quicksand, sans-serif;
       color: black;
       font-optical-sizing: auto">
             Cliente Firmado
       </h4>
       
-      <div class="card p-3"  style="border-radius: 1.3rem; background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%); ">
-            <span><strong>Nombre:</strong> {{credit.customer.name}} {{credit.customer.last_name}} </span>
-            <span><strong>Cedula:</strong> {{credit.customer.dni}}  </span>
-            <span><strong>No.Cuenta:</strong>{{credit.no_account}}</span>
-            <span><strong>Monto:</strong> RD${{credit.amount|intcomma}}.00</span>
+      <div class=" p-3 ps-4 pe-4 d-block border-1 "  style=" border: 1px solid rgb(233, 233, 233); border-radius: 1.5rem;
+      font-family: Quicksand, sans-serif;
+      color: black;
+      box-shadow: var(--shadow-one);
+      font-optical-sizing: auto;
+      background-color: rgb(252, 252, 252);
+             ">
+            <span><strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle  text-black" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                </svg></strong> {{credit.customer.name}} {{credit.customer.last_name}} </span><br>
+            <span><strong>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi text-black bi-person-vcard-fill" viewBox="0 0 16 16">
+                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
+                </svg></strong> {{credit.customer.dni}}  </span><br>
+            <span><strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bank text-black" viewBox="0 0 16 16">
+                  <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z"/>
+                </svg> </strong>{{credit.no_account}}</span><br>
+            <span><strong> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar text-black" viewBox="0 0 16 16">
+                  <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
+                </svg> </strong> {{credit.amount|intcomma}}.00</span><br>
             <span><strong>Cuotas:</strong> 
                   {{credit.price_feed}} a RD${{credit.amount_feed|intcomma}} los dias {% if credit.mode_pay == True %}
                   (15) - (30)
                   {% else %}
                   ({{credit.day_pay}})
                   {% endif %}
-            </span>
+            </span><br>
             <span><strong>Fecha:</strong>
                    {{credit.day_number}} / <span class="text-capitalize">{{credit.mont}}</span> / {{credit.year_number}}  
             </span>
@@ -55,13 +71,13 @@
       <a style="font-family: Quicksand, sans-serif;
       color: black;
       font-optical-sizing: auto;" class="text-primary" href="{% url "customer:update-customer" credit.customer.id %}">                   
-                        
+                   <span class="text-black-50 ">     
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
             <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/>
             <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/>
             </svg>
 
-            Mas sobre el cliente 
+            Toda informacion sobre -></span> {{credit.customer.name}}
       </a>
       </div>
 </section>
