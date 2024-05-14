@@ -321,4 +321,20 @@ class DetailCreditCustomer(DetailView, Options):
         context['setting'] = self.Setting()
 
         return context
-        
+
+    
+    
+class NoApproved(TemplateView, Options):
+    template_name = "customer/not-approved.html"
+    
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+               return redirect(reverse('customer:add-customer'))
+        return super().get(request, *args, **kwargs)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['setting'] = self.Setting()
+
+        return context
+    
