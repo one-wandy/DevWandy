@@ -88,6 +88,14 @@ class UpdateCustomer(UpdateView, Options):
     form_class = forms.CustomerForm
     template_name = "customer/update-customer.html"
     
+    def get(self, request, *args, **kwargs):
+            customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
+            credit = self.model.objects.filter(customer__id = self.kwargs.get('pk'),is_active=True).exists()
+            if credit:
+                return super().get(request, *args, **kwargs)
+            else:
+                return self.CreateCredit(customer.id)
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['c'] = self.model.objects.get(id=self.kwargs.get('pk'))
@@ -139,7 +147,7 @@ class DeleteCustomer(DeleteView, Options):
     
     def get(self, request, *args, **kwargs):
         customer = self.model.objects.get(pk=self.kwargs.get('pk'))
-        customer.delete()
+        # customer.delete()
         return self.List_Redirect()
     
 class CardCustomer(UpdateView, Options):
@@ -258,6 +266,14 @@ class UpdateCredit(UpdateView, Options):
     model = models.Credit
     form_class = forms.CreditForm
     template_name = "customer/update-credit.html"
+    
+    def get(self, request, *args, **kwargs):
+            customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
+            credit = self.model.objects.filter(customer__id = self.kwargs.get('pk'),is_active=True).exists()
+            if credit:
+                return super().get(request, *args, **kwargs)
+            else:
+                return self.CreateCredit(customer.id)
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
