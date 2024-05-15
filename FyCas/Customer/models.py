@@ -167,7 +167,6 @@ class Credit(models.Model):
     day_pay = models.IntegerField(default=30)
     is_active = models.BooleanField(default=True)#is active rederict at diferens view
 
-    
     # 
     mont = models.CharField(max_length=100, default="")
     day = models.CharField(max_length=100, default="")
@@ -179,12 +178,18 @@ class Credit(models.Model):
     amount_feed = models.CharField(max_length=100, default="")
     
     
-    
     def __str__(self):
         return self.name
 
 
+class PayCredit(models.Model):
+    credit = models.ForeignKey(Credit, on_delete=models.CASCADE,  blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    img = models.ImageField(upload_to="media/", blank=True, null=True, default="") 
+    
 
+
+    
 class SettingApp(models.Model):
     name = models.CharField(blank=True, max_length=233, default='Grupo Fycas')
     Icon = models.ImageField(upload_to="media/", blank=True, null=True, default="media/img-default/img.png") #Foto de Cedula tracera

@@ -313,16 +313,26 @@ class DataCredit(UpdateView):
     # Detalle del prestamo para enviar a quien va aprobar el prestamo
 class DetailCreditCustomer(DetailView, Options):
     model = models.Credit
+    form_class = forms.PayCreditForm
     template_name = "customer/detail-credit-customer.html"
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['credit'] = self.model.objects.get(id=self.kwargs.get('pk'))
         context['setting'] = self.Setting()
+        context['form'] = forms.PayCreditForm
 
         return context
 
-    
+    def post(self, request, *args, **kwargs):   
+        f = self.form_class(request.POST, request.FILES)
+        if f.is_valid():
+            f.instance.credit = self.model.objects.get(id=self.kwargs.get('pk'))
+            f.save()     
+            return self.List_Redirect()
+        else:
+            return super().get(request, *args, **kwargs)
+
     
 class NoApproved(TemplateView, Options):
     template_name = "customer/not-approved.html"

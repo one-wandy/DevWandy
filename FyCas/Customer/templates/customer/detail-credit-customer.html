@@ -3,6 +3,20 @@
 {% load static %}
 {% load humanize %}
 
+<style>
+      .load-img:hover
+      {
+            color: rgb(54, 54, 255);
+            cursor: pointer;
+      }
+      .load-img 
+      {
+            color: black;
+      }
+      #id_img {
+            display: none;
+      }
+</style>
 <div class="w-100  container  justify-content-center  d-flex justify-content-between"
       style="min-height: 10rem; padding-top: 4rem;">
       <span class="span-animation mt-5 pt-5" style="min-width: 2rem; min-height: 1rem; background-color: rgba(255, 133, 133, 0.473);">s</span>
@@ -14,7 +28,7 @@
 </div>
 
 
-<section class="  d-flex flex-wrap justify-content-center h-100 w-100 position-fixed top-0 blur bg-white bg-opacity-50">
+<section class=" overflow-scroll  d-flex flex-wrap justify-content-center h-100 w-100 position-fixed top-0 blur bg-white bg-opacity-50">
 
       
       <div class="text-white ms-2 me-2" style="border-radius: 1.3rem; height: max-content; width: 100%; max-width: 550px;">
@@ -82,11 +96,25 @@
             </strong>
                    {{credit.day_number}} / <span class="text-capitalize">{{credit.mont}}</span> / {{credit.year_number}}  
             </span><br>
-
+            <span class="d-flex w-100 justify-content-center pt-2">
+                 <img src="" id="img-views" alt="">
+            </span>
+<div class=" mt-4">
+      <span class="d-flex flex-wrap justify-content-center load-img" style="height: 1rem;">
+            <label for="id_img" class="d-flex flex-wrap justify-content-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-cloud-upload-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 4.095 0 5.555 0 7.318 0 9.366 1.708 11 3.781 11H7.5V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11h4.188C14.502 11 16 9.57 16 7.773c0-1.636-1.242-2.969-2.834-3.194C12.923 1.999 10.69 0 8 0m-.5 14.5V11h1v3.5a.5.5 0 0 1-1 0"/>
+                      </svg>
+                      <strong class="w-100 load-img text-center">                         
+                               Cargar Comprobante
+                      </strong>
+            </label>
+      </span>
+</div>
             <div class="w-100 d-flex">
                   <hr>
             </div>
-            <div class="text-center w-100"> 
+            <div class="text-center w-100 d-none"> 
                   <a style="font-family: Quicksand, sans-serif;
                   color: black;
                   font-optical-sizing: auto;" class="text-primary  " href="{% url "customer:update-customer" credit.customer.id %}">                   
@@ -100,8 +128,46 @@
                   </a>
             </div>
       </div>
+      
+      </div>
 
+      <div class="w-100 d-flex justify-content-center">
+            <form action=""  method="post" class=" mt-1" enctype='multipart/form-data'>
+                  {% csrf_token %}
+            {{form.img}}
+            <div class="w-100 ">
+                  <button class="border-0 text-white" style="width: 7rem; border-radius: 1.3rem; background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);">
+                        Guardar
+                  </button>
+            </div>
+            </form>
       </div>
 </section>
+
+
+<script>
+let input = document.getElementById("id_img");
+let img = document.getElementById("img-views");
+  // Añadir un evento onchange al input para procesar la imagen seleccionada
+  input.onchange = function(e) {
+    // Obtener el archivo de la imagen
+    var file = e.target.files[0];
+    // Crear un objeto FileReader para leer el contenido del archivo
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      // Obtener el resultado de la lectura como una URL de datos
+      var url = e.target.result;
+      // Crear un elemento img para mostrar la imagen
+      img.classList.add('img-view1');
+      img.src = url;
+      img.style.width = "300px";
+      // img.style.height = "50px";
+      img.style.borderRadius = "1.5rem";
+      img.style.display = "block"
+    };
+    reader.readAsDataURL(file);
+  };
+
+</script>
 
 {% endblock  %}

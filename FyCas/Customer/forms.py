@@ -119,3 +119,17 @@ class CreditForm(forms.ModelForm):
         'amount_feed': forms.TextInput(attrs={'class': 'form-control'}),
 
       }
+      
+      
+class PayCreditForm(forms.ModelForm):
+    
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     for field_name, field in self.fields.items():
+    #         field.widget.attrs.update({'class': 'form-control'})
+    class Meta:
+        model = models.PayCredit
+        fields = ['credit',  'img', ]
+        widgets = {
+            'img': forms.FileInput(attrs={'accept': 'image/*'})
+        }
