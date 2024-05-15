@@ -1,6 +1,7 @@
 {% include "base/base.html" %}
 {% block content %}
 {% load static %}
+{% load humanize %}
 
 <style>
       a
@@ -303,7 +304,7 @@
       <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
       </svg></label>
 
-      <div class="d-flex w-100 mt-1 justify-content-center align-content-center ">
+      <div class="d-flex w-100 mt-1 mb-1 justify-content-center align-content-center ">
             <input type="text"  style="font-size: 14px; width: auto; min-width: 300px; min-height: 2.5rem; max-height: 2.5rem; max-width: 10rem;" class="form-search text-center  m-0 mb-1 blur bg-white bg-opacity-75"  id="searching-config" 
             placeholder=" Buscar  ">
             <!-- <a href="{% url "customer:add-customer" %}" class="d-flex align-content-center " > -->
@@ -369,22 +370,122 @@
             </h5>
       </div>
 
+      {% comment %} <Canvas></Canvas> {% endcomment %}
+  
+
+          
       <div style="display: flex; z-index: 9;" 
             class="w-100  blur position-fixed top-0  h-auto  flex-wrap   justify-content-center">
-            <div class="d-flex flex-wrap justify-content-end align-content-center   w-100">
-                  <span style="font-family: Righteous, sans-serif !important; 
-                  " class='no-select d-none mb-5'>
-                        Clientes  
-                  </span>
-
-            </div>
-            <div class="w-100 container-fluid mb-4 mt-3">
-                  <h6>
-                        <!-- Clientes Recientes  -->
-                  </h6>
-            </div>
             {% for c in customer %}
-                  <li  class="list-group-item no-select bg-transparent m-1   p-0  m-0 mb-5  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  ">
+            <div class=' d-none' id='div{{c.id}}' style=" border-radius:1.5rem;  width: 20.2rem;">
+                  
+                  {% for credit in c.credit.all %}
+
+                  <div class=" p-3 ps-4 pe-4 d-block bg-white bg-opacity-50 border-1 mt-4 "  style=" border: 1px solid rgb(233, 233, 233); border-radius: 2rem;
+                  font-family: Quicksand, sans-serif;
+                  color: black;
+                  box-shadow: var(--shadow-one);
+                  font-optical-sizing: auto;
+                  background-color: rgb(252, 252, 252);">
+                              <h4 class="p-0 m-0 text-center mb-4 " 
+                              style="font-family: Quicksand, sans-serif;
+                               color: black;
+                               font-optical-sizing: auto">
+                                    Prestamo #{{credit.id}}
+                              </h4>
+                        <span><strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle  text-black" viewBox="0 0 16 16">
+                              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                            </svg></strong> {{credit.customer.name}} {{credit.customer.last_name}} </span><br>
+                        <span><strong>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi text-black bi-person-vcard-fill" viewBox="0 0 16 16">
+                              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
+                            </svg></strong> {{credit.customer.dni}}  </span><br>
+                        <span><strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bank text-black" viewBox="0 0 16 16">
+                              <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z"/>
+                            </svg> </strong>{{credit.no_account}}</span><br>
+                        <span><strong> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar text-black" viewBox="0 0 16 16">
+                              <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
+                            </svg> </strong> {{credit.amount|intcomma}}.00</span><br>
+                   
+                        <span><strong>    
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-coin  text-black" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8m5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0"/>
+                                    <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195z"/>
+                                    <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083q.088-.517.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1z"/>
+                                    <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 6 6 0 0 1 3.13-1.567"/>
+                                  </svg>
+                        </strong> 
+                              Cuotas {{credit.price_feed}} a ${{credit.amount_feed|intcomma}} los dias {% if credit.mode_pay == True %}
+                              (15) - (30)
+                              {% else %}
+                              ({{credit.day_pay}})
+                              {% endif %}
+                        </span><br>
+                        <span><strong>
+            
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-even text-black" viewBox="0 0 16 16">
+                                    <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
+                                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                                  </svg>
+                        </strong>
+                               {{credit.day_number}} / <span class="text-capitalize">{{credit.mont}}</span> / {{credit.year_number}}  
+                        </span><br>
+                        <span class="d-flex w-100 justify-content-center pt-2">
+                             <img src="" id="img-views" alt="">
+                        </span>
+
+                        <div class="w-100 d-flex">
+                              <hr>
+                        </div>
+                        <div class="text-center w-100 d-none"> 
+                              <a style="font-family: Quicksand, sans-serif;
+                              color: black;
+                              font-optical-sizing: auto;" class="text-primary  " href="{% url "customer:update-customer" credit.customer.id %}">                   
+                                           <span class="text-black-50 ">     
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+                                    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/>
+                                    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/>
+                                    </svg>
+                        
+                                    Toda informacion sobre </span> {{credit.customer.name}}
+                              </a>
+                        </div>
+                  </div>
+                        
+                  {% endfor %}
+
+                        <div  class="w-100 justify-content-center d-flex p-2" style=" border-radius: 13rem;">
+                              <button onclick='Credit(this.id)'  class='border-0 bg-transparent text-white' 
+                              style='width: 15rem; border-radius: 1.4rem;background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);' id='{{c.id}}'>
+                                    Informacion de cliente
+                              </button>
+                        </div>
+            </div>
+                  <li  id='li{{c.id}}' class="list-group-item no-select bg-transparent m-1   p-0  m-0 mb-5  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  ">
+                        <script>
+                              function Credit(N) {
+                                    let div = document.getElementById('div' + N)
+                                    let li = document.getElementById('li' + N)
+                                    if (!div.classList.contains('d-none')) {
+                                          div.classList.add('d-none');
+                                      }
+                                    else {
+
+                                          div.classList.remove('d-none');
+                                    }
+                                      
+                                    if (!li.classList.contains('d-none')) {
+                                          li.classList.add('d-none');
+                                      }
+                                    else {
+
+                                          li.classList.remove('d-none');
+                                    }
+                                      
+                                    console.log(N)
+                              }
+                        </script>
                         <div class="d-flex  " style="font-size: 14px !important;  ">
                               <div class="d-flex flex-wrap ">
                                     <div class="w-100 d-flex">
@@ -464,8 +565,11 @@
                                                 </strong>
                                                 {{c.name_r1}} ({{c.number_r1}}) - {{c.name_r2}} ({{c.number_r2}})
                                           </span> -->
-                                          <div  class="w-100 p-2" style="background-color: #fcfcfc;">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, obcaecati ex cum dolorum officiis id fugit molestias 
+                                          <div  class="w-100 justify-content-center d-flex p-2" style=" border-radius: 13rem;">
+                                                <button onclick='Credit(this.id)'  class='border-0  text-white bg-transparent' 
+                                                style='width: 15rem; border-radius: 1.4rem; background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);' id='{{c.id}}'>
+                                                      Listado de Prestamos
+                                                </button>
                                           </div>
 
                                     </div>
@@ -474,8 +578,30 @@
                   </li>
             {% endfor %}
       </div>
+
+
+
 </section>
     
+{% comment %} 
+                                                {% if c.credit  %}
+                                                      {% for credit in c.credit.all   %}
+                                                            <div class='w-100 d-flex flex-wrap'>
+                                                                  <span class='w-100'>
+                                                                        {{credit.amount|intcomma}}.00
+                                                                  </span>
+                                                                  <span class='w-100'>
+                                                                        Cuotas {{credit.price_feed}} a ${{credit.amount_feed|intcomma}} los dias {% if credit.mode_pay == True %}
+                                                                        (15) - (30)
+                                                                        {% else %}
+                                                                        ({{credit.day_pay}})
+                                                                        {% endif %}
+                                                                  </span>
+                                                            </div>
+                                                      {% endfor %}
+                                                {% else %}
+                                                NOS
+                                                {% endif %} {% endcomment %}
 <script>
       let searching_config = document.getElementById('searching-config');
       let config_list = document.getElementById('config-list')

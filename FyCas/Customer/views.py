@@ -79,7 +79,7 @@ class ListCustomer(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['customer'] = self.model.objects.filter(is_active = True).order_by('-id')[:8]
-        # cu = self.model.objects.all()
+        cu = self.models.Credit.objects.filter()
         return context
     
     
