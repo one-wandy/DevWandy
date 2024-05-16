@@ -190,7 +190,7 @@ class CardCustomer(UpdateView, Options):
 class NotaryCustomer(UpdateView, Options):
     model = models.Customer
     form_class = forms.CustomerForm
-    template_name = "customer/notary-fycas.html"
+    template_name = "customer/fycas-notary.html"
     
     # def get(self, request, *args, **kwargs):
     #     name = "Contrato " + str(datetime.today().date())
