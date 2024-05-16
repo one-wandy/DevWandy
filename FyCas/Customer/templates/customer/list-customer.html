@@ -468,6 +468,7 @@
                         </div>
             </div>
                   <li  id='li{{c.id}}' class="list-group-item shadow-none p-2 no-select bg-transparent m-1   p-0  m-0 mb-5  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  height: 23rem;  ">
+
                         <script>
                               function Credit(N) {
                                     let div = document.getElementById('div' + N)
@@ -501,8 +502,15 @@
                                               <img src="{{c.img1}}" style="width: 320px; max-height: 95px;   border-radius: 18px; " alt="Imagen ccon Problemas" class="img  object-fit-cover img-border">
                                               {% endif %}
                                           </a>
-                                          <hr class='m-0 mt-2 p-0'>
+                                          
                                     </div>
+                                    <div  class="w-100 justify-content-end d-flex " style=" border-radius: 13rem;">
+                                          <button onclick='Credit(this.id)'  class='border-0  text-white bg-transparent' 
+                                          style=' border-radius: 1.4rem;' id='{{c.id}}'>
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi text-black bi-three-dots" viewBox="0 0 16 16">
+                                                <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+                                              </svg>                                                      </button>
+                              </div>
                                           <!-- <img src="{{c.img2}}" style="width: 230px; height: 150px; border-radius: 12px; margin-right: 0.3rem;" alt="Imagen con" class="img object-fit-cover"> -->
                                     <div class="d-flex align-content-center flex-wrap datos" >
                                           <span class="w-100 text-black" 
@@ -576,12 +584,7 @@
                                                 </strong>
                                                 {{c.name_r1}} ({{c.number_r1}}) - {{c.name_r2}} ({{c.number_r2}})
                                           </span> -->
-                                          <div  class="w-100 justify-content-center d-flex p-2" style=" border-radius: 13rem;">
-                                                      <button onclick='Credit(this.id)'  class='border-0  text-white bg-transparent' 
-                                                      style='width: 15rem; border-radius: 1.4rem; background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);' id='{{c.id}}'>
-                                                            Listado de Prestamos
-                                                      </button>
-                                          </div>
+
 
                                     </div>
                               </div>
