@@ -89,11 +89,11 @@ class UpdateCustomer(UpdateView, Options):
     
     def get(self, request, *args, **kwargs):
             customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
-            credit = self.model.objects.filter(customer__id = self.kwargs.get('pk'),is_active=True).exists()
-            if credit:
-                return super().get(request, *args, **kwargs)
-            else:
-                return self.CreateCredit(customer.id)
+            # credit = self.model.objects.filter(customer__id = self.kwargs.get('pk'),is_active=True).exists()
+            # if credit:
+            return super().get(request, *args, **kwargs)
+            # else:
+                # return self.CreateCredit(customer.id)
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
