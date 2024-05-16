@@ -377,11 +377,11 @@
       <div style="display: flex; z-index: 9;" 
             class="w-100  blur position-fixed top-0  h-auto  flex-wrap   justify-content-center">
             {% for c in customer %}
-            <div class=' d-none' id='div{{c.id}}' style=" border-radius:1.5rem;  width: 20.2rem;">
+            <div class=' d-none  position-relative' id='div{{c.id}}' style=" border-radius:2rem;  width: 22.2rem; height: 23rem; ">
                   
                   {% for credit in c.credit.all %}
 
-                  <div class=" p-3 ps-4 pe-4 d-block bg-white bg-opacity-50 border-1 mt-4 "  style=" border: 1px solid rgb(233, 233, 233); border-radius: 2rem;
+                  <div class=" p-3 ps-4 pe-4 d-block bg-white bg-opacity-50 border-1 "  style=" border: 1px solid rgb(233, 233, 233); border-radius: 2rem;
                   font-family: Quicksand, sans-serif;
                   color: black;
                   box-shadow: var(--shadow-one);
@@ -455,14 +455,14 @@
                         
                   {% endfor %}
 
-                        <div  class="w-100 justify-content-center d-flex p-2" style=" border-radius: 13rem;">
-                              <button onclick='Credit(this.id)'  class='border-0 bg-transparent text-white' 
+                        <div  class="w-100 justify-content-center d-flex  position-absolute bottom-0 end-0 p-2" style=" border-radius: 13rem;">
+                              <button onclick='Credit(this.id)'  class='border-0 bg-transparent text-white ' 
                               style='width: 15rem; border-radius: 1.4rem;background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);' id='{{c.id}}'>
                                     Informacion de cliente
                               </button>
                         </div>
             </div>
-                  <li  id='li{{c.id}}' class="list-group-item shadow-none no-select bg-transparent m-1   p-0  m-0 mb-5  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  ">
+                  <li  id='li{{c.id}}' class="list-group-item shadow-none p-2 no-select bg-transparent m-1   p-0  m-0 mb-5  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  height: 23rem;  ">
                         <script>
                               function Credit(N) {
                                     let div = document.getElementById('div' + N)
@@ -491,9 +491,9 @@
                                     <div class="w-100 d-flex">
                                           <a href="{% url "customer:detail-customer" c.id %}">                                          
                                                 {% if c.img1.url == "/media/img-default/img.png" %}
-                                                <img src="{{c.img1}}" style="width: 90px; max-height: 90px;   border-radius: 12px; " alt="Imagen ccon Problemas" class="img rounded-circle object-fit-cover img-border">
+                                                <img src="{{c.img1}}" style="width: 300px; max-height: 90px;   border-radius: 12px; " alt="Imagen ccon Problemas" class="img  object-fit-cover img-border">
                                               {% else %}
-                                              <img src="{{c.img1}}" style="width: 90px; max-height: 90px;   border-radius: 12px; " alt="Imagen ccon Problemas" class="img rounded-circle object-fit-cover img-border">
+                                              <img src="{{c.img1}}" style="width: 300px; max-height: 90px;   border-radius: 12px; " alt="Imagen ccon Problemas" class="img  object-fit-cover img-border">
                                               {% endif %}
                                           </a>
                                           <hr class='m-0 mt-2 p-0'>
@@ -504,7 +504,7 @@
                                           style="font-size: 14px;
                                           color: #383838;
                                           font-family: Righteous, sans-serif;
-                                          font-size: 13px;
+                                          font-size: 14px;
                                           font-weight: 400; " >
                                           {% if c.estatus == 'S' %}
                                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi text-primary bi-check2-circle" viewBox="0 0 16 16">
@@ -566,10 +566,10 @@
                                                 {{c.name_r1}} ({{c.number_r1}}) - {{c.name_r2}} ({{c.number_r2}})
                                           </span> -->
                                           <div  class="w-100 justify-content-center d-flex p-2" style=" border-radius: 13rem;">
-                                                <button onclick='Credit(this.id)'  class='border-0  text-white bg-transparent' 
-                                                style='width: 15rem; border-radius: 1.4rem; background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);' id='{{c.id}}'>
-                                                      Listado de Prestamos
-                                                </button>
+                                                      <button onclick='Credit(this.id)'  class='border-0  text-white bg-transparent' 
+                                                      style='width: 15rem; border-radius: 1.4rem; background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);' id='{{c.id}}'>
+                                                            Listado de Prestamos
+                                                      </button>
                                           </div>
 
                                     </div>
@@ -669,13 +669,17 @@ window.addEventListener("DOMContentLoaded", function() {
                               let img = document.createElement("img")
                                     // img.classList.add("img", "img-js")
                                     // img.src = c.img
-                                    imgLink.appendChild(stronL)
-                                    divI.appendChild(imgLink)
+                                //    imgLink.appendChild(stronL)
+                                //    divI.appendChild(imgLink)
                               let spanL = document.createElement("span")
-                              spanL.classList.add("capitalize")
-                                    spanL.textContent = c.name
+                              const nameLink = document.createElement('a');
+                              nameLink.href = "/detail-customer/" + c.id
+                              nameLink.target = '_blank';
+                              nameLink.innerText = c.name
+                              //spanL.classList.add("capitalize")
+                                //    spanL.textContent = c.name
                               divL.appendChild(stronL)
-                              divL.appendChild(spanL)
+                              divL.appendChild(nameLink)
 
                               let divN = document.createElement("div")
                                     let stronN = document.createElement("strong")
@@ -694,7 +698,7 @@ window.addEventListener("DOMContentLoaded", function() {
                               // divA.appendChild(spanA)
 
                               let divR = document.createElement("div")
-                                    // let stronR = document.createElement("strong")
+                                     let stronR = document.createElement("strong")
                                           // stronR.textContent = "Recide en: "
                                     // let spanR = document.createElement("a")
                                           // spanR.href = "https://www.google.com.do/maps/search/" + c.recide
