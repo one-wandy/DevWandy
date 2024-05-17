@@ -307,7 +307,7 @@
       </svg></label>
 
       <div class="d-flex w-100  pt-1 mt-1 pb-2 bg-transparent justify-content-center align-content-center ">
-            <div class="bg-transparent blur d-flex  align-content-center shadow p-1" style="border-radius: 1.8rem;">
+            <div class="bg-transparent blur d-flex bg-opacity-75  align-content-center shadow p-1" style="border-radius: 1.8rem;">
                   <input type="text"  style="font-size: 14px; width: auto; min-width: 200px; min-height: 2rem;margin-top: 5px !important; margin-left: 6px !important;  max-height: 2rem; max-width: 5rem;" class="form-search blur  text-center shadow-none  m-0 mb-1  bg-white bg-opacity-75"  id="searching-config" 
                   placeholder=" Buscando Clientes ">
                   <!-- <a href="{% url "customer:add-customer" %}" class="d-flex align-content-center " > -->
@@ -578,6 +578,9 @@
                                                 </strong>
                                                 {{c.name_r1}} ({{c.number_r1}}) - {{c.name_r2}} ({{c.number_r2}})
                                           </span> -->
+                                          <div class="w-100 d-flex justify-content-end">
+                                                      <hr  class="text-black-50 p-0 m-0 mt-3  " style="width: 7rem;">
+                                          </div>
                                           <div  class="w-100 justify-content-end  d-flex align-content-center flex-wrap " style=" border-radius: 13rem;">
                                                 <a href="https://api.whatsapp.com/send?phone={{c.number}}&text=¡Felicitaciones! Su solicitud ha sido aprobada. Para confirmar su solicitud y acceder a más detalles, haga clic en el siguiente enlace: https://grupofycas.online/approved/customer/{{c.id}}" target="_blank">
                                                       <button class="border-0  bg-transparent">
