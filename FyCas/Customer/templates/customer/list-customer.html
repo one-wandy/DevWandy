@@ -212,13 +212,6 @@
   opacity: 0.8;
  }
 }
-
-.list-group-item 
-{
-      border: #eeeeee 1px solid;
-      border-radius: 1.7rem !important;
-      padding-bottom: 1rem !important;
-}
 </style>
 
 <div id="div-gregar" class="position-fixed  w-100 justify-content-center"  
@@ -313,8 +306,8 @@
       <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
       </svg></label>
 
-      <div class="d-flex w-100 mt-1 mb-1 blur pt-1 justify-content-center align-content-center ">
-            <input type="text"  style="font-size: 14px; width: auto; min-width: 300px; min-height: 2.5rem; max-height: 2.5rem; max-width: 10rem;" class="form-search text-center  m-0 mb-1  bg-white bg-opacity-75"  id="searching-config" 
+      <div class="d-flex w-100 mt-1 mb-1 justify-content-center align-content-center ">
+            <input type="text"  style="font-size: 14px; width: auto; min-width: 300px; min-height: 2.5rem; max-height: 2.5rem; max-width: 10rem;" class="form-search text-center  m-0 mb-1 blur bg-white bg-opacity-75"  id="searching-config" 
             placeholder=" Buscar  ">
             <!-- <a href="{% url "customer:add-customer" %}" class="d-flex align-content-center " > -->
                   <button id="agregar" class="border-0 rounded-circle ms-1 d-flex justify-content-center align-content-center flex-wrap text-white  m-0 p-0" 
@@ -474,8 +467,7 @@
                               </button>
                         </div>
             </div>
-                  <li  id='li{{c.id}}' class="list-group-item  p-2 no-select bg-white bg-opacity-75 m-1   p-0 pb-3  m-0 mb-5   h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  height: 23rem;  ">
-
+                  <li  id='li{{c.id}}' class="list-group-item shadow-none p-2 no-select bg-transparent m-1   p-0  m-0 mb-5  h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  height: 23rem;  ">
                         <script>
                               function Credit(N) {
                                     let div = document.getElementById('div' + N)
@@ -504,21 +496,13 @@
                                     <div class="w-100 d-flex">
                                           <a href="{% url "customer:detail-customer" c.id %}">                                          
                                                 {% if c.img1.url == "/media/img-default/img.png" %}
-                                                <img src="{{c.img1}}" style="width: 305px; max-height: 95px;   border-radius: 18px; " alt="Imagen ccon Problemas" class="img  object-fit-cover img-border">
+                                                <img src="{{c.img1}}" style="width: 320px; max-height: 95px;   border-radius: 18px; " alt="Imagen ccon Problemas" class="img  object-fit-cover img-border">
                                               {% else %}
-                                              <img src="{{c.img1}}" style="width: 305px; max-height: 95px;   border-radius: 18px; " alt="Imagen ccon Problemas" class="img  object-fit-cover img-border">
+                                              <img src="{{c.img1}}" style="width: 320px; max-height: 95px;   border-radius: 18px; " alt="Imagen ccon Problemas" class="img  object-fit-cover img-border">
                                               {% endif %}
                                           </a>
-                                          
+                                          <hr class='m-0 mt-2 p-0'>
                                     </div>
-                                    <div  class="w-100 justify-content-end d-flex  " style=" border-radius: 13rem;">
-                                          <button onclick='Credit(this.id)'  class='border-0  text-white bg-transparent' 
-                                          style=' border-radius: 1.4rem; height: max-content; width: max-content;' id='{{c.id}}'>
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi text-black bi-three-dots p-0 m-0" viewBox="0 0 16 16">
-                                                <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                              </svg>                                                      
-                                          </button>
-                              </div>
                                           <!-- <img src="{{c.img2}}" style="width: 230px; height: 150px; border-radius: 12px; margin-right: 0.3rem;" alt="Imagen con" class="img object-fit-cover"> -->
                                     <div class="d-flex align-content-center flex-wrap datos" >
                                           <span class="w-100 text-black" 
@@ -592,7 +576,13 @@
                                                 </strong>
                                                 {{c.name_r1}} ({{c.number_r1}}) - {{c.name_r2}} ({{c.number_r2}})
                                           </span> -->
-
+                                          <div  class="w-100 justify-content-end d-flex " style=" border-radius: 13rem;">
+                                                      <button onclick='Credit(this.id)'  class='border-0  text-white bg-transparent' 
+                                                      style='' id='{{c.id}}'>
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-three-dots text-black" viewBox="0 0 16 16">
+                                                            <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+                                                          </svg>                                                      </button>
+                                          </div>
 
                                     </div>
                               </div>
