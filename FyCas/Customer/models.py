@@ -70,7 +70,7 @@ class Customer(models.Model):
     # municipio
     municipio = models.CharField(blank=True, max_length=255, default='')
     # Cuidad 
-    ciudad = models.CharField(blank=True, max_length=250, default='Santo Domingo Este')
+    ciudad = models.CharField(blank=True, max_length=250, default='Santo Domingo')
     # provincia
     provincia = models.CharField(blank=True, max_length=255, default='SANTO DOMINGO DE GUZMAN')
     # Pais
