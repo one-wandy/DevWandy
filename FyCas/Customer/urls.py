@@ -22,6 +22,9 @@ urlpatterns = [
       path("detail-credit/customer/<int:pk>", views.DetailCreditCustomer.as_view(), name="detail-credit-cutomer"),
 
       path("no-approved/customer", views.NoApproved.as_view(), name='no-approved'),
+      path("approved/customer/<int:pk>", views.Approved.as_view(), name='approved'),
+      
+
 
       # Views Ajax
       path("searching/customer", views_ajax.SearchCustomer, name="searching-customer"),

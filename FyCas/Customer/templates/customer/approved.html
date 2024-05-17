@@ -1,0 +1,128 @@
+{% include "base/base.html" %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+
+<div class="w-100  container  justify-content-center  d-flex justify-content-between"
+      style="min-height: 10rem; padding-top: 4rem;">
+      <span class="span-animation mt-5 pt-5" style="min-width: 2rem; min-height: 1rem; background-color: rgba(255, 133, 133, 0.473);">s</span>
+      <span class="span-animation" style="min-width: 2rem; height:1rem; background-color: rgba(222, 137, 255, 0.438);">s</span>
+      <span class="span-animation" style="min-width: 1rem; height:1.3rem; background-color: rgba(128, 179, 255, 0.404);">s</span>
+      <span class="span-animation" style="min-width: 10rem; height:1.3rem; background-color: rgba(128, 255, 244, 0.445);">s</span>
+      <span class="span-animation mt-2" style="min-width: 4rem; height:1.3rem; background-color: rgba(255, 128, 177, 0.404);">s</span>
+      <span class="span-animation mb-2" style="min-width: 4rem; height:1.3rem; background-color: rgba(153, 255, 128, 0.349);">s</span>
+</div>
+
+
+<section class="  d-flex flex-wrap justify-content-center h-100 w-100 position-fixed top-0 blur bg-white bg-opacity-50">
+
+      
+      <div class="text-white ms-2 me-2 mb-5" style="border-radius: 1.3rem; height: max-content; width: 100%; max-width: 550px;">
+            <div class="p-4 d-flex  flex-wrap   w-100">
+                  <div class="d-flex justify-content-center w-100">
+                        <div class="d-flex  flex-wrap  w-100 justify-content-center">
+                              <strong style="  font-family: Quicksand, sans-serif;
+                              color: black;
+                              font-optical-sizing: auto;">              
+                              <img src="{{setting.Icon.url}}" width="30" alt="">
+                              GRUPO FYCAS 
+                        </strong>
+                        </div>
+                  </div>
+            </div> 
+
+      
+      <div class=" p-3 pb-0 ps-4 pe-4 d-block border-1 mt-5 "  style=" border: 1px solid rgb(233, 233, 233); border-radius: 2rem;
+      font-family: Quicksand, sans-serif;
+      color: black;
+      box-shadow: var(--shadow-one);
+      font-optical-sizing: auto;
+      background-color: rgb(252, 252, 252);">
+                  <h4 class="p-0 m-0 text-center mb-4 " 
+                  style="font-family: Quicksand, sans-serif;
+                   color: black;
+                   font-optical-sizing: auto">
+                       ¡Solicitud aprobada!
+                  </h4>
+
+                  <div>
+                        <p class="text-black-50" style="text-align: justify;">
+                                    ¡Nos complace informarle que su solicitud de préstamo por un monto de <strong>RD${{credit.amount|intcomma}}.00</strong> ha sido aprobada!, son
+                                    {{credit.price_feed}} <strong>cuotas</strong> a <strong>RD${{credit.amount_feed|intcomma}}</strong> 
+                                   que deberian ser pagados los dias  {% if credit.mode_pay == True %}
+                                   (15) - (30)
+                                   {% else %}
+                                   ({{credit.day_pay}})
+                                   {% endif %}  de cada mes
+
+                              <br>
+                              <br>
+
+
+                              <strong>¿Qué sigue ahora?</strong> <br>
+                              Para formalizar el proceso, hemos generado los documentos correspondientes que requieren su firma, uno de nuestros representantes se pondrá en contacto con usted para coordinar la firma de los documentos.
+                        </p>
+
+                        <div class="d-flex w-100 justify-content-end">
+                              <button class="border-0 bg-transparent" style="border-radius: 1.6rem;">
+                                    Cancelar
+                              </button>
+                              <button class="text-white border-0" style="border-radius: 1.6rem; background-color: #0099ff;">
+                                    Aceptar
+                              </button>
+                        </div>
+                  </div>
+            <div class="w-100 d-flex">
+                  <hr>
+            </div>
+      </div>
+      <div class="text-center mt-4">
+            <h6>
+              ¡Gana una comisión al registrarte y usar el Banco Digital Qik! <br> 
+              <a href="https://www.qik.com.do/ae10454a">https://www.qik.com.do</a>
+            </h6>
+          </div>
+
+      </div>
+</section>
+
+<!-- <script>
+      function calcularDiasRestantes(fechaActual, fechaLimite) {
+  // Convertir las fechas a milisegundos
+  const fechaActualMilisegundos = fechaActual.getTime();
+  const fechaLimiteMilisegundos = fechaLimite.getTime();
+
+  // Calcular la diferencia en milisegundos
+  const diferenciaMilisegundos = fechaLimiteMilisegundos - fechaActualMilisegundos;
+
+  // Convertir la diferencia a días
+  const diasRestantes = diferenciaMilisegundos / (1000 * 60 * 60 * 24);
+
+  // Determinar el valor a mostrar
+  let valor;
+  if (diasRestantes < 15) {
+    valor = 30;
+  } else {
+    valor = 15;
+  }
+
+  // Crear el span y agregar el valor
+  const span = document.createElement('span');
+  span.textContent = valor;
+
+  return span;
+}
+
+// Ejemplo de uso
+const fechaActual = new Date();
+const fechaLimite = new Date(2024, 5, 31); // Reemplazar con la fecha límite real
+
+const spanDiasRestantes = calcularDiasRestantes(fechaActual, fechaLimite);
+
+// Agregar el span al DOM
+const elementoPadre = document.getElementById('day-pay'); // Reemplazar con el elemento padre real
+elementoPadre.appendChild(spanDiasRestantes);
+
+</script> -->
+
+{% endblock  %}

@@ -19,6 +19,10 @@ class Dashboard(TemplateView, Options):
                return redirect(reverse('customer:add-customer'))
         return super().get(request, *args, **kwargs)
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['setting'] = self.Setting()
+        return context
     
     
 class AddCustomer(CreateView, Options):
@@ -26,6 +30,10 @@ class AddCustomer(CreateView, Options):
     form_class = forms.CustomerForm
     template_name = "customer/create-customer.html"
         
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['setting'] = self.Setting()
+        return context
     
         
     def get_context_data(self, **kwargs):
@@ -67,7 +75,7 @@ class AddCustomer(CreateView, Options):
         # Redirigir a una URL específica después de guardar el formulario
         return reverse_lazy('mi_vista_de_exito')
     
-class ListCustomer(ListView):
+class ListCustomer(ListView,Options):
     model = models.Customer
     template_name = "customer/list-customer.html"
     
@@ -79,6 +87,8 @@ class ListCustomer(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['customer'] = self.model.objects.filter(is_active = True).order_by('-id')[:8]
+        context['setting'] = self.Setting()
+
         return context
     
     
@@ -354,6 +364,20 @@ class NoApproved(TemplateView, Options):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['setting'] = self.Setting()
-
         return context
     
+    
+    
+class Approved(TemplateView, Options):
+    template_name = "customer/approved.html"
+    
+    def get_context_data(self, **kwargs):
+        credit = models.Credit.objects.filter(customer__id=self.kwargs.get('pk')).order_by('-id').last()
+        context = super().get_context_data(**kwargs)
+        context['setting'] = self.Setting()
+        context['c'] = models.Customer.objects.get(id=self.kwargs.get('pk'))
+        context['credit'] = credit
+
+
+
+        return context
