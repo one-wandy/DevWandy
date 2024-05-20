@@ -28,6 +28,8 @@ urlpatterns = [
 
       # Views Ajax
       path("searching/customer", views_ajax.SearchCustomer, name="searching-customer"),
+      path("verify-false/customer/", views_ajax.CustomerVerifyTurnFalse, name="verify-false-customer"),
+
 
       
 ]

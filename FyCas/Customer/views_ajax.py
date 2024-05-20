@@ -20,6 +20,13 @@ def SearchCustomer(request):
       return JsonResponse(list_cutomers,  safe=False)
 
 
+def CustomerVerifyTurnFalse(request):
+        print()
+        c = models.Customer.objects.get(id=request.GET.get('customer_id'))
+        c.customer_verify = False
+        c.save()
+        
+        return JsonResponse(list(),  safe=False)
 """"
 from django.shortcuts import render
 from .models import Contacto

@@ -86,7 +86,7 @@ class ListCustomer(ListView,Options):
    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['customer'] = self.model.objects.filter(is_active = True).order_by('-id')[:8]
+        context['customer'] = self.model.objects.filter(is_active = True, customer_verify = True ).order_by('-id')[:8]
         context['setting'] = self.Setting()
 
         return context

@@ -4,7 +4,9 @@ from django.db import models
 
 class Customer(models.Model):
     # Para el tema de las solicitudes, cuando el user ingresa por primera vez el estado permanece false durante los proximos 7 dias, sera descartado y eliminado de la base de datos ya que su aprobacion no fue verificada por lo tanto no cambio a " True " pero se guardada su DNI en una base de datos adicional mas adelante p
-    aprobado = models.BooleanField(default=False,  blank=True)
+    not_aprobado = models.BooleanField(default=False,  blank=True)
+    # Si 
+    customer_verify = models.BooleanField(default=True,  blank=True)
     
     # Datos Opcionales
     vehiculo = models.BooleanField(default=False,  blank=True)
