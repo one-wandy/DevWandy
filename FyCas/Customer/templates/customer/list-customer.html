@@ -215,8 +215,8 @@
 </style>
 
 <div id="div-gregar" class="position-fixed  w-100 justify-content-center"  
-      style="display: none; z-index: 11; bottom: 3.1rem;">
-      <div class="div shadow bg-white bg-opacity-75 blur d-flex  flex-wrap  justify-content-around p-2 w-100 m-1 " style=" border-radius: 1.5rem; 
+      style="display: none; z-index: 11; bottom: 3.6rem;">
+      <div class="div shadow bg-white bg-opacity-75 blur d-flex  flex-wrap  justify-content-around p-2 w-100 m-1 " style=" border-radius: 2rem; 
             font-family: Quicksand, sans-serif;
             color: black;
             font-optical-sizing: auto;
@@ -230,11 +230,11 @@
             <!-- </div> --> 
 
             <a href="{% url "customer:add-customer" %}" class="d-flex   justify-content-center flex-wrap align-content-center " >
-                  <button  class="border-0 text-white  rounded-circle m-0 p-0" 
-                        style="background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+                  <button  class="border-0 text-white bg-transparent  rounded-circle m-0 p-0" 
+                        style="
                         height: 2.7rem !important;
                         width: 2.7rem;">               
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill-add text-black" viewBox="0 0 16 16">
                         <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                         <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
                         </svg> 
@@ -243,11 +243,11 @@
             </a>
 
             <a onclick="Cal()" class="d-flex  flex-wrap justify-content-center align-content-center " >
-                  <button  class="border-0 text-white  rounded-circle m-0 p-0" 
-                        style="background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+                  <button  class="border-0 text-white  bg-transparent rounded-circle m-0 p-0" 
+                        style="
                         height: 2.7rem !important;
                         width: 2.7rem;">               
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-calculator-fill" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-calculator-fill text-black" viewBox="0 0 16 16">
                         <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm2 .5v2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5m0 4v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M4.5 9a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 12.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M7.5 6a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM7 9.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM10 6.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-.5-.5z"/>
                         </svg>
                   </button> 
@@ -256,11 +256,11 @@
 
 
             <a href="" class="d-flex  justify-content-center  flex-wrap align-content-center " >
-                  <button  class="border-0 text-white  rounded-circle m-0 p-0" 
-                        style="background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+                  <button  class="border-0 text-white bg-transparent rounded-circle m-0 p-0" 
+                        style="
                         height: 2.7rem !important;
                         width: 2.7rem;">               
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-stars text-black" viewBox="0 0 16 16">
                         <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
                         </svg>
                   </button> 
@@ -269,16 +269,22 @@
 
 
             <a href="" class="d-flex  justify-content-center flex-wrap align-content-center " >
-                  <button  class="border-0 text-white  rounded-circle m-0 p-0" 
-                        style="background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+                  <button  class="border-0 text-white bg-transparent  rounded-circle m-0 p-0" 
+                        style="
                         height: 2.7rem !important;
                         width: 2.7rem;">               
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-fill" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-fill text-black" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.3 1.3 0 0 0-.37.265.3.3 0 0 0-.057.09V14l.002.008.016.033a.6.6 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.6.6 0 0 0 .146-.15l.015-.033L12 14v-.004a.3.3 0 0 0-.057-.09 1.3 1.3 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465s-2.462-.172-3.34-.465c-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411"/>
                         </svg>
                   </button> 
                   <span class="w-100 text-center" style="font-size: 12px;">Rutas</span>
             </a>
+            <button onclick="NotifyCation()" id="btn-notifycation"  class=" bg-transparent border-0 position-fixed top-0 end-0 position-relative" style="height: 0.5rem; z-index: 10; box-shadow: none !important;">
+                  <span class="position-absolute top-50 p-1 rounded-circle " style=" left: 1.3rem;color: white; font-size: 12px;">6</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+                      </svg>
+            </button>
       </div>
 </div>
 
@@ -343,13 +349,8 @@
 });
 
 </script>
-<button onclick="NotifyCation()" id="btn-notifycation"  class="bg-transparent border-0 position-fixed top-0 end-0 position-relative" style="height: 0.5rem; z-index: 10; box-shadow: none !important;">
-      <span class="position-absolute top-50 p-1 rounded-circle " style=" left: 1.3rem;color: white; font-size: 12px;">6</span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
-            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
-          </svg>
-</button>
-<div id="div-notifycations"  class="bg-white bg-opacity-75 blur me-3 p-2 position-fixed end-0 card" style="display: none; z-index: 10; top: 3rem; max-width: 320px; border-radius: 1.3rem !important;">
+
+<div id="div-notifycations"  class="bg-white bg-opacity-75 blur me-3 p-2 position-fixed end-0 card" style="display: none; z-index: 10; top: 1rem; max-width: 620px; border-radius: 1.3rem !important;">
       <h6 class='mt-1'>
             Solicitudes
       </h6>
@@ -579,25 +580,25 @@
                                                 {{c.name_r1}} ({{c.number_r1}}) - {{c.name_r2}} ({{c.number_r2}})
                                           </span> -->
                                           <div class="w-100 d-flex justify-content-end">
-                                                      <hr  class="text-black-50 p-0 m-0 mt-3  " style="width: 7rem;">
+                                                      <hr  class="text-black-50 p-0 m-0 mt-3  " style="width: 3.6rem;">
                                           </div>
                                           <div  class="w-100 justify-content-end  d-flex align-content-center flex-wrap " style=" border-radius: 13rem;">
-                                                <a href="https://api.whatsapp.com/send?phone={{c.number}}&text=Su solicitud no fue aprobada en este momento. para mas detalles, haga clic en este enlace: https://grupofycas.online/no-approved/customer" target="_blank">                                               
-                                                      <button class="border-0  bg-transparent">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-x-circle-fill text-black" viewBox="0 0 16 16">
-                                                                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                                                <a href="https://api.whatsapp.com/send?phone={{c.number}}&text=Su solicitud no fue aprobada en este momento. para mas detalles, haga clic en este enlace: https://grupofycas.online/no-approved/customer" target="_blank" class='p-0 pt-2'>                                                
+                                                      <button class="border-0  bg-transparent p-0">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-hand-thumbs-down" viewBox="0 0 16 16">
+                                                                  <path d="M8.864 15.674c-.956.24-1.843-.484-1.908-1.42-.072-1.05-.23-2.015-.428-2.59-.125-.36-.479-1.012-1.04-1.638-.557-.624-1.282-1.179-2.131-1.41C2.685 8.432 2 7.85 2 7V3c0-.845.682-1.464 1.448-1.546 1.07-.113 1.564-.415 2.068-.723l.048-.029c.272-.166.578-.349.97-.484C6.931.08 7.395 0 8 0h3.5c.937 0 1.599.478 1.934 1.064.164.287.254.607.254.913 0 .152-.023.312-.077.464.201.262.38.577.488.9.11.33.172.762.004 1.15.069.13.12.268.159.403.077.27.113.567.113.856s-.036.586-.113.856c-.035.12-.08.244-.138.363.394.571.418 1.2.234 1.733-.206.592-.682 1.1-1.2 1.272-.847.283-1.803.276-2.516.211a10 10 0 0 1-.443-.05 9.36 9.36 0 0 1-.062 4.51c-.138.508-.55.848-1.012.964zM11.5 1H8c-.51 0-.863.068-1.14.163-.281.097-.506.229-.776.393l-.04.025c-.555.338-1.198.73-2.49.868-.333.035-.554.29-.554.55V7c0 .255.226.543.62.65 1.095.3 1.977.997 2.614 1.709.635.71 1.064 1.475 1.238 1.977.243.7.407 1.768.482 2.85.025.362.36.595.667.518l.262-.065c.16-.04.258-.144.288-.255a8.34 8.34 0 0 0-.145-4.726.5.5 0 0 1 .595-.643h.003l.014.004.058.013a9 9 0 0 0 1.036.157c.663.06 1.457.054 2.11-.163.175-.059.45-.301.57-.651.107-.308.087-.67-.266-1.021L12.793 7l.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581s-.027-.414-.075-.581c-.05-.174-.111-.273-.154-.315l-.353-.354.353-.354c.047-.047.109-.176.005-.488a2.2 2.2 0 0 0-.505-.804l-.353-.354.353-.354c.006-.005.041-.05.041-.17a.9.9 0 0 0-.121-.415C12.4 1.272 12.063 1 11.5 1"/>
                                                                 </svg>
                                                       </button>
                                                 </a>
-                                                <a href="https://api.whatsapp.com/send?phone={{c.number}}&text=¡Felicitaciones! Su solicitud ha sido aprobada. Para confirmar su solicitud y acceder a más detalles, haga clic en el siguiente enlace: https://grupofycas.online/approved/customer/{{c.id}}" target="_blank">
-                                                      <button class="border-0  bg-transparent">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
-                                                                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                                <a href="https://api.whatsapp.com/send?phone={{c.number}}&text=¡Felicitaciones! Su solicitud ha sido aprobada. Para confirmar su solicitud y acceder a más detalles, haga clic en el siguiente enlace: https://grupofycas.online/approved/customer/{{c.id}}" target="_blank" class='p-0 pt-1 ms-1'>
+                                                      <button class="border-0  bg-transparent p-0">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-hand-thumbs-up-fill text-black" viewBox="0 0 16 16">
+                                                                  <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
                                                                 </svg>
                                                       </button>
                                                 </a>
 
-                                                <button onclick='Credit(this.id)'  class='border-0  text-white bg-transparent' 
+                                                <button onclick='Credit(this.id)'  class='border-0  d-none text-white bg-transparent' 
                                                       style='' id='{{c.id}}'>
                                                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-three-dots text-black" viewBox="0 0 16 16">
                                                       <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
