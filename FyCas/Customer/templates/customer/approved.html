@@ -17,7 +17,7 @@
 <section class="  d-flex flex-wrap justify-content-center h-100 w-100 position-fixed top-0 blur bg-white bg-opacity-50">
 
       
-      <div class="text-white ms-2 me-2 mb-5" style="border-radius: 1.3rem; height: max-content; width: 100%; max-width: 550px;">
+      <div class="text-white ms-3 me-3 mb-5" style="border-radius: 1.3rem; height: max-content; width: 100%; max-width: 550px;">
             <div class="p-4 d-flex  flex-wrap   w-100">
                   <div class="d-flex justify-content-center w-100">
                         <div class="d-flex  flex-wrap  w-100 justify-content-center">
@@ -38,22 +38,26 @@
       box-shadow: var(--shadow-one);
       font-optical-sizing: auto;
       background-color: rgb(252, 252, 252);">
+      <div class='d-flex justify-content-center'>
+            <img src="{% static "icons/mount.png" %}"  width='70' alt="">
+      </div>
                   <h4 class="p-0 m-0 text-center mb-4 " 
                   style="font-family: Quicksand, sans-serif;
                    color: black;
                    font-optical-sizing: auto">
-                       ¡Solicitud aprobada!
+                       Dinero en camino
                   </h4>
 
                   <div>
                         <p class="text-black-50" style="text-align: justify;">
-                                    ¡Nos complace informarle que su solicitud de préstamo por un monto de <strong>RD${{credit.amount|intcomma}}.00</strong> ha sido aprobada!, son
+
+                                    {% comment %} ¡Nos complace informarle que su solicitud de préstamo por un monto de <strong>RD${{credit.amount|intcomma}}.00</strong> ha sido aprobada!, son
                                     {{credit.price_feed}} cuotas a <strong>RD${{credit.amount_feed|intcomma}}</strong> 
                                    que deberian ser pagados los dias  {% if credit.mode_pay == True %}
                                    (15) - (30)
                                    {% else %}
                                    ({{credit.day_pay}})
-                                   {% endif %}  de cada mes
+                                   {% endif %}  de cada mes {% endcomment %}
 
                               <br>
                               <br>
@@ -63,13 +67,21 @@
                               Para formalizar el proceso, hemos generado los documentos correspondientes que requieren su firma, uno de nuestros representantes se pondrá en contacto con usted para coordinar la firma de los documentos.
                         </p>
 
-                        <div class="d-flex w-100 justify-content-end">
+                        <div class="d-flex w-100 d-none justify-content-end">
                               <button class="border-0 bg-transparent" style="border-radius: 1.6rem;">
                                     Cancelar
                               </button>
                               <button class="text-white border-0" style="border-radius: 1.6rem; background-color: #0099ff;">
                                     Aceptar
                               </button>
+                        </div>
+                        <div class='w-100'>
+                              <p style='font-size: 12px;'> 
+                                    Monto a Recibir <br> <strong style='font-size: 18px;'> RD${{credit.amount|intcomma}}.00 </strong>
+                              </p>
+                              <p style='font-size: 12px;'> 
+                                    ¿Cuando lo recibiras? <br> <strong style='font-size: 18px;'> En las proximas horas, luego de que hayas firmado.</strong>
+                              </p>
                         </div>
                   </div>
             <div class="w-100 d-flex">

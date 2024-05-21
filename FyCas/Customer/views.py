@@ -45,6 +45,7 @@ class AddCustomer(CreateView, Options):
     def post(self, request, *args, **kwargs):
         f = self.form_class(request.POST, request.FILES)
         if f.is_valid():
+            f.instance.nacimiento = request.POST.get('date-customer')
             f.instance.monto_requerido = request.POST.get('form-select-monto')
             f.instance.fines = request.POST.get('form-select')
             print(request.POST.get('form-select-sexo'))

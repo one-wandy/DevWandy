@@ -105,6 +105,11 @@
                         {{form.dni}}
                         <label for="id_dni">Cedula</label>
                   </div>
+                  <div class="form-floating mb-3 ">
+                        <input type="text" class='d-none' name='date-customer' id='id_date_text'>
+                        <input type="date"   class='form-control' id='id_date'>
+                        <label for="id_date">Nacimiento</label>
+                  </div>
                   <div class="form-floating mb-3">
                         {{form.number}}
                         <label for="id_number">Numero</label>
@@ -245,12 +250,15 @@
                         </div>
                   </section>
                   <h6 class="p-0 m-0  mt-5 ms-2">
-                        Opcionales
+                        ¿Cuales de estas opciones aplican a ti?
                   </h6>
                   
                   <p class="text-black-50 m-0 w-100 ms-2">
-                        Cabe destacar que esta información no afecta la decisión de aprobación de su préstamo. <br><span  style="font-style: oblique;" class="w-100 mt-3 ms-2
-                        ">Seleccione todas las opciones que apliquen a ti</span>
+                        <!-- Cabe destacar que esta información no afecta la decisión de aprobación de su préstamo.  -->
+                        <!-- <br><span  style="font-style: oblique;" class="w-100 mt-3 ms-2 -->
+                        <!-- "> -->
+                        Seleccione todas las opciones que apliquen a ti
+                  <!-- </span> -->
                   </p>
                   <section class="w-100 d-flex flex-wrap text-black-50 justify-content-start" style="text-align: justify; width: 330px;">
                     
@@ -349,7 +357,35 @@
                             </select>
                   </section>
 
+                  <section  id='section-location' class="w-100  d-flex flex-wrap">
+                        <div class='w-100'>
+                              <h6 class="p-0 m-0  mt-5 w-100 ms-2">
+                                    Ubicacion 
+                              </h6>
+                              <p class="text-black-50 m-0 ms-2">
+                                    Esto se hace para combatir bots; los bots son programas informáticos que imitan el comportamiento humano para realizar tareas automatizadas.
+                              </p>
+                        </div>
+                        <label id="getLocationBtn">Obtener Ubicación</label>
 
+                     <div class="w-100">
+                        <p id="locationStatus" class="text-danger"></p>
+                        <span id="location-dened" class="d-none">
+                              <h6 class="p-0 m-0  mt-5 w-100 ms-2">
+                                    ¿Como activo la ubicacion?
+                              </h6>
+                              <div class="img-location-dened" class='d-flex flex-wrap'>
+                                    <img src="{% static "/img-static/location-dened.jpg" %}" 
+                                    style='border-radius: 1.5rem;' alt="" width='320'  srcset="">
+                                    <img src="{% static "/img-static/location-dened-1.jpg" %}" 
+                                    style='border-radius: 1.5rem;' alt="" width='320'  srcset="">
+                                    <img src="{% static "/img-static/location-dened-2.jpg" %}" 
+                                    style='border-radius: 1.5rem;' alt="" width='320'  srcset="">
+                              </div>
+                        </span>
+                     </div>
+                    
+                  </section>
                   <!-- <h6 class="p-0  mt-5">
                         Solicitud de Información de Préstamo
                   </h6>
@@ -443,6 +479,80 @@
       </div>
 </section>
 </section>
+<script>
+
+
+        function cambiarFormatoFecha() {
+            const inputFecha = document.getElementById('id_date');
+            const inputFechaNewText = document.getElementById('id_date_text');
+
+            const fechaSeleccionada = new Date(inputFecha.value);
+            const dia = fechaSeleccionada.getDate().toString().padStart(2, '0');
+            const mes = (fechaSeleccionada.getMonth() + 1).toString().padStart(2, '0');
+            const anio = fechaSeleccionada.getFullYear();
+            const fechaFormateada = `${dia}/${mes}/${anio}`;
+            
+            inputFechaNewText.value = fechaFormateada;
+            
+        }
+
+        // Evento para llamar a la función cuando se cambia la fecha
+        document.getElementById('id_date').addEventListener('change', cambiarFormatoFecha);
+
+      function verificarUbicacionActiva() {
+            if ("geolocation" in navigator) {
+                navigator.permissions.query({ name: 'geolocation' }).then((result) => {
+                    if (result.state === 'granted') {
+                        document.getElementById('div-acept').classList.remove('d-none')
+                        document.getElementById('section-location').classList.add('d-none')
+
+//                        console.log("La ubicación está activa.");
+                    } else if (result.state === 'prompt') {
+                  //console.log("La página está solicitando permiso para acceder a la ubicación.");
+                    } else {
+                      //  console.log("La ubicación está desactivada.");
+                      document.getElementById('div-acept').classList.add('d-none')
+                      document.getElementById('section-location').classList.remove('d-none')
+
+                    }
+                });
+            } else {
+              //  console.log("El navegador no soporta la geolocalización.");
+            }
+        }
+        
+        // Agregar el listener para cada evento en la página
+        ["click", "mousemove", "keydown", "touchstart"].forEach(event => {
+            document.addEventListener(event, verificarUbicacionActiva);
+        });
+</script>
+<script>
+      const getLocationBtn = document.getElementById('getLocationBtn');
+      const locationStatus = document.getElementById('locationStatus');
+
+      getLocationBtn.addEventListener('click', () => {
+          if ("geolocation" in navigator) {
+              navigator.geolocation.getCurrentPosition(
+                  (position) => {
+                      const latitude = position.coords.latitude;
+                      const longitude = position.coords.longitude;
+                  },
+                  (error) => {
+                      if (error.code == error.PERMISSION_DENIED) {
+                          locationStatus.innerHTML = "Has denegado el permiso para obtener tu ubicación. Por favor, habilita la ubicación en tu dispositivo.";
+                          // Sugerir al usuario que habilite la ubicación
+                          document.getElementById('location-dened').classList.remove('d-none')
+
+                      } else {
+                          locationStatus.innerHTML = "No se pudo obtener tu ubicación.";
+                      }
+                  }
+              );
+          } else {
+              locationStatus.innerHTML = "Geolocalización no es soportada por tu navegador.";
+          }
+      });
+  </script>
 <style>
 button {
   font-size: 18px;
