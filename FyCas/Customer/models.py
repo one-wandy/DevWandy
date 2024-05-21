@@ -198,3 +198,12 @@ class SettingApp(models.Model):
     
     def __str__(self):
         return self.name
+
+
+
+class Img(models.Model):
+    name = models.CharField(blank=True, max_length=233, default='Money')
+    Icon = models.ImageField(upload_to="media/", blank=True, null=True) 
+    
+    def __str__(self):
+        return self.name

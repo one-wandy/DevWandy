@@ -378,7 +378,6 @@ class Approved(TemplateView, Options):
         context['setting'] = self.Setting()
         context['c'] = models.Customer.objects.get(id=self.kwargs.get('pk'))
         context['credit'] = credit
-
-
+        context['img'] = self.ImgApp(1)
 
         return context
