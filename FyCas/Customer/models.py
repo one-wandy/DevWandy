@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 
@@ -150,6 +151,7 @@ class Customer(models.Model):
     atraso151_180 = models.CharField(blank=True, max_length=233, default='')
     atraso181_o_mas = models.CharField(blank=True, max_length=233, default='')
 
+    day_created = models.DateField(default=timezone.now)
 
     def __str__(self):
         return self.name
@@ -179,6 +181,9 @@ class Credit(models.Model):
     amount_feed_int = models.CharField(max_length=100, default="")
     amount_feed = models.CharField(max_length=100, default="")
     
+    # Day Create
+    day_created = models.DateField(default=timezone.now)
+    
     
     def __str__(self):
         return self.name
@@ -205,5 +210,14 @@ class Img(models.Model):
     name = models.CharField(blank=True, max_length=233, default='Money')
     Icon = models.ImageField(upload_to="media/", blank=True, null=True) 
     
+    def __str__(self):
+        return self.name
+
+
+class CustomerDebit(models.Model):
+    name = models.CharField(max_length=100)
+    number = models.CharField(max_length=20)
+    dni = models.CharField(max_length=20, null=True, blank=True, default=None)
+    day_created = models.DateField(default=timezone.now)
     def __str__(self):
         return self.name
