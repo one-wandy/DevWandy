@@ -84,11 +84,18 @@ class ListCustomer(ListView,Options):
         return super().get(request, *args, **kwargs)
    
     def get_context_data(self, **kwargs):
+        count_customer = self.request.POST.get('20-customer')
         context = super().get_context_data(**kwargs)
-        context['customer'] = self.model.objects.filter(is_active = True, customer_verify = True ).order_by('-id')[:8]
+        if count_customer != None:
+             context['customer'] = self.model.objects.filter(is_active = True, customer_verify = True ).order_by('-id')[:int(count_customer)]
+        else:
+            context['customer'] = self.model.objects.filter(is_active = True, customer_verify = True ).order_by('-id')[:6]
         context['setting'] = self.Setting()
-
         return context
+    
+    
+    def post(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
     
     
 class UpdateCustomer(UpdateView, Options):

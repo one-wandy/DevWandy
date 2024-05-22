@@ -216,11 +216,11 @@
 
 <div id="div-gregar" class="position-fixed  w-100 justify-content-center"  
       style="display: none; z-index: 11; bottom: 3.6rem;">
-      <div class="div shadow bg-white bg-opacity-75 blur d-flex  flex-wrap  justify-content-around p-2 w-100 m-1 " style=" border-radius: 2rem; 
+      <div class="div shadow bg-white bg-opacity-75 blur d-flex  flex-wrap   justify-content-around p-2 pt-5  w-100 m-1 " style=" border-radius: 2rem; 
             font-family: Quicksand, sans-serif;
             color: black;
             font-optical-sizing: auto;
-            max-width: 420px; height: 10rem;">
+            max-width: 420px; height: 11.4rem;">
 
             <!-- <div class="w-100">
                   <h6 style="font-family: Righteous, sans-serif !important; ">
@@ -280,11 +280,26 @@
                   <span class="w-100 text-center" style="font-size: 12px;">Rutas</span>
             </a>
             <button onclick="NotifyCation()" id="btn-notifycation"  class=" bg-transparent border-0 position-fixed top-0 mb-2 end-0 position-relative" style="height: 0.5rem; z-index: 10; box-shadow: none !important;">
-                  <span class="position-absolute top-50 p-1 rounded-circle " style=" left: 1.3rem;color: white; font-size: 12px;">6</span>
+                  Notificacion
+                  {% comment %} <span class="position-absolute top-50 p-1 rounded-circle " style=" left: 1.3rem;color: white; font-size: 12px;">6</span> {% endcomment %}
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
                         <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
                       </svg>
             </button>
+            <div class='w-100 d-flex justify-content-end'>
+                  <hr class=' ' style='width: 6.4rem;'>
+            </div>
+
+            <form action="" method="post" class='w-100  d-flex justify-content-end align-content-center flex-wrap'>
+                  {% csrf_token %}
+                  <input type="number" class='m-0' style='height: 2rem; width: 4rem;' value='10' name='20-customer' >
+                  <button class='p-0 border-0 me-2'>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-filter-circle-fill text-primary" viewBox="0 0 16 16">
+                              <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16M3.5 5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1M5 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m2 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5"/>
+                            </svg>
+                  </button>
+            </form>
+
       </div>
 </div>
 
