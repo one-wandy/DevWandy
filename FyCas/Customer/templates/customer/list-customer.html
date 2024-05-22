@@ -714,6 +714,7 @@ document.addEventListener('keydown', function(event) {
 });
 
 searching_config.addEventListener('focus', function() {
+
       searching_config.style.width = '100%'
       document.getElementById('for-c').style.display = 'block'
       document.getElementById('agregar').style.display = 'none'
@@ -743,6 +744,7 @@ window.addEventListener("DOMContentLoaded", function() {
                         return config.name.toLowerCase().includes(input_value.toLowerCase());
                     });
                     config_list.innerHTML = ''
+                    var divList = document.getElementById('div-list-customer') 
 
                     if(filtered_data == ''){
                         document.getElementById("text-c").style.display = 'flex'
@@ -750,6 +752,13 @@ window.addEventListener("DOMContentLoaded", function() {
                   }
                   else{
                         document.getElementById("text-c").style.display = 'none'
+                        if(searching_config.value == ''){
+                              divList.classList.remove('blur-up')
+                        }
+                        else{
+
+                              divList.classList.add('blur-up')
+                        }
 
                     }
 
