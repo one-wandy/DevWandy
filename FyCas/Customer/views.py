@@ -30,15 +30,13 @@ class AddCustomer(CreateView, Options):
     form_class = forms.CustomerForm
     template_name = "customer/create-customer.html"
         
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
-        return context
-    
         
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['setting'] = self.Setting()
+        context['img1'] = self.ImgApp(2)
+        context['img2'] = self.ImgApp(3)
+        context['img3'] = self.ImgApp(4)
         return context
     
     
