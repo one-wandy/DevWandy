@@ -20,7 +20,8 @@
       .img-border
       {
             /* border: #e4e4e4 1px solid; */
-            margin-bottom: 2px;
+            margin-bottom: 1px;
+            {% comment %} filter: blur(5px); {% endcomment %}
       }
       .referencias:hover{
             height: auto !important;
@@ -362,6 +363,26 @@
 
     }
 });
+
+document.addEventListener('keydown', function(event) {
+      if (event.altKey && event.key === 'a') {
+        Menu();
+      }
+    });
+function Menu(){
+      var div = document.getElementById('div-gregar');
+      if (div.style.display === 'none') {
+          div.style.display = 'flex';
+          document.getElementById('x').style.display = 'block'
+          document.getElementById('m').style.display = 'none'
+  
+      } else {
+          div.style.display = 'none';
+          document.getElementById('x').style.display = 'none'
+          document.getElementById('m').style.display = 'block'
+  
+      }
+}
 
 </script>
 
