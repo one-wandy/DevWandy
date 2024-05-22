@@ -23,6 +23,10 @@ urlpatterns = [
 
       path("no-approved/customer", views.NoApproved.as_view(), name='no-approved'),
       path("approved/customer/<int:pk>", views.Approved.as_view(), name='approved'),
+      path("create/customer-debit", views.CreateCustomerDebit.as_view(), name='create-customer-debit'),
+      
+      path("mensaje/customer-debit", views.MensajeCustomerDebit.as_view(), name='mensaje-customer-debit'),
+
       
 
 

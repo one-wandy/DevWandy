@@ -8,7 +8,8 @@ from django.shortcuts import redirect
 from .mixing import *
 import os
 from datetime import datetime
-
+from twilio.rest import Client  
+import time
 
 
 class Dashboard(TemplateView, Options):
@@ -254,7 +255,6 @@ class CreateCredit(CreateView, Options):
         except self.model.DoesNotExist:
             return super().get(request, *args, **kwargs)
 
-            
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
@@ -386,3 +386,64 @@ class Approved(TemplateView, Options):
         context['img'] = self.ImgApp(1)
 
         return context
+    
+    
+    
+class CreateCustomerDebit(CreateView, Options):
+    model = models.CustomerDebit
+    form_class = forms.CustomerDebit
+    template_name = "customer/create-customer-debeit.html"
+        
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['setting'] = self.Setting()
+        # context['form'] = forms.CustomerDebit
+        return context
+    
+
+    def post(self, request, *args, **kwargs):
+        f = self.form_class(request.POST)
+        if f.is_valid():
+            f.save()
+        else:
+            print(f)
+        URL = reverse('customer:create-customer-debit')
+        return redirect(URL)
+    
+    
+class MensajeCustomerDebit(TemplateView, Options):
+    template_name = "customer/mensaje-customer-debit.html"
+    
+    
+    def post(self, request, *args, **kwargs):
+        customer_debit = models.CustomerDebit.objects.all()
+        for cb in customer_debit:
+            print(f'Recordatorio enviado a: {cb.name}, {cb.number}')
+            self.Send_WhatsApp_Message(cb.name, cb.number)
+            time.sleep(20) 
+        return super().get(request, *args, **kwargs)
+      
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cb'] = models.CustomerDebit.objects.all()
+        return context
+    
+    
+    def Send_WhatsApp_Message(self, name, number):
+            account_sid = 'AC32b5e94ce632aabd0a278a56e16bd44a'
+            auth_token = 'a61c8b622e93ada5958d69dacef7c461'
+            client = Client(account_sid, auth_token)
+
+            Msm = f"Recordatorio de Pago - Grupo FyCas \n \nEstimado {name}: \n\nPor medio del presente mensaje, le recordamos que tiene un saldo de pago pendiente. Su puntualidad en los pagos es muy importante para nosotros, por lo que le solicitamos amablemente que realice su pago lo antes posible. \n \nSi ya ha realizado su pago, por favor ignore este mensaje."
+            message = client.messages.create(
+                  body= Msm,
+                  from_= '+13344384583',
+                  to= f'+1{number}' )
+            
+            # msg = client.messages.create(
+            #       from_='whatsapp:+18295577196',
+            #       body='Mensaje enviado por Wandy Olivares',
+            #       to='whatsapp:+18295577196')
+            return True

@@ -133,3 +133,15 @@ class PayCreditForm(forms.ModelForm):
         widgets = {
             'img': forms.FileInput(attrs={'accept': 'image/*'})
         }
+        
+        
+class CustomerDebit(forms.ModelForm):
+    class Meta:
+        model = models.CustomerDebit
+        fields = ['name', 'number', 'dni', 'day_created']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'number': forms.TextInput(attrs={'class': 'form-control'}),
+            'dni': forms.TextInput(attrs={'class': 'form-control'}),
+            'day_created': forms.DateInput(attrs={'class': 'form-control'}),
+        }

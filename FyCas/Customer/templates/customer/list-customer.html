@@ -213,6 +213,10 @@
   opacity: 0.8;
  }
 }
+
+.blur-up {
+      filter:blur(10px);
+}
 </style>
 
 <div id="div-gregar" class="position-fixed  w-100 justify-content-center"  
@@ -351,12 +355,15 @@
 <script>
       document.getElementById('agregar').addEventListener('click', function() {
     var div = document.getElementById('div-gregar');
+    var divList = document.getElementById('div-list-customer') 
+
     if (div.style.display === 'none') {
         div.style.display = 'flex';
         document.getElementById('x').style.display = 'block'
         document.getElementById('m').style.display = 'none'
-
+        divList.classList.add('blur-up')
     } else {
+      divList.classList.remove('blur-up')
         div.style.display = 'none';
         document.getElementById('x').style.display = 'none'
         document.getElementById('m').style.display = 'block'
@@ -371,12 +378,15 @@ document.addEventListener('keydown', function(event) {
     });
 function Menu(){
       var div = document.getElementById('div-gregar');
+      var divList = document.getElementById('div-list-customer') 
       if (div.style.display === 'none') {
           div.style.display = 'flex';
           document.getElementById('x').style.display = 'block'
           document.getElementById('m').style.display = 'none'
-  
+          divList.classList.add('blur-up')
+          
       } else {
+      divList.classList.remove('blur-up')
           div.style.display = 'none';
           document.getElementById('x').style.display = 'none'
           document.getElementById('m').style.display = 'block'
@@ -386,9 +396,9 @@ function Menu(){
 
 </script>
 
-<div id="div-notifycations"  class="bg-white bg-opacity-75 blur m-1 p-2 position-fixed end-0 card" style="display: none; z-index: 10; top: 1rem; max-width: 620px; border-radius: 1.3rem !important;">
+<div id="div-notifycations"  class="bg-white shadow bg-opacity-75 blur m-1 p-2 position-fixed end-0 " style="display: none; z-index: 10; top: 1rem; max-width: 620px; border-radius: 1.8rem !important;">
       <h6 class='mt-1'>
-            Solicitudes
+            Nuevas solicitudes
       </h6>
       {% if solicitud %}
       
@@ -415,8 +425,8 @@ function Menu(){
   
 
           
-      <div style="display: flex; z-index: 9;" 
-            class="w-100  blur position-fixed top-0  h-auto  flex-wrap   justify-content-center">
+      <div id='div-list-customer' style="display: flex; z-index: 9;  " 
+            class="w-100  blur position-fixed  top-0  h-auto  flex-wrap   justify-content-center">
             {% for c in customer %}
             <div class=' d-none  position-relative' id='div{{c.id}}' style=" border-radius:2rem;  width: 22.2rem; height: 23rem; ">
                   
@@ -606,6 +616,13 @@ function Menu(){
                                                             {% endif %}
                                                       </span>
                                                </span>
+                                               <span class='w-100 text-capitalize'>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event text-black" viewBox="0 0 16 16">
+                                                      <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
+                                                      <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                                                    </svg>
+                                                    {{ c.day_created|date:"F/d/Y" }}
+                                                </span>
                                           <!-- <span class="w-100 info-laboral overflow-hidden" style="height: 1rem;">
                                                 <strong class="no-select">Descripción Laborar:</strong> {{c.work_information}}
                                          </span>
