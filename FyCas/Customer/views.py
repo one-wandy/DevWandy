@@ -105,7 +105,7 @@ class ListCustomer(ListView,Options):
         else:
             
             context['customer'] = self.model.objects.filter(is_active = True, 
-                                                    customer_verify = True ).order_by('-id')[:6]
+                                                    customer_verify = True ).order_by('-id')[:4]
                 
         context['setting'] = self.Setting()
         return context

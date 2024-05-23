@@ -11,7 +11,7 @@
       .contdiv 
       {
             width: 320px;
-            background-color: rgb(255, 255, 255);
+            background-color: rgba(255, 255, 255, 0.979);
       }
       .img-js
       {
@@ -57,7 +57,7 @@
             z-index: 2;
             margin-left: 1px !important;
             box-shadow: #e6e6e6 1px 2px 4px 1px;
-            border-radius: 1.4rem !important;
+            border-radius: 1.7rem !important;
             /* max-height: 2.2rem !important; */
       }
       #searching-config:hover{
@@ -88,14 +88,25 @@
       rgb(128, 179, 255) 100%
     );
   }
+  50% {
+    background-image: linear-gradient(
+      to right,
+      rgb(128, 179, 255) 0%,
+      rgb(255, 133, 133) 30%,
+      rgb(221, 137, 255) 30%
+    );
+  }
+
   100% {
     background-image: linear-gradient(
       to right,
       rgb(128, 179, 255) 0%,
       rgb(255, 133, 133) 50%,
-      rgb(221, 137, 255) 100%
+      rgb(221, 137, 255) 90%
     );
   }
+  
+
 }
 
 .contDiv {
@@ -107,7 +118,7 @@
     rgb(221, 137, 255) 50%,
     rgb(128, 179, 255) 100%
   );
-  animation: rotarColores 1s infinite linear;
+  animation: rotarColores 3s infinite ease;
 }
 
 
@@ -318,8 +329,8 @@
 </div> 
 
 <div id="config-list" 
-      class="position-fixed d-flex flex-wrap" 
-      style="justify-content: center; bottom: 3rem; z-index: 10;">
+      class="position-fixed w-100 justify-content-center d-flex flex-wrap" 
+      style="justify-content: center; bottom: 3.9rem; z-index: 10;">
 </div>
 
 <div class="d-flex flex-wrap bg-transparent    justify-content-around position-fixed w-100" 
@@ -415,9 +426,12 @@ function Menu(){
 </div>
 <section id="section" class="section rounded-0 d-flex flex-wrap justify-content-center position-fixed top-0 overflow-scroll p-1 end-0 w-100  vh-100  mt-0  bg-transparent blur" >
 
-      <div style="display: none;" class=" w-100 justify-content-center align-content-center flex-wrap  " id="text-c">
-            <h5>
-                  Ups! "<span id="user-no"></span>" no encontrado
+      <div style="display: none;" class=" w-100 justify-content-center   flex-wrap  " id="text-c">
+            <h5 class="position-absolute " style="bottom: 5rem;" >
+
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                      </svg> "<span id="user-no"></span>" no registrado
             </h5>
       </div>
 
@@ -669,7 +683,7 @@ function Menu(){
 
                   <div class='w-100 d-flex justify-content-center mt-2'>
                         <form action="" method="get">
-                              <button class='border-1 shadow' style='border-radius: 2rem; width: 7rem; border-color: rgb(219, 219, 219)  !important;'>
+                              <button class='border-0 shadow' style='border-radius: 2rem; width: 7rem; border-color: rgb(219, 219, 219)  !important;'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-three-dots text-black" viewBox="0 0 16 16">
                                           <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
                                     </svg>
@@ -782,17 +796,17 @@ window.addEventListener("DOMContentLoaded", function() {
 
                     for (const c  of filtered_data) {
                         const div = document.createElement('div');
-                        div.classList.add("contdiv", )
+                        div.classList.add("contdiv",  'justify-content-center' ,'d-flex',)
                         const divCont = document.createElement('div');
-                        divCont.classList.add('contDiv',  )
-                        div.classList.add("divCon", "p-3", 'card')
+                        divCont.classList.add('contDiv' , 'justify-content-center' ,'d-flex',  )
+                        div.classList.add("divCon", "p-3", 'card', 'justify-content-center' ,'d-flex',)
                               let divI = document.createElement("div")
                               const imgLink = document.createElement('a');
                               imgLink.href = "/detail-customer/" + c.id
                               imgLink.target = '_blank';
                               let divL = document.createElement("div")
                               let stronL = document.createElement("strong")
-                              stronL.textContent = "Nombre: "
+                              stronL.textContent = ""
                               let img = document.createElement("img")
                                     // img.classList.add("img", "img-js")
                                     // img.src = c.img
@@ -800,6 +814,7 @@ window.addEventListener("DOMContentLoaded", function() {
                                 //    divI.appendChild(imgLink)
                               let spanL = document.createElement("span")
                               const nameLink = document.createElement('button');
+                              nameLink.classList.add('border-0', 'p-0')
                               nameLink.id = c.id
                               nameLink.addEventListener('click', function() {
                                     // Llamar a la función y pasarle el ID como argumento
@@ -817,7 +832,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
                               let divN = document.createElement("div")
                                     let stronN = document.createElement("strong")
-                                          stronN.textContent = "Cedula: "
+                                          stronN.textContent = ""
                                     let spanN = document.createElement("span")
                                           spanN.textContent = c.dni
                               divN.appendChild(stronN)
