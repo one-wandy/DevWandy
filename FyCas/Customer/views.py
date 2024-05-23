@@ -85,12 +85,28 @@ class ListCustomer(ListView,Options):
         return super().get(request, *args, **kwargs)
    
     def get_context_data(self, **kwargs):
-        count_customer = self.request.POST.get('20-customer')
         context = super().get_context_data(**kwargs)
-        if count_customer != None:
-             context['customer'] = self.model.objects.filter(is_active = True, customer_verify = True ).order_by('-id')[:int(count_customer)]
+        count_customer = self.request.POST.get('20-customer')
+        customer = self.request.POST.get('send-data')
+        if self.request.method == 'POST':
+            if customer != None:
+                print(customer)
+                
+                context['customer'] = self.model.objects.filter(id=int(customer))
+                ls = self.model.objects.filter(id=int(customer))
+                print(ls)
+                context['true'] = True
+                return context
+
+            if count_customer != None:
+                    context['customer'] = self.model.objects.filter(is_active = True, 
+                                                    ).order_by('-id')[:int(count_customer)]
+                # else:
         else:
-            context['customer'] = self.model.objects.filter(is_active = True, customer_verify = True ).order_by('-id')[:6]
+            
+            context['customer'] = self.model.objects.filter(is_active = True, 
+                                                    customer_verify = True ).order_by('-id')[:6]
+                
         context['setting'] = self.Setting()
         return context
     

@@ -664,8 +664,26 @@ function Menu(){
                               </div>
                        </div>
                   </li>
-            {% endfor %}
-      </div>
+                  {% endfor %}
+                  {% if true %}
+
+                  <div class='w-100 d-flex justify-content-center mt-2'>
+                        <form action="" method="get">
+                              <button class='border-1 shadow' style='border-radius: 2rem; width: 7rem; border-color: rgb(219, 219, 219)  !important;'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-three-dots text-black" viewBox="0 0 16 16">
+                                          <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+                                    </svg>
+                              </button>
+                        </form>
+                  </div>
+                  {% endif %}
+
+            </div>
+      <form class='d-none' action="" method="post" id='send-data'>
+            {% csrf_token %}
+            <input type="text" name='send-data' id='input-send-data'>
+            <button id='btn-send-data'>En</button>
+      </form>
 
 
 
@@ -781,9 +799,16 @@ window.addEventListener("DOMContentLoaded", function() {
                                 //    imgLink.appendChild(stronL)
                                 //    divI.appendChild(imgLink)
                               let spanL = document.createElement("span")
-                              const nameLink = document.createElement('a');
-                              nameLink.href = "/detail-customer/" + c.id
-                              nameLink.target = '_blank';
+                              const nameLink = document.createElement('button');
+                              nameLink.id = c.id
+                              nameLink.addEventListener('click', function() {
+                                    // Llamar a la función y pasarle el ID como argumento
+                                    document.getElementById('input-send-data').value = this.id
+                                    document.getElementById('btn-send-data').click()
+                                    // Suponiendo que la función se llama "miFuncion"
+                                });
+                              //nameLink.href = "/detail-customer/" + c.id
+                              //nameLink.target = '_blank';
                               nameLink.innerText = c.name
                               //spanL.classList.add("capitalize")
                                 //    spanL.textContent = c.name
