@@ -108,6 +108,8 @@ class ListCustomer(ListView,Options):
                                                     customer_verify = True ).order_by('-id')[:4]
                 
         context['setting'] = self.Setting()
+        context['customer_count'] = self.model.objects.filter(is_active = True).count()
+
         return context
     
     
