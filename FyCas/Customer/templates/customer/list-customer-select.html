@@ -1,7 +1,9 @@
 {% include "base/base.html" %}
 {% block content %}
 
-      <section class='container-fluid d-flex flex-wrap'>
+
+      <section class='container-fluid  d-flex flex-wrap' 
+      style=' z-index: 100;'>
             <div class='w-100'>
                   Listado de clientes <br>
                   Los clientes que estan marcados, son los clientes que actualmente tienen un pago atrasado <br>
@@ -31,12 +33,12 @@
                   </div>
                   <div class="form-floating">
                         <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                          <option selected>Otorgar valores</option>
+                          <option selected>Todos</option>
                           <option value="1">Al dia</option>
-                          <option value="2">Atrazados</option>
+                          <option value="2">Atrasados</option>
                           {% comment %} <option value="3">Three</option> {% endcomment %}
                         </select>
-                        <label for="floatingSelect">Selecciona </label>
+                        <label for="floatingSelect">Filtrar como </label>
                       </div>
             </div>
             {% for c in c %}
@@ -76,7 +78,19 @@
                                     </label>
                                     {% endif %}  <br>
                               </div>
-            
+                              <div class='mt-2 p-1'  >
+                                    <div class="form-floating ">
+                                          <select  style='width: 285px !important;' class="form-select " id="floatingSelect" aria-label="Floating label select example">
+                                            <option selected>...</option>
+                                            <option value="1">Xavier</option>
+                                            <option value="1">Grabiel</option>
+                                            <option value="1">Dawlin</option>
+                                            <option value="2">Wanda</option>
+                                            {% comment %} <option value="3">Three</option> {% endcomment %}
+                                          </select>
+                                          <label for="floatingSelect">Asignar a: </label>
+                                        </div>
+                              </div>
                   </div>
 
             {% endfor %}
