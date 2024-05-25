@@ -27,6 +27,28 @@ def CustomerVerifyTurnFalse(request):
         c.save()
         
         return JsonResponse(list(),  safe=False)
+    
+
+def TurnDebeit(request):
+        c = models.Customer.objects.get(id=request.GET.get('customer_id'))
+        if c.debit == False:
+            c.debit = True
+        else:
+            c.debit = False
+        c.save()
+        
+        return JsonResponse(list(),  safe=False)    
+    
+def TurnDebeitFollow(request):
+        c = models.Customer.objects.get(id=request.GET.get('customer_id'))
+        if c.debit_follow == False:
+            c.debit_follow = True
+        else:
+            c.debit_follow = False
+        c.save()
+        
+        return JsonResponse(list(),  safe=False)    
+    
 """"
 from django.shortcuts import render
 from .models import Contacto

@@ -9,6 +9,10 @@ class Customer(models.Model):
     # Si 
     customer_verify = models.BooleanField(default=True,  blank=True)
     
+    debit = models.BooleanField(default=False,  blank=True)
+    debit_follow = models.BooleanField(default=False,  blank=True)
+
+    
     # Datos Opcionales
     vehiculo = models.BooleanField(default=False,  blank=True)
     casa = models.BooleanField(default=False,  blank=True)

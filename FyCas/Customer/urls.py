@@ -27,12 +27,16 @@ urlpatterns = [
       
       path("mensaje/customer-debit", views.MensajeCustomerDebit.as_view(), name='mensaje-customer-debit'),
 
+      path("select/customer", views.ListCustomerSelect.as_view(), name='select-customer'),
       
 
 
       # Views Ajax
       path("searching/customer", views_ajax.SearchCustomer, name="searching-customer"),
       path("verify-false/customer/", views_ajax.CustomerVerifyTurnFalse, name="verify-false-customer"),
+
+      path("turn-debit/customer/", views_ajax.TurnDebeit, name="turn-debit-customer"),
+      path("turn-debit-follow/customer/", views_ajax.TurnDebeitFollow, name="turn-debit-customer-follow"),
 
 
       

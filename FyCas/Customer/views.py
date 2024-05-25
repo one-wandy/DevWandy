@@ -466,3 +466,15 @@ class MensajeCustomerDebit(TemplateView, Options):
             #       body='Mensaje enviado por Wandy Olivares',
             #       to='whatsapp:+18295577196')
             return True
+        
+        
+class ListCustomerSelect(ListView,Options):
+    model = models.Customer
+    template_name = "customer/list-customer-select.html"
+    
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['c'] = self.model.objects.all()
+        return context
+    
