@@ -1,7 +1,7 @@
 {% include "base/base.html" %}
 {% block content %}
 
-<section class='container-fluid d-flex flex-wrap' style='z-index: 100;'>
+<section class='container-fluid d-flex flex-wrap  justify-content-center' style='z-index: 100;'>
       <div class='w-100'>
             Listado de clientes <br>
             Los clientes que están marcados, son los clientes que actualmente tienen un pago atrasado <br>
@@ -11,7 +11,7 @@
             </p>
       </div>
 
-      <div class='w-100'>
+      <div class='w-100 d-flex justify-content-center'>
             <h5>
                   Límite de entrega
             </h5>
@@ -27,7 +27,7 @@
             </p>
       </div>
 
-      <div class='d-flex flex-wrap'>
+      <div class='d-flex flex-wrap justify-content-center'>
             <div class="form-floating mb-3" style='width: 320px;'>
                   <input type="date" class="form-control" id="floatingInput" placeholder="">
                   <label for="floatingInput">Fecha en la que vence</label>
