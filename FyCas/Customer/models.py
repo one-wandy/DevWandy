@@ -8,8 +8,10 @@ class Customer(models.Model):
     not_aprobado = models.BooleanField(default=False,  blank=True)
     # Si 
     customer_verify = models.BooleanField(default=True,  blank=True)
-    
+   
     debit = models.BooleanField(default=False,  blank=True)
+    
+    debit_visit = models.BooleanField(default=False,  blank=True)
     debit_follow = models.BooleanField(default=False,  blank=True)
 
     

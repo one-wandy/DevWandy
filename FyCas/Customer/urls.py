@@ -38,6 +38,6 @@ urlpatterns = [
       path("turn-debit/customer/", views_ajax.TurnDebeit, name="turn-debit-customer"),
       path("turn-debit-follow/customer/", views_ajax.TurnDebeitFollow, name="turn-debit-customer-follow"),
 
-
+      path("turn-debit-active/customer/", views_ajax.TurnDebeitActive, name="turn-debit-customer-active"),
       
 ]

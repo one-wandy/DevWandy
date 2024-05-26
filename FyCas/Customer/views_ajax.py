@@ -25,18 +25,16 @@ def CustomerVerifyTurnFalse(request):
         c = models.Customer.objects.get(id=request.GET.get('customer_id'))
         c.customer_verify = False
         c.save()
-        
         return JsonResponse(list(),  safe=False)
     
 
 def TurnDebeit(request):
         c = models.Customer.objects.get(id=request.GET.get('customer_id'))
-        if c.debit == False:
-            c.debit = True
+        if c.debit_visit == False:
+            c.debit_visit = True
         else:
-            c.debit = False
+            c.debit_visit = False
         c.save()
-        
         return JsonResponse(list(),  safe=False)    
     
 def TurnDebeitFollow(request):
@@ -46,7 +44,15 @@ def TurnDebeitFollow(request):
         else:
             c.debit_follow = False
         c.save()
-        
+        return JsonResponse(list(),  safe=False)    
+    
+def TurnDebeitActive(request):
+        c = models.Customer.objects.get(id=request.GET.get('customer_id'))
+        if c.debit == False:
+            c.debit = True
+        else:
+            c.debit = False
+        c.save()
         return JsonResponse(list(),  safe=False)    
     
 """"

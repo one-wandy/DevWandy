@@ -41,6 +41,10 @@
                   </select>
                   <label for="floatingSelect">Filtrar como </label>
             </div>
+
+            {% comment %} <button style='height: max-content;'>
+                  Agregar deudor
+            </button> {% endcomment %}
       </div>
 
       {% for c in c %}
@@ -49,32 +53,55 @@
                         {{ c.name }} {{ c.last_name }} <br>
                         <span class='text-capitalize text-black-50' style='font-size:12px;'> {{ c.company }} - {{ c.day_created|date:"F/d/Y" }}</span> <br>
                         
+                        <div class='mt-2'>
+                              <span style='font-size:12px;' class='text-black-50'>
+                                    El estado del deudor indica que esta en modo
+                              </span>
+                        </div>
                         {% if c.debit_follow %}
-                        <input class="form-check-input" type="checkbox" value="" checked id="s{{ c.id }}">
-                        <label onclick='TurnDebitCustomerFollow(this.id)' id='{{ c.id }}' class="text-primary form-check-label ms-1" for="s{{ c.id }}">
+                        <input onclick='TurnDebitCustomerFollow(this.value)' class="form-check-input" type="checkbox" value="{{c.id}}" checked id="s{{ c.id }}">
+                        <label class="text-primary form-check-label ms-1" for="s{{ c.id }}">
                               Siguiendo
                         </label>
                         {% else %}
-                        <input class="form-check-input" type="checkbox" value="" id="s{{ c.id }}">
-                        <label onclick='TurnDebitCustomerFollow(this.id)' id='{{ c.id }}' class="form-check-label ms-1" for="s{{ c.id }}">
+                        <input onclick='TurnDebitCustomerFollow(this.value)'  class="form-check-input" type="checkbox" value="{{c.id}}" id="s{{ c.id }}">
+                        <label  class="form-check-label ms-1" for="s{{ c.id }}">
                               Seguir <br>
                         </label>
                         {% endif %} 
                   </div>
 
                   <div class="form-check">
-                        {% if c.debit %}
+                        {% if c.debit_visit %}
                         <input class="form-check-input" type="checkbox" value="" checked id="l{{ c.id }}">
-                        <label onclick='TurnDebitCustomer(this.id)' id='{{ c.id }}' class="text-danger form-check-label ms-1" for="l{{ c.id }}">
+                        <label onclick='TurnDebitCustomer(this.id)' id='{{ c.id }}' class="text-primary form-check-label ms-1" for="l{{ c.id }}">
                               Visitando
                         </label>
                         {% else %}
-                        <input class="form-check-input" type="checkbox" value="" id="l{{ c.id }}">
-                        <label onclick='TurnDebitCustomer(this.id)' id='{{ c.id }}' class="form-check-label ms-1" for="l{{ c.id }}">
+                        <input onclick='TurnDebitCustomer(this.value)' class="form-check-input" type="checkbox" value="" id="l{{ c.id }}">
+                        <label  id='{{ c.id }}' class="form-check-label ms-1" for="l{{ c.id }}">
                               Visitar
                         </label>
                         {% endif %}  
                         <br>
+                        <div class='mt-2'>
+                              <span style='font-size:12px;' class='text-black-50'>
+                                    Si el esta activo el deudor tiene mas de un pago atrasado
+                              </span>
+                        </div>
+                        <div class=" w-100 m-0 p-0  form-check form-switch">
+                              {% if c.debit == True %}
+                              <input onclick='TurnDebitCustomerActive(this.value)' value='{{c.id}}' class="form-check-input" type="checkbox" role="switch" id="q{{c.id}}" checked>
+                              <label class=" text-primary ms-1 form-check-label" for="q{{c.id}}" >
+                                    Activo      
+                              </label>
+                              {% else %}
+                              <input class="form-check-input" type="checkbox" value='{{c.id}}' role="switch" id="q{{c.id}}" onclick='TurnDebitCustomerActive(this.value)'>
+                              <label  class="  ms-1 form-check-label" for="q{{c.id}}">
+                                    Activo      
+                              </label>
+                              {% endif %}
+                        </div>
                   </div>
 
                   <div class='mt-2 p-1'>
@@ -107,6 +134,14 @@
       function TurnDebitCustomerFollow(id) {
             $.ajax({
                   url: '/turn-debit-follow/customer/',
+                  data: {
+                        customer_id: id
+                  }
+            })
+      }
+function TurnDebitCustomerActive(id) {
+            $.ajax({
+                  url: '/turn-debit-active/customer/',
                   data: {
                         customer_id: id
                   }
