@@ -762,7 +762,7 @@ style=" margin-top: 1px !important; max-height: 2.5rem !important;
 {% comment %} {% endif %} {% endcomment %}
 </div>
 
-<div class="d-flex flex-wrap bg-transparent    justify-content-around position-fixed w-100" 
+<div id='div-menu-1'  class="d-flex flex-wrap bg-transparent    justify-content-around position-fixed w-100" 
       style="z-index: 4; bottom: 0;  
       border: 1px rgb(228, 228, 228) solid; 
       border-top: 0;
@@ -780,7 +780,7 @@ style=" margin-top: 1px !important; max-height: 2.5rem !important;
                   {% endif %}
                   <!-- <a href="{% url "customer:add-customer" %}" class="d-flex align-content-center " > -->
                         {% if user.is_authenticated %}
-                        <button onclick="Menu()" class="bg-transparent  border-0 rounded-circle    m-0  text-white  " 
+                        <button onclick="Menu()"   class="bg-transparent  border-0 rounded-circle    m-0  text-white  " 
                         style=" margin-top: 1px !important; max-height: 2.5rem !important;
                         ">               
                               <svg xmlns="http://www.w3.org/2000/svg" id="m" width="24" height="24" fill="currentColor" class=" text-black bi bi-grid-fill" viewBox="0 0 16 16">
