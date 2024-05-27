@@ -40,4 +40,7 @@ urlpatterns = [
 
       path("turn-debit-active/customer/", views_ajax.TurnDebeitActive, name="turn-debit-customer-active"),
       
+      path("msg/customer/debit", views_ajax.MensajeCustomerDebit, name="msg-debit-customer"),
+      
+      
 ]

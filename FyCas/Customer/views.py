@@ -80,6 +80,7 @@ class ListCustomer(ListView,Options):
     template_name = "customer/list-customer.html"
     
     def get(self, request, *args, **kwargs):
+        print(self.Day15_or_30())
         if not request.user.is_authenticated:
                return redirect(reverse('customer:add-customer'))
         return super().get(request, *args, **kwargs)
@@ -89,9 +90,7 @@ class ListCustomer(ListView,Options):
         count_customer = self.request.POST.get('20-customer')
         customer = self.request.POST.get('send-data')
         if self.request.method == 'POST':
-            if customer != None:
-                print(customer)
-                
+            if customer != None:                
                 context['customer'] = self.model.objects.filter(id=int(customer))
                 ls = self.model.objects.filter(id=int(customer))
                 print(ls)
@@ -99,19 +98,48 @@ class ListCustomer(ListView,Options):
                 return context
 
             if count_customer != None:
-                    context['customer'] = self.model.objects.filter(is_active = True, 
-                                                    ).order_by('-id')[:int(count_customer)]
-                # else:
+                    context['customer'] = self.model.objects.filter(is_active = True,
+                                    ).order_by('-id')[:int(count_customer)]
         else:
-            
             context['customer'] = self.model.objects.filter(is_active = True, 
-                                                    customer_verify = True ).order_by('-id')[:4]
-                
+                                    customer_verify = True ).order_by('-id')[:4]
         context['setting'] = self.Setting()
         context['customer_count'] = self.model.objects.filter(is_active = True).count()
-
+        context['day_pay'] = self.Day15_or_30()
+        context['day_pay_2'] = self.Day_Pay()
         return context
     
+    def Day_Pay(self):
+        today = datetime.today()
+        day = today.day
+
+        if day == 15:
+            return True
+        elif day == 30:
+            return True
+        else: 
+            return False
+    def Day15_or_30(self):
+        today = datetime.today()
+        day = today.day
+
+        if day == 15:
+            return f'Día de cobro: {day}'
+        elif day == 30:
+            return f'Día de cobro: {day}'
+        else:
+            # Calcular días hasta el próximo 15 o 30
+            if day < 15:
+                next_cobro = 15
+            elif day < 30:
+                next_cobro = 30
+            else:
+                next_cobro = 15
+                today += timedelta(days=30-today.day)
+
+            days_until_next_cobro = (next_cobro - day) if day < next_cobro else (30 - day + 15)
+            return f'Faltan {days_until_next_cobro} días para el próximo dia de cobro.'
+
     
     def post(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
@@ -460,11 +488,6 @@ class MensajeCustomerDebit(TemplateView, Options):
                   body= Msm,
                   from_= '+13344384583',
                   to= f'+1{number}' )
-            
-            # msg = client.messages.create(
-            #       from_='whatsapp:+18295577196',
-            #       body='Mensaje enviado por Wandy Olivares',
-            #       to='whatsapp:+18295577196')
             return True
         
         

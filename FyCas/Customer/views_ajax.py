@@ -1,6 +1,9 @@
 from . import models
 from . import forms
 from django.http import JsonResponse
+from datetime import datetime
+from twilio.rest import Client  
+import time
 
 
 # Buscar Clientes 
@@ -54,6 +57,29 @@ def TurnDebeitActive(request):
             c.debit = False
         c.save()
         return JsonResponse(list(),  safe=False)    
+    
+    
+def MensajeCustomerDebit(request):
+        customer_debit = models.CustomerDebit.objects.filter(debit = True)
+        for cb in customer_debit:
+            print(f'Recordatorio enviado a: {cb.name}, {cb.number}')
+            Send_WhatsApp_Message(cb.name, cb.number)
+            time.sleep(20) 
+            
+        def Send_WhatsApp_Message(name, number):
+            account_sid = 'AC32b5e94ce632aabd0a278a56e16bd44a'
+            auth_token = 'a61c8b622e93ada5958d69dacef7c461'
+            client = Client(account_sid, auth_token)
+
+            Msm = f"Recordatorio de Pago - Grupo FyCas \n \nEstimado {name}: \n\nPor medio del presente mensaje, le recordamos que tiene una cuota pendiente. Su puntualidad en los pagos es muy importante para nosotros, por lo que le solicitamos amablemente que realice su pago lo antes posible. \n \nSi ya ha realizado su pago, por favor ignore este mensaje."
+            message = client.messages.create(
+                  body= Msm,
+                  from_= '+13344384583',
+                  to= f'+1{number}' )
+            return True
+        
+        return JsonResponse(list(),  safe=False)    
+    
     
 """"
 from django.shortcuts import render

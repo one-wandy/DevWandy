@@ -552,7 +552,7 @@ select option {
 
             
             
-<div id="div-gregar" class="position-fixed blur h-100 w-100 justify-content-center"  
+<div id="div-gregar" class="position-fixed blur bg-white bg-opacity-10 h-100 w-100 justify-content-center"  
 style="display: none; z-index: 11; ">
 
 <div id="div-notifycations"  class="bg-white shadow bg-opacity-75 blur m-2 p-2  w-100 " style="display: none; z-index: 10; top: 1rem; max-width: 620px; border-radius: 1.5rem !important;  height: max-content;">
@@ -573,6 +573,30 @@ style="display: none; z-index: 11; ">
       
 </div>
 
+{% if day_pay %}
+<div class='bg-white bg-opacity-75 mt-2  text-center shadow p-3 pt-0 pb-0' 
+      style='height: max-content; border-radius: 2rem;'>
+      <button  class="border-0 p-0  bg-transparent m-0 mt-1" style="height: 0.5rem; z-index: 10; box-shadow: none !important;">
+            Dia de cobro
+      </button> <br>
+            {% if day_pay_2 == true %}
+                  <script>
+                        function MensajeCustomerDebit(id) {
+                              alert('Enviando peticion de cobro a todos los deudores')
+                              $.ajax({
+                                    url: '/msg/customer/debit',
+                                   // data: {
+                                     //     customer_id: id
+                                    //}
+                              })
+                        }
+                  </script>
+            {% endif %}
+            <span class='text-black-50 m-0 p-0 mb-1' style='font-size:12px;'>
+                  {{day_pay}}
+            </span>
+</div>
+      {% endif %}
 
 <div class="div shadow bg-white bg-opacity-75  position-absolute  position-relative d-flex  flex-wrap   justify-content-around p-2 pt-0 w-100 m-2 " style=" border-radius: 2rem; 
             bottom: 3rem;
@@ -702,7 +726,6 @@ style="display: none; z-index: 11; ">
             </button> 
             <span class="w-100 text-center" style="font-size: 12px;">Ex</span>
       </a>
-
 
       <div class='w-100 d-flex justify-content-end'>
             <hr class=' ' style='width: 6.4rem;'>
