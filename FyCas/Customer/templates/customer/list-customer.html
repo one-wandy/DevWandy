@@ -228,12 +228,12 @@
 
 </style>
 
- <div class="w-100 container  justify-content-center d-flex align-content-center justify-content-between" style="min-height: 2rem; padding-top: 4rem;">
-      <span class="span-animation" style="min-width: 6rem; min-height:2rem; background-color: rgba(255, 133, 133, 0.473);">s</span>
-      <span class="span-animation" style="min-width: 2rem; min-height:2rem; background-color: rgba(222, 137, 255, 0.438);">s</span>
-      <span class="span-animation" style="min-width: 1rem; min-height:1.3rem; background-color: rgba(128, 179, 255, 0.404);">s</span>
-      <span class="span-animation" style="min-width: 10rem; min-height:1.3rem; background-color: rgba(128, 255, 244, 0.445);">s</span>
-      <span class="span-animation mt-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(255, 128, 177, 0.404);">s</span>
+ <div class="w-100 container  d-none justify-content-center d-flex align-content-center justify-content-between" style="min-height: 2rem; padding-top: 4rem;">
+      <span class="span-animation m-4" style="min-width: 6rem; min-height:2rem; background-color: rgba(255, 133, 133, 0.473);">s</span>
+      <span class="span-animation m-4" style="min-width: 2rem; min-height:2rem; background-color: rgba(222, 137, 255, 0.438);">s</span>
+      <span class="span-animation m-4" style="min-width: 1rem; min-height:1.3rem; background-color: rgba(128, 179, 255, 0.404);">s</span>
+      <span class="span-animation m-4" style="min-width: 10rem; min-height:1.3rem; background-color: rgba(128, 255, 244, 0.445);">s</span>
+      <span class="span-animation m-4 mt-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(255, 128, 177, 0.404);">s</span>
       <span class="span-animation mb-2" style="min-width: 4rem; min-height:1.3rem; background-color: rgba(153, 255, 128, 0.349);">s</span>
 </div> 
 
@@ -351,7 +351,7 @@
                               </button>
                         </div>
             </div>
-                  <li  id='li{{c.id}}' class="list-group-item  position-relative  shadow-none p-2 no-select bg-transparent m-1   p-0  m-0 mb-3 pb-5 h-auto" style=" border-radius:1.5rem;  max-width: 20.2rem;  height: 23rem;  ">
+                  <li  id='li{{c.id}}' class="list-group-item  position-relative  shadow-none p-2 no-select bg-transparent m-1   p-0  m-0 mb-3 pb-5 h-auto" style=" border-radius:1.5rem;  width: 100%; max-width: 25.2rem;  height: 23rem;  ">
                         <script>
                               function Credit(N) {
                                     let div = document.getElementById('div' + N)
@@ -377,13 +377,18 @@
                         </script>
                         <div class="d-flex  " style="font-size: 14px !important;  ">
                               <div class="d-flex flex-wrap ">
-                                    <div class="w-100 d-flex">
-                                          <a href="{% url "customer:detail-customer" c.id %}">                                          
-                                                {% if c.img1.url == "/media/img-default/img.png" %}
-                                                <img src="{{c.img1}}" style="width: 320px; max-height: 95px;   border-radius: 18px; " alt="No se puede mostrar la imagen" class="img  object-fit-cover img-border">
-                                              {% else %}
-                                              <img src="{{c.img1}}" style="width: 320px; max-height: 95px;   border-radius: 18px; " alt="No se puede mostrar la imagen" class="img  object-fit-cover img-border">
-                                              {% endif %}
+                                    <div class="w-100 d-flex"
+                                     >
+                                          <a href="{% url "customer:detail-customer" c.id %}" class='w-100 d-flex'>      
+                                                <div style='background-image: url({{c.img1}}); border-radius: 2rem !important;' class='w-100 d-flex bg-white' >
+                                                       <div class="blur w-100 overflow-hidden " style="border-radius: 2rem !important;" >
+                                                            {% if c.img1.url == "/media/img-default/img.png" %}
+                                                            <img src="{{c.img1}}" style=" max-width: 380px;   max-height: 150px; border-radius: 2rem; " alt="No se puede mostrar la imagen" class=" object-fit-cover " >
+                                                            {% else %}
+                                                            <img src="{{c.img1}}" style="   max-width: 380px;     max-height: 150px; border-radius: 2rem; " alt="No se puede mostrar la imagen" class="  object-fit-cover ">
+                                                            {% endif %}
+                                                       </div>
+                                                </div>                                    
                                           </a>
                                           <!-- <hr class='m-0 mt-1 p-0'> -->
                                     </div>
@@ -471,7 +476,7 @@
                                                       <hr  class="text-black-50 p-0 m-0 mt-3  " style="width: 3.6rem;">
                                           </div>
                                           <div  class="w-100 justify-content-end position-relative  d-flex align-content-center flex-wrap " style=" border-radius: 13rem;">
-                                          <button class='border-0' onclick='OpenCloseBtn(this.id)' id='{{c.id}}'>
+                                          <button class='border-0 bg-transparent shadow-none' onclick='OpenCloseBtn(this.id)' id='{{c.id}}'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-three-dots p-0" viewBox="0 0 16 16">
                                                       <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
                                                     </svg>
@@ -506,12 +511,53 @@
                               </div>
                        </div>
                        {% comment %} div 1 {% endcomment %}
-                       <div id='div-more{{c.id}}' class='d-none w-100 position-absolute  bg-white bg-opacity-75 blur p-2 ' style='top:22rem; z-index: 100; border-radius:1.6rem;'>
+                       <div id='div-more{{c.id}}' class='d-none card w-100 position-absolute   bg-white  p-2 pb-3 pt-3  ' style='top:24rem; z-index: 160; border-radius:1.6rem;'>
                         <style>
                               #div-more{{c.id}}, span:hover {
                                     cursor: pointer;
                               }
                         </style>
+                              <span>
+                                    <div>
+                                          <input type="checkbox" id="hijos" name="hijos" class="form-check-input" {% if c.hijos %}checked{% endif %} disabled>
+                                          <label for="hijos">Hijos</label>
+                                    </div>
+                                    <div>
+                                          <input type="checkbox" id="tierra" name="tierra" class="form-check-input" {% if c.tierra %}checked{% endif %} disabled>
+                                          <label for="tierra">Tierra</label>
+                                    </div>
+                                    <div>
+                                          <input type="checkbox" id="vehiculo" name="vehiculo" class="form-check-input" {% if c.vehiculo %}checked{% endif %} disabled>
+                                          <label for="vehiculo">Vehículo</label>
+                                    </div>
+                                    <div>
+                                          <input type="checkbox" id="casa" name="casa" class="form-check-input" {% if c.casa %}checked{% endif %} disabled>
+                                          <label for="casa">Casa</label>
+                                    </div>
+                                    <div>
+                                          <input type="checkbox" id="saldar_deudas" name="saldar_deudas" class="form-check-input" {% if c.saldar_deudas %}checked{% endif %} disabled>
+                                          <label for="saldar_deudas">Saldar Deudas</label>
+                                    </div>
+                                    <div>
+                                          <input type="checkbox" id="familiar_en_fycas" name="familiar_en_fycas" class="form-check-input" {% if c.familiar_en_fycas %}checked{% endif %} disabled>
+                                          <label for="familiar_en_fycas">Familiar en Fycas</label>
+                                    </div>
+                                    <div>
+                                          <input type="checkbox" id="fue_recomendado" name="fue_recomendado" class="form-check-input" {% if c.fue_recomendado %}checked{% endif %} disabled>
+                                          <label for="fue_recomendado">Fue Recomendado</label>
+                                    </div>
+                              </span>
+                              <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                                          <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
+                                        </svg> {{c.monto_requerido}}
+                              </span> <br>
+                              <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-text" viewBox="0 0 16 16">
+                                          <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+                                          <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8m0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5"/>
+                                        </svg> {{c.fines}}
+                              </span> <br>
                               <span class=''>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-black bi bi-people-fill" viewBox="0 0 16 16">
                                           <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
@@ -536,8 +582,15 @@
                               <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-buildings-fill" viewBox="0 0 16 16">
                                           <path d="M15 .5a.5.5 0 0 0-.724-.447l-8 4A.5.5 0 0 0 6 4.5v3.14L.342 9.526A.5.5 0 0 0 0 10v5.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V14h1v1.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zM2 11h1v1H2zm2 0h1v1H4zm-1 2v1H2v-1zm1 0h1v1H4zm9-10v1h-1V3zM8 5h1v1H8zm1 2v1H8V7zM8 9h1v1H8zm2 0h1v1h-1zm-1 2v1H8v-1zm1 0h1v1h-1zm3-2v1h-1V9zm-1 2h1v1h-1zm-2-4h1v1h-1zm3 0v1h-1V7zm-2-2v1h-1V5zm1 0h1v1h-1z"/>
-                                        </svg> {{c.empresa_trabaja}}
+                                        </svg> {{c.empresa_trabaja}} ({{c.phone}})
+                              </span> <br>
+                              <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
+                                          <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                                          <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.4 5.4 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2z"/>
+                                        </svg>  {{c.cargo}}
                               </span>
+                            
                        </div>
                   </li>
                   {% endfor %}
@@ -788,7 +841,9 @@ function OpenCloseBtn(btn_id) {
       if (div.classList.contains('d-none')) {
           div.classList.remove('d-none');
           div.classList.add('d-block');
+          document.getElementById('div-list-customer').classList.remove('blur')
       } else if (div.classList.contains('d-block')) {
+            document.getElementById('div-list-customer').classList.add('blur')
           div.classList.remove('d-block');
           div.classList.add('d-none');
       }
