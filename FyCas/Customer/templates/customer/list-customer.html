@@ -380,8 +380,16 @@
                                     <div class="w-100 d-flex"
                                      >
                                           <a href="{% url "customer:detail-customer" c.id %}" class='w-100 d-flex'>      
-                                                <div style='background-image: url({{c.img1}}); border-radius: 2rem !important;' class='w-100 d-flex bg-white' >
-                                                       <div class="blur w-100 overflow-hidden " style="border-radius: 2rem !important;" >
+                                                <div style='background-image: url({{c.img1}});  
+                                                background-position: center;
+
+                                                background-repeat: no-repeat;
+                                                background-size: cover;
+                                                border-radius: 2rem !important;' class='w-100 d-flex bg-white' >
+                                                       <div class=" w-100 overflow-hidden " style="border-radius: 2rem !important;
+                                                       -webkit-backdrop-filter: blur(10px) !important;
+                                                      backdrop-filter: blur(10px) !important;
+                                                      background-color: #fbe9ff21;" >
                                                             {% if c.img1.url == "/media/img-default/img.png" %}
                                                             <img src="{{c.img1}}" style=" max-width: 380px;   max-height: 150px; border-radius: 2rem; " alt="No se puede mostrar la imagen" class=" object-fit-cover " >
                                                             {% else %}
