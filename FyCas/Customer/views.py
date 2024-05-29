@@ -92,7 +92,7 @@ class ListCustomer(ListView,Options):
         if self.request.method == 'POST':
             if  self.request.POST.get('noti') != None:
                 context['customer'] = self.model.objects.filter(is_active = True, 
-                                    customer_verify = False)
+                                    customer_verify = False).order_by('-id')
             if customer != None:                
                 context['customer'] = self.model.objects.filter(id=int(customer))
                 ls = self.model.objects.filter(id=int(customer))

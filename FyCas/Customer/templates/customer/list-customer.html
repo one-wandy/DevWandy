@@ -262,6 +262,14 @@
           
       <div id='div-list-customer' style="display: flex; z-index: 9;  " 
             class="w-100  blur position-fixed  top-0  h-auto  flex-wrap   justify-content-center">
+            
+      <p id='aprovate-no' class='d-none position-fixed top-0 mt-5 card p-2 ps-4 pe-4 ' style='z-index: 1000 ; border-radius:1rem;'>
+            No Aprovado
+      </p>
+      <p id='aprovate-yes' class='d-none position-fixed top-0 mt-5 card p-2 ps-4 pe-4 ' style='z-index: 1000 ; border-radius:1rem;' >
+            Aprovado
+      </p>
+
             {% for c in customer %}
             <div class=' d-none  position-relative' id='div{{c.id}}' style=" border-radius:2rem;  width: 22.2rem; height: 23rem; ">
                   
@@ -508,7 +516,7 @@
 
                                           {% if c.customer_verify == False %}
 
-                                                <a onclick='CustomerVerify(this.id)' id='{{c.id}}'
+                                                <a onclick='CustomerVerifyNo(this.id)'  id='{{c.id}}'
                                                  {% comment %} href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Su solicitud no fue aprobada en este momento. para mas detalles, haga clic en este enlace: https://grupofycas.online/no-approved/customer"   {% endcomment %}
                                                  class='p-0 pt-2'>                                                
                                                       <button class="border-0  bg-transparent p-0" style='color:#000000;'>
@@ -517,7 +525,7 @@
                                                                 </svg>
                                                       </button>
                                                 </a>
-                                                <a onclick='CustomerVerify(this.id)'  id='{{c.id}}' 
+                                                <a  onclick='CustomerVerify(this.id)' id='{{c.id}}' 
                                                 {% comment %} href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=¡Felicitaciones! Su solicitud ha sido aprobada. Para confirmar su solicitud y acceder a más detalles, haga clic en el siguiente enlace: https://grupofycas.online/approved/customer/{{c.id}}
                                                 "  {% endcomment %}
                                                 class='p-0 pt-1 ms-1'>
@@ -728,8 +736,35 @@
             })
       }
 
-      function CustomerVerify(id){
+function CustomerVerify(id){
+            document.getElementById('aprovate-yes').classList.remove('d-none')
+            document.getElementById('aprovate-yes').classList.add('d-block')
+
+            setTimeout(function() {
+                  document.getElementById('aprovate-yes').classList.remove('d-block')
+                  document.getElementById('aprovate-yes').classList.add('d-none')
+                  // Code to be executed after 5 seconds
+            }, 3000);
             const url = 'verify/customer/';
+            $.ajax({
+                url: url,
+                data: {
+                  customer_id: id
+                }
+
+            })
+      }
+
+function CustomerVerifyNo(id){
+      document.getElementById('aprovate-no').classList.remove('d-none')
+      document.getElementById('aprovate-no').classList.add('d-block')
+
+      setTimeout(function() {
+            document.getElementById('aprovate-no').classList.remove('d-block')
+            document.getElementById('aprovate-no').classList.add('d-none')
+            // Code to be executed after 5 seconds
+      }, 3000);
+            const url = 'verify-no/customer/';
             $.ajax({
                 url: url,
                 data: {

@@ -33,7 +33,9 @@ urlpatterns = [
 
       # Views Ajax
       path("searching/customer", views_ajax.SearchCustomer, name="searching-customer"),
-      path("verify/customer/", views_ajax.CustomerVerify, name="verify-false-customer"),
+      path("verify/customer/", views_ajax.CustomerVerify, name="verify-true-customer"),
+      path("verify-no/customer/", views_ajax.CustomerNoVerify, name="verify-false-customer"),
+
 
       path("turn-debit/customer/", views_ajax.TurnDebeit, name="turn-debit-customer"),
       path("turn-debit-follow/customer/", views_ajax.TurnDebeitFollow, name="turn-debit-customer-follow"),
