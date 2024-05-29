@@ -521,7 +521,7 @@
                               </div>
                        </div>
                        {% comment %} div 1 {% endcomment %}
-                       <div id='div-more{{c.id}}' class='d-none card border-0 w-100 shadow position-absolute start-0   bg-white  p-2 pb-3 pt-3  ' style='top:24rem; z-index: 160; border-radius:1.6rem; font-family: Quicksand, sans-serif;
+                       <div id='div-more{{c.id}}' class='d-none card border-0 position-relative w-100 shadow position-absolute start-0   bg-white  p-2 pb-3 pt-3  ' style='top:20rem; z-index: 160; border-radius:1.6rem; font-family: Quicksand, sans-serif;
                        color: black;
                        font-size: 16px;
                        font-optical-sizing: auto;'>
@@ -529,9 +529,20 @@
                               #div-more{{c.id}}, span:hover {
                                     cursor: pointer;
                               }
+                              #div-more{{c.id}} span h6 {
+                                    font-size: 12px;
+                              }
                               
                         </style>
-                              <span>
+                        <span class="w-100 d-flex justify-content-end start-0 position-absolute top-0">
+                              <button class='border-0 p-0 me-3  mt-2 bg-transparent shadow-none' onclick='OpenCloseBtn(this.id)' id='{{c.id}}'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                                        </svg>
+                              </button>
+                        
+                        </span>
+                              <span class="mt-4">
                                     <h6  class="text-black-50">
                                           Opciones
                                     </h6>
@@ -592,7 +603,7 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-black bi bi-people-fill" viewBox="0 0 16 16">
                                           <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
                                         </svg>
-                                    ({{c.name_r1}})
+                                    {{c.name_r1}} -
                               </span>
                               <span>
                                
@@ -603,14 +614,14 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-black bi bi-people-fill" viewBox="0 0 16 16">
                                           <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
                                         </svg>
-                                    ({{c.name_r2}})
+                                    {{c.name_r2}} - 
                               </span>
                               <span>
                                     {{c.number_r2}}
                               </span>
                               <br> <br>
                               <span>
-                                    <h6 class="text-black-50">
+                                    <h6 class="text-black-50" s> 
                                           Información Laboral
                                     </h6>
                               </span>
@@ -622,7 +633,7 @@
                               <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
                                           <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
-                                        </svg>  ({{c.phone}})
+                                        </svg>  {{c.phone}}
                               </span>
                               <br>
                               <span>
