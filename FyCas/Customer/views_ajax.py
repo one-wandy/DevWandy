@@ -4,6 +4,9 @@ from django.http import JsonResponse
 from datetime import datetime
 from twilio.rest import Client  
 import time
+from .mixing import Options
+from num2words import num2words
+from django.contrib.humanize.templatetags.humanize import intcomma
 
 
 # Buscar Clientes 
@@ -72,6 +75,15 @@ def TurnDebeitActive(request):
         c.save()
         return JsonResponse(list(),  safe=False)    
     
+def DisableCustomer(request):
+        c = models.Customer.objects.get(id=request.GET.get('customer_id'))
+        if c.is_active == False:
+            c.is_active = True
+        else:
+            c.is_active = False
+        c.save()
+        return JsonResponse(list(),  safe=False)    
+    
     
 def MensajeCustomerDebit(request):
         customer_debit = models.CustomerDebit.objects.filter(debit = True)
@@ -93,6 +105,31 @@ def MensajeCustomerDebit(request):
             return True
         
         return JsonResponse(list(),  safe=False)    
+    
+    
+
+def CreateCreditAjax(request):
+        from datetime import datetime
+
+        c = models.Customer.objects.get(id=request.GET.get('customer_id'))
+        credit = models.Credit.objects.create( 
+            customer = c,
+            name = c.name + " " + c.last_name,
+            amount= request.GET.get('monto'),
+            amount_feed = request.GET.get('cuotas'),
+            no_account = int(0),
+            price_feed = request.GET.get('monto_pagar'),
+            day_pay = int(request.GET.get('dia')),
+            mont = datetime.now().strftime("%B"),
+            day = datetime.now().strftime("%A"),
+            day_number =  datetime.now().day,
+            year = num2words(datetime.now().year),
+            year_number = datetime.now().year,
+        )
+        c.monto_requerido =  "RD$" +  intcomma(credit.amount)
+        c.save()
+        data = {'monto_requerido': "RD$" +  intcomma(credit.amount)}
+        return JsonResponse(data,  safe=False)    
     
     
 """"

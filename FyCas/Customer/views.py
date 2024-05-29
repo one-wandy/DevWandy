@@ -319,6 +319,7 @@ class CreateCredit(CreateView, Options):
         f = self.form_class(request.POST)
         v_amount = str(f.instance.amount_feed)
         if f.is_valid():
+            c.monto_requerido = 'RD$' + '{:,}'.format(f.instance.amount)
             f.instance.customer = c
             f.instance.mont = self.MontNow(datetime.now().month)
             f.instance.day = self.DayNow(datetime.now().day)
@@ -348,6 +349,7 @@ class UpdateCredit(UpdateView, Options):
         return context
     
     def form_valid(self, form_class):
+            c.monto_requerido = 'RD$' + '{:,}'.format(f.instance.amount)
             form_class.instance.customer = self.model.objects.get(id=self.kwargs.get('pk')).customer 
             form_class.instance.mont = self.MontNow(datetime.now().month)
             form_class.instance.day = self.DayNow(datetime.now().day)
