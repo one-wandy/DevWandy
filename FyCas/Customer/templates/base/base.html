@@ -778,6 +778,52 @@ style=" margin-top: 1px !important; max-height: 2.5rem !important;
                   <input type="text"  style="font-size: 14px; width: auto; min-width: 200px; min-height: 2rem;margin-top: 5px !important; margin-left: 6px !important;  max-height: 2rem; max-width: 5rem;" class="form-search blur  text-center shadow-none  m-0 mb-1  bg-white bg-opacity-75"  id="searching-config" 
                   placeholder=" Buscando Clientes ">
                   {% endif %}
+                  {% if new_customer %}
+                        <form action="" method="post">
+                              {% csrf_token %}
+                              <button class='bg-transparent p-0 border-0' id='btn-notifycation'>
+                                    
+                                    <input type="number" id='noti' name='noti' value='' class='d-none'>
+                                    <script>
+                                          document.getElementById('btn-notifycation').addEventListener('click', function(){
+                                                document.getElementById('noti').value = 1;
+                                          });
+                                    </script>
+                                    <style>
+                                          @keyframes bellAnimation {
+                                                0% {
+                                                      transform: translateY(0);
+                                                }
+                                                50% {
+                                                      transform: translateY(-2px);
+                                                }
+                                                100% {
+                                                      transform: translateY(0);
+                                                }
+                                          }
+      
+                                          #btn-notifycation {
+                                                animation: bellAnimation 0.5s infinite;
+                                          }
+                                                #count-n {
+                                                      color: white;
+                                                      font-size: 12px;
+                                                      position: absolute;
+                                                      top: 50%;
+                                                      left: 50%;
+                                                      transform: translate(-50%, -50%);
+                                                }
+                                          </style>
+                                    </style>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                                          <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+                                        </svg>
+                                        <span id='count-n'>
+                                          {{new_customer}}
+                                        </span>
+                              </button>
+                        </form>
+                  {% endif %}
                   <!-- <a href="{% url "customer:add-customer" %}" class="d-flex align-content-center " > -->
                         {% if user.is_authenticated %}
                         <button onclick="Menu()"   class="bg-transparent  border-0 rounded-circle    m-0  text-white  " 

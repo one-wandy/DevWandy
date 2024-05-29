@@ -90,6 +90,9 @@ class ListCustomer(ListView,Options):
         count_customer = self.request.POST.get('20-customer')
         customer = self.request.POST.get('send-data')
         if self.request.method == 'POST':
+            if  self.request.POST.get('noti') != None:
+                context['customer'] = self.model.objects.filter(is_active = True, 
+                                    customer_verify = False)
             if customer != None:                
                 context['customer'] = self.model.objects.filter(id=int(customer))
                 ls = self.model.objects.filter(id=int(customer))
@@ -98,13 +101,17 @@ class ListCustomer(ListView,Options):
                 return context
 
             if count_customer != None:
-                    context['customer'] = self.model.objects.filter(is_active = True,
+                    context['customer'] = self.model.objects.filter(is_active = True, 
+                                        customer_verify = True,
                                     ).order_by('-id')[:int(count_customer)]
         else:
             context['customer'] = self.model.objects.filter(is_active = True, 
                                     customer_verify = True ).order_by('-id')[:4]
         context['setting'] = self.Setting()
-        context['customer_count'] = self.model.objects.filter(is_active = True).count()
+        context['customer_count'] = self.model.objects.filter(is_active = True, 
+                                    customer_verify = True).count()
+        context['new_customer'] = self.model.objects.filter(is_active = True, 
+                                    customer_verify = False).count()
         context['day_pay'] = self.Day15_or_30()
         context['day_pay_2'] = self.Day_Pay()
         return context
