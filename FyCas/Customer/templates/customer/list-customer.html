@@ -521,12 +521,21 @@
                               </div>
                        </div>
                        {% comment %} div 1 {% endcomment %}
-                       <div id='div-more{{c.id}}' class='d-none card w-100 shadow position-absolute start-0   bg-white  p-2 pb-3 pt-3  ' style='top:24rem; z-index: 160; border-radius:1.6rem;'>
+                       <div id='div-more{{c.id}}' class='d-none card border-0 w-100 shadow position-absolute start-0   bg-white  p-2 pb-3 pt-3  ' style='top:24rem; z-index: 160; border-radius:1.6rem; font-family: Quicksand, sans-serif;
+                       color: black;
+                       font-size: 16px;
+                       font-optical-sizing: auto;'>
                         <style>
                               #div-more{{c.id}}, span:hover {
                                     cursor: pointer;
                               }
+                              
                         </style>
+                              <span>
+                                    <h6  class="text-black-50">
+                                          Opciones
+                                    </h6>
+                              </span>
                               <span>
                                     <div>
                                           <input type="checkbox" id="hijos" name="hijos" class="form-check-input" {% if c.hijos %}checked{% endif %} disabled>
@@ -556,6 +565,11 @@
                                           <input type="checkbox" id="fue_recomendado" name="fue_recomendado" class="form-check-input" {% if c.fue_recomendado %}checked{% endif %} disabled>
                                           <label for="fue_recomendado">Fue Recomendado</label>
                                     </div>
+                              </span> <br>
+                              <span >
+                                    <h6 class="text-black-50">
+                                          Requiere 
+                                    </h6>
                               </span>
                               <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
@@ -567,7 +581,13 @@
                                           <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
                                           <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8m0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5"/>
                                         </svg> {{c.fines}}
-                              </span> <br>
+                              </span>
+                               <br> <br>
+                              <span>
+                                    <h6 class="text-black-50">
+                                          Referencias
+                                    </h6>
+                              </span>
                               <span class=''>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-black bi bi-people-fill" viewBox="0 0 16 16">
                                           <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
@@ -588,12 +608,23 @@
                               <span>
                                     {{c.number_r2}}
                               </span>
-                              <br>
+                              <br> <br>
+                              <span>
+                                    <h6 class="text-black-50">
+                                          Información Laboral
+                                    </h6>
+                              </span>
                               <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-buildings-fill" viewBox="0 0 16 16">
                                           <path d="M15 .5a.5.5 0 0 0-.724-.447l-8 4A.5.5 0 0 0 6 4.5v3.14L.342 9.526A.5.5 0 0 0 0 10v5.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V14h1v1.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zM2 11h1v1H2zm2 0h1v1H4zm-1 2v1H2v-1zm1 0h1v1H4zm9-10v1h-1V3zM8 5h1v1H8zm1 2v1H8V7zM8 9h1v1H8zm2 0h1v1h-1zm-1 2v1H8v-1zm1 0h1v1h-1zm3-2v1h-1V9zm-1 2h1v1h-1zm-2-4h1v1h-1zm3 0v1h-1V7zm-2-2v1h-1V5zm1 0h1v1h-1z"/>
-                                        </svg> {{c.empresa_trabaja}} ({{c.phone}})
-                              </span> <br>
+                                        </svg> {{c.empresa_trabaja}} 
+                              </span>  <br>
+                              <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                          <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                                        </svg>  ({{c.phone}})
+                              </span>
+                              <br>
                               <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
                                           <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
