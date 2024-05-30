@@ -114,11 +114,12 @@ def CreateCreditAjax(request):
         c = models.Customer.objects.get(id=request.GET.get('customer_id'))
         credit = models.Credit.objects.create( 
             customer = c,
+            dni = c.dni,
             name = c.name + " " + c.last_name,
             amount= request.GET.get('monto'),
-            amount_feed = request.GET.get('cuotas'),
+            amount_feed = request.GET.get('monto_pagar'),
             no_account = int(0),
-            price_feed = request.GET.get('monto_pagar'),
+            price_feed = request.GET.get('cuotas'),
             day_pay = int(request.GET.get('dia')),
             mont = datetime.now().strftime("%B"),
             day = datetime.now().strftime("%A"),

@@ -457,8 +457,8 @@ select option {
     /* Improving visualization in light mode */
   </style>
   <body>
-      <section   class=" flex-wrap overflow-hidden  load bg-white  blur align-content-center w-100 h-100 position-absolute  top-0" style="z-index: 1000; background-color: white;">
-
+      <section   class=" flex-wrap overflow-hidden  load bg-white  blur align-content-center
+            w-100 h-100 position-fixed  top-0" style="z-index: 1000; background-color: white;">
             <div data-aos="zoom-in-down" class="d-flex  justify-content-center h-100">
                   <div id="page">
                         <div id="container">
@@ -772,17 +772,17 @@ style=" margin-top: 1px !important; max-height: 2.5rem !important;
       <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
       </svg></label>
 
-      <div class="d-flex w-100  pt-1 mt-1 pb-2 bg-transparent  justify-content-center align-content-center ">
-            <div class=" blur d-flex bg-opacity-75 bg-white  align-content-center shadow p-1" style="border-radius: 1.8rem;">
+      <div class="d-flex w-100  pt-1 mt-1 pb-2 bg-transparent   justify-content-center align-content-center ">
+            <div class=" d-flex bg-opacity-75 bg-white  blur align-content-center shadow p-1" 
+                  style="border-radius: 1.8rem; z-index: 2;">
                   {% if customer_count %}
-                  <input type="text"  style="font-size: 14px; width: auto; min-width: 200px; min-height: 2rem;margin-top: 5px !important; margin-left: 6px !important;  max-height: 2rem; max-width: 5rem;" class="form-search blur  text-center shadow-none  m-0 mb-1  bg-white bg-opacity-75"  id="searching-config" 
+                  <input type="text"  style="font-size: 14px; width: auto; min-width: 200px; min-height: 2rem;margin-top: 5px !important; margin-left: 6px !important;  max-height: 2rem; max-width: 5rem;" class="form-search bg-danger  text-center shadow-none  m-0 mb-1  bg-white bg-opacity-75 "  id="searching-config" 
                   placeholder=" Buscando Clientes ">
                   {% endif %}
                   {% if new_customer %}
                         <form action="" method="post">
                               {% csrf_token %}
-                              <button class='bg-transparent p-0 border-0' id='btn-notifycation'>
-                                    
+                              <button class='bg-transparent p-0 border-0 mt-2' id='btn-notifycation'>
                                     <input type="number" id='noti' name='noti' value='' class='d-none'>
                                     <script>
                                           document.getElementById('btn-notifycation').addEventListener('click', function(){
@@ -850,7 +850,7 @@ style=" margin-top: 1px !important; max-height: 2.5rem !important;
 
 
 <script>
-            document.addEventListener('keydown', function(event) {
+      document.addEventListener('keydown', function(event) {
       if (event.altKey && event.key === 'a') {
         Menu();
       }
@@ -875,17 +875,28 @@ function Menu(){
       <script>
 
 
-
-window.onloadstart = ONLOAD()
-function ONLOAD() {
+window.onload = function() {
       document.querySelector(".load").classList.add('bg-opacity-75')
+      document.querySelector(".load").style.display = "none"
+      setTimeout(() => {
+            // ocultamos el elemento
+      }, 1500);
+};
+document.onreadystatechange = function () {
+      if (document.readyState === 'loading') {
+            document.querySelector(".load").style.display = "block"
+          console.log('El documento está en proceso de carga.');
+      } 
+  };
+  
+  
+{% comment %} wi
+ndow.onloadstart = ONLOAD()
+function ONLOAD() {
 
   
-  setTimeout(() => {
-        // ocultamos el elemento
-    document.querySelector(".load").style.display = "none"
-  }, 1500);
-}
+
+} {% endcomment %}
 
 const calcularButton = document.getElementById("calcular");
 const resultadoParrafo = document.getElementById("resultado");
