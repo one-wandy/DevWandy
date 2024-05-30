@@ -5,6 +5,7 @@
       #div-menu-1 {
             display: none !important;
       }
+      
 </style>
 <section class="container w-100" style="font-family: Times New Roman; font-size: 16px;  color: black; text-align: justify;"> 
       
@@ -91,7 +92,9 @@
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
+document.querySelector(".load").style.display = "none"
 window.onload = function() {
+
       setTimeout(() => {
             // ocultamos el elemento
             NotarialSave()

@@ -116,7 +116,7 @@ def CreateCreditAjax(request):
             customer = c,
             dni = c.dni,
             name = c.name + " " + c.last_name,
-            amount= request.GET.get('monto'),
+            amount= int(request.GET.get('monto')),
             amount_feed = request.GET.get('monto_pagar'),
             no_account = int(0),
             price_feed = request.GET.get('cuotas'),

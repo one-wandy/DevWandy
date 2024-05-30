@@ -251,8 +251,8 @@ class CardCustomer(UpdateView, Options):
             if c.amount_feed:
                 v_amount = str(c.amount_feed)
                 # print(v_amount[:v_amount.index(".")])
-                context["amount_feed_int"] = int(v_amount[:v_amount.index(".")])
-                context["amount_feed"] = self.Count(int(v_amount[:v_amount.index(".")]))
+                context["amount_feed_int"] =  v_amount #int(v_amount[:v_amount.index(".")])  
+                context["amount_feed"] = self.Count(v_amount) #self.Count(int(v_amount[:v_amount.index(".")]))
         except models.Credit.DoesNotExist:
             return redirect(reverse('customer:create-credit'))
         return context
@@ -285,8 +285,8 @@ class NotaryCustomer(UpdateView, Options):
             if c.amount_feed:
                 v_amount = str(c.amount_feed)
                 # print(v_amount[:v_amount.index(".")])
-                context["amount_feed_int"] = int(v_amount[:v_amount.index(".")])
-                context["amount_feed"] = self.Count(int(v_amount[:v_amount.index(".")]))
+                context["amount_feed_int"] =  v_amount #int(v_amount[:v_amount.index(".")])  
+                context["amount_feed"] = self.Count(v_amount) 
         except models.Credit.DoesNotExist:
             return redirect(reverse('customer:create-credit'))
         return context

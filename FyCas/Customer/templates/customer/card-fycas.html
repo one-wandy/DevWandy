@@ -15,6 +15,7 @@ header, footer {
 #div-menu-1 {
       display: none !important;
 }
+
 </style>
 
 <section id="contrato" class="container w-100" style="font-family: Times New Roman; font-size: 16px; line-height: 17px; color: black; text-align: justify;">
@@ -157,8 +158,11 @@ Que deberán ser pagados el día {{day_pay}} ({{credit.day_pay}}) de cada mes.
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
+
 <!-- <script src="print.js"></script> -->
 <script> 
+      document.querySelector(".load").style.display = "none"
+
 window.onload = function() {
       setTimeout(() => {
             // ocultamos el elemento
