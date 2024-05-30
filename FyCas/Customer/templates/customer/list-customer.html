@@ -224,6 +224,13 @@
   opacity: 0.8;
  }
 }
+#div-list-customer button {
+      border-color: rgb(49, 49, 49);
+      color: rgb(49, 49, 49);
+      font-family: Quicksand, sans-serif;
+      font-weight: bold;
+
+}
 </style>
 
 <div id="config-list" 
@@ -232,7 +239,7 @@
 </div>
 
 <section id="section" class="rounded-0 d-flex flex-wrap justify-content-center
-      overflow-scroll p-1 w-100 pb-5 h-100  mt-0" >
+      overflow-scroll p-1 w-100  vh-100  mt-0" >
       <div id="text-c" class="w-100 justify-content-center position-fixed flex-wrap" 
             style="display: none; z-index: 15; bottom: 1rem;" >
             <h5 class="position-absolute" style='bottom:5rem;'  >
@@ -399,10 +406,10 @@
                                     </div>
                               </div>
                         </div>
-                       <div id='div-more{{c.id}}' class='d-none shadow  bg-white bg-opacity-75 blur card position-relative w-100   
+                       <div id='div-more{{c.id}}' class='blur d-none shadow  bg-white bg-opacity-75  card position-relative w-100   
                               position-absolute start-0  p-4  ' 
                               style='top:20rem; z-index: 160; border-radius:2.2rem; font-family: Quicksand, sans-serif;
-                              margin-ottom: 20rem !important; color: black; font-size: 16px; font-optical-sizing: auto; z-index: 10;'>
+                              color: black; font-size: 16px; font-optical-sizing: auto; z-index: 11;'>
                               <style>
                                     #div-more{{c.id}}, span:hover {
                                           cursor: pointer;
@@ -413,9 +420,9 @@
                                     
                               </style>
                               <span class="w-100 d-flex justify-content-end start-0 position-absolute top-0">
-                                    <button id='{{c.id}}' class='border-0 p-0 me-3  mt-2 bg-transparent shadow-none' 
+                                    <button id='{{c.id}}' class='border-0 p-0 me-3  mt-3 bg-transparent shadow-none' 
                                           onclick='OpenCloseBtn(this.id)' >
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                                           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
                                           </svg>
                                     </button>
@@ -423,7 +430,7 @@
                               </span> 
                               <span class="">
                                     <h6  class="text-black-50">
-                                          Opciones
+                                          Elecciones opcionales
                                     </h6>
                               </span>
                               <span>
@@ -454,11 +461,11 @@
                                     <div>
                                           <input type="checkbox" id="fue_recomendado" name="fue_recomendado" class="form-check-input" {% if c.fue_recomendado %}checked{% endif %} disabled>
                                           <label for="fue_recomendado">Fue Recomendado</label>
-                                    </div>
+                                    </div> 
                               </span> <br>
                               <span >
                                     <h6 class="text-black-50" id='requiere'>
-                                          Requiere 
+                                          Monto solicitado y fines
                                     </h6>
                               </span>
                               <span id='monto-spa'>
@@ -475,7 +482,7 @@
                                <br> <br>
                               <span>
                                     <h6 class="text-black-50">
-                                          Referencias
+                                          Referencias personales
                                     </h6>
                               </span>
                               <span class=''>
@@ -559,16 +566,16 @@
                                                 <button onclick='CreateCreditAjax(this.id)' id='{{c.id}}' class='text-white border-0 ' style='background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); border-radius: 1.5rem;'> Crear</button>
                                           </div>
                                     </div>
-                              <br> 
+                              
                               <span>
-                                    <h6 class="text-black-50" s> 
-                                          Compartir
+                                    <h6 class="text-black-50" > 
+                                          Acciones de aprobacion
                                     </h6>
                               </span>
-                              <br>
+                              
                               <span class='w-100 d-flex justify-content-center'>
                                     <button style='border-radius: 1.5rem;'>
-                                          Compartir
+                                          Pendiente
                                     </button>
                                     <a  href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Su solicitud no fue aprobada en este momento. para mas detalles, haga clic en este enlace ->: https://grupofycas.online/no-approved/customer" >
 
@@ -584,18 +591,18 @@
                                     </button>
                               </a>
                               </span>
-                              <br> <br>
+                              <br> 
                               <span class='w-100'>
                                     <h6 class="text-black-50" s> 
-                                          Estado del cliente activo/inactivo
+                                          Estado del cliente 
                                     </h6>
                               </span>
                               <span>
                                     <div class="form-check form-switch p-0">
                                           {% if c.is_active == True %}
-                                                <input onclick='DisableCustomer(this.value)' value='{{c.id}}'  class="form-check-input m-0 me-2"  type="checkbox" role="switch" id="stado{{c.id}}">
-                                                <label class="form-check-label m-0" for="stado{{c.id}}" >
-                                                      Estado
+                                                <input onclick='DisableCustomer(this.value)' value='{{c.id}}'  class="form-check-input m-0 me-2"  type="checkbox" role="switch" checked id="stado{{c.id}}">
+                                                <label class="form-check-label m-0 ms-1" for="stado{{c.id}}" >
+                                                      Activo
                                                 </label>
                                                 </div>
                                           {% endif %}
