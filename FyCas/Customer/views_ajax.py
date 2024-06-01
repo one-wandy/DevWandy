@@ -29,11 +29,11 @@ def SearchCustomer(request):
 
 def CustomerVerify(request):
         # cus = models.Customer.objects.all()
-      
         c = models.Customer.objects.get(id=request.GET.get('customer_id'))
         if c.customer_verify == False:
             c.customer_verify = True
         c.save()
+        print(c.customer_verify)
         # for cm in cus:
         #     cm.customer_verify = False 
         #     cm.save()
@@ -81,6 +81,7 @@ def DisableCustomer(request):
             c.is_active = True
         else:
             c.is_active = False
+        print(c.is_active)
         c.save()
         return JsonResponse(list(),  safe=False)    
     

@@ -46,7 +46,7 @@ urlpatterns = [
       path("msg/customer/debit", views_ajax.MensajeCustomerDebit, name="msg-debit-customer"),
       
       path("create-credit-ajax/customer/", views_ajax.CreateCreditAjax, name="create-credit-ajax"),
-      path("disable-customer/customer/", views_ajax.DisableCustomer, name="disable-customer-ajax"),
+      path("disable-customer/", views_ajax.DisableCustomer, name="disable-customer-ajax"),
 
 
       
