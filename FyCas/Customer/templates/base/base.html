@@ -557,7 +557,7 @@ select option {
 style="display: none; z-index: 11; ">
 
 <div id="div-notifycations"  class="bg-white  shadow bg-opacity-75 blur m-2 p-2  w-100 " style="display: none; z-index: 10; top: 1rem; max-width: 620px; border-radius: 1.5rem !important;  height: max-content;">
-      <button  class="border-0 bg-transparent m-0" style="height: 0.5rem; z-index: 10; box-shadow: none !important;">
+      <button  class="border-0 bg-transparent m-0 " style="height: 0.5rem; z-index: 10; box-shadow: none !important;">
             Notificaciones
       </button>
       {% if solicitud %}
@@ -575,11 +575,14 @@ style="display: none; z-index: 11; ">
 </div>
 
 {% if day_pay %}
-<div class='bg-white bg-opacity-75 mt-2  text-center shadow p-3 pt-0 pb-0' 
+<div class='bg-white bg-opacity-50 mt-2  text-center shadow p-3 pt-1 pb-1' 
       style='height: max-content; border-radius: 2rem;'>
-      <button  class="border-0 p-0  bg-transparent m-0 mt-1" style="height: 0.5rem; z-index: 10; box-shadow: none !important;">
-            Dia de cobro
-      </button> <br>
+      <button  class="border-0 p-0  bg-transparent  m-1" style="height: 0.5rem; z-index: 10; box-shadow: none !important;">
+            <!-- Dia de cobro -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar4-event text-black" viewBox="0 0 16 16">
+            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+            <path d="M11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
+          </svg>
             {% if day_pay_2 == true %}
                   <script>
                         function MensajeCustomerDebit(id) {
@@ -596,6 +599,8 @@ style="display: none; z-index: 11; ">
             <span class='text-black-50 m-0 p-0 mb-1' style='font-size:12px;'>
                   {{day_pay}}
             </span>
+      </button> 
+
 </div>
       {% endif %}
       

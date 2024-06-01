@@ -145,7 +145,7 @@ class ListCustomer(ListView,Options):
                 today += timedelta(days=30-today.day)
 
             days_until_next_cobro = (next_cobro - day) if day < next_cobro else (30 - day + 15)
-            return f'Faltan {days_until_next_cobro} días para el próximo dia de cobro.'
+            return f' Próximo dia de cobro en: {days_until_next_cobro} días.'
 
     
     def post(self, request, *args, **kwargs):
