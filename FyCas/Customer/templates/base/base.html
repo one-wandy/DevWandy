@@ -615,7 +615,7 @@ max-width: 420px; height: 16.4rem;">
 <!-- <hr> -->
 <!-- </div> --> 
 <div class='w-100 d-flex justify-content-end mb-2'>
-<button onclick="NotifyCation()" id="btn-notifycation"  class=" bg-transparent border-0  end-0 position-relative" style="height: 0.5rem; z-index: 10; box-shadow: none !important;">
+<button onclick="NotifyCation()" id="btn-notifycation"  class=" d-none bg-transparent border-0  end-0 position-relative" style="height: 0.5rem; z-index: 10; box-shadow: none !important;">
       Notificaciones
       {% comment %} <span class="position-absolute top-50 p-1 rounded-circle " style=" left: 1.3rem;color: white; font-size: 12px;">6</span> {% endcomment %}
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-app-indicator text-black" viewBox="0 0 16 16">
@@ -629,11 +629,13 @@ max-width: 420px; height: 16.4rem;">
 <button  class="border-0 text-white bg-transparent  rounded-circle m-0 p-0" 
       style="
       height: 2.7rem !important;
-      width: 2.7rem;">               
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-add text-black" viewBox="0 0 16 16">
+      width: 2.7rem;">        
+      <img src="{% static "svg/add-user.svg" %}" width='24' alt="">
+       
+      {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-add text-black" viewBox="0 0 16 16">
             <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
             <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
-          </svg>
+          </svg> {% endcomment %}
 </button> 
 <span class="w-100 text-center" style="font-size: 12px;">Agregar</span>
 </a>
@@ -642,11 +644,13 @@ max-width: 420px; height: 16.4rem;">
 <button  class="border-0 text-white  bg-transparent rounded-circle m-0 p-0" 
       style="
       height: 2.7rem !important;
-      width: 2.7rem;">               
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-calculator text-black" viewBox="0 0 16 16">
+      width: 2.7rem;">            
+      <img src="{% static "svg/calculator.svg" %}" width='24' alt="">
+   
+      {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-calculator text-black" viewBox="0 0 16 16">
             <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
             <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
-          </svg>
+          </svg> {% endcomment %}
 </button> 
 <span class="w-100 text-center" style="font-size: 12px;">Calcula</span>
 </a>
@@ -656,10 +660,12 @@ max-width: 420px; height: 16.4rem;">
 <button  class="border-0 text-white bg-transparent rounded-circle m-0 p-0" 
       style="
       height: 2.7rem !important;
-      width: 2.7rem;">               
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi  text-black bi-person" viewBox="0 0 16 16">
+      width: 2.7rem;">            
+      <img src="{% static "svg/user.svg" %}" width='24' alt="">
+   
+      {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi  text-black bi-person" viewBox="0 0 16 16">
             <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
-          </svg>
+          </svg> {% endcomment %}
 </button> 
 <span class="w-100 text-center " style="font-size: 12px;">Clientes</span>
 </a>
@@ -669,11 +675,13 @@ max-width: 420px; height: 16.4rem;">
 <button  class="border-0 text-white bg-transparent  rounded-circle m-0 p-0" 
       style="
       height: 2.7rem !important;
-      width: 2.7rem;">               
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt text-black" viewBox="0 0 16 16">
+      width: 2.7rem;">         
+      <img src="{% static "svg/map.svg" %}" width='24' alt="">
+      
+    {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt text-black" viewBox="0 0 16 16">
       <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
       <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-    </svg>
+    </svg> {% endcomment %}
 </button> 
 <span class="w-100 text-center" style="font-size: 12px;">Rutas</span>
 </a>
@@ -682,10 +690,12 @@ max-width: 420px; height: 16.4rem;">
 <button  class="border-0 text-white bg-transparent  rounded-circle m-0 p-0" 
       style="
       height: 2.7rem !important;
-      width: 2.7rem;">               
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi text-black bi-people" viewBox="0 0 16 16">
+      width: 2.7rem;">      
+      <img src="{% static "svg/list.svg" %}" width='24' alt="">
+         
+      {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi text-black bi-people" viewBox="0 0 16 16">
             <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
-          </svg>
+          </svg> {% endcomment %}
 </button> 
 <span class="w-100 text-center" style="font-size: 12px;">Listad</span>
 </a>
@@ -695,11 +705,13 @@ max-width: 420px; height: 16.4rem;">
 <button  class="border-0 text-white bg-transparent  rounded-circle m-0 p-0" 
       style="
       height: 2.7rem !important;
-      width: 2.7rem;">               
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-gear text-black" viewBox="0 0 16 16">
+      width: 2.7rem;">        
+      <img src="{% static "svg/config.svg" %}" width='24' alt="">
+       
+      {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-gear text-black" viewBox="0 0 16 16">
             <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
             <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
-          </svg>
+          </svg> {% endcomment %}
 </button> 
 <span class="w-100 text-center" style="font-size: 12px;">Config</span>
 </a>
@@ -708,11 +720,13 @@ max-width: 420px; height: 16.4rem;">
 <button  class="border-0 text-white bg-transparent  rounded-circle m-0 p-0" 
       style="
       height: 2.7rem !important;
-      width: 2.7rem;">               
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-calendar4-event text-black" viewBox="0 0 16 16">
+      width: 2.7rem;">              
+      <img src="{% static "svg/calendar.svg" %}" width='24' alt="">
+ 
+      {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-calendar4-event text-black" viewBox="0 0 16 16">
             <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
             <path d="M11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
-          </svg>
+          </svg> {% endcomment %}
 </button> 
 <span class="w-100 text-center" style="font-size: 12px;">DPago</span>
 </a>
@@ -722,10 +736,12 @@ max-width: 420px; height: 16.4rem;">
 <button  class="border-0 text-white bg-transparent  rounded-circle m-0 p-0" 
       style="
       height: 2.7rem !important;
-      width: 2.7rem;">               
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-file-earmark-spreadsheet text-black" viewBox="0 0 16 16">
+      width: 2.7rem;">      
+      <img src="{% static "svg/document.svg" %}" width='24' alt="">
+         
+    {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-file-earmark-spreadsheet text-black" viewBox="0 0 16 16">
       <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V9H3V2a1 1 0 0 1 1-1h5.5zM3 12v-2h2v2zm0 1h2v2H4a1 1 0 0 1-1-1zm3 2v-2h3v2zm4 0v-2h3v1a1 1 0 0 1-1 1zm3-3h-3v-2h3zm-7 0v-2h3v2z"/>
-    </svg>
+    </svg> {% endcomment %}
 </button> 
 <span class="w-100 text-center" style="font-size: 12px;">Ex</span>
 </a>
@@ -830,12 +846,14 @@ style=" margin-top: 1px !important; max-height: 2.5rem !important;
                         <button onclick="Menu()"   class="bg-transparent  border-0 rounded-circle    m-0  text-white  " 
                         style=" margin-top: 1px !important; max-height: 2.5rem !important;
                         ">               
-                              <svg xmlns="http://www.w3.org/2000/svg" id="m" width="24" height="24" fill="currentColor" class=" text-black bi bi-grid-fill" viewBox="0 0 16 16">
+                        <img src="{% static "svg/menu.svg" %}" width='24' alt="">
+                        
+                              <!-- <svg xmlns="http://www.w3.org/2000/svg" id="m" width="24" height="24" fill="currentColor" class=" text-black bi bi-grid-fill" viewBox="0 0 16 16">
                                     <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z"/>
-                                  </svg>
+                                </svg>
                         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;" id="x" width="24" height="24" fill="currentColor" class="bi bi-x text-black " viewBox="0 0 16 16">
                               <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
-                            </svg>
+                            </svg> -->
                   </button> 
                         {% endif %}
             </div>

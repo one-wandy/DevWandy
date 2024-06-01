@@ -392,8 +392,10 @@
                                                       </a>
                                                       <button id='{{c.id}}' class='border-0 d-none text-white bg-transparent' 
                                                             onclick='Credit(this.id)'>
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-three-dots text-black" viewBox="0 0 16 16"><path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                                            </svg>                                                 
+                                                                                    <img src="{% static "svg/more.svg" %}" width='24' alt="">
+
+                                                            {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-three-dots text-black" viewBox="0 0 16 16"><path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+                                                            </svg>                                                  {% endcomment %}
                                                       </button>
                                                 {% endif %}
                                           </div>
