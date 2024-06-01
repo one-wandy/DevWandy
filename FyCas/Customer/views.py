@@ -14,6 +14,8 @@ import locale
 from datetime import datetime
 import sys
 from num2words import num2words
+from django.contrib.humanize.templatetags.humanize import intcomma
+
 
 
 
@@ -28,7 +30,7 @@ class Dashboard(TemplateView, Options):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['setting'] = self.Setting()
-        # context['s'] = 
+        context['s'] = intcomma(3232)
 
         return context
     

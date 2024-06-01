@@ -128,10 +128,10 @@ def CreateCreditAjax(request):
             year = num2words(datetime.now().year, lang='es'),
             year_number = datetime.now().year,
         )
-        c.monto_requerido =  "RD$" +  intcomma(credit.amount)
+        c.monto_requerido =  intcomma(int(request.GET.get('monto')))
         c.save()
         print(num2words(datetime.now().year))
-        data = {'monto_requerido': "RD$" +  intcomma(credit.amount)}
+        data = {'monto_requerido':  intcomma(credit.amount)}
         return JsonResponse(data,  safe=False)    
     
     
