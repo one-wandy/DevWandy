@@ -65,13 +65,13 @@ class Options:
             }
             return day.get(N)
 
-      def MontNow(self, N):
+      def MontNow():
             mont = {
         1: "enero",     2: "febrero",   3: "marzo",    4: "abril", 5: "mayo",
         6: "junio", 7: "julio", 8: "agosto",    9: "septiembre",
         10: "octubre",  11: "noviembre",  12: "diciembre"
         }
-            return mont.get(N)
+            return mont.get(datetime.now().month)
 
       def YearNow(self, N):
             return num2words(N, lang='es')
@@ -115,3 +115,16 @@ class Options:
       
       def ImgApp(self, N):
             return models.Img.objects.get(id=N)
+      
+      def GetDayWeek():
+        # Get the current date
+            today = datetime.now()
+            
+            # Get the day of the week as a number (0 = Monday, 1 = Tuesday, ...)
+            day_number = today.weekday()
+            
+            # Define a list of weekdays in Spanish
+            weekdays = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo']
+            
+            # Return the corresponding weekday based on the day number
+            return weekdays[day_number]

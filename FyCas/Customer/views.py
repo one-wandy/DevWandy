@@ -10,6 +10,11 @@ import os
 from datetime import datetime, timedelta
 from twilio.rest import Client  
 import time
+import locale
+from datetime import datetime
+import sys
+from num2words import num2words
+
 
 
 class Dashboard(TemplateView, Options):
@@ -23,7 +28,10 @@ class Dashboard(TemplateView, Options):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['setting'] = self.Setting()
+        # context['s'] = 
+
         return context
+    
     
     
 class AddCustomer(CreateView, Options):

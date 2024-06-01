@@ -122,14 +122,15 @@ def CreateCreditAjax(request):
             no_account = int(0),
             price_feed = request.GET.get('cuotas'),
             day_pay = int(request.GET.get('dia')),
-            mont = datetime.now().strftime("%B"),
-            day = datetime.now().strftime("%A"),
+            mont = Options.MontNow(),
+            day = Options.GetDayWeek(),
             day_number =  datetime.now().day,
-            year = num2words(datetime.now().year),
+            year = num2words(datetime.now().year, lang='es'),
             year_number = datetime.now().year,
         )
         c.monto_requerido =  "RD$" +  intcomma(credit.amount)
         c.save()
+        print(num2words(datetime.now().year))
         data = {'monto_requerido': "RD$" +  intcomma(credit.amount)}
         return JsonResponse(data,  safe=False)    
     
