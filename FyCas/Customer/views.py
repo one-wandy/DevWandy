@@ -96,7 +96,6 @@ class ListCustomer(ListView,Options):
             if customer != None:                
                 context['customer'] = self.model.objects.filter(id=int(customer))
                 ls = self.model.objects.filter(id=int(customer))
-                print(ls)
                 context['true'] = True
                 return context
 
@@ -107,6 +106,7 @@ class ListCustomer(ListView,Options):
         else:
             context['customer'] = self.model.objects.filter(is_active = True, 
                                     customer_verify = True ).order_by('-id')[:4]
+            
         context['setting'] = self.Setting()
         context['customer_count'] = self.model.objects.filter(is_active = True, 
                                     customer_verify = True).count()
