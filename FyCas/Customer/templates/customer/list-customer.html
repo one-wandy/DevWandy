@@ -551,13 +551,34 @@
                                                       Crear credito
                                                 </h6>
                                           </span>
-                                          
-                                          <input type="number" class='m-0 me-2' id='monto{{c.id}}' placeholder='Monto a recibir'>
+                                          <div class='form-floating'>
+                                                <input type="number" class='form-control m-0 ' id='monto{{c.id}}' placeholder='Monto a recibir'>
+                                                <label for="monto{{c.id}}">Monto requirido</label>
+                                          </div>
+                                          <div class='form-floating'>
+                                                <input type="number" class='m-0 mt-1  form-control' id='monto_pagar{{c.id}}' placeholder='Monto a pagar'>
+                                                <label for="monto_pagar{{c.id}}">Precio de cuota</label>
+                                          </div>
                                           <span class='d-flex'>
-                                                <input type="number" class='m-0 me-2' id='cuotas{{c.id}}'   style='max-width: 5.5rem !important;' placeholder='Cuotas'>
-                                                <input type="number" class='m-0' value='30' id='dia{{c.id}}' style='max-width: 3.5rem !important;'  classplaceholder='Dia de pago'>
+                                                <input type="date"   class='me-5' id='dia{{c.id}}' >
+
+                                                <button onclick="restar(this.id)" class='bg-transparent border-0 m-0 ms-3 p-0' id='{{c.id}}'>
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-dash-circle text-danger" viewBox="0 0 16 16">
+                                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                                          </svg>
+                                                      {% comment %} Restar {% endcomment %}
+                                                </button>
+                                                
+                                                <input type="number" min="0" class='m-0 text-center border-0 ms-3 me-0 overflow-visible bg-transparent' value='1' id='cuotas{{c.id}}'   style='max-width: 2.5rem !important;' placeholder='Cuotas'>
+                                                <button onclick="sumar(this.id)" class='border-0 bg-transparent p-0 m-0' id='{{c.id}}'>
+                                                      {% comment %} Sumar {% endcomment %}
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus-circle text-primary" viewBox="0 0 16 16">
+                                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                                                          </svg>
+                                                </button>
                                           </span>
-                                          <input type="text" class='mt-1' id='monto_pagar{{c.id}}' placeholder='Monto a pagar'>
                                           <div class='w-100 mt-2 d-flex  justify-content-end'>
                                                 <button onclick='OpenCloseBtnCredit(this.id)' id='{{c.id}}' class='border-0 bg-transparent'>Cancelar</button>
                                                 <button onclick='CreateCreditAjax(this.id)' id='{{c.id}}' class='text-white border-0 ' style='background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);border-radius: 1.5rem;'> Crear</button>
@@ -679,7 +700,6 @@
             document.getElementById('li'+id).classList.add('d-none')
             BoxSearch()
       }
-
       function CreateCreditAjax(id){
             const url = 'create-credit-ajax/customer/';
             $.ajax({
@@ -688,8 +708,9 @@
                   customer_id: id,
                   monto: document.getElementById('monto'+id).value,
                   cuotas: document.getElementById('cuotas'+id).value,
-                  dia: document.getElementById('dia'+id).value,
+                  dia: document.getElementById('dia'+id).value.split('-')[2] ,
                   monto_pagar: document.getElementById('monto_pagar'+id).value
+
                 }
             ,
             success: function(r) {
@@ -964,6 +985,20 @@ function BoxSearch() {
       } else  {
             box_search.classList.add('d-none')
             box_search.classList.remove('d-blcok')
+      }
+  }
+
+
+  function sumar(n) {
+      var inputNumero = document.getElementById("cuotas"+n);
+      var valorActual = parseInt(inputNumero.value);
+      inputNumero.value = valorActual + 1;
+  };
+  function restar(n) {
+      var inputNumero = document.getElementById("cuotas"+n);
+      var valorActual = parseInt(inputNumero.value);
+      if(valorActual > 0) {
+            inputNumero.value = valorActual - 1;
       }
   }
 </script>
