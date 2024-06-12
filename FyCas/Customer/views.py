@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import redirect
 from .mixing import *
+from .mixing import Options
 import os
 from datetime import datetime, timedelta
 from twilio.rest import Client  
@@ -359,12 +360,13 @@ class UpdateCredit(UpdateView, Options):
         return context
     
     def form_valid(self, form_class):
-            c.monto_requerido = 'RD$' + '{:,}'.format(f.instance.amount)
+            c = self.model.objects.get(id=self.kwargs.get('pk')).customer 
+            c.monto_requerido = 'RD$' + '{:,}'.format(form_class.instance.amount)
             form_class.instance.customer = self.model.objects.get(id=self.kwargs.get('pk')).customer 
-            form_class.instance.mont = self.MontNow(datetime.now().month)
-            form_class.instance.day = self.DayNow(datetime.now().day)
+            form_class.instance.mont = Options.MontNow()
+            form_class.instance.day = Options.DayNow(self,datetime.now().day)
             form_class.instance.day_number =  datetime.now().day
-            form_class.instance.year = self.YearNow(datetime.now().year)
+            form_class.instance.year = Options.YearNow(self, datetime.now().year)
             form_class.instance.year_number = datetime.now().year
             form_class.save()
             return self.List_Redirect()
