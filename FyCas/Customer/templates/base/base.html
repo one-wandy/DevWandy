@@ -282,7 +282,7 @@ a
       }
 #Calculadora 
       {
-      display: none;
+      display: block;
       -webkit-backdrop-filter: blur(30px) !important;
       backdrop-filter: blur(30px) !important;
       }
@@ -492,29 +492,57 @@ select option {
       </div>
 
       </section>
-      <div class="card  bg-white bg-opacity-50 p-2" id="Calculadora">
-            <div class="card-header text-start border-0 mb-2 bg-transparent"  style="border-radius: 1rem;">
-                  <h6>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calculator-fill" viewBox="0 0 16 16">
-                              <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm2 .5v2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5m0 4v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M4.5 9a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 12.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M7.5 6a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM7 9.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM10 6.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-.5-.5z"/>
-                            </svg> Calculadora de Intereses
+      <div class="card  bg-white bg-opacity-50 p-2 " id="Calculadora">
+            <div class="card-header text-start border-0  bg-transparent"  style="border-radius: 1rem;">
+                  <h6 class="d-flex align-content-center flex-wrap w-100 text-center  justify-content-start" style="font-size: 14px;">
+                        <img src="{% static "svg/calculator.svg" %}" width='16' alt="" class="me-1" > Calculador
                   </h6>
-                  <button onclick="Cal()" class="position-absolute top-0 end-0" style="box-shadow: none !important; border-color: aliceblue;">
+                  <button onclick="Cal()" class="position-absolute bg-transparent border-0 top-0 end-0" style="box-shadow: none !important; border-color: aliceblue;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg text-black" viewBox="0 0 16 16">
                               <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
                             </svg>
                   </button>
             </div>
-            <div class="card-body  card" style="border-radius: 1rem;" >
-                  <div class="d-flex align-content-center flex-wrap">
-                        <input type="number" style="border-radius: 0.5rem; outline: none; max-height: 2rem; max-width: 6rem;" class=" btn-outline-light  p-2  m-0 mb-3 border-0 m-1"  id="plazo" placeholder="Cuotas">
-
-                        <input type="number" style=" outline: none; max-height: 2rem; border-radius: 0.5rem; max-width: 6rem;" class="  p-2  m-0  border-0 m-1"  id="numero" placeholder="Cantidad">
+            <div class="card-body  card bg-white bg-opacity-50" style="border-radius: 1.5rem; border: 1px solid rgb(229, 229, 229);" >
+                  <div class="d-flex align-content-center flex-wrap ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-123 mt-2" viewBox="0 0 16 16"> <path d="M2.873 11.297V4.142H1.699L0 5.379v1.137l1.64-1.18h.06v5.961zm3.213-5.09v-.063c0-.618.44-1.169 1.196-1.169.676 0 1.174.44 1.174 1.106 0 .624-.42 1.101-.807 1.526L4.99 10.553v.744h4.78v-.99H6.643v-.069L8.41 8.252c.65-.724 1.237-1.332 1.237-2.27C9.646 4.849 8.723 4 7.308 4c-1.573 0-2.36 1.064-2.36 2.15v.057zm6.559 1.883h.786c.823 0 1.374.481 1.379 1.179.01.707-.55 1.216-1.421 1.21-.77-.005-1.326-.419-1.379-.953h-1.095c.042 1.053.938 1.918 2.464 1.918 1.478 0 2.642-.839 2.62-2.144-.02-1.143-.922-1.651-1.551-1.714v-.063c.535-.09 1.347-.66 1.326-1.678-.026-1.053-.933-1.855-2.359-1.845-1.5.005-2.317.88-2.348 1.898h1.116c.032-.498.498-.944 1.206-.944.703 0 1.206.435 1.206 1.07.005.64-.504 1.106-1.2 1.106h-.75z"/></svg>
+                        <input type="number" style="border-radius: 0.5rem; outline: none; max-height: 2rem; max-width: 6rem;" class=" btn-outline-light  p-2  m-0 mb-3 border-1 m-1 mt-0"  id="plazo" placeholder="Cuotas" min="1" value="1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar m-0 mt-2 p-0" viewBox="0 0 16 16"> <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/></svg>
+                        <input type="text" style=" outline: none; max-height: 2rem; border-radius: 0.5rem; max-width: 6rem;" 
+                        class="p-2 m-0 border-1 m-1 mt-0" min="-1" value="10000" id="numero" placeholder="Monto">
                         <button id="calcular"  class="d-flex d-none align-content-center flex-wrap " style="height: 2.2rem;">Calcular</button>
                   </div>
                   <div>
-                        <p id="resultado"></p>
+                        <p class="p-0 m-0 text-black-50" id="resultado"></p> 
+                        <p class="p-0 m-0 text-black-50" id="resultado2"></p> 
+                        <p class="p-0 m-0 text-black-50" id="resultado3"></p> 
                   </div>
+      
+                  <div class="d-flex w-100 justify-content-end">
+                        <button onclick="DivCal()" class="bg-transparent border-0 p-0">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+                                  </svg>
+                        </button>
+                  </div>
+            </div>
+            <div class="d-flex w-100 flex-wrap d-none" id="cls-bn" >
+                  <h6 class="w-100  text-end pe-1 ps-1" style="font-size: 14px;">
+                        <hr  class="w-100  container">
+                  </h6>
+                  <span class="w-100">  
+                        <h6 class=" w-auto ms-2" style="font-size: 16px;"> Intereses % 
+                        <input type="number" style=" outline: none; max-height: 2rem; border-radius: 0.5rem; max-width: 3.5rem;" 
+                        class=" m-0 m-1 mt-0  bg-transparent border-0" min="0" value="15" > </h6>
+                  </span>
+                  <span class="w-100">
+
+                        <select class="form-select bg-white bg-opacity-50" style="max-width: 17rem !important;" aria-label="Default select example">
+                              <option selected>> Mensual </option>
+                              <option value="1">Samanal</option>
+                              <option value="2">Anual</option>
+                            </select>
+                  </span>
             </div>
           </div>
       {% block content %}
@@ -919,6 +947,9 @@ function ONLOAD() {
 
 const calcularButton = document.getElementById("calcular");
 const resultadoParrafo = document.getElementById("resultado");
+const resultadoParrafo2 = document.getElementById("resultado2");
+const resultadoParrafo3 = document.getElementById("resultado3");
+
 const numeroInput = document.getElementById("numero");
 const plazoInput = document.getElementById("plazo")
 
@@ -927,22 +958,87 @@ function Calcular(m, p) {
       const ganancias = m * tasaInteresDecimal * p;
       let total = "RD$" + ganancias.toLocaleString()
       return total;
+
+
 }
 
-numeroInput.addEventListener("input", () => {
-      var monto = numeroInput.value
-      var plazo = plazoInput.value
+let CalFrances = (capital, tasa, plazo) => {
+      const Cuotas = capital * tasa / (1 - Math.pow(1 + tasa, -plazo));
+      let amortizacion = [];
+      let saldo = capital;
+      let totalIntereses = 0; 
+      for (let mes = 1; mes <= plazo; mes++) {
+            const interes = saldo * tasa; 
+            const amortizacionCapital = Cuotas - interes;
+            saldo -= amortizacionCapital;
+            totalIntereses += interes; 
+            amortizacion.push({
+                  Mes: mes,
+                  Cuota: Cuotas.toFixed(2),
+                  Interes: interes.toFixed(2),
+                  AmortizacionCapital: amortizacionCapital.toFixed(2),
+                  Saldo: saldo.toFixed(2)
+            });
+      }
+      return amortizacion;
+}
+console.log(CalFrances(15000, 0.15, 5))
+
+let SuperCal = (capital, plazo, tasa)=> {
+      
+      const Cuotas = capital * tasa / (1 - Math.pow(1 + tasa, -plazo));
+      let amortizacion = [];
+      let saldo = capital;
+      let totalIntereses = 0; 
+      for (let mes = 1; mes <= plazo; mes++) {
+            const interes = saldo * tasa; 
+            const amortizacionCapital = Cuotas - interes;
+            saldo -= amortizacionCapital;
+            totalIntereses += interes; 
+            amortizacion.push({
+                  Mes: mes,
+                  Cuota: Cuotas.toFixed(2),
+                  Interes: interes.toFixed(2),
+                  AmortizacionCapital: amortizacionCapital.toFixed(2),
+                  Saldo: saldo.toFixed(2)
+            }); }
+            let totales = capital + totalIntereses
       const numero = parseFloat(numeroInput.value);
-      const interes =  numero * 0.15;
-      resultadoParrafo.textContent = Calcular(monto, plazo);
+  
+      resultadoParrafo.textContent = 'Cuotas de: $' + Cuotas.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00';
+      resultadoParrafo2.textContent = 'Intereses: $' + totalIntereses.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00'
+      resultadoParrafo3.textContent = 'Totales: $' + totales.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00'
+      if(numeroInput.value != ''){
+            let numero = numeroInput.value.replace(/,/g, ''); // Elimina las comas existentes
+            if (!isNaN(numero) && numero.trim() !== '') {
+                numeroInput.value = parseFloat(numero).toLocaleString();
+            } else {
+                numeroInput.value = numeroInput.value.replace(/[^\d.]/g, ''); 
+                // Elimina cualquier carácter no numérico excepto el punto decimal
+            }
+      }
+
+} 
+
+
+numeroInput.addEventListener("input", () => {
+      let numero = numeroInput.value.replace(/,/g, ''); // Elimina las comas existentes
+      let capital = parseInt(numero)
+      let plazo =   plazoInput.value
+      let tasa = 0.15
+      SuperCal(capital, plazo, tasa)
 });
-
-
+plazoInput.addEventListener("input", () => {
+      let numero = numeroInput.value.replace(/,/g, ''); // Elimina las comas existentes
+      let capital = parseInt(numero)
+      let plazo =   plazoInput.value
+      let tasa = 0.15
+      SuperCal(capital, plazo, tasa)
+});
 const div = document.getElementById("Calculadora");
 let isMouseDown = false;
 let offsetX = 0;
 let offsetY = 0;
-
 div.addEventListener("mousedown", (event) => {
       isMouseDown = true;
       offsetX = event.clientX - div.offsetLeft;
@@ -981,6 +1077,14 @@ function Cal() {
         
 AOS.init();
 
+function DivCal() {
+    let div = document.getElementById('cls-bn');
+    if (div.classList.contains('d-none')) {
+        div.classList.remove('d-none');
+    } else {
+        div.classList.add('d-none');
+    }
+}
 
       </script>
 
