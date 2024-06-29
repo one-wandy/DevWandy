@@ -49,54 +49,96 @@
       width: 300px;
       text-align: center;
       display: flex;
-      justify-content: center;
+      justify-content: space-around;
+      cursor: pointer;
+      color: white !important;
+      background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%) !important;
+      border-radius: 2rem;
 }
+
 </style>
-<section  class="position-relative   container-fluid  p-0 mb-5 ">
+<section  class="position-relative  container-fluid   p-0 mb-5 ">
             <form  method="post" class="form-add-c m-0" enctype='multipart/form-data'>
                   {% csrf_token %}
-                        <div class="sL d-flex flex-wrap align-content-center" id="sL1">
+                        <div class="sL" id="sL1">
                               {% include "components/data-person.html" %}
                               <div class='w-100 justify-content-center d-flex'>
-                                    <button class="scroll-btn" onclick="scrollToNext()">Siguiente</button>
+                                    <label class="scroll-btn" onclick="scrollToNext()">Siguiente</label>
                               </div>
                         </div>
                             <div class="sL" id="sL2">
-                              <button onclick='scrollToLast()'>Atras</button>
-                        
-                                <button class="scroll-btn" onclick="scrollToNext()">Siguiente</button>
+                                  {% include "components/cedula.html" %}
+                                    <div class='w-100 justify-content-center d-flex'>
+                                          <label class="scroll-btn" onclick="scrollToNext()">Siguiente</label>
+                                    </div>
+                                    <div class="w-100 justify-content-center d-flex">
+                                          <label class="bg-transparent text-black" onclick='scrollToLast()'>Atras</label>
+                                    </div>
                             </div>
                             <div class="sL" id="sL3">
-                              <button onclick='scrollToLast()'>Atras</button>
-                        
-                                <button class="scroll-btn" onclick="scrollToNext()">Inicio</button>
+                              {% include "components/info-laboral.html" %}
+                              <div class='w-100 justify-content-center d-flex'>
+                                    <label class="scroll-btn" onclick="scrollToNext()">Siguiente</label>
+                              </div>
+                              <div class="w-100 justify-content-center d-flex">
+                                    <label class="bg-transparent text-black" onclick='scrollToLast()'>Atras</label>
+                              </div>
                             </div>
                             <div class="sL" >
-                              <button onclick='scrollToLast()'>Atras</button>
-                              4
-                                <button class="scroll-btn" onclick="scrollToNext()">Inicio</button>
+                              {% include "components/referens.html" %}
+
+                              <div class='w-100 justify-content-center d-flex'>
+                                    <label class="scroll-btn" onclick="scrollToNext()">Siguiente</label>
+                              </div>
+                              <div class="w-100 justify-content-center d-flex">
+                                    <label class="bg-transparent text-black" onclick='scrollToLast()'>Atras</label>
+                              </div>
                             </div>
-                            <div class="sL" >
-                              5
-                              <button onclick='scrollToLast()'>Atras</button>
-                        
-                                <button class="scroll-btn" onclick="scrollToNext()">Inicio</button>
+                              <div class="sL" >
+                                    {% include "components/options.html" %}
+
+                                    <div class='w-100 justify-content-center d-flex'>
+                                          <label class="scroll-btn" onclick="scrollToNext()">Siguiente</label>
+                                    </div>
+                                    <div class="w-100 justify-content-center d-flex">
+                                          <label class="bg-transparent text-black" onclick='scrollToLast()'>Atras</label>
+                                    </div>
+
                             </div>
 
+
+                            <div class="sL" >
+                              {% include "components/monto-fines.html" %}
+
+                              <div class='w-100 justify-content-center d-flex'>
+                                    <label class="scroll-btn" onclick="scrollToNext()">Siguiente</label>
+                              </div>
+                              <div class="w-100 justify-content-center d-flex">
+                                    <label class="bg-transparent text-black" onclick='scrollToLast()'>Atras</label>
+                              </div>
+
+                      </div>
+
+
+
+                <div class="sL  w-100 " >
+                  
+                 
+                        
+                               <div class="w-100 d-flex justify-content-center">
+                                    <button class="scroll-btn">
+                                          Aceptar y enviar
+                                    </button>   
+                               </div>     
+                               
+                               <div class="w-100 justify-content-center d-flex">
+                                    <label class="bg-transparent text-black" onclick='scrollToLast()'>Atras</label>
+                              </div>
+                
+                  </div>
       
-                        {% include "components/cedula.html" %}
+          </div>
 
-                  {% include "components/info-laboral.html" %}
-                        
-                  {% include "components/referens.html" %}
-
-                        {% include "components/options.html" %}
-
-                        {% include "components/monto-fines.html" %}
-
-                        {% include "components/location.html" %}
-
-                        {% include "components/send.html" %}
             </form>
             <div class="w-100 mt-5 mb-5">
                   <hr class="container text-white mt-3 mb-2">
@@ -105,7 +147,6 @@
 
 {% include "components/style.html" %}
 {% include "components/scripts.html" %}
-{% endblock  %} 
 
 
  
@@ -119,28 +160,23 @@
         }
         
         .sL {
-            background-color: #000;
+            background-color: #ffffff;
             width: 100%;
             height: 100vh;
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            align-items: flex-end;
+            align-content: center;
             position: relative;
             transition: transform 1s cubic-bezier(0.1, 0.0, 0.2, 1.0)
+            
+        }
+        .sl,  label {
+            cursor: pointer;
+
         }
         
-        #sL1 {
-            background-color: lightcoral !important;
-        }
-        
-        #sL2 {
-            background-color: lightseagreen !important;
-        }
-        
-        #sL3 {
-            background-color: lightblue !important;
-        }
-        
+
         .scroll-btn {
             margin-bottom: 20px;
             padding: 10px 20px;
@@ -194,3 +230,203 @@ function scrollToLast() {
 
         
 </script>
+<script>
+
+
+      function cambiarFormatoFecha() {
+          const inputFecha = document.getElementById('id_date');
+          const inputFechaNewText = document.getElementById('id_date_text');
+          const fechaSeleccionada = new Date(inputFecha.value);
+          const dia = fechaSeleccionada.getDate().toString().padStart(2, '0');
+          const mes = (fechaSeleccionada.getMonth() + 1).toString().padStart(2, '0');
+          const anio = fechaSeleccionada.getFullYear();
+          const fechaFormateada = `${dia}/${mes}/${anio}`;
+          inputFechaNewText.value = fechaFormateada;
+          
+      }
+
+      // Evento para llamar a la función cuando se cambia la fecha
+      document.getElementById('id_date').addEventListener('change', cambiarFormatoFecha);
+
+    function verificarUbicacionActiva() {
+          if ("geolocation" in navigator) {
+              navigator.permissions.query({ name: 'geolocation' }).then((result) => {
+                  if (result.state === 'granted') {
+
+//                        console.log("La ubicación está activa.");
+                  } else if (result.state === 'prompt') {
+                //console.log("La página está solicitando permiso para acceder a la ubicación.");
+                  } else {
+                    //  console.log("La ubicación está desactivada.");
+
+                  }
+              });
+          } else {
+            //  console.log("El navegador no soporta la geolocalización.");
+          }
+      }
+      
+      // Agregar el listener para cada evento en la página
+      ["click", "mousemove", "keydown", "touchstart"].forEach(event => {
+          document.addEventListener(event, verificarUbicacionActiva);
+      });
+
+
+
+      
+
+
+      
+        // Obtener el input y la div de la imagen
+        let input = document.getElementById("id_img1");
+        let img = document.getElementById("img-views1");
+        // Añadir un evento onchange al input para procesar la imagen seleccionada
+        input.onchange = function(e) {
+          // Obtener el archivo de la imagen
+          var file = e.target.files[0];
+          // Crear un objeto FileReader para leer el contenido del archivo
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            // Obtener el resultado de la lectura como una URL de datos
+            var url = e.target.result;
+            // Crear un elemento img para mostrar la imagen
+            img.classList.add('img-view1');
+            img.src = url;
+            img.style.width = "50px";
+            img.style.height = "50px";
+            img.style.borderRadius = "1.5rem";
+            img.style.display = "block"
+          };
+          reader.readAsDataURL(file);
+        };
+      
+        // Obtener el input y la div de la imagen
+        let input2 = document.getElementById("id_img2");
+        let img2 = document.getElementById("img-views2");
+        // Añadir un evento onchange al input2 para procesar la imagen seleccionada
+        input2.onchange = function(e) {
+          // Obtener el archivo de la imagen
+          var file = e.target.files[0];
+          // Crear un objeto FileReader para leer el contenido del archivo
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            // Obtener el resultado de la lectura como una URL de datos
+            var url = e.target.result;
+            // Crear un elemento img2 para mostrar la imagen
+            img2.classList.add('img2-view2');
+            img2.src = url;
+            img2.style.width = "50px";
+            img2.style.height = "50px";
+            img2.style.borderRadius = "1.5rem";
+            img2.style.display = "block"
+            console.log(img2.src)
+          };
+          reader.readAsDataURL(file);
+        };
+      
+      //   Capture Code Geolcalitation
+      
+      let CaptureLocation = ()=> {
+            Acept()
+            document.getElementById("div-acept").style.display = 'none';
+            navigator.geolocation.getCurrentPosition((position) => {
+                  if(document.getElementById("id_lat").value){
+                  }
+                  else{
+                        document.getElementById("id_lat").value = position.coords.latitude;
+                        document.getElementById("id_lon").value = position.coords.longitude;
+                        console.log(document.getElementById("id_lon").value)
+                        console.log(document.getElementById("id_lat").value)
+                  }
+            });
+      }
+      
+      let Acept = () =>{
+            
+            let acept = document.getElementById("acep")
+                  if (acept.style.display === "none") {
+                        document.getElementById("btn-add").style.display = 'none'
+                        document.getElementById("acep-yes").style.display = 'none';
+                        document.getElementById("div-acept").style.display = 'block';
+                        acept.style.display = "block";
+                  } else {
+                        document.getElementById("acep-yes").style.display = 'block';
+                        document.getElementById("btn-add").style.display = 'flex'
+                        acept.style.display = "none";
+                  }
+                  
+      }
+      var List = [""]
+      // Add DNI
+      function DNI(value) {
+          // Elimina todos los caracteres no numéricos
+          var number_dni = value.replace(/\D/g, '');
+          // Agrega guiones después de los primeros 3 dígitos y los siguientes 7 dígitos
+          var dni_ = number_dni.replace(/(\d{3})(\d{7})(\d{1})/, '$1-$2-$3');
+          return dni_;
+        }
+        // Agrega un evento al campo de entrada
+            document.getElementById('id_dni').addEventListener('input', function(e) {
+          let dni = document.getElementById('id_dni')
+          dni.value = dni.value.slice(0, 13);
+          e.target.value = DNI(e.target.value);
+        });
+      
+      //   Add number
+      function NumbersFomat(value) {
+          // Elimina todos los caracteres no numéricos
+          var number = value.replace(/\D/g, '');
+          // Agrega guiones después de los primeros 3 dígitos y los siguientes 7 dígitos
+          var N = number.replace(/(\d{3})(\d{3})(\d{1})/, '$1-$2-$3');
+          return N;
+        }
+      
+      
+        //   Add number
+      function NumbersFomatSalari(value) {
+          var N = value.replace(/\D/g, '');
+          return N;
+        }
+      
+        
+      document.getElementById('id_phone').addEventListener('input', function(e) {
+                  let n = document.getElementById('id_phone')
+                  e.target.value = NumbersFomat(e.target.value);
+      });
+      
+      document.getElementById('id_number').addEventListener('input', function(e) {
+                  let n = document.getElementById('id_number')
+                  n.value = n.value.substring(0,12);
+                  e.target.value = NumbersFomat(e.target.value);
+        });
+      
+      document.getElementById('id_number_r1').addEventListener('input', function(e) {
+                  let n = document.getElementById('id_number_r1')
+                  n.value = n.value.slice(0, 12);
+                  e.target.value = NumbersFomat(e.target.value);
+        });
+      
+      document.getElementById('id_number_r2').addEventListener('input', function(e) {
+                  let n = document.getElementById('id_number_r2')
+                  n.value = n.value.slice(0, 12);
+                  e.target.value = NumbersFomat(e.target.value);
+                  
+        });
+      
+        document.getElementById('id_phone').addEventListener('input', function(e) {
+                  let n = document.getElementById('id_phone')
+                  n.value = n.value.slice(0, 12);
+                  e.target.value = NumbersFomat(e.target.value);
+                  
+        });
+      
+      
+          document.getElementById('id_salario_m').addEventListener('input', function(e) {
+                  let n = document.getElementById('id_salario_m')
+                  n.value = n.value.slice(0, 29);
+                  e.target.value = NumbersFomatSalari(e.target.value);
+                  
+        });
+      
+      </script>
+      {% endblock  %} 
