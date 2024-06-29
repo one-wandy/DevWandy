@@ -1,4 +1,4 @@
-{% include "base/base.html" %}
+ {% include "base/base.html" %}
 {% block content %}
 {% load static %}
 <!-- 
@@ -45,730 +45,145 @@
       font-size: 13px !important;
 }
 </style>
-<section  class="position-relative   container-fluid  mb-5 pb-5">
-
-      <div class="w-100  container  justify-content-center  d-flex justify-content-between"
-                   style="min-height: 10rem; padding-top: 4rem;">
-
-            <span class="span-animation mt-5 pt-5" style="min-width: 2rem; min-height: 1rem; background-color: rgba(255, 133, 133, 0.473);">s</span>
-            <span class="span-animation" style="min-width: 2rem; height:1rem; background-color: rgba(222, 137, 255, 0.438);">s</span>
-            <span class="span-animation" style="min-width: 1rem; height:1.3rem; background-color: rgba(128, 179, 255, 0.404);">s</span>
-            <span class="span-animation" style="min-width: 10rem; height:1.3rem; background-color: rgba(128, 255, 244, 0.445);">s</span>
-            <span class="span-animation mt-2" style="min-width: 4rem; height:1.3rem; background-color: rgba(255, 128, 177, 0.404);">s</span>
-            <span class="span-animation mb-2" style="min-width: 4rem; height:1.3rem; background-color: rgba(153, 255, 128, 0.349);">s</span>
-      </div>
-
-      <section class="section rounded-0 d-flex flex-wrap justify-content-center position-fixed top-0 overflow-scroll p-1 end-0 w-100  vh-100  mt-0  bg-transparent blur"  style="z-index: 10;">
-            <div class="p-4 d-flex  flex-wrap  mb-5">
-                  <div class="d-flex justify-content-center w-100">
-                        <div class="d-flex  flex-wrap mb-3 w-100 justify-content-center">
-                              <strong style="  font-family: Quicksand, sans-serif;
-                              color: black;
-                              font-optical-sizing: auto;">              
-                              <img src="{{setting.Icon.url}}" width="30" alt="">
-                              GRUPO FYCAS 
-                        </strong>
-                        </div>
-                  </div>
-                  <div class="w-100 d-flex flex-wrap align-content-center justify-content-center  flex-wrap">
-                        <h4 class="p-0 m-0" style="font-family: Quicksand, sans-serif;
-                        color: black;
-                        font-optical-sizing: auto">
-                              Completa todos los campos
-                        </h4>
-                        <p class="text-black-50 w-100 text-center">
-                              Este formulario solo se realizara una vez
-                        </p>
-                  </div>
-            </div>
-
-      <form action=""  method="post" class="form-add-c mt-5" enctype='multipart/form-data'>
+<section  class="position-relative   container-fluid  p-0 mb-5 ">
+            <form  method="post" class="form-add-c m-0" enctype='multipart/form-data'>
                   {% csrf_token %}
-            <div class="">
-                <h6 class=" d-flex m-0 ms-2">
-                  Datos Personales
-                </h6>  
-            </div>
-            <div class="d-flex flex-wrap ">
-                  <p class="text-black-50 w-100 m-0 ms-2">
-                        Revisar minuciosamente antes de enviar el formulario, reduce la posibilidad de errores
-                  </p>
-                  <div class="form-floating mb-3">
-                        {{form.name}}
-                        <label for="id_email">Nombre </label>
-                  </div>
-                  <div class="form-floating mb-3">
-                        {{form.last_name}}
-                        <label for="id_last_name">Apellidos</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                        {{form.dni}}
-                        <label for="id_dni">Cedula</label>
-                  </div>
-                  <div class="form-floating mb-3 ">
-                        <input type="text" class='d-none' name='date-customer' id='id_date_text'>
-                        <input type="date"   class='form-control' id='id_date'>
-                        <label for="id_date">Nacimiento</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                        {{form.number}}
-                        <label for="id_number">Numero</label>
-                  </div>
-                  <div class="form-floating mb-3 ">
-                        {{form.calle_numero}}
-                        <label for="id_address">Calle/Numero</label>
-                  </div>
-                  <div class="form-floating mb-3 ">
-                        {{form.sector}}
-                        <label for="id_address">Sector</label>
-                  </div>
-                  <div class="form-floating mb-3 ">
-                        {{form.ciudad}}
-                        <label for="id_address">Ciudad</label>
-                  </div>
-                  <div class="form-floating mb-3 ">
-                        {{form.municipio}}
-                        <label for="id_address">Municipio</label>
-                  </div>
-                  <span class="w-100 ms-2"> <p class="text-black-50">Sexo</p></span>
-
-                  <select name="form-select-sexo"  class="form-select"  aria-label="Default select example">
-
-                        <option value="M" selected>                  
-                         Masculino</option>
-                        <option value="F" > Femenino</option>
-
-                  </select>
-                  <div class="w-100 mt-4 ">
-                        <h6 class="m-0 ms-2"> 
-                              Fotos de Cedula (Delantera y Tracera)
-                        </h6>
-                        <p class="text-black-50 m-0 ms-2">
-                              Procura una superficie plana, una buena iluminacion y calidad de la imagen
-                        </p>
-                  </div>
-                  <div class="w-100 d-flex flex-wrap ">
-                        <div class="div-label d-flex text-center flex-wrap justify-content-center position-relative aling-content-center "> 
-                             <span class="d-none">
-                              {{form.img1}}
-                             </span>
-                              <img src=""   id="img-views1" style="display: none;" class="w-100  img h-100 object-fit-cover position-absolute top-0">
-                              <label style="z-index: 1;" for="id_img1"  class="img-label position-absolute w-100 h-100 d-flex top-0 bg-opacity-10 bg-white justify-content-center align-content-center flex-wrap">
-                                    <span class="bg-white  blur text-black d-flex align-content-center flex-wrap justify-content-center rounded-circle bg-opacity-50" style="width: 40px; height: 40px;">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-patch-plus" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd" d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5"/>
-                                                <path d="m10.273 2.513-.921-.944.715-.698.622.637.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636a2.89 2.89 0 0 1 4.134 0l-.715.698a1.89 1.89 0 0 0-2.704 0l-.92.944-1.32-.016a1.89 1.89 0 0 0-1.911 1.912l.016 1.318-.944.921a1.89 1.89 0 0 0 0 2.704l.944.92-.016 1.32a1.89 1.89 0 0 0 1.912 1.911l1.318-.016.921.944a1.89 1.89 0 0 0 2.704 0l.92-.944 1.32.016a1.89 1.89 0 0 0 1.911-1.912l-.016-1.318.944-.921a1.89 1.89 0 0 0 0-2.704l-.944-.92.016-1.32a1.89 1.89 0 0 0-1.912-1.911z"/>
-                                              </svg>
-                                    </span>
-                              </label>
-                        </div>
-                        <div class="div-label text-center position-relative  d-flex flex-wrap justify-content-center aling-content-center"> 
-                              <span class="d-none">
-                                    {{form.img2}}
-                              </span>
-                              <label style="z-index: 1;" for="id_img2"  class="img-label position-absolute w-100 h-100 d-flex top-0 bg-opacity-25 bg-white justify-content-center align-content-center flex-wrap">
-                                    <span class="bg-white  blur text-black d-flex align-content-center flex-wrap justify-content-center rounded-circle bg-opacity-50" style="width: 40px; height: 40px;">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-patch-plus" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd" d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5"/>
-                                                <path d="m10.273 2.513-.921-.944.715-.698.622.637.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636a2.89 2.89 0 0 1 4.134 0l-.715.698a1.89 1.89 0 0 0-2.704 0l-.92.944-1.32-.016a1.89 1.89 0 0 0-1.911 1.912l.016 1.318-.944.921a1.89 1.89 0 0 0 0 2.704l.944.92-.016 1.32a1.89 1.89 0 0 0 1.912 1.911l1.318-.016.921.944a1.89 1.89 0 0 0 2.704 0l.92-.944 1.32.016a1.89 1.89 0 0 0 1.911-1.912l-.016-1.318.944-.921a1.89 1.89 0 0 0 0-2.704l-.944-.92.016-1.32a1.89 1.89 0 0 0-1.912-1.911z"/>
-                                              </svg>
-                                    </span>
-                              </label>
-                              <img src=""  id="img-views2" style="display: none;" class="w-100 img object-fit-cover h-100 position-absolute top-0">
-                        </div>
-                  </div>
-                  <h6 class="p-0 m-0  mt-5 w-100 ms-2">
-                        Informacion Laboral
-                  </h6>
-                  <section class="w-100 d-flex flex-wrap  ">
-                                    <div class="w-100">
-                                          <p class="text-black-50 m-0 ms-2">
-                                                Lugar de Trabajo, Cargo o (Funcion), Ingresos Mensuales y Numero de Contacto de la Empresa.
-                                          </p>
-                                    </div>
-                                    <!-- <div class="form-floating mb-3 " >
-                                          {{form.empresa_trabaja}}
-                                          <label for="id_work_information">Empresa donde  Trabaja</label>
-                                    </div> -->
-                                    <div class="form-floating mb-3 " >
-                                          {{form.empresa_trabaja}}
-                                          <label for="id_work_information">
-                                                Empresa donde  Trabaja</label>
-                                    </div>
-                                    <div class="form-floating mb-3 " >
-                                          {{form.cargo}}
-                                          <label for="id_work_information">Cargo o (Funcion)</label>
-                                    </div>
-                                    <div class="form-floating mb-3  " >
-                                          {{form.salario_m}}
-                                          <label for="id_work_information">Ingresos Mensuales</label>
-                                    </div>
-                                    <div class="form-floating mb-3 " >
-                                          {{form.phone}}
-                                          <label for="id_work_information"> Numero de Contacto de la Empresa</label>
-                                    </div>
-
-                  </section>
-                  <h6 class="p-0 m-0  mt-5 w-100 ms-2">
-                        Referencias Personales
-                  </h6>
-                  <section class="w-100 d-flex flex-wrap  ">
-                        <p class="text-black-50 m-0 ms-2">
-                              Asegúrese de que sus referencias estén al tanto de que las proporcionará como referencia.
-                        </p>
-                        <div class="w-100">
-                              <div class="w-100 d-flex flex-wrap">
-                                    <div class="form-floating mb-3 d-flex flex-wrap " >
-                                          {{form.name_r1}}
-                                          <label for="id_work_information">Nombre de una persona mayor de edad que viva con usted
-                                          </label>
-                                    </div>
-                                    <div class="form-floating mb-3  " >
-                                          {{form.number_r1}}
-                                          <label for="id_work_information">Numero de la  persona mayor de edad que vive con usted
-                                          </label>
-                                    </div>
-                              </div>
-                              <p class="text-black-50 m-0 ms-2">
-                              Debe colocar como segunda referencia a un familiar o amigo cercano.
-                              </p>
-                              {{form.lat}} {{form.lon}}
-                              <div class="w-100 d-flex flex-wrap ">
-                                    <div class="w-100 d-flex flex-wrap">
-                                          <div class="form-floating m-0 mb-3  " >
-                                                {{form.name_r2}}
-                                                <label for="id_work_information">Nombre del familiar o amigo cercano
-                                                </label>
-                                          </div>
-                                          <div class="form-floating mb-3 " >
-                                                {{form.number_r2}}
-                                                <label for="id_number_r2">Numero del familiar o amigo cercano
-                                                </label>
-                                          </div>
-                                    </div>
+                        <div class="sL d-flex flex-wrap align-content-center" id="sL1">
+                              {% include "components/data-person.html" %}
+                              <div class='w-100 justify-content-center d-flex'>
+                                    <button class="scroll-btn" onclick="scrollToNext()">Siguiente</button>
                               </div>
                         </div>
-                  </section>
-                  <h6 class="p-0 m-0  mt-5 ms-2">
-                        ¿Cuales de estas opciones aplican a ti?
-                  </h6>
-                  
-                  <p class="text-black-50 m-0 w-100 ms-2">
-                        <!-- Cabe destacar que esta información no afecta la decisión de aprobación de su préstamo.  -->
-                        <!-- <br><span  style="font-style: oblique;" class="w-100 mt-3 ms-2 -->
-                        <!-- "> -->
-                        Seleccione todas las opciones que apliquen a ti
-                  <!-- </span> -->
-                  </p>
-                  <section class="w-100 d-flex flex-wrap text-black-50 justify-content-start" style="text-align: justify; width: 330px;">
-                    
-                        <div class="form-check w-100  mt-3  " >
-                              <label class="ms-3" for="id_familiar_en_fycas"> ¿Algun Familiar es cliente de Grupo Fycas?</label>
-                              {{form.familiar_en_fycas}}
-                        </div>
+                            <div class="sL" id="sL2">
+                              <button onclick='scrollToLast()'>Atras</button>
                         
-                        <div class="form-check w-100   " >
-                              <label class="ms-3" for="id_vehiculo"> ¿Posee usted un Vehículo</strong> de su propiedad?</label>
-                              {{form.vehiculo}}
-                        </div>
-                        <div class="form-check w-100    " >
-                              <label class="ms-3" for="id_fue_recomendado"> ¿Fuiste recomendado por Alguien?</label>
-                              {{form.fue_recomendado}}
-                        </div>
-                        <div class="form-check w-100    " >
-                              <label class="ms-3" for="id_tierra">¿Posee usted un Terreno de su propiedad?</label>
-                              {{form.tierra}}
-                        </div>
-      
-                        <div class="form-check w-100   " >
-                              <label class="ms-3" for="id_saldar_deudas"> ¿Te gustaria saldar deudas con esta solicitud?</label>
-                              {{form.saldar_deudas}}
-                        </div>
-
-                              
-                        <div class="form-check w-100    " >
-                              <label class="ms-3" for="id_hijos"> ¿Tienes hijos?</label>
-                              {{form.hijos}}
-                        </div>
-                        
-                        <div class="form-check w-100   mb-4" >
-                              <label class="ms-3" for="id_casa"> ¿Posee usted una Casa  de su propiedad?</label>
-                              {{form.casa}}
-                        </div>
-
-                        
-                  </section>
-                  <h6 class="p-0 m-0  mt-5 w-100 ms-2">
-                        Monto que solicita y Fines
-                  </h6>
-                  <p class="text-black-50 m-0 ms-2">
-                       Monto que solicita y Fines 
-                  </p>
-                  <section   class="w-100 d-flex flex-wrap">
-                        <!-- <span>
-                              Monto que solicita
-                        </span> -->
-                        <select name="form-select-monto"  class="form-select"  aria-label="Default select example">
-
-                              <option value="RD$10,000.00" selected>RD$10,000.00</option>
-                              <option value="RD$15,000.00">RD$15,000.00</option>
-                              <option value="RD$20,000.00">RD$20,000.00</option>
-                              <option value="RD$25,000.00">RD$25,000.00</option>
-                              <option value="RD$30,000.00">RD$30,000.00</option>
-                              <option value="RD$35,000.00">RD$35,000.00</option>
-                              <option value="RD$45,000.00">RD$45,000.00</option>
-                              <option value="RD$50,000.00">RD$50,000.00</option>
-                              <option value="RD$60,000.00">RD$60,000.00</option>
-                              <option value="RD$65,000.00">RD$65,000.00</option>
-                              <option value="RD$70,000.00">RD$70,000.00</option>
-                              <option value="RD$75,000.00">RD$75,000.00</option>
-                              <option value="RD$85,000.00">RD$85,000.00</option>
-                              <option value="RD$90,000.00">RD$90,000.00</option>
-                              <option value="RD$95,000.00">RD$95,000.00</option>
-                              <option value="RD$100,000.00">RD$100,000.00</option>
-                              <option value="RD$200,000.00">RD$200,000.00</option>
-                              <option value="RD$300,000.00">RD$300,000.00</option>
-                              <option value="RD$500,000.00">RD$500,000.00</option>
-                              <!-- <option value="20">RD$1.000,000.00</option>
-                                    <option value="21">RD$2.000,000.00</option>
-                                    <option value="22">RD$5.000,000.00</option>
-                                    <option value="23">RD$10.000,000.00</option>
-                                    <option value="24">RD$15.000,000.00</option> 
-                              -->
-
-                            </select>
-                        <!-- <div class="form-floating mb-3  " >
-                              {{form.fines}}
-                              <label for="id_fines">Para que fines</label>
-                        </div> -->
-                        <select name="form-select" class="form-select"  aria-label="Default select example">
-                              <option value="Gastos Personales" selected>Gastos Personales</option>
-                              <option value="Saldar deudas">Saldar deudas</option>
-                              <option value="Compra inmobilaria">Compra inmobilaria</option>
-                              <option value="Inversion para un negocio">Inversion para un negocio</option>
-                              <option value="Asuntos de salud">Asuntos de salud</option>
-                              <option value="Educación">Educación</option>
-                              <option value="Renovación del hogar">Renovación del hogar</option>
-                              <option value="Vacaciones">Vacaciones</option>
-                              <option value="Compra de vehículo">Compra de vehículo</option>
-                              <option value="Ahorro para la jubilación">Ahorro para la jubilación</option>
-                              <option value="Fondo de emergencia">Fondo de emergencia</option>
-
-                            </select>
-                  </section>
-
-                  <section  id='section-location' class="w-100  d-flex flex-wrap">
-                        <div class='w-100'>
-                              <h6 class="p-0 m-0  mt-5 w-100 ms-2">
-                                    Ubicacion 
-                              </h6>
-                              <p class="text-black-50 m-0 ms-2">
-                                    Esto se hace para combatir bots; los bots son programas informáticos que imitan el comportamiento humano para realizar tareas automatizadas.
-                              </p>
-                        </div>
-                        <label id="getLocationBtn" class='btn border-0 btn-primary mt-3' style='border-radius:2rem; width: 8rem;
-                        background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);'>
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-                              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-                              </svg>
-                              Obtener </label>
-
-                     <div class="w-100">
-                        <p id="locationStatus" class="text-danger"></p>
-                        <span id="location-dened" class="d-none ">
-                              <h6 class="p-0 m-0  mt-5 w-100 ms-2">
-                                    ¿Como activo la ubicacion?
-                              </h6>
-                              <div  class='d-flex   justify-content-around w-100 flex-wrap'>
-                                    <img src="{{img1.Icon.url}}" 
-                                    style='border-radius: 1.5rem;' class='m-1' alt="" width='320'  srcset="">
-                                    <img src="{{img2.Icon.url}}" 
-                                    style='border-radius: 1.5rem;' class='m-1' alt="" width='320'  srcset="">
-                                    <img src="{{img3.Icon.url}}" 
-                                    style='border-radius: 1.5rem;' class='m-1' alt="" width='320'  srcset="">
-                              </div>
-                        </span>
-                     </div>
-                    
-                  </section>
-                  <!-- <h6 class="p-0  mt-5">
-                        Solicitud de Información de Préstamo
-                  </h6>
-                  <section class="w-100 d-flex flex-wrap  ">
-                        <p class="text-black-50 m-0 ms-2">
-                              Este formulario se emplea para solicitar información detallada sobre el préstamo.
-                        </p>
-
-                        <div class="form-floating m-0 mb-3  " >
-                              {{form.monto_requerido}}
-                              <label for="id_monto_requerido">Monto Requerido
-                              </label>
-                        </div>
-                        <div class="form-floating">
-                              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                              <label for="floatingTextarea2"></label>
+                                <button class="scroll-btn" onclick="scrollToNext()">Siguiente</button>
                             </div>
-                  </section> -->
-                  <div class="container">
-                  </div>
-                 
-                  <div style='display: none;'  id='btn-add' class=" w-100  mt-4 pt-4 justify-content-center flex-wrap">
-                        <button class='border-0 d-flex d-none justify-content-center text-primary bg-white border-1'>
-                              <span id="acep-yes"   class="d-none" 
-                                    style='display: none; '>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill text-primary" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5m8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
-                                    </svg>
-                              </span> 
-                              <button class="p-2  d-flex justify-content-center" style="min-width: 290px;">
-                                    <div class="svg-wrapper-1">
-                                      <div class="svg-wrapper">
-                                        <svg
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          viewBox="0 0 24 24"
-                                          width="24"
-                                          height="24"
-                                        >
-                                          <path fill="none" d="M0 0h24v24H0z"></path>
-                                          <path
-                                            fill="currentColor"
-                                            d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
-                                          ></path>
-                                        </svg>
-                                      </div>
-                                    </div>
-                                    <span>Aceptar y Enviar</span>
-                                  </button>
-                              </button>
-                                  
+                            <div class="sL" id="sL3">
+                              <button onclick='scrollToLast()'>Atras</button>
                         
-                        <div class="w-100 d-flex justify-content-center mb-4 mt-3">
-                              <label style="cursor: pointer; width: 10rem; height: 2rem; border-radius: 1rem; " class=" p-2  text-black d-flex flex-wrap flex-wrap align-content-center justify-content-center " onclick="Acept()"><span style=" font-family: Righteous, sans-serif;">Cancelar</span></label>
-                        </div>
-                  </div>
-      
-                
-                  <div class="w-100 d-flex justify-content-center mt-5 mb-4">
-                        <div class="form-check" id="div-acept">
-                              {% comment %} <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"> {% endcomment %}
-                              <label   
-                              style='cursor: pointer;             
-                              width: 17rem;
-                              border-radius: 1.5rem;
-                              padding:0.5rem 1rem;
-                              font-weight: bold;
-                              font-weight: 100;
-                              margin: 0.1rem;
-                              font-size: 18px;
-                              font-family: "Righteous", sans-serif;
-                              background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);                              border-color: var(--color-one);'   
-                              onclick="CaptureLocation()" class='d-flex text-white text-center justify-content-center'>
-                                    <span id="acep"  class="d-none">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
-                                          <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
-                                          </svg>
-                                    </span>
-
-                                    <span>
-                                          Aceptar Terminos
-                                    </span>
-                              </label>
+                                <button class="scroll-btn" onclick="scrollToNext()">Inicio</button>
                             </div>
-                            
-                  </div>
+                            <div class="sL" >
+                              <button onclick='scrollToLast()'>Atras</button>
+                              4
+                                <button class="scroll-btn" onclick="scrollToNext()">Inicio</button>
+                            </div>
+                            <div class="sL" >
+                              5
+                              <button onclick='scrollToLast()'>Atras</button>
+                        
+                                <button class="scroll-btn" onclick="scrollToNext()">Inicio</button>
+                            </div>
+
+      
+                        {% include "components/cedula.html" %}
+
+                  {% include "components/info-laboral.html" %}
+                        
+                  {% include "components/referens.html" %}
+
+                        {% include "components/options.html" %}
+
+                        {% include "components/monto-fines.html" %}
+
+                        {% include "components/location.html" %}
+
+                        {% include "components/send.html" %}
+            </form>
+            <div class="w-100 mt-5 mb-5">
+                  <hr class="container text-white mt-3 mb-2">
             </div>
-      </form>
-      <div class="w-100 mt-5 mb-5">
-            <hr class="container text-white mt-3 mb-2">
+      </section>
 
-      </div>
-</section>
-</section>
-<script>
+{% include "components/style.html" %}
+{% include "components/scripts.html" %}
+{% endblock  %} 
 
 
-        function cambiarFormatoFecha() {
-            const inputFecha = document.getElementById('id_date');
-            const inputFechaNewText = document.getElementById('id_date_text');
+ 
 
-            const fechaSeleccionada = new Date(inputFecha.value);
-            const dia = fechaSeleccionada.getDate().toString().padStart(2, '0');
-            const mes = (fechaSeleccionada.getMonth() + 1).toString().padStart(2, '0');
-            const anio = fechaSeleccionada.getFullYear();
-            const fechaFormateada = `${dia}/${mes}/${anio}`;
-            
-            inputFechaNewText.value = fechaFormateada;
-            
-        }
-
-        // Evento para llamar a la función cuando se cambia la fecha
-        document.getElementById('id_date').addEventListener('change', cambiarFormatoFecha);
-
-      function verificarUbicacionActiva() {
-            if ("geolocation" in navigator) {
-                navigator.permissions.query({ name: 'geolocation' }).then((result) => {
-                    if (result.state === 'granted') {
-                        document.getElementById('div-acept').classList.remove('d-none')
-                        document.getElementById('section-location').classList.add('d-none')
-
-//                        console.log("La ubicación está activa.");
-                    } else if (result.state === 'prompt') {
-                  //console.log("La página está solicitando permiso para acceder a la ubicación.");
-                    } else {
-                      //  console.log("La ubicación está desactivada.");
-                      document.getElementById('div-acept').classList.add('d-none')
-                      document.getElementById('section-location').classList.remove('d-none')
-
-                    }
-                });
-            } else {
-              //  console.log("El navegador no soporta la geolocalización.");
-            }
+<style>
+      body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
         }
         
-        // Agregar el listener para cada evento en la página
-        ["click", "mousemove", "keydown", "touchstart"].forEach(event => {
-            document.addEventListener(event, verificarUbicacionActiva);
-        });
-</script>
-<script>
-      const getLocationBtn = document.getElementById('getLocationBtn');
-      const locationStatus = document.getElementById('locationStatus');
-
-      getLocationBtn.addEventListener('click', () => {
-          if ("geolocation" in navigator) {
-              navigator.geolocation.getCurrentPosition(
-                  (position) => {
-                      const latitude = position.coords.latitude;
-                      const longitude = position.coords.longitude;
-                  },
-                  (error) => {
-                      if (error.code == error.PERMISSION_DENIED) {
-                          locationStatus.innerHTML = "Has denegado el permiso para obtener tu ubicación. Por favor, habilita la ubicación en tu dispositivo.";
-                          // Sugerir al usuario que habilite la ubicación
-                          document.getElementById('location-dened').classList.remove('d-none')
-
-                      } else {
-                          locationStatus.innerHTML = "No se pudo obtener tu ubicación.";
-                      }
-                  }
-              );
-          } else {
-              locationStatus.innerHTML = "Geolocalización no es soportada por tu navegador.";
-          }
-      });
-  </script>
-<style>
-button {
-  font-size: 18px;
-  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
-  color: white;
-  padding: 0.2em 1em;
-  padding-left: 0.9em;
-  display: flex;
-  align-items: center;
-  border: none;
-  border-radius: 1.5rem;
-  overflow: hidden;
-  transition: all 0.2s;
-  cursor: pointer;
-}
-button:hover{
-      min-width: 20px !important;
-}
-button span {
-  display: block;
-  margin-left: 0.3em;
-  transition: all 0.3s ease-in-out;
-}
-
-button svg {
-  display: block;
-  transform-origin: center center;
-  transition: transform 0.3s ease-in-out;
-}
-
-button:hover .svg-wrapper {
-  animation: fly-1 0.6s ease-in-out infinite alternate;
-}
-
-button:hover svg {
-  transform: translateX(1.5em) rotate(45deg) scale(1.1);
-}
-
-button:hover span {
-  transform: translateX(15em);
-}
-
-button:active {
-  transform: scale(0.99);
-}
-
-@keyframes fly-1 {
-  from {
-    transform: translateY(0.3em);
-  }
-
-  to {
-    transform: translateY(-0.3em);
-  }
-}
-
+        .sL {
+            background-color: #000;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            position: relative;
+            transition: transform 1s cubic-bezier(0.1, 0.0, 0.2, 1.0)
+        }
+        
+        #sL1 {
+            background-color: lightcoral !important;
+        }
+        
+        #sL2 {
+            background-color: lightseagreen !important;
+        }
+        
+        #sL3 {
+            background-color: lightblue !important;
+        }
+        
+        .scroll-btn {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
 </style>
 
 <script>
-      document.getElementById("id_ciudad").disabled = true       
+      let n = 2
+      const sections = document.querySelectorAll('.sL');
+      const sections_max = sections.length ;
+      function scrollToNext() {
+            if(n <= sections_max ) {
+                  sections.forEach((section, index) => {
+                      if (index + 1 === n) {
+                          section.style.transform = `translateY(${-(index) * 100}vh)`;
+                      } else if (index + 1 < n) {
+                          section.style.transform = `translateY(-100vh)`;
+                          
+                        } else {
+                              section.style.transform = `translateY(0vh)`;
+                        }
+                  });
+                  n += 1
 
-  // Obtener el input y la div de la imagen
-  let input = document.getElementById("id_img1");
-  let img = document.getElementById("img-views1");
-  // Añadir un evento onchange al input para procesar la imagen seleccionada
-  input.onchange = function(e) {
-    // Obtener el archivo de la imagen
-    var file = e.target.files[0];
-    // Crear un objeto FileReader para leer el contenido del archivo
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      // Obtener el resultado de la lectura como una URL de datos
-      var url = e.target.result;
-      // Crear un elemento img para mostrar la imagen
-      img.classList.add('img-view1');
-      img.src = url;
-      img.style.width = "50px";
-      img.style.height = "50px";
-      img.style.borderRadius = "1.5rem";
-      img.style.display = "block"
-    };
-    reader.readAsDataURL(file);
-  };
-
-  // Obtener el input y la div de la imagen
-  let input2 = document.getElementById("id_img2");
-  let img2 = document.getElementById("img-views2");
-  // Añadir un evento onchange al input2 para procesar la imagen seleccionada
-  input2.onchange = function(e) {
-    // Obtener el archivo de la imagen
-    var file = e.target.files[0];
-    // Crear un objeto FileReader para leer el contenido del archivo
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      // Obtener el resultado de la lectura como una URL de datos
-      var url = e.target.result;
-      // Crear un elemento img2 para mostrar la imagen
-      img2.classList.add('img2-view2');
-      img2.src = url;
-      img2.style.width = "50px";
-      img2.style.height = "50px";
-      img2.style.borderRadius = "1.5rem";
-      img2.style.display = "block"
-      console.log(img2.src)
-    };
-    reader.readAsDataURL(file);
-  };
-
-//   Capture Code Geolcalitation
-
-let CaptureLocation = ()=> {
-      Acept()
-      document.getElementById("div-acept").style.display = 'none';
-      navigator.geolocation.getCurrentPosition((position) => {
-            if(document.getElementById("id_lat").value){
+                  console.log(n)
             }
-            else{
-                  document.getElementById("id_lat").value = position.coords.latitude;
-                  document.getElementById("id_lon").value = position.coords.longitude;
-                  console.log(document.getElementById("id_lon").value)
-                  console.log(document.getElementById("id_lat").value)
             }
-      });
-}
 
-let Acept = () =>{
+function scrollToLast() {
+      if (n > 1) {
+            sections.forEach((section, index) => {
+                  if (index + 1 === n - 1) {
+                  section.style.transform = `translateY(${-(index) * 100}vh)`;
+                  } else if (index + 1 < n - 1) {
+                  section.style.transform = `translateY(-100vh)`;
+                  } else {
+                  section.style.transform = `translateY(0vh)`;
+                  }
+            });
+            if(n > 2){
+                  n -= 1;
+            }
       
-      let acept = document.getElementById("acep")
-            if (acept.style.display === "none") {
-                  document.getElementById("btn-add").style.display = 'none'
-                  document.getElementById("acep-yes").style.display = 'none';
-                  document.getElementById("div-acept").style.display = 'block';
-                  acept.style.display = "block";
-            } else {
-                  document.getElementById("acep-yes").style.display = 'block';
-                  document.getElementById("btn-add").style.display = 'flex'
-                  acept.style.display = "none";
-            }
-            
+            console.log(n);
+      }
 }
-var List = [""]
-// Add DNI
-function DNI(value) {
-    // Elimina todos los caracteres no numéricos
-    var number_dni = value.replace(/\D/g, '');
-    // Agrega guiones después de los primeros 3 dígitos y los siguientes 7 dígitos
-    var dni_ = number_dni.replace(/(\d{3})(\d{7})(\d{1})/, '$1-$2-$3');
-    return dni_;
-  }
-  // Agrega un evento al campo de entrada
-      document.getElementById('id_dni').addEventListener('input', function(e) {
-    let dni = document.getElementById('id_dni')
-    dni.value = dni.value.slice(0, 13);
-    e.target.value = DNI(e.target.value);
-  });
-
-//   Add number
-function NumbersFomat(value) {
-    // Elimina todos los caracteres no numéricos
-    var number = value.replace(/\D/g, '');
-    // Agrega guiones después de los primeros 3 dígitos y los siguientes 7 dígitos
-    var N = number.replace(/(\d{3})(\d{3})(\d{1})/, '$1-$2-$3');
-    return N;
-  }
 
 
-  //   Add number
-function NumbersFomatSalari(value) {
-    var N = value.replace(/\D/g, '');
-    return N;
-  }
-
-  
-document.getElementById('id_phone').addEventListener('input', function(e) {
-            let n = document.getElementById('id_phone')
-            e.target.value = NumbersFomat(e.target.value);
-});
-
-document.getElementById('id_number').addEventListener('input', function(e) {
-            let n = document.getElementById('id_number')
-            n.value = n.value.substring(0,12);
-            e.target.value = NumbersFomat(e.target.value);
-  });
-
-document.getElementById('id_number_r1').addEventListener('input', function(e) {
-            let n = document.getElementById('id_number_r1')
-            n.value = n.value.slice(0, 12);
-            e.target.value = NumbersFomat(e.target.value);
-  });
-
-document.getElementById('id_number_r2').addEventListener('input', function(e) {
-            let n = document.getElementById('id_number_r2')
-            n.value = n.value.slice(0, 12);
-            e.target.value = NumbersFomat(e.target.value);
-            
-  });
-
-  document.getElementById('id_phone').addEventListener('input', function(e) {
-            let n = document.getElementById('id_phone')
-            n.value = n.value.slice(0, 12);
-            e.target.value = NumbersFomat(e.target.value);
-            
-  });
-
-
-    document.getElementById('id_salario_m').addEventListener('input', function(e) {
-            let n = document.getElementById('id_salario_m')
-            n.value = n.value.slice(0, 29);
-            e.target.value = NumbersFomatSalari(e.target.value);
-            
-  });
-
+        
 </script>
-{% endblock  %}

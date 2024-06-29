@@ -1,0 +1,46 @@
+<h6 class="p-0 m-0  mt-5 ms-2">
+      ¿Cuales de estas opciones aplican a ti?
+</h6>
+
+<p class="text-black-50 m-0 w-100 ms-2">
+      <!-- Cabe destacar que esta información no afecta la decisión de aprobación de su préstamo.  -->
+      <!-- <br><span  style="font-style: oblique;" class="w-100 mt-3 ms-2 -->
+      <!-- "> -->
+      Seleccione todas las opciones que apliquen a ti
+<!-- </span> -->
+</p>
+<section class="w-100 d-flex flex-wrap text-black-50 justify-content-start" style="text-align: justify; width: 330px;">
+  
+      <div class="form-check w-100  mt-3  " >
+            <label class="ms-3" for="id_familiar_en_fycas"> ¿Algun Familiar es cliente de Grupo Fycas?</label>
+            {{form.familiar_en_fycas}}
+      </div>
+      
+      <div class="form-check w-100   " >
+            <label class="ms-3" for="id_vehiculo"> ¿Posee usted un Vehículo</strong> de su propiedad?</label>
+            {{form.vehiculo}}
+      </div>
+      <div class="form-check w-100    " >
+            <label class="ms-3" for="id_fue_recomendado"> ¿Fuiste recomendado por Alguien?</label>
+            {{form.fue_recomendado}}
+      </div>
+      <div class="form-check w-100    " >
+            <label class="ms-3" for="id_tierra">¿Posee usted un Terreno de su propiedad?</label>
+            {{form.tierra}}
+      </div>
+
+      <div class="form-check w-100   " >
+            <label class="ms-3" for="id_saldar_deudas"> ¿Te gustaria saldar deudas con esta solicitud?</label>
+            {{form.saldar_deudas}}
+      </div>
+
+      <div class="form-check w-100    " >
+            <label class="ms-3" for="id_hijos"> ¿Tienes hijos?</label>
+            {{form.hijos}}
+      </div>
+      
+      <div class="form-check w-100   mb-4" >
+            <label class="ms-3" for="id_casa"> ¿Posee usted una Casa  de su propiedad?</label>
+            {{form.casa}}
+      </div>
+</section>

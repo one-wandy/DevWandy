@@ -1,0 +1,41 @@
+<div  class="w-100">
+      <h6 class=" d-flex m-0 ms-2">
+        Datos Personales
+      </h6>  
+  </div>
+  <p class="text-black-50 w-100 m-0 ms-2">
+        Revisar minuciosamente antes de enviar el formulario, reduce la posibilidad de errores
+  </p>
+  <div class="form-floating mb-3">
+        {{form.name}}
+        <label for="id_email">Nombre </label>
+  </div>
+  <div class="form-floating mb-3">
+        {{form.last_name}}
+        <label for="id_last_name">Apellidos</label>
+  </div>
+  <div class="form-floating mb-3">
+        {{form.dni}}
+        <label for="id_dni">Cedula</label>
+  </div>
+  <div class="form-floating mb-3 ">
+        <input type="text" class='d-none' name='date-customer' id='id_date_text'>
+        <input type="date"   class='form-control' id='id_date'>
+        <label for="id_date">Nacimiento</label>
+  </div>
+
+  <div class='form-floating mb-3'>
+      <select id='idfl' name="form-select-sexo"  class="form-select "  aria-label="Default select example">
+            <option value="M" selected>                  
+            Masculino</option>
+            <option value="F" > Femenino</option>
+      </select>
+      <label for="idfl">Sexo</label>
+</div>
+
+<div class="form-floating mb-3">
+      {{form.number}}
+      <label for="id_number">Numero</label>
+</div>
+
+

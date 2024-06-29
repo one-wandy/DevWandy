@@ -1,0 +1,40 @@
+<h6 class="p-0 m-0  mt-5 w-100 ms-2">
+      Referencias Personales
+</h6>
+<section class="w-100 d-flex flex-wrap  ">
+      <p class="text-black-50 m-0 ms-2">
+            Asegúrese de que sus referencias estén al tanto de que las proporcionará como referencia.
+      </p>
+      <div class="w-100">
+            <div class="w-100 d-flex flex-wrap">
+                  <div class="form-floating mb-3 d-flex flex-wrap " >
+                        {{form.name_r1}}
+                        <label for="id_work_information">Nombre de una persona mayor de edad que viva con usted
+                        </label>
+                  </div>
+                  <div class="form-floating mb-3  " >
+                        {{form.number_r1}}
+                        <label for="id_work_information">Numero de la  persona mayor de edad que vive con usted
+                        </label>
+                  </div>
+            </div>
+            <p class="text-black-50 m-0 ms-2">
+            Debe colocar como segunda referencia a un familiar o amigo cercano.
+            </p>
+            {{form.lat}} {{form.lon}}
+            <div class="w-100 d-flex flex-wrap ">
+                  <div class="w-100 d-flex flex-wrap">
+                        <div class="form-floating m-0 mb-3  " >
+                              {{form.name_r2}}
+                              <label for="id_work_information">Nombre del familiar o amigo cercano
+                              </label>
+                        </div>
+                        <div class="form-floating mb-3 " >
+                              {{form.number_r2}}
+                              <label for="id_number_r2">Numero del familiar o amigo cercano
+                              </label>
+                        </div>
+                  </div>
+            </div>
+      </div>
+</section>
