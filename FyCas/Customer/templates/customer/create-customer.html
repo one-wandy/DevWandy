@@ -52,7 +52,7 @@
 {
       font-size: 13px !important;
 }
-.scroll-btn 
+.scroll-btn
 {
       width: 300px;
       text-align: center;
@@ -62,6 +62,17 @@
       color: white !important;
       background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%) !important;
       border-radius: 2rem;
+}
+.btn-black {
+      width: 300px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+      color: white !important;
+      border-radius: 2rem;
+
+
 }
 .sL {
             background-color: #ffffff;
@@ -81,21 +92,71 @@
         }
         
 
-        .scroll-btn {
+        .scroll-btn, .btn-black {
             margin-bottom: 20px;
-            padding: 10px 20px;
+            padding: 10px 10px;
             font-size: 16px;
             cursor: pointer;
-        }
+            background-image: linear-gradient(-45deg, #FFC796 0%, #FF6B95 100%);        }
         
 </style>
 <section  class="position-relative  container-fluid   p-0 mb-5 ">
             <form  method="post" class="form-add-c m-0" enctype='multipart/form-data'>
                   {% csrf_token %}
+                        <div class="sL vh-100 align-content-center" >
+                              <div id="carouselExample" class="carousel slide">
+                                    <div class="carousel-inner">
+                                      <div class="carousel-item active">
+                                          <img src="{% static "icons/maps.png" %}" class="" width='294' height="280" alt="">
+                                    </div>
+                                      <div class="carousel-item">
+                                          <img src="{% static "icons/money.png" %}" class="" width='294' height="280" alt="">
+                                    </div>
+                                    </div>
+                                    <button id="next" class="carousel-control-prev d-none" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                      <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next d-none" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                      <span class="visually-hidden">Next</span>
+                                    </button>
+                                  </div>
+                            <div class="text-center p-3 mt-4">
+                                    <h1 style="text-align: center;" >
+                                          ¡Grupo FyCas acaba de expandir sus limites!
+                                    </h1>
+                                    <div id="carouselExample" class="carousel mt-4 slide">
+                                          <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <p class="text-black-50">
+                                                      Accesibilidad Total, Solicita tu préstamo desde la comodidad de tu hogar o desde cualquier otro lugar con acceso a internet.
+                                                </p>                                            </div>
+                                            <div class="carousel-item">
+                                                <p class="text-black-50">
+                                                      Montos Flexibles Ofrecemos préstamos de cualquier monto que se ajusten a tus necesidades.
+                                                </p>                                            </div>
+                                            <div class="carousel-item">
+                                                <p class="text-black-50">
+                                                      Rápida Aprobación Completa tu solicitud en minutos y recibe la aprobación en tan solo 24 horas.
+                                                </p>                                            </div>
+                                          </div>
+                             
+                                        </div>
+                                   
+                            </div>
+                              <div class='w-100 justify-content-center mt-1 d-flex'>
+                                    <label class="btn-black  text-white " onclick="scrollToNext()">Continuar</label>
+                              </div>
+                          
+                        </div>
                         <div class="sL" id="sL1">
                               {% include "components/data-person.html" %}
                               <div class='w-100 justify-content-center d-flex'>
                                     <label class="scroll-btn" onclick="scrollToNext()">Siguiente</label>
+                              </div>
+                              <div class="w-100 justify-content-center d-flex">
+                                    <label class="bg-transparent text-black" onclick='scrollToLast()'>Atras</label>
                               </div>
                         </div>
                             <div class="sL" id="sL2">
@@ -427,5 +488,28 @@ function scrollToLast() {
                   
         });
       
+</script>
+<script>
+      // Función que simula el clic en el elemento con id "next"
+function clickOnNext() {
+    var nextButton = document.getElementById('next');
+    if (nextButton) {
+        nextButton.click();
+    }
+}
+
+// Llamamos a la función clickOnNext cada 5 segundos
+setInterval(clickOnNext, 5000); // 5000 milisegundos = 5 segundos
+
+function clickOnNextN() {
+    var nextButtonN = document.getElementById('nex-n');
+    if (nextButtonN) {
+        nextButtonN.click();
+    }
+}
+
+// Llamamos a la función clickOnNext cada 5 segundos
+setInterval(clickOnNextN, 5000); // 5000 milisegundos = 5 segundos
+
 </script>
       {% endblock  %} 
