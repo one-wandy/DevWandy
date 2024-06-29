@@ -23,14 +23,22 @@
                   display: flex;
                   flex-wrap: wrap;
                   justify-content: center;
-                  margin: 0 0.3rem;
+                  margin: 0 0.2rem;
             }
             .form-select {
                   width: 100% !important;
                   
             }
 
-            
+.nam .form-floating {
+      max-width: 200px !important;
+      margin-right: 0.3rem;
+      outline: none !important;
+      box-shadow: none !important;
+      border-radius: 2rem !important;
+
+}
+
 .form-check  .form-check-input {
 
       max-width: 60px !important;
@@ -49,13 +57,37 @@
       width: 300px;
       text-align: center;
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       cursor: pointer;
       color: white !important;
       background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%) !important;
       border-radius: 2rem;
 }
+.sL {
+            background-color: #ffffff;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content:first baseline;
+            position: relative;
+            transition: transform 1s cubic-bezier(0.1, 0.0, 0.2, 1.0)
+            
+        }
+        .sl,  label {
+            cursor: pointer;
 
+        }
+        
+
+        .scroll-btn {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
 </style>
 <section  class="position-relative  container-fluid   p-0 mb-5 ">
             <form  method="post" class="form-add-c m-0" enctype='multipart/form-data'>
@@ -151,40 +183,7 @@
 
  
 
-<style>
-      body, html {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            height: 100%;
-        }
-        
-        .sL {
-            background-color: #ffffff;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-content: center;
-            position: relative;
-            transition: transform 1s cubic-bezier(0.1, 0.0, 0.2, 1.0)
-            
-        }
-        .sl,  label {
-            cursor: pointer;
 
-        }
-        
-
-        .scroll-btn {
-            margin-bottom: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        
-</style>
 
 <script>
       let n = 2
@@ -275,7 +274,7 @@ function scrollToLast() {
 
       
 
-
+  
       
         // Obtener el input y la div de la imagen
         let input = document.getElementById("id_img1");
@@ -428,5 +427,5 @@ function scrollToLast() {
                   
         });
       
-      </script>
+</script>
       {% endblock  %} 

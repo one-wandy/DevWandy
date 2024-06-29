@@ -6,26 +6,31 @@
   <p class="text-black-50 w-100 m-0 ms-2">
         Revisar minuciosamente antes de enviar el formulario, reduce la posibilidad de errores
   </p>
-  <div class="form-floating mb-3">
-        {{form.name}}
-        <label for="id_email">Nombre </label>
-  </div>
-  <div class="form-floating mb-3">
-        {{form.last_name}}
-        <label for="id_last_name">Apellidos</label>
-  </div>
-  <div class="form-floating mb-3">
-        {{form.dni}}
-        <label for="id_dni">Cedula</label>
-  </div>
-  <div class="form-floating mb-3 ">
-        <input type="text" class='d-none' name='date-customer' id='id_date_text'>
-        <input type="date"   class='form-control' id='id_date'>
-        <label for="id_date">Nacimiento</label>
-  </div>
-
-  <div class='form-floating mb-3'>
-      <select id='idfl' name="form-select-sexo"  class="form-select "  aria-label="Default select example">
+<div class="d-flex nam">
+      <div class="form-floating w-50 mb-3">
+            {{form.name}}
+            <label for="id_email">Nombre </label>
+      </div>
+      <div class="form-floating w-50 mb-3">
+            {{form.last_name}}
+            <label for="id_last_name">Apellidos</label>
+      </div>
+</div>
+<div class="d-flex nam">
+      <div class="form-floating w-50 mb-3">
+            {{form.dni}}
+            <label for="id_dni">Cedula</label>
+      </div>
+      <div class="form-floating w-50 mb-3 ">
+            <input type="text" class='d-none' name='date-customer' id='id_date_text'>
+            <input type="date"   class='form-control' id='id_date'>
+            <label for="id_date">Nacimiento</label>
+      </div>
+    
+</div>
+  <div class='form-floating nam mb-3' >
+      <select id='idfl' name="form-select-sexo"  class="form-select "  aria-label="Default select example" style="border-radius: 2rem !important; border-top: 0 !important; border-left: 0 !important;   font-family: Quicksand, sans-serif !important;
+      ">
             <option value="M" selected>                  
             Masculino</option>
             <option value="F" > Femenino</option>
