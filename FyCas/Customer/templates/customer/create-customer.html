@@ -89,7 +89,10 @@
         }
         .sl,  label {
             cursor: pointer;
-
+            -webkit-user-select: none !important; /* Safari */
+  -moz-user-select: none !important;    /* Firefox */
+  -ms-user-select: none !important;     /* IE10+/Edge */
+  user-select: none !important;    
         }
         
 
@@ -100,6 +103,12 @@
             cursor: pointer;
             background-image: linear-gradient(-45deg, #FFC796 0%, #FF6B95 100%);        }
         
+label {
+      -webkit-user-select: none !important; /* Safari */
+  -moz-user-select: none !important;    /* Firefox */
+  -ms-user-select: none !important;     /* IE10+/Edge */
+  user-select: none !important;    
+}
 </style>
 <section  class="position-relative  container-fluid   p-0 mb-5 ">
             <form  method="post" class="form-add-c m-0" enctype='multipart/form-data'>
