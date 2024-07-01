@@ -116,7 +116,7 @@ label {
                   {% csrf_token %}
                         <div class="sL  align-content-center " >
                               <div class="w-100 d-flex justify-content-center">
-                                    <img src="{% static "icons/coin-heans.png" %}" class="" width='254' height="280" alt="">
+                                    <img src="{% static "icons/doc(28).png" %}" class="" width='254' height="280" alt="">
                               </div>
                             <div class="text-center p-3 mt-4">
                                     <h1 style="text-align: center;" >
@@ -164,6 +164,19 @@ label {
                                           <label class="bg-transparent text-black" onclick='scrollToLast()'>Atras</label>
                                     </div>
                             </div>
+
+                            <div class="sL" >
+                              {% include "components/monto-fines.html" %}
+
+                              <div class='w-100 justify-content-center d-flex mt-5'>
+                                    <label class="scroll-btn" onclick="scrollToNext()">Siguiente</label>
+                              </div>
+                              <div class="w-100 justify-content-center d-flex">
+                                    <label class="bg-transparent text-black" onclick='scrollToLast()'>Atras</label>
+                              </div>
+
+                      </div>
+
                             <div class="sL" id="sL3">
                               {% include "components/info-laboral.html" %}
                               <div class='w-100 justify-content-center d-flex'>
@@ -183,6 +196,9 @@ label {
                                     <label class="bg-transparent text-black" onclick='scrollToLast()'>Atras</label>
                               </div>
                             </div>
+
+
+
                               <div class="sL" >
                                     {% include "components/options.html" %}
 
@@ -214,13 +230,13 @@ label {
                   
                  
                         <div>
-                              <img src="{% static "icons/send.png" %}" class="" width='264' height="210" alt="">
+                              <img src="{% static "icons/doc(24).png" %}" class="" width='264' height="190" alt="">
                         </div>
-                              <div>
+                              <div class="mt-2">
                                     <strong class="p-0 m-0  mt-5 ms-2 w-100 text-start">
                                           Terminos y condicones
                                     </strong>
-                                    <p class="p-1 text-black-50" style="text-align: justify;" >
+                                    <p class="p-2 text-black-50" style="text-align: justify;" >
                                           Usted nos otorgará permiso para utilizar la información y los datos proporcionados de acuerdo con las políticas descritas. Esto incluye el uso de sus datos para mejorar nuestros servicios y ofrecerle una experiencia más personalizada.
                                     </p>
                               </div>

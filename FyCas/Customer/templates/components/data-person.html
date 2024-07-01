@@ -1,7 +1,7 @@
 {% load static %}
 
 <div>
-      <img src="{% static "icons/data-person.png" %}" class="" width='164' alt="">
+      <img src="{% static "icons/doc(29).png" %}" class="" width='164' alt="">
 </div>
 <div  class="w-100">
       <strong class=" d-flex m-0 ms-2 mt-4">
@@ -33,17 +33,17 @@
       </div>
     
 </div>
-  <div class='form-floating nam mb-3' >
-      <select id='idfl' name="form-select-sexo"  class="form-select "  aria-label="Default select example" style="border-radius: 2rem !important; border-top: 0 !important; border-left: 0 !important;   font-family: Quicksand, sans-serif !important;
+  <div class='form-floating nam mb-3 d-flex' style="border-radius: 2rem !important;">
+      <select id='idfl' name="form-select-sexo"  class="form-select w-50 "  aria-label="Default select example" style="border-radius: 2rem !important; border-top: 0 !important; border-left: 0 !important;   font-family: Quicksand, sans-serif !important;
       ">
-            <option value="M" selected>                  
+      <option value="M" selected>                  
             Masculino</option>
             <option value="F" > Femenino</option>
       </select>
+      
       <label for="idfl">Sexo</label>
 </div>
-
-<div class="form-floating mb-3">
+<div class="form-floating mb-3 w-100">
       {{form.number}}
       <label for="id_number">Numero</label>
 </div>
