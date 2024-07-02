@@ -562,7 +562,8 @@
                                                       Crear credito
                                                 </h6>
                                           </span>
-                                          <section class="d-flex ">
+                                          <section class="d-flex  ">
+                                
                                                 <div class='form-floating w-50 m-0' >
                                                       <input type="text" class='form-control monto-input m-0 ' id='monto{{c.id}}' placeholder='Monto a recibir' style='border-radius:2rem !important; 
                                                       max-width: 170px !important;'>
@@ -581,7 +582,7 @@
                                           </div>
                                           <div class=''>
                                                 
-                                                <input type="number" class='m-0 mt-1 d-none  form-control input' id='monto_pagar{{c.id}}' placeholder='Monto a pagar' style='border-radius:2rem !important;'>
+                                                <input type="text" class='m-0 mt-1 d-none  form-control input' id='monto_pagar{{c.id}}' placeholder='Monto a pagar' style='border-radius:2rem !important;'>
                                           </div>
                                           <span class='d-flex pe-2 mt-1 w-100 justify-content-end'>
 
@@ -749,6 +750,9 @@ let SuperCalAuto = (capital, plazo, tasa, result, id_mont)=> {
       document.querySelector('#'+result).innerHTML = 'Cuotas mensuales de: $' + Cuotas.toLocaleString(undefined,
                               {maximumFractionDigits: 0}) + '.00';
 
+      let precio_cuota = document.getElementById("monto_pagar"+id_mont)
+      precio_cuota.value = Cuotas.toFixed(2)
+
       let mont = document.getElementById("monto"+id_mont)
       if(mont.value != ''){
             let numero = mont.value.replace(/,/g, ''); // Elimina las comas existentes
@@ -795,14 +799,30 @@ let SuperCalAuto = (capital, plazo, tasa, result, id_mont)=> {
       function CreateCreditAjax(id){
             const url = 'create-credit-ajax/customer/';
             OpenCloseBtnCredit(id)
+
+
+            let monto = document.getElementById('monto'+id).value
+            let monto_cls = monto.replace(/,/g, ''); // Elimina las comas existentes
+            let mt_monto = parseInt(monto_cls)
+            
+
+            let cuotas = document.getElementById('cuotas'+id).value
+            let cuotas_cls = cuotas.replace(/,/g, ''); // Elimina las comas existentes
+            let mt_cuotas = parseInt(cuotas_cls)
+
+            let monto_pagar = document.getElementById('monto_pagar'+id).value
+            let monto_pagar_cls = monto_pagar.replace(/,/g, ''); // Elimina las comas existentes
+            let mt_monto_pagar = parseInt(monto_pagar_cls)
+
+
             $.ajax({
                 url: url,
                 data: {
                   customer_id: id,
-                  monto: document.getElementById('monto'+id).value,
-                  cuotas: document.getElementById('cuotas'+id).value,
+                  monto: mt_monto,
+                  cuotas: mt_cuotas,
                   dia: document.getElementById('dia'+id).value.split('-')[2] ,
-                  monto_pagar: document.getElementById('monto_pagar'+id).value
+                  monto_pagar: mt_monto_pagar,
 
                 }
             ,
