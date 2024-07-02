@@ -97,7 +97,9 @@ class ListCustomer(ListView,Options):
         return super().get(request, *args, **kwargs)
    
     def get_context_data(self, **kwargs):
+        
         context = super().get_context_data(**kwargs)
+        fecha_actual = datetime.now()
         count_customer = self.request.POST.get('20-customer')
         customer = self.request.POST.get('send-data')
         if self.request.method == 'POST':
@@ -119,6 +121,7 @@ class ListCustomer(ListView,Options):
                                     customer_verify = True ).order_by('-id')[:4]
             
         context['setting'] = self.Setting()
+        context['fecha_actual'] =  fecha_actual.strftime("%d / %B / %Y").capitalize()
         context['customer_count'] = self.model.objects.filter(is_active = True, 
                                     customer_verify = True).count()
         context['new_customer'] = self.model.objects.filter(is_active = True, 

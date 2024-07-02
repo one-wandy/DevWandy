@@ -1,4 +1,4 @@
-{% include "base/base.html" %}
+{% extends "base/base.html" %}
 {% block content %}
 {% load static %}
 {% load humanize %}
@@ -534,6 +534,17 @@
                                         </svg> {{c.salario_m|intcomma}}.00
                               </span>
                               
+                              {% if c.credit.all %}
+                              <br><br>
+                              <span>
+                                    <h6 class="text-black-50 m-0 p-0 pb-1"  > 
+                                          Listado de creditos
+                                    </h6>
+                              </span>
+                              <div class='d-flex flex-wrap overflow-scroll' style="height: 10rem;"  >
+                                    {% include "components/list-credi.html" %}
+                              </div>
+                              {% endif %}
                               <br> <br>
                               <span>
                                     <h6 class="text-black-50 m-0 p-0 pb-1"  > 
@@ -1091,13 +1102,13 @@ function OpenCloseBtn(btn_id) {
 
   
 function BoxSearch() {   
-      let box_search = document.getElementById('div-menu-1')
+      var box_search = document.getElementById('div-menu-1')
       if (box_search.classList.contains('d-none')) {
-            box_search.classList.add('d-block')
+            box_search.classList.add('d-flex')
             box_search.classList.remove('d-none')
       } else  {
             box_search.classList.add('d-none')
-            box_search.classList.remove('d-blcok')
+            box_search.classList.remove('d-flex')
       }
   }
 
