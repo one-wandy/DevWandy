@@ -562,19 +562,28 @@
                                                       Crear credito
                                                 </h6>
                                           </span>
-                                          <div class='form-floating' >
-                                                <input type="text" class='form-control monto-input m-0 ' id='monto{{c.id}}' placeholder='Monto a recibir' style='border-radius:2rem !important;'>
-                                                <label for="monto{{c.id}}">Monto requirido</label>
-                                          </div>
-                                          <div class='form-floating'>
-                                                <span id="result-cuota">
+                                          <section class="d-flex ">
+                                                <div class='form-floating w-50 m-0' >
+                                                      <input type="text" class='form-control monto-input m-0 ' id='monto{{c.id}}' placeholder='Monto a recibir' style='border-radius:2rem !important; 
+                                                      max-width: 170px !important;'>
+                                                      <label for="monto{{c.id}}">Monto requirido</label>
+                                                </div>
+
+                                                <div class="form-floating w-50">
+                                                      <input type="date"   class=' form-control' id='dia{{c.id}}'  style="max-width: 170px !important;">
+                                                      <label for="dia{{c.id}}">Dia de pago</label>
+                                                </div>
+                                          </section>
+                                          <div class="w-100">
+                                                <span id="result-cuota{{c.id}}">
 
                                                 </span>
-                                                <input type="number" class='m-0 mt-1 d-none  form-control input' id='monto_pagar{{c.id}}' placeholder='Monto a pagar' style='border-radius:2rem !important;'>
-                                                <label for="monto_pagar{{c.id}}" class="d-none">Precio de cuota</label>
                                           </div>
-                                          <span class='d-flex ps-1 mt-1'>
-                                                <input type="date"   class='me-5' id='dia{{c.id}}' >
+                                          <div class=''>
+                                                
+                                                <input type="number" class='m-0 mt-1 d-none  form-control input' id='monto_pagar{{c.id}}' placeholder='Monto a pagar' style='border-radius:2rem !important;'>
+                                          </div>
+                                          <span class='d-flex pe-2 mt-1 w-100 justify-content-end'>
 
                                                 <button onclick="restar(this.id)" class='bg-transparent border-0 m-0 me-2 p-0' id='{{c.id}}'>
                                                       <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-dash-circle text-danger" viewBox="0 0 16 16">
@@ -584,7 +593,7 @@
                                                       {% comment %} Restar {% endcomment %}
                                                 </button>
                                                 
-                                                <input type="number" min="0" class='m-0 text-center border-0  overflow-visible bg-transparent' value='1' id='cuotas{{c.id}}'   style='max-width: 2.5rem !important;' placeholder='Cuotas'>
+                                                <input type="number" min="0" class='m-0 text-center border-0  overflow-visible bg-transparent' value='1' id='cuotas{{c.id}}'   style='max-width: 3rem !important;' placeholder='Cuotas'>
                                                 <button onclick="sumar(this.id)" class='border-0 bg-transparent p-0 m-0 ' id='{{c.id}}'>
                                                       {% comment %} Sumar {% endcomment %}
                                                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus-circle text-primary" viewBox="0 0 16 16">
@@ -709,7 +718,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                         let capital = parseInt(numero)
                         SuperCalAuto(capital, document.querySelector("#cuotas"+delt).value, 
                         0.15, 
-                        "result-cuota",
+                        "result-cuota"+delt,
                         delt
                         )
                     });
@@ -785,6 +794,7 @@ let SuperCalAuto = (capital, plazo, tasa, result, id_mont)=> {
       }
       function CreateCreditAjax(id){
             const url = 'create-credit-ajax/customer/';
+            OpenCloseBtnCredit(id)
             $.ajax({
                 url: url,
                 data: {
@@ -1081,7 +1091,7 @@ function BoxSearch() {
       let capital = parseInt(numero)
       SuperCalAuto(capital, document.querySelector("#cuotas"+n).value, 
       0.15, 
-      "result-cuota",
+      "result-cuota"+n,
       n
       )
 
@@ -1099,7 +1109,7 @@ function BoxSearch() {
       let capital = parseInt(numero)
       SuperCalAuto(capital, document.querySelector("#cuotas"+n).value, 
       0.15, 
-      "result-cuota",
+      "result-cuota"+n,
       n
       )
   }
