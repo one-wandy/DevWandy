@@ -472,7 +472,7 @@
                               </span> <br>
                               <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-text" viewBox="0 0 16 16">
-                                          <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+                                          <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5tasav-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
                                           <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8m0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5"/>
                                         </svg> {{c.fines}}
                               </span>
@@ -563,12 +563,15 @@
                                                 </h6>
                                           </span>
                                           <div class='form-floating' >
-                                                <input type="number" class='form-control m-0 ' id='monto{{c.id}}' placeholder='Monto a recibir' style='border-radius:2rem !important;'>
+                                                <input type="text" class='form-control monto-input m-0 ' id='monto{{c.id}}' placeholder='Monto a recibir' style='border-radius:2rem !important;'>
                                                 <label for="monto{{c.id}}">Monto requirido</label>
                                           </div>
                                           <div class='form-floating'>
-                                                <input type="number" class='m-0 mt-1  form-control' id='monto_pagar{{c.id}}' placeholder='Monto a pagar' style='border-radius:2rem !important;'>
-                                                <label for="monto_pagar{{c.id}}">Precio de cuota</label>
+                                                <span id="result-cuota">
+
+                                                </span>
+                                                <input type="number" class='m-0 mt-1 d-none  form-control input' id='monto_pagar{{c.id}}' placeholder='Monto a pagar' style='border-radius:2rem !important;'>
+                                                <label for="monto_pagar{{c.id}}" class="d-none">Precio de cuota</label>
                                           </div>
                                           <span class='d-flex ps-1 mt-1'>
                                                 <input type="date"   class='me-5' id='dia{{c.id}}' >
@@ -689,7 +692,76 @@
                                                 NOS
                                                 {% endif %} {% endcomment %}
 <script>
+let id_input_select = 0
+document.addEventListener('DOMContentLoaded', (event) => {
+            // Selecciona todos los elementos de entrada
+            const inputs = document.querySelectorAll('.monto-input');
+            // Añade un evento de enfoque a cada uno
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    id_input_select = this.id
+                    let si = document.querySelector("#"+id_input_select)
+                    si.addEventListener('input', function() {
+                        let lkj = this.id
+                        let delt = lkj.replace(/\D/g, '');
+                        let numero_input = document.getElementById(this.id)
+                        let numero = numero_input.value.replace(/,/g, ''); // Elimina las comas existentes
+                        let capital = parseInt(numero)
+                        SuperCalAuto(capital, document.querySelector("#cuotas"+delt).value, 
+                        0.15, 
+                        "result-cuota",
+                        delt
+                        )
+                    });
+                  });
+            });
+});
 
+let SuperCalAuto = (capital, plazo, tasa, result, id_mont)=> {
+      const Cuotas = capital * tasa / (1 - Math.pow(1 + tasa, -plazo));
+      let amortizacion = [];
+      let saldo = capital;
+      let totalIntereses = 0; 
+      for (let mes = 1; mes <= plazo; mes++) {
+            const interes = saldo * tasa; 
+            const amortizacionCapital = Cuotas - interes;
+            saldo -= amortizacionCapital;
+            totalIntereses += interes; 
+            amortizacion.push({
+                  Mes: mes,
+                  Cuota: Cuotas.toFixed(2),
+                  Interes: interes.toFixed(2),
+                  AmortizacionCapital: amortizacionCapital.toFixed(2),
+                  Saldo: saldo.toFixed(2)
+            }); }
+      let totales = capital + totalIntereses
+      // const numero = parseFloat(count_input.value);
+            
+      document.querySelector('#'+result).innerHTML = 'Cuotas mensuales de: $' + Cuotas.toLocaleString(undefined,
+                              {maximumFractionDigits: 0}) + '.00';
+
+      let mont = document.getElementById("monto"+id_mont)
+      if(mont.value != ''){
+            let numero = mont.value.replace(/,/g, ''); // Elimina las comas existentes
+            if (!isNaN(numero) && numero.trim() !== '') {
+                mont.value = parseFloat(numero).toLocaleString();
+            } else {
+                mont.value = mont.value.replace(/[^\d.]/g, ''); 
+                // Elimina cualquier carácter no numérico excepto el punto decimal
+            }
+      }
+
+} 
+
+
+// monto_input.addEventListener("input", () => {
+//       let numero = monto_input.value.replace(/,/g, ''); // Elimina las comas existentes
+//       let capital = parseInt(numero)
+//       let plazo =   document.querySelector('#')
+//       let tasa = 0.15
+//       SuperCalAuto(capital, plazo, tasa)
+// });
+      
       function TurnCustomerFalse(id){
             const url = 'verify-false/customer/';
             $.ajax({
@@ -1004,6 +1076,15 @@ function BoxSearch() {
       var inputNumero = document.getElementById("cuotas"+n);
       var valorActual = parseInt(inputNumero.value);
       inputNumero.value = valorActual + 1;
+      let numero_input = document.getElementById("monto"+n)
+      let numero = numero_input.value.replace(/,/g, ''); // Elimina las comas existentes
+      let capital = parseInt(numero)
+      SuperCalAuto(capital, document.querySelector("#cuotas"+n).value, 
+      0.15, 
+      "result-cuota",
+      n
+      )
+
   };
   function restar(n) {
       var inputNumero = document.getElementById("cuotas"+n);
@@ -1011,6 +1092,16 @@ function BoxSearch() {
       if(valorActual > 0) {
             inputNumero.value = valorActual - 1;
       }
+
+      let numero_input = document.getElementById("monto"+n)
+
+      let numero = numero_input.value.replace(/,/g, ''); // Elimina las comas existentes
+      let capital = parseInt(numero)
+      SuperCalAuto(capital, document.querySelector("#cuotas"+n).value, 
+      0.15, 
+      "result-cuota",
+      n
+      )
   }
 </script>
 {% endblock  %}
