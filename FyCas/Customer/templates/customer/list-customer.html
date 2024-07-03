@@ -630,9 +630,7 @@
                               </span>
                               
                               <span class='w-100 d-flex justify-content-center'>
-                                    <button style='border-radius: 1.5rem;'>
-                                          Pendiente
-                                    </button>
+                           
                                     <a  href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} su solicitud ha sido declinada en este momento. para mas detalles, haga clic en el siguiente enlace -> https://grupofycas.online/no-approved/customer" >
                                           <button class='bg-black text-white border-0'
                                                 style='border-radius: 1.5rem;'>
@@ -641,8 +639,14 @@
                                     </a>
                                     <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} su solicitud ha sido aprobada. Para a más detalles, haga clic en el siguiente enlace -> https://grupofycas.online/approved/customer/{{c.id}}
                                     " >
-                                    <button class='text-white border-0' style='background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); border-radius: 1.5rem;'>
-                                          Aprobado
+                                    <button class='text-white border-0' style='background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%); border-radius: 1.5rem;'>
+                                         Sin garantía
+                                    </button>
+                              </a>
+                              <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) *{{c.name}} {{c.last_name}}*%0A%0A*Informacion de solicitud*%0ADebido a su precalificasion, por el momento no califica para el tipo de préstamo solicitado, podemos evaluarle en base a una garantía física que avale el monto solicitado.
+                                    " >
+                                    <button class='text-white border-0' style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;'>
+                                          Con garantia
                                     </button>
                               </a>
                               </span>
@@ -653,13 +657,13 @@
                                     </h6>
                               </span>
                               <span>
-                                    <button onclick='DisableCustomer(this.id)' id="{{c.id}}" class="border-0 bg-transparent" style="border-radius: 18rem;">
+                                    <button onclick='DisableCustomer(this.id)' id="{{c.id}}" class="border-0 m-0 p-0 bg-transparent" style="border-radius: 18rem;">
                                                 
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-toggle-on text-primary" viewBox="0 0 16 16">
                                                       <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8"/>
                                                     </svg>
                                                 <span>
-                                                      Activo
+                                                      Desactivar
                                                 </span>
                                     </button>
                               </span>
