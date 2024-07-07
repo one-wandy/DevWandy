@@ -2,31 +2,30 @@
 {% load static %}
 <html lang="es">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title id="title">Grupo FyCas</title>
-    <link rel="icon"  href="{{setting.Icon.url}}"  >
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+      <title id="title">Grupo FyCas</title>
+      <link rel="icon"  href="{{setting.Icon.url}}"  >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <!--
-    -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+      <!--
+      -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!--
-      Fonts Poppins
-    -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      <!--
+            Fonts Poppins
+      -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
       <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
       <!--
             Madimi One
       -->
-      
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
@@ -42,7 +41,6 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-
       <!--
             AOS
       -->
@@ -51,6 +49,7 @@
       <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
   <style>
       p
       {
@@ -491,12 +490,9 @@ select option {
                               style="font-family: Righteous, sans-serif;" >
                               <div class="d-flex w-100 justify-content-center align-content-center flex-wrap">
                               <h6 class="p-0 m-0 mt-2" 
-                              style="
-                              font-size: 21px;
-                              margin: 0;
-                              padding: 0.5rem 1rem;
+                              style="font-size: 21px; margin: 0; padding: 0.5rem 1rem;
                               background: linear-gradient(to right, rgb(255, 133, 133), rgb(221, 137, 255), rgb(128, 179, 255));
-                              -webkit-background-clip: text;
+                              -webkit-background-clip: text; 
                               -webkit-text-fill-color: transparent;">
                                     Grupo Fycas
                               </h6>
@@ -538,7 +534,6 @@ select option {
                         <p class="p-0 m-0 text-black-50" id="resultado2"></p> 
                         <p class="p-0 m-0 text-black-50" id="resultado3"></p> 
                   </div>
-      
                   <div class="d-flex w-100 justify-content-end">
                         <button onclick="DivCal()" class="bg-transparent border-0 p-0">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
@@ -840,8 +835,8 @@ style=" margin-top: 1px !important; max-height: 2.5rem !important;
       border-right: 0;" >
       <label for="searching-config" id="label-config"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi text-black-50 d-none bi-search mt-4 me-2 pt-1  " viewBox="0 0 16 16">
       <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-      </svg></label>
-
+      </svg>
+      </label>
       <div class="d-flex w-100  pt-1 mt-1 pb-2 bg-transparent   justify-content-center align-content-center ">
             <div class=" d-flex bg-opacity-75 bg-white  blur align-content-center shadow p-1" 
                   style="border-radius: 1.8rem; z-index: 2;">
@@ -899,24 +894,12 @@ style=" margin-top: 1px !important; max-height: 2.5rem !important;
                         ">               
                         <img src="{% static "svg/menu.svg" %}" width='24' alt="">
                         
-                              <!-- <svg xmlns="http://www.w3.org/2000/svg" id="m" width="24" height="24" fill="currentColor" class=" text-black bi bi-grid-fill" viewBox="0 0 16 16">
-                                    <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z"/>
-                                </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;" id="x" width="24" height="24" fill="currentColor" class="bi bi-x text-black " viewBox="0 0 16 16">
-                              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
-                            </svg> -->
                   </button> 
                         {% endif %}
             </div>
             <!-- </a> -->
       </div>
 </div>
-
-
-            
-
-
-
 
 <script>
       document.addEventListener('keydown', function(event) {
@@ -940,8 +923,8 @@ function Menu(){
       }
 }
 
-      </script>
-      <script>
+</script>
+<script>
 
 
 window.onload = function() {
@@ -1108,9 +1091,9 @@ function DivCal() {
     }
 }
 
-      </script>
-
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  </body>
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+crossorigin="anonymous"></script>
+</body>
 </html>

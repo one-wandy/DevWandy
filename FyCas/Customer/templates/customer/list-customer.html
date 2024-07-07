@@ -234,11 +234,11 @@
 </style>
 
 <div id="config-list" 
-      class="position-fixed w-100 justify-content-center d-flex flex-wrap" 
-      style="justify-content: center; bottom: 3.9rem; z-index: 10;">
+      class="position-fixed w-100   justify-content-center d-flex flex-wrap" 
+      style="justify-content: center; bottom: 3.9rem; z-index: 100;">
 </div>
 
-<section id="section" class="rounded-0 d-flex flex-wrap justify-content-center
+<section id="section" class="rounded-0  d-flex flex-wrap justify-content-center
       overflow-scroll p-1 w-100  vh-100  mt-0" >
       <div id="text-c" class="w-100 justify-content-center position-fixed flex-wrap" 
             style="display: none; z-index: 15; bottom: 1rem;" >
@@ -393,7 +393,7 @@
                                                       </a>
                                                       <button id='{{c.id}}' class='border-0 d-none text-white bg-transparent' 
                                                             onclick='Credit(this.id)'>
-                                                                                    <img src="{% static "svg/more.svg" %}" width='24' alt="">
+                                                            <img src="{% static "svg/more.svg" %}" width='24' alt="">
 
                                                             {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-three-dots text-black" viewBox="0 0 16 16"><path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
                                                             </svg>                                                  {% endcomment %}
@@ -740,46 +740,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     });
                   });
             });
-});
 
-let SuperCalAuto = (capital, plazo, tasa, result, id_mont)=> {
-      const Cuotas = capital * tasa / (1 - Math.pow(1 + tasa, -plazo));
-      let amortizacion = [];
-      let saldo = capital;
-      let totalIntereses = 0; 
-      for (let mes = 1; mes <= plazo; mes++) {
-            const interes = saldo * tasa; 
-            const amortizacionCapital = Cuotas - interes;
-            saldo -= amortizacionCapital;
-            totalIntereses += interes; 
-            amortizacion.push({
-                  Mes: mes,
-                  Cuota: Cuotas.toFixed(2),
-                  Interes: interes.toFixed(2),
-                  AmortizacionCapital: amortizacionCapital.toFixed(2),
-                  Saldo: saldo.toFixed(2)
-            }); }
-      let totales = capital + totalIntereses
-      // const numero = parseFloat(count_input.value);
-            
-      document.querySelector('#'+result).innerHTML = 'Cuotas mensuales de: $' + Cuotas.toLocaleString(undefined,
-                              {maximumFractionDigits: 0}) + '.00';
 
-      let precio_cuota = document.getElementById("monto_pagar"+id_mont)
-      precio_cuota.value = Cuotas.toFixed(2)
-
-      let mont = document.getElementById("monto"+id_mont)
-      if(mont.value != ''){
-            let numero = mont.value.replace(/,/g, ''); // Elimina las comas existentes
-            if (!isNaN(numero) && numero.trim() !== '') {
-                mont.value = parseFloat(numero).toLocaleString();
-            } else {
-                mont.value = mont.value.replace(/[^\d.]/g, ''); 
-                // Elimina cualquier carácter no numérico excepto el punto decimal
-            }
-      }
-
-} 
 
 
 // monto_input.addEventListener("input", () => {
@@ -1063,61 +1025,11 @@ window.addEventListener("DOMContentLoaded", function() {
 
 
 
-//   btn-notifycation
-function NotifyCation() {
-      let div = document.getElementById('div-notifycations');
-    // Con cada clic, alternamos la propiedad de display del div
-    if (div.style.display === 'none') {
-      div.style.display = 'block';
-    } else {
-      div.style.display = 'none';
-    }
 
-  }
-
-function OpenCloseBtn(btn_id) {
-      const div = document.getElementById('div-more' + btn_id);
-      if (div.classList.contains('d-none')) {
-          div.classList.remove('d-none');
-          div.classList.add('d-block');
-            BoxSearch()
-      //     document.getElementById('div-list-customer').classList.remove('blur')
-      } else if (div.classList.contains('d-block')) {
-            BoxSearch()
-            // document.getElementById('div-list-customer').classList.add('blur')
-          div.classList.remove('d-block');
-          div.classList.add('d-none');
-      }
-  }
+});
 
 
-  function OpenCloseBtnCredit(btn_id) {
-      const div = document.getElementById('div-credit' + btn_id);
-      if (div.classList.contains('d-none')) {
-          div.classList.remove('d-none');
-          div.classList.add('d-block');
-      //     document.getElementById('div-list-customer').classList.remove('blur')
-      } else if (div.classList.contains('d-block')) {
-            // document.getElementById('div-list-customer').classList.add('blur')
-          div.classList.remove('d-block');
-          div.classList.add('d-none');
-      }
-  }
-
-  
-function BoxSearch() {   
-      var box_search = document.getElementById('div-menu-1')
-      if (box_search.classList.contains('d-none')) {
-            box_search.classList.add('d-flex')
-            box_search.classList.remove('d-none')
-      } else  {
-            box_search.classList.add('d-none')
-            box_search.classList.remove('d-flex')
-      }
-  }
-
-
-  function sumar(n) {
+function sumar(n) {
       var inputNumero = document.getElementById("cuotas"+n);
       var valorActual = parseInt(inputNumero.value);
       inputNumero.value = valorActual + 1;
@@ -1148,5 +1060,100 @@ function BoxSearch() {
       n
       )
   }
+
+
+function OpenCloseBtn(btn_id) {
+      const div = document.getElementById('div-more' + btn_id);
+      if (div.classList.contains('d-none')) {
+          div.classList.remove('d-none');
+          div.classList.add('d-block');
+            BoxSearch()
+      //     document.getElementById('div-list-customer').classList.remove('blur')
+      } else if (div.classList.contains('d-block')) {
+            BoxSearch()
+            // document.getElementById('div-list-customer').classList.add('blur')
+          div.classList.remove('d-block');
+          div.classList.add('d-none');
+      }
+  }
+
+  //   btn-notifycation
+function NotifyCation() {
+      let div = document.getElementById('div-notifycations');
+    // Con cada clic, alternamos la propiedad de display del div
+    if (div.style.display === 'none') {
+      div.style.display = 'block';
+    } else {
+      div.style.display = 'none';
+    }
+
+  }
+
+
+
+  function OpenCloseBtnCredit(btn_id) {
+      const div = document.getElementById('div-credit' + btn_id);
+      if (div.classList.contains('d-none')) {
+          div.classList.remove('d-none');
+          div.classList.add('d-block');
+      //     document.getElementById('div-list-customer').classList.remove('blur')
+      } else if (div.classList.contains('d-block')) {
+            // document.getElementById('div-list-customer').classList.add('blur')
+          div.classList.remove('d-block');
+          div.classList.add('d-none');
+      }
+  }
+
+  
+function BoxSearch() {   
+      var box_search = document.getElementById('div-menu-1')
+      if (box_search.classList.contains('d-none')) {
+            box_search.classList.add('d-flex')
+            box_search.classList.remove('d-none')
+      } else  {
+            box_search.classList.add('d-none')
+            box_search.classList.remove('d-flex')
+      }
+  }
+
+  let SuperCalAuto = (capital, plazo, tasa, result, id_mont)=> {
+      const Cuotas = capital * tasa / (1 - Math.pow(1 + tasa, -plazo));
+      let amortizacion = [];
+      let saldo = capital;
+      let totalIntereses = 0; 
+      for (let mes = 1; mes <= plazo; mes++) {
+            const interes = saldo * tasa; 
+            const amortizacionCapital = Cuotas - interes;
+            saldo -= amortizacionCapital;
+            totalIntereses += interes; 
+            amortizacion.push({
+                  Mes: mes,
+                  Cuota: Cuotas.toFixed(2),
+                  Interes: interes.toFixed(2),
+                  AmortizacionCapital: amortizacionCapital.toFixed(2),
+                  Saldo: saldo.toFixed(2)
+            }); }
+      let totales = capital + totalIntereses
+      // const numero = parseFloat(count_input.value);
+            
+      document.querySelector('#'+result).innerHTML = 'Cuotas mensuales de: $' + Cuotas.toLocaleString(undefined,
+                              {maximumFractionDigits: 0}) + '.00';
+
+      let precio_cuota = document.getElementById("monto_pagar"+id_mont)
+      precio_cuota.value = Cuotas.toFixed(2)
+
+      let mont = document.getElementById("monto"+id_mont)
+      if(mont.value != ''){
+            let numero = mont.value.replace(/,/g, ''); // Elimina las comas existentes
+            if (!isNaN(numero) && numero.trim() !== '') {
+                mont.value = parseFloat(numero).toLocaleString();
+            } else {
+                mont.value = mont.value.replace(/[^\d.]/g, ''); 
+                // Elimina cualquier carácter no numérico excepto el punto decimal
+            }
+      }
+
+} 
+
 </script>
 {% endblock  %}
