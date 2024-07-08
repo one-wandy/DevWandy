@@ -114,15 +114,19 @@ label {
 {
       display: none !important;
 }
+body 
+{
+      background-image: none !important;
+}
 </style>
-<section  class="position-relative  container-fluid  vh-100  overflow-hidden   p-0 mb-5 ">
+<section  class="position-relative  container-fluid  vh-100 bg-white  overflow-hidden   p-0 mb-5 ">
             <form  method="post" class="form-add-c m-0" enctype='multipart/form-data'>
                   {% csrf_token %}
                         <div class="sL  align-content-center " >
                               <div class="w-100 d-flex justify-content-center">
                                     <img src="{% static "icons/doc(28).png" %}" class="" width='254' height="280" alt="">
                               </div>
-                            <div class="text-center p-3 mt-4">
+                            <div class="text-center p-3 ">
                                     <h1 style="text-align: center;" >
                                           ¡Grupo FyCas acaba de expandir sus limites!
                                     </h1>
