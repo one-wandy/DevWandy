@@ -126,12 +126,22 @@
                   Configuraciones
             </span>
       </button>
-      <button>
-            <img src="{% static "icons/notify.png" %}" width='24' alt="">
+      <form action="" class="w-100 me-1" method="post">
+            {% csrf_token %}
+                  <input type="number" id='noti' name='noti' value='' class='d-none'>
+                  <script>
+                        document.getElementById('btn-notifycation').addEventListener('click', function(){
+                              document.getElementById('noti').value = 1;
+                        });
+                  </script>
+      <button  >
+            <img id='btn-notifycation' src="{% static "icons/notify.png" %}" width='24' alt="">
             <span>
                   Notificaciones
             </span>
       </button>
+
+      </form>
       <div class="mt-2 d-none">
             <strong >
                   Cuadro de busqueda
