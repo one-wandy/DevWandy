@@ -270,7 +270,7 @@ class CardCustomer(UpdateView, Options):
         except models.Credit.DoesNotExist:
             return redirect(reverse('customer:create-credit'))
         return context
-    
+     
 class NotaryCustomer(UpdateView, Options):
     model = models.Customer
     form_class = forms.CustomerForm
