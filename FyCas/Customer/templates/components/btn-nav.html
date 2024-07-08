@@ -1,0 +1,147 @@
+{% load static %}
+<style>
+      .btn-nav 
+      {
+            display: flex;
+            flex-wrap: wrap;    
+            border: rgb(228, 228, 228) 1px solid;
+            border-radius: 2rem;
+      }
+      .btn-nav button 
+      {
+            width: 100%;
+            height: auto;
+            display: flex; 
+            justify-content: start;
+            align-content: center;
+            border-radius: 1.8rem;
+            border: rgb(244, 244, 244) 1px solid;
+            color: rgb(94, 94, 94);
+            margin-top: 0.1rem;
+            font-weight:400 !important;
+            font-size: 12px !important;
+            background-color: rgba(255, 255, 255, 0.749);
+      }
+      .btn-nav span
+      {
+            margin-top: 0.2rem;
+      }
+      .btn-nav button img
+      {
+            margin-right: 0.9rem;
+      } 
+       .btn-nav button:hover  
+      {
+            /* margin-top: 0.2rem; */
+            scale: 1.1;
+
+      } 
+      .btn-nav strong
+      {
+            font-size: 12px;
+            color: gray;
+      }
+      @media (min-width: 750px){
+            .nav-2 
+            {
+                  display: block !important;
+            }
+            .nav-1
+      {
+            display: none !important;
+      }
+      }
+
+
+
+</style>
+<div class='btn-nav p-1 m-1 pb-2 bg-white bg-opacity-50'>
+      <div class="w-100 d-flex justify-content-center mb-1 mt-1">
+            <img src="{% static "icons/doc(46).png" %}" width='44' alt="">
+            <h6 class="p-0 m-0 mt-2" 
+            style="font-size: 21px; margin: 0; padding: 0.5rem 1rem;
+           ">
+                  Grupo Fycas
+            </h6>      </div>
+      <div class="mt-2">
+            <strong >
+                  Opciiones Clientes
+            </strong>
+      </div>
+      <button>
+            <img src="{% static "svg/add-user.svg" %}" width='24' alt="">
+            <span>
+                  Agregar Cliente
+            </span>
+      </button>
+      <button>
+            <img src="{% static "svg/user.svg" %}" width='24' alt="">
+            <span>
+                  Listado de Clientes
+            </span>
+      </button>
+      <button>
+            <img src="{% static "svg/list.svg" %}" width='24' alt="">
+            <span>
+                  Seguimiento Clientes
+            </span>
+      </button>
+      <div class="mt-2">
+            <strong >
+                  Herramientas
+            </strong>
+      </div>
+      <button>
+            <img src="{% static "svg/calculator.svg" %}" width='24' alt="">
+            <span>
+                  Calculara
+            </span>
+      </button>
+      <button>
+            <img src="{% static "svg/calendar.svg" %}" width='24' alt="">
+            <span>
+                  Calendario
+            </span>
+      </button>
+      <button>
+            <img src="{% static "svg/map.svg" %}" width='24' alt="">
+            <span>
+                  Mapas de Rutas
+            </span>
+      </button>
+      <button>
+            <img src="{% static "svg/document.svg" %}" width='24' alt="">
+            <span>
+                  Exes y PDF  
+            </span>
+      </button>
+      <div class="mt-2">
+            <strong >
+                  Sistema
+            </strong>
+      </div>
+      <button>
+            <img src="{% static "svg/config.svg" %}" width='24' alt="">
+            <span>
+                  Configuraciones
+            </span>
+      </button>
+      <button>
+            <img src="{% static "icons/notify.png" %}" width='24' alt="">
+            <span>
+                  Notificaciones
+            </span>
+      </button>
+      <div class="mt-2 d-none">
+            <strong >
+                  Cuadro de busqueda
+            </strong>
+      </div>
+</div>
+<div  class="w-100 div-menu-1 d-flex mt-2  justify-content-center">
+      <input type="text"  style="font-size: 14px;  min-height: 2.5rem;  border: rgb(244, 244, 244) 1px solid;
+      max-height: 2.9rem;  box-shadow: 1px 2px 7px 1px rgb(240, 240, 240);" class="form-search bg-danger  text-center w-100  m-0 mb-1 ms-3 me-3  bg-white bg-opacity-50 searching-config "  
+      placeholder=" Buscar cliente (alt + b)">
+</div>
+<!-- <input type="text"  style="font-size: 14px;  min-width: 200px; min-height: 2.5rem;margin-top: 5px !important;   max-height: 2.5rem; " class="form-search bg-danger  text-center w-100  m-0 mb-1  bg-white bg-opacity-75 "  id="searching-config" 
+placeholder=" Buscando Clientes "> -->

@@ -477,7 +477,8 @@ select option {
 }
     /* Improving visualization in light mode */
   </style>
-  <body>
+  <body style="background-image: url(https://media.istockphoto.com/id/1057085162/vector/abstract-colorful-watercolor-background.jpg?s=612x612&w=0&k=20&c=R496UQFoPTsTJlrlbdw6-6FyMt4YFdvzbB7E8xZ1DJ4=);
+  background-repeat: no-repeat; background-size: cover; border-radius: 0rem !important;">
       <section   class=" flex-wrap overflow-hidden  load bg-white  align-content-center
             w-100 h-100 position-fixed  top-0" style="z-index: 1000; ">
             <div data-aos="zoom-in-down" class="d-flex  justify-content-center h-100">
@@ -552,51 +553,53 @@ select option {
                         class=" m-0 m-1 mt-0  bg-transparent border-0" min="0" value="15" > </h6>
                   </span>
                   <span class="w-100">
-
-                        <select class="form-select bg-white bg-opacity-50" style="max-width: 18.4rem !important;" aria-label="Default select example">
+                        <select class="form-select bg-white bg-opacity-50" 
+                              style="max-width: 18.4rem !important;" aria-label="Default select example">
                               <option selected>> Mensual </option>
                               <option value="1">Samanal</option>
                               <option value="2">Anual</option>
-                            </select>
+                        </select>
                   </span>
             </div>
           </div>
-      {% block content %}
-      {% endblock  %}
-
-            <main >
-                  <div class="position-absolute d-none card  p-2 m-2 end-0 overflow-hidden top-0"
-                        style="width: 20rem;  background-color: var(--bg-one);
-                        border-radius: 1.5rem ;">
-                        <div class=" d-none  mb-2">
-                        <span  style="color: var(--color-one); font-family: var(--font-one); font-size: 12px;">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
-                                    <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                                    <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
-                              </svg>  Nuevo Cliente
-                        </span>  
+          <section class="blur">
+            {% block content %}
+            {% endblock  %}
+            
+          </section>
+                  <main >
+                        <div class="position-absolute d-none card  p-2 m-2 end-0 overflow-hidden top-0"
+                              style="width: 20rem;  background-color: var(--bg-one);
+                              border-radius: 1.5rem ;">
+                              <div class=" d-none  mb-2">
+                              <span  style="color: var(--color-one); font-family: var(--font-one); font-size: 12px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                                          <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                                          <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
+                                    </svg>  Nuevo Cliente
+                              </span>  
+                              </div>
+                              <hr class="p-0 m-0 d-none">
+                              <div class=" d-flex bg-white w-100  pt-3 pb-3 p-1 " style="border-radius: 0.7rem;">
+                                    <img src="https://el-socio.com/wp-content/uploads/2020/08/3377-scaled.jpg" alt="" style="width: 50px; max-height: 50px;"  class="card rounded-circle" srcset="">
+                                    <span class="d-flex ms-2  w-100">
+                                          <Strong>
+                                                Giselle Olivares <br>
+                                                <span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
+                                                      <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
+                                                </svg> 402-223213-2</span>
+                                          </Strong><br>
+                                    </span>
+                              </div>
+                              <hr class="m-0 mb-2 me-4 ms-4">
+                              <div class=" d-flex justify-content-end">
+                                    <button class="border-0 text-black d-none">Cancelar</button>
+                                    <button class="bg-black  text-white border-0">Negar Solicitud</button>
+                                    <button class="bg-primary text-white border-0">Procesar</button>
+                              </div>
                         </div>
-                        <hr class="p-0 m-0 d-none">
-                        <div class=" d-flex bg-white w-100  pt-3 pb-3 p-1 " style="border-radius: 0.7rem;">
-                              <img src="https://el-socio.com/wp-content/uploads/2020/08/3377-scaled.jpg" alt="" style="width: 50px; max-height: 50px;"  class="card rounded-circle" srcset="">
-                              <span class="d-flex ms-2  w-100">
-                                    <Strong>
-                                          Giselle Olivares <br>
-                                          <span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
-                                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
-                                          </svg> 402-223213-2</span>
-                                    </Strong><br>
-                              </span>
-                        </div>
-                        <hr class="m-0 mb-2 me-4 ms-4">
-                        <div class=" d-flex justify-content-end">
-                              <button class="border-0 text-black d-none">Cancelar</button>
-                              <button class="bg-black  text-white border-0">Negar Solicitud</button>
-                              <button class="bg-primary text-white border-0">Procesar</button>
-                        </div>
-                  </div>
-            </main>
-
+                  </main>
+      
             
             
 <div id="div-gregar" class="position-fixed  blur  top-0 bg-white bg-opacity-10 h-100 w-100 justify-content-center"  
@@ -826,80 +829,8 @@ style=" margin-top: 1px !important; max-height: 2.5rem !important;
 
 {% comment %} {% endif %} {% endcomment %}
 </div>
+{% include "components/menu.html" %}
 
-<div id='div-menu-1'  class="d-flex  flex-wrap bg-transparent    justify-content-around position-fixed  w-100" 
-      style="z-index: 4; bottom: 0;  
-      border: 1px rgb(228, 228, 228) solid; 
-      border-top: 0;
-      border-left: 0;
-      border-right: 0;" >
-      <label for="searching-config" id="label-config"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi text-black-50 d-none bi-search mt-4 me-2 pt-1  " viewBox="0 0 16 16">
-      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-      </svg>
-      </label>
-      <div class="d-flex w-100  pt-1 mt-1 pb-2 bg-transparent   justify-content-center align-content-center ">
-            <div class=" d-flex bg-opacity-75 bg-white  blur align-content-center shadow p-1" 
-                  style="border-radius: 1.8rem; z-index: 2;">
-                  <input type="text"  style="font-size: 14px; width: auto; min-width: 200px; min-height: 2rem;margin-top: 5px !important; margin-left: 6px !important;  max-height: 2rem; max-width: 5rem;" class="form-search bg-danger  text-center shadow-none  m-0 mb-1  bg-white bg-opacity-75 "  id="searching-config" 
-                  placeholder=" Buscando Clientes ">
-                  {% if new_customer %}
-                        <form action="" method="post">
-                              {% csrf_token %}
-                              <button class='bg-transparent p-0 border-0 mt-2' id='btn-notifycation'>
-                                    <input type="number" id='noti' name='noti' value='' class='d-none'>
-                                    <script>
-                                          document.getElementById('btn-notifycation').addEventListener('click', function(){
-                                                document.getElementById('noti').value = 1;
-                                          });
-                                    </script>
-                                    <style>
-                                          @keyframes bellAnimation {
-                                                0% {
-                                                      transform: translateY(0);
-                                                }
-                                                50% {
-                                                      transform: translateY(-2px);
-                                                }
-                                                100% {
-                                                      transform: translateY(0);
-                                                }
-                                          }
-      
-                                          #btn-notifycation {
-                                                animation: bellAnimation 0.5s infinite;
-                                          }
-                                                #count-n {
-                                                      color: white;
-                                                      font-size: 12px;
-                                                      position: absolute;
-                                                      top: 50%;
-                                                      left: 50%;
-                                                      transform: translate(-50%, -50%);
-                                                }
-                                          </style>
-                                    </style>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
-                                          <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
-                                        </svg>
-                                        <span id='count-n'>
-                                          {{new_customer}}
-                                        </span>
-                              </button>
-                        </form>
-                  {% endif %}
-                  <!-- <a href="{% url "customer:add-customer" %}" class="d-flex align-content-center " > -->
-                        {% if user.is_authenticated %}
-                        <button onclick="Menu()"   class="bg-transparent  border-0 rounded-circle    m-0  text-white  " 
-                        style=" margin-top: 1px !important; max-height: 2.5rem !important;
-                        ">               
-                        <img src="{% static "svg/menu.svg" %}" width='24' alt="">
-                        
-                  </button> 
-                        {% endif %}
-            </div>
-            <!-- </a> -->
-      </div>
-</div>
 
 <script>
       document.addEventListener('keydown', function(event) {
@@ -922,7 +853,6 @@ function Menu(){
   
       }
 }
-
 </script>
 <script>
 

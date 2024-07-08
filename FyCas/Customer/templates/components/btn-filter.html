@@ -1,0 +1,60 @@
+<style>
+.btn-filter button
+{
+      min-width: max-content;
+      border-radius: 2rem !important;
+      border: 1px rgb(225, 225, 225) solid !important;
+}
+strong
+{
+      font-size: 12px;
+      color: gray;
+}
+</style>
+<div class="btn-filter  d-flex overflow-scroll w-100">
+      <button class="border-0 p-2">
+            <form action="" method="post" class='w-100 border-0  d-flex justify-content-end align-content-center flex-wrap'>
+                  {% csrf_token %}
+                  <div class="d-flex " >
+                  <label for="n-1123">Filtrar por cantidad: </label>
+                        <input id="n-1123" type="number" class='m-0 border-0 form-control ' 
+                        style='height: 1.4rem; width: 4rem; background-color: rgb(240, 240, 240);' value='10' name='20-customer' >
+                  </div>
+                  <button class='p-0 border-0 me-2' style="border: none !important; background-color: transparent !important;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-filter  text-primary border-0 bg-transparent" viewBox="0 0 16 16">
+                              <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+                            </svg>
+                  </button>
+                  </form>
+      </button>
+      <button>
+            Saldar Deudas
+      </button>
+      <button>
+            Hijos
+      </button>
+      <button>
+            Familiar en FyCas
+      </button>
+      <button>
+            Recomendado
+      </button>
+      <button>
+            Vehículo
+      </button>
+      <button>
+            Tierra
+      </button>
+      <button>
+            No Aprobados
+      </button>
+      <button>
+            Santo Domingo Norte
+      </button>
+      <button>
+            Santo Domingo Oeste
+      </button>
+      <button>
+            Santo Domingo Este
+      </button>
+</div>
