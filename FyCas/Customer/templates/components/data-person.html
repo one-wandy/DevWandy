@@ -1,51 +1,64 @@
 {% load static %}
 
-<div class="mt-3">
-      <img src="{% static "icons/doc(29).png" %}" class="" width='164' alt="">
+<div class="mt-3 d-flex justify-content-center align-content-center flex-wrapg">
+      <img src="{% static "icons/doc(29).png" %}" class="" width='164' height='194' alt="">
 </div>
-<div  class="w-100">
-      <strong class=" d-flex m-0 ms-2 mt-4">
-        Datos Personales
-      </strong>  
-  </div>
-  <p class="text-black-50 w-100 m-0 ms-2 mb-4">
-        Revisar minuciosamente antes de enviar el formulario, reduce la posibilidad de errores
-  </p>
-<div class="d-flex nam">
-      <div class="form-floating w-50 mb-3">
-            {{form.name}}
-            <label for="id_email">Nombre </label>
+<style>
+      #id_cedula 
+      {
+            padding: 0 !important;
+            margin: 0 !important;
+      }
+</style>
+<section>
+      <div  class="">
+            <strong class=" d-flex m-0 ms-2 mt-4">
+                  Datos Personales
+            </strong>  
       </div>
-      <div class="form-floating w-50 mb-3">
-            {{form.last_name}}
-            <label for="id_last_name">Apellidos</label>
+      <p class="text-black-50 w-100 m-0 ms-2 mb-4">
+            Revisar minuciosamente antes de enviar el formulario, reduce la posibilidad de errores
+      </p>
+      <div class="d-flex nam justify-content-center">
+            <div class="form-floating w-50 mb-3 ">
+                  {{form.name}}
+                  <label for="id_email">Nombre </label>
+            </div>
+            <div class="form-floating w-50 mb-3">
+                  {{form.last_name}}
+                  <label for="id_last_name">Apellidos</label>
+            </div>
+            
       </div>
-</div>
-<div class="d-flex nam w-100 justify-content-center">
-      <div class="form-floating w-50 mb-3 d-flex justify-content-end">
-            {{form.dni}}
-            <label for="id_dni">Cedula</label>
+      <div class="d-flex nam  justify-content-center ">
+            <div class="form-floating w-50 mb-3 d-flex justify-content-end">
+                  {{form.dni}}
+                  <label for="id_dni">Cedula</label>
+            </div>
+            <div class="form-floating w-50 mb-3 ">
+                  <input type="text" class='d-none' name='date-customer' id='id_date_text'>
+                  <input type="date"   class='form-control '  id='id_date'>
+                  <label for="id_date">Nacimiento</label>
+            </div>
+   
+          
       </div>
-      <div class="form-floating w-50 mb-3 ">
-            <input type="text" class='d-none' name='date-customer' id='id_date_text'>
-            <input type="date"   class='form-control '  id='id_date'>
-            <label for="id_date">Nacimiento</label>
+      <div class='form-floating nam mb-3 d-flex m-0 justify-content-center' style="border-radius: 2rem !important; min-width: 300px;">
+            <select id='idfl' name="form-select-sexo"  class="form-select w-100 "  aria-label="Default select example" style="border-radius: 2rem !important; border-top: 0 !important; border-left: 0 !important;   font-family: Quicksand, sans-serif !important;
+            ">
+            <option value="M" selected>                  
+                  Masculino</option>
+                  <option value="F" > Femenino</option>
+            </select>
+            
+            <label for="idfl">Sexo</label>
       </div>
-    
-</div>
-  <div class='form-floating nam mb-3 d-flex' style="border-radius: 2rem !important;">
-      <select id='idfl' name="form-select-sexo"  class="form-select w-50 "  aria-label="Default select example" style="border-radius: 2rem !important; border-top: 0 !important; border-left: 0 !important;   font-family: Quicksand, sans-serif !important;
-      ">
-      <option value="M" selected>                  
-            Masculino</option>
-            <option value="F" > Femenino</option>
-      </select>
+      <div class="form-floating mb-3 m-0">
+            {{form.number}}
+            <label for="id_number">Numero</label>
+      </div>
+</section>
       
-      <label for="idfl">Sexo</label>
-</div>
-<div class="form-floating mb-3 w-100">
-      {{form.number}}
-      <label for="id_number">Numero</label>
-</div>
 
 
+      

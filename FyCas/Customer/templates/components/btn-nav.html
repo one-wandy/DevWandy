@@ -76,6 +76,14 @@
                   Opciiones Clientes
             </strong>
       </div>
+      <a href="{% url "customer:dashboard" %}">
+            <button>
+                  <img src="{% static "svg/add-user.svg" %}" width='24' alt="">
+                  <span>
+                        Dashboard
+                  </span>
+            </button>
+      </a>
       <a href="{% url "customer:add-customer" %}">
             <button>
                   <img src="{% static "svg/add-user.svg" %}" width='24' alt="">

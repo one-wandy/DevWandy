@@ -1,4 +1,4 @@
- {% include "base/base.html" %}
+ {% include "base/base2.html" %}
 {% block content %}
 {% load static %}
 <!-- 
@@ -8,6 +8,19 @@
       #id_name_r1, #id_name_r2 {
             margin: 0 !important;
       }
+
+      @media (max-width: 930px){
+            .sL {
+                  justify-content: center;
+            }
+            .sL .d-flex   {
+                  width: 100% !important;
+                  
+            }
+     
+      }
+
+
       @media (max-width: 730px){
             .form-add-c .form-floating   {
                   display: flex;
@@ -81,7 +94,7 @@
             width: 100%;
             height: 100vh;
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: wrap;ß
             justify-content: center;
             align-content:first baseline;
             position: relative;
@@ -120,13 +133,13 @@ body
 }
 </style>
 <section  class="position-relative  container-fluid  vh-100 bg-white  overflow-hidden   p-0 mb-5 ">
-            <form  method="post" class="form-add-c m-0" enctype='multipart/form-data'>
+            <form  method="post" class="form-add-c m-0 " enctype='multipart/form-data'>
                   {% csrf_token %}
-                        <div class="sL  align-content-center " >
-                              <div class="w-100 d-flex justify-content-center">
+                        <div class="sL  align-content-center justify-content-center " >
+                              <div class="d-flex justify-content-center ">
                                     <img src="{% static "icons/doc(28).png" %}" class="" width='254' height="280" alt="">
                               </div>
-                            <div class="text-center p-3 ">
+                            <div class="dn text-center p-3 " style='max-width: 700px;'>
                                     <h1 style="text-align: center;" >
                                           ¡Grupo FyCas acaba de expandir sus limites!
                                     </h1>
@@ -148,13 +161,13 @@ body
                              
                                         </div>
                                    
+                                        <div class='w-100 justify-content-center  mt-3 d-flex'>
+                                          <label class="scroll-btn" onclick="scrollToNext()">Continuar</label>
+                                    </div>
                             </div>
-                            <div class='w-100 justify-content-center mt-3 d-flex'>
-                              <label class="scroll-btn" onclick="scrollToNext()">Continuar</label>
-                        </div>
                           
                         </div>
-                        <div class="sL " id="sL1">
+                        <div class="sL  justify-content-center overflow-scroll" id="sL1">
                               {% include "components/data-person.html" %}
                               <div class='w-100 justify-content-center d-flex'>
                                     <label class="scroll-btn" onclick="scrollToNext()">Siguiente</label>
