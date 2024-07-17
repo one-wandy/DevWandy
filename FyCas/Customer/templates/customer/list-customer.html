@@ -225,7 +225,7 @@
  }
 }
 #div-list-customer button {
-      border-color: rgb(49, 49, 49);
+      border-color: rgb(49, 49, 49);˛
       color: rgb(49, 49, 49);
       font-family: Quicksand, sans-serif;
       font-weight: bold;
@@ -248,12 +248,7 @@
                   "<span id="user-no"></span>"  no registrado
             </h5>
       </div>  
-      <div class="nav-2" style=" display: none;
-      width: 19rem; border-radius: 2.3rem !important; height: max-content;">
-            <div style="height: max-content;" class="mb-3">
-                  {% include "components/btn-nav.html" %}
-            </div>
-      </div>
+
       <div id='div-list-customer' style="display: flex; border-radius: 2rem !important; min-width: 300px; width: 90%; height: 99vh;" 
             class="w-100 overflow-scroll bg-white  flex-wrap justify-content-center">
             <div class="position-sticky w-100  overflow-scroll top-0 p-2 blur" style="z-index: 100;">
@@ -395,7 +390,7 @@
                                                 </div>
                                                 <button id='{{c.id}}' class='border-0 bg-transparent shadow-none' 
                                                 onclick='OpenCloseBtn(this.id)'>
-                                                <img src="{% static "svg/more.svg" %}" width='26' style='max-width:26px;' alt="">
+                                    <img src="{% static "svg/more.svg" %}" width='26' style='max-width:26px;' alt="">
                                                 </button>
                                           </div>
                                     </div>
