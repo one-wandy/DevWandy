@@ -476,7 +476,7 @@ select option {
     /* Improving visualization in light mode */
   </style>
   <body style="background-image: url(https://media.istockphoto.com/id/1057085162/vector/abstract-colorful-watercolor-background.jpg?s=612x612&w=0&k=20&c=R496UQFoPTsTJlrlbdw6-6FyMt4YFdvzbB7E8xZ1DJ4=);
-  background-repeat: no-repeat; background-size: cover; border-radius: 0rem !important;">
+  background-repeat: no-repeat; background-size: cover; border-radius: 2rem !important;">
       <section   class=" flex-wrap overflow-hidden  load bg-white  align-content-center
             w-100 h-100 position-fixed  top-0" style="z-index: 1000; ">
             <div data-aos="zoom-in-down" class="d-flex  justify-content-center h-100">
@@ -567,7 +567,10 @@ select option {
                         {% include "components/btn-nav.html" %}
                   </div>
             </div>
-            <div style="display: flex; border-radius: 2rem !important; min-width: 300px; width: 90%; height: 99vh;" 
+            <style>
+                  
+            </style>
+            <div style="display: flex; border-radius: 2rem 0 0 2rem  !important; min-width: 300px; width: 90%; height: 100vh;" 
             class="w-100 overflow-scroll bg-white  flex-wrap justify-content-center">
                   {% block content %}
                   {% endblock  %}      
