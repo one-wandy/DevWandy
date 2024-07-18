@@ -55,28 +55,35 @@
     <hr>
 </div>
 
-<div>
-<a  href="https://api.whatsapp.com/send?phone=+18092998306&text=Cliente firmado *{{credit.customer.name}} {{credit.customer.last_name}}*, 
-firmado el *{{fecha_actual}}*; detalles  en -> https://grupofycas.online/detail-credit/customer/{{credit.customer.id}}" >
-    Compartir 
-</a>
-</div>
+<div class='w-100'>
 
-<div class='d-flex   justify-content-end'>
-    <a  target="_blank" href="{% url "customer:card-customer" credit.customer.id credit.id %}">
+</div>
+<style>
+      .btn-share-con button
+      {
+            max-height: 3rem;
+            border-radius: 2rem !important;
+            text-align: center !important;
+      }
+</style>
+<div class='d-flex btn-share-con w-100  justify-content-center mt-2'>
+      <a  class='w-auto m-0˝' href="https://api.whatsapp.com/send?phone=+18092998306&text=Cliente: *({{credit.customer.name}} {{credit.customer.last_name}})*, 
+      firmado el *{{fecha_actual}}*; detalles  en -> https://grupofycas.online/detail-credit/customer/{{credit.id}}" >
+      <button>
+            Compartir
+      </button>
+            </a>
+    <a  target="_blank" class='m-0 w-auto' href="{% url "customer:card-customer" credit.customer.id credit.id %}">
           <button>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
-                      <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1z"/>
-                </svg> Contrato
+               Contrato
           </button>
     </a>
-    <a target="_blank" href="{% url "customer:notary-customer" credit.customer.id  credit.id %}">
+    <a target="_blank"  class='m-0 w-auto' href="{% url "customer:notary-customer" credit.customer.id  credit.id %}">
           <button>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text-fill" viewBox="0 0 16 16">
-                      <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1m-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5M5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1m0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1"/>
-                </svg> Notarial
+           Notarial
           </button>
+      </a>
 </div>
 </div>
-</a>
+
 {% endfor %}
