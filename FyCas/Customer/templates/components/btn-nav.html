@@ -16,7 +16,7 @@
             justify-content: start;
             align-content: center;
             border-radius: 1.8rem;
-            border: rgb(244, 244, 244) 1px solid;
+            border: rgb(231, 231, 231) 1px solid;
             color: rgb(94, 94, 94);
             margin-top: 0.1rem;
             font-weight:400 !important;
@@ -62,7 +62,7 @@
 
 
 </style>
-<div class='btn-nav p-3 m-1 pb-2 bg-white bg-opacity-50' >
+<div class='btn-nav p-3 m-1 pb-2 bg-white bg-opacity-10 blur' >
       <div class="w-100 d-flex justify-content-center mb-1 mt-1">
             <img src="{% static "icons/doc(46).png" %}" width='44' alt="">
             <h6 class="p-0 m-0 mt-2" 
@@ -148,23 +148,7 @@
                   Configuraciones
             </span>
       </button>
-      <form action="" class="w-100 me-1" method="post">
-            {% csrf_token %}
-                  <input type="number" id='noti' name='noti' value='' class='d-none'>
-                  <script>
-                        document.getElementById('btn-notifycation').addEventListener('click', function(){
-                              document.getElementById('noti').value = 1;
-                        });
-                  </script>
-      <button  >
-            <img  src="{% static "icons/notify.png" %}" width='24' alt="">
-            <span>
-                  ({{new_customer}})
-                  Notificaciones 
-            </span>
-      </button>
-
-      </form>
+ 
       <div class="mt-2 w-100 d-none">
             <strong >
                   Cuadro de busqueda

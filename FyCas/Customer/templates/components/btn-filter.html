@@ -1,3 +1,4 @@
+{% load static %}
 <style>
 .btn-filter button
 {
@@ -31,6 +32,23 @@ strong
                   </button>
                   </form>
       </button>
+      <form action="" class="me-1" method="post">
+            {% csrf_token %}
+                  <input type="number" id='noti' name='noti' value='' class='d-none'>
+                  <script>
+                        document.getElementById('btn-notifycation').addEventListener('click', function(){
+                              document.getElementById('noti').value = 1;
+                        });
+                  </script>
+      <button  style='width: 12rem;'>
+            <img  src="{% static "icons/notify.png" %}" width='24' alt="">
+            <span>
+                  ({{new_customer}})
+                  Notificaciones 
+            </span>
+      </button>
+
+      </form>
       <button>
             Saldar Deudas
       </button>

@@ -37,12 +37,12 @@ canvas {
 </style>
 <section class="w-100 mt-3 ">
     <div class=" d-flex  flex-wrap ms-3  " style="max-height: 40rem;"> 
-        <span class="">
+        <strong class="w-100 text-black-50">
           Rendimiento de la empresa
-         </span>
-        <p class="text-black-50">El beneficio neto de la empresa también ha mostrado una tendencia positiva, con un crecimiento del 88%, lo que nos ha permitido alcanzar los 20 clientes mas que el mes pasado. Este incremento refleja una mejora en la eficiencia operativa y una gestión eficaz del equipo.
+         </strong> 
+        <p class="text-black-50 w-100 p-0 m-0">Este incremento refleja una mejora en la eficiencia operativa y una gestión eficaz del equipo.
         </p>
-        <div class=" ">
+        <div class=" mt-1">
             <div style="width: 20rem; border-radius: 2rem; height: 7rem; background-color: #eef7ff" class=" d-flex p-1" 
             >
                 <div class="w-50 d-flex flex-wrap">
@@ -112,14 +112,14 @@ canvas {
     <button class="position-absolute end-0 rounded-circle bg-transparent border-0">
         <img src="{% static "svg/more.svg" %}" width='26'  style='max-width:26px;' alt="">
     </button>
-    <span class="ms-3">
+    <strong class="ms-3 text-black-50">
 
       Estadisticas de solicitudes del año (2024)
-    </span>
-   <p class="text-black-50 ms-3" 
+    </strong>
+   <p class="text-black-50 ms-3 m-0 p-0" 
     style="font-size: 12px;">Estas estadisticas son las cantidades que existen de estados de los clientes</p>
     </span>
-    <div class="  table-estadistic m-4  bor " style=" border-radius: 2rem !important;">
+    <div class="  table-estadistic m-4 mt-1 bor " style=" border-radius: 2rem !important;">
         <div class="blur overflow-hidden bg-white bg-opacity-50 p-0"  style="border-radius: 2rem;">
             <div class="chart-container  m-2">
                 <canvas id="leadsChart"></canvas>
