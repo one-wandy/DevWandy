@@ -2,11 +2,16 @@
 <style>
       .btn-nav 
       {
-            width: 17rem;
+            width: 15rem;
             display: flex;
             flex-wrap: wrap;    
             /* border: rgb(228, 228, 228) 1px solid; */
             border-radius: 2rem;
+      }
+      .btn-nav button 
+      {
+            border-radius: 1rem !important;
+
       }
       .btn-nav button, a
       {
@@ -15,18 +20,18 @@
             display: flex; 
             justify-content: start;
             align-content: center;
-            border-radius: 1.8rem;
-            border: rgb(231, 231, 231) 1px solid;
-            color: rgb(94, 94, 94);
-            margin-top: 0.1rem;
+            border-radius: 1.5rem;
+            border: rgba(227, 227, 227, 0.905) 1px solid;
+            color: rgb(78, 78, 78);
+          
             font-weight:400 !important;
-            font-size: 12px !important;
-            background-color: rgba(255, 255, 255, 0.749);
+            font-size: 14px !important;
+            background-color: rgba(255, 255, 255, 0.258);
       }
       a 
       {
             border: 0 !important;
-            background-color: transparent;
+      background-color: transparent;
       }
       .btn-nav span
       {
@@ -34,19 +39,23 @@
       }
       .btn-nav button img
       {
-            margin-right: 0.5rem;
+            margin-right: 0.7rem;
+            width: 20px !important;
+            margin-top: 0.1rem;
       } 
        .btn-nav button:hover  
       {
             /* margin-top: 0.2rem; */
-            scale: 1.1;
+            border: rgba(255, 255, 255, 0.789) 1px solid;
+      
 
       } 
       .btn-nav strong
       {
+      
             width: 100%;
-            font-size: 12px;
-            color: gray;
+            font-size: 10px !important;
+            color: rgb(117, 117, 117);
       }
       @media (min-width: 750px){
             .nav-2 
@@ -62,103 +71,104 @@
 
 
 </style>
-<div class='btn-nav p-3 m-1 pb-2 bg-white bg-opacity-10 blur' >
-      <div class="w-100 d-flex justify-content-center mb-1 mt-1">
-            <img src="{% static "icons/doc(46).png" %}" width='44' alt="">
-            <h6 class="p-0 m-0 mt-2" 
-            style="font-size: 21px; margin: 0; padding: 0.5rem 1rem;
-           ">
-                  Grupo Fycas
-            </h6>      
-      </div>
-      <div class="mt-2 w-100">
-            <strong >
-                  Opciiones Clientes
-            </strong>
-      </div>
-      <a href="{% url "customer:dashboard" %}">
-            <button>
-                  <img src="{% static "icons/dashboard.png" %}" width='24' alt="">
+<section class="vh-100 blur rounded-0 overflow-scroll">
+      <div class='btn-nav p-2 pb-2  ' >
+            <div class="w-100 d-flex justify-content-center mb-1 mt-1">
+                  <img src="{% static "icons/doc(46).png" %}" 
+                  class="mt-2"  width='24' height="24" alt="">
+                  <h6 class="p-0 m-0 mt-2" 
+                  style="font-size: 21px; margin: 0; padding: 0.5rem 1rem;
+                 ">
+                        Grupo Fycas
+                  </h6>      
+            </div>
+            <div class="mt-5 w-100">
+                  <strong >
+                   App
+                  </strong>
+            </div>
+            <a href="{% url "customer:dashboard" %}">
+                  <button>
+                        <img src="{% static "icons/dashboard.png" %}" width='24' alt="">
+                        <span>
+                              Dashboard
+                        </span>
+                  </button>
+            </a>
+            <a href="{% url "customer:add-customer" %}">
+                  <button>
+                        <img src="{% static "svg/add-user.svg" %}" width='24' alt="">
+                        <span>
+                              Agregar 
+                        </span>
+                  </button>
+            </a>
+            <a href="{% url "customer:list-customer" %}">
+                  <button>
+                        <img src="{% static "svg/user.svg" %}" width='24' alt="">
+                        <span>
+                              Clientes
+                        </span>
+                  </button>
+            </a>
+            <a href="{% url "customer:select-customer" %}">
+                  <button>
+                        <img src="{% static "svg/list.svg" %}" width='24' alt="">
+                        <span>
+                              Seguimiento 
+                        </span>
+                  </button>
+            </a>
+            <div class="mt-4 w-100">
+                  <strong >
+                        Utilidades
+                  </strong>
+            </div>
+            <button onclick="Cal()" >
+                  <img src="{% static "svg/calculator.svg" %}" width='24' alt="">
                   <span>
-                        Dashboard
+                        Calculara
                   </span>
             </button>
-      </a>
-      <a href="{% url "customer:add-customer" %}">
             <button>
-                  <img src="{% static "svg/add-user.svg" %}" width='24' alt="">
+                  <img src="{% static "svg/calendar.svg" %}" width='24' alt="">
                   <span>
-                        Agregar 
+                        Calendario
                   </span>
             </button>
-      </a>
-      <a href="{% url "customer:list-customer" %}">
             <button>
-                  <img src="{% static "svg/user.svg" %}" width='24' alt="">
+                  <img src="{% static "svg/map.svg" %}" width='24' alt="">
                   <span>
-                        Listado 
+                    Ubicaciones
                   </span>
             </button>
-      </a>
-      <a href="{% url "customer:select-customer" %}">
             <button>
-                  <img src="{% static "svg/list.svg" %}" width='24' alt="">
+                  <img src="{% static "svg/document.svg" %}" width='24' alt="">
                   <span>
-                        Seguimiento 
+                        Exes y PDF  
                   </span>
             </button>
-      </a>
-      <div class="mt-2 w-100">
-            <strong >
-                  Herramientas
-            </strong>
+            <div class="mt-4 w-100">
+                  <strong >
+                        Sistema
+                  </strong>
+            </div>
+            <button >
+                  <img src="{% static "svg/config.svg" %}" width='24' alt="">
+                  <span>
+                        Configuraciones
+                  </span>
+            </button>
+       
+            <div  class="w-100 div-menu-1 d-flex mt-2  position-sticky bottom-0  justify-content-center"> 
+             
+                  <input type="text"  style="font-size: 12px;  height: 2.5rem;  border: rgb(244, 244, 244) 1px solid; border-radius: 1rem !important;
+                    box-shadow: 0px 2px 1px 0px rgb(240, 240, 240);" class="form-search   text-center w-100  m-0 mb-1 mt-5  bg-white  searching-config "  
+                  placeholder=" Buscar cliente (alt + b)">
+  
+            </div>
       </div>
-      <button onclick="Cal()">
-            <img src="{% static "svg/calculator.svg" %}" width='24' alt="">
-            <span>
-                  Calculara
-            </span>
-      </button>
-      <button>
-            <img src="{% static "svg/calendar.svg" %}" width='24' alt="">
-            <span>
-                  Calendario
-            </span>
-      </button>
-      <button>
-            <img src="{% static "svg/map.svg" %}" width='24' alt="">
-            <span>
-                  Localizaciones
-            </span>
-      </button>
-      <button>
-            <img src="{% static "svg/document.svg" %}" width='24' alt="">
-            <span>
-                  Exes y PDF  
-            </span>
-      </button>
-      <div class="mt-2 w-100">
-            <strong >
-                  Sistema
-            </strong>
-      </div>
-      <button>
-            <img src="{% static "svg/config.svg" %}" width='24' alt="">
-            <span>
-                  Configuraciones
-            </span>
-      </button>
- 
-      <div class="mt-2 w-100 d-none">
-            <strong >
-                  Cuadro de busqueda
-            </strong>
-      </div>
-</div>
-<div  class="w-100 div-menu-1 d-flex mt-2  position-sticky bottom-0  justify-content-center">
-      <input type="text"  style="font-size: 14px;  min-height: 2.5rem;  border: rgb(244, 244, 244) 1px solid;
-      max-height: 2.9rem;  box-shadow: 1px 2px 7px 1px rgb(240, 240, 240);" class="form-search bg-danger  text-center w-100  m-0 mb-1 ms-3 me-3  bg-white  searching-config "  
-      placeholder=" Buscar cliente (alt + b)">
-</div>
+      
+</section>
 <!-- <input type="text"  style="font-size: 14px;  min-width: 200px; min-height: 2.5rem;margin-top: 5px !important;   max-height: 2.5rem; " class="form-search bg-danger  text-center w-100  m-0 mb-1  bg-white bg-opacity-75 "  id="searching-config" 
 placeholder=" Buscando Clientes "> -->
