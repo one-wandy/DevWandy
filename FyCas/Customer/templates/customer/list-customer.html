@@ -251,14 +251,14 @@
 
       <div id='div-list-customer' style="display: flex; border-radius: 2rem !important; min-width: 300px; width: 90%; height: 100vh;" 
             class="w-100 overflow-scroll bg-white  flex-wrap justify-content-center">
-            <div class="position-sticky w-100  overflow-scroll top-0 p-2 blur" style="z-index: 100;">
+            <div class="position-sticky w-100  overflow-scroll top-0 p-2 " style="z-index: 100;">
               
                         {% include "components/btn-filter.html" %}
             </div>
             {% for c in customer %}
-                  <li  id='li{{c.id}}' class="list-group-item position-relative  shadow-none p-2 
+                  <li  id='li{{c.id}}' class="list-group-item position-relative  shadow p-1 
                         no-select bg-transparent m-1 p-0 m-0 mb-3 pb-5 h-auto" 
-                        style=" border-radius:1.5rem;  width: 100%; max-width: 20.2rem;  height: 23rem;  ">
+                        style=" border-radius:1.9rem;  width: 100%; max-width: 20.2rem;  max-height: 22rem;  ">
                         <script>
                               function Credit(N) {
                                     let div = document.getElementById('div' + N)
@@ -294,11 +294,11 @@
                                                       background-size: cover;
                                                       max-width: 380px;
                                                       min-height: 150px;
-                                                      border-radius: 2rem !important;'  >
+                                                      border-radius: 1.5rem !important;'  >
                                                 </div>                                    
                                           </a>
                                     </div>
-                                    <div class="d-flex align-content-center flex-wrap datos" >
+                                    <div class="d-flex align-content-center p-2 pt-0 flex-wrap datos" >
                                           <span class="w-100  text-black" 
                                                 style="color: #383838;
                                                 font-family: Quicksand, sans-serif;
@@ -348,13 +348,13 @@
                                                 </strong> 
                                                 {{c.dni}} 
                                          </span>
-                                         <span class="w-100 no-select address overflow-hidden d-flex" style="height: 1.2rem ">
+                                         <span class="w-100   overflow-hidden d-flex" style="height: 2.5rem ">
                                                 <strong class="">     
                                                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-geo-alt-fill text-black" viewBox="0 0 16 16">
                                                       <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
                                                 </strong>
                                                 <a class="" style=" text-transform: capitalize; font-size: 14px !important;" >
-                                                      {{c.calle_numero}}, {{c.sector}}, {{c.municipio}}, {{c.ciudad}}
+                                                      {{c.calle_numero}},  {{c.municipio}}, <br>  {{c.sector}}, {{c.ciudad}}
                                                 </a>
                                           </span>
                                           <span class='w-100 d-none'>
@@ -364,18 +364,19 @@
                                                       </svg>
                                                       </strong>
                                           </span>
-                                          <span class='w-100 text-capitalize' style="font-size: 14px;">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-calendar-event text-black" viewBox="0 0 16 16">
-                                                      <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
-                                                      <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
-                                                    </svg>
-                                                    {{ c.day_created|date:"F/d/Y" }}
-                                          </span>
+                               
                                           <div class="w-100 d-flex justify-content-end">
                                                 <hr  class="text-black-50 p-0 m-0 mt-3  " style="width: 3.6rem;">
                                           </div>
                                           <div  class="w-100 justify-content-end position-relative  d-flex m-0 
                                                 d-flex align-content-center  " style=" border-radius: 13rem;">
+                                                <span class='w-100 text-capitalize mt-2 p-1' style="font-size: 14px;">
+                                                      {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-calendar-event text-black" viewBox="0 0 16 16">
+                                                            <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
+                                                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                                                          </svg> {% endcomment %}
+                                                          {{ c.day_created|date:"F/d/Y" }}
+                                                </span>
                 
                                                 {% if c.customer_verify == False %}
                                                       <a id='{{c.id}}'  onclick='CustomerVerify(this.id)' 
