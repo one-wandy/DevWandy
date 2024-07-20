@@ -66,12 +66,16 @@
       {
             display: none !important;
       }
+      #div-list-customer 
+      {
+            justify-content: start !important;
+      }
       }
 
 
 
 </style>
-<section class="vh-100 blur rounded-0 overflow-scroll">
+<section class="vh-100  rounded-0 bg-white bg-opacity-75 overflow-scroll">
       <div class='btn-nav p-2 pb-2  ' >
             <div class="w-100 d-flex justify-content-center mb-1 mt-1">
                   <img src="{% static "icons/doc(46).png" %}" 
@@ -165,14 +169,14 @@
                               Buscar
                         </strong>
                   </div>
-                <div class="d-flex">
+                <div class="d-flex blur" style="border-radius: 2rem;border: rgba(227, 227, 227, 0.905) 1px solid; ">
                   <img src="{% static "icons/search.png" %}" class="mt-2 "
-                  style="margin-left: 1.2rem; margin-right: 0.6rem;"  width='20' height="20" alt="">
-                  <input type="text"  style="font-size: 12px;  height: 2.5rem;     border: rgba(227, 227, 227, 0.905) 1px solid; 
-                  border-radius: 0 !important;
+                  style="margin-left: 1.2rem; margin-right: 0.3rem;"  width='20' height="20" alt="">
+                  <input type="text"  style="font-size: 12px;  height: 2.5rem;     
+                  border-radius: 0.3rem !important;
                         border-top-right-radius: 2rem !important;
                         border-bottom-right-radius: 2rem !important;
-                     " class="form-search   text-center w-100  m-0 me-1 mb-1 bg-white bg-opacity-10  searching-config "  
+                     " class="form-search  border-0 w-100 bg-transparent m-0 me-1 searching-config "  
                   placeholder=" Buscar cliente (alt + b)">
                 </div>
  
