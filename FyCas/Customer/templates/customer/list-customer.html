@@ -251,7 +251,7 @@
 
       <div id='div-list-customer' style="display: flex; border-radius: 2rem !important; min-width: 300px; width: 90%; height: 100vh;" 
             class="w-100 overflow-scroll bg-white  flex-wrap justify-content-center">
-            <div class="position-sticky w-100  overflow-scroll top-0 p-3 " style="z-index: 200;">
+            <div class="position-sticky w-100 blur overflow-scroll top-0 p-3 " style="z-index: 100;">
                         {% include "components/btn-filter.html" %}
             </div>
             {% for c in customer %}
@@ -390,9 +390,9 @@
                                     </div>
                               </div>
                         </div>
-                       <div id='div-more{{c.id}}' class='blur d-none shadow  bg-white bg-opacity-75  card position-relative w-100   
+                       <div id='div-more{{c.id}}' class='blur d-none shadow  bg-white bg-opacity-50  card position-relative w-100   
                               position-absolute start-0  p-4  ' 
-                              style='top:19rem; z-index: 160; border-radius:2rem; font-family: Quicksand, sans-serif;
+                              style='top:18rem; z-index: 160; border-radius:2rem; font-family: Quicksand, sans-serif;
                               color: black; font-size: 16px; font-optical-sizing: auto; z-index: 11;'>
                               <style>
                                     #div-more{{c.id}}, span:hover {
