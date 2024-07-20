@@ -255,9 +255,10 @@
                         {% include "components/btn-filter.html" %}
             </div>
             {% for c in customer %}
-                  <li  id='li{{c.id}}' class="list-group-item position-relative  shadow-none 
+                  <li  id='li{{c.id}}' class="list-group-item position-relative  
                         no-select bg-transparent m-1 p-0 m-0 mb-3 pb-5 h-auto" 
-                        style=" border-radius:1.9rem;  width: 100%; max-width: 20.2rem;  max-height: 20.5rem;    border: rgba(227, 227, 227, 0.905) 1px solid;">
+                        style=" border-radius:1.9rem;  width: 100%; max-width: 20.2rem;  
+                        box-shadow: 0px 2px 2px 1px rgba(227, 227, 227, 0.305) ; max-height: 20.5rem;    border: rgba(227, 227, 227, 0.905) 0px solid;">
                         <script>
                               function Credit(N) {
                                     let div = document.getElementById('div' + N)
