@@ -1,51 +1,46 @@
    {% load humanize %}
+   <style>
+      .credit-sp div
+      {
+            color: black !important;
+      }
+   </style>
     {% for credit in c.credit.all %}
     
-    <div class='bg-white p-2 mb-5 m-1 text-black-50 bg-opacity-50' 
-    style=" width: 100%; max-width: 27rem;
+    <div class='bg-white credit-sp  m-1 text-black-50 bg-opacity-50' 
+    style=" width: 100%; 
     font-size: 14px;
-    border-radius: 1rem; box-shadow: var(--shadow-one);">
-    <div>
-          <strong  class="">
-                {% if credit.is_active == True %}
-                <span style='color: red;'>
-                    <span class="text-black"></span> Activo 
-                </span>
-                {% else %}
-                      Saldado
-                {% endif %}
-          </strong>
-          <hr>
-    </div>
+    border-radius: 1.5rem; ">
+
 
     <div class="mt-2">
           {% if credit.is_active == True %}
 
-          <a href="{% url "customer:update-credit" credit.id %}">
-          <span class="black">Nombre: </span>
+          <a class="" href="{% url "customer:update-credit" credit.id %}">
+          <span class="black"></span>
                 {{credit.name}}
           </a>
           {% else %}
-          <span class="black">Nombre y Apellidos:</span>
+          <span class=""></span>
           {{credit.name}}
           {% endif %}
 
     </div>
     <div>
-          <span class="black">Cedula:</span>
+          <span class=""></span>
                 {{credit.dni}}
     </div>
 <div>
-    <span class="black">Cuenta:</span>
+    <span class=""></span>
           {{credit.no_account}}
 </div>
 <div>
-    <span class="black">Monto:</span>
-       RD${{credit.amount|intcomma}}.00
+    <span class=""></span>
+       ${{credit.amount|intcomma}}.00
 </div>
 <div>
-    <span class="black">Cuotas:</span>
-    {{credit.price_feed}} a RD${{credit.amount_feed|intcomma}} los dias {% if credit.mode_pay == True %}
+    <span class=""></span>
+    {{credit.price_feed}} a ${{credit.amount_feed|intcomma}} los dias {% if credit.mode_pay == True %}
     (15) - (30)
     {% else %}
     ({{credit.day_pay}})
@@ -64,12 +59,22 @@
             max-height: 3rem;
             border-radius: 2rem !important;
             text-align: center !important;
+            background-color:  white !important;
+            color: rgb(48, 48, 48) !important;
+            font-size: 12px !important;
+            border: rgba(227, 227, 227, 0.905) 1px solid !important;
+            width: 100%;
       }
 </style>
+<span class="d-flex w-100">
+      <h6 class="text-black-50 m-0 p-0 pb-1"  > 
+            Acciones de credito    
+      </h6>
+</span>
 <div class='d-flex btn-share-con w-100  justify-content-center mt-2'>
-      <a  class='w-auto m-0˝' href="https://api.whatsapp.com/send?phone=+18092998306&text=*({{credit.customer.name}} {{credit.customer.last_name}})*, 
+      <a  class='w-auto m-0' href="https://api.whatsapp.com/send?phone=+18092998306&text=*({{credit.customer.name}} {{credit.customer.last_name}})*, 
       Firmado el *{{fecha_actual}}*; Detalles -> https://grupofycas.online/detail-credit/customer/{{credit.id}}" >
-      <button>
+      <button >
             Compartir
       </button>
             </a>

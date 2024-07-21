@@ -148,7 +148,19 @@ input
 }
 
 
+nav {
+  background-color: #fe0000 !important; /* Color azul oscuro */
+}
 
+nav::before {
+  content: ""; /* Contenido vacío para que no afecte el texto */
+  position: absolute; /* Posicionamiento absoluto para superponer la barra de navegación */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Cubrir toda la barra de navegación */
+  background-color: rgba(255, 0, 0, 0.784); /* Color semitransparente */
+}
 .list-group-item img:hover 
 {
       width: 300px !important;
@@ -236,8 +248,6 @@ input
             
             border-radius: 0.7rem;
             padding:0.5rem 1rem;
-
-           
             margin: 0.1rem;
             font-size: 14px;
             border:  1px solid;

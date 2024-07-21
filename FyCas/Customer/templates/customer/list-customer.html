@@ -257,7 +257,7 @@
             {% for c in customer %}
                   <li  id='li{{c.id}}' class="list-group-item position-relative  
                         no-select bg-transparent m-1 p-0 m-0 mb-3 pb-5 h-auto" 
-                        style=" border-radius:1.9rem;  width: 100%; max-width: 20.2rem;  
+                        style=" border-radius:2.3rem;  width: 100%; max-width: 20.2rem;  
                         box-shadow: 0px 2px 2px 1px rgba(227, 227, 227, 0.305) ; max-height: 20.5rem;    border: rgba(227, 227, 227, 0.905) 0px solid;">
                         <script>
                               function Credit(N) {
@@ -332,7 +332,7 @@
                                                 
                                                 </span> 
                                          </span> 
-                                         <a  href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}}" >
+                                         <a  href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}}"  class="m-0 p-0">
                                           <span class="w-100 text-black" style="font-size: 14px;">
                                                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-telephone-fill "  viewBox="0 0 16 16">
                                                       <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
@@ -368,7 +368,7 @@
                                    
                                           <div  class="w-100 mt-2 justify-content-end position-relative  d-flex m-0 
                                                 d-flex align-content-center  " style=" border-radius: 13rem;">
-                                                <span class='w-100 text-capitalize mt-2 p-1' style="font-size: 14px;">
+                                                <span class='w-100 text-capitalize mt-2 p-1 text-black-50' style="font-size: 14px; margin-left: 0.5rem;">
                                                           {{ c.day_created|date:"F/d/Y" }}
                                                 </span>
                 
@@ -528,21 +528,21 @@
                                           Listado de creditos
                                     </h6>
                               </span>
-                              <div class='d-flex flex-wrap overflow-scroll' style="height: 16rem;"  >
+                              <div class='d-flex flex-wrap   overflow-scroll w-100 justify-content-center' style="height: 14rem;"  >
                                     {% include "components/list-credi.html" %}
                               </div>
                               {% endif %}
-                              <br> <br>
-                              <span>
+                              <br><br>
+                              <span class="">
                                     <h6 class="text-black-50 m-0 p-0 pb-1"  > 
                                           Acciones de credito
                                     </h6>
                               </span>
-                              <span class='w-100 d-flex justify-content-center'>
+                              <span class='w-100 d-flex justify-content-center btn-share-con' >
                                     <!-- <button style='border-radius: 1.5rem;'>
                                           Eliminar 
                                     </button> -->
-                                    <button  onclick='OpenCloseBtnCredit(this.id)' id='{{c.id}}' style='border-radius: 1.5rem;'>
+                                    <button  onclick='OpenCloseBtnCredit(this.id)' id='{{c.id}}' style='border-radius: 1.5rem;' >
                                           Crear 
                                     </button>
                                     <button style='border-radius: 1.5rem;'>
@@ -563,13 +563,13 @@
                                           <section class="d-flex  ">
                                 
                                                 <div class='form-floating w-50 m-0' >
-                                                      <input type="text" class='form-control monto-input m-0 ' id='monto{{c.id}}' placeholder='Monto a recibir' style='border-radius:2rem !important; 
-                                                      max-width: 170px !important;'>
+                                                      <input type="text" class='form-control monto-input m-0 ' value="999" id='monto{{c.id}}' placeholder='Monto a recibir' style='border-radius:2rem !important; 
+                                                      max-width: 130px !important;'>
                                                       <label for="monto{{c.id}}">Monto requirido</label>
                                                 </div>
 
                                                 <div class="form-floating w-50">
-                                                      <input type="date"   class=' form-control' id='dia{{c.id}}'  style="max-width: 170px !important;">
+                                                      <input type="date"   class=' form-control' id='dia{{c.id}}'  style="max-width: 130px !important;">
                                                       <label for="dia{{c.id}}">Dia de pago</label>
                                                 </div>
                                           </section>
@@ -602,7 +602,7 @@
                                                 </button>
                                           </span>
                                           <div class='w-100 mt-4 pt-3 d-flex  justify-content-end'>
-                                                <button onclick='OpenCloseBtnCredit(this.id)' id='{{c.id}}' class='border-0 bg-transparent'>Cancelar</button>
+                                                <button onclick='OpenCloseBtnCredit(this.id)' id='{{c.id}}' class=' bg-transparent'>Cancelar</button>
                                                 <button onclick='CreateCreditAjax(this.id)' id='{{c.id}}' class='text-white border-0 ' style='background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);border-radius: 1.5rem; width: 7rem;'> Crear</button>
                                           </div>
                                           <div class='w-100'>
@@ -616,12 +616,12 @@
                                     </h6>
                               </span>
                               
-                              <span class='w-100 d-flex justify-content-center'>
+                              <span class='w-100 d-flex justify-content-center btn-share-con'>
                            
                                     <a  href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} su solicitud ha sido declinada en este momento. para mas detalles, haga clic en el siguiente enlace -> https://grupofycas.online/no-approved/customer" >
-                                          <button class='bg-black text-white border-0'
+                                          <button class='text-black '
                                                 style='border-radius: 1.5rem;'>
-                                                Declinado
+                                                Declinar
                                           </button>
                                     </a>
                                     <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} Actualmente aplica para un prestamo estandar con un monoto minimo de *($7,000.00)*, si deseas puede obtener un mayor monto con una garantia fisica que avale el monto solicitado. ¿Desea continuar con el proceso *(Estandar)* o *(Garantizado)*?" >
@@ -633,7 +633,7 @@
                               <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) *{{c.name}} {{c.last_name}}*%0A%0A*Informacion de solicitud*%0ADebido a su precalificasion, por el momento no califica para el tipo de préstamo solicitado, podemos evaluarle en base a una garantía física que avale el monto solicitado.
                                     " >
                                     <button class='text-white border-0' style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;'>
-                                          Garantizado
+                                          Garantia
                                     </button>
                               </a>
                               </span>
@@ -669,7 +669,7 @@
                   </div>
                   {% endif %}
                   <div class="w-100 mb-5 container-fluid   text-center pb-5 ">
-                        <span class="text-black-50" style="font-size: 12px;">{{customer_count}} Verificados</span>
+                        <span class="text-black-50" style="font-size: 12px;"></span>
                   </div>
 
             </div>
