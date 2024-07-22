@@ -111,7 +111,7 @@
                   <button>
                         <img src="{% static "svg/user.svg" %}" width='24' alt="">
                         <span>
-                              Clientes ({{customer_count}})
+                              Clientes  {% if customer_count %} ({{customer_count}}) {% endif %} 
                         </span>
                   </button>
             </a>

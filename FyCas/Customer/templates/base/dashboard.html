@@ -40,10 +40,13 @@ canvas {
         <strong class="w-100 text-black-50">
           Rendimiento de la empresa
          </strong> 
-        <p class="text-black-50 w-100 p-0 m-0">Este incremento refleja una mejora en la eficiencia operativa y una gestión eficaz del equipo.
-        </p>
+         <button class="position-absolute end-0 rounded-circle bg-transparent border-0">
+            <img src="{% static "svg/more.svg" %}" width='26'  style='max-width:26px;' alt="">
+        </button>
+
         <div class=" mt-1">
-            <div style="width: 20rem; border-radius: 2rem; height: 7rem; background-color: #eef7ff" class=" d-flex p-1" 
+            <div style="width: 20rem; border-radius: 2rem; height: 7rem;
+            border: 1px rgb(225, 225, 225) solid !important;" class=" d-flex p-1" 
             >
                 <div class="w-50 d-flex flex-wrap">
                     <strong class="text-center  d-flex justify-content-center align-content-center flex-wrap m-2 p-2 rounded-5 pb-1 pt-1" >
@@ -52,10 +55,10 @@ canvas {
                             <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195z"/>
                             <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083q.088-.517.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1z"/>
                             <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 6 6 0 0 1 3.13-1.567"/>
-                          </svg>      Saldar Deudas
+                          </svg>      Saldar D...
                     </strong>  
                     <strong class="text-center w-100 d-flex justify-content-center align-content-center flex-wrap m-2 rounded-5 p-2 pb-1 pt-1"
-                    style="background-color: #bae0ff !important;"> 88%</strong> 
+                    style=";"> 88%</strong> 
                 </div>
                 <div class="w-50 p-0 mb-1">
                     <canvas id="activityChart" >
@@ -66,15 +69,15 @@ canvas {
         </div>
 
         <div style="width: 20rem; border-radius: 2rem; height: 7rem;
-             background-color: #e8e8f8;" class=" d-flex p-1 m-1" >
+             border: 1px rgb(225, 225, 225) solid !important;" class=" d-flex p-1 m-1 " >
                 <div class="w-50 d-flex flex-wrap">
                     <strong class="text-center  d-flex justify-content-center align-content-center flex-wrap m-2 p-2 rounded-5 pb-1 pt-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-half me-2" viewBox="0 0 16 16">
                             <path d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z"/>
-                          </svg> Recomendado
+                          </svg> Recome...
                     </strong>  
                    <strong class="text-center w-100 d-flex justify-content-center align-content-center flex-wrap m-2 rounded-5 p-2 pb-1 pt-1"
-                    style="background-color: #c8c8fb !important;"> 60%</strong> 
+                    style=""> 60%</strong> 
             </div>
             <div class="w-50 p-0 mb-1">
                 <canvas id="saldar_deudas" >
@@ -84,8 +87,10 @@ canvas {
         </div>
 
 
-        <div style="width: 20rem; border-radius: 2rem; height: 7rem; background-color: #eafce2" class=" d-flex p-1" >
-            <div class="w-50 d-flex flex-wrap">
+        <div style="width: 20rem; border-radius: 2rem; height: 7rem;
+        border: 1px rgb(225, 225, 225) solid !important;
+        " class=" d-flex p-1 m-1" >
+            <div class="w-50 d-flex flex-wrap " >
                 <strong class="text-center  d-flex justify-content-center align-content-center flex-wrap m-2 p-2 rounded-5 pb-1 pt-1" >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-piggy-bank me-2 p-0" viewBox="0 0 16 16">
                         <path d="M5 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.138-1.496A6.6 6.6 0 0 1 7.964 4.5c.666 0 1.303.097 1.893.273a.5.5 0 0 0 .286-.958A7.6 7.6 0 0 0 7.964 3.5c-.734 0-1.441.103-2.102.292a.5.5 0 1 0 .276.962"/>
@@ -93,7 +98,7 @@ canvas {
                       </svg>  Inversions
                 </strong>  
                <strong class="text-center  w-100 d-flex justify-content-center align-content-center flex-wrap m-2 rounded-5 p-2 pb-1 pt-1"
-                style="background-color: #c5ffaa !important;"> 12%</strong> 
+                style=""> 12%</strong> 
         </div>
         <div class="w-50 p-0 mb-1">
             <canvas id="invertir" >
@@ -109,15 +114,12 @@ canvas {
 </section>
 <section class=" w-100 mt-4 position-relative">
     
-    <button class="position-absolute end-0 rounded-circle bg-transparent border-0">
-        <img src="{% static "svg/more.svg" %}" width='26'  style='max-width:26px;' alt="">
-    </button>
+
     <strong class="ms-3 text-black-50">
 
       Estadisticas de solicitudes del año (2024)
     </strong>
-   <p class="text-black-50 ms-3 m-0 p-0" 
-    style="font-size: 12px;">Estas estadisticas son las cantidades que existen de estados de los clientes</p>
+
     </span>
     <div class="  table-estadistic m-4 mt-1 bor blur " style=" border-radius: 1.5rem !important;">
         <div class="blur overflow-hidden bg-white bg-opacity-75 p-0"  style="border-radius: 1.5rem;">
