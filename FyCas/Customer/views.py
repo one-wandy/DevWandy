@@ -62,6 +62,7 @@ class AddCustomer(CreateView, Options):
             f.instance.sexo =  request.POST.get('form-select-sexo')
             f.instance.name = f.instance.name.title()
             f.instance.last_name = f.instance.last_name.title()
+            f.instance.municipio = request.POST.get('form-select-muni')
             f.save()
             # Creando Carpeta para el Cliente
             self.FileCreate(f.instance.name, f.instance.last_name)

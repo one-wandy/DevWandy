@@ -1,63 +1,114 @@
 {% load static %}
 
-<div class="mt-3 d-flex justify-content-center align-content-center flex-wrapg">
-      <img src="{% static "icons/doc(29).png" %}" class="" width='164' height='194' alt="">
-</div>
-<style>
-      #id_cedula 
-      {
-            padding: 0 !important;
-            margin: 0 !important;
-      }
-</style>
-<section>
-      <div  class="">
-            <strong class=" d-flex m-0 ms-2 mt-4">
-                  Datos Personales
-            </strong>  
+<div class="w-100 d-flex img-glouds align-content-center m-1 " 
+      style='background-color: #F6F6F6; max-width: 30rem; 
+      border-radius: 35px;'>
+      <div class="img-data d-flex flex-wrap align-content-center">
+            <img src="{% static "icons/doc(29).png" %}"
+                  width='164' height='194' alt="">
       </div>
-      <p class="text-black-50 w-100 m-0 ms-2 mb-4">
-            Revisar minuciosamente antes de enviar el formulario, reduce la posibilidad de errores
-      </p>
-      <div class="d-flex nam justify-content-center">
-            <div class="form-floating w-50 mb-3 ">
+      <div class='d-flex flex-wrap align-content-center'>
+            <h6>
+                  Datos Personales
+            </h6>
+            <p class="text-black-50 mt-4">
+                  Revisar minuciosamente antes de
+                  enviar el formulario, reduce la 
+                  posibilidad de errores
+            </p>
+      </div>
+</div>
+<section class=" d-flex flex-wrap align-content-center w-100 " style="max-width: 30rem;">
+      <div class="d-flex  justify-content-center w-100 mt-3">
+            <div class="form-floating w-50 mb-2 ">
                   {{form.name}}
-                  <label for="id_email">Nombre </label>
+                  <label for="id_name">Nombre </label>
             </div>
-            <div class="form-floating w-50 mb-3">
+            <div class="form-floating w-50 mb-2">
                   {{form.last_name}}
                   <label for="id_last_name">Apellidos</label>
             </div>
-            
       </div>
-      <div class="d-flex nam  justify-content-center ">
-            <div class="form-floating w-50 mb-3 d-flex justify-content-end">
+
+      <div class="d-flex   justify-content-center w-100">
+            <div class="form-floating w-50 mb-2  justify-content-end">
                   {{form.dni}}
                   <label for="id_dni">Cedula</label>
             </div>
-            <div class="form-floating w-50 mb-3 ">
+            <div class="form-floating w-50 mb-2 ">
                   <input type="text" class='d-none' name='date-customer' id='id_date_text'>
                   <input type="date"   class='form-control '  id='id_date'>
                   <label for="id_date">Nacimiento</label>
             </div>
-   
-          
       </div>
-      <div class='form-floating nam mb-3 d-flex m-0 justify-content-center' style="border-radius: 2rem !important; min-width: 300px;">
-            <select id='idfl' name="form-select-sexo"  class="form-select w-100 "  aria-label="Default select example" style="border-radius: 2rem !important; border-top: 0 !important; border-left: 0 !important;   font-family: Quicksand, sans-serif !important;
-            ">
-            <option value="M" selected>                  
-                  Masculino</option>
-                  <option value="F" > Femenino</option>
-            </select>
-            
-            <label for="idfl">Sexo</label>
+
+      <div  class="d-flex w-100">
+            <div class='form-floating nam mb-2 w-50  justify-content-center' style="border-radius: 2rem !important; ">
+                  <select id='idfl' name="form-select-sexo"  class="form-select w-100 "  aria-label="Default select example" style="border-radius: 21px !important; 
+                  ">
+                  <option  value="M" selected>                  
+                        Masculino</option>
+                        <option value="F" > Femenino</option>
+                  </select>
+                  
+                  <label for="idfl">Sexo</label>
+            </div>
+            <div class="form-floating mb-2 w-50 m-1">
+                  {{form.number}}
+                  <label for="id_number">Numero</label>
+            </div>
       </div>
-      <div class="form-floating mb-3 m-0">
-            {{form.number}}
-            <label for="id_number">Numero</label>
+      <div class="d-flex justify-content-end align-content-center mt-2 w-100 flex-wrap">    
+            <label class="bg-transparent scroll-btn text-black " style="width: 100px;" onclick='scrollToLast()'>Atras</label>
+            <label class="scroll-btn" onclick="scrollToNext()">Siguiente 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+                  <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+                      </svg>
+            </label>
       </div>
+
 </section>
+
+<script>
+            function DNI(value) {
+          // Elimina todos los caracteres no numéricos
+          var number_dni = value.replace(/\D/g, '');
+          // Agrega guiones después de los primeros 3 dígitos y los siguientes 7 dígitos
+          var dni_ = number_dni.replace(/(\d{3})(\d{7})(\d{1})/, '$1-$2-$3');
+          return dni_;
+        }
+        // Agrega un evento al campo de entrada
+            document.getElementById('id_dni').addEventListener('input', function(e) {
+          let dni = document.getElementById('id_dni')
+          dni.value = dni.value.slice(0, 13);
+          e.target.value = DNI(e.target.value);
+        });
+      
+         //   Add number
+         function NumbersFomat(value) {
+          // Elimina todos los caracteres no numéricos
+          var number = value.replace(/\D/g, '');
+          // Agrega guiones después de los primeros 3 dígitos y los siguientes 7 dígitos
+          var N = number.replace(/(\d{3})(\d{3})(\d{1})/, '$1-$2-$3');
+          return N;
+        }
+      
+        document.getElementById('id_number').addEventListener('input', function(e) {
+                  let n = document.getElementById('id_number')
+                  n.value = n.value.substring(0,12);
+                  e.target.value = NumbersFomat(e.target.value);
+        });
+
+
+        
+        //   Add number
+      function NumbersFomatSalari(value) {
+          var N = value.replace(/\D/g, '');
+          return N;
+        }
+      
+</script>
+
       
 
 

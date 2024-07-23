@@ -22,109 +22,62 @@
             }
      
       }
-
-
-      @media (max-width: 730px){
-            .form-add-c .form-floating   {
-                  display: flex;
-                  flex-wrap: wrap;
-                  justify-content: center !important;
-                  background-color: #f5faff70 !important;
-                  /* background-color: #a1d0ff !important; */
-
-                  /* min-width: 100% !important; */
-            }
-            .form-add-c .form-floating    {
-                  width: 100%;
-                  display: flex;
-                  flex-wrap: wrap;
-                  justify-content: center;
-                  margin: 0 0.2rem;
-            }
-            .form-select {
-                  width: 100% !important;
-                  
-            }
-
-
-.nam .form-floating {
-      max-width: 200px !important;
-      margin-right: 0.3rem;
-      outline: none !important;
-      box-shadow: none !important;
-      border-radius: 2rem !important;
-      overflow: hidden !important;
-
-}
-
-.form-check  .form-check-input {
-
-      max-width: 60px !important;
-}
-      .form-floating  input {
-                  width: 100% !important;
-            }
+      .form-floating 
+      {
+            margin: 0.1rem;
+            height: 51px !important;
+            padding: 0 !important;
+      }
+      .form-control 
+      {
+            border-radius: 21px !important;
       }
 
-.section p 
-{
-      font-size: 13px !important;
-}
-.scroll-btn
-{
-      width: 170px;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      cursor: pointer;
-      color: white !important;
-      background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%) !important;
-      border-radius: 2rem;
-}
-.btn-black {
-      width: 300px;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      cursor: pointer;
-      color: white !important;
-      border-radius: 2rem;
-
-
-}
 .sL {
             background-color: #ffffff;
             width: 100%;
             height: 100vh;
             display: flex;
-            flex-wrap: wrap;ß
+            flex-wrap: wrap;
             justify-content: center;
             align-content:first baseline;
             position: relative;
             transition: transform 1s cubic-bezier(0.1, 0.0, 0.2, 1.0)
             
         }
-        .sl,  label {
+.sl,  label {
             cursor: pointer;
             -webkit-user-select: none !important; /* Safari */
-  -moz-user-select: none !important;    /* Firefox */
-  -ms-user-select: none !important;     /* IE10+/Edge */
-  user-select: none !important;    
+            -moz-user-select: none !important;    /* Firefox */
+            -ms-user-select: none !important;     /* IE10+/Edge */
+            user-select: none !important;    
         }
-        
 
-        .scroll-btn, .btn-black {
-            margin-bottom: 20px;
-            padding: 10px 10px;
-            font-size: 16px;
+.scroll-btn, .btn-black {
+       
+            width: 130px;
+            height: 42px;
+            font-size: 14px;
             cursor: pointer;
-            background-image: linear-gradient(-45deg, #FFC796 0%, #FF6B95 100%);        }
-        
+           background-color: #719CFF;
+           flex-wrap: wrap; 
+           justify-content: center;
+            align-content: center;
+            text-align: center;
+            color: white;
+            border-radius: 24px;
+      }
+.scroll-btn .bi-arrow-right-circle-fill 
+{
+      width: 27px;
+      height: 27px;
+}
+            
 label {
       -webkit-user-select: none !important; /* Safari */
-  -moz-user-select: none !important;    /* Firefox */
-  -ms-user-select: none !important;     /* IE10+/Edge */
-  user-select: none !important;    
+      -moz-user-select: none !important;    /* Firefox */
+      -ms-user-select: none !important;     /* IE10+/Edge */
+      user-select: none !important;    
 }
 .div-menu-1 
 {
@@ -134,8 +87,13 @@ body
 {
       background-image: none !important;
 }
+
+.img-glouds 
+{
+      height: 14rem;
+}
 </style>
-<section  class="position-relative  container-fluid  vh-100 bg-white  overflow-hidden   p-0 mb-5 ">
+<section  class="position-relative  container-fluid  vh-100 bg-white  overflow-hidden   p-1 mb-5 ">
             <form  method="post" class="form-add-c m-0 " enctype='multipart/form-data'>
                   {% csrf_token %}
                         <div class="sL  align-content-center justify-content-center " >
@@ -170,114 +128,69 @@ body
                             </div>
                           
                         </div>
-                        <div class="sL  justify-content-center overflow-scroll" id="sL1">
+                        <div class="sL  justify-content-center overflow-scroll align-content-center" id="sL1">
                               {% include "components/data-person.html" %}
-                              <div class='w-100 justify-content-center d-flex'>
-                                    <label class="scroll-btn" onclick="scrollToNext()">Siguiente</label>
-                              </div>
-                              <div class="w-100 justify-content-center d-flex">
-                                    <label class="bg-transparent text-black" onclick='scrollToLast()'>Atras</label>
-                              </div>
                         </div>
-                            <div class="sL vh-100 overflow-scroll" id="sL2">
+                            <div class="sL vh-100 overflow-scroll align-content-center justify-content-center " id="sL2">
                                   {% include "components/cedula.html" %}
-                                    <div class='w-100 justify-content-center mt-5 d-flex'>
-                                          <label class="scroll-btn" onclick="scrollToNext()">Siguiente</label>
-                                    </div>
-                                    <div class="w-100 justify-content-center  d-flex">
-                                          <label class="bg-transparent text-black" onclick='scrollToLast()'>Atras</label>
-                                    </div>
+
                             </div>
 
-                            <div class="sL pb-5" >
+                            <div class="sL pb-5 vh-100  overflow-scroll align-content-center " >
                               {% include "components/recide.html" %}
-
-                              <div class='w-100 justify-content-center d-flex mt-2'>
-                                    <label class="scroll-btn" onclick="scrollToNext()">Siguiente</label>
-                              </div>
-                              <div class="w-100 justify-content-center d-flex">
-                                    <label class="bg-transparent text-black" onclick='scrollToLast()'>Atras</label>
                               </div>
 
-                      </div>
-
-                            <div class="sL pb-5 vh-100 overflow-scroll" id="sL3">
+                            <div class="sL pb-5 vh-100 overflow-scroll overflow-scroll align-content-center " id="sL3">
                               {% include "components/info-laboral.html" %}
-                              <div class='w-100 justify-content-center d-flex'>
-                                    <label class="scroll-btn" onclick="scrollToNext()">Siguiente</label>
-                              </div>
-                              <div class="w-100 justify-content-center d-flex">
-                                    <label class="bg-transparent text-black" onclick='scrollToLast()'>Atras</label>
-                              </div>
                             </div>
-                            <div class="sL vh-100 overflow-scroll" >
+                            <div class="sL vh-100 overflow-scroll align-content-center  " >
                               {% include "components/referens.html" %}
-
-                              <div class='w-100 justify-content-center d-flex'>
-                                    <label class="scroll-btn" onclick="scrollToNext()">Siguiente</label>
-                              </div>
-                              <div class="w-100 justify-content-center d-flex">
-                                    <label class="bg-transparent text-black" onclick='scrollToLast()'>Atras</label>
-                              </div>
                             </div>
 
-
-
-                              <div class="sL vh-100 overflow-scroll" >
+                              <div class="sL vh-100 overflow-scroll align-content-center   " >
                                     {% include "components/options.html" %}
-
-                                    <div class='w-100 justify-content-center  d-flex'>
-                                          <label class="scroll-btn" onclick="scrollToNext()">Siguiente</label>
-                                    </div>
-                                    <div class="w-100 justify-content-center d-flex">
-                                          <label class="bg-transparent text-black" onclick='scrollToLast()'>Atras</label>
-                                    </div>
-
                             </div>
 
-
-                            <div class="sL vh-100 overflow-scroll" >
+                            <div class="sL vh-100 overflow-scroll  align-content-center " >
                               {% include "components/monto-fines.html" %}
 
-                              <div class='w-100 justify-content-center d-flex mt-5'>
-                                    <label class="scroll-btn" onclick="scrollToNext()">Siguiente</label>
-                              </div>
-                              <div class="w-100 justify-content-center d-flex">
-                                    <label class="bg-transparent text-black" onclick='scrollToLast()'>Atras</label>
                               </div>
 
-                      </div>
 
 
-
-                <div class="sL  w-100 " >
+                <div class="sL  w-100 vh-100  overflow-scroll align-content-center " >
                   
-                 
-                         <div class="mt-3">
-                        <img src="{% static "icons/doc(24).png" %}" class="" width='264' height="190" alt="">
-                        </div>
-                              <div class="mt-2">
-                                    <strong class="p-0 m-0  mt-5 ms-2 w-100 text-start">
-                                          Terminos y condicones
-                                    </strong>
-                                    <p class="p-2 text-black-50" style="text-align: justify;" >
-                                          Usted nos otorgará permiso para utilizar la información y los datos proporcionados de acuerdo con las políticas descritas. Esto incluye el uso de sus datos para mejorar nuestros servicios y ofrecerle una experiencia más personalizada.
-                                    </p>
+                  {% load static %}
+
+                              <div class="w-100 d-flex img-glouds align-content-center m-1 " 
+                                    style='background-color: #F6F6F6; max-width: 30rem; 
+                                    border-radius: 35px;'>
+                                    <div class="img-data d-flex flex-wrap align-content-center">
+                                          <img src="{% static "icons/doc(24).png" %}"
+                                                width='164' height='154' alt="">
+                                    </div>
+                                    <div class='d-flex flex-wrap align-content-center'>
+                                          <h6>
+                                                Terminos y condicones
+                                          </h6>
+                                          <p class="text-black-50 mt-4">
+                                                Usted nos otorgará permiso para utilizar la información y los datos proporcionados.
+                                          </p>
+                                    </div>
                               </div>
-                        
-                               <div class="w-100 d-flex justify-content-center">
-                                    <button class="scroll-btn">
+                        <section class=" d-flex flex-wrap align-content-center w-100 " style="max-width: 30rem;">
+                              
+                              <div class="w-100 d-flex justify-content-center">
+                                    <label class="bg-transparent scroll-btn text-black " style="width: 200px;" onclick='scrollToLast()'>Atras</label>
+                                    <button class="scroll-btn" style="width: 8rem;">
                                           Aceptar y enviar
                                     </button>   
-                               </div>     
-                               
-                               <div class="w-100 justify-content-center d-flex">
-                                    <label class="bg-transparent text-black" onclick='scrollToLast()'>Atras</label>
-                              </div>
-                
+                              </div>    
+                        </section>
+            
                   </div>
       
-          </div>
+      
 
             </form>
             <div class="w-100 mt-5 mb-5">
@@ -465,73 +378,23 @@ function scrollToLast() {
       }
       var List = [""]
       // Add DNI
-      function DNI(value) {
-          // Elimina todos los caracteres no numéricos
-          var number_dni = value.replace(/\D/g, '');
-          // Agrega guiones después de los primeros 3 dígitos y los siguientes 7 dígitos
-          var dni_ = number_dni.replace(/(\d{3})(\d{7})(\d{1})/, '$1-$2-$3');
-          return dni_;
-        }
-        // Agrega un evento al campo de entrada
-            document.getElementById('id_dni').addEventListener('input', function(e) {
-          let dni = document.getElementById('id_dni')
-          dni.value = dni.value.slice(0, 13);
-          e.target.value = DNI(e.target.value);
-        });
-      
-      //   Add number
-      function NumbersFomat(value) {
-          // Elimina todos los caracteres no numéricos
-          var number = value.replace(/\D/g, '');
-          // Agrega guiones después de los primeros 3 dígitos y los siguientes 7 dígitos
-          var N = number.replace(/(\d{3})(\d{3})(\d{1})/, '$1-$2-$3');
-          return N;
-        }
-      
-      
-        //   Add number
-      function NumbersFomatSalari(value) {
-          var N = value.replace(/\D/g, '');
-          return N;
-        }
-      
+
+   
         
       document.getElementById('id_phone').addEventListener('input', function(e) {
                   let n = document.getElementById('id_phone')
                   e.target.value = NumbersFomat(e.target.value);
       });
       
-      document.getElementById('id_number').addEventListener('input', function(e) {
-                  let n = document.getElementById('id_number')
-                  n.value = n.value.substring(0,12);
-                  e.target.value = NumbersFomat(e.target.value);
-        });
+   
       
-      document.getElementById('id_number_r1').addEventListener('input', function(e) {
-                  let n = document.getElementById('id_number_r1')
-                  n.value = n.value.slice(0, 12);
-                  e.target.value = NumbersFomat(e.target.value);
-        });
-      
-      document.getElementById('id_number_r2').addEventListener('input', function(e) {
-                  let n = document.getElementById('id_number_r2')
-                  n.value = n.value.slice(0, 12);
-                  e.target.value = NumbersFomat(e.target.value);
-                  
-        });
-      
-        document.getElementById('id_phone').addEventListener('input', function(e) {
-                  let n = document.getElementById('id_phone')
-                  n.value = n.value.slice(0, 12);
-                  e.target.value = NumbersFomat(e.target.value);
-                  
-        });
-      
+
+   
       
           document.getElementById('id_salario_m').addEventListener('input', function(e) {
                   let n = document.getElementById('id_salario_m')
                   n.value = n.value.slice(0, 29);
-                  e.target.value = NumbersFomatSalari(e.target.value);
+      e.target.value = NumbersFomatSalari(e.target.value);
                   
         });
       
