@@ -1,11 +1,12 @@
 {% load static %}
 
-<div class="w-100 d-flex img-glouds align-content-center m-1 " 
+<section class="mt-5 w-100 sec-sl d-flex flex-wrap justify-content-center">
+      <div class="w-100 d-flex img-glouds align-content-center m-1 " 
       style='background-color: #F6F6F6; max-width: 30rem; 
       border-radius: 35px;'>
-      <div class="img-data d-flex flex-wrap align-content-center">
+      <div class="img-data d-flex flex-wrap align-content-center justify-content-center">
             <img src="{% static "icons/doc(44).png" %}"
-                  width='164' height='194' alt="">
+                  width='134' height='124' alt="">
       </div>
       <div class='d-flex flex-wrap align-content-center'>
             <h6>
@@ -35,10 +36,10 @@
             </div>
             <div class="form-floating mb-2  w-50" >
                   {{form.phone}}
-                  <label for="id_work_information"> Numero de Contacto de la Empresa</label>
+                  <label for="id_work_information"> Contacto de la Empresa</label>
             </div>
       </div>
-      <div class="d-flex justify-content-end align-content-center mt-2 w-100 flex-wrap">    
+      <div class="d-flex justify-content-end align-content-center mt-5 w-100 flex-wrap">    
             <label class="bg-transparent scroll-btn text-black " style="width: 100px;" onclick='scrollToLast()'>Atras</label>
             <label class="scroll-btn" onclick="scrollToNext()">Siguiente 
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
@@ -47,6 +48,7 @@
             </label>
       </div>
 
+</section>
 </section>
 
 <script>

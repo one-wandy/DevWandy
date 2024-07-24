@@ -1,11 +1,12 @@
 {% load static %}
+<section class="mt-5 w-100 sec-sl d-flex flex-wrap justify-content-center">
 
 <div class="w-100 d-flex img-glouds align-content-center m-1 " 
       style='background-color: #F6F6F6; max-width: 30rem; 
       border-radius: 35px;'>
       <div class="img-data d-flex flex-wrap align-content-center">
             <img src="{% static "icons/doc(42).png" %}"
-                  width='164' height='194' alt="">
+                  width='134' height='124' alt="">
       </div>
       <div class='d-flex flex-wrap align-content-center'>
             <h6>
@@ -20,12 +21,12 @@
       <section class="w-100 d-flex flex-wrap text-black-50 justify-content-start" style="text-align: justify; width: 330px;">
   
             <div class="form-check w-100  mt-3  " >
-                  <label class="ms-3" for="id_familiar_en_fycas"> ¿Algun Familiar es cliente de Grupo Fycas?</label>
+                  <label class="ms-3" for="id_familiar_en_fycas"> ¿Tiene Familiar es cliente de Grupo Fycas?</label>
                   {{form.familiar_en_fycas}}
             </div>
             
             <div class="form-check w-100   " >
-                  <label class="ms-3" for="id_vehiculo"> ¿Posee usted un Vehículo</strong> de su propiedad?</label>
+                  <label class="ms-3" for="id_vehiculo"> ¿Vehículo</strong> de su propiedad?</label>
                   {{form.vehiculo}}
             </div>
             <div class="form-check w-100    " >
@@ -33,12 +34,12 @@
                   {{form.fue_recomendado}}
             </div>
             <div class="form-check w-100    " >
-                  <label class="ms-3" for="id_tierra">¿Posee usted un Terreno de su propiedad?</label>
+                  <label class="ms-3" for="id_tierra">¿Posee Terreno de su propiedad?</label>
                   {{form.tierra}}
             </div>
       
             <div class="form-check w-100   " >
-                  <label class="ms-3" for="id_saldar_deudas"> ¿Te gustaria saldar deudas con esta solicitud?</label>
+                  <label class="ms-3" for="id_saldar_deudas"> ¿Te gustaria saldar deudas?</label>
                   {{form.saldar_deudas}}
             </div>
       
@@ -48,14 +49,14 @@
             </div>
             
             <div class="form-check w-100   mb-4" >
-                  <label class="ms-3" for="id_casa"> ¿Posee usted una Casa  de su propiedad?</label>
+                  <label class="ms-3" for="id_casa"> ¿Posee Casa  de su propiedad?</label>
                   {{form.casa}}
             </div>
       </section>
 
 
 
-      <div class="d-flex justify-content-end align-content-center mt-2 w-100 flex-wrap">    
+      <div class="d-flex justify-content-end align-content-center mt-5 w-100 flex-wrap">    
             <label class="bg-transparent scroll-btn text-black " style="width: 100px;" onclick='scrollToLast()'>Atras</label>
             <label class="scroll-btn" onclick="scrollToNext()">Siguiente 
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
@@ -68,3 +69,5 @@
 
 
       
+
+</section>

@@ -34,7 +34,9 @@
       }
 
 .sL {
-            background-color: #ffffff;
+            background-color: #6b6b6b00 !important;
+            -webkit-backdrop-filter: blur(30px) !important;
+            backdrop-filter: blur(30px) !important;
             width: 100%;
             height: 100vh;
             display: flex;
@@ -69,8 +71,8 @@
       }
 .scroll-btn .bi-arrow-right-circle-fill 
 {
-      width: 27px;
-      height: 27px;
+            width: 27px;
+            height: 27px;
 }
             
 label {
@@ -91,13 +93,35 @@ body
 .img-glouds 
 {
       height: 14rem;
+      border-radius: 2.7rem !important;
+      background-color: #f6f6f694 !important;
+      border: #EBEBEB solid 1px !important;
 }
+
+@media (min-width: 600px)
+{
+      .img-glouds  
+      {
+            height: 16rem;
+            
+ 
+      }
+      .sec-sl 
+      {
+          
+            width: 80% !important;
+            height: 95%;
+            align-content: center;
+            margin-top: 0 !important;
+      }
+}
+
 </style>
-<section  class="position-relative  container-fluid  vh-100 bg-white  overflow-hidden   p-1 mb-5 ">
+<section  class="position-relative  container-fluid  vh-100 bg-transparent overflow-hidden   p-1 mb-5 ">
             <form  method="post" class="form-add-c m-0 " enctype='multipart/form-data'>
                   {% csrf_token %}
                         <div class="sL  align-content-center justify-content-center " >
-                              <div class="d-flex justify-content-center ">
+                              <div class="d-flex justify-content-center  ">
                                     <img src="{% static "icons/doc(28).png" %}" class="" width='254' height="280" alt="">
                               </div>
                             <div class="dn text-center p-3 " style='max-width: 700px;'>
@@ -123,69 +147,69 @@ body
                                         </div>
                                    
                                         <div class='w-100 justify-content-center  mt-3 d-flex'>
-                                          <label class="scroll-btn" onclick="scrollToNext()">Continuar</label>
+                                          <label class="scroll-btn" style="width: 11rem;" onclick="scrollToNext()">Continuar</label>
                                     </div>
                             </div>
                           
                         </div>
-                        <div class="sL  justify-content-center overflow-scroll align-content-center" id="sL1">
-                              {% include "components/data-person.html" %}
-                        </div>
-                            <div class="sL vh-100 overflow-scroll align-content-center justify-content-center " id="sL2">
-                                  {% include "components/cedula.html" %}
 
-                            </div>
-
-                            <div class="sL pb-5 vh-100  overflow-scroll align-content-center " >
-                              {% include "components/recide.html" %}
+                              <div class="sL  justify-content-center overflow-scroll " id="sL1">
+                                    {% include "components/data-person.html" %}
                               </div>
 
-                            <div class="sL pb-5 vh-100 overflow-scroll overflow-scroll align-content-center " id="sL3">
-                              {% include "components/info-laboral.html" %}
-                            </div>
-                            <div class="sL vh-100 overflow-scroll align-content-center  " >
-                              {% include "components/referens.html" %}
+                              <div class="sL vh-100 overflow-scroll   pt-5" id="sL2">
+                                  {% include "components/cedula.html" %}
+                              </div>
+
+                            <div class="sL pb-5 vh-100  overflow-scroll  pt-5" >
+                                    {% include "components/recide.html" %}
+                              </div>
+
+                            <div class="sL pb-5 vh-100 overflow-scroll   pt-5 " id="sL3">
+                                    {% include "components/info-laboral.html" %}
                             </div>
 
-                              <div class="sL vh-100 overflow-scroll align-content-center   " >
+                            <div class="sL vh-100 overflow-scrollp pt-5  " >
+                                    {% include "components/referens.html" %}
+                            </div>
+
+                              <div class="sL vh-100 overflow-scroll  pt-5 " >
                                     {% include "components/options.html" %}
                             </div>
 
-                            <div class="sL vh-100 overflow-scroll  align-content-center " >
-                              {% include "components/monto-fines.html" %}
-
+                              <div class="sL vh-100 overflow-scroll  pt-5" >
+                                    {% include "components/monto-fines.html" %}
                               </div>
 
 
 
-                <div class="sL  w-100 vh-100  overflow-scroll align-content-center " >
+                <div class="sL  w-100 vh-100  overflow-scroll  " >
                   
-                  {% load static %}
-
-                              <div class="w-100 d-flex img-glouds align-content-center m-1 " 
-                                    style='background-color: #F6F6F6; max-width: 30rem; 
-                                    border-radius: 35px;'>
-                                    <div class="img-data d-flex flex-wrap align-content-center">
-                                          <img src="{% static "icons/doc(24).png" %}"
-                                                width='164' height='154' alt="">
+                         <section class="mt-5 w-100 sec-sl d-flex flex-wrap justify-content-center">
+                                          <div class="w-100 d-flex img-glouds align-content-center m-1 " 
+                                          style='background-color: #F6F6F6; max-width: 30rem; 
+                                          border-radius: 35px;'>
+                                          <div class="img-data d-flex flex-wrap align-content-center">
+                                                <img src="{% static "icons/doc(24).png" %}"
+                                                      width='164' height='154' alt="">
+                                          </div>
+                                          <div class='d-flex flex-wrap align-content-center'>
+                                                <h6>
+                                                      Terminos y Condicones
+                                                </h6>
+                                                <p class="text-black-50 mt-4">
+                                                      Usted nos otorgará permiso para utilizar la información y los datos proporcionados.
+                                                </p>
+                                          </div>
                                     </div>
-                                    <div class='d-flex flex-wrap align-content-center'>
-                                          <h6>
-                                                Terminos y condicones
-                                          </h6>
-                                          <p class="text-black-50 mt-4">
-                                                Usted nos otorgará permiso para utilizar la información y los datos proporcionados.
-                                          </p>
-                                    </div>
-                              </div>
-                        <section class=" d-flex flex-wrap align-content-center w-100 " style="max-width: 30rem;">
-                              
-                              <div class="w-100 d-flex justify-content-center">
-                                    <label class="bg-transparent scroll-btn text-black " style="width: 200px;" onclick='scrollToLast()'>Atras</label>
-                                    <button class="scroll-btn" style="width: 8rem;">
-                                          Aceptar y enviar
-                                    </button>   
-                              </div>    
+                                    <section class=" d-flex flex-wrap align-content-center w-100 " style="max-width: 30rem;">
+                                          <div class="w-100 d-flex justify-content-center mt-5">
+                                                <label class="bg-transparent scroll-btn text-black " style="width: 100px;" onclick='scrollToLast()'>Atras</label>
+                                                <button class="scroll-btn" style="width: 12rem;">
+                                                      Aceptar y enviar
+                                                </button>   
+                                          </div>    
+                                    </section>
                         </section>
             
                   </div>

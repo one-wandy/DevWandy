@@ -1,11 +1,12 @@
 {% load static %}
+<section class="mt-5 w-100 sec-sl d-flex flex-wrap justify-content-center">
 
 <div class="w-100 d-flex img-glouds align-content-center m-1 " 
       style='background-color: #F6F6F6; max-width: 30rem; 
       border-radius: 35px;'>
-      <div class="img-data d-flex flex-wrap align-content-center">
+      <div class="img-data d-flex flex-wrap align-content-center justify-content-center">
             <img src="{% static "icons/doc(40).png" %}"
-                  width='154'  alt="">
+                  width='134'  alt="">
       </div>
       <div class='d-flex flex-wrap align-content-center'>
             <h6>
@@ -20,7 +21,7 @@
      
       <section class="w-100 d-flex mt-4">
             <div class="form-floating">
-                  <select id="mont-si" name="form-select-monto"  class="form-select "  aria-label="Default select example" style="border-radius: 2rem !important; border-top: 0 !important; border-left: 0 !important; min-width: 160px !important;    max-width: 60px;  font-family: Quicksand, sans-serif !important;">
+                  <select id="mont-si" name="form-select-monto"  class="form-select "  aria-label="Default select example" style="border-radius: 35px !important; border-top: 0 !important;  min-width: 170px !important;    max-width: 60px;  font-family: Quicksand, sans-serif !important;">
                         <option value="RD$10,000.00" selected>RD$10,000.00</option>
                         <option value="RD$15,000.00">RD$15,000.00</option>
                         <option value="RD$20,000.00">RD$20,000.00</option>
@@ -46,11 +47,11 @@
                         <option value="RD$5,000,000.00">RD$5,000,000.00</option>
                       </select>
                       <label for="mont-si">Monto deseado</label>
-            
             </div>
             <div class="form-floating" style="min-width: 60px !important;">
-                  <select id="form-sk" name="form-select" class="form-select "  aria-label="Default select example" style="border-radius: 2rem !important; border-top: 0 !important; border-left: 0 !important;   max-width: 160px; font-family: Quicksand, sans-serif !important;
-            ">
+                  <select id="form-sk" name="form-select" class="form-select "  aria-label="Default select example" 
+                  style="border-radius: 35px !important; border-top: 0 !important;   
+                  max-width: 170px; font-family: Quicksand, sans-serif !important;">
                         <option value="Gastos Personales" selected>Gastos Personales</option>
                         <option value="Saldar deudas">Saldar deudas</option>
                         <option value="Compra inmobilaria">Compra inmobilaria</option>
@@ -67,8 +68,7 @@
             </div>
       </section>
 
-
-      <div class="d-flex justify-content-end align-content-center mt-3 w-100 ">    
+      <div class="d-flex justify-content-end align-content-center mt-5 w-100 ">    
             <label class="bg-transparent scroll-btn text-black " style="width: 100px;" onclick='scrollToLast()'>Atras</label>
             <label class="scroll-btn" onclick="scrollToNext()">Siguiente 
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
@@ -76,5 +76,7 @@
                       </svg>
             </label>
       </div>
+
+</section>
 
 </section>

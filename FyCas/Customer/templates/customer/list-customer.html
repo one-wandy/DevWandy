@@ -225,11 +225,24 @@
  }
 }
 #div-list-customer button {
-      border-color: rgb(49, 49, 49);˛
+      border-color: rgb(49, 49, 49);
       color: rgb(49, 49, 49);
       font-family: Quicksand, sans-serif;
       font-weight: bold;
 
+}
+.contdiv button
+{
+      background-color: rgba(207, 207, 207, 0.69) !important;
+      padding: 5px 10px !important;
+      border-radius: 1rem !important;
+}
+@media (min-width: 600px) 
+{
+      .list-group-item 
+      {
+            max-width: 330px !important;
+      }
 }
 </style>
 
@@ -243,21 +256,21 @@
 <section id="section" class="rounded-0  d-flex  justify-content-center
       overflow-scroll p-1 w-100  vh-100  mt-0" >
       <div id="text-c" class="w-100 justify-content-center position-fixed flex-wrap" 
-            style="display: none; z-index: 15; bottom: 1rem;" >
+            style="display: none; z-index: 105; bottom: 1rem;" >
             <h5 class="position-absolute" style='bottom:5rem;'  >
                   "<span id="user-no"></span>"  no registrado
             </h5>
       </div>  
 
       <div id='div-list-customer' style="display: flex; border-radius: 2rem !important; min-width: 300px; width: 90%; height: 100vh;" 
-            class="w-100 overflow-scroll bg-white  flex-wrap justify-content-center">
-            <div class="position-sticky w-100 blur overflow-scroll top-0 p-3 " style="z-index: 100;">
+            class="w-100 overflow-scroll   flex-wrap justify-content-center">
+            <div class="position-sticky w-100 blur overflow-scroll top-0  " style="z-index: 100;">
                         {% include "components/btn-filter.html" %}
             </div>
             {% for c in customer %}
                   <li  id='li{{c.id}}' class="list-group-item position-relative  
-                        no-select bg-transparent m-1 p-0 m-0 mb-3 pb-5 h-auto" 
-                        style=" border-radius:1.3rem;  width: 100%; max-width: 20.2rem;  
+                        no-select  m-1 p-0 m-0 mb-3 pb-5 h-auto" 
+                        style=" border-radius:1rem;  width: 100% !important; 
                         box-shadow: 0px 2px 2px 1px rgba(227, 227, 227, 0.305) ; max-height: 20.5rem;    border: rgba(227, 227, 227, 0.905) 0px solid;">
                         <script>
                               function Credit(N) {
@@ -340,9 +353,9 @@
                                                       {{c.number}}
                                           </span>
                                          </a>
-                                         <span class="w-100" style="font-size: 14px;">
+                                         <span class="w-100 d-flex" style="font-size: 14px;">
                                                 <strong>
-                                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-person-vcard-fill text-black" viewBox="0 0 16 16">
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-person-vcard-fill  me-1" viewBox="0 0 16 16">
                                                       <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
                                                     </svg>
                                                 </strong> 
@@ -350,7 +363,7 @@
                                          </span>
                                          <span class="w-100   overflow-hidden d-flex" style="height: 2.5rem ">
                                                 <strong class="">     
-                                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-geo-alt-fill text-black" viewBox="0 0 16 16">
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-geo-alt-fill text-black me-1" viewBox="0 0 16 16">
                                                       <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
                                                 </strong>
                                                 <a class="" style=" text-transform: capitalize; font-size: 14px !important;" >

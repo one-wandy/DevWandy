@@ -1,76 +1,88 @@
 {% load static %}
 
+<section class="mt-5 sec-sl w-100 d-flex flex-wrap justify-content-center">
+<!-- <div class="w-100">
+      <h6 class="p-0 m-0 mt-2" 
+      style="font-size: 21px; margin: 0; padding: 0.5rem 1rem;
+      background: linear-gradient(to right, rgb(255, 133, 133), rgb(221, 137, 255), rgb(128, 179, 255));
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent;">
+            Grupo Fycas
+      </h6>
+</div> -->
 <div class="w-100 d-flex img-glouds align-content-center m-1 " 
-      style='background-color: #F6F6F6; max-width: 30rem; 
-      border-radius: 35px;'>
-      <div class="img-data d-flex flex-wrap align-content-center">
-            <img src="{% static "icons/doc(29).png" %}"
-                  width='164' height='194' alt="">
-      </div>
-      <div class='d-flex flex-wrap align-content-center'>
-            <h6>
-                  Datos Personales
-            </h6>
-            <p class="text-black-50 mt-4">
-                  Revisar minuciosamente antes de
-                  enviar el formulario, reduce la 
-                  posibilidad de errores
-            </p>
-      </div>
+style='background-color: #F6F6F6; max-width: 30rem; 
+border-radius: 35px;'>
+<div class="img-data d-flex flex-wrap align-content-center">
+      <img src="{% static "icons/doc(29).png" %}"
+            width='164' height='194' alt="">
+</div>
+<div class='d-flex flex-wrap align-content-center'>
+      <h6>
+            Datos Personales
+      </h6>
+      <p class="text-black-50 mt-4">
+            Revisar minuciosamente antes de
+            enviar el formulario, reduce la 
+            posibilidad de errores
+      </p>
+</div>
 </div>
 <section class=" d-flex flex-wrap align-content-center w-100 " style="max-width: 30rem;">
-      <div class="d-flex  justify-content-center w-100 mt-3">
-            <div class="form-floating w-50 mb-2 ">
-                  {{form.name}}
-                  <label for="id_name">Nombre </label>
-            </div>
-            <div class="form-floating w-50 mb-2">
-                  {{form.last_name}}
-                  <label for="id_last_name">Apellidos</label>
-            </div>
+<div class="d-flex  justify-content-center w-100 mt-4">
+      <div class="form-floating w-50 mb-2 ">
+            {{form.name}}
+            <label for="id_name">Nombre </label>
       </div>
+      <div class="form-floating w-50 mb-2">
+            {{form.last_name}}
+            <label for="id_last_name">Apellidos</label>
+      </div>
+</div>
 
-      <div class="d-flex   justify-content-center w-100">
-            <div class="form-floating w-50 mb-2  justify-content-end">
-                  {{form.dni}}
-                  <label for="id_dni">Cedula</label>
-            </div>
-            <div class="form-floating w-50 mb-2 ">
-                  <input type="text" class='d-none' name='date-customer' id='id_date_text'>
-                  <input type="date"   class='form-control '  id='id_date'>
-                  <label for="id_date">Nacimiento</label>
-            </div>
+<div class="d-flex   justify-content-center w-100">
+      <div class="form-floating w-50 mb-2  justify-content-end">
+            {{form.dni}}
+            <label for="id_dni">Cedula</label>
       </div>
+      <div class="form-floating w-50 mb-2 ">
+            <input type="text" class='d-none' name='date-customer' id='id_date_text'>
+            <input type="date"   class='form-control '  id='id_date'>
+            <label for="id_date">Nacimiento</label>
+      </div>
+</div>
 
-      <div  class="d-flex w-100">
-            <div class='form-floating nam mb-2 w-50  justify-content-center' style="border-radius: 2rem !important; ">
-                  <select id='idfl' name="form-select-sexo"  class="form-select w-100 "  aria-label="Default select example" style="border-radius: 21px !important; 
-                  ">
-                  <option  value="M" selected>                  
-                        Masculino</option>
-                        <option value="F" > Femenino</option>
-                  </select>
-                  
-                  <label for="idfl">Sexo</label>
-            </div>
-            <div class="form-floating mb-2 w-50 m-1">
-                  {{form.number}}
-                  <label for="id_number">Numero</label>
-            </div>
+<div  class="d-flex w-100">
+      <div class='form-floating nam mb-2 w-50  justify-content-center' style="border-radius: 2rem !important; ">
+            <select id='idfl' name="form-select-sexo"  class="form-select w-100 "  aria-label="Default select example" style="border-radius: 21px !important; 
+            ">
+            <option  value="M" selected>                  
+                  Masculino</option>
+                  <option value="F" > Femenino</option>
+            </select>
+            
+            <label for="idfl">Sexo</label>
       </div>
-      <div class="d-flex justify-content-end align-content-center mt-2 w-100 flex-wrap">    
-            <label class="bg-transparent scroll-btn text-black " style="width: 100px;" onclick='scrollToLast()'>Atras</label>
-            <label class="scroll-btn" onclick="scrollToNext()">Siguiente 
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-                  <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
-                      </svg>
-            </label>
+      <div class="form-floating mb-2 w-50 m-1">
+            {{form.number}}
+            <label for="id_number">Numero</label>
       </div>
+</div>
+<div class="d-flex justify-content-end align-content-center mt-5  w-100 flex-wrap">    
+      <label class="bg-transparent scroll-btn text-black " style="width: 100px;" onclick='scrollToLast()'>Atras</label>
+      <label class="scroll-btn" onclick="scrollToNext()">Siguiente 
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+            <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+                </svg>
+      </label>
+</div>
+
+</section>
 
 </section>
 
 <script>
-            function DNI(value) {
+      function DNI(value) {
           // Elimina todos los caracteres no numéricos
           var number_dni = value.replace(/\D/g, '');
           // Agrega guiones después de los primeros 3 dígitos y los siguientes 7 dígitos
@@ -85,7 +97,7 @@
         });
       
          //   Add number
-         function NumbersFomat(value) {
+      function NumbersFomat(value) {
           // Elimina todos los caracteres no numéricos
           var number = value.replace(/\D/g, '');
           // Agrega guiones después de los primeros 3 dígitos y los siguientes 7 dígitos
@@ -100,7 +112,7 @@
         });
 
 
-        
+
         //   Add number
       function NumbersFomatSalari(value) {
           var N = value.replace(/\D/g, '');
