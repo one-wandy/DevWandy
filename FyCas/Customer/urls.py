@@ -29,9 +29,10 @@ urlpatterns = [
 
       path("select/customer", views.ListCustomerSelect.as_view(), name='select-customer'),
       
+      path("customer-profile", views.CustomerProfile.as_view(), name='customer-profile'),
 
 
-      # Views Ajax
+      # Views Ajax``
       path("searching/customer", views_ajax.SearchCustomer, name="searching-customer"),
       path("verify/customer/", views_ajax.CustomerVerify, name="verify-true-customer"),
       path("verify-no/customer/", views_ajax.CustomerNoVerify, name="verify-false-customer"),

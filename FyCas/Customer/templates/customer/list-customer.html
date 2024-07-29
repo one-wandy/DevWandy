@@ -762,18 +762,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             })
       }
-      function DisableCustomer(id){
-            const url = 'disable-customer/';
-            $.ajax({
-                url: url,
-                data: {
-                  customer_id: id
-                },
-            })
-            document.getElementById('li'+id).classList.add('d-none')
-            BoxSearch()
-      }
-     
+
 
 
 
@@ -1161,6 +1150,20 @@ function OpenCloseBtn(btn_id) {
       }
   }
 
+  function DisableCustomer(id){
+            const url = 'disable-customer/';
+            $.ajax({
+                url: url,
+                data: {
+                  customer_id: id
+                },
+            })
+            document.getElementById('li'+id).classList.add('d-none')
+            BoxSearch()
+      }
+     
+
+
 
 </script>
-{% endblock  %}
+{% endblock  %}˝
