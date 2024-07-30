@@ -75,16 +75,16 @@
 
 
 </style>
-<section class="vh-100  rounded-0 bg-white bg-opacity-75 overflow-scroll">
+<section class="vh-100  sec-btn rounded-0 bg-white bg-opacity-75  overflow-scroll">
       <div class='btn-nav p-2 pb-2  ' >
             <div class="w-100 d-flex justify-content-center mb-1 mt-1">
-                  <img src="{% static "icons/doc(46).png" %}" 
-                  class="mt-2"  width='24' height="24" alt="">
-                  <h6 class="p-0 m-0 mt-2" 
+                  <!-- <img src="{% static "icons/doc(46).png" %}" 
+                  class="mt-2"  width='24' height="24" alt=""> -->
+                  <h5 class="p-0 m-0 mt-2" 
                   style="font-size: 21px; margin: 0; padding: 0.5rem 1rem;
                  ">
                         Grupo Fycas
-                  </h6>      
+                  </h5>      
             </div>
             <div class="mt-5 w-100">
                   <strong >
@@ -123,6 +123,12 @@
                         </span>
                   </button>
             </a>
+            <button>
+                  <img src="{% static "svg/menu.svg" %}" width='24' alt="">
+                  <span>
+                        Mensajeria
+                  </span>
+            </button>
             <div class="mt-4 w-100">
                   <strong >
                         Utilidades
@@ -163,14 +169,15 @@
                         Configuraciones
                   </span>
             </button>
+
             {% if customer %}
-            <div  class="w-100 div-menu-1 d-flex mt-4 flex-wrap  bg-transparent  position-sticky bottom-0  justify-content-center" style="height: 4rem;"> 
+            <div  class="w-100 div-menu-1 mb-2  d-flex mt-4 flex-wrap  bg-transparent  position-sticky   justify-content-center" style="height: 4rem; bottom: 1rem;"> 
                   <div class="w-100">
-                        <strong >
-                              Buscar
+                        <strong class="">
+                              ...
                         </strong>
                   </div>
-                <div class="d-flex blur" style="border-radius: 2rem;border: rgba(227, 227, 227, 0.905) 1px solid; ">
+                <div class="d-flex blur" style="border-radius: 2rem;border: rgba(227, 227, 227, 0.202) 1px solid; ">
                   <img src="{% static "icons/search.png" %}" class="mt-2 "
                   style="margin-left: 1.2rem; margin-right: 0.3rem;"  width='20' height="20" alt="">
                   <input type="text"  style="font-size: 12px;  height: 2.5rem;     

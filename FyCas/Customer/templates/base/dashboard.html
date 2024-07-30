@@ -16,9 +16,7 @@
 }
 
 .table-estadistic {
-
-    background-image: url(https://img.freepik.com/vector-gratis/fondo-lunares-arco-iris-degradado_23-2149585944.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1720569600&semt=ais_hybrid);
-    background-repeat: no-repeat; background-size: cover; border-radius: 0rem !important;
+    background-color: transparent !important;
 }
 canvas {
     /* background-color: #ffbebe */
@@ -46,9 +44,9 @@ canvas {
 
         <div class=" mt-1">
             <div style="width: 20rem; border-radius: 2rem; height: 7rem;
-            border: 1px rgb(225, 225, 225) solid !important;" class=" d-flex p-1" 
+            border: 1px rgba(225, 225, 225, 0.14) solid !important;" class=" d-flex p-1 bg-white bg-opacity-25" 
             >
-                <div class="w-50 d-flex flex-wrap">
+                <div class="w-50 d-flex flex-wrap ">
                     <strong class="text-center  d-flex justify-content-center align-content-center flex-wrap m-2 p-2 rounded-5 pb-1 pt-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cash-coin p-0 m-0 mt-1 me-2 " viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8m5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0"/>
@@ -58,7 +56,7 @@ canvas {
                           </svg>      Saldar D...
                     </strong>  
                     <strong class="text-center w-100 d-flex justify-content-center align-content-center flex-wrap m-2 rounded-5 p-2 pb-1 pt-1"
-                    style=";"> 88%</strong> 
+                    style=""> 88%</strong> 
                 </div>
                 <div class="w-50 p-0 mb-1">
                     <canvas id="activityChart" >
@@ -69,8 +67,8 @@ canvas {
         </div>
 
         <div style="width: 20rem; border-radius: 2rem; height: 7rem;
-             border: 1px rgb(225, 225, 225) solid !important;" class=" d-flex p-1 m-1 " >
-                <div class="w-50 d-flex flex-wrap">
+               border: 1px rgba(225, 225, 225, 0.14) solid !important;" class=" d-flex p-1 m-1 " >
+                <div class="w-50 d-flex flex-wrap bg-white bg-opacity-25">
                     <strong class="text-center  d-flex justify-content-center align-content-center flex-wrap m-2 p-2 rounded-5 pb-1 pt-1" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-half me-2" viewBox="0 0 16 16">
                             <path d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z"/>
@@ -88,9 +86,9 @@ canvas {
 
 
         <div style="width: 20rem; border-radius: 2rem; height: 7rem;
-        border: 1px rgb(225, 225, 225) solid !important;
+         border: 1px rgba(225, 225, 225, 0.14) solid !important;
         " class=" d-flex p-1 m-1" >
-            <div class="w-50 d-flex flex-wrap " >
+            <div class="w-50 d-flex flex-wrap bg-white bg-opacity-25" >
                 <strong class="text-center  d-flex justify-content-center align-content-center flex-wrap m-2 p-2 rounded-5 pb-1 pt-1" >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-piggy-bank me-2 p-0" viewBox="0 0 16 16">
                         <path d="M5 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.138-1.496A6.6 6.6 0 0 1 7.964 4.5c.666 0 1.303.097 1.893.273a.5.5 0 0 0 .286-.958A7.6 7.6 0 0 0 7.964 3.5c-.734 0-1.441.103-2.102.292a.5.5 0 1 0 .276.962"/>
@@ -121,9 +119,9 @@ canvas {
     </strong>
 
     </span>
-    <div class="  table-estadistic m-4 mt-1 bor blur " style=" border-radius: 1.5rem !important;">
-        <div class="blur overflow-hidden bg-white bg-opacity-75 p-0"  style="border-radius: 1.5rem;">
-            <div class="chart-container  m-2">
+    <div class="  table-estadistic m-4 mt-1  border-0 " style=" border-radius: 1.5rem !important;">
+        <div class=" overflow-hidden  p-0 border-0"  style="border-radius: 0.9rem;">
+            <div class="chart-container  bg-white bg-opacity-25   m-2">
                 <canvas id="leadsChart"></canvas>
             </div>
         </div>
@@ -213,7 +211,7 @@ var ctxs = document.getElementById('activityChart').getContext('2d');
             data: {
                 datasets: [{
                     data: [activity, 100 - activity],
-                    backgroundColor: ['#bae0ff', '#ffffff'],
+                    backgroundColor: ['#bae0ff', ''],
                     borderWidth: 1
                 }]
             },
@@ -250,7 +248,7 @@ var ctxs = document.getElementById('activityChart').getContext('2d');
             data: {
                 datasets: [{
                     data: [activity, 100 - activity],
-                    backgroundColor: ['#c9c7ff', '#ffffff'],
+                    backgroundColor: ['#c9c7ff', ''],
                     borderWidth: 1
                 }]
             },
@@ -285,7 +283,7 @@ var ctxs = document.getElementById('invertir').getContext('2d');
             data: {
                 datasets: [{
                     data: [activity, 100 - activity],
-                    backgroundColor: ['#c5ffaa', '#ffffff'],
+                    backgroundColor: ['#c5ffaa', ''],
                     borderWidth: 1
                 }]
             },

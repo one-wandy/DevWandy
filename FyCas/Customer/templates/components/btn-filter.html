@@ -6,7 +6,8 @@
       border-radius: 2rem !important;
       border: 1px rgb(225, 225, 225) solid !important;
       font-size: 13px;
-      color: rgb(63, 63, 63) !important; 
+      height: 2.3rem;
+      color: rgb(89, 89, 89) ; 
       font-family: Quicksand, sans-serif !important; 
       background-color: rgba(255, 255, 255, 0.663);
 }
@@ -15,15 +16,19 @@ strong
       font-size: 12px;
       color: gray;
 }
+#n-1123 
+{
+      color: black;
+}
 </style>
-<div class="btn-filter  d-flex overflow-scroll w-100">
+<div class="btn-filter  d-flex overflow-scroll w-100 ">
       <button class="border-0 p-2">
             <form action="" method="post" class='w-100 border-0  d-flex justify-content-end align-content-center flex-wrap'>
                   {% csrf_token %}
                   <div class="d-flex " >
                   <label for="n-1123">Filtrar por cantidad: </label>
-                        <input id="n-1123" type="number" class='m-0 border-0 form-control ' 
-                        style='height: 1.4rem; width: 4rem; background-color: rgb(240, 240, 240);' value='10' name='20-customer' >
+                        <input id="n-1123" type="number" class='m-0 pb-2 border-0 form-control bg-transparent ' 
+                        style='height: 1.6rem; width: 5rem; background-color: rgb(240, 240, 240);' value='10' name='20-customer' >
                   </div>
                   <button class='p-0 border-0 me-2' style="border: none !important; background-color: transparent !important;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-filter  text-primary border-0 bg-transparent" viewBox="0 0 16 16">
