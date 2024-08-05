@@ -101,7 +101,7 @@
             </a>
             <a href="{% url "customer:add-customer" %}">
                   <button>
-                        <img src="{% static "svg/add-user.svg" %}" width='24' alt="">
+                        <img src="{% static "icons/mas.png" %}" width='24' alt="">
                         <span>
                               Agregar 
                         </span>
@@ -119,16 +119,18 @@
                   <button>
                         <img src="{% static "svg/list.svg" %}" width='24' alt="">
                         <span>
-                              Seguimiento 
+                              Deudores 
                         </span>
                   </button>
             </a>
-            <button>
-                  <img src="{% static "svg/menu.svg" %}" width='24' alt="">
-                  <span>
-                        Mensajeria
-                  </span>
-            </button>
+            <a  href="{% url "customer:mensajeria" %}">
+                  <button>
+                        <img src="{% static "icons/msj.png" %}" width='24' alt="">
+                        <span>
+                              Mensajeria
+                        </span>
+                  </button>
+            </a>
             <div class="mt-4 w-100">
                   <strong >
                         Utilidades

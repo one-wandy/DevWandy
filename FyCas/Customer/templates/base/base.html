@@ -51,6 +51,16 @@
       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
   <style>
+      /* Styling the scrollbar */
+      ::-webkit-scrollbar {
+            width: 0px; /* Remove scrollbar width */
+      }
+
+      /* Hide scrollbar in Firefox */
+      scrollbar-width: none;
+
+      /* Hide scrollbar in IE and Edge */
+      -ms-overflow-style: none;
       p
       {
             font-size:14px;
@@ -460,7 +470,7 @@ select option {
     /* Improving visualization in light mode */
   </style>
 
-  <body style="background-image: url('/Customer/static/bg-1.png');
+  <body style="background-image: url('/Customer/static/bg-6.png');
   background-repeat: no-repeat; background-size: cover; border-radius: 2rem !important;">
       <section   class=" flex-wrap overflow-hidden  load bg-white  bg-opacity-25 blur align-content-center
             w-100 h-100 position-fixed  top-0" style="z-index: 1000; ">
@@ -545,7 +555,7 @@ select option {
                   </span>
             </div>
           </div>
-          <section class="blur d-flex rounded-0">
+          <section class=" d-flex blur rounded-0">
             <div class="nav-2" style=" display: none;
             width: 19rem; border-radius: 2.3rem !important; height: max-content;">
                   <div style="height: max-content;" class="mb-3">
@@ -555,7 +565,7 @@ select option {
             <style>
                   
             </style>
-            <style>
+            <!-- <style>
                   @media (prefers-color-scheme: dark) {
                         body {
                                 background-color: black !important;
@@ -570,6 +580,8 @@ select option {
                         .main .blur
                         {
                               color: white !important;
+                              -webkit-backdrop-filter: blur(70px) !important;
+                              backdrop-filter: blur(70px) !important;
                         }
                         .main, .text-black 
                         {
@@ -647,10 +659,11 @@ select option {
                         .sec-btn button:hover{
                               box-shadow: none !important;
                         }
-                        .btn-nav span 
+                        .btn-nav span  
                         {
                               color:rgba(255, 255, 255, 0.741) !important;
                         }
+                        
                         .btn-nav img
                         {
                               filter: grayscale(50%) invert(80%) sepia(0%) !important;
@@ -660,9 +673,9 @@ select option {
                         }
                   }
 
-            </style>
+            </style> -->
             <div style="display: flex; border-radius: 0 !important; min-width: 300px; width: 90%; height: 100vh;" 
-            class="w-100 main overflow-scroll bg-white bg-opacity-75  flex-wrap justify-content-center">
+            class="w-100 main  overflow-scroll bg-white bg-opacity-50  flex-wrap justify-content-center">
                   {% block content %}
                   {% endblock  %}      
             </div>

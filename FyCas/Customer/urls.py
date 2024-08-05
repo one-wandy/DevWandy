@@ -30,6 +30,7 @@ urlpatterns = [
       path("select/customer", views.ListCustomerSelect.as_view(), name='select-customer'),
       
       path("customer-profile", views.CustomerProfile.as_view(), name='customer-profile'),
+      path('mensajeria', views.Mensensajeria.as_view(), name='mensajeria'),
 
 
       # Views Ajax``

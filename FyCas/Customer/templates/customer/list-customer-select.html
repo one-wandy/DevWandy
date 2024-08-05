@@ -1,44 +1,35 @@
-{% include "base/base.html" %}
+{% extends "base/base.html" %}
 {% block content %}
 
-<section class='container-fluid d-flex flex-wrap  justify-content-center' style='z-index: 100;'>
-      <div class='w-100'>
-            Listado de clientes <br>
-            Los clientes que están marcados, son los clientes que actualmente tienen un pago atrasado <br>
-            <p class='text-black-50' style='font-size: 12px;'>
-                  1) Clientes en seguimientos, son los que no hicieron caso a las alertas del sistemas, estos se le asignarán al departamento de "Seguimiento" <br>
-                  2) Clientes visitar, serán agregados a las listas de los mensajeros
-            </p>
+
+      <div class='d-flex  justify-content-end  position-fixed top-0 p-2 end-0'
+            style="z-index: 10;">
+            <div class="bg-white opacity-75  d-flex  ps-3 p-1" 
+                  style="border-radius: 2rem; width: 19.9rem; 
+                  height: 3rem; border: 1px solid rgba(170, 170, 170, 0.398);" >
+                  <input type="text" placeholder="Filtrar deudor"  class=" border-0 bg-transparent " style="font-size: 14px; width: 18rem;">
+                  <button class="send bg-primary  d-flex justify-content-center align-content-center flex-wrap rounded-circle border-0 text-white p-1" 
+                  style="height: 2rem; width: 2rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+                              <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z"/>
+                              </svg>
+                  </button>
+            </div>
       </div>
 
-
-
-      <div class='d-flex flex-wrap justify-content-center'>
-            <div class="form-floating mb-3" style='width: 320px;'>
-                  <input type="date" class="form-control" id="floatingInput" placeholder="">
-                  <label for="floatingInput">Fecha en la que vence</label>
-            </div>
-            <div class="form-floating">
-                  <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                        <option selected>Todos</option>
-                        <option value="1">Al día</option>
-                        <option value="2">Atrasados</option>
-                        {% comment %} <option value="3">Three</option> {% endcomment %}
-                  </select>
-                  <label for="floatingSelect">Filtrar como </label>
-            </div>
-
-            {% comment %} <button style='height: max-content;'>
-                  Agregar deudor
-            </button> {% endcomment %}
-      </div>
-
-      {% for c in c %}
-            <div class='card mt-1 p-2 m-1' style='border-radius: 1.5rem;  width: 100%; max-width: 420px;'>
+      <div class="mt-5 d-flex w-100 pt-4 flex-wrap" 
+            style="height: max-content;">
+            {% for c in c %}
+            <div class='card mt-1 p-2 m-1 bg-white opacity-75 ' 
+                  style='border-radius: 1.5rem;  width: 100%; max-width: 315px;
+                  height: 10rem; border: 1px solid rgba(170, 170, 170, 0.281);'>
                   <div class="form-check">
-                        {{ c.name }} {{ c.last_name }} <br>
-                        <span class='text-capitalize text-black-50' style='font-size:12px;'> {{ c.company }} - {{ c.day_created|date:"F/d/Y" }}</span> <br>
-                        
+                       <strong>    
+                              <img src="/Customer/static/bg-4.jpg" alt=""  
+                              style="width: 40px; height: 40px; border: 4px solid rgba(255, 225, 225, 0.631);"
+                              class="rounded-circle me-1">
+                              {{ c.name }} {{ c.last_name }} </strong> <br>
+                        <span class='text-capitalize text-black-50' style='font-size:12px;'> {{ c.company }} - {{ c.day_created|date:"F/d/Y" }} </span> <br>
                         <div class='mt-2'>
                               <span style='font-size:12px;' class='text-black-50'>
                                     El estado del deudor indica que esta en modo
@@ -52,60 +43,16 @@
                         {% else %}
                         <input onclick='TurnDebitCustomerFollow(this.value)'  class="form-check-input" type="checkbox" value="{{c.id}}" id="s{{ c.id }}">
                         <label  class="form-check-label ms-1" for="s{{ c.id }}">
-                              Seguir <br>
+                             <span class="text-black-50"> Seguir</span>
+                              <br>
                         </label>
                         {% endif %} 
                   </div>
 
-                  <div class="form-check">
-                        {% if c.debit_visit %}
-                        <input class="form-check-input" type="checkbox" value="" checked id="l{{ c.id }}">
-                        <label onclick='TurnDebitCustomer(this.id)' id='{{ c.id }}' class="text-primary form-check-label ms-1" for="l{{ c.id }}">
-                              Visitando
-                        </label>
-                        {% else %}
-                        <input onclick='TurnDebitCustomer(this.value)' class="form-check-input" type="checkbox" value="" id="l{{ c.id }}">
-                        <label  id='{{ c.id }}' class="form-check-label ms-1" for="l{{ c.id }}">
-                              Visitar
-                        </label>
-                        {% endif %}  
-                        <br>
-                        <div class='mt-2'>
-                              <span style='font-size:12px;' class='text-black-50'>
-                                    Si el esta activo el deudor tiene mas de un pago atrasado
-                              </span>
-                        </div>
-                        <div class=" w-100 m-0 p-0  form-check form-switch">
-                              {% if c.debit == True %}
-                              <input onclick='TurnDebitCustomerActive(this.value)' value='{{c.id}}' class="form-check-input" type="checkbox" role="switch" id="q{{c.id}}" checked>
-                              <label class=" text-primary ms-1 form-check-label" for="q{{c.id}}" >
-                                    Activo      
-                              </label>
-                              {% else %}
-                              <input class="form-check-input" type="checkbox" value='{{c.id}}' role="switch" id="q{{c.id}}" onclick='TurnDebitCustomerActive(this.value)'>
-                              <label  class="  ms-1 form-check-label" for="q{{c.id}}">
-                                    Activo      
-                              </label>
-                              {% endif %}
-                        </div>
-                  </div>
-
-                  <div class='mt-2 p-1'>
-                        <div class="form-floating">
-                              <select style='width: 285px !important;' class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                                    <option selected>...</option>
-                                    <option value="1">Xavier</option>
-                                    <option value="1">Grabiel</option>
-                                    <option value="1">Dawlin</option>
-                                    <option value="2">Wanda</option>
-                                    {% comment %} <option value="3">Three</option> {% endcomment %}
-                              </select>
-                              <label for="floatingSelect">Asignar a: </label>
-                        </div>
-                  </div>
             </div>
       {% endfor %}
-</section>
+      </div>
+
 
 <script>
       function TurnDebitCustomer(id) {
