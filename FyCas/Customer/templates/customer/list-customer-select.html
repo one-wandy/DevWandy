@@ -1,8 +1,8 @@
 {% extends "base/base.html" %}
 {% block content %}
 
-
-      <div class='d-flex  justify-content-end  position-fixed top-0 p-2 end-0'
+<!-- 
+      <div class='d-flex  justify-content-end bg-white opacity-50 position-fixed top-0 p-2 end-0'
             style="z-index: 10;">
             <div class="bg-white opacity-75  d-flex  ps-3 p-1" 
                   style="border-radius: 2rem; width: 19.9rem; 
@@ -15,12 +15,13 @@
                               </svg>
                   </button>
             </div>
-      </div>
+      </div> -->
 
-      <div class="mt-5 d-flex w-100 pt-4 flex-wrap" 
+      <div class=" w-100 pt-4 h-100 bg-white bg-opacity-50 " 
             style="height: max-content;">
+           <section class="w-100 d-flex flex-wrap">
             {% for c in c %}
-            <div class='card mt-1 p-2 m-1 bg-white opacity-75 ' 
+            <div class='card mt-1 p-2 m-1 bg-white  ' 
                   style='border-radius: 1.5rem;  width: 100%; max-width: 315px;
                   height: 10rem; border: 1px solid rgba(170, 170, 170, 0.281);'>
                   <div class="form-check">
@@ -51,6 +52,7 @@
 
             </div>
       {% endfor %}
+           </section>
       </div>
 
 
