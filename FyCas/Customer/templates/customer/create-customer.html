@@ -127,8 +127,7 @@ body
 
 </style>
 <section  class="position-relative  container-fluid  vh-100 bg-transparent overflow-hidden   p-1 mb-5 ">
-            <form  method="post" class="form-add-c m-0 " enctype='multipart/form-data'>
-                  {% csrf_token %}
+ 
                         <div class="sL  align-content-center justify-content-center  position-relative" >
                               <img src="{% static "svg/more.svg" %}" width='26' style='max-width:26px; ' alt="" class="position-absolute top-0 end-0 m-2" onclick="BtnMoreSession()">
                               <div id="btn-more-session" class="position-absolute top-0  d-none  end-0 vh-100 vw-100   blur bg-white d-flex flex-wrap align-content-center justify-content-center bg-opacity-10 p-3" style="  border-radius: 2rem; z-index: 13;" >
@@ -137,7 +136,8 @@ body
                                           <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
                                               </svg>
                                           <div style="width: 340px; height:  max-content; border-radius: 2.5rem;" class=" m-1 card mb-4 p-3 bg-transparent">
-                                                <form class="login-fast bg-transparent "> 
+                                                <form class="login-fast bg-transparent " method="post" enctype='multipart/form-data'> 
+                                                      {% csrf_token %}
                                                       <div class="text-center mb-3">
                                                             <strong style="font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 16px;">Iniciar Session</strong>
                                                       </div>
@@ -216,6 +216,8 @@ body
                               <div class="d-flex justify-content-center  ">
                                     <img src="{% static "icons/doc(28).png" %}" class="" width='254' height="280" alt="">
                               </div>
+                              <form  method="post" class="form-add-c m-0 " enctype='multipart/form-data'>
+                                    {% csrf_token %}
                             <div class="dn text-center p-3 " style='max-width: 700px;'>
                                     <h1 style="text-align: center;" >
                                           ¡Grupo FyCas acaba de expandir sus limites!
