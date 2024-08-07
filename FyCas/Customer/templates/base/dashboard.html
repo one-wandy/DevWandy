@@ -6,6 +6,16 @@
 
 
 <style>
+          .text-danger
+      {
+            color: #ff7171 !important;
+           
+      }
+    .bg-danger
+    {
+        background-color: #ff7171 !important;
+        color: white !important;
+    }
       .chart-container {
 
     border-radius: 2rem;
@@ -33,19 +43,78 @@ canvas {
     background-color: #ffffff;
 }
 </style>
-<section class="bg-white opacity-50">
-    <section class="w-100 mt-3 ">
-        <div class=" d-flex  flex-wrap ms-3  " style="max-height: 40rem;"> 
-            <strong class="w-100 text-black-50">
+<section class="bg-white bg-opacity-50">
+    <div class="w-100 d-flex justify-content-start pt-2 pe-3">
+        <div class=" bg-white bg-opacity-25 pe-3 ps-1" style="width: max-content; height: 2.2rem; border-radius: 2rem;">
+            <div class="d-flex justify-content-end  me-2" style="line-height: 0px;">
+                <div class="" style="margin-top: 1px;">
+                    <img src="static/bg-2.jpg" width="30" height="30"  class="rounded-circle me-2" alt="">
+                </div>
+                <div>
+                    <h6 style="font-size: 12px;" class="text-black-50">
+                        {{request.user.username}}
+                    </h6>
+                    <span>
+                       {{request.user.first_name}} {{request.user.last_name}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <button  onclick="BtnCloseSession()" class="position-absolute end-0 rounded-circle bg-transparent border-0">
+            <img src="{% static "svg/more.svg" %}" width='26'  style='max-width:26px;' alt="">
+        </button> 
+    </div>
+    <div id="btn-close-session" class="position-absolute top-0  d-none  end-0 vh-100 vw-100   blur bg-white d-flex flex-wrap align-content-center justify-content-center bg-opacity-10 p-3" style="  border-radius: 2rem; z-index: 1003;" >
+        <section class="position-relative ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill text-danger position-absolute top-0 end-0" viewBox="0 0 16 16" onclick="BtnCloseSession()">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                </svg>
+            <div style="width: 340px; height:  max-content; border-radius: 2.5rem;" class=" m-1 card mb-4 p-3 bg-transparent">
+                  <form class="login-fast bg-transparent "> 
+                        <div class="text-center mb-3">
+                              <strong style="font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 16px;">Cerrar Session</strong>
+                        </div>
+                        <div class="mb-2 mt-3">
+                              <!-- <label for="cedula-fast" class="form-label"> 
+                              Cedula </label> -->
+                              <input type="cedula-fast" disabled class="form-control" id="cedula-fast" name="cedula-fast" placeholder="{{request.user.username}}" aria-describedby="cedula-fastHelp" style="   font-size: 14px !important;
+                              color: rgb(136, 136, 136);
+                              height: 3rem !important;
+                              border-radius: 1rem !important;">
+                        </div>
+                        <div class="mb-3">
+                              <!-- <label for="numero-fast" class="form-label">Numero</label> -->
+                              <input type="numero-fast" disabled class="form-control" id="numero-fast" 
+                              name="numero-fast"
+                              placeholder="849-343-****" style="font-size: 14px !important;
+                              color: rgb(136, 136, 136);
+                              height: 3rem !important;
+                              border-radius: 1rem !important;">
+                        </div>
+                        <div>
+                              <p class="text-center text-black-50" style="font-size: 12px;">Al cerrar session, no podras acceder a las funciones de este usuario</p>
+                        </div>
+                       <div class="w-100 d-flex justify-content-center flex-wrap">
+                        
+                        <div class='w-100 justify-content-center  mt-2 d-flex'>
+                              <button class="scroll-btn bg-danger" style="width: 11rem;" >Cerrar Session</button>
+                        </div>
+                       </div>
+                  </form>
+            </div>
+      </section>
+    </div>
+
+    <section class="w-100 mt-5  p-0">
+        <div class=" d-flex  flex-wrap justify-content-start   " style="max-height: 40rem;"> 
+            <strong class="w-100 text-black-50 ms-3">
               Rendimiento de la empresa
              </strong> 
-             <button class="position-absolute end-0 rounded-circle bg-transparent border-0">
-                <img src="{% static "svg/more.svg" %}" width='26'  style='max-width:26px;' alt="">
-            </button>
+             
     
-            <div class=" mt-1">
-                <div style="width: 20rem; border-radius: 2rem; height: 7rem;
-                border: 1px rgba(90, 90, 90, 0.414) solid !important;" class=" d-flex p-1 bg-white bg-opacity-25" 
+            <div class=" mt-1 d-flex flex-wrap">
+                <div style="max-width: 24rem; border-radius: 2rem; height: 7rem;
+                border: 1px rgba(90, 90, 90, 0.414) solid !important;" class=" d-flex p-1 bg-white bg-opacity-25 m-1 w-100" 
                 >
                     <div class="w-50 d-flex flex-wrap ">
                         <strong class="text-center  d-flex justify-content-center align-content-center flex-wrap m-2 p-2 rounded-5 pb-1 pt-1" >
@@ -67,7 +136,7 @@ canvas {
                 </div>
             </div>
     
-            <div style="width: 20rem; border-radius: 2rem; height: 7rem;
+            <div style="width: 24rem; border-radius: 2rem; height: 7rem;
                    border: 1px rgba(90, 90, 90, 0.414) solid !important;" class=" d-flex p-1 m-1 " >
                     <div class="w-50 d-flex flex-wrap bg-white bg-opacity-25">
                         <strong class="text-center  d-flex justify-content-center align-content-center flex-wrap m-2 p-2 rounded-5 pb-1 pt-1" >
@@ -86,7 +155,7 @@ canvas {
             </div>
     
     
-            <div style="width: 20rem; border-radius: 2rem; height: 7rem;
+            <div style="width: 24rem; border-radius: 2rem; height: 7rem;
              border: 1px rgba(90, 90, 90, 0.414) solid !important;
             " class=" d-flex p-1 m-1" >
                 <div class="w-50 d-flex flex-wrap bg-white bg-opacity-25" >
@@ -121,9 +190,9 @@ canvas {
     
         </span>
 
-            <div class=" overflow-hidden bg-white  p-0 border-0"  style="border-radius: 2rem; border: 1px rgba(90, 90, 90, 0.414) solid !important;">
+            <div class=" overflow-hidden bg-white bg-opacity-50  p-0 m-2 border-0"  style="border-radius: 2rem; border: 1px rgba(90, 90, 90, 0.414) solid !important;">
                 <div class="chart-container     m-2">
-                    <canvas id="leadsChart" ></canvas>˝˝
+                    <canvas id="leadsChart" ></canvas>
                 </div>
             </div>
         
@@ -137,11 +206,11 @@ const ctx = document.getElementById('leadsChart').getContext('2d');
 const leadsChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', ],
         datasets: [
             {
                 label: 'Aprobados',
-                data: [0, 10, 4, 6, 15, 8, 7,0,0,0,0,0],
+                data: [0, 10, 4, 6, 15, 8, 7,0,],
                 fill: true,
                 tension: 0.4,
                 backgroundColor: '#a1c4fd96',
@@ -311,5 +380,12 @@ var ctxs = document.getElementById('invertir').getContext('2d');
                 }
             }
         });
+
+        function BtnCloseSession() {
+      var btnMoreSession = document.querySelector('#btn-close-session');
+      if (btnMoreSession) {
+            btnMoreSession.classList.toggle('d-none');
+      }
+}
 </script>
 {% endblock  %}

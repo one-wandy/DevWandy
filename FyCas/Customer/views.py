@@ -16,8 +16,8 @@ from datetime import datetime
 import sys
 from num2words import num2words
 from django.contrib.humanize.templatetags.humanize import intcomma
-
-
+from django.contrib.auth import logout, login, authenticate
+from django.contrib.auth.models import User
 
 
 class Dashboard(TemplateView, Options):
@@ -53,22 +53,39 @@ class AddCustomer(CreateView, Options):
     
     
     def post(self, request, *args, **kwargs):
-        f = self.form_class(request.POST, request.FILES)
-        if f.is_valid():
-            f.instance.nacimiento = request.POST.get('date-customer')
-            f.instance.monto_requerido = request.POST.get('form-select-monto')
-            f.instance.fines = request.POST.get('form-select')
-            print(request.POST.get('form-select-sexo'))
-            f.instance.sexo =  request.POST.get('form-select-sexo')
-            f.instance.name = f.instance.name.title()
-            f.instance.last_name = f.instance.last_name.title()
-            f.instance.municipio = request.POST.get('form-select-muni')
-            f.save()
-            # Creando Carpeta para el Cliente
-            self.FileCreate(f.instance.name, f.instance.last_name)
-            return redirect(reverse('maps:maps-customer'))
+        if request.POST.get('cedula-fast') != None:
+                username = request.POST.get("cedula-fast")
+                password = request.POST.get("numero-fast")
+                try:
+                    user = authenticate(username=username, password=password,)
+                    print(user)
+                    if user is not None:
+                        login(request, user)
+                        return redirect(reverse('customer:dashboard'))
+                    else:
+                        autenticado = False
+                        mensaje = f"({username} o {password }) " 
+                except User.DoesNotExist:
+                    autenticado = False
+                return redirect(reverse('customer:add-customer'))
+        
         else:
-            return redirect(reverse('customer:add-customer'))
+            f = self.form_class(request.POST, request.FILES)
+            if f.is_valid():
+                f.instance.nacimiento = request.POST.get('date-customer')
+                f.instance.monto_requerido = request.POST.get('form-select-monto')
+                f.instance.fines = request.POST.get('form-select')
+                print(request.POST.get('form-select-sexo'))
+                f.instance.sexo =  request.POST.get('form-select-sexo')
+                f.instance.name = f.instance.name.title()
+                f.instance.last_name = f.instance.last_name.title()
+                f.instance.municipio = request.POST.get('form-select-muni')
+                f.save()
+                # Creando Carpeta para el Cliente
+                self.FileCreate(f.instance.name, f.instance.last_name)
+                return redirect(reverse('maps:maps-customer'))
+            else:
+                return redirect(reverse('customer:add-customer'))
 
 # #Crear una funcion al crear clientes 
 # import os

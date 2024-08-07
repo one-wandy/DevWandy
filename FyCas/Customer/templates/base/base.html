@@ -683,40 +683,50 @@ select option {
              
             
 <style>
-      #div-gregar section a  
+      #div-gregar section span
       {
-            width: 7rem;
-            background-color: #ffffff85;
-            height: 3.9rem;
+           font-size: 10px !important;
+      } 
+      #div-gregar section 
+      {
+            display: none !important;
+
+            border-radius: 50%;
             padding: 0;
-            line-height: 16px;
+            line-height: 1px;
             margin: 0.1rem;
       }
+      .btn-movile a
+      {
+            display: flex;
+            width: 9rem;
+            height: 2rem;
+            background-color: #f3f3ff !important;
+            margin: 0.3rem;
+            padding: 0.1rem;
+
+      }
+
+      #div-agregar .btn-movile span
+      {
+            width: 20px;
+      }
+      .text-danger
+      {
+            color: #ff7171 !important;
+           
+      }
+
 </style>
             
-<div id="div-gregar" class="position-fixed  blur  top-0 bg-white bg-opacity-10 h-100 w-100 justify-content-center"  
+<div id="div-gregar" class="position-fixed flex-wrap  blur  top-0 bg-white bg-opacity-75 h-100  align-content-center w-100 justify-content-center"  
 style="display: none; z-index: 11; ">
 
-<div id="div-notifycations"  class="bg-white  shadow bg-opacity-75 blur m-2 p-2  w-100 " style="display: none; z-index: 10; top: 1rem; max-width: 620px; border-radius: 1.5rem !important;  height: max-content;">
-      <button  class="border-0 bg-transparent m-0 " style="height: 0.5rem; z-index: 10; box-shadow: none !important;">
-            Notificaciones
-      </button>
-      {% if solicitud %}
-      
-
-      {% else %}
-      <p class='text-black-50'>
-            Aun no hay nuevos usuarios, recargue la pagina puede solucionar algun problema <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
-            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
-            </svg>
-      </p>
-      {% endif %}
-      
-</div>
+<div class="d-flex justify-content-start w-100 ps-2 mt-5">
 
 {% if day_pay %}
-<div class='bg-white bg-opacity-75 mt-2  text-center shadow p-3 pt-1 pb-1' 
+
+<div class='bg-white bg-opacity-75 mt-2  text-center  p-3 pt-1 pb-1' 
       style='height: max-content; border-radius: 2rem;'>
       <button  class="border-0 p-0  bg-transparent  m-1" style="height: 0.5rem; z-index: 10; box-shadow: none !important;">
             <!-- Dia de cobro -->
@@ -741,13 +751,97 @@ style="display: none; z-index: 11; ">
 
 </div>
       {% endif %}
+     
+</div>
+         
+        <div class="w-100 m-2 position-relative card " style="border-radius: 2rem;">
+            <button onclick="Menu()"  class="  bg-transparent  border-0 rounded-circle    m-0  text-white  position-absolute top-0 end-0 " 
+            style=" margin-top: 1px !important; max-height: 2.5rem !important;
+            z-index: 10;
+            ">               
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill text-danger position-absolute top-0 end-0" viewBox="0 0 16 16" onclick="BtnCloseSession()">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                </svg>
+            </button> 
+            <div class="btn-movile   position-relative justify-content-center  d-flex flex-wrap   m-1 bg-white justify-content-center " style=" height: 14rem; border-radius: 1.5rem;">
+         
       
-<div class="div shadow bg-white bg-opacity-75   position-absolute   position-relative d-flex  flex-wrap   justify-content-center p-2 pt-0  m-2 " style=" border-radius: 2rem; 
-bottom: 3rem;
+                  <div class="w-100 mt-2">
+                        <h6 class="ms-3">
+                         Menu de Opciones
+                        </h6>
+                  </div>
+                  <a href="{% url "customer:add-customer" %}" >
+                        <img src="{% static "icons/mas.png" %}" width='30' height="30" class="me-2" alt="">
+                        <span class=" p-2 bg-white justify-content-center text-center d-flex align-content-center flex-wrap " style="border: 1px solid rgb(205, 205, 205); width: 11rem; border-radius: 1rem;">
+                              Agregar
+                        </span>
+                  </a>
+                  <a href="{% url "customer:list-customer" %}" >
+                        <img src="{% static "svg/user.svg" %}" width='24' class="me-2" alt="">
+                        <span class=" p-2 bg-white justify-content-center text-center d-flex align-content-center flex-wrap " style="border: 1px solid rgb(205, 205, 205); width: 11rem; border-radius: 1rem;">
+                              Clientes
+                        </span>
+                  </a>
+                  <a href="{% url "customer:dashboard" %}" >
+                        <img src="{% static "icons/dashboard.png" %}" width='24'  class="me-2" alt="">
+                        <span class=" p-2 bg-white justify-content-center text-center d-flex align-content-center flex-wrap " style="border: 1px solid rgb(205, 205, 205); width: 11rem; border-radius: 1rem;">
+                              Dashboard
+                        </span>
+                  </a>
+                  <a onclick="Cal()">
+                        <img src="{% static "svg/calculator.svg" %}" width='24'   class="me-2" alt="">
+                        <span class=" p-2 bg-white justify-content-center text-center d-flex align-content-center flex-wrap " style="border: 1px solid rgb(205, 205, 205); width: 11rem; border-radius: 1rem;">
+                              Calculadora
+                        </span>
+                  </a>
+                  <a href="{% url "customer:select-customer" %}">
+                        <img src="{% static "svg/list.svg" %}" width='24'   class="me-2" alt="">
+                        <span class=" p-2 bg-white justify-content-center text-center d-flex align-content-center flex-wrap " style="border: 1px solid rgb(205, 205, 205); width: 11rem; border-radius: 1rem;">
+                              Deudores
+                        </span>
+                  </a>
+                  <a >
+                        <img src="{% static "svg/config.svg" %}" width='24'   class="me-2" alt="">
+                        <span class=" p-2 bg-white justify-content-center text-center d-flex align-content-center flex-wrap " style="border: 1px solid rgb(205, 205, 205); width: 11rem; border-radius: 1rem;">
+                              Configuracion
+                        </span>
+                  </a>
+                  <div class="w-100 mt-2  text-center" style="font-size: 8px;">
+                      <span>V</span>   <strong class="">
+                         Paris 2.0
+                        </strong>
+                  </div>
+            </div>
+        </div>
+  
+
+<div id="div-notifycations"  class="bg-white d-none  bg-opacity-75 blur m-2 p-2  w-100 " style="display: none; z-index: 10; top: 1rem; max-width: 620px; border-radius: 1.5rem !important;  height: max-content;">
+      <button  class="border-0 bg-transparent m-0 " style="height: 0.5rem; z-index: 10; box-shadow: none !important;">
+            Notificaciones
+      </button>
+      {% if solicitud %}
+      
+
+      {% else %}
+      <p class='text-black-50'>
+            Aun no hay nuevos usuarios, recargue la pagina puede solucionar algun problema <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+            </svg>
+      </p>
+      {% endif %}
+      
+</div>
+
+
+      
+<div class="div  bg-transparent mt-5  position-absolute   position-relative d-flex  flex-wrap   justify-content-center p-2 pt-0  m-2 " style=" border-radius: 2rem; 
+bottom: 5rem;
 font-family: Quicksand, sans-serif;
 color: black;
 font-optical-sizing: auto;
-max-width: 420px; height: 16.4rem;">
+max-width: 420px; height: 13.4rem;">
 
 <!-- <div class="w-100">
 <h6 style="font-family: Righteous, sans-serif !important; ">
@@ -755,10 +849,9 @@ max-width: 420px; height: 16.4rem;">
 </h6> -->
 <!-- <hr> -->
 <!-- </div> --> 
-<div class='w-100 d-flex justify-content-end mb-2'>
+<div class='w-100 d-flex justify-content-start mb-2'>
 <button onclick="NotifyCation()" id="btn-notifycation"  class=" d-none bg-transparent border-0  end-0 position-relative" style="height: 0.5rem; z-index: 10; box-shadow: none !important;">
-      Notificaciones
-      {% comment %} <span class="position-absolute top-50 p-1 rounded-circle " style=" left: 1.3rem;color: white; font-size: 12px;">6</span> {% endcomment %}
+      Notifi      {% comment %} <span class="position-absolute top-50 p-1 rounded-circle " style=" left: 1.3rem;color: white; font-size: 12px;">6</span> {% endcomment %}
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-app-indicator text-black" viewBox="0 0 16 16">
             <path d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1z"/>
             <path d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
@@ -766,20 +859,17 @@ max-width: 420px; height: 16.4rem;">
 </button>
 </div>
 
-<section class="overflow-scroll w-100 d-flex flex-wrap justify-content-center" style="height: 10rem;"> 
+<section class="overflow-scroll w-100 d-flex flex-wrap justify-content-center" style="height: 14rem;"> 
 
 
-<a href="{% url "customer:add-customer" %}" class="d-flex   justify-content-center flex-wrap align-content-center " >
+<a href="{% url "customer:add-customer" %}" class=" " >
       <button  class="border-0 text-white bg-transparent  rounded-circle m-0 p-0" 
             style="
             height: 2.7rem !important;
             width: 2.7rem;">        
             <img src="{% static "svg/add-user.svg" %}" width='24' alt="">
              
-            {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-add text-black" viewBox="0 0 16 16">
-                  <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
-                  <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
-                </svg> {% endcomment %}
+            
       </button> 
       <span class="w-100 text-center" style="font-size: 12px;">Agregar</span>
       </a>
@@ -796,7 +886,7 @@ max-width: 420px; height: 16.4rem;">
                   <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
                 </svg> {% endcomment %}
       </button> 
-      <span class="w-100 text-center" style="font-size: 12px;">Calculara</span>
+      <span class="w-100 text-center" style="font-size: 12px;">Cal</span>
       </a>
       
       
@@ -815,7 +905,7 @@ max-width: 420px; height: 16.4rem;">
       </a>
       
       
-      <a href="" class="d-flex  justify-content-center flex-wrap align-content-center " >
+      <a href="" class="d-flex d-none  justify-content-center flex-wrap align-content-center " >
       <button  class="border-0 text-white bg-transparent  rounded-circle m-0 p-0" 
             style="
             height: 2.7rem !important;
@@ -830,7 +920,7 @@ max-width: 420px; height: 16.4rem;">
       <span class="w-100 text-center" style="font-size: 12px;">Maps</span>
       </a>
       
-      <a href="{% url "customer:select-customer" %}" class="d-flex  justify-content-center flex-wrap align-content-center " >
+      <a href="{% url "customer:select-customer" %}" class="d-flex  d-none justify-content-center flex-wrap align-content-center " >
       <button  class="border-0 text-white bg-transparent  rounded-circle m-0 p-0" 
             style="
             height: 2.7rem !important;
@@ -841,7 +931,7 @@ max-width: 420px; height: 16.4rem;">
                   <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
                 </svg> {% endcomment %}
       </button> 
-      <span class="w-100 text-center" style="font-size: 12px;">Listados</span>
+      <span class="w-100 text-center" style="font-size: 12px;">Deud-</span>
       </a>
       <a href="{% url "customer:select-customer" %}" class="d-flex  justify-content-center flex-wrap align-content-center " >
             <button  class="border-0 text-white bg-transparent  rounded-circle m-0 p-0" 
@@ -851,11 +941,11 @@ max-width: 420px; height: 16.4rem;">
                   <img  src="{% static "icons/notify.png" %}" width='24' alt="">              
       
             </button> 
-            <span class="w-100 text-center" style="font-size: 12px;">Notificaciones</span>
+            <span class="w-100 text-center" style="font-size: 12px;">Notifi</span>
             </a>
             
       
-      <a href="" class="d-flex  justify-content-center flex-wrap align-content-center " >
+      <a href="" class="d-flex d-none  justify-content-center flex-wrap align-content-center " >
       <button  class="border-0 text-white bg-transparent  rounded-circle m-0 p-0" 
             style="
             height: 2.7rem !important;
@@ -867,10 +957,10 @@ max-width: 420px; height: 16.4rem;">
                   <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
                 </svg> {% endcomment %}
       </button> 
-      <span class="w-100 text-center" style="font-size: 12px;">Configuraciones</span>
+      <span class="w-100 text-center" style="font-size: 12px;">Confi</span>
       </a>
       
-      <a href="" class="d-flex  justify-content-center flex-wrap align-content-center " >
+      <a href="" class="d-flex d-none  justify-content-center flex-wrap align-content-center " >
       <button  class="border-0 text-white bg-transparent  rounded-circle m-0 p-0" 
             style="
             height: 2.7rem !important;
@@ -882,11 +972,11 @@ max-width: 420px; height: 16.4rem;">
                   <path d="M11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
                 </svg> {% endcomment %}
       </button> 
-      <span class="w-100 text-center" style="font-size: 12px;">Dia de Pago</span>
+      <span class="w-100 text-center" style="font-size: 12px;">Cobro</span>
       </a>
       
       
-      <a href="" class="d-flex  justify-content-center flex-wrap align-content-center " >
+      <a href="" class="d-flex d-none  justify-content-center flex-wrap align-content-center " >
       <button  class="border-0 text-white bg-transparent  rounded-circle m-0 p-0" 
             style="
             height: 2.7rem !important;
@@ -897,41 +987,22 @@ max-width: 420px; height: 16.4rem;">
             <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V9H3V2a1 1 0 0 1 1-1h5.5zM3 12v-2h2v2zm0 1h2v2H4a1 1 0 0 1-1-1zm3 2v-2h3v2zm4 0v-2h3v1a1 1 0 0 1-1 1zm3-3h-3v-2h3zm-7 0v-2h3v2z"/>
           </svg> {% endcomment %}
       </button> 
-      <span class="w-100 text-center" style="font-size: 12px;">Exes, Pdf</span>
+      <span class="w-100 text-center" style="font-size: 12px;">Exe-</span>
       </a>
       
 </section>
 
 <div class='w-100 d-flex justify-content-end'>
-<hr class=' ' style='width: 6.4rem;'>
-</div>
 
-<form action="" method="post" class='w-100  d-flex justify-content-end align-content-center flex-wrap'>
-{% csrf_token %}
-<input type="number" class='m-0 border-0 bg-transparent' style='height: 2rem; width: 3rem;' value='10' name='20-customer' >
-<button class='p-0 border-0 me-2'>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-filter  text-primary" viewBox="0 0 16 16">
-            <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
-          </svg>
-</button>
-</form>
+</div>
 
 </div>
 
 {% comment %} {% if request.user.is_authenticated %} {% endcomment %}
 
 
-<div class="w-100   d-flex  justify-content-center position-absolute bottom-0 pb-2" >
-<button onclick="Menu()" class="  bg-transparent  border-0 rounded-circle    m-0  text-white  " 
-style=" margin-top: 1px !important; max-height: 2.5rem !important;
-">               
-      <svg xmlns="http://www.w3.org/2000/svg" id="m" width="24" height="24" fill="currentColor" class=" text-black d-none bi bi-grid-fill" viewBox="0 0 16 16">
-            <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z"/>
-          </svg>
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;" id="x" width="26" height="26" fill="currentColor" class="bi bi-x text-black " viewBox="0 0 16 16">
-      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
-    </svg>
-</button> 
+<div class="w-100   d-flex  justify-content-end position-absolute bottom-0 pb-2" >
+
 </div>
 
 {% comment %} {% endif %} {% endcomment %}
