@@ -86,12 +86,29 @@
                         <!-- Grupo Fycas -->
                   </h5>      
             </div>
-            <div class="mt-5 w-100">
+            <div class="  pe-3 ps-1" style="width: max-content; height: 2.2rem; border-radius: 2rem;">
+                  <div class="d-flex justify-content-end  me-2" style="line-height: 10px;">
+                      <div class="" style="margin-top: 1px;">
+                          <img src="static/bg-7.png" width="25" height="25"  class="rounded-circle me-1 object-fit-cover" style="border: 1px;" alt="">
+                      </div>
+                      <div>
+                          <h6 style="font-size: 10px;" class="text-black-50 p-0 m-0">
+                              {{request.user.username}}
+                          </h6>
+                          <span >
+                             <strong style="font-size: 13px !important;">
+                                    {{request.user.first_name}} {{request.user.last_name}}
+                             </strong>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+            <div class="mt- d-none w-100">
                   <strong >
                    App
                   </strong>
             </div>
-            <a href="{% url "customer:dashboard" %}">
+            <a href="{% url "customer:dashboard" %}" class="pt-4">
                   <button>
                         <img src="{% static "icons/dashboard.png" %}" width='24' alt="">
                         <span>
@@ -123,20 +140,13 @@
                         </span>
                   </button>
             </a>
-            <a  href="{% url "customer:mensajeria" %}">
-                  <button>
-                        <img src="{% static "icons/msj.png" %}" width='24' alt="">
-                        <span>
-                              Mensajeria
-                        </span>
-                  </button>
-            </a>
-            <div class="mt-4 w-100">
+    
+            <div class="mt-4 d-none w-100">
                   <strong >
                         Utilidades
                   </strong>
             </div>
-            <button onclick="Cal()" >
+            <button onclick="Cal()"  class="mt-4">
                   <img src="{% static "svg/calculator.svg" %}" width='24' alt="">
                   <span>
                         Calculara
@@ -154,28 +164,37 @@
                     Ubicaciones
                   </span>
             </button>
+  
+            <a  href="{% url "customer:mensajeria" %}">
+                  <button>
+                        <img src="{% static "icons/msj.png" %}" width='24' alt="">
+                        <span>
+                              Mensajeria
+                        </span>
+                  </button>
+            </a>
+            <div class="mt-4 d-none w-100">
+                  <strong >
+                        Sistema
+                  </strong>
+            </div>
+            <button  class="mt-4">
+                  <img src="{% static "svg/config.svg" %}" width='24' alt="">
+                  <span>
+                        Configuraciones
+                  </span>
+            </button>
             <button>
                   <img src="{% static "svg/document.svg" %}" width='24' alt="">
                   <span>
                         Reportes 
                   </span>
             </button>
-            <div class="mt-4 w-100">
-                  <strong >
-                        Sistema
-                  </strong>
-            </div>
-            <button >
-                  <img src="{% static "svg/config.svg" %}" width='24' alt="">
-                  <span>
-                        Configuraciones
-                  </span>
-            </button>
 
             {% if customer %}
             <div  class="w-100 div-menu-1 mb-2  d-flex mt-4 flex-wrap  bg-transparent  position-sticky   justify-content-center" style="height: 4rem; bottom: 1rem;"> 
                   <div class="w-100">
-                        <strong class="">
+                        <strong class=" d-none">
                               ...
                         </strong>
                   </div>

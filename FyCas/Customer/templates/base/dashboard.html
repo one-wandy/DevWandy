@@ -42,24 +42,11 @@ canvas {
 {
     background-color: #ffffff;
 }
+
 </style>
 <section class="bg-white bg-opacity-50">
     <div class="w-100 d-flex justify-content-start pt-2 pe-3">
-        <div class=" bg-white bg-opacity-25 pe-3 ps-1" style="width: max-content; height: 2.2rem; border-radius: 2rem;">
-            <div class="d-flex justify-content-end  me-2" style="line-height: 0px;">
-                <div class="" style="margin-top: 1px;">
-                    <img src="static/bg-2.jpg" width="30" height="30"  class="rounded-circle me-2" alt="">
-                </div>
-                <div>
-                    <h6 style="font-size: 12px;" class="text-black-50">
-                        {{request.user.username}}
-                    </h6>
-                    <span>
-                       {{request.user.first_name}} {{request.user.last_name}}
-                    </span>
-                </div>
-            </div>
-        </div>
+       
         <button  onclick="BtnCloseSession()" class="position-absolute end-0 rounded-circle bg-transparent border-0">
             <img src="{% static "svg/more.svg" %}" width='26'  style='max-width:26px;' alt="">
         </button> 
@@ -105,7 +92,7 @@ canvas {
       </section>
     </div>
 
-    <section class="w-100 mt-5  p-0">
+    <section class="w-100 mt-2  p-0">
         <div class=" d-flex  flex-wrap justify-content-start   " style="max-height: 40rem;"> 
             <strong class="w-100 text-black-50 ms-3">
               Rendimiento de la empresa

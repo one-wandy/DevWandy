@@ -555,16 +555,14 @@ select option {
                   </span>
             </div>
           </div>
-          <section class=" d-flex blur rounded-0">
-            <div class="nav-2" style=" display: none;
+          <section class=" d-flex  rounded-0">
+            <div class="nav-2 blur" style=" display: none;
             width: 19rem; border-radius: 2.3rem !important; height: max-content;">
                   <div style="height: max-content;" class="mb-3">
                         {% include "components/btn-nav.html" %}
                   </div>
             </div>
-            <style>
-                  
-            </style>
+         
             <!-- <style>
                   @media (prefers-color-scheme: dark) {
                         body {
@@ -674,10 +672,12 @@ select option {
                   }
 
             </style> -->
-            <div style="display: flex; border-radius: 0 !important; min-width: 300px; width: 90%; height: 100vh;" 
-            class="w-100 main  overflow-scroll bg-white bg-opacity-50  flex-wrap justify-content-center">
+            <div style="display: flex; border-radius: 1.5rem !important; min-width: 300px; width: 100%; height: 100vh; border-color: #d9d9d9 !important;" 
+            class="w-100 overflow-scroll  bg-white card border-top-0 border-end-0 border-bottom-0 p-1 ps-3 pe-0 pt-1   flex-wrap justify-content-center">
+                 <section class="  w-100  overflow-scroll" style="border-radius: 1.7rem; height: 100vh; border-color: #d9d9d9 !important;">
                   {% block content %}
                   {% endblock  %}      
+                 </section>
             </div>
           </section>
              

@@ -44,8 +44,7 @@
 
 .sL {
             background-color: #6b6b6b00 !important;
-            -webkit-backdrop-filter: blur(30px) !important;
-            backdrop-filter: blur(30px) !important;
+           
             width: 100%;
             height: 100vh;
             display: flex;
@@ -63,6 +62,12 @@
             -ms-user-select: none !important;     /* IE10+/Edge */
             user-select: none !important;    
         }
+
+.blur
+{
+      -webkit-backdrop-filter: blur(10px) !important;
+      backdrop-filter: blur(10px) !important;
+}
 
 .scroll-btn, .btn-black {
        
@@ -126,11 +131,12 @@ body
 }
 
 </style>
-<section  class="position-relative  container-fluid  vh-100 bg-transparent overflow-hidden   p-1 mb-5 ">
+<section  class="position-relative  container-fluid  vh-100 bg-white overflow-hidden   p-1 mb-5 ">
  
                         <div class="sL  align-content-center justify-content-center  position-relative" >
                               <img src="{% static "svg/more.svg" %}" width='26' style='max-width:26px; ' alt="" class="position-absolute top-0 end-0 m-2" onclick="BtnMoreSession()">
-                              <div id="btn-more-session" class="position-absolute top-0  d-none  end-0 vh-100 vw-100   blur bg-white d-flex flex-wrap align-content-center justify-content-center bg-opacity-10 p-3" style="  border-radius: 2rem; z-index: 13;" >
+                              <div id="btn-more-session" class="position-absolute top-0  d-none  end-0 vh-100 vw-100  bg-white d-flex flex-wrap align-content-center justify-content-center bg-opacity-10 p-3" style="        -webkit-backdrop-filter: blur(40px) !important;
+      backdrop-filter: blur(40px) !important;border-radius: 2rem; z-index: 13;" >
                                     <section class="position-relative ">
                                           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill text-danger position-absolute top-0 end-0" viewBox="0 0 16 16" onclick="BtnMoreSession()">
                                           <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
@@ -144,11 +150,17 @@ body
                                                       <div class="mb-2 mt-3">
                                                             <!-- <label for="cedula-fast" class="form-label"> 
                                                             Cedula </label> -->
-                                            
+                                                            {% if request.user.is_authenticated %}
+                                                            <input type="text" class="form-control" id="cedula-fast" name="cedula-fast" value="{{request.user.username}}" disabled aria-describedby="cedula-fastHelp" style="   font-size: 14px !important;
+                                                            color: rgb(136, 136, 136);
+                                                            height: 3rem !important;
+                                                            border-radius: 1rem !important;">
+                                                            {% else %}
                                                             <input type="text" class="form-control" id="cedula-fast" name="cedula-fast" placeholder="402-000000-0" aria-describedby="cedula-fastHelp" style="   font-size: 14px !important;
                                                             color: rgb(136, 136, 136);
                                                             height: 3rem !important;
                                                             border-radius: 1rem !important;">
+                                                            {% endif %}
                                                       </div>
                                                       <script>
                                                             function DNI_FAST(value) {
@@ -167,12 +179,21 @@ body
                                                       </script>
                                                       <div class="mb-3">
                                                             <!-- <label for="numero-fast" class="form-label">Numero</label> -->
+                                                            {% if request.user.is_authenticated %}
                                                             <input type="text" class="form-control" id="numero-fast" 
                                                             name="numero-fast"
-                                                            placeholder="809-870-7852" style="font-size: 14px !important;
+                                                            placeholder="809-870-7852" disabled value="8**-***-****" style="font-size: 14px !important;
                                                             color: rgb(136, 136, 136);
                                                             height: 3rem !important;
                                                             border-radius: 1rem !important;">
+                                                                {% else %}
+                                                                <input type="text" class="form-control" id="numero-fast" 
+                                                                name="numero-fast"
+                                                                placeholder="809-870-7852" style="font-size: 14px !important;
+                                                                color: rgb(136, 136, 136);
+                                                                height: 3rem !important;
+                                                                border-radius: 1rem !important;">
+                                                                {% endif %}
                                                       </div>
                                                       <script>
                                                             function NumbersFomat(value) {
@@ -200,8 +221,10 @@ body
 
 
                                                             {% if request.user.is_authenticated %}
-                                                            <a href="{% url "customer:dashboard" %}">
-                                                            Dashboard
+                                                            <a href="{% url "customer:dashboard" %}"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-circle-fill" viewBox="0 0 16 16">
+                                                                  <path d="M0 8a8 8 0 1 0 16 0A8 8 0 0 0 0 8m5.904 2.803a.5.5 0 1 1-.707-.707L9.293 6H6.525a.5.5 0 1 1 0-1H10.5a.5.5 0 0 1 .5.5v3.975a.5.5 0 0 1-1 0V6.707z"/>
+                                                                </svg>
+                                                            Dashboard 
                                                             </a>
                                                             {% else %}
                                                             <button class="scroll-btn" style="width: 11rem;" >Entrar</button>
@@ -248,37 +271,37 @@ body
                           
                         </div>
 
-                              <div class="sL  justify-content-center overflow-scroll " id="sL1">
+                              <div class="sL blur  justify-content-center overflow-scroll " id="sL1">
                                     {% include "components/data-person.html" %}
                               </div>
 
-                              <div class="sL vh-100 overflow-scroll   pt-5" id="sL2">
+                              <div class="sL blur vh-100 overflow-scroll   pt-5" id="sL2">
                                   {% include "components/cedula.html" %}
                               </div>
 
-                            <div class="sL pb-5 vh-100  overflow-scroll  pt-5" >
+                            <div class="sL blur pb-5 vh-100  overflow-scroll  pt-5" >
                                     {% include "components/recide.html" %}
                               </div>
 
-                            <div class="sL pb-5 vh-100 overflow-scroll   pt-5 " id="sL3">
+                            <div class="sL blur pb-5 vh-100 overflow-scroll   pt-5 " id="sL3">
                                     {% include "components/info-laboral.html" %}
                             </div>
 
-                            <div class="sL vh-100 overflow-scrollp pt-5  " >
+                            <div class="sL blur vh-100 overflow-scrollp pt-5  " >
                                     {% include "components/referens.html" %}
                             </div>
 
-                              <div class="sL vh-100 overflow-scroll  pt-5 " >
+                              <div class="sL blur vh-100 overflow-scroll  pt-5 " >
                                     {% include "components/options.html" %}
                             </div>
 
-                              <div class="sL vh-100 overflow-scroll  pt-5" >
+                              <div class="sL blur vh-100 overflow-scroll  pt-5" >
                                     {% include "components/monto-fines.html" %}
                               </div>
 
 
 
-                <div class="sL  w-100 vh-100  overflow-scroll  " >
+                <div class="sL  blur w-100 vh-100  overflow-scroll  " >
                   
                          <section class="mt-5 w-100 sec-sl d-flex flex-wrap justify-content-center">
                                           <div class="w-100 d-flex img-glouds align-content-center m-1 " 
