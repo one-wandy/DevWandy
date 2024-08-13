@@ -32,6 +32,8 @@ urlpatterns = [
       path("customer-profile", views.CustomerProfile.as_view(), name='customer-profile'),
       path('mensajeria', views.Mensensajeria.as_view(), name='mensajeria'),
 
+      path("prestamos", views.Prestamos.as_view(), name='prestamos'),
+
 
       # Views Ajax``
       path("searching/customer", views_ajax.SearchCustomer, name="searching-customer"),

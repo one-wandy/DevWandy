@@ -1,0 +1,36 @@
+{% extends "base/base.html" %}
+{% block content %}
+      <style>
+            .th
+            {
+                  font-size: 12px;
+            }
+      </style>
+      <section>
+            <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="th" scope="col">#</th>
+                      <th class="th" scope="col">Nombre y Apellidos</th>
+                      <th class="th" scope="col">Capital</th>
+                      <th class="th" scope="col">Intereses</th>
+                      <th class="th" scope="col">Mora</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                  </tbody>
+                </table>
+      </section>
+{% endblock %}

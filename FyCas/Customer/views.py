@@ -561,3 +561,13 @@ class Mensensajeria(TemplateView, Options):
         context['cb'] = models.CustomerDebit.objects.all()
         return context
     
+
+class Prestamos(ListView,Options):
+    model = models.Customer
+    template_name = "customer/prestamos.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['p'] = self.model.objects.all()
+        return context
+    
