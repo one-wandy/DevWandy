@@ -268,16 +268,19 @@ btn-sliders-nav
 
       <div id='div-list-customer' style="display: flex; border-radius: 1rem !important; min-width: 300px; width: 90%; height: 100vh;" 
             class="w-100 overflow-scroll   flex-wrap bg-transparent justify-content-center">
-            <div class="position-sticky w-100  overflow-scroll top-0 blur p-1 " style="z-index: 100; height: 3.9rem;">
+            <div class="position-sticky w-100  overflow-scroll top-0 p-1 " style="z-index: 100; height: 3.9rem;">
                         {% include "components/btn-filter.html" %}
             </div>
             {% for c in customer %}
                   <li  id='li{{c.id}}' class="list-group-item position-relative bg-opacity-25  
                         no-select  m-1 p-0 m-0 mb-3 bg-white  pb-5 h-auto" 
-                        style=" border-radius:1.5rem;  width: 100% !important; 
-                        box-shadow: 0px 2px 2px 1px rgba(192, 192, 192, 0.193) ; 
+                        style=" border-radius:2rem;  width: 100% !important; 
+             
+                        /* box-shadow: 0px 1px 1px 1px rgba(192, 192, 192, 0.193) ;  */
                         max-height: 20.5rem;    
-                        border: rgba(227, 227, 227, 0.905) 0px solid;">
+                        border: rgba(227, 227, 227, 0.905) 0px solid;
+                        border-left: none;
+                        border-right: none;">
                         <script>
                               function Credit(N) {
                                     let div = document.getElementById('div' + N)
@@ -317,7 +320,7 @@ btn-sliders-nav
                                                 </div>                                    
                                           </a>
                                     </div>
-                                    <div class="d-flex align-content-center p-2 pt-0 flex-wrap datos" >
+                                    <div class="d-flex align-content-center pt-0 flex-wrap datos" >
                                           <span class="w-100  text-black" 
                                                 style="color: #383838;
                                                 font-family: Quicksand, sans-serif;
@@ -352,8 +355,8 @@ btn-sliders-nav
                                                 </span> 
                                          </span> 
                                          <a  href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}}"  class="m-0 p-0">
-                                          <span class="w-100 text-black" style="font-size: 14px;">
-                                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-telephone-fill "  viewBox="0 0 16 16">
+                                          <span class="w-100 " style="font-size: 14px; color: #494949 !important;">
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-telephone-fill  text-black"  viewBox="0 0 16 16">
                                                       <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
                                                       </svg>
                                                       {{c.number}}

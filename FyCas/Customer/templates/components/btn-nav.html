@@ -88,16 +88,17 @@
             </div>
             <div class="  pe-3 ps-1" style="width: max-content; height: 2.2rem; border-radius: 2rem;">
                   <div class="d-flex justify-content-end  me-2" style="line-height: 10px;">
-                      <div class="" style="margin-top: 1px;">
-                          <img src="static/bg-7.png" width="25" height="25"  class="rounded-circle me-1 object-fit-cover" style="border: 1px;" alt="">
-                      </div>
+                      <div class="" style="margin-top: 4px;">
+                          <img src="static/bg-3.jpg" width="20" height="20"  class=" me-1 object-fit-cover rounded-circle " style="border: 1px;" alt="">
+                      </div> 
                       <div>
                           <h6 style="font-size: 10px;" class="text-black-50 p-0 m-0">
-                              {{request.user.username}}
+                              <!-- {{request.user.username}} -->{{request.user.last_name}}
                           </h6>
                           <span >
-                             <strong style="font-size: 13px !important;">
-                                    {{request.user.first_name}} {{request.user.last_name}}
+                             <strong style="font-size: 13px !important;       font-family: Quicksand, sans-serif !important; 
+      font-weight: bold !important;">
+                                    {{request.user.first_name}} 
                              </strong>
                           </span>
                       </div>
@@ -110,7 +111,7 @@
             </div>
             <a href="{% url "customer:dashboard" %}" class="pt-4">
                   <button>
-                        <img src="{% static "icons/dashboard.png" %}" width='24' alt="">
+                        <img src="{% static "icons/grafico.png" %}" width='24' alt="">
                         <span>
                               Dashboard
                         </span>
@@ -170,6 +171,14 @@
                         <img src="{% static "icons/msj.png" %}" width='24' alt="">
                         <span>
                               Mensajeria
+                        </span>
+                  </button>
+            </a>
+            <a  href="{% url "customer:mensajeria" %}">
+                  <button>
+                        <img src="{% static "icons/file.png" %}" width='24' alt="">
+                        <span>
+                              Archivos
                         </span>
                   </button>
             </a>

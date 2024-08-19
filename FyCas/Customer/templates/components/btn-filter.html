@@ -7,9 +7,12 @@
       border: 1px rgb(225, 225, 225) solid !important;
       font-size: 13px;
       height: 2.3rem;
-      color: rgb(89, 89, 89) ; 
+      color: rgb(52, 52, 52) ; 
       font-family: Quicksand, sans-serif !important; 
-      background-color: rgba(255, 255, 255, 0.663);
+      font-weight: normal !important;
+      background-color: rgba(255, 255, 255, 0.663);    
+        -webkit-backdrop-filter: blur(90px) !important;
+      backdrop-filter: blur(90px) !important;
 }
 strong
 {
@@ -21,7 +24,7 @@ strong
       color: black;
 }
 </style>
-<div class="btn-filter  d-flex overflow-scroll w-100 " style="min-height: 7rem;">
+<div class="btn-filter  d-flex overflow-scroll w-100   " style="min-height: 5rem; ">
       <button class="border-0 p-2">
             <form action="" method="post" class='w-100 border-0  d-flex justify-content-end align-content-center flex-wrap'>
                   {% csrf_token %}
