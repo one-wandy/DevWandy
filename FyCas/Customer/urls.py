@@ -33,6 +33,8 @@ urlpatterns = [
       path('mensajeria', views.Mensensajeria.as_view(), name='mensajeria'),
 
       path("prestamos", views.Prestamos.as_view(), name='prestamos'),
+      
+      path('ubicaciones', views.Ubicaciones.as_view(), name='ubicaciones'),
 
 
       # Views Ajax``
