@@ -45,7 +45,7 @@
             font-weight: lighter;
             border-radius: 50%;
       }
-      .div-btn 
+      .div-btn
       {
             /* background-color: #5A5868; */
             width: 78px;
@@ -54,11 +54,15 @@
             flex-wrap: wrap;
             justify-content: center;
             margin: 0px 5px;
+
       }
+
       .div-btn span
       {
             width: 100%;
             text-align: center;
+            font-size: 14px;
+            font-weight: lighter;
       }
       .input-v 
       {
@@ -74,19 +78,24 @@
       {
             background-color: rgb(255, 116, 116) !important;
       }
+
 </style>
 <div class="menu-container-v">
      <div class="p-1 position-relative">
-      <img src="static/bg-3.jpg" width="30" height="30" class="rounded-circle" alt=""  srcset="">
-      <span  style="font-size: 16px; color: #5A5868; font-weight: bold;">
+      <img src="static/bg-3.jpg" width="40" height="40" class="rounded-circle" alt=""  srcset="">
+      <span id="option-info" style="font-size: 16px; color: #5A5868; font-weight: bold;">
             Menu de Opciones
       </span>
      </div>
-     <button onclick="Menu()" class="bg-danger border-0  text-white d-flex justify-content-center flex-wrap align-content-center rounded-circle position-absolute end-0"
-      style="width: 29px; height: 29px;"> 
-     X
-</button>
+      <button onclick="Menu()" class="bg-danger border-0  text-white d-flex justify-content-center flex-wrap align-content-center rounded-circle position-absolute end-0"
+            style="width: 29px; height: 29px;"> 
+      X
+      </button>
       <div class="menu-virginia d-flex flex-wrap justify-content-center"> 
+
+           <div id="box" class="d-none">
+                  {% include "design-virginia/Menu-V/calculador.html" %}
+           </div>
             <a href="{% url "customer:dashboard" %}"  >
                   <button>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
@@ -123,7 +132,7 @@
             </div>
             </a>
 
-            <div class="div-btn" onclick="Cal()" >
+            <div class="div-btn" onclick="OpenCalculador()" >
                   <button>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
                               <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
@@ -158,3 +167,28 @@
            </span>
       </div>
 </div>
+
+
+
+<script>
+      let  OpenCalculador = () => {
+            // Selecciona todos los elementos que coincidan con los selectores especificados
+            const elements = document.querySelectorAll('.input-v, button, .div-btn');
+            // Itera sobre cada elemento y alterna la clase 'd-none'
+            elements.forEach(function(element) {
+                  element.classList.toggle('d-none');
+            });
+
+            const divBtn = document.querySelector('.div-btn');
+                  // Verifica si tiene la clase 'd-none'
+                  if (divBtn.classList.contains('d-none')) {
+                        document.getElementById('box').classList.remove('d-none')
+                        document.getElementById('option-info').innerHTML = ''
+                        document.getElementById('option-info').innerHTML = 'Calculadora de divisas Francesa'
+                  } else {
+                        document.getElementById('box').classList.add('d-none')
+                        document.getElementById('option-info').innerHTML = ''
+                        document.getElementById('option-info').innerHTML = 'Menu de Opciones'
+                  }
+}
+</script>
