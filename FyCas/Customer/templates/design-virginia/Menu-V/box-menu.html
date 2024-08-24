@@ -1,0 +1,160 @@
+<style>
+      .menu-container-v
+      {
+            width: 100%;
+            /* height: 400px; */
+      }
+      .sec-virginia-menu
+      {
+            
+
+            border: 1px solid grey;
+            border-radius: 35px;
+            color: #5A5868;
+      }
+      .menu-virginia
+      {
+            /* width: 100%;/ */
+            height: 236px;
+            border-radius: 35px;
+            margin: 4px 10px;
+            padding: 10px;
+            padding-top: 23px;
+            background-color: #fff5f5a1;
+      }
+      .menu-virginia button
+      {
+            background-color: #c2c2c25c;
+            border-radius: 26px;
+            width: 162px;
+            height: 68px;
+            color: #5A5868;
+            border: 0;
+      }
+      .menu-virginia svg
+      {
+            color: #5A5868;
+            width: 30px !important;
+            height: 30px !important;
+      }
+      .div-btn button
+      {
+            width: 62px;
+            height: 62px;
+            font-size: 14px;
+            font-weight: lighter;
+            border-radius: 50%;
+      }
+      .div-btn 
+      {
+            /* background-color: #5A5868; */
+            width: 78px;
+            height: 90px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0px 5px;
+      }
+      .div-btn span
+      {
+            width: 100%;
+            text-align: center;
+      }
+      .input-v 
+      {
+            background-color: #c2c2c25c;
+            border: none;
+            color: #3b3b3b !important ;
+      }
+      .menu-virginia a 
+      {
+            width: max-content;
+      }
+      .bg-danger 
+      {
+            background-color: rgb(255, 116, 116) !important;
+      }
+</style>
+<div class="menu-container-v">
+     <div class="p-1 position-relative">
+      <img src="static/bg-3.jpg" width="30" height="30" class="rounded-circle" alt=""  srcset="">
+      <span  style="font-size: 16px; color: #5A5868; font-weight: bold;">
+            Menu de Opciones
+      </span>
+     </div>
+     <button onclick="Menu()" class="bg-danger border-0  text-white d-flex justify-content-center flex-wrap align-content-center rounded-circle position-absolute end-0"
+      style="width: 29px; height: 29px;"> 
+     X
+</button>
+      <div class="menu-virginia d-flex flex-wrap justify-content-center"> 
+            <a href="{% url "customer:dashboard" %}"  >
+                  <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
+                              <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
+                        </svg>
+                        Dashboards
+                  </button>
+            </a>
+
+            <a href="{% url "customer:add-customer" %}">
+                  <div class="div-btn">
+                        <button>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+                              </svg>
+                        </button>
+                        <span>
+                              Agregar
+                        </span>
+                  </div>
+            </a>
+
+            <a href="{% url "customer:list-customer" %}">
+            <div class="div-btn">
+                  <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                              <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                            </svg>
+
+                        </button>
+                       <span>
+                              Clientes {% if customer_count %} ({{customer_count}}) {% endif %} 
+                       </span>
+            </div>
+            </a>
+
+            <div class="div-btn" onclick="Cal()" >
+                  <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
+                              <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                              <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
+                              </svg>
+                        </button>
+                       <span>
+                              Calcul..
+                       </span>
+            </div>
+
+            <div class="div-btn">
+                  <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-wide-connected" viewBox="0 0 16 16">
+                              <path d="M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622-.434zM12.973 8.5H8.25l-2.834 3.779A4.998 4.998 0 0 0 12.973 8.5m0-1a4.998 4.998 0 0 0-7.557-3.779l2.834 3.78zM5.048 3.967l-.087.065zm-.431.355A4.98 4.98 0 0 0 3.002 8c0 1.455.622 2.765 1.615 3.678L7.375 8zm.344 7.646.087.065z"/>
+                            </svg>
+                  </button>
+                       <span>
+                              Config
+                       </span>
+            </div>
+            <div class="div-input" style="width: 170px;">
+                        <input type="text" placeholder="Buscar"  class=" input-v text-center mt-2" 
+                        style="width: 100% !important; height: 52px; border-radius: 34px;">
+            </div>
+      </div>
+
+      <div class="text-center w-100">
+            <span class="text-center w-100 p-1"
+            style="font-size: 10px; color: #5A5868; font-weight: bold;">
+                 V <strong>Virginia (1.2)</strong>
+           </span>
+      </div>
+</div>
