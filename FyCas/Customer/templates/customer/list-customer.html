@@ -272,15 +272,15 @@ btn-sliders-nav
                         {% include "components/btn-filter.html" %}
             </div>
             {% for c in customer %}
-                  <li  id='li{{c.id}}' class="list-group-item position-relative bg-opacity-25  
-                        no-select  m-1 p-0 m-0 mb-3 bg-white  pb-5 h-auto" 
-                        style=" border-radius:2rem;  width: 100% !important; 
-             
+                  <li  id='li{{c.id}}' class="list-group-item  position-relative bg-opacity-25  
+                        no-select  m-1 p-1 m-0 mb-3 bg-white  pb-5 " 
+                        style=" border-radius:1.5rem;  width: 100% !important; 
                         /* box-shadow: 0px 1px 1px 1px rgba(192, 192, 192, 0.193) ;  */
-                        max-height: 20.5rem;    
-                        border: rgba(227, 227, 227, 0.905) 0px solid;
-                        border-left: none;
-                        border-right: none;">
+                        max-height: 7.5rem;    
+                        border: rgba(227, 227, 227, 0.905) 2px solid;
+                        /* border-left: none;
+                        border-right: none; */
+                        ">
                         <script>
                               function Credit(N) {
                                     let div = document.getElementById('div' + N)
@@ -307,78 +307,71 @@ btn-sliders-nav
                         <div class="d-flex  " style="font-size: 14px !important;  ">
                               <div class="d-flex flex-wrap ">
                                     <div class="w-100 d-flex">
-                                          <a href="{% url "customer:detail-customer" c.id %}" 
-                                                class='w-100 d-flex position-relative'>      
-                                                <div id="div-img" class='w-100 d-flex bg-transparent'
+                                          <!-- <a href="{% url "customer:detail-customer" c.id %}" 
+                                                class='w-100 d-flex position-relative bg-danger'>       -->
+                                                <div id="div-img" class='  d-flex me-2  bg-transparent'
                                                       style='background-image: url({{c.img1}});  
                                                       background-position: center;
                                                       background-repeat: no-repeat;
                                                       background-size: cover;
-                                                      max-width: 380px;
-                                                      min-height: 150px;
-                                                      border-radius: 1.5rem !important;'  >
-                                                </div>                                    
-                                          </a>
+                                                      max-width: 70px;
+                                                      max-height: 70px;
+                                                      min-width: 70px;
+                                                      min-height: 70px;
+                                                      border-radius: 50% !important;'  >
+                                                </div>                             
+                                               <div class="d-flex flex-wrap   ">
+                                                      <span class="w-100   text-black" 
+                                                      style="color: #383838;
+                                                      line-height: 16px;
+                                                      font-family: Quicksand, sans-serif;
+                                                      color: black;
+                                                      font-size: 28px;
+                                                      font-weight: 400; " >
+                                                      {% if c.estatus == 'S' %}
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi text-primary bi-check2-circle" viewBox="0 0 16 16">
+                                                            <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+                                                            <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+                                                            </svg>
+                                                      {% endif %}
+                                                      <!-- <strong class="d-none">Nombre:</strong>  -->
+                                                      <span class="text-black  p-0 m-0" 
+                                                            style='font-family: Quicksand, sans-serif;
+                                                            color: black;
+                                                            font-size: 14px;
+                                                            font-optical-sizing: auto;'>
+                                                            {% if c.customer_verify == True %}
+                                                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill text-primary" viewBox="0 0 16 16"><path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
+                                                                  </svg>
+                                                            {% else %}
+                                                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                                                                  <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+                                                                  </svg>
+                                                                  <span id='count-n'>
+                                                                        {{new_customer}}
+                                                                  </span>
+                                                            {% endif %}
+                                                            {{ c.name}} {{c.last_name}} 
+                                                            </span> 
+                                                      </span>   
+                                                      <span class="w-100   overflow-hidden d-flex" style="height: 2.8rem ">
+                                                            <strong class="">     
+                                                                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-geo-alt-fill text-black me-1" viewBox="0 0 16 16">
+                                                                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
+                                                            </strong>
+                                                            <a class="" style=" text-transform: capitalize; font-size: 14px !important; " >
+                                                                  {{c.calle_numero}},  {{c.municipio}}, <br>  {{c.sector}}, {{c.ciudad}}
+                                                            </a>
+                                                      </span>
+
+                                               </div>     
+
+                                          <!-- </a> -->
                                     </div>
                                     <div class="d-flex align-content-center pt-0 flex-wrap datos" >
-                                          <span class="w-100  text-black" 
-                                                style="color: #383838;
-                                                font-family: Quicksand, sans-serif;
-                                                color: black;
-                                                font-size: 28px;
-                                                font-weight: 400; " >
-                                                {% if c.estatus == 'S' %}
-                                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi text-primary bi-check2-circle" viewBox="0 0 16 16">
-                                                      <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
-                                                      <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
-                                                      </svg>
-                                                {% endif %}
-                                                <strong class="d-none">Nombre:</strong> 
-                                                <span class="text-black  p-0 m-0" 
-                                                      style='font-family: Quicksand, sans-serif;
-                                                      color: black;
-                                                      font-size: 14px;
-                                                      font-optical-sizing: auto;'>
-                                                      {% if c.customer_verify == True %}
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill text-primary" viewBox="0 0 16 16"><path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
-                                                            </svg>
-                                                      {% else %}
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
-                                                            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
-                                                            </svg>
-                                                            <span id='count-n'>
-                                                                  {{new_customer}}
-                                                            </span>
-                                                      {% endif %}
-                                                      {{ c.name}} {{c.last_name}} 
-                                                
-                                                </span> 
-                                         </span> 
-                                         <a  href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}}"  class="m-0 p-0">
-                                          <span class="w-100 " style="font-size: 14px; color: #494949 !important;">
-                                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-telephone-fill  text-black"  viewBox="0 0 16 16">
-                                                      <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
-                                                      </svg>
-                                                      {{c.number}}
-                                          </span>
-                                         </a>
-                                         <span class="w-100 d-flex" style="font-size: 14px;">
-                                                <strong>
-                                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-person-vcard-fill  me-1" viewBox="0 0 16 16">
-                                                      <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
-                                                    </svg>
-                                                </strong> 
-                                                {{c.dni}} 
-                                         </span>
-                                         <span class="w-100   overflow-hidden d-flex" style="height: 2.5rem ">
-                                                <strong class="">     
-                                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-geo-alt-fill text-black me-1" viewBox="0 0 16 16">
-                                                      <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
-                                                </strong>
-                                                <a class="" style=" text-transform: capitalize; font-size: 14px !important;" >
-                                                      {{c.calle_numero}},  {{c.municipio}}, <br>  {{c.sector}}, {{c.ciudad}}
-                                                </a>
-                                          </span>
+                                     
+                                        
+                                       
                                           <span class='w-100 d-none'>
                                                       <strong class="">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-buildings-fill  text-black" viewBox="0 0 16 16">
@@ -388,9 +381,8 @@ btn-sliders-nav
                                           </span>
                                
                                    
-                                          <div  class="w-100 mt-2 justify-content-end position-relative  d-flex m-0 
-                                                d-flex align-content-center  " style=" border-radius: 13rem;">
-                                                <span class='w-100 text-capitalize mt-2 p-1 text-black-50' style="font-size: 14px; margin-left: 0.5rem;">
+                                          <div  class="w-100   justify-content-end position-relative  d-flex m-0  align-content-center  " style=" border-radius: 13rem;">
+                                                <span class='w-100 text-capitalize mt-2 p-1 text-black-50' style="font-size: 14px; margin-left: 0.5rem; margin-right: 9.9rem;">
                                                           {{ c.day_created|date:"F/d/Y" }}
                                                 </span>
                 
@@ -402,9 +394,7 @@ btn-sliders-nav
                                                             </button>
                                                       </a>
                                                 {% endif %}
-                                                <div>
-
-                                                </div>
+                                           
                                                 <button id='{{c.id}}' class='border-0 bg-transparent shadow-none' 
                                                 onclick='OpenCloseBtn(this.id)'>
                                                        <img src="{% static "svg/more.svg" %}" width='26' style='max-width:26px;' alt="">
@@ -415,7 +405,7 @@ btn-sliders-nav
                         </div>
                        <div id='div-more{{c.id}}' class='blur d-none shadow  bg-white bg-opacity-50  card position-relative w-100   
                               position-absolute start-0  p-4  ' 
-                              style='top:18rem; z-index: 160; border-radius:2rem; font-family: Quicksand, sans-serif;
+                              style='top:5rem; z-index: 160; border-radius:2rem; font-family: Quicksand, sans-serif;
                               color: black; font-size: 16px; font-optical-sizing: auto; z-index: 11;'>
                               <style>
                                     #div-more{{c.id}}, span:hover {
@@ -425,7 +415,28 @@ btn-sliders-nav
                                           font-size: 12px;
                                     }                                    
                               </style>
-                              <span class="w-100 d-flex justify-content-end start-0 position-absolute top-0">
+                               <span class="">
+                                    <h6  class="text-black-50 p-0 m-0 pb-1">
+                                          Numero y Cedula
+                                    </h6>
+                              </span>
+                               <a  href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}}"  class="m-0 p-0">
+                                    <span class="w-100 " style="font-size: 14px; color: #494949 !important;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-telephone-fill  text-black"  viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                                                </svg>
+                                                {{c.number}}
+                                    </span>
+                                   </a>
+                                   <span class="w-100 mb-4 d-flex" style="font-size: 14px;">
+                                          <strong>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-person-vcard-fill  text-black  me-1" viewBox="0 0 16 16">
+                                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
+                                              </svg>
+                                          </strong> 
+                                          {{c.dni}} 
+                                   </span>
+                              <span class="w-100   d-flex justify-content-end start-0 position-absolute top-0">
                                     <button id='{{c.id}}' class='border-0 p-0 me-3  mt-3 bg-transparent shadow-none' 
                                           onclick='OpenCloseBtn(this.id)' >
                                           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
