@@ -258,7 +258,7 @@ btn-sliders-nav
 </div>
 
 <section id="section" class="rounded-0  d-flex  bg-transparent justify-content-center
-      overflow-scroll p-1 w-100  vh-100   mt-0 " >
+      overflow-scroll p-1 w-100     mt-0 " >
       <div id="text-c" class="w-100 justify-content-center position-fixed flex-wrap" 
             style="display: none; z-index: 105; bottom: 1rem;" >
             <h5 class="position-absolute" style='bottom:5rem;'  >
@@ -267,7 +267,7 @@ btn-sliders-nav
       </div>  
 
       <div id='div-list-customer' style="display: flex; border-radius: 1rem !important; min-width: 300px; width: 90%; " 
-            class="w-100 overflow-scroll   flex-wrap bg-transparent justify-content-center">
+            class="w-100 overflow-scroll    flex-wrap bg-transparent justify-content-center">
             <div class="position-sticky w-100  overflow-scroll top-0 p-1 " style="z-index: 100; height: 3.9rem;">
                         {% include "components/btn-filter.html" %}
             </div>
@@ -276,7 +276,7 @@ btn-sliders-nav
                         no-select  m-1 p-1 m-0 mb-3 bg-white  pb-5 " 
                         style=" border-radius:2rem;  width: 100% !important; 
                         /* box-shadow: 0px 1px 1px 1px rgba(192, 192, 192, 0.193) ;  */
-                        max-height: 7.5rem;    
+                        max-height: 5.3rem;    
                         border: rgba(227, 227, 227, 0.699) 2px solid;
                         /* border-left: none;
                         border-right: none; */
@@ -308,7 +308,7 @@ btn-sliders-nav
                               <div class="d-flex flex-wrap " >
                                     <div class="w-100 d-flex">
                                           <!-- <a href="{% url "customer:detail-customer" c.id %}" 
-                                                class='w-100 d-flex position-relative bg-danger'>       -->
+                                                class='w-100 d-flex position-relative bg-danger'>   -->
                                                 <div id="div-img" class='  d-flex me-2  bg-transparent'
                                                       style='background-image: url({{c.img1}});  
                                                       background-position: center;
@@ -335,7 +335,7 @@ btn-sliders-nav
                                                       </svg>
                                                 {% endif %}
                                                 <!-- <strong class="d-none">Nombre:</strong>  -->
-                                                <span class="text-black  p-0 m-0" 
+                                                <span class="text-black mt-2 d-flex p-0 m-0" 
                                                       style='font-family: Quicksand, sans-serif;
                                                       color: black;
                                                       font-weight: bold;
@@ -343,10 +343,10 @@ btn-sliders-nav
                                                       
                                                       font-optical-sizing: auto;'>
                                                       {% if c.customer_verify == True %}
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill text-primary" viewBox="0 0 16 16"><path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill me-2 text-primary" viewBox="0 0 16 16"><path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
                                                             </svg>
                                                       {% else %}
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill me-2 " viewBox="0 0 16 16">
                                                             <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
                                                             </svg>
                                                             <span id='count-n'>
@@ -383,11 +383,11 @@ btn-sliders-nav
                                
                                    
                                           <div  class="w-100   justify-content-end   d-flex m-0  align-content-center  " style=" border-radius: 13rem;">
-                                                <span class='w-100 text-capitalize mt-2 p-1 text-black-50' style="font-size: 14px; margin-left: 0.5rem; ">
-                                                          {{ c.day_created|date:"F/d/Y" }}
-                                                </span>
-                
+                                                
                                                 <div class="position-absolute bottom-0 d-flex end-0">
+                                                      <span class='w-100 text-capitalize mt-2 p-1 text-black-50' style="font-size: 14px; margin-left: 0.5rem; ">
+                                                                {{ c.day_created|date:"F/d/Y" }}
+                                                      </span>
                                                       {% if c.customer_verify == False %}
                                                       <a id='{{c.id}}'  onclick='CustomerVerify(this.id)' 
                                                             class='p-0   ms-1 mb-1' style="width: 1.7rem;">
