@@ -323,10 +323,10 @@ btn-sliders-nav
                                                       background-position: center;
                                                       background-repeat: no-repeat;
                                                       background-size: cover;
-                                                      max-width: 60px;
-                                                      max-height: 60px;
-                                                      min-width: 60px;
-                                                      min-height: 60px;
+                                                      max-width: 30px;
+                                                      max-height: 30px;
+                                                      min-width: 30px;
+                                                      min-height: 30px;
                                                       border-radius: 50% !important;'  >
                                                 </div>                             
                                                <div class="d-flex flex-wrap    " style="height: 3rem;">
@@ -367,7 +367,7 @@ btn-sliders-nav
                                                       </span> 
                                                 </span>   
                                                 <a  href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}}"  class="m-0 p-0">
-                                                      <span class="w-100 " style="font-size: 14px; color: #494949 !important;
+                                                      <span class="w-100  " style="font-size: 13px; color: #8f8f8f !important;
                                                       ">
                                                                   <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-telephone-fill  text-black"  viewBox="0 0 16 16">
                                                                   <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
@@ -399,9 +399,10 @@ btn-sliders-nav
                                                                 {{ c.day_created|date:"F/d/Y" }}
                                                       </span>
                                            
-                                                <button id='{{c.id}}' class='border-0 bg-transparent shadow-none' 
-                                                onclick='OpenCloseBtn(this.id)'>
-                                                       <img src="{% static "icons/arrow-down.png" %}" width='26' style='max-width:24px;' alt="">
+                                                <button id='{{c.id}}' class='border-0 p-0 rounded-circle shadow-none' 
+                                                onclick='OpenCloseBtn(this.id)'
+                                                style="background-color: #d3d3d38e !important; height: 40px; width: 60px;">
+                                                       <img src="{% static "icons/arrow-down.png" %}" width='26' style='max-width:30px;' alt="">
                                                 </button>
                                                 </div>
                                           </div>
@@ -410,7 +411,7 @@ btn-sliders-nav
                         </div>
                        <div id='div-more{{c.id}}' class='blur d-none shadow  bg-white   card position-relative w-100   
                               position-absolute start-0  p-4  ' 
-                              style='top:4.8rem; z-index: 160; border-radius:2rem; font-family: Quicksand, sans-serif;
+                              style='top:5.3rem; z-index: 160; border-radius:2rem; font-family: Quicksand, sans-serif;
                               color: black; font-size: 16px; font-optical-sizing: auto; z-index: 11;'>
                               <style>
                                     #div-more{{c.id}}, span:hover {
