@@ -327,7 +327,7 @@ btn-sliders-nav
                                                       max-height: 60px;
                                                       min-width: 60px;
                                                       min-height: 60px;
-                                                      border-radius: 50% !important;'  >
+                                                      border-radius: 20% !important;'  >
                                                 </div>                             
                                                <div class="d-flex flex-wrap    " style="height: 3rem;">
                                                 <span class="w-100   text-black" 
@@ -351,8 +351,8 @@ btn-sliders-nav
                                                       font-weight: normal;
                                                       font-optical-sizing: auto;'>
                                                       {% if c.customer_verify == True %}
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" style="margin-top: 10px;" class="bi bi-patch-check-fill me-1 text-primary" viewBox="0 0 16 16"><path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
-                                                            </svg>
+                                                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" style="margin-top: 10px;" class="bi bi-patch-check-fill me-1 text-primary" viewBox="0 0 16 16"><path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
+                                                            </svg> -->
                                                       {% else %}
                                                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill me-2 " viewBox="0 0 16 16">
                                                             <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
@@ -361,7 +361,7 @@ btn-sliders-nav
                                                                   <!-- {{new_customer}} -->
                                                             </span>
                                                       {% endif %}
-                                                            <span class=" d-flex overflow-hidden p-2" style="width: 200px; height: 2rem; border-radius: 2rem; background-color: gainsboro;">
+                                                            <span class=" d-flex overflow-hidden p-2" style="width: 200px; height: 2rem; border-radius: 2rem; background-color: rgba(220, 220, 220, 0.483);">
                                                                   {{ c.name}} {{c.last_name}}  
                                                             </span>
                                                       </span> 
@@ -398,14 +398,6 @@ btn-sliders-nav
                                                       <span class='w-100 text-capitalize mt-4 p-1 text-black-50' style="font-size: 12px; margin-left: rem; ">
                                                                 {{ c.day_created|date:"F/d/Y" }}
                                                       </span>
-                                                      {% if c.customer_verify == False %}
-                                                      <a id='{{c.id}}'  onclick='CustomerVerify(this.id)' 
-                                                            class='p-0   ms-1  mb-1' style="width: 1.7rem;">
-                                                            <button class="border-0  bg-transparent p-0 pt-1" style='color:#000000;'> 
-                                                                  <img src="{% static "icons/mas.png" %}" width='20' style='max-width:26px;' alt="">
-                                                            </button>
-                                                      </a>
-                                                {% endif %}
                                            
                                                 <button id='{{c.id}}' class='border-0 bg-transparent shadow-none' 
                                                 onclick='OpenCloseBtn(this.id)'>
@@ -428,6 +420,9 @@ btn-sliders-nav
                                           font-size: 12px;
                                     }                                    
                               </style>
+                              <div>
+                                   
+                              </div>
                                <span class="">
                                     <h6  class="text-black-50 p-0 m-0 pb-1">
                                           Direccion y cedula
@@ -692,7 +687,7 @@ btn-sliders-nav
                                           Estado del cliente 
                                     </h6>
                               </span>
-                              <span>
+                              <span class="">
                                     <button onclick='DisableCustomer(this.id)' id="{{c.id}}" class="border-0 m-0 p-0 bg-transparent" style="border-radius: 18rem;">
                                                 
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-toggle-on text-primary" viewBox="0 0 16 16">
@@ -702,6 +697,14 @@ btn-sliders-nav
                                                       Desactivar
                                                 </span>
                                     </button>
+                                    {% if c.customer_verify == False %}
+                                    <a id='{{c.id}}'  onclick='CustomerVerify(this.id)' 
+                                          class='p-0   mt-2  mb-2' style="width: 1.7rem;">
+                                          <button class="border-0  bg-transparent p-0 d-flex " style='color:#000000;'> 
+                                                <img src="{% static "icons/mas.png" %}"  class="me-1 " width='20' style='max-width:26px;' alt=""> Agregar 
+                                          </button>
+                                    </a>
+                              {% endif %}
                               </span>
                        </div>
                   </li>
