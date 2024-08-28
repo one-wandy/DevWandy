@@ -28,12 +28,18 @@
       -webkit-backdrop-filter: blur(100px) !important;
       backdrop-filter: blur(100px) !important;
 }
+@media (max-width:700px) {
+      .card-cu
+      {
+            width: 100% !important;
+      }
+}
 </style>
 <!-- {% include "components/btn-filter.html" %} -->
 <section class="d-flex flex-wrap vh-100  overflow-scroll p-1 pt-0" >
       {% for c in customer %}
 <div  style="width: 328px; height: 171px; border-radius: 35px; 
-background-color: #fff5f5bf;" class="card  m-1 position-relative  p-2">
+background-color: #fff5f5bf;" class="card  card-cu m-1 position-relative  p-2">
       <button id="{{c.id}}"  onclick='OpenCloseBtn(this.id)' style="background-color: #5A5868; width: 35px; height: 35px;" 
             class="rounded-circle position-absolute border-0 bottom-0 p-0 me-2 mb-2 end-0 d-flex flex-wrap justify-content-center align-content-center ">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-chevron-down text-white" viewBox="0 0 16 16">
