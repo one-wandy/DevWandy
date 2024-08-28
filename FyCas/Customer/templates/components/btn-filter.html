@@ -24,7 +24,30 @@ strong
       color: black;
 }
 </style>
-<div class="btn-filter  d-flex overflow-scroll w-100   " >
+<div class="btn-filter  d-flex overflow-scroll w-100 position-absolute bottom-0  " >
+
+      {% if customer %}
+      <div  class="div-menu-1 mb-2  d-flex flex-wrap  bg-white bg-opacity-50  position-sticky   justify-content-center" > 
+            <div class="w-100">
+                  <strong class=" d-none">
+                        ...
+                  </strong>
+            </div>
+          <div class="d-flex blur" style="border-radius: 2rem;border: rgba(227, 227, 227, 0.202) 1px solid; ">
+            <img src="{% static "icons/search.png" %}" class="mt-2 "
+            style="margin-left: 1.2rem; margin-right: 0.3rem;"  width='20' height="20" alt="">
+            <input type="text"  style="font-size: 12px;  height: 2.5rem;     
+            border-radius: 0.3rem !important;
+                  border-top-right-radius: 2rem !important;
+                  border-bottom-right-radius: 2rem !important;
+               " class="form-search  border-0 w-100 bg-transparent m-0 me-1 searching-config "  
+            placeholder=" Buscar cliente (alt + b)">
+          </div>
+
+      </div>
+      <!-- <div></div> -->
+      {% endif %}
+
       <button class="border-0 p-2">
             <form action="" method="post" class='w-100 border-0  d-flex justify-content-end flex-wrap'>
                   {% csrf_token %}
@@ -57,7 +80,10 @@ strong
       </button>
 
       </form>
-      <button>
+
+
+
+      <!-- <button>
             Saldar Deudas
       </button>
       <button>
@@ -86,5 +112,5 @@ strong
       </button>
       <button>
             Santo Domingo Este
-      </button>
+      </button> -->
 </div>
