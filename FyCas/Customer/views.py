@@ -136,7 +136,7 @@ class ListCustomer(ListView,Options):
                                     ).order_by('-id')[:int(count_customer)]
         else:
             context['customer'] = self.model.objects.filter(is_active = True, 
-                                    customer_verify = True ).order_by('-id')[:10]
+                                    customer_verify = True ).order_by('-id')[:6]
             
         context['setting'] = self.Setting()
         context['fecha_actual'] =  fecha_actual.strftime("%d / %B / %Y").capitalize()
