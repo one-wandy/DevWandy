@@ -75,9 +75,10 @@ background-color: #fff5f5bf;" class="card  card-cu m-1 position-relative  p-2">
                   </a>
                   <!-- <span class="" -->
        
-                  <span class="d-flex text2 overflow-hidden " style="height: 1.6rem; width: 250px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-geo-alt-fill  me-1 mt-1 mb-1" viewBox="0 0 16 16">
-                              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg> {{c.calle_numero}},  {{c.municipio}},  {{c.sector}},
+                  <span class="d-flex text2 overflow-hidden ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3-event-fill mt-1 me-1" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2h16a2 2 0 0 0-2-2zM0 14V3h16v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2m12-8a1 1 0 1 0 2 0 1 1 0 0 0-2 0"/>
+                            </svg> {{ c.day_created|date:"F/d/Y" }}
                                <!-- {{c.ciudad}} -->
                   </span>
            </div>
