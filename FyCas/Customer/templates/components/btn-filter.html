@@ -4,7 +4,7 @@
 {
       min-width: max-content;
       border-radius: 2rem !important;
-      border: 1px rgb(225, 225, 225) solid !important;
+      /* border: 1px rgb(225, 225, 225) solid !important; */
       font-size: 13px;
       height: 2.3rem;
       color: rgb(52, 52, 52) ; 
@@ -48,7 +48,7 @@ strong
       <!-- <div></div> -->
       {% endif %}
 
-      <button class="border-0 p-2">
+      <button class="border-1 p-2" style=" border: 1px rgb(225, 225, 225) solid !important;">
             <form action="" method="post" class='w-100 border-0  d-flex justify-content-end flex-wrap'>
                   {% csrf_token %}
                   <div class="d-flex  justify-content-center ms-1" >
@@ -76,7 +76,7 @@ strong
                               document.getElementById('noti').value = 1;
                         });
                   </script>
-      <button  style='width: 5rem;'>
+      <button class="border-0"  style='width: 5rem;'>
             <img  src="{% static "icons/notify.png" %}" width='24' alt="">
             <span>
                   ({{new_customer}})
