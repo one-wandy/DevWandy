@@ -42,7 +42,7 @@
       {% for c in customer %}
 <div  style="width: 338px; height: 171px; border-radius: 35px; 
 background-color: #00000000 !important;" class="card  card-cu m-1 position-relative  p-2">
-      <button id="{{c.id}}"  onclick='OpenCloseBtn(this.id)' style="background-color: #5A5868; width: 35px; height: 35px;" 
+      <button id="{{c.id}}"  onclick='OpenCloseBtn(this.id)' style="background-color: #000000; width: 35px; height: 35px;" 
             class="rounded-circle position-absolute border-0 bottom-0 p-0 me-2 mb-2 end-0 d-flex flex-wrap justify-content-center align-content-center ">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-chevron-down text-white" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
@@ -52,7 +52,7 @@ background-color: #00000000 !important;" class="card  card-cu m-1 position-relat
       <div class="m-0 p-0 " >
             <div class="d-flex">
                   <img src="{{c.img1.url}}" class="img-icons object-fit-cover" style="width: 57px; height: 57px; border-radius: 50%;"  alt=""> 
-                  <div style="background-color: #5A5868; border-radius: 2rem;
+                  <div style="background-color: #000000; border-radius: 2rem;
                    width: 190px; height: 38px;" class="p-2 m-0 mt-2 ms-2 overflow-hidden text-white d-flex  justify-content-center align-content-center">
                          <div class="m-0  d-inline  text-center  " style="width: 151px; flex-wrap: nowrap !important;">
                                {{c.name}} {{c.last_name}}
