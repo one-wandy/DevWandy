@@ -27,7 +27,7 @@ strong
 <div class="btn-filter  d-flex overflow-scroll w-100  " >
 
       {% if customer %}
-      <div  class="div-menu-1 mb-2  d-flex flex-wrap  bg-white bg-opacity-50     justify-content-center" > 
+      <div  class="div-menu-1  d-flex flex-wrap  bg-white bg-opacity-50     justify-content-center" > 
             <div class="w-100">
                   <strong class=" d-none">
                         ...
@@ -51,10 +51,15 @@ strong
       <button class="border-0 p-2">
             <form action="" method="post" class='w-100 border-0  d-flex justify-content-end flex-wrap'>
                   {% csrf_token %}
-                  <div class="d-flex " >
-                  <label for="n-1123">Filtrar por cantidad: </label>
-                        <input id="n-1123" type="number" class='m-0 pb-2 border-0 form-control bg-transparent ' 
-                        style='height: 1.6rem; width: 5rem; background-color: rgb(240, 240, 240);' value='10' name='20-customer' >
+                  <div class="d-flex  justify-content-center ms-1" >
+                  <label for="n-1123">Filtrar: </label> 
+                        {% if count_customer  == None %}    
+                              <input id="n-1123" type="number" class='m-0 pb-2 border-0 form-control bg-transparent ' 
+                              style='height: 1.6rem; width: 5rem; background-color: rgb(240, 240, 240);' value='10' name='20-customer' >
+                              {% else %}
+                              <input id="n-1123" type="number" class='m-0 pb-2 border-0 form-control bg-transparent ' 
+                              style='height: 1.6rem; width: 5rem; background-color: rgb(240, 240, 240);' value='{{count_customer}}' name='20-customer' >
+                        {% endif %}
                   </div>
                   <!-- <button class='p-0 border-0 me-2' style="border: none !important; background-color: transparent !important;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-filter  text-primary border-0 bg-transparent" viewBox="0 0 16 16">
@@ -71,11 +76,11 @@ strong
                               document.getElementById('noti').value = 1;
                         });
                   </script>
-      <button  style='width: 12rem;'>
+      <button  style='width: 5rem;'>
             <img  src="{% static "icons/notify.png" %}" width='24' alt="">
             <span>
                   ({{new_customer}})
-                  Solicitudes
+                  
             </span>
       </button>
 

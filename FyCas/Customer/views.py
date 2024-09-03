@@ -119,6 +119,7 @@ class ListCustomer(ListView,Options):
         context = super().get_context_data(**kwargs)
         fecha_actual = datetime.now()
         count_customer = self.request.POST.get('20-customer')
+     
         customer = self.request.POST.get('send-data')
         if self.request.method == 'POST':
             if  self.request.POST.get('noti') != None:
@@ -146,6 +147,7 @@ class ListCustomer(ListView,Options):
                                     customer_verify = False).count()
         context['day_pay'] = self.Day15_or_30()
         context['day_pay_2'] = self.Day_Pay()
+        context['count_customer'] = count_customer
         return context
     
     def Day_Pay(self):
