@@ -12,17 +12,23 @@
             color: #5A5868;
             border: 1px solid rgb(168, 168, 168);
       }
-      .blured
+      /* .blured
 {
       -webkit-backdrop-filter: blur(40px) !important;
-      backdrop-filter: blur(100px) !important;
-      background: #000;
+      backdrop-filter: blur(40px) !important;
+      /* background: #000; */
+
+.extends-div svg
+{
+ width: 10px !important;
 }
 </style>
-<div id='div-more{{c.id}}' class='  d-none shadow  bg-white     card position-relative w-100   
+<div id='div-more{{c.id}}' class='  d-none bg-white     extends-div w-100   
 position-absolute start-0  p-4  ' 
-style='top:5.3rem; z-index: 160; border-radius:2rem; font-family: Quicksand, sans-serif;
-color: black; font-size: 16px; font-optical-sizing: auto; z-index: 11;'>
+style='top: 6rem; border-radius:1.5rem; font-family: Quicksand, sans-serif;
+color: black; font-size: 16px;  z-index: 1000 !important; box-shadow: #eeeeee 1px 2px 6px 1px;
+
+'>
 <style>
       #div-more{{c.id}}, span:hover {
             cursor: pointer;
@@ -36,7 +42,7 @@ color: black; font-size: 16px; font-optical-sizing: auto; z-index: 11;'>
 </div>
  <span class="">
       <h6  class="text-black-50 p-0 m-0 pb-1">
-            Direccion y cedula 
+            Direccion 
       </h6>
 </span>
 
@@ -50,20 +56,20 @@ color: black; font-size: 16px; font-optical-sizing: auto; z-index: 11;'>
       </a>
 </span>
 
-     <span class="w-100 mb-4 d-flex" style="font-size: 14px;">
+     <!-- <span class="w-100 mb-4 d-flex" style="font-size: 14px;">
             <strong>
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-person-vcard-fill  text-black  me-1" viewBox="0 0 16 16">
                   <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
                 </svg>
             </strong> 
             {{c.dni}} 
-     </span>
+     </span> -->
 <span class="w-100   d-flex justify-content-end start-0 position-absolute top-0">
-      <button id='{{c.id}}' class='border-0 p-0 me-3  mt-3 bg-transparent shadow-none' 
-            onclick='OpenCloseBtn(this.id)' >
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
-            </svg>
+      <button id='{{c.id}}' class=' p-0 me-3  mt-3 rounded-circle bg-transparent ' 
+            onclick='OpenCloseBtn(this.id)' style="background-color: #35333e00; width: 35px; height: 35px; color: #000000 !important; top: 8rem; box-shadow: #eeeeee 1px 2px 6px 1px; border: 1px solid #eeeeee !important;" >
+            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important; color: #909090 !important; transform: rotate(180deg);"  width="25" height="25" fill="currentColor" class="bi bi-chevron-down m-0  p-0" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                  </svg>
       </button>
 
 </span> 
@@ -281,12 +287,12 @@ color: black; font-size: 16px; font-optical-sizing: auto; z-index: 11;'>
       </a>
       <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} Actualmente aplica para un prestamo estandar con un monoto minimo de *($7,000.00)*, si deseas puede obtener un mayor monto con una garantia fisica que avale el monto solicitado. ¿Desea continuar con el proceso *(Estandar)* o *(Garantizado)*?" >
 
-      <button class='text-white border-0' style='background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%); border-radius: 1.5rem;'>
+      <button class='text-white border-0' style='background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%); color: white !important; border-radius: 1.5rem;'>
            Estandar
       </button>
 </a>
 <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) *{{c.name}} {{c.last_name}}*%0A%0A*Informacion de solicitud de prestamo por un monto de ${{c.monto_requerido|intcomma}}.00*%0ADebido a su precalificasion, por el momento no califica para el tipo de préstamo (Estandar) solicitado, podemos evaluarle en base a una garantía física que avale el monto solicitado." >
-      <button class='text-white border-0' style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;'>
+      <button class='text-white border-0' style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
             Garantia
       </button>
 </a>

@@ -7,10 +7,10 @@
    </style>
     {% for credit in c.credit.all %}
     
-    <div class='bg-white credit-sp  m-1 text-black-50 bg-opacity-50' 
+    <div class='bg-white credit-sp p-3 mt-2 card  text-black-50 bg-opacity-50' 
     style=" width: 100%; 
     font-size: 14px;
-    border-radius: 1.5rem; ">
+    border-radius: 1rem; height: max-content ; box-shadow: #eeeeee 1px 2px 6px 1px; border: 1px solid #eeeeee !important;">
 
 
     <div class="mt-2">
@@ -18,28 +18,29 @@
 
           <a class="" href="{% url "customer:update-credit" credit.id %}">
           <span class="black"></span>
-                {{credit.name}}
+              <strong>Nombre: </strong>  {{credit.name}}
           </a>
           {% else %}
           <span class=""></span>
-          {{credit.name}}
+          <strong>Nombre: </strong> {{credit.name}}
           {% endif %}
 
     </div>
     <div>
           <span class=""></span>
-                {{credit.dni}}
+          <strong>Cedula: </strong>         {{credit.dni}}
     </div>
 <div>
     <span class=""></span>
-          {{credit.no_account}}
+    <strong>No. Cuenta: </strong>   {{credit.no_account}}
 </div>
 <div>
     <span class=""></span>
-       ${{credit.amount|intcomma}}.00
+    <strong>Monto: </strong> ${{credit.amount|intcomma}}.00
 </div>
 <div>
     <span class=""></span>
+    <strong>Cuotas: </strong>
     {{credit.price_feed}} a ${{credit.amount_feed|intcomma}} los dias {% if credit.mode_pay == True %}
     (15) - (30)
     {% else %}
@@ -47,7 +48,7 @@
     {% endif %}
 </div>
 <div>
-    <hr>
+    {% comment %} <hr> {% endcomment %}
 </div>
 
 <div class='w-100'>
@@ -66,11 +67,11 @@
             width: 100%;
       }
 </style>
-<span class="d-flex w-100">
+{% comment %} <span class="d-flex w-100">
       <h6 class="text-black-50 m-0 p-0 pb-1"  > 
             Acciones de credito    
       </h6>
-</span>
+</span> {% endcomment %}
 <div class='d-flex btn-share-con w-100  justify-content-center mt-2'>
       <a  class='w-auto m-0' href="https://api.whatsapp.com/send?phone=+18092998306&text=*({{credit.customer.name}} {{credit.customer.last_name}})*, 
       Firmado el *{{fecha_actual}}*; Detalles -> https://grupofycas.online/detail-credit/customer/{{credit.id}}" >

@@ -74,8 +74,8 @@
       {
             justify-content: start !important;
       }
-      }
-
+      
+}
 
 
 </style>
@@ -93,7 +93,7 @@
             <div class="  pe-3 ps-1" style="width: max-content; height: 2.2rem; border-radius: 2rem;">
                   <div class="d-flex justify-content-end  me-2" style="line-height: 10px;">
                       <div class="" style="margin-top: 4px;">
-                          <img src="static/bg-3.jpg" width="20" height="20"  class=" me-1 object-fit-cover rounded-circle " style="border: 1px;" alt="">
+                          <img src="static/pro.png" width="30" height="30"  class=" me-1 object-fit-cover rounded-circle " style="border: 1px;" alt="">
                       </div> 
                       <div>
                           <h6 style="font-size: 10px;" class="text-black-50 p-0 m-0">
@@ -151,7 +151,7 @@
                         Utilidades
                   </strong>
             </div>
-            <button onclick="Menu()"  class="mt-4">
+            <button onclick="Cal()"  class="mt-4">
                   <img src="{% static "svg/calculator.svg" %}" width='24' alt="">
                   <span>
                         Calculara
@@ -210,3 +210,67 @@
 </section>
 <!-- <input type="text"  style="font-size: 14px;  min-width: 200px; min-height: 2.5rem;margin-top: 5px !important;   max-height: 2.5rem; " class="form-search bg-danger  text-center w-100  m-0 mb-1  bg-white bg-opacity-75 "  id="searching-config" 
 placeholder=" Buscando Clientes "> -->
+
+
+<script>
+      let resultadoParrafoES = document.getElementById('resultado-es')
+      let resultadoParrafo2ES = document.getElementById('resultado-es2')
+      let resultadoParrafo3ES = document.getElementById('resultado-es3')
+      let plazoES = document.getElementById('plazo-es')
+      let numeroES = document.getElementById('numero-es')
+
+
+      let SuperCal2 = (capital, plazo, tasa)=> {
+      
+      const Cuotas = capital * tasa / (1 - Math.pow(1 + tasa, -plazo));
+      let amortizacion = [];
+      let saldo = capital;
+      let totalIntereses = 0; 
+      for (let mes = 1; mes <= plazo; mes++) {
+            const interes = saldo * tasa; 
+            const amortizacionCapital = Cuotas - interes;
+            saldo -= amortizacionCapital;
+            totalIntereses += interes; 
+            amortizacion.push({
+                  Mes: mes,
+                  Cuota: Cuotas.toFixed(2),
+                  Interes: interes.toFixed(2),
+                  AmortizacionCapital: amortizacionCapital.toFixed(2),
+                  Saldo: saldo.toFixed(2)
+            }); }
+            let totales = capital + totalIntereses
+
+      const numero = parseFloat(numeroES.value);
+  
+      resultadoParrafoES.textContent = '$' + Cuotas.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00';
+      resultadoParrafo2ES.textContent = '$' + totalIntereses.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00'
+      resultadoParrafo3ES.textContent = '$' + totales.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00'
+      if(numeroES.value != ''){
+            let numero = numeroES.value.replace(/,/g, ''); // Elimina las comas existentes
+            if (!isNaN(numero) && numero.trim() !== '') {
+                numeroES.value = parseFloat(numero).toLocaleString();
+            } else {
+                numeroES.value = numeroES.value.replace(/[^\d.]/g, ''); 
+                // Elimina cualquier carácter no numérico excepto el punto decimal
+            }
+      }
+
+} 
+
+numeroES.addEventListener("input", () => {
+
+      
+      let numero = numeroES.value.replace(/,/g, ''); // Elimina las comas existentes
+      let capital = parseInt(numero)
+      let plazo =   plazoES.value
+      let tasa = 0.15
+      SuperCal2(capital, plazo, tasa)
+});
+plazoES.addEventListener("input", () => {
+      let numero = numeroES.value.replace(/,/g, ''); // Elimina las comas existentes
+      let capital = parseInt(numero)
+      let plazo =   plazoES.value
+      let tasa = 0.15
+      SuperCal2(capital, plazo, tasa)
+});
+</script>
