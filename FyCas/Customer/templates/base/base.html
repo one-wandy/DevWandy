@@ -271,9 +271,9 @@ a
 /* e */
 #Calculadora {
   position: absolute;
-  top: 50px;
-  left: 50px;
-  width: 320px;
+  top: 285px;
+  left: 240px;
+  width: 380px;
   border: 1px solid rgb(243, 243, 243);
   user-select: none;
   z-index: 100;
@@ -297,8 +297,7 @@ a
 #Calculadora 
       {
       display: none;
-      -webkit-backdrop-filter: blur(30px) !important;
-      backdrop-filter: blur(30px) !important;
+  
       }
       .black 
       {
@@ -505,19 +504,14 @@ select option {
       </div>
 
       </section>
-      <div class="card  bg-white bg-opacity-50 p-2  " id="Calculadora">
-     
-            <div class="card-header text-start border-0  bg-transparent"  style="border-radius: 1rem;">
-                  <!-- <button onclick="Cal()" class="bg-danger border-0  text-white d-flex justify-content-center flex-wrap align-content-center rounded-circle position-absolute end-0"
-                  style="width: 29px; height: 29px;"> 
-                  X
-                  </button> -->
-                  <!-- <h6 class="d-flex align-content-center flex-wrap w-100 text-center  justify-content-start" style="font-size: 14px;">
-                        <img src="{% static "svg/calculator.svg" %}" width='16' alt="" class="me-1" > Calculador
-                  </h6> -->
-         
-            </div>
-            <div id="mn-calc" class="card-body  card bg-white bg-opacity-50 position-relative" style="border-radius: 1.5rem; border: 1px solid rgb(229, 229, 229);" >
+      <div class="  bg-transparent d-block  d-none p-2 border-0  " id="Calculadora" >
+            <button onclick="Cal()" class="bg-danger border-0  text-white d-flex justify-content-center flex-wrap align-content-center rounded-circle position-absolute end-0"
+            style="width: 29px; height: 29px; z-index: 100;"> 
+                    X
+         </button>
+
+            <div id="mn-calc" class="card-body shadow border-1 card bg-white bg-opacity-10 position-relative" style="border-radius: 1.5rem; border: 0px solid rgba(229, 229, 229, 0);     -webkit-backdrop-filter: blur(30px) !important;
+      backdrop-filter: blur(30px) !important;" >
               
                   <!-- {% include "design-virginia/Menu-V/calculador.html" %} -->
                   <div>
@@ -565,6 +559,7 @@ select option {
                              }
                        
                        </style>
+                       
                        <div class="calculador-v d-flex flex-wrap">
                              <div class="d-flex justify-content-center w-100">
                                    <div class="calculador">
@@ -593,13 +588,13 @@ select option {
                                    </div>
                              </div>
                        
-                             <div id="close-calculador" class="w-100 d-flex mt-3 position-relative">
+                             <div id="close-calculador" class="w-100 d-flex d-none mt-3 position-relative">
                                    <label class="btn" onclick="Cal()">
                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
                                                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
                                              </svg> 
                                    </label>
-                                 <span class="mt-2 ms-2" onclick="Cal()">  Atras</span> 
+                                 <span class="mt-2 ms-2" onclick="Cal()">  Cerrar</span> 
                                  <label class="position-absolute end-0 mt-2 me-2">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
                                          <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
@@ -608,13 +603,7 @@ select option {
                              </div>
                        </div>
                   </div>
-                  <div class="d-flex w-100 justify-content-end">
-                        <button onclick="Cal()" class="bg-transparent border-0 p-0">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                  </svg>
-                        </button>
-                  </div>
+    
             </div>
             <div class="d-flex w-100 flex-wrap d-none" id="cls-bn" >
                   <h6 class="w-100  text-end pe-1 ps-1" style="font-size: 14px;">
@@ -1261,15 +1250,32 @@ document.addEventListener("mouseup", () => {
 function Cal() {
   // Tu código para la función Cal
   const div = document.getElementById("Calculadora");
-  if (div.style.display === "none") {
-      document.getElementById('close-calculador').classList.add('d-none')
-    div.style.display = "block";
-    plazoInput.focus()
+//   if (div.style.display === "none") {
+//       document.getElementById('close-calculador').classList.add('d-none')
+//     div.style.display = "block";
 
-  } else {
-    div.style.display = "none";
-    document.getElementById('close-calculador').classList.add('d-block')
-  }}
+
+//   } else {
+//     div.style.display = "none";
+//     document.getElementById('close-calculador').classList.add('d-block')
+//   }
+
+  
+      // Verifica si tiene la clase 'd-none'
+                  if (div.classList.contains('d-none')) {
+                        div.classList.remove('d-none')
+                        document.getElementById('plazo-es').focus()
+                        document.querySelector('.btn-calculadora').classList.add('btn-pulse')
+            
+                  } else {
+                        div.classList.add('d-none')
+                        document.querySelector('.btn-calculadora').classList.remove('btn-pulse')
+                  }
+
+
+}
+
+
 
   document.addEventListener('keydown', function(event) {
   if (event.altKey && event.key === 'c') {

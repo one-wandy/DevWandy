@@ -35,10 +35,10 @@
       }
 }
 </style>
-<div class="position-absolute bottom-0  d-flex justify-content-center w-100 " style="z-index: 4;">
+<div class="position-absolute bottom-0  d-flex justify-content-end  pe-1 w-100 " style="z-index: 4;">
       {% include "components/btn-filter.html" %}
 </div>
-<section class="d-flex flex-wrap vh-100  overflow-scroll pb-5 p-1 pt-0 " >
+<section class="d-flex flex-wrap   overflow-scroll pb-5 p-1 pt-0 " >
       {% for c in customer %}
 <div  style="  width: 338px; height: 171px; border-radius: 26px; 
 background-color: #ffffff8c !important; box-shadow: 0px 1px 3px 1px rgba(218, 218, 218, 0.505);" class=" position-relative card-cu m-1 mt-2    p-2" >
@@ -54,12 +54,14 @@ background-color: #ffffff8c !important; box-shadow: 0px 1px 3px 1px rgba(218, 21
                         class="p-1 rounded-circle ">
                         <img src="{{c.img1.url}}" class="  img-icons object-fit-cover" style="width: 57px; height: 57px; border-radius: 50%; "  alt=""> 
                   </span>
-                  <div style="background-color: rgba(0, 0, 0, 0); border-radius: 2rem;
-                   width: 190px; height: 38px; border: 1px solid rgba(217, 217, 217, 0); font-weight: bold; color: #000000;" class="p-2  m-0 mt-3 ms-2 overflow-hidden  w-100  d-flex  ">
-                         <div class="m-0  d-inline    " style="width: 151px; flex-wrap: nowrap !important;">
-                               {{c.name}} {{c.last_name}}
-                         </div>
-                  </div>
+                  <a href="{% url "customer:detail-customer" c.id %}" >
+                        <div style="background-color: rgba(0, 0, 0, 0); border-radius: 2rem;
+                        width: 190px; height: 38px; border: 1px solid rgba(217, 217, 217, 0); font-weight: bold; color: #000000;" class="p-2  m-0 mt-3 ms-2 overflow-hidden  w-100  d-flex  ">
+                              <div class="m-0  d-inline    " style="width: 151px; flex-wrap: nowrap !important;">
+                                    {{c.name}} {{c.last_name}}
+                              </div>
+                        </div>
+                  </a>
             </div>
            <div class="ms-1 mt-3">  
                   <span class="d-flex text2">

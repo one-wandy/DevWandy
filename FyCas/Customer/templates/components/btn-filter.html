@@ -11,6 +11,7 @@
       font-family: Quicksand, sans-serif !important; 
       font-weight: normal !important;
       background-color: rgba(255, 255, 255, 0.663);    
+      overflow: hidden !important;
 }
 strong
 {
@@ -25,7 +26,7 @@ strong
 <div class="btn-filter  d-flex overflow-scroll   bg-transparent" >
 
 
-      <div  class="div-menu-1  d-flex flex-wrap overflow-hidden  bg-white      justify-content-center" > 
+      <div  class="div-menu-1  d-flex flex-wrap overflow-hidden   blur bg-white bg-opacity-75      justify-content-start "  style="border-radius: 2rem; width: 253px;"> 
             <div class="w-100">
                   <strong class=" d-none">
                         ...
@@ -40,7 +41,7 @@ strong
                                     document.getElementById('noti').value = 1;
                               });
                         </script>
-            <button class="border-0 position-relative p-0"  style='max-width: 3rem !important;' >
+            <button class="border-0 position-relative bg-transparent bg p-0"  style='max-width: 3rem !important;' >
                   <img  src="{% static "icons/notify.png" %}" width='24' alt="" class=" bg-transparent">
                   <div class="position-absolute " style="top: 12px; left: 10px; font-size: 10px;">
                         {{new_customer}}
@@ -51,12 +52,13 @@ strong
       
             <!-- <img src="{% static "icons/search.png" %}" class="mt-2 "
             style="margin-left: 1.2rem; margin-right: 0.3rem;"  width='20' height="20" alt=""> -->
-            <input type="text"  style="font-size: 12px; width: auto; max-width: 260px;  height: 2.5rem;     
+            <input type="text"  style="font-size: 12px; width: auto; max-width: 250px;  height: 2.7rem;     
             border-radius: 0.3rem !important;
                   border-top-right-radius: 2rem !important;
                   border-bottom-right-radius: 2rem !important;
                " class="form-search  border-0 w-100  bg-transparent m-0 me-1 searching-config "  
-            placeholder=" Busqueda ">
+            placeholder=" Busqueda Avanzada ">
+            
             <button class="border-0 p-2 bg-white" style="  border: 0px rgb(225, 225, 225) solid !important;">
                   <form action="" method="post" class='w-100 border-0  d-flex justify-content-end flex-wrap'>
                         {% csrf_token %}

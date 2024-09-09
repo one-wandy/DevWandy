@@ -586,4 +586,13 @@ class Ubicaciones(ListView, Options):
                                         customer_verify = True)
         return context
     
+class Calendario(TemplateView, Options):
+    template_name = "components/calendario.html"
+    
+class Ubicaciones(TemplateView, Options):
+    template_name = "components/ubicaciones.html"
+    
+    
+class Configuraciones(TemplateView, Options):
+    template_name = "components/configuraciones.html"
     

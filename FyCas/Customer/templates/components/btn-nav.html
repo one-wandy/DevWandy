@@ -13,6 +13,14 @@
             border-radius: 1rem !important;
 
       }
+      .btn-nav button:hover
+      {
+            background-color: #eeeeee;
+      }
+      .btn-pulse
+      {
+            background-color: #eeeeee !important;
+      }
       .btn-nav button, a
       {
             width: 100%;
@@ -114,7 +122,7 @@
                   </strong>
             </div>
             <a href="{% url "customer:dashboard" %}" class="pt-4">
-                  <button>
+                  <button class="btn-dashboard">
                         <img src="{% static "icons/grafico.png" %}" width='24' alt="">
                         <span>
                               Dashboard
@@ -130,46 +138,46 @@
                   </button>
             </a>
             <a href="{% url "customer:list-customer" %}">
-                  <button>
+                  <button class="btn-cliente"> 
                         <img src="{% static "svg/user.svg" %}" width='24' alt="">
                         <span>
                               Clientes  {% if customer_count %} ({{customer_count}}) {% endif %} 
                         </span>
                   </button>
             </a>
-            <a href="{% url "customer:prestamos" %}">
-                  <button>
-                        <img src="{% static "svg/list.svg" %}" width='24' alt="">
+            <a href="{% url "customer:ubicaciones" %}">
+
+                  <button class="btn-ubicaciones">
+                        <img src="{% static "svg/map.svg" %}" width='24' alt="">
                         <span>
-                              Prestamos
+                              Ubicaciones
                         </span>
                   </button>
             </a>
+  
+      
     
             <div class="mt-4 d-none w-100">
                   <strong >
                         Utilidades
                   </strong>
             </div>
-            <button onclick="Cal()"  class="mt-4">
+            <button onclick="Cal()"  class="mt-4 btn-calculadora">
                   <img src="{% static "svg/calculator.svg" %}" width='24' alt="">
                   <span>
-                        Calculara
+                        Calculadora 
                   </span>
             </button>
-            <button>
-                  <img src="{% static "svg/calendar.svg" %}" width='24' alt="">
-                  <span>
-                        Calendario
-                  </span>
-            </button>
-            <button>
-                  <img src="{% static "svg/map.svg" %}" width='24' alt="">
-                  <span>
-                    Ubicaciones
-                  </span>
-            </button>
-  
+            <a href="{% url "customer:calendario" %}">
+
+                  <button class="btn-calendario">
+                        <img src="{% static "svg/calendar.svg" %}" width='24' alt="">
+                        <span>
+                              Calendario
+                        </span>
+                  </button>
+            </a>
+
             <a  href="{% url "customer:mensajeria" %}">
                   <button>
                         <img src="{% static "icons/msj.png" %}" width='24' alt="">
@@ -191,22 +199,45 @@
                         Sistema
                   </strong>
             </div>
-            <button  class="mt-4">
-                  <img src="{% static "svg/config.svg" %}" width='24' alt="">
-                  <span>
-                        Configuraciones
-                  </span>
-            </button>
+            <a  href="{% url "customer:configuraciones" %}">
+
+                  <button  class="mt-4 btn-configuraciones">
+                        <img src="{% static "svg/config.svg" %}" width='24' alt="">
+                        <span>
+                              Configuraciones
+                        </span>
+                  </button>
+            </a>
             <button>
                   <img src="{% static "svg/document.svg" %}" width='24' alt="">
                   <span>
                         Reportes 
                   </span>
             </button>
+                  <a href="{% url "customer:prestamos" %}">
+                  <button class="btn-prestamos">
+                        <img src="{% static "svg/list.svg" %}" width='24' alt="">
+                        <span>
+                              Listas
+                        </span>
+                  </button>
+            </a>
 
 
       </div>
-      
+      <div class="text-center w-100 pt-4 " style="line-height: 14px; font-size: 12px !important;">
+            <span class="text-center w-100 p-1"
+            style="font-size: 10px !important; color: #5A5868; font-weight: bold;">
+                 <span style="font-size: 9px !important;">V</span> <strong class="text-black-50" style="font-size: 12px;">Destellos 2.5</strong>
+           </span> <br>
+           <span class="text-center w-100 p-1"
+           style="font-size: 10px; color: #5A5868; font-weight: bold;">
+                <span style="font-size: 9px !important;" class="text-black-50">Powered by</span> <strong class="text-black-50" style="font-size: 12px;">ChatGPT 3.5</strong>
+          </span>
+          <span class="w-100 justify-content-center" >
+            <a href="" class="text-center  text-black-50 justify-content-center w-100" style="font-size: 10px !important;">untal.wandy@icloud.com</a>
+          </span>
+      </div>
 </section>
 <!-- <input type="text"  style="font-size: 14px;  min-width: 200px; min-height: 2.5rem;margin-top: 5px !important;   max-height: 2.5rem; " class="form-search bg-danger  text-center w-100  m-0 mb-1  bg-white bg-opacity-75 "  id="searching-config" 
 placeholder=" Buscando Clientes "> -->

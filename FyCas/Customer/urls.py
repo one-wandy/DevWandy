@@ -19,6 +19,10 @@ urlpatterns = [
       path('update-credit/<int:pk>', views.UpdateCredit.as_view(), name='update-credit'),
       path('list-credit/<int:pk>', views.ListCredit.as_view(), name='list-credit'),
 
+      path('calendario/', views.Calendario.as_view(), name='calendario'),
+      path('ubicaciones/', views.Ubicaciones.as_view(), name='ubicaciones'),
+      path('configuraciones/', views.Configuraciones.as_view(), name='configuraciones'),
+
       path("detail-credit/customer/<int:pk>", views.DetailCreditCustomer.as_view(), name="detail-credit-cutomer"),
 
       path("no-approved/customer", views.NoApproved.as_view(), name='no-approved'),
