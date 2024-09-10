@@ -4,6 +4,10 @@
       {
             color: black !important;
       }
+      .credit-sp  strong 
+      {
+            font-size: 12px !important;
+      }
    </style>
     {% for credit in c.credit.all %}
     
@@ -18,11 +22,11 @@
 
           <a class="" href="{% url "customer:update-credit" credit.id %}">
           <span class="black"></span>
-              <strong>Nombre: </strong>  {{credit.name}}
+              <strong>Nombre:   </strong>  {{credit.name}}
           </a>
           {% else %}
           <span class=""></span>
-          <strong>Nombre: </strong> {{credit.name}}
+          <strong>Nombre:  </strong> {{credit.name}}
           {% endif %}
 
     </div>
