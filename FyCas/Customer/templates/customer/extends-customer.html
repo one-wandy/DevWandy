@@ -1,11 +1,6 @@
 {% load humanize %} {% load static %} 
 <style>
-      .btn-share-con button
-      {
-            
-                  background-color: transparent !important;
-            
-      }
+     
       .card button
       {
             font-weight: bold;
@@ -55,6 +50,48 @@ background-color: #eeeeee;
 </div>
  <span class="">
       <h6  class="text-black-50 p-0 m-0 pb-1">
+            ...
+      </h6>
+</span>
+
+<!-- <span class="w-100   overflow-hidden d-flex" style="height: 2.8rem ">
+      <strong class="">     
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-geo-alt-fill text-black me-1" viewBox="0 0 16 16">
+            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
+      </strong>
+      <a class="" style=" text-transform: capitalize; font-size: 14px !important; " >
+            {{c.calle_numero}},  {{c.municipio}}, <br>  {{c.sector}}, {{c.ciudad}}
+      </a>
+</span> -->
+
+     <!-- <span class="w-100 mb-4 d-flex" style="font-size: 14px;">
+            <strong>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-person-vcard-fill  text-black  me-1" viewBox="0 0 16 16">
+                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
+                </svg>
+            </strong> 
+            {{c.dni}} 
+     </span> -->
+<span class="w-100   d-flex justify-content-end start-0 position-absolute top-0">
+            <button  id='{{c.id}}'  onclick="OpenCloseBtn(this.id)" class="bg-danger mt-2 me-2 border-0  text-white d-flex justify-content-center flex-wrap align-content-center rounded-circle position-absolute end-0"
+            style="width: 29px; height: 29px; z-index: 100;"> 
+                    X
+         </button>
+
+</span> 
+<div class="expand rounded-0 ">
+            
+<span class="">
+      <h6  class="text-black-50 p-0 m-0 pb-1">
+            Detalles     <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important; color: #909090 !important; "  width="16" height="16" fill="currentColor" class="bi bi-chevron-down m-0  p-0" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                  </svg>
+      </h6>
+</span>
+
+
+<span class="">
+      <h6  class="text-black-50 p-0 m-0 pb-1">
             Direccion 
       </h6>
 </span>
@@ -69,26 +106,8 @@ background-color: #eeeeee;
       </a>
 </span>
 
-     <!-- <span class="w-100 mb-4 d-flex" style="font-size: 14px;">
-            <strong>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-person-vcard-fill  text-black  me-1" viewBox="0 0 16 16">
-                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
-                </svg>
-            </strong> 
-            {{c.dni}} 
-     </span> -->
-<span class="w-100   d-flex justify-content-end start-0 position-absolute top-0">
-      <button id='{{c.id}}' class=' p-0 me-3  mt-3 rounded-circle bg-transparent ' 
-            onclick='OpenCloseBtn(this.id)' style="background-color: #35333e00; width: 35px; height: 35px; color: #000000 !important; top: 8rem; box-shadow: #eeeeee 1px 2px 6px 1px; border: 1px solid #eeeeee !important;" >
-            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important; color: #909090 !important; transform: rotate(180deg);"  width="25" height="25" fill="currentColor" class="bi bi-chevron-down m-0  p-0" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
-                  </svg>
-      </button>
-
-</span> 
-<div class="expand rounded-0">
 <span class="">
-      <h6  class="text-black-50 p-0 m-0 pb-1">
+      <h6  class="text-black-50 p-0 pt-3 m-0 pb-1">
             Elecciones opcionales
       </h6>
 </span>
@@ -130,7 +149,11 @@ background-color: #eeeeee;
             Monto solicitado y fines
       </h6>
 </span>
-
+<span style="font-size: 14px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+            <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
+      </svg>  <span id='monto-spa{{c.id}}'>{{c.monto_requerido}}</span> 
+</span>
 <br>
 <span style="font-size: 14px;">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-text" viewBox="0 0 16 16">
@@ -204,11 +227,11 @@ background-color: #eeeeee;
             Listado de creditos
       </h6>
 </span>
-<div class='d-flex flex-wrap   overflow-scroll w-100 justify-content-center' style="height: 14rem;"  >
+<div class='d-flex flex-wrap    overflow-auto w-100 justify-content-center' style="height: 14rem;"  >
       {% include "components/list-credi.html" %}
 </div>
 {% endif %}
-<br><br>
+
 <span class="">
       <h6 class="text-black-50 m-0 p-0 pb-1"  > 
             Acciones de credito
@@ -222,10 +245,10 @@ background-color: #eeeeee;
             Crear 
       </button>
       <button style='border-radius: 1.5rem;'>
-            + Bono
+            Listado
       </button>
       <button style='border-radius: 1.5rem;'>
-            Saldar
+            Actual
       </button>
 </span>
 <br>

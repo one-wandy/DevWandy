@@ -7,11 +7,12 @@
       .credit-sp  strong 
       {
             font-size: 12px !important;
+            margin-right: 5px !important;
       }
    </style>
     {% for credit in c.credit.all %}
     
-    <div class='bg-white credit-sp p-3 mt-2 card  text-black-50 bg-opacity-50' 
+    <div class='bg-white credit-sp p-3 mt-2 card  text-black-50 opacity-75' 
     style=" width: 100%; 
     font-size: 14px;
     border-radius: 1rem; height: max-content ; box-shadow: #eeeeee 1px 2px 6px 1px; border: 1px solid #eeeeee !important;">
@@ -55,9 +56,7 @@
     {% comment %} <hr> {% endcomment %}
 </div>
 
-<div class='w-100'>
 
-</div>
 <style>
       .btn-share-con button
       {
@@ -71,29 +70,28 @@
             width: 100%;
       }
 </style>
-{% comment %} <span class="d-flex w-100">
-      <h6 class="text-black-50 m-0 p-0 pb-1"  > 
-            Acciones de credito    
-      </h6>
-</span> {% endcomment %}
-<div class='d-flex btn-share-con w-100  justify-content-center mt-2'>
-      <a  class='w-auto m-0' href="https://api.whatsapp.com/send?phone=+18092998306&text=*({{credit.customer.name}} {{credit.customer.last_name}})*, 
-      Firmado el *{{fecha_actual}}*; Detalles -> https://grupofycas.online/detail-credit/customer/{{credit.id}}" >
-      <button >
-            Compartir
-      </button>
+
+      <div class='d-flex btn-share-con w-100  justify-content-center mt-2'>
+            <a  class='w-auto m-0' 
+                  href="https://api.whatsapp.com/send?phone=+18092998306&text=*({{credit.customer.name}} {{credit.customer.last_name}})*, Firmado el *{{fecha_actual}}*; Detalles -> https://grupofycas.online/detail-credit/customer/{{credit.id}}" >
+                  <button >
+                        Compartir
+                  </button>
             </a>
-    <a  target="_blank" class='m-0 w-auto' href="{% url "customer:card-customer" credit.customer.id credit.id %}">
-          <button>
-               Contrato
-          </button>
-    </a>
-    <a target="_blank"  class='m-0 w-auto' href="{% url "customer:notary-customer" credit.customer.id  credit.id %}">
-          <button>
-           Notarial
-          </button>
-      </a>
-</div>
+            <a  target="_blank" class='m-0 w-auto' 
+                  href="{% url "customer:card-customer" credit.customer.id credit.id %}">
+                  <button>
+                        Contrato
+                  </button>
+            </a>
+            <a target="_blank"  class='m-0 w-auto' 
+                  href="{% url "customer:notary-customer" credit.customer.id  credit.id %}">
+                  <button>
+                        Notarial
+                  </button>
+            </a>
+      </div>
+
 </div>
 
 {% endfor %}
