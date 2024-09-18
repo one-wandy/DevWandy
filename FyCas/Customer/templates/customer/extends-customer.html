@@ -22,16 +22,23 @@
       height: 1rem;
       overflow: hidden;
       transition: 0.9s !important;
+      max-width: 5rem;
 }
 .extends-div .expand:hover
 {
       transition: 0.9s !important;
+      max-width: 100%;
       height: max-content;
+}
+
+.btn-share-con button
+{
+      padding: 0.6rem !important;
 }
 </style>
 <div id='div-more{{c.id}}' class='  d-none      extends-div w-100   
-position-absolute start-0  p-4  ' 
-style='top: 6rem; border-radius:1.9rem; font-family: Quicksand, sans-serif;
+position-absolute start-0  p-2 pt-2' 
+style='top: 6rem; border-radius:1.5rem; font-family: Quicksand, sans-serif;
 border: 1px solid rgb(195, 195, 195);
 color: black; font-size: 16px;  z-index: 1000 !important; box-shadow: #eeeeee 1px 2px 6px 1px;
 background-color: #eeeeee;
@@ -48,42 +55,26 @@ background-color: #eeeeee;
 <div>
      
 </div>
+<hr class="m-0 " style="color: #eeeeee;">
  <span class="">
-      <h6  class="text-black-50 p-0 m-0 pb-1">
-            ...
+      <h6  class=" p-0 m-0 pb-1" style="color: #eeeeee !important;">
+            *
       </h6>
 </span>
 
-<!-- <span class="w-100   overflow-hidden d-flex" style="height: 2.8rem ">
-      <strong class="">     
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-geo-alt-fill text-black me-1" viewBox="0 0 16 16">
-            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
-      </strong>
-      <a class="" style=" text-transform: capitalize; font-size: 14px !important; " >
-            {{c.calle_numero}},  {{c.municipio}}, <br>  {{c.sector}}, {{c.ciudad}}
-      </a>
-</span> -->
 
-     <!-- <span class="w-100 mb-4 d-flex" style="font-size: 14px;">
-            <strong>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-person-vcard-fill  text-black  me-1" viewBox="0 0 16 16">
-                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
-                </svg>
-            </strong> 
-            {{c.dni}} 
-     </span> -->
-<span class="w-100   d-flex justify-content-end start-0 position-absolute top-0">
-            <button  id='{{c.id}}'  onclick="OpenCloseBtn(this.id)" class="bg-danger mt-2 me-2 border-0  text-white d-flex justify-content-center flex-wrap align-content-center rounded-circle position-absolute end-0"
-            style="width: 29px; height: 29px; z-index: 100;"> 
+<span class="w-100    justify-content-end start-0 position-absolute top-0 p-2" style="width: max-content; height: max-content;">
+            <button  id='{{c.id}}'  onclick="OpenCloseBtn(this.id)" class=" mt-0 p-3 rounded-circle  me-2 border-0  text-black-50 d-flex w-100 h-100 justify-content-center flex-wrap align-content-center position-absolute end-0"
+            style="max-width: 15px; height: 16px !important; z-index: 100; background-color: white;"> 
                     X
          </button>
 
 </span> 
-<div class="expand rounded-0 ">
+<div class="expand rounded-0  ">
             
 <span class="">
-      <h6  class="text-black-50 p-0 m-0 pb-1">
-            Detalles     <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important; color: #909090 !important; "  width="16" height="16" fill="currentColor" class="bi bi-chevron-down m-0  p-0" viewBox="0 0 16 16">
+      <h6  class="text-black-50 p-0 m-0 ">
+            Detalles    <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important; color: #909090 !important; "  width="16" height="16" fill="currentColor" class="bi bi-chevron-down m-0  p-0" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
                   </svg>
       </h6>
@@ -224,16 +215,16 @@ background-color: #eeeeee;
 
 <span>
       <h6 class="text-black-50 m-0 p-0 pb-1"  > 
-            Listado de creditos
+            <!-- Listado de creditos -->
       </h6>
 </span>
-<div class='d-flex flex-wrap    overflow-auto w-100 justify-content-center' style="height: 14rem;"  >
+<div class='d-flex flex-wrap    overflow-auto w-100 justify-content-center' style="height: 13rem;"  >
       {% include "components/list-credi.html" %}
 </div>
 {% endif %}
-
+<hr class="m-0 mt-3 " style="color: #eeeeee;">
 <span class="">
-      <h6 class="text-black-50 m-0 p-0 pb-1"  > 
+      <h6 class="text-black-50 m-0 p-0 "  > 
             Acciones de credito
       </h6>
 </span>
@@ -251,11 +242,11 @@ background-color: #eeeeee;
             Actual
       </button>
 </span>
-<br>
+<hr class="m-0 mt-1 " style="color: #eeeeee;">
 {% comment %} Crear {% endcomment %}
-      <div  class='d-flex flex-wrap d-none mb-3' id='div-credit{{c.id}}'>
+      <div  class='d-flex flex-wrap d-none mb-3 ' id='div-credit{{c.id}}'>
             <span class='w-100'>
-                  <h6 class="text-black-50 m-0 p-0 pb-1"> 
+                  <h6 class="text-black-50 m-0 p-0 pb-1 "> 
                         Crear credito
                   </h6>
             </span>
@@ -316,8 +307,16 @@ background-color: #eeeeee;
 </span>
 
 <span class='w-100 d-flex justify-content-center btn-share-con'>
-
-      <a  href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} su solicitud ha sido declinada en este momento. para mas detalles, haga clic en el siguiente enlace -> https://grupofycas.online/no-approved/customer" >
+      {% if c.customer_verify == False %}
+       <button class='text-white border-0'   id="{{c.id}}"  style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
+            Agregar
+       </button>
+      {% else %}
+      <button class='text-white border-0'  onclick='DisableCustomer(this.id)' id="{{c.id}}"  style=' border-radius: 1.5rem;  color: black !important;'>
+            Remover 
+      </button>
+      {% endif %}
+      <a  class="d-none" href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} su solicitud ha sido declinada en este momento. para mas detalles, haga clic en el siguiente enlace -> https://grupofycas.online/no-approved/customer" >
             <button class='text-black '
                   style='border-radius: 1.5rem;'>
                   Declinar
@@ -334,23 +333,32 @@ background-color: #eeeeee;
             Garantia
       </button>
 </a>
+
 </span>
-<br> 
-<span class='w-100'>
+<span class='w-100 d-flex justify-content-center btn-share-con d-none'>
+      {% if c.customer_verify == False %}
+       <button class='text-white border-0'   id="{{c.id}}"  style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
+            Agregar
+       </button>
+      {% else %}
+      <button class='text-white border-0'  onclick='DisableCustomer(this.id)' id="{{c.id}}"  style=' border-radius: 1.5rem;  color: black !important;'>
+            Remover
+      </button>
+      {% endif %}
+      <button class='text-white border-0'   id="{{c.id}}"  style='border-radius: 1.5rem;  color: black !important;'>
+            Depurar
+      </button>
+      <button class='text-white border-0'   id="{{c.id}}"  style=' border-radius: 1.5rem;  color: black !important;'>
+      Notificar
+      </button>
+</span>
+<!-- <span class='w-100'>
       <h6 class="text-black-50 m-0 p-0 pb-1"> 
             Estado del cliente 
       </h6>
-</span>
+</span> -->
 <span class="">
-      <button onclick='DisableCustomer(this.id)' id="{{c.id}}" class="border-0 m-0 p-0 bg-transparent" style="border-radius: 18rem;">
-                  
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-toggle-on text-primary" viewBox="0 0 16 16">
-                        <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8"/>
-                      </svg>
-                  <span>
-                        Desactivar
-                  </span>
-      </button>
+
       {% if c.customer_verify == False %}
       <a id='{{c.id}}'  onclick='CustomerVerify(this.id)' 
             class='p-0   mt-2  mb-2' style="width: 1.7rem;">

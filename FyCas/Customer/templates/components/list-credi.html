@@ -37,7 +37,7 @@
     </div>
 <div>
     <span class=""></span>
-    <strong>No. Cuenta: </strong>   {{credit.no_account}}
+    <strong>No.: </strong>   {{credit.no_account}}
 </div>
 <div>
     <span class=""></span>
@@ -45,7 +45,7 @@
 </div>
 <div>
     <span class=""></span>
-    <strong>Cuotas: </strong>
+    <strong>Cuotas: </strong> #
     {{credit.price_feed}} a ${{credit.amount_feed|intcomma}} los dias {% if credit.mode_pay == True %}
     (15) - (30)
     {% else %}
