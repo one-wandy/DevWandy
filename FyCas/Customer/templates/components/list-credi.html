@@ -72,19 +72,19 @@
 </style>
 
       <div class='d-flex btn-share-con w-100  justify-content-center mt-2'>
-            <a  class='w-auto m-0' 
+            <a  class='w-100 m-0' 
                   href="https://api.whatsapp.com/send?phone=+18092998306&text=*({{credit.customer.name}} {{credit.customer.last_name}})*, Firmado el *{{fecha_actual}}*; Detalles -> https://grupofycas.online/detail-credit/customer/{{credit.id}}" >
                   <button >
                         Compartir
                   </button>
             </a>
-            <a  target="_blank" class='m-0 w-auto' 
+            <a  target="_blank" class='m-0 w-100' 
                   href="{% url "customer:card-customer" credit.customer.id credit.id %}">
                   <button>
                         Contrato
                   </button>
             </a>
-            <a target="_blank"  class='m-0 w-auto' 
+            <a target="_blank"  class='m-0 w-100' 
                   href="{% url "customer:notary-customer" credit.customer.id  credit.id %}">
                   <button>
                         Notarial

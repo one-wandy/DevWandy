@@ -35,6 +35,10 @@
 {
       padding: 0.6rem !important;
 }
+.btn-share-con button:hover
+{
+      background-color: #eeeeee !important;
+}
 </style>
 <div id='div-more{{c.id}}' class='  d-none      extends-div w-100   
 position-absolute start-0  p-2 pt-2' 
@@ -222,26 +226,8 @@ background-color: #eeeeee;
       {% include "components/list-credi.html" %}
 </div>
 {% endif %}
-<hr class="m-0 mt-3 " style="color: #eeeeee;">
-<span class="">
-      <h6 class="text-black-50 m-0 p-0 "  > 
-            Acciones de credito
-      </h6>
-</span>
-<span class='w-100 d-flex justify-content-center btn-share-con' >
-      <!-- <button style='border-radius: 1.5rem;'>
-            Eliminar 
-      </button> -->
-      <button  onclick='OpenCloseBtnCredit(this.id)' id='{{c.id}}' style='border-radius: 1.5rem;' >
-            Crear 
-      </button>
-      <button style='border-radius: 1.5rem;'>
-            Listado
-      </button>
-      <button style='border-radius: 1.5rem;'>
-            Actual
-      </button>
-</span>
+<!-- <hr class="m-0 mt-3 " style="color: #eeeeee;"> -->
+
 <hr class="m-0 mt-1 " style="color: #eeeeee;">
 {% comment %} Crear {% endcomment %}
       <div  class='d-flex flex-wrap d-none mb-3 ' id='div-credit{{c.id}}'>
@@ -300,58 +286,88 @@ background-color: #eeeeee;
             </div>
       </div>
 
-<span>
-      <h6 class="text-black-50 m-0 p-0 pb-1" > 
-            Acciones de aprobacion
-      </h6>
-</span>
 
-<span class='w-100 d-flex justify-content-center btn-share-con'>
-      {% if c.customer_verify == False %}
-       <button class='text-white border-0'   id="{{c.id}}"  style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
-            Agregar
-       </button>
-      {% else %}
-      <button class='text-white border-0'  onclick='DisableCustomer(this.id)' id="{{c.id}}"  style=' border-radius: 1.5rem;  color: black !important;'>
-            Remover 
-      </button>
-      {% endif %}
-      <a  class="d-none" href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} su solicitud ha sido declinada en este momento. para mas detalles, haga clic en el siguiente enlace -> https://grupofycas.online/no-approved/customer" >
-            <button class='text-black '
-                  style='border-radius: 1.5rem;'>
-                  Declinar
+
+<section class="expand  rounded-0 mb-3" style="max-height: 2rem;">
+      <style>
+            .expand
+            {
+                  max-height: max-content !important;
+            }
+      </style>
+      <span class="">
+            <h6 class="text-black-50 m-0 p-0 "  > 
+                  Acciones  <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important; color: #909090 !important; "  width="16" height="16" fill="currentColor" class="bi bi-chevron-down m-0  p-0" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                        </svg>
+            </h6>
+      </span>
+      <span class='w-100 d-flex justify-content-center btn-share-con' >
+            <!-- <button style='border-radius: 1.5rem;'>
+                  Eliminar 
+            </button> -->
+            <button  onclick='OpenCloseBtnCredit(this.id)' id='{{c.id}}' style='border-radius: 1.5rem;' >
+                  Crear 
+            </button>
+            <button style='border-radius: 1.5rem;'>
+                  Listado
+            </button>
+            <button style='border-radius: 1.5rem;'>
+                  Actual
+            </button>
+      </span>
+      <span>
+            <h6 class="text-black-50 m-0 p-0 pb-1" > 
+                  Acciones de aprobacion
+            </h6>
+      </span>
+      <span class='w-100 d-flex justify-content-center btn-share-con'>
+            {% if c.customer_verify == False %}
+             <button class='text-white border-0'   id="{{c.id}}"  style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
+                  Aprobar
+             </button>
+            {% else %}
+            <button class='text-white border-0'  onclick='DisableCustomer(this.id)' id="{{c.id}}"  style=' border-radius: 1.5rem;  color: black !important;'>
+                  Eliminar
+            </button>
+            {% endif %}
+            <a  class="d-none" href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} su solicitud ha sido declinada en este momento. para mas detalles, haga clic en el siguiente enlace -> https://grupofycas.online/no-approved/customer" >
+                  <button class='text-black '
+                        style='border-radius: 1.5rem;'>
+                        Declinar
+                  </button>
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} Actualmente aplica para un prestamo estandar con un monoto minimo de *($7,000.00)*, si deseas puede obtener un mayor monto con una garantia fisica que avale el monto solicitado. ¿Desea continuar con el proceso *(Estandar)* o *(Garantizado)*?" >
+      
+            <button class='text-white border-0' style='color: black !important; border-radius: 1.5rem;'>
+                 Estandar
             </button>
       </a>
-      <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} Actualmente aplica para un prestamo estandar con un monoto minimo de *($7,000.00)*, si deseas puede obtener un mayor monto con una garantia fisica que avale el monto solicitado. ¿Desea continuar con el proceso *(Estandar)* o *(Garantizado)*?" >
-
-      <button class='text-white border-0' style='background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%); color: white !important; border-radius: 1.5rem;'>
-           Estandar
-      </button>
-</a>
-<a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) *{{c.name}} {{c.last_name}}*%0A%0A*Informacion de solicitud de prestamo por un monto de ${{c.monto_requerido|intcomma}}.00*%0ADebido a su precalificasion, por el momento no califica para el tipo de préstamo (Estandar) solicitado, podemos evaluarle en base a una garantía física que avale el monto solicitado." >
-      <button class='text-white border-0' style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
-            Garantia
-      </button>
-</a>
-
-</span>
-<span class='w-100 d-flex justify-content-center btn-share-con d-none'>
-      {% if c.customer_verify == False %}
-       <button class='text-white border-0'   id="{{c.id}}"  style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
-            Agregar
-       </button>
-      {% else %}
-      <button class='text-white border-0'  onclick='DisableCustomer(this.id)' id="{{c.id}}"  style=' border-radius: 1.5rem;  color: black !important;'>
-            Remover
-      </button>
-      {% endif %}
-      <button class='text-white border-0'   id="{{c.id}}"  style='border-radius: 1.5rem;  color: black !important;'>
-            Depurar
-      </button>
-      <button class='text-white border-0'   id="{{c.id}}"  style=' border-radius: 1.5rem;  color: black !important;'>
-      Notificar
-      </button>
-</span>
+      <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) *{{c.name}} {{c.last_name}}*%0A%0A*Informacion de solicitud de prestamo por un monto de ${{c.monto_requerido|intcomma}}.00*%0ADebido a su precalificasion, por el momento no califica para el tipo de préstamo (Estandar) solicitado, podemos evaluarle en base a una garantía física que avale el monto solicitado." >
+            <button class='text-white border-0' style=' border-radius: 1.5rem;  color: black !important;'>
+                  Garantia
+            </button>
+      </a>
+      
+      </span>
+      <span class='w-100 d-flex justify-content-center btn-share-con d-none'>
+            {% if c.customer_verify == False %}
+             <button class='text-white border-0'   id="{{c.id}}"  style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
+                  Agregar
+             </button>
+            {% else %}
+            <button class='text-white border-0'  onclick='DisableCustomer(this.id)' id="{{c.id}}"  style=' border-radius: 1.5rem;  color: black !important;'>
+                  Remover
+            </button>
+            {% endif %}
+            <button class='text-white border-0'   id="{{c.id}}"  style='border-radius: 1.5rem;  color: black !important;'>
+                  Depurar
+            </button>
+            <button class='text-white border-0'   id="{{c.id}}"  style=' border-radius: 1.5rem;  color: black !important;'>
+            Notificar
+            </button>
+      </span>
+</section>
 <!-- <span class='w-100'>
       <h6 class="text-black-50 m-0 p-0 pb-1"> 
             Estado del cliente 

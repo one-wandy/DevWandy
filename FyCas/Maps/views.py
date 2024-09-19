@@ -40,14 +40,25 @@ class Maps(TemplateView, Options):
         context['setting'] = self.Setting()
         return context
     
+    
+class DataCredit(TemplateView, Options):
+      template_name = "maps/data-credit.html"
+
+              
+      def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['setting'] = self.Setting()
+        return context
+    
       
       def get(self, request, *args, **kwargs):
             nombre_archivo = "Info.docx"
             ruta_carpeta =  os.getcwd() + "/Clientes"
+
             # self.Send_WhatsApp_Message()
             load_excel = 'Customer/Archivos/DataCredit.xlsx'
 
-            # return  self.LoadExcel(load_excel)
+            return  self.LoadExcel(load_excel)
             # # Ejemplo de uso
             nombre_contacto = "Juan Perez"
             telefono_contacto = "+1234567890"

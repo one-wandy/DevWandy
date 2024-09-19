@@ -1,0 +1,67 @@
+
+<style>
+      #div-options .btn-option 
+{
+      display: flex; flex-wrap: wrap; justify-content: start;
+      width: 17rem;
+      background-color: #eeeeee;
+      border-radius: 1rem; border: #eeeeee 1px solid;
+}
+
+
+      #div-options .btn-option .strong-options, .span-options
+{
+      width: 100%;
+      text-align: start;
+
+}
+      .span-options 
+{
+      font-size: 12px;
+      font-weight: 100;
+}
+</style>
+<div id="div-options" class="options d-none position-absolute d-flex flex-wrap top-50 bg-white" 
+      style="z-index: 10;"> 
+
+
+      <div class="option-item">
+          <button class="btn-option"> 
+                  <strong class="strong-options">
+                        Opciones de credito
+                  </strong>
+                  <span class="span-options">
+                        Recopilar los datos financieros y crediticios de un usuario o cliente.
+                  </span>
+            </button>
+          <div class="option-content d-none">
+              <button onclick="DataCredit(this.id)" id="btn-data-credit">
+                   Data Credito
+              </button>
+          </div>
+      </div>
+
+        
+      <!-- Para agregar un btn de lista, solo debes duplicar options-item y su contenido -->
+
+
+  </div>
+
+  <script>
+        const buttons = document.querySelectorAll('.btn-option');       
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    content.classList.toggle('d-none');
+                });
+            });
+
+
+  let DataCredit = (id) => {
+
+      const url = 'data-credito/';
+      $.ajax({
+                url: url,
+      })
+}
+  </script>

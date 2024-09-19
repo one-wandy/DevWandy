@@ -733,6 +733,19 @@ function BoxSearch() {
             document.getElementById('li'+id).classList.add('d-none')
             BoxSearch()
       }
+
+function DisableCustomer(id){
+            const url = 'disable-customer/';
+            $.ajax({
+                url: url,
+                data: {
+                  customer_id: id
+                },
+            })
+            document.getElementById('li'+id).classList.add('d-none')
+            BoxSearch()
+      }
+     
      
 
 
