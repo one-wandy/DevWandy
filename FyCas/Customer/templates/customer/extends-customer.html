@@ -74,13 +74,13 @@ background-color: #eeeeee;
          </button>
 
 </span> 
-<div class="expand rounded-0  ">
+<div class="expand rounded-0  " style="min-width: 9rem;">
             
-<span class="">
+<span class="text-center">
       <h6  class="text-black-50 p-0 m-0 ">
-            Detalles    <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important; color: #909090 !important; "  width="16" height="16" fill="currentColor" class="bi bi-chevron-down m-0  p-0" viewBox="0 0 16 16">
+              <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important; color: #909090 !important; "  width="16" height="16" fill="currentColor" class="bi bi-chevron-down m-0  p-0" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
-                  </svg>
+                  </svg> Detalles  del cliente
       </h6>
 </span>
 
@@ -222,7 +222,7 @@ background-color: #eeeeee;
             <!-- Listado de creditos -->
       </h6>
 </span>
-<div class='d-flex flex-wrap    overflow-auto w-100 justify-content-center' style="height: 13rem;"  >
+<div class='d-flex flex-wrap    overflow-auto w-100 justify-content-center' style="height: 13.5rem;"  >
       {% include "components/list-credi.html" %}
 </div>
 {% endif %}
@@ -288,7 +288,7 @@ background-color: #eeeeee;
 
 
 
-<section class="expand  rounded-0 mb-3" style="max-height: 2rem;">
+<section class="expand  rounded-0 mb-3  "  style="max-height: 2rem; min-width: 8rem;">
       <style>
             .expand
             {
@@ -296,10 +296,10 @@ background-color: #eeeeee;
             }
       </style>
       <span class="">
-            <h6 class="text-black-50 m-0 p-0 "  > 
-                  Acciones  <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important; color: #909090 !important; "  width="16" height="16" fill="currentColor" class="bi bi-chevron-down m-0  p-0" viewBox="0 0 16 16">
+            <h6 class="text-black-50 ps-2 m-0 p-0 "  > 
+                 <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important; color: #909090 !important; "  width="16" height="16" fill="currentColor" class="bi bi-chevron-down m-0  p-0" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
-                        </svg>
+                        </svg>   Acciones 
             </h6>
       </span>
       <span class='w-100 d-flex justify-content-center btn-share-con' >
@@ -323,8 +323,8 @@ background-color: #eeeeee;
       </span>
       <span class='w-100 d-flex justify-content-center btn-share-con'>
             {% if c.customer_verify == False %}
-             <button class='text-white border-0'   id="{{c.id}}"  style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
-                  Aprobar
+             <button class='text-white border-0'  id='{{c.id}}'  onclick='CustomerVerify(this.id)'    id="{{c.id}}"  style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
+                  Verificar
              </button>
             {% else %}
             <button class='text-white border-0'  onclick='DisableCustomer(this.id)' id="{{c.id}}"  style=' border-radius: 1.5rem;  color: black !important;'>
@@ -375,14 +375,14 @@ background-color: #eeeeee;
 </span> -->
 <span class="">
 
-      {% if c.customer_verify == False %}
+      <!-- {% if c.customer_verify == False %}
       <a id='{{c.id}}'  onclick='CustomerVerify(this.id)' 
             class='p-0   mt-2  mb-2' style="width: 1.7rem;">
             <button class="border-0  bg-transparent p-0 d-flex " style='color:#000000;'> 
                   <img src="{% static "icons/mas.png" %}"  class="me-1 " width='20' style='max-width:26px;' alt=""> Agregar 
             </button>
       </a>
-{% endif %}
+{% endif %} -->
 </span>
 </div>
 

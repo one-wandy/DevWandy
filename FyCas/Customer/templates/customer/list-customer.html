@@ -4,6 +4,13 @@
 {% load humanize %}
 
 <style>
+
+      .dni span
+      {
+            font-size: 12px !important;
+            color: rgb(155, 155, 155) !important;
+      }
+      
       a
       {
             color: #383838 !important;
@@ -109,7 +116,7 @@
 
 }
 
-.contDiv {
+/* .contDiv {
   width: 40rem;
   height: max-content;
   background-image: linear-gradient(
@@ -119,7 +126,7 @@
     rgb(128, 179, 255) 100%
   );
   animation: rotarColores 3s infinite ease;
-}
+} */
 
 
 .three-body {
@@ -278,13 +285,25 @@ btn-sliders-nav
             </h5>
       </div>  
       <div id="sec-listado">
-            {% include "customer/list-customer-2.html" %}
+            {% include "customer/list-customer-2.html" %} 
+      </div>  
+      <div class="d-flex w-100  overflow-hidden  position-fixed bottom-0 mb-1" 
+      style="height: 4.5rem; z-index: 1000;">
+     
+                 {% include "components/btn-filter.html" %}
       </div>
-      <div class="position-absolute bottom-0  d-flex justify-content-end  pe-1 w-100 " style="z-index: 4;">
-            {% include "components/btn-filter.html" %}
-      </div>
+      
+     
+      <!-- <div class="d-flex justify-content-end  pe-1 w-100 " style="z-index: 1000;">
+     
+      </div> -->
 </section>
 
+<form action="" method="post" class="d-none">
+      {% csrf_token %}
+      <input type="number" name="send-data" id="input-send-data">
+      <button id="btn-send-data" type="submit">Send</button>
+</form>
 
 <script>
 let id_input_select = 0
@@ -427,6 +446,7 @@ window.addEventListener("DOMContentLoaded", function() {
                               imgLink.href = "/detail-customer/" + c.id
                               imgLink.target = '_blank';
                               let divL = document.createElement("div")
+
                               let stronL = document.createElement("strong")
                               stronL.textContent = ""
                               let img = document.createElement("img")
@@ -436,11 +456,12 @@ window.addEventListener("DOMContentLoaded", function() {
                                 //    divI.appendChild(imgLink)
                               let spanL = document.createElement("span")
                               const nameLink = document.createElement('button');
-                              nameLink.classList.add('border-0', 'p-0')
+                              nameLink.classList.add('border-0', 'p-0', )
                               nameLink.id = c.id
                               nameLink.addEventListener('click', function() {
                                     // Llamar a la función y pasarle el ID como argumento
                                     document.getElementById('input-send-data').value = this.id
+                                    console.log(document.getElementById('input-send-data').value)
                                     document.getElementById('btn-send-data').click()
                                     // Suponiendo que la función se llama "miFuncion"
                                 });
@@ -453,6 +474,7 @@ window.addEventListener("DOMContentLoaded", function() {
                               divL.appendChild(nameLink)
 
                               let divN = document.createElement("div")
+                              divN.classList.add('dni')
                                     let stronN = document.createElement("strong")
                                           stronN.textContent = ""
                                     let spanN = document.createElement("span")
@@ -548,7 +570,7 @@ function CustomerVerify(id){
                   customer_id: id
                 }
             })
-            document.getElementById('li'+id).classList.add('d-none')
+            document.getElementById('client'+id).classList.add('d-none')
       }
 
 
@@ -722,17 +744,17 @@ function BoxSearch() {
 //       }
 //   }
 
-  function DisableCustomer(id){
-            const url = 'disable-customer/';
-            $.ajax({
-                url: url,
-                data: {
-                  customer_id: id
-                },
-            })
-            document.getElementById('li'+id).classList.add('d-none')
-            BoxSearch()
-      }
+//   function DisableCustomer(id){
+//             const url = 'disable-customer/';
+//             $.ajax({
+//                 url: url,
+//                 data: {
+//                   customer_id: id
+//                 },
+//             })
+//             document.getElementById('client'+id).classList.add('d-none')
+//             BoxSearch()
+//       }
 
 function DisableCustomer(id){
             const url = 'disable-customer/';
@@ -742,8 +764,7 @@ function DisableCustomer(id){
                   customer_id: id
                 },
             })
-            document.getElementById('li'+id).classList.add('d-none')
-            BoxSearch()
+            document.getElementById('client'+id).classList.add('d-none')
       }
      
      

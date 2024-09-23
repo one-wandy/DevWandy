@@ -24,15 +24,15 @@ strong
 }
 </style>
 
-<div class="btn-filter  d-flex overflow-scroll   bg-transparent" >
-        <button id="toggle-btn" class="mt-1" onclick="ActiveDesactive(this.id, 'options') "> Opciones </button>
-      <div  class="div-menu-1  d-flex flex-wrap overflow-hidden   blur bg-white bg-opacity-75      justify-content-start "  style="border-radius: 2rem; width: 253px;">  
+<div class="btn-filter  d-flex overflow-scroll  justify-content-center p-1 rounded-0  pt-2 w-100" >
+        <!-- <button id="toggle-btn" class="mt-1" onclick="ActiveDesactive(this.id, 'options') "> Opciones </button> -->
+      <div  class="div-menu-4  d-flex flex-wrap overflow-hidden     justify-content-start "  style="border-radius: 2rem; width: 30rem ;">  
             <div class="w-100">
                   <strong class=" d-none">
                         ...
                   </strong>
             </div>
-          <div class="d-flex overflow-hidden" style="border-radius: 2rem;border: rgba(190, 190, 190, 0.423) 1px solid; ">
+          <div class="d-flex overflow-hidden    blur bg-white bg-opacity-75  w-100" style="border-radius: 2rem;border: rgba(190, 190, 190, 0.423) 1px solid; ">
             <form action="" class="ms-3" method="post" >
                   {% csrf_token %}
                         <input type="number" id='noti' name='noti' value='' class='d-none'>
@@ -53,7 +53,7 @@ strong
       
             <!-- <img src="{% static "icons/search.png" %}" class="mt-2 "
             style="margin-left: 1.2rem; margin-right: 0.3rem;"  width='20' height="20" alt=""> -->
-            <input type="text"  style="font-size: 12px; width: auto; max-width: 250px;  height: 2.7rem;     
+            <input type="text"  style="font-size: 12px; width: auto; max-width: 650px;  height: 2.7rem;     
             border-radius: 0.3rem !important;
                   border-top-right-radius: 2rem !important;
                   border-bottom-right-radius: 2rem !important;
@@ -67,10 +67,10 @@ strong
                         <!-- <label for="n-1123">Filtrar: </label>  -->
                               {% if count_customer  == None %}    
                                     <input id="n-1123" type="number" class='m-0 pb-2 text-black-50 border-0 form-control bg-transparent ' 
-                                    style='height: 1.6rem; width: 4rem; background-color: rgb(240, 240, 240);' value='10' name='20-customer'  min="1" max="{{customer_count}}" >
+                                    style='height: 1.6rem; width: 4rem; ' value='{{count_client}}' name='20-customer'  min="1" max="{{customer_count}}" > 
                                     {% else %}
                                     <input id="n-1123" type="number" class='m-0 pb-2 border-0 form-control bg-transparent ' 
-                                    style='height: 1.6rem; width: 5rem; background-color: rgb(240, 240, 240);' value='{{count_customer}}' max="{{customer_count}}" min="1" name='20-customer' >
+                                    style='height: 1.6rem; width: 5rem; ' value='{{count_client}}' max="{{customer_count}}" min="1" name='20-customer' >
                               {% endif %}
                         </div>
                         <!-- <button class='p-0 border-0 me-2' style="border: none !important; background-color: transparent !important;">

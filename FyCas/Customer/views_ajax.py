@@ -12,8 +12,7 @@ from django.contrib.humanize.templatetags.humanize import intcomma
 # Buscar Clientes 
 def SearchCustomer(request):
       list_cutomers = []
-      for c in models.Customer.objects.filter(is_active = True, 
-                                    customer_verify = True):
+      for c in models.Customer.objects.all():
             dict_customer = { 
                   'id': c.id,
                   'name': c.name + " " + c.last_name,
@@ -81,7 +80,6 @@ def DisableCustomer(request):
             c.is_active = True
         else:
             c.is_active = False
-        print(c.is_active)
         c.save()
         return JsonResponse(list(),  safe=False)    
     

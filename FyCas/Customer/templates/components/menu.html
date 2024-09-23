@@ -1,18 +1,20 @@
 {% load static %}
 
-<div   class=" div-menu-1 nav-1 d-flex  flex-wrap  bg-transparent  justify-content-center position-fixed  w-100" 
+<div   class=" div-menu-1 nav-1 d-flex    flex-wrap  bg-transparent  justify-content-center position-fixed end-0 " 
       style="z-index: 4; bottom: 0;  
       border: 1px rgb(228, 228, 228) solid; 
       border-top: 0;
       border-left: 0;
       border-right: 0;
+      margin-bottom: 4.2rem;
+      height: 3rem;
       display: none;" >
       <label for="searching-config" id="label-config"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi text-black-50 d-none bi-search mt-4 me-2 pt-1  " viewBox="0 0 16 16">
       <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
       </svg>
       </label>
       <div class="d-flex w-100  pt-1 mt-1 pb-1   justify-content-end ms-2 align-content-center ">
-            <div class=" d-flex   blur mb-4 me-2 bg-white bg-opacity-75 align-content-center  p-1" 
+            <div class=" d-flex bg-transparent mb-4 me-2align-content-center  p-1" 
                   style="border-radius: 1.8rem; z-index: 2;">
                   <!-- <input type="text"  style="font-size: 14px; width: auto; min-width: 200px; min-height: 2rem;margin-top: 5px !important; margin-left: 6px !important;  max-height: 2rem; max-width: 5rem;" class="form-search bg-danger  text-center shadow-none  m-0 mb-1  bg-white bg-opacity-75 "  id="searching-config" 
                   placeholder=" Buscando Clientes "> -->
@@ -62,14 +64,16 @@
                         </form>
                   {% endif %}
                         {% if user.is_authenticated %}
-                        <button onclick="Menu()"   class="bg-transparent d-flex justify-content-center flex-wrap align-content-center border-1 rounded-circle    m-0 text-white  " 
-                        style=" margin-top: 1px !important; max-height: 2.5rem !important;  max-width: 2.5rem;   
+                        <button onclick="Menu()"   class=" d-flex justify-content-center flex-wrap align-content-center border-1 rounded-circle    m-0 text-white  " 
+                        style=" margin-top: 1px !important; max-height: 2.5rem !important;  max-width: 2.5rem;   background-color: #eeeeee !important;
                         ">               
                         <img src="{% static "icons/more-circle.png" %}" width='30' alt="">
                         
                   </button> 
                         {% endif %}
             </div>
+
+
       </div>
 
       

@@ -37,11 +37,11 @@
 
 </style>
 
-<section class="d-flex flex-wrap vh-100   overflow-scroll pb-5 p-1 pt-0 " >
+<section class="d-flex flex-wrap vh-100  justify-content-center  overflow-scroll pb-5 p-1 pt-0 " >
 
       {% include "components/div-options.html" %} 
       {% for c in customer %}
-<div  style="  width: 338px; height: 171px; border-radius: 26px; 
+<div id="client{{c.id}}"  style="  width: 338px; height: 171px; border-radius: 26px; 
 background-color: #ffffffc6 !important; box-shadow: 0px 1px 3px 1px rgba(218, 218, 218, 0.505);" class=" position-relative card-cu m-1 mt-2    p-2" >
       <button id="{{c.id}}"  onclick='OpenCloseBtn(this.id)' style="background-color: #35333e00; width: 35px; height: 35px; color: #000000 !important; top: 8rem; box-shadow: #eeeeee 1px 2px 6px 1px; border: 1px solid #eeeeee !important;"  class="rounded-circle position-absolute border-0  p-0 me-2 mb-2 end-0 d-flex flex-wrap justify-content-center align-content-center ">
             <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important; color: #909090 !important;" width="25" height="25" fill="currentColor" class="bi bi-chevron-down m-0 mt-1 p-0" viewBox="0 0 16 16">
@@ -98,6 +98,8 @@ background-color: #ffffffc6 !important; box-shadow: 0px 1px 3px 1px rgba(218, 21
 </div>
 {% endfor %}
 
+
+
 </section>
 <script>function OpenCloseBtn(btn_id) {
 
@@ -116,6 +118,7 @@ background-color: #ffffffc6 !important; box-shadow: 0px 1px 3px 1px rgba(218, 21
       }
   }
 
+  
   
   
 

@@ -132,12 +132,16 @@ class ListCustomer(ListView,Options):
                 return context
 
             if count_customer != None:
-                    context['customer'] = self.model.objects.filter(is_active = True, 
+                    filter_client = self.model.objects.filter(is_active = True, 
                                         customer_verify = True,
                                     ).order_by('-id')[:int(count_customer)]
+                    context['customer'] = filter_client
+                    context['count_client'] = int(filter_client.count())
         else:
-            context['customer'] = self.model.objects.filter(is_active = True, 
+            filter_client = self.model.objects.filter(is_active = True, 
                                     customer_verify = True ).order_by('-id')[:10]
+            context['customer'] = filter_client
+            context['count_client'] = int(filter_client.count())
             
         context['setting'] = self.Setting()
         context['fecha_actual'] =  fecha_actual.strftime("%d / %B / %Y").capitalize()
