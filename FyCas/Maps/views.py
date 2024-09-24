@@ -115,7 +115,8 @@ class DataCredit(TemplateView, Options):
             start_row = 7
 
             # Obtener los datos de Django.
-            data = models.Customer.objects.all()
+            data = models.Customer.objects.filter(is_active = True, 
+                                    customer_verify = True ).order_by('-id')
             print(data)
 
             # Iterar sobre los datos y escribirlos en la copia del archivo Excel a partir de la fila inicial.
@@ -191,7 +192,8 @@ class DataCredit(TemplateView, Options):
 
       def Excel(self):
             # Consultar el modelo de Django para obtener los datos.
-            data = models.Customer.objects.all()
+            data = models.Customer.objects.filter(is_active = True, 
+                                    customer_verify = True ).order_by('-id')
             date = datetime.now()
             
             # Crear un nuevo archivo Excel.
