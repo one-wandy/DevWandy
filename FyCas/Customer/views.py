@@ -109,17 +109,24 @@ class ListCustomer(ListView,Options):
     template_name = "customer/list-customer.html"
     
     def get(self, request, *args, **kwargs):
-        print(self.Day15_or_30())
+        self.convertir_todos_los_campos_credit_a_mayusculas()
         if not request.user.is_authenticated:
                return redirect(reverse('customer:add-customer'))
         return super().get(request, *args, **kwargs)
    
+    def convertir_todos_los_campos_credit_a_mayusculas(self):
+        creditos = self.model.objects.all()
+        for credito in creditos:
+            for field in credito._meta.fields:
+                if isinstance(getattr(credito, field.name), str):  # Verifica si el campo es una cadena
+                    setattr(credito, field.name, getattr(credito, field.name).upper())
+            credito.save()
+
+
     def get_context_data(self, **kwargs):
-        
         context = super().get_context_data(**kwargs)
         fecha_actual = datetime.now()
         count_customer = self.request.POST.get('20-customer')
-     
         customer = self.request.POST.get('send-data')
         if self.request.method == 'POST':
             if  self.request.POST.get('noti') != None:
