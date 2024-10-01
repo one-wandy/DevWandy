@@ -1,0 +1,211 @@
+{% load static %}
+<style>
+      .menu-container-v
+      {
+            width: 100%;
+            max-width: 28rem;
+            /* height: 400px; */
+      }
+      .sec-virginia-menu
+      {
+            
+
+            border: 1px solid grey;
+            border-radius: 35px;
+            color: #5A5868;
+      }
+      .menu-virginia
+      {
+            /* width: 100%;/ */
+            height: 236px;
+            border-radius: 35px;
+            margin: 4px 10px;
+            padding: 10px;
+            padding-top: 23px;
+            background-color: #fff5f5a1;
+      }
+      .menu-virginia button
+      {
+            background-color: #c2c2c23b;
+            border-radius: 26px;
+            width: 162px;
+            height: 68px;
+            color: #5A5868;
+            border: 0;
+      }
+      .menu-virginia svg
+      {
+            color: #6d6d78;
+            width: 30px !important;
+            height: 30px !important;
+            margin: 0;
+      }
+      .div-btn button
+      {
+            width: 50px;
+            height: 50px;
+            font-size: 14px;
+            font-weight: lighter;
+            border-radius: 50%;padding: 0;
+      }
+      .div-btn
+      {
+            /* background-color: #5A5868; */
+            width: 78px;
+            height: 90px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0px 5px;
+
+      }
+
+      .div-btn span
+      {
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            font-weight: lighter;
+      }
+      .input-v 
+      {
+            background-color: #c2c2c23b;
+            border: none;
+            color: #3b3b3b !important ;
+      }
+      .menu-virginia a 
+      {
+            width: max-content;
+      }
+      .bg-danger 
+      {
+            background-color: rgb(255, 116, 116) !important;
+      }
+
+</style>
+<div class="menu-container-v position-relative" >
+     <div class="p-1 position-relative">
+      <img src="static/pro.png" width="40" height="40" class="rounded-circle" alt=""  srcset="">
+      <span id="option-info" style="font-size: 16px; color: #5A5868; font-weight: bold;">
+            Menu de Opciones
+      </span>
+     </div>
+      <button onclick="Menu()" class="bg-danger border-0  text-white d-flex justify-content-center flex-wrap align-content-center rounded-circle position-absolute end-0"
+            style="width: 29px; height: 29px;"> 
+      X
+      </button>
+      <div class="menu-virginia d-flex flex-wrap justify-content-center"> 
+
+           <div id="box" class="d-none">
+                  {% include "design-virginia/Menu-V/calculador.html" %}
+           </div>
+            <a href="{% url "customer:dashboard" %}"  >
+                  <button>
+                        <img src="{% static "icons/grafico.png" %}" width='30' alt="">
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart" viewBox="0 0 16 16">
+                              <path d="M4 11H2v3h2zm5-4H7v7h2zm5-5v12h-2V2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1z"/>
+                            </svg> -->
+                        Dashboards
+                  </button>
+            </a>
+
+            <a href="{% url "customer:add-customer" %}">
+                  <div class="div-btn">
+                        <button>
+                              <img src="{% static "icons/mas.png" %}" width='30' alt="">
+                              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                                  </svg> -->
+                        </button>
+                        <span>
+                              Agregar
+                        </span>
+                  </div>
+            </a>
+
+            <a href="{% url "customer:list-customer" %}">
+            <div class="div-btn">
+                  <button>
+                        <img src="{% static "svg/user.svg" %}" width='30' alt="">
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                            </svg> -->
+                        </button>
+                       <span>
+                              Clientes {% if customer_count %} ({{customer_count}}) {% endif %} 
+                       </span>
+            </div>
+            </a>
+
+            <div class="div-btn" onclick="OpenCalculador()" >
+                  <button>
+                        <img src="{% static "svg/calculator.svg" %}" width='30' alt="">
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
+                              <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                              <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
+                              </svg> -->
+                        </button>
+                       <span>
+                              Calculadora
+                       </span>
+            </div>
+
+            <div class="div-btn">
+                  <button>
+                        <img src="{% static "svg/config.svg" %}" width='30' alt="">
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+                              <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
+                              <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
+                            </svg> -->
+                  </button>
+                       <span>
+                              Ajustes
+                       </span>
+            </div>
+            <div class="div-input" style="width: 170px;">
+                        <input type="text" placeholder="Buscar"  class=" input-v text-center " 
+                        style="width: 100% !important; height: 52px; border-radius: 34px;">
+            </div>
+      </div>
+
+      <div class="text-center w-100 pt-2 d-none" style="line-height: 14px; font-size: 12px !important;">
+            <span class="text-center w-100 p-1"
+            style="font-size: 10px !important; color: #5A5868; font-weight: bold;">
+                 <span style="font-size: 9px !important;">V</span> <strong class="text-black-50" style="font-size: 12px;">Destellos 2.5</strong>
+           </span> <br>
+           <span class="text-center w-100 p-1"
+           style="font-size: 10px; color: #5A5868; font-weight: bold;">
+                <span style="font-size: 9px !important;" class="text-black-50">Powered by</span> <strong class="text-black-50" style="font-size: 12px;">ChatGPT 3.5</strong>
+          </span>
+          <span class="w-100 justify-content-center" >
+            <a href="" class="text-center  text-black-50 justify-content-center w-100" style="font-size: 10px !important;">untal.wandy@icloud.com</a>
+          </span>
+      </div>
+</div>
+
+
+
+<script>
+      let  OpenCalculador = () => {
+            // Selecciona todos los elementos que coincidan con los selectores especificados
+            const elements = document.querySelectorAll('.input-v, button, .div-btn');
+            // Itera sobre cada elemento y alterna la clase 'd-none'
+            elements.forEach(function(element) {
+                  element.classList.toggle('d-none');
+            });
+
+            const divBtn = document.querySelector('.div-btn');
+                  // Verifica si tiene la clase 'd-none'
+                  if (divBtn.classList.contains('d-none')) {
+                        document.getElementById('box').classList.remove('d-none')
+                        document.getElementById('option-info').innerHTML = ''
+                        document.getElementById('option-info').innerHTML = 'Calculadora de intereses Francesa'
+                  } else {
+                        document.getElementById('box').classList.add('d-none')
+                        document.getElementById('option-info').innerHTML = ''
+                        document.getElementById('option-info').innerHTML = 'Menu de Opciones'
+                  }
+}
+</script>

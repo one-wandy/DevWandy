@@ -1,0 +1,28 @@
+{% extends "base/base.html" %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+
+<style>
+      .btn-ubicaciones
+      {
+            background-color: #eeeeee !important;
+      }
+</style>
+{% include "components/background-animated.html" %}
+<section class="w-100 blur h-100 position-absolute top-0 start-0 d-flex   justify-content-center align-content-center flex-wrap"
+      style="z-index: 0;">
+
+      <div class="justify-content-center text-center p-2">
+            <h4>
+                  Ups! Aun esta en desarrollo
+            </h4> 
+            <p class="text-black-50" style="font-size: 14px;">
+                  Si quieres activar ver esta caracteristica antes de su lanzamiento, ve a configuraciones y activa la <strong>"True Dev"</strong>, esto para ir provando las nuevas caracteristicas
+            </p>
+      </div>
+
+</section>
+
+
+{% endblock %}

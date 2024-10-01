@@ -1,0 +1,77 @@
+
+
+{% extends "base/base.html" %}
+{% block content %}
+{% load humanize %}
+      <style>
+            .text-black-50 
+            {
+                  font-size: 14px;
+            }
+            .credits li 
+            {
+                  list-style: none;
+            }
+      </style>
+      <section style=" " class='d-flex credits  justify-content-center flex-wrap p-3'>
+            <div class="w-100 d-flex "  >
+                 <div style="width: 400px;"  > {% include "customer/user-profile.html" %}</div>
+                  {% include "components/credit.html" %}
+            </div>
+            {% if cuotas == none %}
+                  <form action="" method="post">
+                        {% csrf_token %}
+                        {{form}}
+
+                        <button>Aplicar Pago</button>
+                  </form>
+            {% endif %}
+            <div class="w-100">
+            
+               {% if cuotas %}
+                  <div class='d-flex flex-wrap w-100 '>
+                        <span class='w-100'>
+                              Capital
+                              ${{credit.amount|intcomma}}.00
+                           </span>
+                           <span>
+                             Porcentaje {{credit.tasa}} %
+                           </span>
+            
+                  </div>
+                  {% for cuota in cuotas %}
+                        <div class="" style="width: 400px;">
+                              <li class="w-100  bg-black bg-opacity-10 rounded-4 position-relative p-2 mt-1">
+                                    <strong>#{{ forloop.counter }} </strong> 
+                                    <strong>Precio de Cuota</strong>
+                                    <div class="ms-3">
+                                     ${{cuota.cuota|intcomma}}.00
+                                    </div>
+                                    <div class="d-block ">
+                                          <strong>Informacion</strong>
+                                    </div>
+                                    <span style="font-size: 12px;">
+                                          Vence el 3/10/2024
+                                    </span>
+                             
+                                  {% if cuota.estado == True %}
+                                  
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle-fill text-primary position-absolute end-0 me-2 mt-1 top-0" viewBox="0 0 16 16" style="min-width: 20px;">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg> 
+                                    {% else %}
+                                    <div>
+                                          <button>
+                                                Aplicar pago
+                                          </button>
+                                    </div>
+                                 {% endif %}
+                              </li>
+                        </div>
+
+                  {% endfor %}
+               {% endif %}
+            </div>
+      </section>
+
+{% endblock  %}

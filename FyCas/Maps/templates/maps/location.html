@@ -1,0 +1,36 @@
+{% include "base/base.html" %}
+{% block content %}
+  <section class='section w-100 vh-100 d-flex justify-content-center align-content-center flex-wrap' >
+    <div class='bg-white bg-opacity-75 p-2' style='max-width: 40rem; min-width: 320px; border-radius:1rem;'>
+      <div class='text-center'>
+        <span class='black '>
+          <strong style='color: var(--color-one);'>
+            Evaluación de Información
+          </strong>
+        </span>
+      </div>
+    
+    <span class='black'>Estimado usuario</span> <br>
+    <p style='font-size:14px;'>
+        Le informamos que su información está siendo evaluada por nuestro equipo. <br> Este proceso puede tardar entre <strong>24 horas y 72 horas</strong> laborales, dependiendo de la cantidad de  información que haya proporcionado.
+        <br>
+        Le agradecemos su paciencia y le informaremos tan pronto como la evaluación haya finalizado.
+      </p>
+      <div class='w-100'>
+        <span class='black' id='date'></span> 
+        <p>
+
+        </p>
+      </div>
+    </div>
+  </section>
+  <script>
+  const fechaActual = new Date();
+  const year = fechaActual.getFullYear();
+  const mont = fechaActual.getMonth() + 1; // Los meses van de 0 a 11, por lo que se suma 
+  const day = fechaActual.getDate();
+    document.getElementById("date").innerHTML = day + '/' + mont + '/' + year
+    // Ejemplo de uso
+     
+  </script>
+{% endblock  %}

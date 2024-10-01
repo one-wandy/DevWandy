@@ -1,0 +1,179 @@
+{% extends "base/base.html" %}
+{% block content %}
+{% load static %}
+<style>
+      .form-floating 
+      {
+
+            margin: 0.5rem;
+      }
+      .form-floating input
+      {
+            border-radius: 1rem;
+      }
+</style>
+<section class="p-3 section  overflow-scroll `">
+      <div class="p-3 d-flex  ">
+            <div class="w-50 d-flex flex-wrap align-content-center  flex-wrap">
+                  <h3 class="p-0 m-0">
+                        Renobar Credito 
+                  </h3>
+                  <p class="text-black-50 w-100">
+                        Extender el plazo de repago de un préstamo existente 
+                  </p>
+            </div>
+            <div class="d-flex justify-content-end w-50">
+                  <img src="{% static "icons/fycas.jpg" %}" weight="300" alt="" srcset="">
+            </div>
+      </div>
+      <div class="w-100">
+            <h6 class="p-0  mt-1">
+                  Datos Personales
+            </h6>
+            <p>
+                  Revisar minuciosamente antes de enviar el formulario, reduce la posibilidad de errores
+            </p>
+      </div>
+      <form action="" method="post">
+            {% csrf_token %}
+
+      <div class="d-flex  ">
+            <!-- Customer Name for Input Value -->
+            <input id="customer-name-complet" class="d-none" value="{{c.name}} {{c.last_name}}" type="text">
+            <input id="customer-name" class="d-none" value="{{c.name}} {{c.last_name}}" type="text">
+            <input id="customer-dni" class="d-none" value="{{c.dni}}" type="text">
+
+            <div class="form-floating mb-3  w-50" >
+                  {{form.customer}} 
+                  <label for="">
+                        Cliente 
+                  </label>
+            </div>
+            <div class="form-floating mb-3 w-50" >
+                  {{form.name}}
+                  <label for="">
+                        Nombre
+                  </label>
+            </div>
+            <div class="form-floating mb-3 w-50" >
+                  {{form.dni}}
+                  <label for="">
+                        No. Cedula
+                  </label>
+            </div>
+
+      </div>
+      <div class="w-100">
+            <h6 class="p-0  mt-2">
+                  Detalles del préstamo
+            </h6>
+            <p>
+                  Monto del préstamo, tasa de interés, plazo del préstamo, tipo de préstamo
+            </p>
+      </div>
+      <div class="d-flex">
+            <div class="form-floating mb-3 w-50" >
+                  {{form.amount}}
+                  <label for="id_work_information">Monto
+                  </label>
+            </div>
+            <div class="form-floating mb-3 w-50" >
+                  {{form.price_feed}}
+                  <label for="id_work_information">Cuota A Pagar
+                  </label>
+            </div>
+
+            <div class="form-floating mb-3 w-50" >
+                  {{form.no_account}}
+                  <label for="">
+                        No.  Cuenta
+                  </label>
+            </div>
+      </div>
+      <div class="w-100 d-flex">
+            <div class="form-floating mb-3 " >
+                  {{form.day_pay}}
+                  <label for="id_work_information">Dia de Pago
+                  </label>
+            </div>
+            <div class=" mb-3 ms-3  d-flex align-content-center " >
+                  {{form.mode_pay}}
+                  <label for="id_mode_pay" class="d-flex h-100 flex-wrap ms-1 align-content-center justify-content-center"> Aplicar dos pagos (15) - (30)
+                  </label>
+            </div>
+      </div>
+
+      <div class="form- mb-3 w-100 " >
+          <div >
+            <h6 class="ms-1"> Ganancias RD$: <span class="text-black" id="resultado-div"></span></h6>
+          </div>
+
+          <div class="">
+            <h6 class="ms-1"> Cuota Mensual RD$: <span class="text-black" id="valor-div"></span></h6>
+          </div>
+          <div class="form-floating mb-3 " >
+            {{form.amount_feed}}
+            <label for="id_amount_feed">Cuota Mensual
+            </label>
+         </div>
+      </div>
+      <div class="d-flex w-100 pt-4 justify-content-start">
+            <a style="width: 5rem;" href="{% url "customer:list-customer" %}" class="btn-cancel">
+                  Cancelar
+            </a>
+            <button class="btn-save">
+                  Actualizar
+            </button>
+      </div>
+</form>
+</section>
+<script>
+      // document.querySelector(".load").style.display = "none"
+
+     let customer =  document.getElementById("id_customer")
+     customer.classList.add("text-uppercase", "text-black-50")
+     customer.value =  document.getElementById("customer-name-complet").value 
+     customer.disabled = true       
+
+     document.getElementById("id_name").value =  document.getElementById("customer-name").value 
+     document.getElementById("id_dni").value =  document.getElementById("customer-dni").value 
+
+
+      let price_feed = document.getElementById("id_price_feed")
+      price_feed.addEventListener("input", () => {
+
+                  CalcularDivisas()
+
+      })
+      let amoun = document.getElementById("id_amount")
+      amoun.addEventListener("input", () => {
+            CalcularDivisas()
+      })
+
+      let amount_feed = document.getElementById("id_amount_feed")
+      amount_feed.addEventListener("input", () => {
+            CalcularDivisas()
+      })
+
+
+      window.onload = CalcularDivisas()
+
+      function CalcularDivisas() {
+            let p = parseFloat(document.getElementById("id_price_feed").value);
+            let amounts = parseFloat(document.getElementById("id_amount").value);
+            const int = p * 0.1;
+            // Formatear "intereses" con comas
+            let cuotas = int * amounts
+            let total = cuotas + amounts
+            let tt = total / p 
+            let total_c = Math.round(cuotas);
+            document.querySelector("#resultado-div").textContent = total.toLocaleString() ;
+            document.querySelector("#valor-div").textContent =  tt.toLocaleString()
+
+}
+
+
+
+</script>
+
+{%  endblock%}                                                                                                                        

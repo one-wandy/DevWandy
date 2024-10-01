@@ -1,0 +1,168 @@
+{% include "base/base.html" %}
+{% block content %}
+{% load humanize %}
+// Añade Print.js a tu proyecto
+
+// Luego, puedes imprimir un elemento por su ID
+printJS('ID_DEL_ELEMENTO', 'html');
+
+
+<style>
+      @page {
+      /* margin: 100px 65px 90px 65px; */
+      size: card;
+}
+header, footer {
+      height: 2rem !important;
+
+}
+</style>
+<header></header>
+<section id="Contrato" class="container w-100" style="font-family: Times New Roman; font-size: 16px; line-height: 17px; color: black; text-align: justify;">
+      <div class="text-center mb-4" >
+            <span class="black">
+                  CONTRATO DE PRESTAMO
+            </span> 
+      </div>  
+
+
+<div class="w-100">
+      <span class="black">
+            ENTRE:   
+      </span>
+</div>
+
+De una parte, <span class="black text-uppercase"> GRUPO FYCAS, SRL, </span> sociedad constituida conforme a las leyes de la Republica Dominicana, con su domicilio social y asiento principal en la Carretera de Mendoza, esquina 23, Municipio Santo Domingo Este, Provincia Santo Domingo, provista del Registro Nacional del Contribuyente (RNC) número 1-32-42163-9 y del Registro mercantil número 168478PSD, quien en lo adelante en el presente contrato se denominará  <span class="black">GRUPO FYCAS</span> o por su nombre completo.    
+
+   
+<br><br>
+Y de la otra parte el señor(a), <span class="black text-uppercase"> {{c.name}} {{c.last_name}} </span>, dominicano, mayor de edad, portador(a) de la cedula de identidad y Electoral No. {{c.dni}}, domiciliado y residente en la {{c.address}}, República Dominicana, quien en lo adelante en el presente contrato se denominará <span class="black">´´EL DEUDOR</span> o por su nombre completo´´.   
+
+  
+
+   
+<div class="text-center mt-5 mb-5">
+      <span class="black">
+            PREAMBULO   
+      </span>
+</div>
+
+   
+
+<span class="black">POR CUANTO: EL DEUDOR</span> ha solicitado a <span class="black">GRUPOS FYCAS</span> el otorgamiento de un préstamo por la suma de <span class="black"> <span class="text-uppercase black"> {{amount}}</span> CON 00/100 (RD${{credit.amount|intcomma}}.00) </span>
+
+  
+<br>
+<span class="black">POR CUANTO: GRUPO FYCAS</span> ha consentido otorgarle a <span class="black">EL DEUDOR</span> el préstamo solicitado, sujeto a los términos y condiciones que se establece en el presente contrato. 
+<br>
+
+   
+
+<div class="text-center w-100 mt-5 mb-5">
+      <span class="black">HAN CONVENIDO Y PACTADO LO SIGUIENTE</span>
+
+</div>
+   
+
+<span class="black">PRIMERO:</span> Por medio del presente contrato <span class="black">GRUPOS FYCAS</span> otorga a favor de <span class="black">EL DEUDOR,</span> a quien acepta conforme, un préstamo por la suma de <span  class="black"> <span class="text-uppercase black"> {{amount}}</span> CON 00/100 (RD${{credit.amount|intcomma}}.00).</span> 
+
+  
+
+<span  class="black">Suma que EL DEUDOR</span> declara haberlas recibido a su entera satisfacción a la firma del presente contrato.     
+ 
+ <br><br>  
+<span  class="black">SEGUNDO: EL DEUDOR</span> declara que el concepto de los fondos otorgados en el presente contrato será utilizado para los fines de una receta médica.   
+
+  <br><br>
+
+
+
+<span class="black">TERCERO: EL DEUDOR</span> se compromete a pagar a <span class="black">GRUPOS FYCAS</span>, intereses a razón de <span class="black">UNO PUNTO CINCUENTA Y NUEVE (1.59).</span> 
+<br><br>
+  
+
+<span class="black">CUARTO: EL DEUDOR</span> se obliga a pagar la suma otorgada en calidad de préstamo, la cantidad de ({{credit.price_feed}}) cuotas mensuales contentiva de capital e interés ascendentes a la suma <span class="black text-uppercase"> {{amount_feed}} PESOS CON 00/100 (RD${{amount_feed_int|intcomma}}.00).</span>
+{% if credit.mode_pay == True %}
+Que deberán ser pagados los dias quince (15) y treinta (30) de cada mes 
+{% else %}
+Que deberán ser pagados el día {{day_pay}} ({{credit.day_pay}}) de cada mes.   
+{% endif %}
+ <br><br>
+   
+
+<span class="black">PARRAFO:</span> Si al llegar la fecha estipulada en el presente contrato <span class="black">EL DEUDOR</span>  no realizara dicho pago, se le otorgara un periodo de gracia de cinco (5) días, si en este periodo de gracia llegara a exceder de los días antes previstos, se le acreditara diariamente una mora consistente en  0.010 % en base el valor de la cuota. 
+<br><br>
+
+<span class="black">QUINTO:</span> Es entendido para las partes que el pago mínimo es el valor del interés de la cuota pendiente, por lo que, si <span class="black">EL DEUDOR</span>  realizara solo el pago mínimo, se entendería como ´´pago al día´´, y no crearía ningún cargo por retraso de pago.   
+<br><br>
+   
+
+<span class="black">SEXTO:</span> Es entendido para las partes que el pago de otros montos correspondería a un valor menor que el indicado por las cuotas y que excede el pago mínimo, por lo que, si <span class="black">EL DEUDOR</span>  realizara el pago cumpliendo con las características antes mencionadas, el monto excedente al mínimo se tomara en abono al capital, pudiendo incluso saldar sin ningún cobro por penalidad.   
+<br><br>
+
+<span class="black">SEPTIMO:</span> como prueba de este préstamo <span class="black">EL DEUDOR</span>  suscribe un Pagare Notarial en favor de <span class="black">GRUPOS FYCAS</span>, el cual forma parte integral y cuyo pago está garantizado por las condiciones y estipulaciones de este contrato.    
+
+<!--    
+<br><br> <br><br> -->
+<br><br>
+<span class="black">OCTAVO:</span> Es de conocimiento para <span class="black">EL DEUDOR</span>  que <span class="black">GRUPO FYCAS</span> tendrá el acceso al historial crediticio mediante la plataforma de Data crédito en el cual podrá verificar y realizar los reportes del comportamiento mensual en el pago de las cuotas.   
+
+   
+<br><br>
+<span class="black">NOVENO:</span> Queda expresamente convenido entre las partes, que, en caso de incumplimiento o  retrasos en el pago de las obligaciones asumidas por <span class="black">EL DEUDOR</span> , quedaran afectados todos los bienes presentes y futuros, pudiendo <span class="black">GRUPOS FYCAS</span> notificar intimación de pago y posteriormente realizar embargos o cualquier otra acción para el cobro de la deuda acumulada.   
+
+   
+<br><br>
+<span class="black">DECIMO:</span> <span class="black">EL DEUDOR</span>  se compromete a pagar todos los gatos legales y honorarios en los que incurra <span class="black">GRUPOS FYCAS</span> en caso de incumplimiento del presente contrato.    
+
+   
+<br> <br>
+<span class="black">DECIMO PRIMERO:</span> Para todo lo no previsto en este presente contrato, las partes se remiten al derecho común.   
+
+<div>
+      Hecho y firmado en la ciudad de santo domingo República Dominicana, a los días {{day}} ({{day_number}}) del mes de febrero del año {{year}} ({{year_number}});   
+</div>
+<div class=" w-100 mt-5 mb-3">
+      <span class="black">
+            POR GRUPOS FYCAS   
+      </span>
+</div>
+
+<div class="text-center w-100 mt-5 mb-3 d-flex justify-content-center flex-wrap">
+      <div class="w-50">
+            <hr>
+      </div>
+      <span class="black w-100">
+            FELIX YUNIOR CARMONA SANTOS
+      </span>
+      Socio Gerente
+
+</div>
+<div>
+      <span class="black">  POR EL DEUDOR </span>  
+</div>
+<div class="text-center w-100 mt-5 mb-3 d-flex flex-wrap justify-content-center">
+      <div class="w-50">
+            <hr>
+      </div>
+      <span class="black w-100 text-uppercase">
+            {{c.name}} {{c.last_name}}
+      </span> 
+      El deudor 
+  
+
+</div>
+</section>
+<footer>
+
+</footer>
+<script>
+window.onload = function() {
+      // printJS('ID_DEL_ELEMENTO', 'html');
+
+
+      // const footer = document.querySelector("footer");
+//      window.print();
+};
+</script>
+{% endblock  %}

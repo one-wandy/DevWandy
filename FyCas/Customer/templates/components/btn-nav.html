@@ -1,0 +1,307 @@
+{% load static %}
+<style>
+      .btn-nav 
+      {
+            width: 15rem;
+            display: flex;
+            flex-wrap: wrap;    
+            /* border: rgb(228, 228, 228) 1px solid; */
+            border-radius: 2rem;
+      }
+      .btn-nav button 
+      {
+            border-radius: 1rem !important;
+
+      }
+      .btn-nav button:hover
+      {
+            background-color: #eeeeee;
+      }
+      .btn-pulse
+      {
+            background-color: #eeeeee !important;
+      }
+      .btn-nav button, a
+      {
+            width: 100%;
+            height: auto;
+            display: flex; 
+            justify-content: start;
+            align-content: center;
+            border-radius: 1.5rem;
+            border: rgba(227, 227, 227, 0.905) 1px solid;
+            color: rgb(78, 78, 78);
+          
+            font-weight:400 !important;
+            font-size: 14px !important;
+            background-color: rgba(255, 255, 255, 0.258);
+      }
+      a 
+      {
+            border: 0 !important;
+      background-color: transparent;
+      }
+      .btn-nav span
+      {
+            margin-top: 0.2rem;
+      }
+      .btn-nav button img
+      {
+            margin-right: 0.7rem;
+            width: 20px !important;
+            margin-top: 0.1rem;
+      } 
+       .btn-nav button:hover  
+      {
+            /* margin-top: 0.2rem; */
+            border: rgba(255, 255, 255, 0.789) 1px solid;
+      
+
+      } 
+      .btn-nav strong
+      {
+      
+            width: 100%;
+            font-size: 10px !important;
+            color: rgb(117, 117, 117);
+      }
+      @media (min-width: 750px){
+            .nav-2 
+            {
+                  display: block !important;
+            }
+            /* #mn-calc 
+            {
+                  display: none;
+            } */
+            .nav-1
+      {
+            display: none !important;
+      }
+      #div-list-customer 
+      {
+            justify-content: start !important;
+      }
+      
+}
+
+
+</style>
+<section class="vh-100  sec-btn rounded-0 bg-white bg-opacity-75  overflow-scroll">
+      <div class='btn-nav p-2 pb-2  ' >
+            <div class="w-100 d-flex justify-content-center mb-1 mt-1">
+                  <!-- <img src="{% static "icons/doc(46).png" %}" 
+                  class="mt-2"  width='24' height="24" alt=""> -->
+                  <h5 class="p-0 m-0 mt-2" 
+                  style="font-size: 21px; margin: 0; padding: 0.5rem 1rem;
+                 ">
+                        <!-- Grupo Fycas -->
+                  </h5>      
+            </div>
+            <div class="  pe-3 ps-1" style="width: max-content; height: 2.2rem; border-radius: 2rem;">
+                  <div class="d-flex justify-content-end  me-2" style="line-height: 10px;">
+                      <div class="" style="margin-top: 4px;">
+                          <img src="static/pro.png" width="30" height="30"  class=" me-1 object-fit-cover rounded-circle " style="border: 1px;" alt="">
+                      </div> 
+                      <div>
+                          <h6 style="font-size: 10px;" class="text-black-50 p-0 m-0">
+                              <!-- {{request.user.username}} -->{{request.user.last_name}}
+                          </h6>
+                          <span >
+                             <strong style="font-size: 13px !important;       font-family: Quicksand, sans-serif !important; 
+      font-weight: bold !important;">
+                                    {{request.user.first_name}} 
+                             </strong>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+            <div class="mt- d-none w-100">
+                  <strong >
+                   App
+                  </strong>
+            </div>
+            <a href="{% url "customer:dashboard" %}" class="pt-4">
+                  <button class="btn-dashboard">
+                        <img src="{% static "icons/grafico.png" %}" width='24' alt="">
+                        <span>
+                              Dashboard
+                        </span>
+                  </button>
+            </a>
+            <a href="{% url "customer:add-customer" %}">
+                  <button>
+                        <img src="{% static "icons/mas.png" %}" width='24' alt="">
+                        <span>
+                              Agregar 
+                        </span>
+                  </button>
+            </a>
+            <a href="{% url "customer:list-customer" %}">
+                  <button class="btn-cliente"> 
+                        <img src="{% static "svg/user.svg" %}" width='24' alt="">
+                        <span>
+                              Clientes  {% if customer_count %} ({{customer_count}}) {% endif %} 
+                        </span>
+                  </button>
+            </a>
+            <a href="{% url "customer:ubicaciones" %}">
+
+                  <button class="btn-ubicaciones">
+                        <img src="{% static "svg/map.svg" %}" width='24' alt="">
+                        <span>
+                              Ubicaciones
+                        </span>
+                  </button>
+            </a>
+  
+      
+    
+            <div class="mt-4 d-none w-100">
+                  <strong >
+                        Utilidades
+                  </strong>
+            </div>
+            <button onclick="Cal()"  class="mt-4 btn-calculadora">
+                  <img src="{% static "svg/calculator.svg" %}" width='24' alt="">
+                  <span>
+                        Calculadora 
+                  </span>
+            </button>
+            <a href="{% url "customer:calendario" %}">
+
+                  <button class="btn-calendario">
+                        <img src="{% static "svg/calendar.svg" %}" width='24' alt="">
+                        <span>
+                              Calendario
+                        </span>
+                  </button>
+            </a>
+
+            <a  href="{% url "customer:mensajeria" %}">
+                  <button>
+                        <img src="{% static "icons/msj.png" %}" width='24' alt="">
+                        <span>
+                              Mensajeria
+                        </span>
+                  </button>
+            </a>
+            <a  href="{% url "customer:mensajeria" %}">
+                  <button>
+                        <img src="{% static "icons/file.png" %}" width='24' alt="">
+                        <span>
+                              Archivos
+                        </span>
+                  </button>
+            </a>
+            <div class="mt-4 d-none w-100">
+                  <strong >
+                        Sistema
+                  </strong>
+            </div>
+            <a  href="{% url "customer:configuraciones" %}">
+
+                  <button  class="mt-4 btn-configuraciones">
+                        <img src="{% static "svg/config.svg" %}" width='24' alt="">
+                        <span>
+                              Configuraciones
+                        </span>
+                  </button>
+            </a>
+            <button>
+                  <img src="{% static "svg/document.svg" %}" width='24' alt="">
+                  <span>
+                        Historial de credito
+                  </span>
+            </button>
+                  <a href="{% url "customer:prestamos" %}">
+                  <button class="btn-prestamos">
+                        <img src="{% static "svg/list.svg" %}" width='24' alt="">
+                        <span>
+                              Listas
+                        </span>
+                  </button>
+            </a>
+
+
+      </div>
+      <div class="text-center w-100 pt-4 " style="line-height: 14px; font-size: 12px !important;">
+            <span class="text-center w-100 p-1"
+            style="font-size: 10px !important; color: #5A5868; font-weight: bold;">
+                 <span style="font-size: 9px !important;">V</span> <strong class="text-black-50" style="font-size: 12px;">Destellos 2.5</strong>
+           </span> <br>
+           <span class="text-center w-100 p-1"
+           style="font-size: 10px; color: #5A5868; font-weight: bold;">
+                <span style="font-size: 9px !important;" class="text-black-50">Powered by</span> <strong class="text-black-50" style="font-size: 12px;">ChatGPT 3.5</strong>
+          </span>
+          <span class="w-100 justify-content-center" >
+            <a href="" class="text-center  text-black-50 justify-content-center w-100" style="font-size: 10px !important;">untal.wandy@icloud.com</a>
+          </span>
+      </div>
+</section>
+<!-- <input type="text"  style="font-size: 14px;  min-width: 200px; min-height: 2.5rem;margin-top: 5px !important;   max-height: 2.5rem; " class="form-search bg-danger  text-center w-100  m-0 mb-1  bg-white bg-opacity-75 "  id="searching-config" 
+placeholder=" Buscando Clientes "> -->
+
+
+<script>
+      let resultadoParrafoES = document.getElementById('resultado-es')
+      let resultadoParrafo2ES = document.getElementById('resultado-es2')
+      let resultadoParrafo3ES = document.getElementById('resultado-es3')
+      let plazoES = document.getElementById('plazo-es')
+      let numeroES = document.getElementById('numero-es')
+
+
+      let SuperCal2 = (capital, plazo, tasa)=> {
+      
+      const Cuotas = capital * tasa / (1 - Math.pow(1 + tasa, -plazo));
+      let amortizacion = [];
+      let saldo = capital;
+      let totalIntereses = 0; 
+      for (let mes = 1; mes <= plazo; mes++) {
+            const interes = saldo * tasa; 
+            const amortizacionCapital = Cuotas - interes;
+            saldo -= amortizacionCapital;
+            totalIntereses += interes; 
+            amortizacion.push({
+                  Mes: mes,
+                  Cuota: Cuotas.toFixed(2),
+                  Interes: interes.toFixed(2),
+                  AmortizacionCapital: amortizacionCapital.toFixed(2),
+                  Saldo: saldo.toFixed(2)
+            }); }
+            let totales = capital + totalIntereses
+
+      const numero = parseFloat(numeroES.value);
+  
+      resultadoParrafoES.textContent = '$' + Cuotas.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00';
+      resultadoParrafo2ES.textContent = '$' + totalIntereses.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00'
+      resultadoParrafo3ES.textContent = '$' + totales.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00'
+      if(numeroES.value != ''){
+            let numero = numeroES.value.replace(/,/g, ''); // Elimina las comas existentes
+            if (!isNaN(numero) && numero.trim() !== '') {
+                numeroES.value = parseFloat(numero).toLocaleString();
+            } else {
+                numeroES.value = numeroES.value.replace(/[^\d.]/g, ''); 
+                // Elimina cualquier carácter no numérico excepto el punto decimal
+            }
+      }
+
+} 
+
+numeroES.addEventListener("input", () => {
+
+      
+      let numero = numeroES.value.replace(/,/g, ''); // Elimina las comas existentes
+      let capital = parseInt(numero)
+      let plazo =   plazoES.value
+      let tasa = 0.15
+      SuperCal2(capital, plazo, tasa)
+});
+plazoES.addEventListener("input", () => {
+      let numero = numeroES.value.replace(/,/g, ''); // Elimina las comas existentes
+      let capital = parseInt(numero)
+      let plazo =   plazoES.value
+      let tasa = 0.15
+      SuperCal2(capital, plazo, tasa)
+});
+</script>

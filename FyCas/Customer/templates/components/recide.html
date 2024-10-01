@@ -1,0 +1,77 @@
+{% load static %}
+
+<section class="mt-5 w-100 sec-sl d-flex flex-wrap justify-content-center">
+      <div class="w-100 img-glouds d-flex align-content-center m-1 " 
+      style='background-color: #F6F6F6; max-width: 30rem; 
+      border-radius: 35px;'>
+      <div class="img-data d-flex flex-wrap align-content-center">
+            <img src="{% static "icons/recdiden.png" %}" class="" width='114' alt="">
+      </div>
+      <div class='d-flex flex-wrap align-content-center'>
+            <h6>
+                  Dirección de residencia 
+            </h6>
+            <p class="text-black-50 mt-4">
+                  Calle,  Número de casa, Sector, Ciudad, Municipio
+            </p>
+      </div>
+</div>
+<section class=" d-flex flex-wrap align-content-center mt-4 w-100 " style="max-width: 30rem;">
+      <div class="d-flex w-100 justify-content-center">
+            <div class="form-floating mb-2 w-50 ">
+                  {{form.ciudad}}
+                  <label for="id_address">Ciudad</label>
+            </div>
+            <div class='form-floating nam mb-2 w-50 mt-0  justify-content-center' style="border-radius: 2rem !important; ">
+                  <select id='municipios-s' name="form-select-muni"  class="form-select w-100 "  aria-label="Default select example" style="border-radius: 21px !important; 
+                  ">
+                  <option  value="Distrito Nacional" selected>                  
+                        Distrito Nacional</option>
+                        <option value="Santo Domingo Este" > Santo Domingo Este</option>
+                        <option value="Santo Domingo Oeste" > Santo Domingo Oeste</option>
+                        <option value="Santo Domingo Norte" > Santo Domingo Norte</option>
+                        <option value="Santo Domingo San Antonio de Guerra" > Santo Domingo San Antonio de Guerra</option>
+                        <option value="Pedro Brand" > Pedro Brand</option>
+                        <option value="Los Alcarrizos" > Los Alcarrizos</option>
+                  </select>
+                  
+                  <label for="municipios-s">Municipio</label>
+            </div>
+            <!-- <div class="form-floating mb-2 ">
+                  {{form.municipio}}
+                  <label for="id_address">Municipio</label>
+            </div> -->
+      </div>
+      <div class="d-flex w-100 justify-content-center">
+            <div class="form-floating mb-2 w-50">
+                  {{form.sector}}
+                  <label for="id_address">Sector</label>
+            </div>
+            <div class="form-floating mb-2 w-50 ">
+                  {{form.calle_numero}}
+                  <label for="id_address">Calle/Numero</label>
+            </div>
+      </div>
+      
+      <div class="d-flex justify-content-end align-content-center mt-5  w-100 flex-wrap">    
+            <label class="bg-transparent scroll-btn text-black " style="width: 100px;" onclick='scrollToLast()'>Atras</label>
+            <label class="scroll-btn" onclick="scrollToNext()">Siguiente 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+                  <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+                      </svg>
+            </label>
+      </div>
+</section>
+
+
+</section>
+      
+
+
+      
+
+
+
+<script>
+            document.getElementById("id_ciudad").disabled = true       
+</script>

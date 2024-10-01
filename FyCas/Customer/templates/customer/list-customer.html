@@ -1,0 +1,775 @@
+{% extends "base/base.html" %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+
+<style>
+
+      .dni span
+      {
+            font-size: 12px !important;
+            color: rgb(155, 155, 155) !important;
+      }
+      
+      a
+      {
+            color: #383838 !important;
+      }
+      .contdiv 
+      {
+            width: 320px;
+            background-color: rgba(255, 255, 255, 0.979);
+      }
+      .img-js
+      {
+            border-radius: 1.2rem;
+      }
+      .img-border
+      {
+            /* border: #e4e4e4 1px solid; */
+            margin-bottom: 1px;
+            {% comment %} filter: blur(5px); {% endcomment %}
+      }
+      .referencias:hover{
+            height: auto !important;
+            transition: 0.10ms !important;
+      }
+      .address:hover{
+            height: auto !important;
+      }
+      .info-laboral:hover{
+            height: auto !important;
+      }
+      .datos span
+      {
+            color: #494949;
+            font-weight: normal !important;
+            font-size: 16px;
+            font-weight: 400;
+            font-family: Quicksand, sans-serif;
+            font-optical-sizing: auto;
+      }
+      .datos strong
+      {
+            color: #383838;
+            font-family: Quicksand, sans-serif;
+            color: black;
+            font-optical-sizing: auto;
+      }
+      #searching-config {
+            padding: 0 !important;
+            outline: none;
+            border: 0px rgba(185, 185, 185, 0.849) solid !important;
+            background-color: rgba(252, 252, 252, 0.589);
+            z-index: 2;
+            margin-left: 1px !important;
+            box-shadow: #e6e6e6 1px 2px 4px 1px;
+            border-radius: 1.7rem !important;
+            /* max-height: 2.2rem !important; */
+      }
+      #searching-config:hover{
+            /* border: 0px rgb(185, 185, 185) solid !important; */
+
+      }
+      .zoom
+      {
+            width: 10rem !important;
+            border: 1px rgb(233, 233, 233) solid !important;
+      }
+      .contDiv
+      {
+            border-radius: 1.5rem;
+            margin-bottom: 4px;
+            margin-left: 4px;
+            padding: 1px;
+            font-size: 14px;
+            width: auto !important;
+
+      }
+      @keyframes rotarColores {
+  0% {
+    background-image: linear-gradient(
+      to right,
+      rgb(255, 133, 133) 0%,
+      rgb(221, 137, 255) 50%,
+      rgb(128, 179, 255) 100%
+    );
+  }
+  50% {
+    background-image: linear-gradient(
+      to right,
+      rgb(128, 179, 255) 0%,
+      rgb(255, 133, 133) 30%,
+      rgb(221, 137, 255) 30%
+    );
+  }
+
+  100% {
+    background-image: linear-gradient(
+      to right,
+      rgb(128, 179, 255) 0%,
+      rgb(255, 133, 133) 50%,
+      rgb(221, 137, 255) 90%
+    );
+  }
+  
+
+}
+
+/* .contDiv {
+  width: 40rem;
+  height: max-content;
+  background-image: linear-gradient(
+    to right,
+    rgb(255, 133, 133) 0%,
+    rgb(221, 137, 255) 50%,
+    rgb(128, 179, 255) 100%
+  );
+  animation: rotarColores 3s infinite ease;
+} */
+
+
+.three-body {
+ --uib-size: 20px;
+ --uib-speed: 0.8s;
+ --uib-color: #af9bff;
+ position: relative;
+ display: inline-block;
+ height: var(--uib-size);
+ width: var(--uib-size);
+ animation: spin78236 calc(var(--uib-speed) * 1.5) infinite linear;
+}
+
+.three-body__dot {
+ position: absolute;
+ height: 100%;
+ width: 35%;
+}
+
+.three-body__dot:after {
+ content: '';
+ position: absolute;
+ height: 0%;
+ width: 100%;
+ padding-bottom: 100%;
+ background-color: var(--uib-color);
+ border-radius: 50%;
+}
+
+.three-body__dot:nth-child(1) {
+ bottom: 5%;
+ left: 0;
+ transform: rotate(60deg);
+ transform-origin: 50% 85%;
+}
+
+.three-body__dot:nth-child(1)::after {
+ bottom: 0;
+ left: 0;
+ animation: wobble1 var(--uib-speed) infinite ease-in-out;
+ animation-delay: calc(var(--uib-speed) * -0.3);
+}
+
+.three-body__dot:nth-child(2) {
+ bottom: 5%;
+ right: 0;
+ transform: rotate(-60deg);
+ transform-origin: 50% 85%;
+}
+
+.three-body__dot:nth-child(2)::after {
+ bottom: 0;
+ left: 0;
+ animation: wobble1 var(--uib-speed) infinite
+    calc(var(--uib-speed) * -0.15) ease-in-out;
+}
+
+.three-body__dot:nth-child(3) {
+ bottom: -5%;
+ left: 0;
+ transform: translateX(116.666%);
+}
+
+.three-body__dot:nth-child(3)::after {
+ top: 0;
+ left: 0;
+ animation: wobble2 var(--uib-speed) infinite ease-in-out;
+}
+
+@keyframes spin78236 {
+ 0% {
+  transform: rotate(0deg);
+ }
+
+ 100% {
+  transform: rotate(360deg);
+ }
+}
+
+@keyframes wobble1 {
+ 0%,
+  100% {
+  transform: translateY(0%) scale(1);
+  opacity: 1;
+ }
+
+ 50% {
+  transform: translateY(-66%) scale(0.65);
+  opacity: 0.8;
+ }
+}
+
+@keyframes wobble2 {
+ 0%,
+  100% {
+  transform: translateY(0%) scale(1);
+  opacity: 1;
+ }
+
+ 50% {
+  transform: translateY(66%) scale(0.65);
+  opacity: 0.8;
+ }
+}
+#div-list-customer button {
+      border-color: rgb(49, 49, 49);
+      color: rgb(49, 49, 49);
+      font-family: Quicksand, sans-serif;
+      font-weight: bold;
+
+}
+.contdiv button
+{
+      background-color: rgba(207, 207, 207, 0.69) !important;
+      padding: 5px 10px !important;
+      border-radius: 1rem !important;
+}
+@media (min-width: 600px) 
+{
+      .list-group-item 
+      {
+            max-width: 330px !important;
+      }
+}
+btn-sliders-nav
+{
+
+}
+.btn-cliente
+{
+      background-color: #eeeeee !important;
+}
+</style>
+
+
+<div id="div-list-customer"></div>
+<div  class="w-100 position-absolute bottom-0  d-flex justify-content-center" >
+      <div class="colors uno" style="background-color: #ffd588; margin-left: 1rem;"></div>
+      <div class="colors dos" style="margin-left: 2rem !important; background-color: rgb(243, 85, 85);"></div>
+      <div class="colors tres" 
+            style="margin-left: 17rem; margin-top: 20rem; background-color: rgb(178, 89, 230);">
+      </div>
+</div>
+
+<section id="section" class="blur mt-2 h-100" >
+      <div class="w-100 d-flex justify-content-end    ">
+            <div id="config-list"  
+            class="position-fixed  w-100    justify-content-center d-flex flex-wrap" 
+            style="justify-content: center; bottom: 3.9rem; z-index: 100; max-width: 70rem;">
+            </div>
+      </div>
+      <div id="text-c" class="w-100 justify-content-center  flex-wrap" 
+      style="display: none; z-index: 105; bottom: 1rem;" >
+            <h5 class="position-absolute " style='bottom:5rem;'  >
+                  "<span id="user-no"></span>"  no registrado
+            </h5>
+      </div>  
+      <div id="sec-listado">
+            {% include "customer/list-customer-2.html" %} 
+      </div>  
+      <div class="d-flex w-100  overflow-hidden  position-fixed bottom-0 mb-1" 
+      style="height: 4.5rem; z-index: 1000;">
+     
+                 {% include "components/btn-filter.html" %}
+      </div>
+      
+     
+      <!-- <div class="d-flex justify-content-end  pe-1 w-100 " style="z-index: 1000;">
+     
+      </div> -->
+</section>
+
+<form action="" method="post" class="d-none">
+      {% csrf_token %}
+      <input type="number" name="send-data" id="input-send-data">
+      <button id="btn-send-data" type="submit">Send</button>
+</form>
+
+<script>
+let id_input_select = 0
+document.addEventListener('DOMContentLoaded', (event) => {
+            // Selecciona todos los elementos de entrada
+            const inputs = document.querySelectorAll('.monto-input');
+            // Añade un evento de enfoque a cada uno
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    id_input_select = this.id
+                    let si = document.querySelector("#"+id_input_select)
+                    si.addEventListener('input', function() {
+                        let lkj = this.id
+                        let delt = lkj.replace(/\D/g, '');
+                        let numero_input = document.getElementById(this.id)
+                        let numero = numero_input.value.replace(/,/g, ''); // Elimina las comas existentes
+                        let capital = parseInt(numero)
+                        SuperCalAuto(capital, document.querySelector("#cuotas"+delt).value, 
+                        0.15, 
+                        "result-cuota"+delt,
+                        delt
+                        )
+                    });
+                  });
+            });
+
+
+
+
+// monto_input.addEventListener("input", () => {
+//       let numero = monto_input.value.replace(/,/g, ''); // Elimina las comas existentes
+//       let capital = parseInt(numero)
+//       let plazo =   document.querySelector('#')
+//       let tasa = 0.15
+//       SuperCalAuto(capital, plazo, tasa)
+// });
+      
+      function TurnCustomerFalse(id){
+            const url = 'verify-false/customer/';
+            $.ajax({
+                url: url,
+                data: {
+                  customer_id: id
+                }
+
+            })
+      }
+
+
+
+
+
+function CustomerVerifyNo(id){
+      document.getElementById('aprovate-no').classList.remove('d-none')
+      document.getElementById('aprovate-no').classList.add('d-block')
+
+      setTimeout(function() {
+            document.getElementById('aprovate-no').classList.remove('d-block')
+            document.getElementById('aprovate-no').classList.add('d-none')
+            // Code to be executed after 5 seconds
+      }, 3000);
+            const url = 'verify-no/customer/';
+            $.ajax({
+                url: url,
+                data: {
+                  customer_id: id
+                }
+
+            })
+      }
+
+      let searching_config = document.querySelector('.searching-config');
+      let config_list = document.getElementById('config-list')
+      let config_data;
+
+document.addEventListener('keydown', function(event) {
+      if (event.altKey && event.key === 'b') {
+            searching_config.focus();
+      }
+});
+
+searching_config.addEventListener('focus', function() {
+      searching_config.style.width = '100%'
+      document.getElementById('for-c').style.display = 'block'
+      document.getElementById('agregar').style.display = 'none'
+      document.getElementById('clientes').style.display = 'none';
+});
+
+searching_config.addEventListener('blur', function() {
+      searching_config.style.width = '14rem'
+      document.getElementById('for-c').style.display = 'flex'
+      document.getElementById('agregar').style.display = 'block'
+      document.getElementById('clientes').style.display = 'flex';
+});
+
+
+window.addEventListener("DOMContentLoaded", function() {
+        ConfigData()
+        function ConfigData() {
+            const url = 'searching/customer';
+            $.ajax({
+                url: url,
+                success: function(data){
+                    config_data = data
+                    const searching_config = document.querySelector('.searching-config');
+                    searching_config.addEventListener('input', (event) => {
+                    const input_value = event.target.value;
+                    const filtered_data = data.filter((config) => {
+                        return config.name.toLowerCase().includes(input_value.toLowerCase());
+                    });
+                    config_list.innerHTML = ''
+                    var divList = document.getElementById('div-list-customer') 
+
+                    if(filtered_data == ''){
+                        document.getElementById("text-c").style.display = 'flex'
+                        document.getElementById('user-no').innerHTML = searching_config.value
+                  }
+                  else{
+                        document.getElementById("text-c").style.display = 'none'
+                        if(searching_config.value == ''){
+                              divList.classList.remove('blur-up')
+                              document.getElementById('sec-listado').classList.remove('d-none')
+                        }
+                        else{
+                              
+                              divList.classList.add('blur-up')
+                              document.getElementById('sec-listado').classList.add('d-none')
+                        }
+
+                    }
+
+                    for (const c  of filtered_data) {
+                        const div = document.createElement('div');
+                        div.classList.add("contdiv",  'justify-content-center' ,'d-flex',)
+                        const divCont = document.createElement('div');
+                        divCont.classList.add('contDiv' , 'justify-content-center' ,'d-flex',  )
+                        div.classList.add("divCon", "p-3", 'card', 'justify-content-center' ,'d-flex',)
+                              let divI = document.createElement("div")
+                              const imgLink = document.createElement('a');
+                              imgLink.href = "/detail-customer/" + c.id
+                              imgLink.target = '_blank';
+                              let divL = document.createElement("div")
+
+                              let stronL = document.createElement("strong")
+                              stronL.textContent = ""
+                              let img = document.createElement("img")
+                                    // img.classList.add("img", "img-js")
+                                    // img.src = c.img
+                                //    imgLink.appendChild(stronL)
+                                //    divI.appendChild(imgLink)
+                              let spanL = document.createElement("span")
+                              const nameLink = document.createElement('button');
+                              nameLink.classList.add('border-0', 'p-0', )
+                              nameLink.id = c.id
+                              nameLink.addEventListener('click', function() {
+                                    // Llamar a la función y pasarle el ID como argumento
+                                    document.getElementById('input-send-data').value = this.id
+                                    console.log(document.getElementById('input-send-data').value)
+                                    document.getElementById('btn-send-data').click()
+                                    // Suponiendo que la función se llama "miFuncion"
+                                });
+                              //nameLink.href = "/detail-customer/" + c.id
+                              //nameLink.target = '_blank';
+                              nameLink.innerText = c.name
+                              //spanL.classList.add("capitalize")
+                                //    spanL.textContent = c.name
+                              divL.appendChild(stronL)
+                              divL.appendChild(nameLink)
+
+                              let divN = document.createElement("div")
+                              divN.classList.add('dni')
+                                    let stronN = document.createElement("strong")
+                                          stronN.textContent = ""
+                                    let spanN = document.createElement("span")
+                                          spanN.textContent = c.dni
+                              divN.appendChild(stronN)
+                              divN.appendChild(spanN)
+
+                              let divA = document.createElement("div")
+                                    // let stronA = document.createElement("strong")
+                                          // stronA.textContent = "Informacion Laboral: "
+                                    // let spanA = document.createElement("span")
+                                          // spanA.textContent = c.inf
+                              // divA.appendChild(stronA)
+                              // divA.appendChild(spanA)
+
+                              let divR = document.createElement("div")
+                                     let stronR = document.createElement("strong")
+                                          // stronR.textContent = "Recide en: "
+                                    // let spanR = document.createElement("a")
+                                          // spanR.href = "https://www.google.com.do/maps/search/" + c.recide
+                                          // spanR.target = '_blank';
+                                          // spanR.textContent = c.recide
+                              // divR.appendChild(stronR)
+                              // divR.appendChild(spanR)
+
+                              
+                              let divK = document.createElement("div")
+                                    // let stronK = document.createElement("strong")
+                                          // stronK.textContent = "Referencias: "
+                                    // let spanK = document.createElement("span")
+                                          // spanK.textContent = c.refers
+                              // divK.appendChild(stronK)
+                              // divK.appendChild(spanK)
+
+
+                        div.appendChild(divI);
+                        div.appendChild(divL);
+                        div.appendChild(divN);
+                        div.appendChild(divR);
+                        div.appendChild(divA);
+                        div.appendChild(divK);
+
+
+                        divCont.appendChild(div)
+                        config_list.appendChild(divCont);
+                    }
+                    if (searching_config.value.trim() === "") {
+                        config_list.innerHTML = ''
+                        config_list.style.display = 'none'
+                        document.getElementById('for-c').style.display = 'flex'
+                        // document.getElementById("list-customer").style.display = "block"
+                  }
+                  else {
+                        config_list.style.display = 'block'
+                        document.getElementById('for-c').style.display = 'none'
+                        // document.getElementById("list-customer").style.display = "none"
+                    }
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error en la solicitud AJAX:', status, error);
+                }
+            });
+        }
+    });
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') { // Detecta la tecla ESC
+          window.location.href = '/'; // Cambia la URL a la que deseas redirigir
+      }
+  });
+  
+
+
+
+
+});
+
+function CustomerVerify(id){
+      // alert('Cliente verificado')
+      //       document.getElementById('aprovate-yes').classList.remove('d-none')
+      //       document.getElementById('aprovate-yes').classList.add('d-block')
+
+      //       setTimeout(function() {
+      //             document.getElementById('aprovate-yes').classList.remove('d-block')
+      //             document.getElementById('aprovate-yes').classList.add('d-none')
+      //             // Code to be executed after 5 seconds
+      //       }, 3000);
+            const url = 'verify/customer/';
+            $.ajax({
+                url: url,
+                data: {
+                  customer_id: id
+                }
+            })
+            document.getElementById('client'+id).classList.add('d-none')
+      }
+
+
+
+function CreateCreditAjax(id){
+            const url = 'create-credit-ajax/customer/';
+            OpenCloseBtnCredit(id)
+
+
+            let monto = document.getElementById('monto'+id).value
+            let monto_cls = monto.replace(/,/g, ''); // Elimina las comas existentes
+            let mt_monto = parseInt(monto_cls)
+            
+
+            let cuotas = document.getElementById('cuotas'+id).value
+            let cuotas_cls = cuotas.replace(/,/g, ''); // Elimina las comas existentes
+            let mt_cuotas = parseInt(cuotas_cls)
+
+            let monto_pagar = document.getElementById('monto_pagar'+id).value
+            let monto_pagar_cls = monto_pagar.replace(/,/g, ''); // Elimina las comas existentes
+            let mt_monto_pagar = parseInt(monto_pagar_cls)
+
+
+            $.ajax({
+                url: url,
+                data: {
+                  customer_id: id,
+                  monto: mt_monto,
+                  cuotas: mt_cuotas,
+                  dia: document.getElementById('dia'+id).value.split('-')[2] ,
+                  monto_pagar: mt_monto_pagar,
+
+                }
+            ,
+            success: function(r) {
+                  let m = document.getElementById('monto-spa'+id)
+                  document.getElementById('requiere'+id).innerHTML = ''
+                  document.getElementById('requiere'+id).innerHTML = 'Aprobado'
+                  m.innerHTML = ''
+                  m.innerHTML = r.monto_requerido + '.00'
+                  // Code to handle successful response
+            },
+            })
+      }
+
+
+function sumar(n) {
+      var inputNumero = document.getElementById("cuotas"+n);
+      var valorActual = parseInt(inputNumero.value);
+      inputNumero.value = valorActual + 1;
+      let numero_input = document.getElementById("monto"+n)
+      let numero = numero_input.value.replace(/,/g, ''); // Elimina las comas existentes
+      let capital = parseInt(numero)
+      SuperCalAuto(capital, document.querySelector("#cuotas"+n).value, 
+      0.15, 
+      "result-cuota"+n,
+      n
+      )
+
+  };
+  function restar(n) {
+      var inputNumero = document.getElementById("cuotas"+n);
+      var valorActual = parseInt(inputNumero.value);
+      if(valorActual > 0) {
+            inputNumero.value = valorActual - 1;
+      }
+
+      let numero_input = document.getElementById("monto"+n)
+
+      let numero = numero_input.value.replace(/,/g, ''); // Elimina las comas existentes
+      let capital = parseInt(numero)
+      SuperCalAuto(capital, document.querySelector("#cuotas"+n).value, 
+      0.15, 
+      "result-cuota"+n,
+      n
+      )
+  }
+
+
+
+  //   btn-notifycation
+function NotifyCation() {
+      let div = document.getElementById('div-notifycations');
+    // Con cada clic, alternamos la propiedad de display del div
+    if (div.style.display === 'none') {
+      div.style.display = 'block';
+    } else {
+      div.style.display = 'none';
+    }
+
+  }
+
+
+
+  function OpenCloseBtnCredit(btn_id) {
+      const div = document.getElementById('div-credit' + btn_id);
+      if (div.classList.contains('d-none')) {
+          div.classList.remove('d-none');
+          div.classList.add('d-block');
+      //     document.getElementById('div-list-customer').classList.remove('blur')
+      } else if (div.classList.contains('d-block')) {
+            // document.getElementById('div-list-customer').classList.add('   ')
+          div.classList.remove('d-block');
+          div.classList.add('d-none');
+      }
+  }
+
+  
+function BoxSearch() {   
+      var box_search = document.querySelector('.div-menu-1')
+      if (box_search.classList.contains('d-none')) {
+            box_search.classList.add('d-flex')
+            box_search.classList.remove('d-none')
+      } else  {
+            box_search.classList.add('d-none')
+            box_search.classList.remove('d-flex')
+      }
+  }
+
+  let SuperCalAuto = (capital, plazo, tasa, result, id_mont)=> {
+      const Cuotas = capital * tasa / (1 - Math.pow(1 + tasa, -plazo));
+      let amortizacion = [];
+      let saldo = capital;
+      let totalIntereses = 0; 
+      for (let mes = 1; mes <= plazo; mes++) {
+            const interes = saldo * tasa; 
+            const amortizacionCapital = Cuotas - interes;
+            saldo -= amortizacionCapital;
+            totalIntereses += interes; 
+            amortizacion.push({
+                  Mes: mes,
+                  Cuota: Cuotas.toFixed(2),
+                  Interes: interes.toFixed(2),
+                  AmortizacionCapital: amortizacionCapital.toFixed(2),
+                  Saldo: saldo.toFixed(2)
+            }); }
+      let totales = capital + totalIntereses
+      // const numero = parseFloat(count_input.value);
+            
+      document.querySelector('#'+result).innerHTML = 'Cuotas mensuales de: $' + Cuotas.toLocaleString(undefined,
+                              {maximumFractionDigits: 0}) + '.00';
+
+      let precio_cuota = document.getElementById("monto_pagar"+id_mont)
+      precio_cuota.value = Cuotas.toFixed(2)
+
+      let mont = document.getElementById("monto"+id_mont)
+      if(mont.value != ''){
+            let numero = mont.value.replace(/,/g, ''); // Elimina las comas existentes
+            if (!isNaN(numero) && numero.trim() !== '') {
+                mont.value = parseFloat(numero).toLocaleString();
+            } else {
+                mont.value = mont.value.replace(/[^\d.]/g, ''); 
+                // Elimina cualquier carácter no numérico excepto el punto decimal
+            }
+      }
+
+}
+
+// function OpenCloseBtn(btn_id) {
+//       const div = document.getElementById('div-more' + btn_id);
+//       if (div.classList.contains('d-none')) {
+//           div.classList.remove('d-none');
+//           div.classList.add('d-block');
+//             BoxSearch()
+//       //     document.getElementById('div-list-customer').classList.remove('blur')
+//       } else if (div.classList.contains('d-block')) {
+//             BoxSearch()
+//             // document.getElementById('div-list-customer').classList.add('blur')
+//           div.classList.remove('d-block');
+//           div.classList.add('d-none');
+//       }
+//   }
+
+//   function DisableCustomer(id){
+//             const url = 'disable-customer/';
+//             $.ajax({
+//                 url: url,
+//                 data: {
+//                   customer_id: id
+//                 },
+//             })
+//             document.getElementById('client'+id).classList.add('d-none')
+//             BoxSearch()
+//       }
+
+function DisableCustomer(id){
+            const url = 'disable-customer/';
+            $.ajax({
+                url: url,
+                data: {
+                  customer_id: id
+                },
+            })
+            document.getElementById('client'+id).classList.add('d-none')
+      }
+     
+     
+
+
+
+</script>
+{% endblock  %}

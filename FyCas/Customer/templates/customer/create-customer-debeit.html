@@ -1,0 +1,62 @@
+{% include "base/base.html" %}
+{% block content %}
+      <section class='container-fluid' style='max-width: 30rem;'> 
+            <div>
+                  <h5>
+                        Creando Deudor
+                  </h5>
+            </div>
+            <form action="" method="post">
+                  {% csrf_token %}
+                  <div class='form-floating mb-2'>
+                        {{form.name}}
+                        <label for="id_name">Nombre</label>
+                  </div>
+                  <div class='form-floating mb-2'>
+                        {{form.dni}}
+                        <label for="id_dni">Cedula</label>
+                  </div>
+                  <div class='form-floating mb-2'>
+                        {{form.number}}
+                        <label for="id_number">Numero</label>
+                  </div>
+                  <div class='d-flex w-100 justify-content-end'>
+                        <button class='btn btn-primary border-0' style='border-radius: 1.5rem;'>
+                              Crear deudor
+                        </button>
+                  </div>
+            </form>
+      </section>
+
+      <script>
+            function DNI(value) {
+                  // Elimina todos los caracteres no numéricos
+                  var number_dni = value.replace(/\D/g, '');
+                  // Agrega guiones después de los primeros 3 dígitos y los siguientes 7 dígitos
+                  var dni_ = number_dni.replace(/(\d{3})(\d{7})(\d{1})/, '$1-$2-$3');
+                  return dni_;
+                }
+                // Agrega un evento al campo de entrada
+                  document.getElementById('id_dni').addEventListener('input', function(e) {
+                  let dni = document.getElementById('id_dni')
+                  dni.value = dni.value.slice(0, 13);
+                  e.target.value = DNI(e.target.value);
+                });
+
+                function NumbersFomat(value) {
+                  // Elimina todos los caracteres no numéricos
+                  var number = value.replace(/\D/g, '');
+                  // Agrega guiones después de los primeros 3 dígitos y los siguientes 7 dígitos
+                  var N = number.replace(/(\d{3})(\d{3})(\d{1})/, '$1-$2-$3');
+                  return N;
+                }
+
+                document.getElementById('id_number').addEventListener('input', function(e) {
+                  let n = document.getElementById('id_number')
+                  n.value = n.value.substring(0,12);
+                  e.target.value = NumbersFomat(e.target.value);
+        });
+      
+      </script>
+
+{% endblock  %}

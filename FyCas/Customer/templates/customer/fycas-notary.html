@@ -1,0 +1,118 @@
+{% include "base/base2.html" %}
+{% block content %}
+{% load humanize %}
+<style>
+      .div-menu-1 {
+            display: none !important;
+      }
+      
+</style>
+<section class="container w-100" style="font-family: Times New Roman; font-size: 16px;  color: black; text-align: justify;"> 
+      
+      <div class="text-center  mb-5 mt-1">
+            <span class="black">PAGARE NOTARIAL </span>
+      </div>
+
+      <div class="mt-5 ">
+            <span class="black">
+                  ACTO NÚMERO: __________         
+            </span>
+      </div>
+      <div>
+            En la ciudad de Santo Domingo, República Dominicana, hoy día {{day}} ({{day_number}}) del mes de {{mont}} del año {{year}} ({{year_number}}); POR ANTE MI,<span class="black"> LIC. ALEJANDRO MADE SALVADOR </span>, Notario Público de los del número del Distrito Nacional, Matrícula No. 3242, dominicano, mayor de edad, abogado, titular de la cédula de identidad y electoral número 402-3098169-4, con estudio profesional abierto en la calle Octavio Ciriaco, No. 17, Sector Don Bosco, Distrito Nacional; en el regular ejercicio de mis funciones, y dentro de la jurisdicción a la que pertenezco, ante mí, HA COMPARECIDO, libre y voluntariamente, el o la señor(a), <span class="black text-uppercase"> {{c.name}} {{c.last_name}}</span>, dominicano, mayor de edad,  portador de la cedula de identidad y Electoral No.{{c.dni}} domiciliado y residente en la {{c.calle_numero}}, {{c.sector}}, {{c.municipio}}, {{c.ciudad}}, República Dominicana, en lo adelante <span class="black">“EL DEUDOR”</span> , quien en su propio nombre y representación me ha declarado, <span class="black">LIBRE Y VOLUNTARIAMENTE</span>, lo siguiente: Que el motivo de su comparecencia es dictar y dejar constancia en mi presencia y en la de los testigos escogidos que se mencionan más abajo, lo siguiente:
+             <span class="black">PRIMERO: QUE DEBE Y PAGARA</span> a la sociedad comercial <span class="black">GRUPO FYCAS, SRL</span>, sociedad constituida conforme a la leyes de la Republica Dominicana, con su domicilio social y asiento principal en la Carretera de Mendoza, esquina 23, Municipio Santo Domingo Este, Provincia Santo Domingo, provista del Registro Nacional del Contribuyente (RNC) número uno, guion, tres, dos, guion, cuatro, dos, uno, seis, tres, guion, nueve (1-32-42163-9) y del Registro mercantil número uno, seis, ocho, cuatro, siete, ocho, Provincia Santo Domingo (168478PSD), en lo adelante <span class='black'>“GRUPO FYCAS”</span>, la suma de <span class='black text-uppercase'>
+                  {{amount}} PESOS CON 00/100 (RD${{credit.amount|intcomma}}.00) 
+            </span>, por concepto de desembolso de préstamo otorgado por GRUPO FYCAS, en virtud de lo estipulado en el contrato suscrito por <span class="black">EL DEUDOR y GRUPO FYCAS</span>,  en fecha {{day}} ({{day_number}}) del mes de {{mont}} del año  {{year}} ({{year_number}}) en lo adelante “ El Contrato de Préstamo”;  <span class="black">SEGUNDO:</span> Que dicha obligación devengará intereses fijos a razón de <span class="black">UNO PUNTO CUARENTA POR CIENTO (1.40%)</span>, que  seran cobrados {% if credit.mode_pay == True %}
+            los dias quince (15) y treinta (30) de cada mes 
+            {% else %}
+            el día {{day_pay}} ({{credit.day_pay}}) de cada mes.   
+            {% endif %}, TERCERO: Que la suma otorgada en préstamo por <span class='black'>GRUPO FYCAS</span> será pagadero mediante el pago de ({{credit.price_feed}}) cuotas mensuales, contentivas a los intereses por un monto de <span class='black text-uppercase'>{{amount_feed}} PESOS CON 00/100 (RD${{amount_feed_int|intcomma}}.00).</span> Todos los pagos se harán en efectivo o transferencia, en las fechas correspondientes y sin requerimiento, en las oficinas de <span class="black">GRUPO FYCAS</span> y a falta de pago de una (1) cuota para amortización de capital, el pago de intereses o cualquier otro concepto establecido en “El Contrato de Préstamo”,  el mismo se resolverá de pleno derecho, sin necesidad de ninguna formalidad previa o requerimiento, y en consecuencia, <span class="black">EL DEUDOR</span> perderá el beneficio de término y las condiciones de pago que se otorgan. <span class='black'>CUARTO:</span> Que <span class='black'>EL DEUDOR</span> del presente <span class='black'>PAGARE NOTARIAL</span> han consentido en darle fe pública a su otorgamiento, a fin de que el mismo tenga los efectos de un <span class='black'>TITULO EJECUTORIO</span>, con la misma fuerza que una sentencia judicial con la autoridad de la cosa irrevocablemente juzgada, conforme a las disposiciones que establece el Código de Procedimiento Civil en su Artículo 545, comprometiendo todos sus bienes presentes y futuros, para el cumplimiento del presente pagare; <span class='black'>QUINTO:</span> Para lo no estipulado en el presente pagare notarial las partes se remiten al derecho común; <span class='black'>SEXTO:</span> <span class='black'>EL DEUDOR avala</span> como buenos y validos todos los ordinales señalados anteriormente, contentivos en las obligaciones contraídas con <span class='black'>GRUPOS FYCAS ; HECHO, REDACTADO Y FIRMADO</span>, el día, mes, año y forma antes indicados, en mi presencia y en la de los señores <span class='black'>BRYAN ALEXANDER MONERO DOLORES</span>, dominicano, mayor de edad, portador de la cedula de identidad y Electoral No. 402-1261632-6, domiciliado y residente en la calle 1ra No. 12, Pueblo Nuevo, Municipio Villa Duarte, Provincia Santo Domingo, República Dominicana y <span class='black'>DAWLIN DE JESUS UREÑA MORILLO</span>, dominicano, mayor de edad, soltero, portador de la cedula de identidad y Electoral No. 402-3544942-4, domiciliado y residente en la C/La Gran Familia Apto #105 Villa Faro, Municipio Santo Domingo Este, Provincia Santo Domingo, República Dominicana. testigos Instrumentales requeridos al efecto libre de tachas y excepciones de ley, acto que he leído en voz alta al declarante y a los testigos presentes, quienes después de aprobarlo, lo han firmado y rubricado junto conmigo y ante mí, <span class='black'>NOTARIO PUBLICO QUE</span>  <span class='black'>CERTIFICO Y DOY FE </span> 
+      </div>
+      
+      <div class="text-center w-100  mb-3 d-flex justify-content-center flex-wrap" style='margin-top: 6rem;'>
+            <div class='mt-5 w-100 text-start pt-1'>
+                  POR GRUPOS FYCAS   
+            </div>
+
+                  <div class="w-50 mt-2">
+                        <hr>
+                  </div>
+                  <div class="text-center w-100 black" style="text-align: center;">
+                        FELIX YUNIOR CARMONA SANTOS  
+                  </div>
+                  <div class="text-center w-100">
+                        Gerente  
+                  </div>
+
+                  <div class='mt-4 w-100 text-start'>
+                        POR El DEUDOR
+                  </div>
+                  <div class="w-50 mt-2">
+                        <hr>
+                  </div>
+                  
+                  <div class="w-100 text-center black">
+                        <span class="black text-uppercase">{{c.name}} {{c.last_name}}</span>
+                  </div>
+                        <div class="w-100 text-center">
+                              Deudor  
+                        </div>
+
+      </div>
+      <div class='d-flex'>
+            <div class='d-flex w-50 m-2 text-center flex-wrap '>
+                  <div class='w-100'>
+                        <hr>
+                  </div>
+                  <span class='w-100 black'>BRYAN ALEXANDER MONERO DOLORES</span>
+                  <span class='text-center w-100' style='color:black;'>Testigo</span>
+            </div>
+            <div class='d-flex text-center m-2 w-50 flex-wrap'>
+                  <div class='w-100'>
+                        <hr>
+                  </div>
+                  <span class='w-100 black text-center'>
+                        DAWLIN DE JESUS UREÑA MORILLO
+                  </span>
+                  <span class='text-center w-100 ' style='color:black;' >Testigo</span>
+            </div>
+      </div>
+      <div class="w-50 container mt-5">
+            <hr>
+      </div>
+      <div class='w-100 d-flex flex-wrap justify-content-center'>
+            <span class='black w-100 text-center'>
+                  LIC. ALEJANDRO MADE SALVADOR 
+            </span>
+                  Notario Publico
+      </div>
+</section>
+<footer>
+
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+document.querySelector(".load").style.display = "none"
+window.onload = function() {
+
+      setTimeout(() => {
+            // ocultamos el elemento
+            NotarialSave()
+  }, 2000);
+      };
+
+function NotarialSave() {
+      const element = document.body; // Captura todo el contenido del body para el PDF
+    const options = {
+      margin: [10, 13, 10, 13],
+      filename: 'Notarial.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'mm', format: 'legal', orientation: 'portrait' }
+    };
+
+    // Usa html2pdf para guardar el contenido como PDF
+    html2pdf().set(options).from(element).save();
+}
+</script>
+{% endblock  %}
