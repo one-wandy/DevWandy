@@ -35,3 +35,58 @@ FyCas/Customer/__pycache__/forms.cpython-312.pyc
 FyCas/Customer/__pycache__/apps.cpython-312.pyc
 FyCas/Customer/__pycache__/admin.cpython-312.pyc
 FyCas/Customer/__pycache__/__init__.cpython-312.pyc
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Entorno Virtual
+venv/
+env/
+ENV/
+.venv/
+.VENV/
+
+# Archivos de configuración del entorno
+*.env
+*.local
+*.secret
+
+# Django archivos y bases de datos
+db.sqlite3
+db.sqlite3-journal
+
+# Archivos de migraciones
+*/migrations/*.py
+*/migrations/*.pyc
+
+# Archivos de logs
+*.log
+
+# Archivos de cobertura de pruebas
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+
+# Archivos creados por IDEs y editores
+.idea/
+.vscode/
+*.swp
+*~
+
+# Archivos estáticos y de medios
+staticfiles/
+media/
+
+# Compilados
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/

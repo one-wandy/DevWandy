@@ -145,3 +145,14 @@ class CustomerDebit(forms.ModelForm):
             'dni': forms.TextInput(attrs={'class': 'form-control'}),
             'day_created': forms.DateInput(attrs={'class': 'form-control'}),
         }
+        
+        
+        
+class CuotaForm(forms.ModelForm):
+    class Meta:
+        model = models.Cuota
+        fields = ['credito', 'cuota', 'capital', 'capital_restante', 'creado', 'pago', 'estado']
+        widgets = {
+            'creado': forms.DateInput(attrs={'type': 'date'}),  # Para un selector de fecha
+            'pago': forms.TextInput(attrs={'placeholder': 'Día del pago'}),  # Campo de texto
+        }

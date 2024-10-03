@@ -587,7 +587,12 @@ class Prestamos(ListView, Options):
     
         
 
-class Ubicaciones(ListView, Options):
+
+    
+class Calendario(TemplateView, Options):
+    template_name = "components/calendario.html"
+    
+class Ubicaciones(TemplateView, Options):
     model = models.Customer
     template_name = "customer/ubicaciones.html"
     
@@ -595,15 +600,94 @@ class Ubicaciones(ListView, Options):
         context = super().get_context_data(**kwargs)
         context['customer'] = self.model.objects.filter(is_active = True, 
                                         customer_verify = True)
+        
+        capital = 10000
+        tasa_mensual = 15 / 100  # Convertir a decimal
+        plazo = 4
+
+        resultados = self.Calculadora_Francesa( capital, tasa_mensual, plazo)
+
+        # Imprimir resultados
+        for resultado in resultados:
+            print(resultado)
+            
         return context
     
-class Calendario(TemplateView, Options):
-    template_name = "components/calendario.html"
     
-class Ubicaciones(TemplateView, Options):
-    template_name = "components/ubicaciones.html"
-    
-    
+    def Calculadora_Francesa(self, capital, tasa, plazo):
+        # Calcular la cuota mensual
+        cuotas = capital * tasa / (1 - (1 + tasa) ** -plazo)
+        amortizacion = []
+        saldo = capital
+        total_intereses = 0
+
+        for mes in range(1, plazo + 1):
+            interes = saldo * tasa
+            amortizacion_capital = cuotas - interes
+            saldo -= amortizacion_capital
+            total_intereses += interes
+
+            amortizacion.append({
+                "Mes": mes,
+                "Cuota": round(cuotas, 2),
+                "Interes": round(interes, 2),
+                "AmortizacionCapital": round(amortizacion_capital, 2),
+                "Saldo": round(saldo, 2)
+            })
+        
+        return amortizacion
+
+# Ejemplo de uso
+
 class Configuraciones(TemplateView, Options):
     template_name = "components/configuraciones.html"
     
+    
+    
+class CrearCredito(TemplateView):
+    model = models.Cuota  # Define el modelo que se va a crear
+    template_name = "customer/crear-credito.html"  # Nombre de la plantilla
+
+    def post(self, request, *args, **kwargs):   
+        credit = models.Credit.objects.get(id=self.kwargs.get('pk'))
+        capital = int(credit.amount)
+        tasa = int(credit.tasa)
+        plazo = int(credit.price_feed)
+        
+        print(self.Calculadora_Francesa(capital, tasa, plazo, credit))
+    
+        return super().get(request, *args, **kwargs)
+    
+    
+    def Calculadora_Francesa(self, capital, tasa, plazo, credit):
+        tasa = tasa / 100
+        if credit.credito.exists() == True:
+            return 'Ya Existen cuotas para este credito'
+        else:
+            # Calcular la cuota mensual
+            cuotas = capital * tasa / (1 - (1 + tasa) ** -plazo)
+            saldo = capital
+            total_intereses = 0
+
+            for mes in range(1, plazo + 1):
+                interes = saldo * tasa
+                amortizacion_capital = cuotas - interes
+                saldo -= amortizacion_capital
+                total_intereses += interes
+
+                cuota = models.Cuota.objects.create(
+                    credito = credit,
+                    cuota = round(cuotas, 2),)
+
+            return 'Creado'
+
+
+    def get_context_data(self, **kwargs):
+        credit = models.Credit.objects.get(id=self.kwargs.get('pk'))
+        # Añadir contexto adicional a la plantilla si es necesario
+        context = super().get_context_data(**kwargs)
+        context['credit'] =  credit
+        context['c'] =  credit.customer
+        if credit.credito.exists() == True:
+                context['cuotas'] =  credit.credito.all()
+        return context

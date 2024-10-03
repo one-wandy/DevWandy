@@ -20,7 +20,7 @@ urlpatterns = [
       path('list-credit/<int:pk>', views.ListCredit.as_view(), name='list-credit'),
 
       path('calendario/', views.Calendario.as_view(), name='calendario'),
-      path('ubicaciones/', views.Ubicaciones.as_view(), name='ubicaciones'),
+
       path('configuraciones/', views.Configuraciones.as_view(), name='configuraciones'),
 
       path("detail-credit/customer/<int:pk>", views.DetailCreditCustomer.as_view(), name="detail-credit-cutomer"),
@@ -40,6 +40,11 @@ urlpatterns = [
       
       path('ubicaciones', views.Ubicaciones.as_view(), name='ubicaciones'),
 
+
+
+
+      # New Version
+      path('crear-credito/<int:pk>', views.CrearCredito.as_view(), name='crear-credito'),
 
       # Views Ajax``
       path("searching/customer", views_ajax.SearchCustomer, name="searching-customer"),

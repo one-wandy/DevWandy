@@ -191,10 +191,27 @@ class Credit(models.Model):
     day_created = models.DateField(default=timezone.now)
     
     
+    tasa = models.IntegerField(default=15)
+    plazo = models.IntegerField(default=1)
+    
     def __str__(self):
         return self.name
 
-
+class Cuota(models.Model):
+        credito = models.ForeignKey(Credit, null=True, blank=True, 
+                    on_delete=models.CASCADE, related_name="credito")
+        cuota = models.IntegerField(default=0,  null=True, blank=True) #Precio de la cuota
+        capital = models.IntegerField(default=0,  null=True, blank=True) #Capital del credito
+        capital_restante = models.IntegerField(default=0,  null=True, blank=True) #Capital que restaba 
+        creado = models.DateField(default=timezone.now,  null=True, blank=True) #Dia en el que se creo la cuota mandatoria
+        pago = models.CharField(default='', max_length=20,  null=True, blank=True) #Dia en que se realizo el pago
+        estado = models.BooleanField(default=False,  null=True, blank=True) #Estado de  pago
+        
+        def __str__(self):
+            return str(self.cuota)
+        
+        
+        
 class PayCredit(models.Model):
     credit = models.ForeignKey(Credit, on_delete=models.CASCADE,  blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
