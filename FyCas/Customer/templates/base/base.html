@@ -742,8 +742,8 @@ select option {
 
             </style> -->
             <div style="display: flex; border-radius: 1rem !important; min-width: 300px; width: 100%; height: 100vh; " 
-            class="w-100 overflow-hidden  bg-white card border-top-0 border-end-0 border-bottom-0  pe-0   flex-wrap justify-content-center">
-                 <section class="  w-100  vh-100 overflow-hidden" style="border-radius: 1rem; border-color: #d9d9d9 !important; background-color: #f0e8e852;">
+            class="w-100 overflow-hidden  bg-white card border-top-0 border-end-0 border-bottom-0   pe-0   flex-wrap justify-content-center">
+                 <section class="  w-100  h-100 overflow-hidden" style="border-radius: 1rem; border-color: #d9d9d9 !important; background-color: #f0e8e852;">
                   {% block content %}
                   {% endblock  %}      
                  </section>
@@ -1097,7 +1097,6 @@ function DivCal() {
 
 // Funtion Multiple
 let ActiveDesactive = (btnId, divClass) => {
-
 
             const button = document.getElementById(btnId);
             const targetDiv = document.querySelector(`.${divClass}`);

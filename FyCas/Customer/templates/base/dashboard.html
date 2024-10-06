@@ -197,11 +197,11 @@ const ctx = document.getElementById('leadsChart').getContext('2d');
 const leadsChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', ],
+        labels: [ 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', ],
         datasets: [
             {
                 label: 'Aprobados',
-                data: [0, 10, 4, 6, 15, 8, 7,0,],
+                data: [9, 8, 3, 10, 7, 12, 7],
                 fill: true,
                 tension: 0.4,
                 backgroundColor: '#a1c4fd96',
@@ -209,7 +209,7 @@ const leadsChart = new Chart(ctx, {
             },
             {
                 label: 'Declinado',
-                data: [0, 20, 14, 2, 20, 10, 5,0,0,0,0,0],
+                data: [5, 12, 20, 15, 20,30, 35 ],
                 fill: true,
                 backgroundColor: '#fa709995',
                 tension: 1
