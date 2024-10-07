@@ -691,13 +691,15 @@ class CrearCredito(TemplateView):
         
         for cu in cuotas:
             p_x_c += cu.cuota
-            if cu.estado == True:
-                c_p += cu.cuota
+            if cu.abonado > 0:
+                c_p += cu.abonado
+                
+    
                 
         context = super().get_context_data(**kwargs)
-        context['cal'] = self.CalFran(int(credit.amount), int(credit.tasa), int(credit.price_feed), 't')
+        context['cal'] = self.CalFran(int(credit.amount), int(credit.tasa), int(credit.price_feed), 't') 
         context['credit'] =  credit
-        context['cc'] = p_x_c
+        context['cc'] = p_x_c - c_p
         context['cp'] = c_p
         context['c'] =  credit.customer
         if credit.credito.exists() == True:

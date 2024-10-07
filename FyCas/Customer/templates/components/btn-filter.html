@@ -53,7 +53,7 @@ strong
       
             <!-- <img src="{% static "icons/search.png" %}" class="mt-2 "
             style="margin-left: 1.2rem; margin-right: 0.3rem;"  width='20' height="20" alt=""> -->
-            <input type="text"  style="font-size: 12px; width: auto; max-width: 450px;  height: 2.7rem;     
+            <input type="text" id='search-p'  style="font-size: 12px; width: auto; max-width: 450px;  height: 2.7rem;     outline: none !important;
             border-radius: 0.3rem !important;
                   border-top-right-radius: 2rem !important;
                   border-bottom-right-radius: 2rem !important;
@@ -85,41 +85,26 @@ strong
             </form>
 </button>
 
-    
-      <!-- <div></div> -->
+<script>
+document.addEventListener('keydown', function(event) {
+    // Verifica si las teclas "Shift", "Command" o "Control", y "B" están siendo presionadas
+    if ((event.metaKey || event.ctrlKey) && event.shiftKey && event.key === 'b') {
+        // Obtén el elemento con el id 'search-p'
+        let searchElement = document.getElementById('search-p');
+        // Verifica si el elemento existe
+        if (searchElement) {
+            // Enfoca el elemento
+            searchElement.focus();
+        } else {
+            console.log("Elemento no encontrado");
+        }
+    }
+});
+
+        
+</script>
 
 
 
 
-
-      <!-- <button>
-            Saldar Deudas
-      </button>
-      <button>
-            Hijos
-      </button>
-      <button>
-            Familiar en FyCas
-      </button>
-      <button>
-            Recomendado
-      </button>
-      <button>
-            Vehículo
-      </button>
-      <button>
-            Tierra
-      </button>
-      <button>
-            No Aprobados
-      </button>
-      <button>
-            Santo Domingo Norte
-      </button>
-      <button>
-            Santo Domingo Oeste
-      </button>
-      <button>
-            Santo Domingo Este
-      </button> -->
 </div>
