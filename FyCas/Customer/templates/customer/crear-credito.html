@@ -23,7 +23,7 @@
             }
         
       </style>
-      <section style=" " class='d-flex credits  justify-content-center flex-wrap p-3'>
+      <section style=" " class='d-flex credits  h-100 justify-content-center flex-wrap p-3'>
             <div class="w-100 d-flex "  >
                  <div style="width: 400px;"  > {% include "customer/user-profile.html" %}</div>
                  <div class="w-100">
@@ -36,6 +36,12 @@
                               </span>
                               <span>
                                 Porcentaje {{credit.tasa}} %
+                              </span>
+                              <span class="w-100">
+                                    Intereses ${{cc|intcomma}}.00
+                              </span>
+                              <span class="w-100">
+                                    Pagado ${{cp|intcomma}}.00
                               </span>
                
                      </div>
@@ -53,15 +59,18 @@
                                        <span style="font-size: 12px;">
                                              Vence el 3/10/2024
                                        </span>
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle-fill text-primary position-absolute end-0 d-none me-2 mt-1 top-0"  viewBox="0 0 16 16" style="min-width: 20px;" id="check{{cuota.id}}">
+                                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                      </svg> 
                                 
                                      {% if cuota.estado == True %}
                                      
-                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle-fill text-primary position-absolute end-0 me-2 mt-1 top-0" viewBox="0 0 16 16" style="min-width: 20px;">
+                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle-fill text-primary position-absolute end-0 me-2 mt-1 top-0"  viewBox="0 0 16 16" style="min-width: 20px;">
                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
                                        </svg> 
                                        {% else %}
                                        <div>
-                                             <button>
+                                             <button onclick="AplicarPago(this.id)" id="{{cuota.id}}">
                                                    Aplicar pago
                                              </button>
                                        </div>
@@ -93,5 +102,19 @@
                   document.querySelector('#div-more'+input_id.id).classList.add('surper-bg')
             }
         };
+
+
+function AplicarPago(ID){
+      $.ajax({
+            url:  '/aplicar-pago',
+            data: {
+                  id: ID,
+            },
+            success: (D) => { 
+                  document.getElementById(D.id).classList.add('d-none')
+                  document.getElementById('check'+D.id).classList.remove('d-none')
+            } 
+      })
+}
 </script>
 {% endblock  %}

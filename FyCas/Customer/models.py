@@ -193,6 +193,7 @@ class Credit(models.Model):
     
     tasa = models.IntegerField(default=15)
     plazo = models.IntegerField(default=1)
+
     
     def __str__(self):
         return self.name

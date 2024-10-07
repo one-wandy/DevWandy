@@ -146,7 +146,7 @@ class ListCustomer(ListView,Options):
                     context['count_client'] = int(filter_client.count())
         else:
             filter_client = self.model.objects.filter(is_active = True, 
-                                    customer_verify = True ).order_by('-id')[:10]
+                                    customer_verify = True ).order_by('-id')[:9]
             context['customer'] = filter_client
             context['count_client'] = int(filter_client.count())
             
@@ -667,7 +667,7 @@ class CrearCredito(TemplateView):
             # Calcular la cuota mensual
             cuotas = capital * tasa / (1 - (1 + tasa) ** -plazo)
             saldo = capital
-            total_intereses = 0
+            total_intereses = 1
 
             for mes in range(1, plazo + 1):
                 interes = saldo * tasa
@@ -685,9 +685,43 @@ class CrearCredito(TemplateView):
     def get_context_data(self, **kwargs):
         credit = models.Credit.objects.get(id=self.kwargs.get('pk'))
         # Añadir contexto adicional a la plantilla si es necesario
+        cuotas =  credit.credito.all()
+        p_x_c = 1
+        c_p = 0
+        
+        for cu in cuotas:
+            p_x_c += cu.cuota
+            if cu.estado == True:
+                c_p += cu.cuota
+                
         context = super().get_context_data(**kwargs)
+        context['cal'] = self.CalFran(int(credit.amount), int(credit.tasa), int(credit.price_feed), 't')
         context['credit'] =  credit
+        context['cc'] = p_x_c
+        context['cp'] = c_p
         context['c'] =  credit.customer
         if credit.credito.exists() == True:
-                context['cuotas'] =  credit.credito.all()
+                context['cuotas'] = cuotas
         return context
+    
+    
+    
+    def CalFran(self, capital, tasa, plazo, filter_l):
+            tasa = tasa / 100
+            # Calcular la cuota mensual
+            cuotas = capital * tasa / (1 - (1 + tasa) ** -plazo)
+            saldo = capital
+            total_intereses = 1
+
+            for mes in range(1, plazo + 1):
+                interes = saldo * tasa
+                amortizacion_capital = cuotas - interes
+                saldo -= amortizacion_capital
+                total_intereses += interes
+                print(total_intereses)
+            if filter_l == 's':
+                return saldo
+            elif filter_l == 't':
+                return  int(total_intereses)
+            else:
+                return cuotas

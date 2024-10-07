@@ -271,7 +271,7 @@ btn-sliders-nav
       </div>
 </div>
 
-<section id="section" class="blur mt-2 overflow-auto h-100 " >
+<section id="section" class="blur mt-2 overflow-scroll h-100 " >
       <div class="w-100 d-flex justify-content-end    ">
             <div id="config-list"  
             class="position-fixed  w-100    justify-content-center d-flex flex-wrap" 
@@ -284,13 +284,14 @@ btn-sliders-nav
                   "<span id="user-no"></span>"  no registrado
             </h5>
       </div>  
-      <div id="sec-listado" class="w-100 p-3 d-flex   flex-wrap">
-            {% include "customer/list-customer-2.html" %} 
+
+      <div id="sec-listado" class="w-100 d-flex     flex-wrap justify-content-center" 
+            style="padding-bottom: 5rem;"> 
+            <!-- <div class="w-100 d-flex   flex-wrap justify-content-evenly mt-5"> -->
+                  {% include "customer/list-customer-2.html" %} 
+            <!-- </div> -->
       </div>  
-      <div class="d-flex w-100  overflow-hidden  position-fixed  bottom-0 mb-1" 
-      style="height: 4.5rem; z-index: 1000;"> 
-                 {% include "components/btn-filter.html" %}
-      </div>
+
       
      
       <!-- <div class="d-flex justify-content-end  pe-1 w-100 " style="z-index: 1000;">
@@ -298,6 +299,9 @@ btn-sliders-nav
       </div> -->
 </section>
 
+<div class="position-sticky bottom-0">
+      {% include "components/btn-filter.html" %}
+</div>
 <form action="" method="post" class="d-none">
       {% csrf_token %}
       <input type="number" name="send-data" id="input-send-data">

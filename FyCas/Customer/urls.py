@@ -47,6 +47,7 @@ urlpatterns = [
       path('crear-credito/<int:pk>', views.CrearCredito.as_view(), name='crear-credito'),
 
       # Views Ajax``
+      path('aplicar-pago', views_ajax.AplicarPago, name='aplicar-pago'),
       path("searching/customer", views_ajax.SearchCustomer, name="searching-customer"),
       path("verify/customer/", views_ajax.CustomerVerify, name="verify-true-customer"),
       path("verify-no/customer/", views_ajax.CustomerNoVerify, name="verify-false-customer"),
