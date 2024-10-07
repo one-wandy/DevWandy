@@ -24,9 +24,9 @@ strong
 }
 </style>
 
-<div class="btn-filter  d-flex overflow-scroll  justify-content-center p-1 rounded-0  pt-2 w-100" >
+<div class="btn-filter  d-flex overflow-scroll  justify-content-start p-1 rounded-0  pt-2 w-100 blur" >
         <!-- <button id="toggle-btn" class="mt-1" onclick="ActiveDesactive(this.id, 'options') "> Opciones </button> -->
-      <div  class="div-menu-4  d-flex flex-wrap overflow-hidden     justify-content-start "  style="border-radius: 2rem; width: 30rem ;">  
+      <div  class="div-menu-4  d-flex flex-wrap overflow-hidden       justify-content-start "  style="border-radius: 2rem; width: 12rem ; margin-left: 2.2rem;">  
             <div class="w-100">
                   <strong class=" d-none">
                         ...
@@ -53,74 +53,58 @@ strong
       
             <!-- <img src="{% static "icons/search.png" %}" class="mt-2 "
             style="margin-left: 1.2rem; margin-right: 0.3rem;"  width='20' height="20" alt=""> -->
-            <input type="text"  style="font-size: 12px; width: auto; max-width: 650px;  height: 2.7rem;     
+            <input type="text" id='search-p'  style="font-size: 12px; width: auto; max-width: 450px;  height: 2.7rem;     outline: none !important;
             border-radius: 0.3rem !important;
                   border-top-right-radius: 2rem !important;
                   border-bottom-right-radius: 2rem !important;
-               " class="form-search  border-0 w-100  bg-transparent m-0 me-1 searching-config "  
+               " class="form-search  border-0 w-100 outline-none  bg-transparent m-0 me-1 searching-config "  
             placeholder=" Busqueda Avanzada ">
             
-            <button class="border-0 p-2 bg-white" style="  border: 0px rgb(225, 225, 225) solid !important;">
-                  <form action="" method="post" class='w-100 border-0  d-flex justify-content-end flex-wrap'>
-                        {% csrf_token %}
-                        <div class="d-flex  justify-content-center ms-1" >
-                        <!-- <label for="n-1123">Filtrar: </label>  -->
-                              {% if count_customer  == None %}    
-                                    <input id="n-1123" type="number" class='m-0 pb-2 text-black-50 border-0 form-control bg-transparent ' 
-                                    style='height: 1.6rem; width: 4rem; ' value='{{count_client}}' name='20-customer'  min="1" max="{{customer_count}}" > 
-                                    {% else %}
-                                    <input id="n-1123" type="number" class='m-0 pb-2 border-0 form-control bg-transparent ' 
-                                    style='height: 1.6rem; width: 5rem; ' value='{{count_client}}' max="{{customer_count}}" min="1" name='20-customer' >
-                              {% endif %}
-                        </div>
-                        <!-- <button class='p-0 border-0 me-2' style="border: none !important; background-color: transparent !important;">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-filter  text-primary border-0 bg-transparent" viewBox="0 0 16 16">
-                                    <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
-                                  </svg>
-                        </button> -->
-                        </form>
-            </button>
-
-
-          </div>
-
-          
-
       </div>
-      <!-- <div></div> -->
+
+      
+</div>
+<button class="border-1 p-2 bg-white bg-opacity-75 mt-1 blur  " style="  border: 0px rgb(225, 225, 225) solid !important;">
+      <form action="" method="post" class='w-100 border-0  d-flex justify-content-end flex-wrap'>
+            {% csrf_token %}
+            <div class="d-flex  justify-content-center ms-1" >
+
+                  {% if count_customer  == None %}    
+                        <input id="n-1123" type="number" class='m-0 pb-2 text-black-50 border-0 form-control bg-transparent ' 
+                        style='height: 1.6rem; width: 4rem; ' value='{{count_client}}' name='20-customer'  min="1" max="{{customer_count}}" > 
+                        {% else %}
+                        <input id="n-1123" type="number" class='m-0 pb-2 border-0 form-control bg-transparent ' 
+                        style='height: 1.6rem; width: 4rem; ' value='{{count_client}}' max="{{customer_count}}" min="1" name='20-customer' >
+                  {% endif %}
+            </div>
+            <!-- <button class='p-0 border-0 me-2' style="border: none !important; background-color: transparent !important;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-filter  text-primary border-0 bg-transparent" viewBox="0 0 16 16">
+                        <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+                      </svg>
+            </button> -->
+            </form>
+</button>
+
+<script>
+document.addEventListener('keydown', function(event) {
+    // Verifica si las teclas "Shift", "Command" o "Control", y "B" están siendo presionadas
+    if ((event.metaKey || event.ctrlKey) && event.shiftKey && event.key === 'b') {
+        // Obtén el elemento con el id 'search-p'
+        let searchElement = document.getElementById('search-p');
+        // Verifica si el elemento existe
+        if (searchElement) {
+            // Enfoca el elemento
+            searchElement.focus();
+        } else {
+            console.log("Elemento no encontrado");
+        }
+    }
+});
+
+        
+</script>
 
 
 
 
-
-      <!-- <button>
-            Saldar Deudas
-      </button>
-      <button>
-            Hijos
-      </button>
-      <button>
-            Familiar en FyCas
-      </button>
-      <button>
-            Recomendado
-      </button>
-      <button>
-            Vehículo
-      </button>
-      <button>
-            Tierra
-      </button>
-      <button>
-            No Aprobados
-      </button>
-      <button>
-            Santo Domingo Norte
-      </button>
-      <button>
-            Santo Domingo Oeste
-      </button>
-      <button>
-            Santo Domingo Este
-      </button> -->
 </div>

@@ -21,11 +21,16 @@
             {
                   background-color: rebeccapurple !important;
             }
-        
+        .inputs  
+            {
+                  border: 1px rgb(255, 255, 255);
+                  outline: none !important;
+            }
       </style>
-      <section style=" " class='d-flex credits  justify-content-center flex-wrap p-3'>
+      <section style=" " class='d-flex credits  h-100 justify-content-center flex-wrap p-3'>
             <div class="w-100 d-flex "  >
-                 <div style="width: 400px;"  > {% include "customer/user-profile.html" %}</div>
+                 <div style="width: 400px;"  > {% include "customer/user-profile.html" %}  </div>
+                 
                  <div class="w-100">
             
                   {% if cuotas %}   
@@ -37,34 +42,53 @@
                               <span>
                                 Porcentaje {{credit.tasa}} %
                               </span>
+                              <span class="w-100">
+                                    Intereses ${{cc|intcomma}}.00
+                              </span>
+                              <span class="w-100">
+                                    Pagado ${{cp|intcomma}}.00
+                              </span>
                
                      </div>
                      {% for cuota in cuotas %}
                            <div class="" style="width: 400px;">
                                  <li class="w-100  bg-black bg-opacity-10 rounded-4 position-relative p-2 mt-1">
                                        <strong  class="text-black-50"> (#{{ forloop.counter }})  </strong>   ${{cuota.cuota|intcomma}}.00
-                                       <!-- <strong>Precio de Cuota</strong> -->
-                                       <div class="ms-3">
-                                      
-                                       </div>
+                                    {% if cuota.abonado > 0  %}
+                                          <div class="ms-3">
+                                                <strong> Monto abonado:
+                                                      ${{cuota.abonado|intcomma}}.00
+                                                </strong>
+                                                
+                                          </div>
+                                          <div class="ms-3">
+                                                <strong> Monto restante:
+                                                      ${{cuota.restante|intcomma}}.00
+                                                </strong>
+                                          </div>
+                                    {% endif %}
                                        <div class="d-block ">
                                              <strong>Informacion</strong>
                                        </div>
                                        <span style="font-size: 12px;">
                                              Vence el 3/10/2024
                                        </span>
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle-fill text-primary position-absolute end-0 d-none me-2 mt-1 top-0"  viewBox="0 0 16 16" style="min-width: 20px;" id="check{{cuota.id}}">
+                                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                      </svg> 
                                 
                                      {% if cuota.estado == True %}
                                      
-                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle-fill text-primary position-absolute end-0 me-2 mt-1 top-0" viewBox="0 0 16 16" style="min-width: 20px;">
+                                     <svg xmlns="http://www.w3.org/2000/svg" onclick="AplicarPago(this.id)" id="{{cuota.id}}" width="25" height="25" fill="currentColor" class="bi bi-check-circle-fill text-primary position-absolute end-0 me-2 mt-1 top-0"  viewBox="0 0 16 16" style="min-width: 20px;">
                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
                                        </svg> 
                                        {% else %}
-                                       <div>
-                                             <button>
-                                                   Aplicar pago
-                                             </button>
-                                       </div>
+                                          <div class="d-flex " style="height: 2.5rem;">
+                                                <input type="text"id="ct-p{{cuota.id}}"   class="bg-white inputs w-100  p-2  border-1 outline-none" placeholder="Cantidad" min="1" max="{{cuota.restante}}"  style="border-radius: 1rem; ">
+                                                <button onclick="AplicarPago(this.id)" id="{{cuota.id}}" >
+                                                      Aplicar 
+                                                </button>
+                                          </div>
                                     {% endif %}
                                  </li>
                            </div>
@@ -73,15 +97,15 @@
                   {% endif %}
                </div>
             </div>
+            
             {% if cuotas == none %}
                   <form action="" method="post">
                         {% csrf_token %}
                         {{form}}
 
-                        <button>Aplicar Pago</button>
+                        <button class="bg-white" style="border-radius: 2rem;">Listado de cuotas</button>
                   </form>
             {% endif %}
-           
       </section>
       <input type="text" id="{{cuotas.id}}" class="d-none inp-id">
 <script>
@@ -93,5 +117,54 @@
                   document.querySelector('#div-more'+input_id.id).classList.add('surper-bg')
             }
         };
+
+
+function AplicarPago(ID){
+      let input = document.getElementById('ct-p'+ID).value
+      $.ajax({
+            url:  '/aplicar-pago',
+            data: {
+                  id: ID,
+                  input:   input.replace(/,/g, ''),
+            },
+            success: (D) => { 
+                  document.getElementById(D.id).classList.add('d-none')
+                  document.getElementById('check'+D.id).classList.remove('d-none')
+                   location.reload();
+            } 
+      })
+}
+
+document.querySelectorAll('.inputs').forEach(input => {
+          input.addEventListener('input', function(e) {
+              // Remueve todo lo que no sea dígito
+              let value = this.value.replace(/\D/g, '');
+      
+              // Convierte el valor a número y lo compara con el máximo
+              let max = parseInt(this.getAttribute('max'));
+      
+              if (parseInt(value) > max) {
+                  // Si el valor es mayor al máximo, ajusta el valor al máximo permitido
+                  value = max.toString()
+              }
+      
+              // Añade comas en los lugares correctos
+              this.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                  
+              // Cambia el borde si el valor es igual al máximo
+              if (parseInt(value) === max) {
+                  this.style.border = '4px solid green';
+            } else {
+                  this.style.border = ''; // Restablece el estilo original si no es igual al máximo
+              }
+      
+              // Evita letras y otros caracteres no numéricos
+              if (/\D/.test(e.data)) {
+                  this.value = this.value.replace(e.data, '');
+              }
+      
+
+          });
+});
 </script>
 {% endblock  %}

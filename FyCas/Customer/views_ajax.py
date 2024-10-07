@@ -133,6 +133,30 @@ def CreateCreditAjax(request):
         return JsonResponse(data,  safe=False)    
     
     
+def AplicarPago(request):
+    cu = models.Cuota.objects.get(id=request.GET.get('id'))
+    # print(request.GET.get('input'), 'soii')
+    print(cu.credito.estado, 'siuuuu')
+    if  cu.estado == False:
+        if cu.cuota != cu.abonado:
+            cu.abonado += int(request.GET.get('input'))
+            cu.restante = cu.cuota - cu.abonado
+            if cu.cuota == cu.abonado:
+                cu.estado = True
+            cu.save()
+        else:
+            cu.estado = True
+            cu.save()
+    else:
+        cu.estado = False
+        cu.credito.estado = False
+        # cu.save()
+    D = {
+        'id': cu.id
+    }
+    
+    return JsonResponse(D,  safe=False)    
+    
 """"
 from django.shortcuts import render
 from .models import Contacto

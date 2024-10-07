@@ -2,6 +2,7 @@
 
 {% load static %}
 {% load humanize %}
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
       .text2 
       {
@@ -51,91 +52,142 @@
       z-index: 10;
 }
 
+/* Definimos el efecto de flip-up */
+@keyframes flip-up {
+    0% {
+        transform: rotateX(90deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+/* Clase que aplicará la animación */
+.flip-up {
+    animation: flip-up 0.4s ease-out forwards;
+    transform-origin: top; /* Punto de rotación */
+    opacity: 0; /* Oculto por defecto */
+}
+
+
+/* Definimos el efecto de flip-down */
+@keyframes flip-down {
+    0% {
+        transform: rotateX(-90deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+/* Clase que aplicará la animación */
+.flip-down {
+    animation: flip-down 1s ease-out forwards;
+    transform-origin: top; /* Punto de rotación */
+    opacity: 0; /* Oculto por defecto */
+}
 </style>
 
-<section class="d-flex flex-wrap vh-100  justify-content-center  overflow-scroll pb-5 p-1 pt-0 " >
+<!-- <section class="d-flex flex-wrap h-100 bg-danger  justify-content-center  overflow-scroll pb-5 p-1 pt-0 " > -->
 
-      {% include "components/div-options.html" %} 
+{% include "components/div-options.html" %} 
+{% if customer %}
       {% for c in customer %}
-<div id="client{{c.id}}"  style="  width: 338px; height: 171px; border-radius: 26px; 
-background-color: #ffffffc6 !important; box-shadow: 0px 1px 3px 1px rgba(218, 218, 218, 0.505);" class=" position-relative card-cu m-1 mt-2   p-2 " >
-      <button id="{{c.id}}"  onclick='OpenCloseBtn(this.id)' style="background-color: #35333e00; width: 35px; height: 35px; color: #000000 !important; top: 8rem; box-shadow: #eeeeee 1px 2px 6px 1px; border: 1px solid #eeeeee !important;"  class="rounded-circle position-absolute border-0  p-0 me-2 mb-2 end-0 d-flex flex-wrap justify-content-center align-content-center ">
-            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important; color: #909090 !important;" width="25" height="25" fill="currentColor" class="bi bi-chevron-down m-0 mt-1 p-0" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
-            </svg>
-      </button>
-      <div class="m-0 p-0" >
-            <div class="d-flex">
-               
-                  <span style="   border: 6px rgb(167, 167, 167)  ; border-style:dotted; transition: 0.9s ease  !important; " 
-                        class="p-1  img-span rounded-circle ">
-                        <img src="{{c.img1.url}}" class="  img-icons object-fit-cover" style="width: 57px; height: 57px; border-radius: 50%; "  alt=""> 
-                  </span>
-                  <a href="{% url "customer:detail-customer" c.id %}" >
-                        <div style="background-color: rgba(0, 0, 0, 0); border-radius: 2rem;
-                        width: 190px; height: 38px; border: 1px solid rgba(217, 217, 217, 0); font-weight: bold; color: #000000; line-height: 16px;" class="p-2  m-0 mt-3 ms-2   w-100  d-flex  ">
-                              <div class="m-0  d-inline    " style="width: 151px; flex-wrap: nowrap !important;">
-                                    {{c.name}} {{c.last_name}}
-                              </div>
+            <div id="client{{c.id}}"  style="  width: 338px; height: 171px; border-radius: 26px;  transition: 0.2s !important;
+            background-color: #ffffffc6 !important; box-shadow: 0px 1px 3px 1px rgba(218, 218, 218, 0.505);" class=" position-relative card-cu m-1   p-2 " >
+                  <button id="{{c.id}}"  onclick='OpenCloseBtn(this.id)' style="background-color: #35333e00; width: 35px; height: 35px; color: #000000 !important; top: 8rem; box-shadow: #eeeeee 1px 1px 1px 1px; border: 1px solid #eeeeee !important;"  class="rounded-circle  position-absolute border-0  p-0 me-2 mb-2 end-0 d-flex flex-wrap justify-content-center align-content-center ">
+                        <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important; color: #909090 !important;" width="25" height="25" fill="currentColor" class="bi bi-chevron-down m-0 mt-1 p-0" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                        </svg>
+                  </button>
+                  <div class="m-0 p-0" >
+                        <div class="d-flex">
+                        
+                              <span style="   border: 6px rgb(167, 167, 167)  ; border-style:dotted; transition: 0.9s ease  !important; " 
+                                    class="p-1  img-span rounded-circle ">
+                                    <img src="{{c.img1.url}}" class="  img-icons object-fit-cover" style="width: 57px; height: 57px; border-radius: 50%; "  alt=""> 
+                              </span>
+                              <a href="{% url "customer:detail-customer" c.id %}" >
+                                    <div style="background-color: rgba(0, 0, 0, 0); border-radius: 2rem;
+                                    width: 190px; height: 38px; border: 1px solid rgba(217, 217, 217, 0); font-weight: bold; color: #000000; line-height: 16px;" class="p-2  m-0 mt-3 ms-2   w-100  d-flex  ">
+                                          <div class="m-0  d-inline   text-first-letter-uppercase  " style="width: 151px; flex-wrap: nowrap !important; ">
+                                                {{c.name}} {{c.last_name}}
+                                          </div>
+                                    </div>
+                              </a>
                         </div>
-                  </a>
-            </div>
-           <div class="ms-1 mt-3 overflow-hidden">  
-                  <span class="d-flex text2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill m-0 mt-1 me-1 p-0 " viewBox="0 0 16 16">
-                              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
-                            </svg> {{c.dni}}
-                  </span>
-                  <a  href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}}"  class="m-0 p-0">
-                        <span class="d-flex text2">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill me-1 mt-1" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
-                              </svg> {{c.number}}
-                        </span>
+                  <div class="ms-1 mt-3 overflow-hidden">  
+                              <span class="d-flex text2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill m-0 mt-1 me-1 p-0 " viewBox="0 0 16 16">
+                                          <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
+                                    </svg> {{c.dni}}
+                              </span>
+                              
+                              <a  href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}}"  class="m-0 p-0   " style="width: max-content; 
+                              {% comment %} background-color: #eeeeee; {% endcomment %}
+                              ">
+                                    <span class="d-flex text2 ">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill me-1 mt-1" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                                          </svg> {{c.number}}
+                                    </span>
+                              </a>
+                              <!-- <span class="" -->
+                  
+                              <span class="d-flex text2 overflow-hidden  w-100 justify-content-end  pe-5" 
+                              style="font-size: 12px; color: #a6a5a5 !important;">
+                              
+                              {{ c.day_created|date:"F/d/Y" }}
+                              {% if c.customer_verify == False %} 
+                              <strong class='text-danger me-2'> (No verificado) </strong>   
+                                                <!-- {{c.ciudad}} -->
+                                                {% endif %} 
+                                    </span>
+                  </div>
+                  </div>
 
-                  </a>
-                  <!-- <span class="" -->
-       
-                  <span class="d-flex text2 overflow-hidden  w-100 justify-content-end  pe-5" 
-                  style="font-size: 12px; color: #a6a5a5 !important;">
-                   {% if c.customer_verify == False %} <strong class='text-danger me-2'> (No verificado) </strong> {% endif %}      {{ c.day_created|date:"F/d/Y" }}
-                               <!-- {{c.ciudad}} -->
-                  </span>
-           </div>
-      </div>
-      <!-- Extender -->
-            <!-- <div class="w-100 h-100 position-absolute bg-danger" 
-                  style="    
-                     -webkit-backdrop-filter: blur(40px) !important;
-      backdrop-filter: blur(40px) !important;
-      z-index: 1000 !important;">  -->
                   {% include "customer/extends-customer.html" %} 
-            <!-- </div> -->
-</div>
-{% endfor %}
+            </div>
+      {% endfor %}
+{% else %}
+            <div class="warning vh-100 d-flex justify-content-center align-content-center flex-wrap w-100">
+                  <h6 class="p-2 w-100 text-center pt-0 pb-0">
+                     Solicitudes
+                  </h6>
+                  <p class="text-black-50  w-100 d-flex justify-content-center text-center" 
+                        style="font-size: 12px; border-radius: 2rem; ">
+                        Actualmente no hay solicitudes entrantes     <a class=" bg-black  bg-opacity-10 ms-2 justify-content-center text-primary 
+                        " href="{% url "customer:list-customer" %}" style="max-width: 4rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill text-primary me-1" style="margin-top: 3px;" viewBox="0 0 16 16">
+                              <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+                            </svg>                        Atras
+                        </a>
+                  </p>
+               
+               
+            </div>
+{% endif %}
 
 
 
-</section>
-<script>function OpenCloseBtn(btn_id) {
-
-      const div = document.getElementById('div-more' + btn_id);
-      if (div.classList.contains('d-none')) {
-          div.classList.remove('d-none');
-          div.classList.add('d-block');
-
-            // BoxSearch()
-      //     document.getElementById('div-list-customer').classList.remove('blur')
-      } else if (div.classList.contains('d-block')) {
-            // BoxSearch()
-            // document.getElementById('div-list-customer').classList.add('blur')
-          div.classList.remove('d-block');
-          div.classList.add('d-none');
+<!-- </section> -->
+<script>
+      function OpenCloseBtn(btn_id) {
+            const div = document.getElementById('div-more' + btn_id);
+            if (div.classList.contains('d-none')) {
+                  div.classList.remove('d-none');
+                  div.classList.add('d-block');
+                  div.classList.add('flip-up');
+            }
+            else if (div.classList.contains('d-block')) {
+                  // div.classList.add('flip-down');
+                  div.classList.remove('d-block');
+                  div.classList.add('d-none');
+            }
       }
-  }
 
-  
-  
-  
-
-  </script>
+</script>

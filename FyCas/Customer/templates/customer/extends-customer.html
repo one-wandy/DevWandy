@@ -1,252 +1,324 @@
 {% load humanize %} {% load static %} 
 <style>
-     
       .card button
       {
             font-weight: bold;
             color: #5A5868;
             border: 1px solid rgb(168, 168, 168);
+      }     
+
+      .extends-div svg
+      {
+            width: 10px !important;
       }
-      /* .blured
-{
-      -webkit-backdrop-filter: blur(40px) !important;
-      backdrop-filter: blur(40px) !important;
-      /* background: #000; */
 
-.extends-div svg
-{
- width: 10px !important;
-}
-.extends-div .expand 
-{
-      height: 1rem;
-      overflow: hidden;
-      transition: 0.9s !important;
-      max-width: 5rem;
-}
-.extends-div .expand:hover
-{
-      transition: 0.9s !important;
-      max-width: 100%;
-      height: max-content;
-}
-
-.btn-share-con button
-{
-      padding: 0.6rem !important;
-}
-.btn-share-con button:hover
-{
-      background-color: #eeeeee !important;
-}
-</style>
-<div id='div-more{{c.id}}' class='  d-none      extends-div w-100   
-position-absolute start-0  p-2 pt-2' 
-style='top: 6rem; border-radius:1.5rem; font-family: Quicksand, sans-serif;
-border: 1px solid rgb(237, 237, 237);
-color: black; font-size: 16px;  z-index: 1000 !important; box-shadow: #eeeeee 1px 2px 6px 1px;
-background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
-
-'>
-<style>
-      #div-more{{c.id}}, span:hover {
-            cursor: pointer;
+      .extends-div .expand 
+      {
+            height: 1rem;
+            overflow: hidden;
+            transition: 0.9s !important;
+            max-width: 5rem;
       }
-      #div-more{{c.id}} span h6 {
-            font-size: 12px;
-      }                                    
+      .extends-div .expand:hover
+      {
+            transition: 0.9s !important;
+            max-width: 100%;
+            height: max-content;
+      }
+
+      .btn-share-con button
+      {
+            padding: 0.6rem !important;
+      }
+
+      .btn-share-con button:hover
+      {
+            background-color: #eeeeee !important;
+      }
+
+      .extends-div .btn-share-con button 
+      {
+            color: #808080 !important;
+      }
 </style>
-<div>
-     
-</div>
-<hr class="m-0 " style="color: #eeeeee;">
- <span class="">
-      <h6  class=" p-0 m-0 pb-1" style="color: #eeeeee !important;">
-            *
-      </h6>
-</span>
+
+<div id='div-more{{c.id}}' class='  d-none  extends-div w-100 position-absolute  start-0 p-1  ' 
+      style='top: 6.5rem; border-radius: 2rem; font-family: Quicksand, sans-serif; min-height: 4.4rem;
+      border: 1px solid rgb(237, 237, 237); color: black; font-size: 16px; z-index: 1000 !important; box-shadow: #eeeeee 1px 2px 6px 1px;
+       background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+      '>
+      <style>
+            #div-more{{c.id}}, span:hover {
+                  cursor: pointer;
+            }
+            #div-more{{c.id}} span h6 {
+                  font-size: 12px;
+            }                                    
+      </style>
+
+      <hr class="m-0 " style="color: #eeeeee;">
 
 
-<span class="w-100    justify-content-end start-0 position-absolute top-0 p-2" style="width: max-content; height: max-content;">
-            <button  id='{{c.id}}'  onclick="OpenCloseBtn(this.id)" class=" mt-0 p-3 rounded-circle  me-2 border-0  text-black-50 d-flex w-100 h-100 justify-content-center flex-wrap align-content-center position-absolute end-0"
-            style="max-width: 15px; height: 16px !important; z-index: 100; background-color: white;"> 
-                    X
-         </button>
 
-</span> 
-<div class="expand rounded-0  " style="min-width: 9rem;">
-            
-<span class="text-center">
-      <h6  class="text-black-50 p-0 m-0 ">
-              <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important; color: #909090 !important; "  width="16" height="16" fill="currentColor" class="bi bi-chevron-down m-0  p-0" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
-                  </svg> Detalles  del cliente
-      </h6>
-</span>
-
-
-<span class="">
-      <h6  class="text-black-50 p-0 m-0 pb-1">
-            Direccion 
-      </h6>
-</span>
-
-<span class="w-100   overflow-hidden d-flex" style="height: 2.8rem ">
-      <strong class="">     
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-geo-alt-fill text-black me-1" viewBox="0 0 16 16">
-            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
-      </strong>
-      <a class="" style=" text-transform: capitalize; font-size: 14px !important; " >
-            {{c.calle_numero}},  {{c.municipio}}, <br>  {{c.sector}}, {{c.ciudad}}
-      </a>
-</span>
-
-<span class="">
-      <h6  class="text-black-50 p-0 pt-3 m-0 pb-1">
-            Elecciones opcionales
-      </h6>
-</span>
-
-      <span style="font-size: 14px;" >
-            <div>
-                  <input type="checkbox" id="hijos" name="hijos" class="form-check-input m-0 me-1" {% if c.hijos %}checked{% endif %} disabled>
-                  <label for="hijos" class="m-0">Hijos</label>
-            </div>
-            <div>
-                  <input type="checkbox" id="tierra" name="tierra" class="form-check-input m-0 me-1" {% if c.tierra %}checked{% endif %} disabled>
-                  <label for="tierra">Tierra</label>
-            </div>
-            <div>
-                  <input type="checkbox" id="vehiculo" name="vehiculo" class="form-check-input m-0 me-1" {% if c.vehiculo %}checked{% endif %} disabled>
-                  <label for="vehiculo">Vehículo</label>
-            </div>
-            <div>
-                  <input type="checkbox" id="casa" name="casa" class="form-check-input m-0 me-1" {% if c.casa %}checked{% endif %} disabled>
-                  <label for="casa">Casa</label>
-            </div>
-            <div>
-                  <input type="checkbox" id="saldar_deudas" name="saldar_deudas" class="form-check-input m-0 me-1" {% if c.saldar_deudas %}checked{% endif %} disabled>
-                  <label for="saldar_deudas">Saldar Deudas</label>
-            </div>
-            <div>
-                  <input type="checkbox" id="familiar_en_fycas" name="familiar_en_fycas" class="form-check-input m-0 me-1" {% if c.familiar_en_fycas %}checked{% endif %} disabled>
-                  <label for="familiar_en_fycas">Familiar en Fycas</label>
-            </div>
-            <div>
-                  <input type="checkbox" id="fue_recomendado" name="fue_recomendado" class="form-check-input m-0 me-1" {% if c.fue_recomendado %}checked{% endif %} disabled>
-                  <label for="fue_recomendado">Fue Recomendado</label>
-            </div> 
+      <span class="w-100  justify-content-end start-0 position-absolute top-0 p-2" 
+            style="width: max-content; height: max-content;">
+            <button  id='{{c.id}}'  onclick="OpenCloseBtn(this.id)" class="  p-3 rounded-circle   me-2 border-0 d-flex w-100 h-100 justify-content-center flex-wrap align-content-center position-absolute end-0" style="max-width: 15px; height: 16px !important; z-index: 100;  margin-top: 10px;
+            background-color: rgba(255, 255, 255, 0); color: #7b7b7b !important; "> 
+                  X
+            </button>
       </span> 
 
-<br>
-<span >
-      <h6 class="text-black-50 m-0 p-0 pb-1" id='requiere{{c.id}}'>
-            Monto solicitado y fines
-      </h6>
-</span>
-<span style="font-size: 14px;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
-            <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
-      </svg>  <span id='monto-spa{{c.id}}'>{{c.monto_requerido}}</span> 
-</span>
-<br>
-<span style="font-size: 14px;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-text" viewBox="0 0 16 16">
-            <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5tasav-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
-            <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8m0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5"/>
-          </svg> {{c.fines}}
-</span>
- <br> <br>
-<span>
-      <h6 class="text-black-50 m-0 p-0 pb-1">
-            Referencias personales
-      </h6>
-</span>
-<span class='' style="font-size: 14px;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-black bi bi-people-fill" viewBox="0 0 16 16">
-            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
-          </svg>
-      {{c.name_r1}} -
-</span>
-<span style="font-size: 14px;"> 
- 
-      {{c.number_r1}}
-</span>
-<br>
-<span class='' style="font-size: 14px !important;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-black bi bi-people-fill" viewBox="0 0 16 16">
-            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
-          </svg>
-      {{c.name_r2}} - 
-</span>
-<span style="font-size: 14px;">
-      {{c.number_r2}}
-</span>
-<br> <br>
-<span style="font-size: 14px;">
-      <h6 class="text-black-50 m-0 p-0 pb-1"> 
-            Información Laboral
-      </h6>
-</span>
-<span style="font-size: 14px;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-buildings-fill" viewBox="0 0 16 16">
-            <path d="M15 .5a.5.5 0 0 0-.724-.447l-8 4A.5.5 0 0 0 6 4.5v3.14L.342 9.526A.5.5 0 0 0 0 10v5.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V14h1v1.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zM2 11h1v1H2zm2 0h1v1H4zm-1 2v1H2v-1zm1 0h1v1H4zm9-10v1h-1V3zM8 5h1v1H8zm1 2v1H8V7zM8 9h1v1H8zm2 0h1v1h-1zm-1 2v1H8v-1zm1 0h1v1h-1zm3-2v1h-1V9zm-1 2h1v1h-1zm-2-4h1v1h-1zm3 0v1h-1V7zm-2-2v1h-1V5zm1 0h1v1h-1z"/>
-          </svg> {{c.empresa_trabaja}} 
-</span>  <br>
-<span style="font-size: 14px;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
-          </svg>  {{c.phone}}
-</span>
-<br>
-<span style="font-size: 14px;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
-            <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
-            <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.4 5.4 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2z"/>
-          </svg>  {{c.cargo}}
-</span> <br>
-<span style="font-size: 14px;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8m5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0"/>
-            <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195z"/>
-            <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083q.088-.517.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1z"/>
-            <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 6 6 0 0 1 3.13-1.567"/>
-          </svg> {{c.salario_m|intcomma}}.00
-</span>
-</div>
+      <div class="d-flex w-100 justify-content-start btns-options  mt-2 ms-2">
+            <style>
+                  .btns-options button
+                  {
+                        border-radius: 2rem;
+                        color: #252525;
+                        background-color: rgb(255, 255, 255) !important;
+                        border: 0px;
+                        padding: 10px  18px !important;
+                        font-size: 12px;
+                        font-weight: normal !important;
+                  }
+            </style>
+            <button onclick="Option(this.id)" id="{{c.id}}">    
+                  <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important; color: #909090 !important; "  width="16" height="16" fill="currentColor" class="bi bi-chevron-down m-0  p-0" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/></svg> 
+                  Acciones 
+            </button>
+            <button onclick="Detail(this.id)" id="{{c.id}}"> 
+                     <svg xmlns="http://www.w3.org/2000/svg" style="width: 16px !important; color: #909090 !important; "  width="16" height="16" fill="currentColor" class="bi bi-chevron-down m-0  p-0" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                  </svg> 
+                  Detalles del cliente 
+            </button>
+      </div>
 
-{% if c.credit.all %}
+      <div class="  d-none  extend-dos overflow-scroll mt-2 bg-white p-3 "  id="div-detail{{c.id}}" style="max-height: 20rem; border-radius: 2rem;">
+                        
+    
 
-<span>
-      <h6 class="text-black-50 m-0 p-0 pb-1"  > 
-            <!-- Listado de creditos -->
-      </h6>
-</span>
-<div class='d-flex  overflow-y-hidden overflow-x-scroll w-100 ' 
-      style="height: 13.5rem;  "  >
-      {% include "components/list-credi.html" %}
-</div>
-{% endif %}
-<!-- <hr class="m-0 mt-3 " style="color: #eeeeee;"> -->
-
-<hr class="m-0 mt-1 " style="color: #eeeeee;">
-{% comment %} Crear {% endcomment %}
-      <div  class='d-flex flex-wrap d-none mb-3 ' id='div-credit{{c.id}}'>
-            <span class='w-100'>
-                  <h6 class="text-black-50 m-0 p-0 pb-1 "> 
-                        Crear credito
+            <span class="">
+                  <h6  class="text-black-50 p-0 m-0 pb-1">
+                        Direccion  de recidencia
                   </h6>
             </span>
-            <section class="d-flex  ">
+
+            <span class="w-100   overflow-hidden d-flex" style="height: 2.8rem ">
+                  <strong class="">     
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-geo-alt-fill text-black me-1" viewBox="0 0 16 16">
+                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
+                  </strong>
+                  <a class="" style=" text-transform: capitalize; font-size: 14px !important; " >
+                        {{c.calle_numero}},  {{c.municipio}}, <br>  {{c.sector}}, {{c.ciudad}}
+                  </a>
+            </span>
+
+            <span class="">
+                  <h6  class="text-black-50 p-0 pt-3 m-0 pb-1">
+                        Elecciones Opcionales
+                  </h6>
+            </span>
+
+            <span style="font-size: 14px;" >
+                  <div>
+                        <input type="checkbox" id="hijos" name="hijos" class="form-check-input m-0 me-1" {% if c.hijos %}checked{% endif %} disabled>
+                        <label for="hijos" class="m-0">Hijos</label>
+                  </div>
+                  <div>
+                        <input type="checkbox" id="tierra" name="tierra" class="form-check-input m-0 me-1" {% if c.tierra %}checked{% endif %} disabled>
+                        <label for="tierra">Tierra</label>
+                  </div>
+                  <div>
+                        <input type="checkbox" id="vehiculo" name="vehiculo" class="form-check-input m-0 me-1" {% if c.vehiculo %}checked{% endif %} disabled>
+                        <label for="vehiculo">Vehículo</label>
+                  </div>
+                  <div>
+                        <input type="checkbox" id="casa" name="casa" class="form-check-input m-0 me-1" {% if c.casa %}checked{% endif %} disabled>
+                        <label for="casa">Casa</label>
+                  </div>
+                  <div>
+                        <input type="checkbox" id="saldar_deudas" name="saldar_deudas" class="form-check-input m-0 me-1" {% if c.saldar_deudas %}checked{% endif %} disabled>
+                        <label for="saldar_deudas">Saldar Deudas</label>
+                  </div>
+                  <div>
+                        <input type="checkbox" id="familiar_en_fycas" name="familiar_en_fycas" class="form-check-input m-0 me-1" {% if c.familiar_en_fycas %}checked{% endif %} disabled>
+                        <label for="familiar_en_fycas">Familiar en Fycas</label>
+                  </div>
+                  <div>
+                        <input type="checkbox" id="fue_recomendado" name="fue_recomendado" class="form-check-input m-0 me-1" {% if c.fue_recomendado %}checked{% endif %} disabled>
+                        <label for="fue_recomendado">Fue Recomendado</label>
+                  </div> 
+            </span> 
+            <br>
+            <span >
+                  <h6 class="text-black-50 m-0 p-0 pb-1" id='requiere{{c.id}}'>
+                        Monto solicitado y fines
+                  </h6>
+            </span>
+            <span style="font-size: 14px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
+                  </svg>  
+                  <span id='monto-spa{{c.id}}'> {{c.monto_requerido}} </span> 
+            </span>
+            <br>
+            <span style="font-size: 14px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-text" viewBox="0 0 16 16">
+                        <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5tasav-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+                        <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8m0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5"/>
+                  </svg> {{c.fines}}
+            </span>
+            <br> <br>
+            <span>
+                  <h6 class="text-black-50 m-0 p-0 pb-1">
+                        Referencias personales
+                  </h6>
+            </span>
+            <span class='' style="font-size: 14px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-black bi bi-people-fill" viewBox="0 0 16 16">
+                        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                  </svg>
+                  {{c.name_r1}} -
+            </span>
+            <span style="font-size: 14px;"> 
+                  {{c.number_r1}}
+            </span>
+            <br>
+            <span class='' style="font-size: 14px !important;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-black bi bi-people-fill" viewBox="0 0 16 16">
+                        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                  </svg>
+                  {{c.name_r2}} - 
+            </span>
+            <span style="font-size: 14px;">
+                  {{c.number_r2}}
+            </span>
+            <br><br>
+            <span style="font-size: 14px;">
+                  <h6 class="text-black-50 m-0 p-0 pb-1"> 
+                        Información Laboral
+                  </h6>
+            </span>
+            <span style="font-size: 14px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-buildings-fill" viewBox="0 0 16 16">
+                        <path d="M15 .5a.5.5 0 0 0-.724-.447l-8 4A.5.5 0 0 0 6 4.5v3.14L.342 9.526A.5.5 0 0 0 0 10v5.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V14h1v1.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zM2 11h1v1H2zm2 0h1v1H4zm-1 2v1H2v-1zm1 0h1v1H4zm9-10v1h-1V3zM8 5h1v1H8zm1 2v1H8V7zM8 9h1v1H8zm2 0h1v1h-1zm-1 2v1H8v-1zm1 0h1v1h-1zm3-2v1h-1V9zm-1 2h1v1h-1zm-2-4h1v1h-1zm3 0v1h-1V7zm-2-2v1h-1V5zm1 0h1v1h-1z"/>
+                  </svg> {{c.empresa_trabaja}} 
+            </span>  <br>
+            <span style="font-size: 14px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                  </svg>  {{c.phone}}
+            </span>
+            <br>
+            <span style="font-size: 14px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
+                        <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                        <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.4 5.4 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2z">
+                  </svg>  {{c.cargo}}
+            </span> <br>
+            <span style="font-size: 14px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8m5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0"/> <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195z"/><path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083q.088-.517.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1z"/>
+                  <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 6 6 0 0 1 3.13-1.567"/>
+                  </svg> {{c.salario_m|intcomma}}.00
+            </span>
+      </div> 
+
+      <section class="   mt-2  d-none extend-dos p-2 bg-white " id="div-options{{c.id}}"  
+            style=" min-width: 8rem; border-radius: 1.5rem;">
+
+            <span class="">
+                  <h6 class="text-black-50 ps-2 m-0 p-0 "  > 
+                   Acciones  de creditos
+                  </h6>
+            </span>
+            <span class='w-100 d-flex justify-content-center btn-share-con' >
+                  <!-- <button style='border-radius: 1.5rem;'>
+                        Eliminar 
+                  </button> -->
+                  <button class="text-black-50 " onclick='OpenCloseBtnCredit(this.id)' id='{{c.id}}' style='border-radius: 1.5rem;' >
+                        Crear 
+                  </button>
+                  <button class="text-black-50"  style='border-radius: 1.5rem;'>
+                        Listado
+                  </button>
+                  <button class="text-black-50"  style='border-radius: 1.5rem;'>
+                        Actual
+                  </button>
+            </span>
+            <span>
+                  <h6 class="text-black-50 m-0 p-0 pb-1" > 
+                        Acciones de aprobacion
+                  </h6>
+            </span>
+            <span class='w-100 d-flex justify-content-center btn-share-con'>
+                  {% if c.customer_verify == False %}
+                  <button class='text-white border-0'  id='{{c.id}}'  onclick='CustomerVerify(this.id)'    id="{{c.id}}"  style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
+                        Verificar
+                  </button>
+                  {% else %}
+                  <button class=' border-0'  onclick='DisableCustomer(this.id)' id="{{c.id}}"  style=' border-radius: 1.5rem;  '>
+                        Eliminar
+                  </button>
+                  {% endif %}
+                  <a  class="d-none" href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} su solicitud ha sido declinada en este momento. para mas detalles, haga clic en el siguiente enlace -> https://grupofycas.online/no-approved/customer" >
+                        <button class=' '
+                              style='border-radius: 1.5rem;'>
+                              Declinar
+                        </button>
+                  </a>
+                  <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} Actualmente aplica para un prestamo estandar con un monoto minimo de *($7,000.00)*, si deseas puede obtener un mayor monto con una garantia fisica que avale el monto solicitado. ¿Desea continuar con el proceso *(Estandar)* o *(Garantizado)*?" >
+            
+                  <button class=' border-0' style=' border-radius: 1.5rem;'>
+                  Estandar
+                  </button>
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) *{{c.name}} {{c.last_name}}*%0A%0A*Informacion de solicitud de prestamo por un monto de ${{c.monto_requerido|intcomma}}.00*%0ADebido a su precalificasion, por el momento no califica para el tipo de préstamo (Estandar) solicitado, podemos evaluarle en base a una garantía física que avale el monto solicitado." >
+                  <button class=' border-0' style=' border-radius: 1.5rem;'>
+                        Garantia
+                  </button>
+            </a>
+            
+            </span>
+            <span class='w-100 d-flex justify-content-center btn-share-con d-none'>
+                  {% if c.customer_verify == False %}
+                  <button class='text-white border-0'   id="{{c.id}}"  style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
+                        Agregar
+                  </button>
+                  {% else %}
+                  <button class='text-white border-0'  onclick='DisableCustomer(this.id)' id="{{c.id}}"  style=' border-radius: 1.5rem;  color: black !important;'>
+                        Remover
+                  </button>
+                  {% endif %}
+                  <button class='text-white border-0'   id="{{c.id}}"  style='border-radius: 1.5rem;  color: black !important;'>
+                        Depurar
+                  </button>
+                  <button class='text-white border-0'   id="{{c.id}}"  style=' border-radius: 1.5rem;  color: black !important;'>
+                  Notificar
+                  </button>
+            </span>
+      </section>
+      {% if c.credit.all %}
+            <span>
+                  <h6 class="text-black-50 m-0 p-0 pb-1"  > 
+                        <!-- Listado de creditos -->
+                  </h6>
+            </span>
+            <div class='d-flex  overflow-y-hidden mt-1 mb-2 w-100 ' 
+                  style="height: max-content;  "  >
+                  {% include "components/list-credi.html" %}
+            </div>
+      {% endif %}
+      <div  class='d-flex flex-wrap d-none bg-white mb-3 p-2 mt-2 ' id='div-credit{{c.id}}'
+            style="border-radius: 1.5rem;">
+            <section class="d-flex w-100  justify-content-center ">
   
-                  <div class='form-floating w-50 m-0' >
-                        <input type="text" class='form-control monto-input m-0 ' value="999" id='monto{{c.id}}' placeholder='Monto a recibir' style='border-radius:2rem !important; 
-                        max-width: 130px !important;'>
+                  <div class='form-floating w-100 m-1 justify-content-center' >
+                        <input type="text" class='form-control monto-input  ' value="999" id='monto{{c.id}}' placeholder='Monto a recibir' style='border-radius:2rem !important; '>
                         <label for="monto{{c.id}}">Monto requirido</label>
                   </div>
 
-                  <div class="form-floating w-50">
-                        <input type="date"   class=' form-control' id='dia{{c.id}}'  style="max-width: 130px !important;">
+                  <div class="form-floating w-100 m-1 justify-content-center">
+                        <input type="date"   class=' form-control' id='dia{{c.id}}'  style=" border-radius: 2rem;">
                         <label for="dia{{c.id}}">Dia de pago</label>
                   </div>
             </section>
@@ -279,111 +351,88 @@ background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
                   </button>
             </span>
             <div class='w-100 mt-4 pt-3 d-flex  justify-content-end'>
-                  <button onclick='OpenCloseBtnCredit(this.id)' id='{{c.id}}' class=' bg-transparent'>Cancelar</button>
+                  <button onclick='OpenCloseBtnCredit(this.id)' id='{{c.id}}' class=' bg-transparent border-0'>Cancelar</button>
                   <button onclick='CreateCreditAjax(this.id)' id='{{c.id}}' class='text-white border-0 ' style='background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);border-radius: 1.5rem; width: 7rem;'> Crear</button>
             </div>
-            <div class='w-100'>
-                  <hr>
-            </div>
+
       </div>
 
 
 
-<section class="expand  rounded-0 mb-3  "  style="max-height: 2rem; min-width: 8rem;">
-      <style>
-            .expand
-            {
-                  max-height: max-content !important;
+
+   
+
+
+<style>
+      @keyframes flip-down {
+    0% {
+        transform: rotateX(-90deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+/* Clase que aplicará la animación */
+.flip-down {
+    animation: flip-down 1s ease-out forwards;
+    transform-origin: top; /* Punto de rotación */
+    opacity: 0; /* Oculto por defecto */
+}
+</style>
+      <script>
+function Detail(id) {
+      let div = document.getElementById('div-detail'+id)
+    // Seleccionamos todos los elementos con la clase 'extend-dos'
+    const divs = document.querySelectorAll('.extend-dos');
+    
+    // Iteramos por cada div
+    divs.forEach(function(item) {
+        if (item === div) {
+            // Si el div es el que se pasa como parámetro, alternamos las clases d-none y d-block
+            if (item.classList.contains('d-none')) {
+                item.classList.remove('d-none');
+                item.classList.add('d-block');
+                item.classList.add('flip-down');
+            } else {
+                item.classList.remove('d-block');
+                item.classList.add('d-none');
+                item.classList.add('flip-down');
             }
-      </style>
-      <span class="">
-            <h6 class="text-black-50 ps-2 m-0 p-0 "  > 
-                 <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important; color: #909090 !important; "  width="16" height="16" fill="currentColor" class="bi bi-chevron-down m-0  p-0" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
-                        </svg>   Acciones 
-            </h6>
-      </span>
-      <span class='w-100 d-flex justify-content-center btn-share-con' >
-            <!-- <button style='border-radius: 1.5rem;'>
-                  Eliminar 
-            </button> -->
-            <button  onclick='OpenCloseBtnCredit(this.id)' id='{{c.id}}' style='border-radius: 1.5rem;' >
-                  Crear 
-            </button>
-            <button style='border-radius: 1.5rem;'>
-                  Listado
-            </button>
-            <button style='border-radius: 1.5rem;'>
-                  Actual
-            </button>
-      </span>
-      <span>
-            <h6 class="text-black-50 m-0 p-0 pb-1" > 
-                  Acciones de aprobacion
-            </h6>
-      </span>
-      <span class='w-100 d-flex justify-content-center btn-share-con'>
-            {% if c.customer_verify == False %}
-             <button class='text-white border-0'  id='{{c.id}}'  onclick='CustomerVerify(this.id)'    id="{{c.id}}"  style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
-                  Verificar
-             </button>
-            {% else %}
-            <button class='text-white border-0'  onclick='DisableCustomer(this.id)' id="{{c.id}}"  style=' border-radius: 1.5rem;  color: black !important;'>
-                  Eliminar
-            </button>
-            {% endif %}
-            <a  class="d-none" href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} su solicitud ha sido declinada en este momento. para mas detalles, haga clic en el siguiente enlace -> https://grupofycas.online/no-approved/customer" >
-                  <button class='text-black '
-                        style='border-radius: 1.5rem;'>
-                        Declinar
-                  </button>
-            </a>
-            <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} Actualmente aplica para un prestamo estandar con un monoto minimo de *($7,000.00)*, si deseas puede obtener un mayor monto con una garantia fisica que avale el monto solicitado. ¿Desea continuar con el proceso *(Estandar)* o *(Garantizado)*?" >
-      
-            <button class='text-white border-0' style='color: black !important; border-radius: 1.5rem;'>
-                 Estandar
-            </button>
-      </a>
-      <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) *{{c.name}} {{c.last_name}}*%0A%0A*Informacion de solicitud de prestamo por un monto de ${{c.monto_requerido|intcomma}}.00*%0ADebido a su precalificasion, por el momento no califica para el tipo de préstamo (Estandar) solicitado, podemos evaluarle en base a una garantía física que avale el monto solicitado." >
-            <button class='text-white border-0' style=' border-radius: 1.5rem;  color: black !important;'>
-                  Garantia
-            </button>
-      </a>
-      
-      </span>
-      <span class='w-100 d-flex justify-content-center btn-share-con d-none'>
-            {% if c.customer_verify == False %}
-             <button class='text-white border-0'   id="{{c.id}}"  style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
-                  Agregar
-             </button>
-            {% else %}
-            <button class='text-white border-0'  onclick='DisableCustomer(this.id)' id="{{c.id}}"  style=' border-radius: 1.5rem;  color: black !important;'>
-                  Remover
-            </button>
-            {% endif %}
-            <button class='text-white border-0'   id="{{c.id}}"  style='border-radius: 1.5rem;  color: black !important;'>
-                  Depurar
-            </button>
-            <button class='text-white border-0'   id="{{c.id}}"  style=' border-radius: 1.5rem;  color: black !important;'>
-            Notificar
-            </button>
-      </span>
-</section>
-<!-- <span class='w-100'>
-      <h6 class="text-black-50 m-0 p-0 pb-1"> 
-            Estado del cliente 
-      </h6>
-</span> -->
-<span class="">
+        } else {
+            // Aseguramos que los demás divs siempre tengan la clase d-none
+            item.classList.remove('d-block');
+            item.classList.add('d-none');
+        }
+    });
+}
 
-      <!-- {% if c.customer_verify == False %}
-      <a id='{{c.id}}'  onclick='CustomerVerify(this.id)' 
-            class='p-0   mt-2  mb-2' style="width: 1.7rem;">
-            <button class="border-0  bg-transparent p-0 d-flex " style='color:#000000;'> 
-                  <img src="{% static "icons/mas.png" %}"  class="me-1 " width='20' style='max-width:26px;' alt=""> Agregar 
-            </button>
-      </a>
-{% endif %} -->
-</span>
+function Option(id) {
+      let div = document.getElementById('div-options'+id)
+    // Seleccionamos todos los elementos con la clase 'extend-dos'
+    const divs = document.querySelectorAll('.extend-dos');
+    
+    // Iteramos por cada div
+    divs.forEach(function(item) {
+        if (item === div) {
+            // Si el div es el que se pasa como parámetro, alternamos las clases d-none y d-block
+            if (item.classList.contains('d-none')) {
+                item.classList.remove('d-none');
+                item.classList.add('d-block');
+                item.classList.add('flip-down');
+            } else {
+                item.classList.remove('d-block');
+                item.classList.add('d-none');
+                item.classList.add('flip-down');
+            }
+        } else {
+            // Aseguramos que los demás divs siempre tengan la clase d-none
+            item.classList.remove('d-block');
+            item.classList.add('d-none');
+        }
+    });
+}
+      </script>
 </div>
-
