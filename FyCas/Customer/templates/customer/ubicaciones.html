@@ -1,14 +1,214 @@
 {% extends "base/base.html" %}
 {% block content %}
-      <style>
-            .text-black-50 
-            {
-                  font-size: 14px;
-            }
-      </style>
-      <section style="height: 100vh; " class='d-flex justify-content-center flex-wrap p-3 '>
+<style>
+      .text-black-50 
+      {
+            font-size: 14px;
+      }
+
+      #map
+       {
+            transition: 0.2s !important;
+            height: 300px;
+            width: 100%;
+        }
+
+      .gm-style-mtc 
+      {
+            display: none !important;
+      }
+
+      .gm-control-active, .gm-svpc , .gmnoprint
+       {
+            display: none !important;
+      }
+
+      .btn-number2 
+      {
+            display: none !important;
+      }
+
+      .divCon 
+      {
+            width: 330px;
+
+            margin: 4px !important;
+      }
+
+      #btn-notificacion 
+      {
+            display: none !important;      
+      }
+      .location-span 
+      {
+            font-size: 12px;
+      }
+</style>
+
+<div  class="w-100 position-absolute bottom-0  d-flex justify-content-center" >
+      <div class="colors uno" style="background-color: #ffd588; margin-left: 1rem;"></div>
+      <div class="colors dos" style="margin-left: 2rem !important; background-color: rgb(243, 85, 85);"></div>
+      <div class="colors tres" 
+            style="margin-left: 17rem; margin-top: 20rem; background-color: rgb(178, 89, 230);">
+      </div>
+</div>
+
+<section style="height: 100vh;" class='p-3 blur overflow-scrol'>
+      <div id="map" class="bg-white bg-opacity-10"> </div>
+      <div class="">
+            {% include "components/btn-filter.html" %}
+      </div>
+      <span class="text-black-50 ms-5" style="font-size: 12px;">
+            Es posible que las geolocalizaciones no sean precisas
+      </span>
+      <div class="w-100 d-flex justify-content-end ">
+            <div id="config-list" class="w-100 justify-content-center d-flex flex-wrap overflow-scroll" 
+                  style="justify-content: center;  z-index: 100; max-width: 70rem;">
+            </div>
+      </div>
+      <div id="text-c" class="w-100 justify-content-start mt-2 ms-5 ps-2  flex-wrap" 
+            style="display: none; z-index: 105; bottom: 1rem;" >
+            <h5 class=" " style='font-size: 16px;'  >
+                  "<span id="user-no"></span>"  No registrado
+            </h5>
+      </div>  
+</section>
+<script>
+      let searching_config = document.querySelector('.searching-config');
+      let config_list = document.getElementById('config-list');
+      let config_data;
+
+window.addEventListener("DOMContentLoaded", function() {
+        ConfigData()
+        function ConfigData() {
+            const url = 'searching/customer';
+            $.ajax({
+                  url: url,
+                  success: function(data){
+                        config_data = data
+                        const searching_config = document.querySelector('.searching-config');
+                        searching_config.addEventListener('input', (event) => {
+                        const input_value = event.target.value;
+                        const filtered_data = data.filter((config) => {
+                              return config.name.toLowerCase().includes(input_value.toLowerCase());
+                        });
+                        config_list.innerHTML = ''
+                        var divList = document.getElementById('div-list-customer') 
+                        if(filtered_data == ''){
+                              document.getElementById("text-c").style.display = 'flex'
+                              document.getElementById('user-no').innerHTML = searching_config.value
+                        }
+                        else{
+                              document.getElementById("text-c").style.display = 'none'
+                              if(searching_config.value == ''){
+                                    document.getElementById('sec-listado').classList.remove('d-none')
+                              }
+                        }
+
+                        for (const c  of filtered_data) {
+                        const div = document.createElement('div');
+                        div.classList.add("contdiv",  'justify-content-center' ,'d-flex',)
+                        const divCont = document.createElement('div');
+                        divCont.classList.add('contDiv' , 'justify-content-start' ,'d-flex',  )
+                        div.classList.add("divCon", "p-2", 'ps-5', 'pe-5', 'card', 'justify-content-center' ,'d-flex', "bg-white", "bg-opacity-50" )
+                              let divI = document.createElement("div")
+                              const imgLink = document.createElement('a');
+                              let divL = document.createElement("div")
+
+                              let stronL = document.createElement("strong")
+                              stronL.textContent = ""
+                              let img = document.createElement("img")
+                              let spanL = document.createElement("span")
+                              const nameLink = document.createElement('button');
+                              nameLink.classList.add('border-0', 'p-2', 'rounded-4' )
+                              nameLink.id = c.id
+                              nameLink.addEventListener('click', function() {
+                                    document.getElementById('input-send-data').value = this.id
+                                    console.log(document.getElementById('input-send-data').value)
+                                    document.getElementById('btn-send-data').click()
+                              });
+                              nameLink.innerText = c.name
+                              divL.appendChild(stronL)
+                              divL.appendChild(nameLink)
+
+                              let divN = document.createElement("div")
+                              divN.classList.add('dni')
+                                    let stronN = document.createElement("strong")
+                                          stronN.textContent = ""
+                                    let spanN = document.createElement("span")
+                                          spanN.classList.add('text-black-50')
+                                          spanN.textContent = c.dni
+                                    let location = document.createElement('span')
+                                    location.classList.add('location-span')
+                                    location.textContent = c.ubication
 
 
-      </section>
+                              divN.appendChild(stronN)
+                              divN.appendChild(spanN)
+
+                              let divA = document.createElement("div")
+                              let divR = document.createElement("div")
+                              let stronR = document.createElement("strong")
+                              let divK = document.createElement("div")
+
+
+                              div.appendChild(divI);
+                              div.appendChild(divL);
+                              
+                              div.appendChild(divR);
+                              div.appendChild(divA);
+                              div.appendChild(divK);
+                              div.appendChild(divN);
+                        div.appendChild(location);
+
+
+                        divCont.appendChild(div)
+                        config_list.appendChild(divCont);
+                    }
+                        if (searching_config.value.trim() === "") {
+                              config_list.innerHTML = ''
+                              config_list.style.display = 'none'
+                              document.getElementById('for-c').style.display = 'flex'
+                              // document.getElementById("list-customer").style.display = "block"
+                        }
+                        else {
+                              config_list.style.display = 'block'
+                              document.getElementById('for-c').style.display = 'none'
+                              // document.getElementById("list-customer").style.display = "none"
+                        }
+                        });
+                  },
+                  error: function(xhr, status, error) {
+                        console.error('Error en la solicitud AJAX:', status, error);
+                  }
+            });
+        }
+    });
+
+      // Función para inicializar el mapas
+      function initMap() {
+            // Coordenadas para centrar el mapa (por ejemplo, New York)
+            var location = { lat: 18.5101986, lng:-69.814869};
+            // Crear el mapa en el div con id 'map'
+            var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 12, // Nivel de zoom
+                  center: location // Ubicación central
+            });
+            // Marcador en la ubicación
+            var marker = new google.maps.Marker({
+                  position: location,
+                  map: map
+            });
+      }
+
+
+
+      </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0zXbpHi9ADsWBWN5Vwx-rtwZyM9NmvHQ&callback=initMap">
+</script>
+  
+
+
+
 
 {% endblock  %}

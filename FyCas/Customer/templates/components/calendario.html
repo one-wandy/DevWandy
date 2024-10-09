@@ -8,21 +8,97 @@
       {
             background-color: #eeeeee !important;
       }
+      .fc-button-group button, .fc-button-primary
+      {
+            background-color: transparent !important;
+            color: rgb(113, 113, 113) !important;
+            border-radius: 1.5rem !important;
+            margin: 0.2rem !important;
+            border: #d6d6d6 1px !important;
+            outline: none !important
+            
+      }
+      .fc-button-primary 
+      {
+
+      }
 </style>
 {% include "components/background-animated.html" %}
-<section class="w-100 blur h-100 position-absolute top-0 start-0 d-flex   justify-content-center align-content-center flex-wrap"
-      style="z-index: 0;">
-
-      <div class="justify-content-center text-center p-2">
-            <h4>
-                  Ups! Aun esta en desarrollo
-            </h4> 
-            <p class="text-black-50" style="font-size: 14px;">
-                  Si quieres activar ver esta caracteristica antes de su lanzamiento, ve a configuraciones y activa la <strong>"True Dev"</strong>, esto para ir provando las nuevas caracteristicas
-            </p>
+<section class="w-100 blur h-100 position-absolute top-0 start-0 d-flex   justify-content-center align-content-center flex-wrap" style="z-index: 0;">
+      <div id="overlay"></div>
+      <div id='calendar' class="" style="height: 500px; width: 90%;"></div>
+  
+      <!-- Modal para el evento Cobrar -->
+      <div id="cobrar-modal" class="position-absolute bg-white top-50 z-2" style="display: none;"> 
+          <h3>Detalle del Evento Cobrar</h3>
+          <p>Este es el detalle del evento "Cobrar".</p>
+          <button id="close-modal">Cerrar</button>
       </div>
-
 </section>
 
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var overlay = document.getElementById('overlay');
+            var cobrarModal = document.getElementById('cobrar-modal');
+            var closeModal = document.getElementById('close-modal');
 
+            // Inicializar el calendario
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'es',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,customYearButton'
+                },
+                events: generateMonthlyEvents(), // Generar eventos mensuales
+                eventClick: function(info) {
+                    if (info.event.title === 'Cobrar') {
+                        overlay.style.display = 'block';
+                        cobrarModal.style.display = 'block';
+                    }
+                },
+
+            });
+
+            calendar.render();
+
+            // Función para cerrar el modal
+            closeModal.addEventListener('click', function() {
+                cobrarModal.style.display = 'none';
+                overlay.style.display = 'none';
+            });
+
+            // Cerrar el modal al hacer clic en el overlay
+            overlay.addEventListener('click', function() {
+                cobrarModal.style.display = 'none';
+                overlay.style.display = 'none';
+            });
+
+            // Función para generar eventos mensuales
+            function generateMonthlyEvents() {
+                var events = [];
+                var years = [2024, 2025, 2026, 2027, 2028]; // Años deseados
+                for (var year of years) {
+                    for (var month = 0; month < 12; month++) {
+                        // Agregar eventos para el día 15
+                        events.push({
+                            title: 'Cobrar',
+                            start: new Date(year, month, 15).toISOString().slice(0, 10)
+                        });
+                        // Agregar eventos para el día 30 (o 29 en febrero)
+                        var lastDay = new Date(year, month + 1, 0).getDate(); // Obtener el último día del mes
+                        if (lastDay >= 30) {
+                            events.push({
+                                title: 'Cobrar',
+                                start: new Date(year, month, 30).toISOString().slice(0, 10)
+                            });
+                        }
+                    }
+                }
+                return events;
+            }
+        });
+    </script>
 {% endblock %}

@@ -86,7 +86,7 @@
             width: auto !important;
 
       }
-      @keyframes rotarColores {
+@keyframes rotarColores {
   0% {
     background-image: linear-gradient(
       to right,
@@ -112,88 +112,73 @@
       rgb(221, 137, 255) 90%
     );
   }
-  
-
 }
 
-/* .contDiv {
-  width: 40rem;
-  height: max-content;
-  background-image: linear-gradient(
-    to right,
-    rgb(255, 133, 133) 0%,
-    rgb(221, 137, 255) 50%,
-    rgb(128, 179, 255) 100%
-  );
-  animation: rotarColores 3s infinite ease;
-} */
-
-
 .three-body {
- --uib-size: 20px;
- --uib-speed: 0.8s;
- --uib-color: #af9bff;
- position: relative;
- display: inline-block;
- height: var(--uib-size);
- width: var(--uib-size);
- animation: spin78236 calc(var(--uib-speed) * 1.5) infinite linear;
+      --uib-size: 20px;
+      --uib-speed: 0.8s;
+      --uib-color: #af9bff;
+      position: relative;
+      display: inline-block;
+      height: var(--uib-size);
+      width: var(--uib-size);
+      animation: spin78236 calc(var(--uib-speed) * 1.5) infinite linear;
 }
 
 .three-body__dot {
- position: absolute;
- height: 100%;
- width: 35%;
+      position: absolute;
+      height: 100%;
+      width: 35%;
 }
 
 .three-body__dot:after {
- content: '';
- position: absolute;
- height: 0%;
- width: 100%;
- padding-bottom: 100%;
- background-color: var(--uib-color);
- border-radius: 50%;
+      content: '';
+      position: absolute;
+      height: 0%;
+      width: 100%;
+      padding-bottom: 100%;
+      background-color: var(--uib-color);
+      border-radius: 50%;
 }
 
 .three-body__dot:nth-child(1) {
- bottom: 5%;
- left: 0;
- transform: rotate(60deg);
- transform-origin: 50% 85%;
+      bottom: 5%;
+      left: 0;
+      transform: rotate(60deg);
+      transform-origin: 50% 85%;
 }
 
 .three-body__dot:nth-child(1)::after {
- bottom: 0;
- left: 0;
- animation: wobble1 var(--uib-speed) infinite ease-in-out;
- animation-delay: calc(var(--uib-speed) * -0.3);
+      bottom: 0;
+      left: 0;
+      animation: wobble1 var(--uib-speed) infinite ease-in-out;
+      animation-delay: calc(var(--uib-speed) * -0.3);
 }
 
 .three-body__dot:nth-child(2) {
- bottom: 5%;
- right: 0;
- transform: rotate(-60deg);
- transform-origin: 50% 85%;
+      bottom: 5%;
+      right: 0;
+      transform: rotate(-60deg);
+      transform-origin: 50% 85%;
 }
 
 .three-body__dot:nth-child(2)::after {
- bottom: 0;
- left: 0;
- animation: wobble1 var(--uib-speed) infinite
-    calc(var(--uib-speed) * -0.15) ease-in-out;
+      bottom: 0;
+      left: 0;
+      animation: wobble1 var(--uib-speed) infinite
+      calc(var(--uib-speed) * -0.15) ease-in-out;
 }
 
 .three-body__dot:nth-child(3) {
- bottom: -5%;
- left: 0;
- transform: translateX(116.666%);
+      bottom: -5%;
+      left: 0;
+      transform: translateX(116.666%);
 }
 
 .three-body__dot:nth-child(3)::after {
- top: 0;
- left: 0;
- animation: wobble2 var(--uib-speed) infinite ease-in-out;
+      top: 0;
+      left: 0;
+      animation: wobble2 var(--uib-speed) infinite ease-in-out;
 }
 
 @keyframes spin78236 {
@@ -291,12 +276,6 @@ btn-sliders-nav
                   {% include "customer/list-customer-2.html" %} 
             <!-- </div> -->
       </div>  
-
-      
-     
-      <!-- <div class="d-flex justify-content-end  pe-1 w-100 " style="z-index: 1000;">
-     
-      </div> -->
 </section>
 
 <div class="position-sticky bottom-0">
@@ -311,76 +290,58 @@ btn-sliders-nav
 <script>
 let id_input_select = 0
 document.addEventListener('DOMContentLoaded', (event) => {
-            // Selecciona todos los elementos de entrada
-            const inputs = document.querySelectorAll('.monto-input');
-            // Añade un evento de enfoque a cada uno
-            inputs.forEach(input => {
-                input.addEventListener('focus', function() {
-                    id_input_select = this.id
-                    let si = document.querySelector("#"+id_input_select)
-                    si.addEventListener('input', function() {
-                        let lkj = this.id
-                        let delt = lkj.replace(/\D/g, '');
-                        let numero_input = document.getElementById(this.id)
-                        let numero = numero_input.value.replace(/,/g, ''); // Elimina las comas existentes
-                        let capital = parseInt(numero)
-                        SuperCalAuto(capital, document.querySelector("#cuotas"+delt).value, 
-                        0.15, 
-                        "result-cuota"+delt,
-                        delt
-                        )
-                    });
-                  });
+// Selecciona todos los elementos de entrada
+const inputs = document.querySelectorAll('.monto-input');
+// Añade un evento de enfoque a cada uno
+inputs.forEach(input => {
+      input.addEventListener('focus', function() {
+            id_input_select = this.id
+            let si = document.querySelector("#"+id_input_select)
+            si.addEventListener('input', function() {
+            let lkj = this.id
+            let delt = lkj.replace(/\D/g, '');
+            let numero_input = document.getElementById(this.id)
+            let numero = numero_input.value.replace(/,/g, ''); // Elimina las comas existentes
+            let capital = parseInt(numero)
+            SuperCalAuto(capital, document.querySelector("#cuotas"+delt).value, 
+            0.15, 
+            "result-cuota"+delt,
+            delt
+            )
             });
-
-
-
-
-// monto_input.addEventListener("input", () => {
-//       let numero = monto_input.value.replace(/,/g, ''); // Elimina las comas existentes
-//       let capital = parseInt(numero)
-//       let plazo =   document.querySelector('#')
-//       let tasa = 0.15
-//       SuperCalAuto(capital, plazo, tasa)
-// });
+      });
+});
       
-      function TurnCustomerFalse(id){
-            const url = 'verify-false/customer/';
-            $.ajax({
-                url: url,
-                data: {
-                  customer_id: id
-                }
+function TurnCustomerFalse(id){
+      const url = 'verify-false/customer/';
+      $.ajax({
+            url: url,
+            data: {
+            customer_id: id
+            }
 
-            })
-      }
-
-
-
-
+      })
+}
 
 function CustomerVerifyNo(id){
       document.getElementById('aprovate-no').classList.remove('d-none')
       document.getElementById('aprovate-no').classList.add('d-block')
-
       setTimeout(function() {
-            document.getElementById('aprovate-no').classList.remove('d-block')
-            document.getElementById('aprovate-no').classList.add('d-none')
-            // Code to be executed after 5 seconds
+                  document.getElementById('aprovate-no').classList.remove('d-block')
+                  document.getElementById('aprovate-no').classList.add('d-none')
       }, 3000);
-            const url = 'verify-no/customer/';
-            $.ajax({
-                url: url,
-                data: {
+      const url = 'verify-no/customer/';
+      $.ajax({
+            url: url,
+            data: {
                   customer_id: id
-                }
+            }
+      })
+}
 
-            })
-      }
-
-      let searching_config = document.querySelector('.searching-config');
-      let config_list = document.getElementById('config-list')
-      let config_data;
+let searching_config = document.querySelector('.searching-config');
+let config_list = document.getElementById('config-list')
+let config_data;
 
 document.addEventListener('keydown', function(event) {
       if (event.altKey && event.key === 'b') {
@@ -402,7 +363,6 @@ searching_config.addEventListener('blur', function() {
       document.getElementById('clientes').style.display = 'flex';
 });
 
-
 window.addEventListener("DOMContentLoaded", function() {
         ConfigData()
         function ConfigData() {
@@ -410,19 +370,18 @@ window.addEventListener("DOMContentLoaded", function() {
             $.ajax({
                 url: url,
                 success: function(data){
-                    config_data = data
-                    const searching_config = document.querySelector('.searching-config');
-                    searching_config.addEventListener('input', (event) => {
-                    const input_value = event.target.value;
-                    const filtered_data = data.filter((config) => {
+                  config_data = data
+                  const searching_config = document.querySelector('.searching-config');
+                  searching_config.addEventListener('input', (event) => {
+                  const input_value = event.target.value;
+                  const filtered_data = data.filter((config) => {
                         return config.name.toLowerCase().includes(input_value.toLowerCase());
                     });
                     config_list.innerHTML = ''
                     var divList = document.getElementById('div-list-customer') 
-
                     if(filtered_data == ''){
-                        document.getElementById("text-c").style.display = 'flex'
-                        document.getElementById('user-no').innerHTML = searching_config.value
+                              document.getElementById("text-c").style.display = 'flex'
+                              document.getElementById('user-no').innerHTML = searching_config.value
                   }
                   else{
                         document.getElementById("text-c").style.display = 'none'
@@ -430,15 +389,14 @@ window.addEventListener("DOMContentLoaded", function() {
                               divList.classList.remove('blur-up')
                               document.getElementById('sec-listado').classList.remove('d-none')
                         }
-                        else{
-                              
+                        else{  
                               divList.classList.add('blur-up')
                               document.getElementById('sec-listado').classList.add('d-none')
                         }
 
-                    }
+                  }
 
-                    for (const c  of filtered_data) {
+                  for (const c  of filtered_data) {
                         const div = document.createElement('div');
                         div.classList.add("contdiv",  'justify-content-center' ,'d-flex',)
                         const divCont = document.createElement('div');
@@ -452,11 +410,6 @@ window.addEventListener("DOMContentLoaded", function() {
 
                               let stronL = document.createElement("strong")
                               stronL.textContent = ""
-                              let img = document.createElement("img")
-                                    // img.classList.add("img", "img-js")
-                                    // img.src = c.img
-                                //    imgLink.appendChild(stronL)
-                                //    divI.appendChild(imgLink)
                               let spanL = document.createElement("span")
                               const nameLink = document.createElement('button');
                               nameLink.classList.add('border-0', 'p-0', )
@@ -467,15 +420,10 @@ window.addEventListener("DOMContentLoaded", function() {
                                     console.log(document.getElementById('input-send-data').value)
                                     document.getElementById('btn-send-data').click()
                                     // Suponiendo que la función se llama "miFuncion"
-                                });
-                              //nameLink.href = "/detail-customer/" + c.id
-                              //nameLink.target = '_blank';
+                              });
                               nameLink.innerText = c.name
-                              //spanL.classList.add("capitalize")
-                                //    spanL.textContent = c.name
                               divL.appendChild(stronL)
                               divL.appendChild(nameLink)
-
                               let divN = document.createElement("div")
                               divN.classList.add('dni')
                                     let stronN = document.createElement("strong")
@@ -484,34 +432,10 @@ window.addEventListener("DOMContentLoaded", function() {
                                           spanN.textContent = c.dni
                               divN.appendChild(stronN)
                               divN.appendChild(spanN)
-
                               let divA = document.createElement("div")
-                                    // let stronA = document.createElement("strong")
-                                          // stronA.textContent = "Informacion Laboral: "
-                                    // let spanA = document.createElement("span")
-                                          // spanA.textContent = c.inf
-                              // divA.appendChild(stronA)
-                              // divA.appendChild(spanA)
-
                               let divR = document.createElement("div")
-                                     let stronR = document.createElement("strong")
-                                          // stronR.textContent = "Recide en: "
-                                    // let spanR = document.createElement("a")
-                                          // spanR.href = "https://www.google.com.do/maps/search/" + c.recide
-                                          // spanR.target = '_blank';
-                                          // spanR.textContent = c.recide
-                              // divR.appendChild(stronR)
-                              // divR.appendChild(spanR)
-
-                              
+                              let stronR = document.createElement("strong")
                               let divK = document.createElement("div")
-                                    // let stronK = document.createElement("strong")
-                                          // stronK.textContent = "Referencias: "
-                                    // let spanK = document.createElement("span")
-                                          // spanK.textContent = c.refers
-                              // divK.appendChild(stronK)
-                              // divK.appendChild(spanK)
-
 
                         div.appendChild(divI);
                         div.appendChild(divL);
@@ -519,9 +443,7 @@ window.addEventListener("DOMContentLoaded", function() {
                         div.appendChild(divR);
                         div.appendChild(divA);
                         div.appendChild(divK);
-
-
-                        divCont.appendChild(div)
+                        divCont.appendChild(div);
                         config_list.appendChild(divCont);
                     }
                     if (searching_config.value.trim() === "") {
@@ -550,74 +472,50 @@ window.addEventListener("DOMContentLoaded", function() {
       }
   });
   
-
-
-
-
 });
 
 function CustomerVerify(id){
-      // alert('Cliente verificado')
-      //       document.getElementById('aprovate-yes').classList.remove('d-none')
-      //       document.getElementById('aprovate-yes').classList.add('d-block')
-
-      //       setTimeout(function() {
-      //             document.getElementById('aprovate-yes').classList.remove('d-block')
-      //             document.getElementById('aprovate-yes').classList.add('d-none')
-      //             // Code to be executed after 5 seconds
-      //       }, 3000);
-            const url = 'verify/customer/';
-            $.ajax({
-                url: url,
-                data: {
-                  customer_id: id
-                }
-            })
-            document.getElementById('client'+id).classList.add('d-none')
-      }
-
-
+      const url = 'verify/customer/';
+      $.ajax({
+            url: url,
+            data: {
+            customer_id: id
+            }
+      })
+      document.getElementById('client'+id).classList.add('d-none')
+}
 
 function CreateCreditAjax(id){
-            const url = 'create-credit-ajax/customer/';
-            OpenCloseBtnCredit(id)
+      const url = 'create-credit-ajax/customer/';
+      OpenCloseBtnCredit(id)
+      let monto = document.getElementById('monto'+id).value
+      let monto_cls = monto.replace(/,/g, ''); // Elimina las comas existentes
+      let mt_monto = parseInt(monto_cls)
+      let cuotas = document.getElementById('cuotas'+id).value
+      let cuotas_cls = cuotas.replace(/,/g, ''); // Elimina las comas existentes
+      let mt_cuotas = parseInt(cuotas_cls)
+      let monto_pagar = document.getElementById('monto_pagar'+id).value
+      let monto_pagar_cls = monto_pagar.replace(/,/g, ''); // Elimina las comas existentes
+      let mt_monto_pagar = parseInt(monto_pagar_cls)
 
+      $.ajax({
+            url: url,
+            data: {
+            customer_id: id,
+            monto: mt_monto,
+            cuotas: mt_cuotas,
+            dia: document.getElementById('dia'+id).value.split('-')[2] ,
+            monto_pagar: mt_monto_pagar,
 
-            let monto = document.getElementById('monto'+id).value
-            let monto_cls = monto.replace(/,/g, ''); // Elimina las comas existentes
-            let mt_monto = parseInt(monto_cls)
-            
-
-            let cuotas = document.getElementById('cuotas'+id).value
-            let cuotas_cls = cuotas.replace(/,/g, ''); // Elimina las comas existentes
-            let mt_cuotas = parseInt(cuotas_cls)
-
-            let monto_pagar = document.getElementById('monto_pagar'+id).value
-            let monto_pagar_cls = monto_pagar.replace(/,/g, ''); // Elimina las comas existentes
-            let mt_monto_pagar = parseInt(monto_pagar_cls)
-
-
-            $.ajax({
-                url: url,
-                data: {
-                  customer_id: id,
-                  monto: mt_monto,
-                  cuotas: mt_cuotas,
-                  dia: document.getElementById('dia'+id).value.split('-')[2] ,
-                  monto_pagar: mt_monto_pagar,
-
-                }
-            ,
-            success: function(r) {
-                  let m = document.getElementById('monto-spa'+id)
-                  document.getElementById('requiere'+id).innerHTML = ''
-                  document.getElementById('requiere'+id).innerHTML = 'Aprobado'
-                  m.innerHTML = ''
-                  m.innerHTML = r.monto_requerido + '.00'
-                  // Code to handle successful response
+            }, success: function(r) {
+            let m = document.getElementById('monto-spa'+id)
+            document.getElementById('requiere'+id).innerHTML = ''
+            document.getElementById('requiere'+id).innerHTML = 'Aprobado'
+            m.innerHTML = ''
+            m.innerHTML = r.monto_requerido + '.00'
             },
-            })
-      }
+      })
+}
 
 
 function sumar(n) {
@@ -632,16 +530,15 @@ function sumar(n) {
       "result-cuota"+n,
       n
       )
+};
 
-  };
-  function restar(n) {
+function restar(n) {
       var inputNumero = document.getElementById("cuotas"+n);
       var valorActual = parseInt(inputNumero.value);
+      let numero_input = document.getElementById("monto"+n)
       if(valorActual > 0) {
             inputNumero.value = valorActual - 1;
       }
-
-      let numero_input = document.getElementById("monto"+n)
 
       let numero = numero_input.value.replace(/,/g, ''); // Elimina las comas existentes
       let capital = parseInt(numero)
@@ -650,36 +547,31 @@ function sumar(n) {
       "result-cuota"+n,
       n
       )
-  }
+}
 
 
-
-  //   btn-notifycation
 function NotifyCation() {
       let div = document.getElementById('div-notifycations');
-    // Con cada clic, alternamos la propiedad de display del div
-    if (div.style.display === 'none') {
-      div.style.display = 'block';
-    } else {
-      div.style.display = 'none';
-    }
-
-  }
-
+      // Con cada clic, alternamos la propiedad de display del div
+      if (div.style.display === 'none') {
+            div.style.display = 'block';
+      } else {
+            div.style.display = 'none';
+      }
+}
 
 
-  function OpenCloseBtnCredit(btn_id) {
+function OpenCloseBtnCredit(btn_id) {
       const div = document.getElementById('div-credit' + btn_id);
       if (div.classList.contains('d-none')) {
-          div.classList.remove('d-none');
-          div.classList.add('d-block');
-      //     document.getElementById('div-list-customer').classList.remove('blur')
+            div.classList.remove('d-none');
+            div.classList.add('d-block');
       } else if (div.classList.contains('d-block')) {
             // document.getElementById('div-list-customer').classList.add('   ')
-          div.classList.remove('d-block');
-          div.classList.add('d-none');
+            div.classList.remove('d-block');
+            div.classList.add('d-none');
       }
-  }
+}
 
   
 function BoxSearch() {   
