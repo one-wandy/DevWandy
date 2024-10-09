@@ -39,7 +39,7 @@ urlpatterns = [
       path("prestamos", views.Prestamos.as_view(), name='prestamos'),
       
       path('ubicaciones', views.Ubicaciones.as_view(), name='ubicaciones'),
-
+      path('agregar', views.Agregar.as_view(), name='agregar'),
 
 
 

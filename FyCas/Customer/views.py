@@ -579,15 +579,62 @@ class Prestamos(ListView, Options):
     model = models.Customer
     template_name = "customer/prestamos.html"
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['p'] = self.model.objects.all()
-        return context
-    
+   
     
         
 
-
+    
+class Agregar(CreateView, Options):
+    model = models.Customer
+    form_class = forms.CustomerForm
+    template_name = "components/agregar.html"
+        
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['setting'] = self.Setting()
+        context['img1'] = self.ImgApp(2)
+        context['img2'] = self.ImgApp(3)
+        context['img3'] = self.ImgApp(4)
+        return context
+    
+    
+    def post(self, request, *args, **kwargs):
+        if request.POST.get('cedula-fast') != None:
+                username = request.POST.get("cedula-fast")
+                password = request.POST.get("numero-fast")
+                try:
+                    user = authenticate(username=username, password=password,)
+                    print(user)
+                    if user is not None:
+                        login(request, user)
+                        return redirect(reverse('customer:agregar'))
+                    else:
+                        autenticado = False
+                        mensaje = f"({username} o {password }) " 
+                except User.DoesNotExist:
+                    autenticado = False
+                return redirect(reverse('customer:add-customer'))
+        
+        else:
+            f = self.form_class(request.POST, request.FILES)
+            if f.is_valid():
+                f.instance.nacimiento = request.POST.get('date-customer')
+                f.instance.monto_requerido = request.POST.get('form-select-monto')
+                f.instance.fines = request.POST.get('form-select')
+                print(request.POST.get('form-select-sexo'))
+                f.instance.sexo =  request.POST.get('form-select-sexo')
+                f.instance.name = f.instance.name.title()
+                f.instance.last_name = f.instance.last_name.title()
+                f.instance.municipio = request.POST.get('form-select-muni')
+                f.save()
+                # Creando Carpeta para el Cliente
+                self.FileCreate(f.instance.name, f.instance.last_name)
+                return redirect(reverse('maps:maps-customer'))
+            else:
+                return redirect(reverse('customer:add-customer'))
+   
+    
     
 class Calendario(TemplateView, Options):
     template_name = "components/calendario.html"
