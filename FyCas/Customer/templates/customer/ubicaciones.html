@@ -43,8 +43,30 @@
       {
             font-size: 12px;
       }
+      .btn_sm
+      {
+            display: none !important;
+      }
 </style>
+<style>
+      @keyframes flip-down {
+    0% {
+        transform: rotateX(-90deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
+}
 
+/* Clase que aplicará la animación */
+.flip-down {
+    animation: flip-down 0.5s ease-out forwards;
+    transform-origin: bottom; /* Punto de rotación */
+    opacity: 0; /* Oculto por defecto */
+}
+</style>
 <div  class="w-100 position-absolute bottom-0  d-flex justify-content-center" >
       <div class="colors uno" style="background-color: #ffd588; margin-left: 1rem;"></div>
       <div class="colors dos" style="margin-left: 2rem !important; background-color: rgb(243, 85, 85);"></div>
@@ -57,21 +79,22 @@
       <div id="map" class="bg-white bg-opacity-10"> </div>
       <div class="">
             {% include "components/btn-filter.html" %}
-      </div>
-      <span class="text-black-50 ms-5" style="font-size: 12px;">
-            Es posible que las geolocalizaciones no sean precisas
-      </span>
-      <div class="w-100 d-flex justify-content-end ">
-            <div id="config-list" class="w-100 justify-content-center d-flex flex-wrap overflow-scroll" 
-                  style="justify-content: center;  z-index: 100; max-width: 70rem;">
+            <span class="text-black-50 ms-5" style="font-size: 12px;">
+                  Es posible que las geolocalizaciones no sean precisas
+            </span>
+            <div class="w-100 d-flex justify-content-end ">
+                  <div id="config-list" class="w-100 justify-content-center d-flex flex-wrap overflow-scroll" 
+                        style="justify-content: center;  z-index: 100; max-width: 70rem;">
+                  </div>
             </div>
+      
+            <div id="text-c" class="w-100 justify-content-start mt-2 ms-5 ps-2  flex-wrap" 
+                  style="display: none; z-index: 105; bottom: 1rem;" >
+                  <h5 class=" " style='font-size: 16px;'  >
+                        "<span id="user-no"></span>"  No registrado
+                  </h5>
+            </div>  
       </div>
-      <div id="text-c" class="w-100 justify-content-start mt-2 ms-5 ps-2  flex-wrap" 
-            style="display: none; z-index: 105; bottom: 1rem;" >
-            <h5 class=" " style='font-size: 16px;'  >
-                  "<span id="user-no"></span>"  No registrado
-            </h5>
-      </div>  
 </section>
 <script>
       let searching_config = document.querySelector('.searching-config');
@@ -90,7 +113,7 @@ window.addEventListener("DOMContentLoaded", function() {
                         searching_config.addEventListener('input', (event) => {
                         const input_value = event.target.value;
                         const filtered_data = data.filter((config) => {
-                              return config.name.toLowerCase().includes(input_value.toLowerCase());
+                              return config.filter.toLowerCase().includes(input_value.toLowerCase());
                         });
                         config_list.innerHTML = ''
                         var divList = document.getElementById('div-list-customer') 
@@ -110,7 +133,7 @@ window.addEventListener("DOMContentLoaded", function() {
                         div.classList.add("contdiv",  'justify-content-center' ,'d-flex',)
                         const divCont = document.createElement('div');
                         divCont.classList.add('contDiv' , 'justify-content-start' ,'d-flex',  )
-                        div.classList.add("divCon", "p-2", 'ps-5', 'pe-5', 'card', 'justify-content-center' ,'d-flex', "bg-white", "bg-opacity-50" )
+                        div.classList.add("divCon", "p-2", 'ps-5', 'pe-5', 'card', 'justify-content-center' ,'d-flex', "bg-white", "bg-opacity-50"     , 'flip-down')
                               let divI = document.createElement("div")
                               const imgLink = document.createElement('a');
                               let divL = document.createElement("div")

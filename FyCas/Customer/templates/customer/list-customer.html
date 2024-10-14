@@ -375,7 +375,7 @@ window.addEventListener("DOMContentLoaded", function() {
                   searching_config.addEventListener('input', (event) => {
                   const input_value = event.target.value;
                   const filtered_data = data.filter((config) => {
-                        return config.name.toLowerCase().includes(input_value.toLowerCase());
+                        return config.filter.toLowerCase().includes(input_value.toLowerCase());
                     });
                     config_list.innerHTML = ''
                     var divList = document.getElementById('div-list-customer') 

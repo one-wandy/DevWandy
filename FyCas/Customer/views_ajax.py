@@ -14,6 +14,7 @@ def SearchCustomer(request):
       for c in models.Customer.objects.all():
             dict_customer = { 
                     'id': c.id,
+                    'filter':    c.name + " " + c.last_name + c.dni + c.calle_numero + "," + c.municipio +  ',' + c.sector +  ',' + c.ciudad +  c.work_information + c.number,
                     'name': c.name + " " + c.last_name,
                     "dni": c.dni,
                     "ubication": c.calle_numero + "," + c.municipio +  ',' + c.sector +  ',' + c.ciudad, 

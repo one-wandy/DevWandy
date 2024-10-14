@@ -343,6 +343,7 @@ a
 
       -webkit-backdrop-filter: blur(100px) !important;
       backdrop-filter: blur(100px) !important;
+
 }
 .fycas
 {
@@ -469,6 +470,25 @@ select option {
       }
  .blur-up {
       filter:blur(30px);
+}
+@keyframes flip-down2 {
+    0% {
+        transform: rotateX(-90deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+/* Clase que aplicará la animación */
+.flip-down2 {
+    animation: flip-down2 0.5s ease-out forwards;
+
+    -webkit-backdrop-filter: blur(40px) !important;
+      backdrop-filter: blur(40px) !important;
+    transform-origin: left; /* Punto de rotación */
 }
     /* Improving visualization in light mode */
   </style>
@@ -1067,6 +1087,7 @@ function Cal() {
                         div.classList.remove('d-none')
                         document.getElementById('plazo-es').focus()
                         document.querySelector('.btn-calculadora').classList.add('btn-pulse')
+                        div.classList.add('flip-down2');
             
                   } else {
                         div.classList.add('d-none')
