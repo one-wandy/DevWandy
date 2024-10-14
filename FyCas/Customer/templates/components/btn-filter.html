@@ -64,7 +64,24 @@ strong
 
       
 </div>
-<button class="border-1 p-2 bg-white bg-opacity-75 mt-1 blur  btn-number2 " style="  border: 0px rgb(225, 225, 225) solid !important;">
+
+      <button onclick="Min()" class="mt-1 ms-2 border-0 btn_sm bg-black bg-opacity-10">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">      <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+          </svg>
+      </button>
+      <span class="results-sr text-black p-2 d-flex text-black-50 justify-content-center" style="width: 2.2rem;">
+            
+      </span>
+      <button onclick="Plus()" class="mt-1 border-0 btn_sm  bg-black bg-opacity-10">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                </svg>
+      </button>      
+      <button class="mt-1 btn_sm" onclick="searchElement()">
+               Buscar         
+      </button>
+
+<button class="border-1 p-2 bg-white bg-opacity-75 mt-1 blur d-none  btn-number2 " style="  border: 0px rgb(225, 225, 225) solid !important;">
       <form action="" method="post" class='w-100 border-0  d-flex justify-content-end flex-wrap'>
             {% csrf_token %}
             <div class="d-flex  justify-content-center ms-1" >
@@ -76,6 +93,9 @@ strong
                         <input id="n-1123" type="number" class='m-0 pb-2 border-0 form-control bg-transparent ' 
                         style='height: 1.6rem; width: 4rem; ' value='{{count_client}}' max="{{customer_count}}" min="1" name='20-customer' >
                   {% endif %}
+                  <button class="d-none" id="btn_sr">
+
+                  </button>
             </div>
             <!-- <button class='p-0 border-0 me-2' style="border: none !important; background-color: transparent !important;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-filter  text-primary border-0 bg-transparent" viewBox="0 0 16 16">
@@ -101,7 +121,28 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+
+let results_plus_rest = document.querySelector('.results-sr')
+let input_sr = document.getElementById("n-1123");
+window.onload = Ini()
+function Ini() {
+            input_sr.value = parseInt(input_sr.value) 
+            results_plus_rest.innerHTML = input_sr.value
+        }
+function Plus() {
+            input_sr.value = parseInt(input_sr.value) + 1;
+            results_plus_rest.innerHTML = input_sr.value
+        }
+
+        // Función para restar al valor del input_sr
+function Min() {
+            input_sr.value = parseInt(input_sr.value) - 1;
+            results_plus_rest.innerHTML = input_sr.value
+        }
         
+function searchElement(){
+      $('#btn_sr').click()
+}
 </script>
 
 
