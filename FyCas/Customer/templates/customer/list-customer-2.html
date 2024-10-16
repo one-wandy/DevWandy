@@ -97,17 +97,20 @@
 {% include "components/div-options.html" %} 
 {% if customer %}
       {% for c in customer %}
-            <div id="client{{c.id}}" data-aos="fade-down" style="  width: 338px; height: 171px; border-radius: 26px;  transition: 1s !important;
-            background-color: #ffffffc6 !important; box-shadow: 0px 1px 3px 1px rgba(218, 218, 218, 0.505);" class=" position-relative card-cu m-1   p-2 " >
-                  <button id="{{c.id}}"  onclick='OpenCloseBtn(this.id)' style="background-color: #35333e00; width: 35px; height: 35px; color: #000000 !important; top: 8rem; box-shadow: #eeeeee 1px 1px 1px 1px; border: 1px solid #eeeeee !important;"  class="rounded-circle  position-absolute border-0  p-0 me-2 mb-2 end-0 d-flex flex-wrap justify-content-center align-content-center ">
-                        <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important; color: #909090 !important;" width="25" height="25" fill="currentColor" class="bi bi-chevron-down m-0 mt-1 p-0" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
-                        </svg>
+<div style="  width: 338px; height: 171px; " class="position-relative  m-1 d-flex justify-content-center">
+
+
+      <div id="client{{c.id}}"  data-aos="zoom-in-down" style=" transition: 1s ease-out !important;  width: 338px; height: 171px; border-radius: 26px;   z-index: 0 !important; background-color: #ffffffc6 !important;
+                  box-shadow: 0px 1px 3px 1px rgba(218, 218, 218, 0.505);" class=" position-relative card-cu m-1   p-2 " >
+                  <button id="{{c.id}}"  onclick='OpenCloseBtn(this.id)' style="background-color: #35333e00; width: 35px; height: 35px; color: #000000 !important; top: 8rem; box-shadow: #eeeeee00 1px 1px 1px 1px; border: 0px solid #a7a7a7 !important; border-style: dotted !important;"   class="rounded-circle  position-absolute border-0  p-0 me-2 mb-2 end-0 d-flex flex-wrap justify-content-center align-content-center ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots " style="margin-top: 10px;" viewBox="0 0 16 16">
+                              <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+                            </svg>
                   </button>
                   <div class="m-0 p-0" >
                         <div class="d-flex">
                         
-                              <span style="   border: 6px rgb(167, 167, 167)  ; border-style:dotted; transition: 0.9s ease  !important; " 
+                              <span style="   border: 6px #a7a7a7  ; border-style:dotted; transition: 0.9s ease  !important; " 
                                     class="p-1  img-span rounded-circle ">
                                     <img src="{{c.img1.url}}" class="  img-icons object-fit-cover" style="width: 57px; height: 57px; border-radius: 50%; "  alt=""> 
                               </span>
@@ -120,16 +123,14 @@
                                     </div>
                               </a>
                         </div>
-                  <div class="ms-1 mt-3 overflow-hidden">  
+                  <div class="ms-1 mt-3 overflow-visible">  
                               <span class="d-flex text2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill m-0 mt-1 me-1 p-0 " viewBox="0 0 16 16">
                                           <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
                                     </svg> {{c.dni}}
                               </span>
                               
-                              <a  href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}}"  class="m-0 p-0   " style="width: max-content; 
-                              {% comment %} background-color: #eeeeee; {% endcomment %}
-                              ">
+                              <a  href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}}"  class="m-0 p-0   " style="width: max-content; ">
                                     <span class="d-flex text2 ">
                                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill me-1 mt-1" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
@@ -150,8 +151,12 @@
                   </div>
                   </div>
 
-                  {% include "customer/extends-customer.html" %} 
+
+                  
             </div>
+            {% include "customer/extends-customer.html" %} 
+
+</div>
       {% endfor %}
 {% else %}
             <div class="warning vh-100 d-flex justify-content-center align-content-center flex-wrap w-100">
@@ -164,7 +169,8 @@
                         " href="{% url "customer:list-customer" %}" style="max-width: 4rem;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill text-primary me-1" style="margin-top: 3px;" viewBox="0 0 16 16">
                               <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
-                            </svg>                        Atras
+                            </svg>
+                            Atras
                         </a>
                   </p>
                

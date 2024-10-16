@@ -119,7 +119,7 @@ class ListCustomer(ListView,Options):
         for credito in creditos:
             for field in credito._meta.fields:
                 if isinstance(getattr(credito, field.name), str):  # Verifica si el campo es una cadena
-                    setattr(credito, field.name, getattr(credito, field.name).upper())
+                    setattr(credito, field.name, getattr(credito, field.name).title())
             credito.save()
 
 
