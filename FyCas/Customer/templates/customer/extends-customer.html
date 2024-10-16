@@ -42,12 +42,11 @@
       }
 </style>
 
-<div id='div-more{{c.id}}' class='  d-none   extends-div w-100 position-absolute  start-0 p-1  ' 
-      style='top: 6.5rem; border-radius: 2rem; font-family: Quicksand, sans-serif; min-height: 4.4rem;
-      border: 1px solid rgb(237, 237, 237); color: black; font-size: 16px; z-index: 1000 !important; box-shadow: #eeeeee 1px 2px 6px 1px; 
-
-
-       background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+<div id='div-more{{c.id}}' class='  d-none   extends-div w-100  position-absolute  start-0 p-1  ' 
+      style='top: 9.3rem; border-radius: 2rem; font-family: Quicksand, sans-serif; min-height: 3rem;
+      border: 1px solid rgb(237, 237, 237); color: black; font-size: 16px;  box-shadow: #9f9f9f77 1px 2px 6px 1px;  z-index: 1000 !important;
+      -webkit-backdrop-filter: blur(30px) !important;
+      backdrop-filter: blur(30px) !important;
       '>
       <style>
             #div-more{{c.id}}, span:hover {
@@ -60,37 +59,34 @@
 
       <hr class="m-0 " style="color: #eeeeee;">
 
-
-
       <span class="w-100  justify-content-end start-0 position-absolute top-0 p-2" 
             style="width: max-content; height: max-content;">
-            <button  id='{{c.id}}'  onclick="OpenCloseBtn(this.id)" class="  p-3 rounded-circle   me-2 border-0 d-flex w-100 h-100 justify-content-center flex-wrap align-content-center position-absolute end-0" style="max-width: 15px; height: 16px !important; z-index: 100;  margin-top: 10px;
-            background-color: rgba(255, 255, 255, 0); color: #7b7b7b !important; "> 
+            <button  id='{{c.id}}'  onclick="OpenCloseBtn(this.id)" class="  p-3 rounded-circle   me-2 border-0 d-flex w-100 h-100 justify-content-center flex-wrap align-content-center position-absolute end-0" style="max-width: 15px; height: 16px !important; z-index: 100;  margin-top:0px;
+            background-color: rgba(255, 255, 255, 0); color: #cfcfcf !important; "> 
                   X
             </button>
       </span> 
 
-      <div class="d-flex w-100 justify-content-start btns-options  mt-2 ms-2">
+      <div class="d-flex w-100 justify-content-start btns-options   ms-2">
             <style>
                   .btns-options button
                   {
                         border-radius: 2rem;
                         color: #252525;
                         background-color: rgb(255, 255, 255) !important;
-                        border: 0px;
+
                         padding: 10px  18px !important;
                         font-size: 12px;
                         font-weight: normal !important;
+                        border: 1px solid rgb(229, 229, 229);
                   }
             </style>
             <button onclick="Option(this.id)" id="{{c.id}}">    
-                  <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important; color: #909090 !important; "  width="16" height="16" fill="currentColor" class="bi bi-chevron-down m-0  p-0" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/></svg> 
+        
                   Acciones 
             </button>
             <button onclick="Detail(this.id)" id="{{c.id}}"> 
-                     <svg xmlns="http://www.w3.org/2000/svg" style="width: 16px !important; color: #909090 !important; "  width="16" height="16" fill="currentColor" class="bi bi-chevron-down m-0  p-0" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
-                  </svg> 
+
                   Detalles del cliente 
             </button>
       </div>
@@ -254,7 +250,7 @@
             </span>
             <span class='w-100 d-flex justify-content-center btn-share-con'>
                   {% if c.customer_verify == False %}
-                  <button class='text-white border-0'  id='{{c.id}}'  onclick='CustomerVerify(this.id)'    id="{{c.id}}"  style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
+                  <button class='text-white border-0'  id='{{c.id}}' onclick='CustomerVerify(this.id)'    id="{{c.id}}"  style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
                         Verificar
                   </button>
                   {% else %}
@@ -262,9 +258,7 @@
                         Eliminar
                   </button>
                   {% endif %}
-                  <button class=' border-0'  onclick='DisableCustomer(this.id)' id="{{c.id}}"  style=' border-radius: 1.5rem;  '>
-                        Eliminar
-                  </button>
+                  
                   <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} su solicitud ha sido declinada en este momento. para mas detalles, haga clic en el siguiente enlace -> https://grupofycas.online/no-approved/customer" >
                         <button class=' '
                               style='border-radius: 1.5rem;'>
