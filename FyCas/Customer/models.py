@@ -249,3 +249,15 @@ class CustomerDebit(models.Model):
     
     def __str__(self):
         return self.name
+    
+    
+class CashControl(models.Model):
+        date = models.DateField(default=timezone.now)
+        opening_balance = models.DecimalField(max_digits=10, decimal_places=2)
+        closing_balance = models.DecimalField(max_digits=10, decimal_places=2)
+        total_income = models.DecimalField(max_digits=10, decimal_places=2)
+        total_expenses = models.DecimalField(max_digits=10, decimal_places=2)
+        notes = models.TextField(blank=True, null=True)
+
+        def __str__(self):
+            return f"Cash Control for {self.date}"

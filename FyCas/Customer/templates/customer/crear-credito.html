@@ -3,7 +3,13 @@
 {% extends "base/base.html" %}
 {% block content %}
 {% load humanize %}
-      <style>
+{% load static %}
+
+<style>
+            .btn-cliente
+            {
+                  background-color: #eeeeee !important;
+            }
             .text-black-50 
             {
                   font-size: 14px;
@@ -21,101 +27,263 @@
             {
                   background-color: rebeccapurple !important;
             }
-        .inputs  
+            .inputs  
             {
                   border: 1px rgb(255, 255, 255);
                   outline: none !important;
             }
-      </style>
-      <section style=" " class='d-flex credits  h-100 justify-content-center flex-wrap p-3'>
-            <div class="w-100 d-flex "  >
-                 <div style="width: 400px;"  > {% include "customer/user-profile.html" %}  </div>
-                 
-                 <div class="w-100">
-            
-                  {% if cuotas %}   
-                     <div class='d-flex flex-wrap w-100 '>
-                           <span class='w-100'>
-                                 Capital
-                                 ${{credit.amount|intcomma}}.00
-                              </span>
-                              <span>
-                                Porcentaje {{credit.tasa}} %
-                              </span>
-                              <span class="w-100">
-                                    Intereses ${{cc|intcomma}}.00
-                              </span>
-                              <span class="w-100">
-                                    Pagado ${{cp|intcomma}}.00
-                              </span>
-               
-                     </div>
-                     {% for cuota in cuotas %}
-                           <div class="" style="width: 400px;">
-                                 <li class="w-100  bg-black bg-opacity-10 rounded-4 position-relative p-2 mt-1">
-                                       <strong  class="text-black-50"> (#{{ forloop.counter }})  </strong>   ${{cuota.cuota|intcomma}}.00
-                                    {% if cuota.abonado > 0  %}
-                                          <div class="ms-3">
-                                                <strong> Monto abonado:
-                                                      ${{cuota.abonado|intcomma}}.00
-                                                </strong>
-                                                
-                                          </div>
-                                          <div class="ms-3">
-                                                <strong> Monto restante:
-                                                      ${{cuota.restante|intcomma}}.00
-                                                </strong>
-                                          </div>
-                                    {% endif %}
-                                       <div class="d-block ">
-                                             <strong>Informacion</strong>
-                                       </div>
-                                       <span style="font-size: 12px;">
-                                             Vence el 3/10/2024
-                                       </span>
-                                       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle-fill text-primary position-absolute end-0 d-none me-2 mt-1 top-0"  viewBox="0 0 16 16" style="min-width: 20px;" id="check{{cuota.id}}">
-                                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                                      </svg> 
-                                
-                                     {% if cuota.estado == True %}
-                                     
-                                     <svg xmlns="http://www.w3.org/2000/svg" onclick="AplicarPago(this.id)" id="{{cuota.id}}" width="25" height="25" fill="currentColor" class="bi bi-check-circle-fill text-primary position-absolute end-0 me-2 mt-1 top-0"  viewBox="0 0 16 16" style="min-width: 20px;">
-                                           <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                                       </svg> 
-                                       {% else %}
-                                          <div class="d-flex " style="height: 2.5rem;">
-                                                <input type="text"id="ct-p{{cuota.id}}"   class="bg-white inputs w-100  p-2  border-1 outline-none" placeholder="Cantidad" min="1" max="{{cuota.restante}}"  style="border-radius: 1rem; ">
-                                                <button onclick="AplicarPago(this.id)" id="{{cuota.id}}" >
-                                                      Aplicar 
-                                                </button>
-                                          </div>
-                                    {% endif %}
-                                 </li>
-                           </div>
-   
-                     {% endfor %}
-                  {% endif %}
-               </div>
+            .di-cn {
+                  border-radius: 1.5rem;
+                  padding: 0.5rem 1rem;
+                  display: inline-block;
+                  margin: 0.2rem;
+                  width: max-content;
+            }  
+            .di-cn span
+            {
+                  color: #909090 !important;
+                  font-size: 12px;
+            }
+            .di-cn strong
+            {
+                  color: #909090 !important;
+                  font-size: 16px;
+            }
+            table td 
+            {
+                  font-size: 13px; color: #7e7e7ebc;
+            }
+            table th 
+            {
+                  font-size: 16px; color: #7e7e7ebc;
+            }
+            .fixed-bottom {
+                  background-color: #343a40;
+                  color: white;
+                  text-align: center;
+                  padding: 0.5rem;
+                  width: 100%;
+            }
+            .btn-apple {
+                  display: inline-block;
+                  padding: 0.5rem 1rem !important;
+                  border-radius: 1.5rem;
+                  background-color: white !important;
+                  color: #797979;
+                  font-size: 16px;
+                  font-weight: normal;
+                  text-align: center;
+                  text-decoration: none;
+                  transition: all 0.3s ease;
+                  width: max-content !important;
+            }
+            .btn-apple:hover {    
+                  box-shadow: 5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff;
+            }
+            .py-3 img 
+            {
+                  margin-right: 0.5rem;
+            }
+            .btn-es 
+            {
+                  background-color: rgba(125, 125, 125, 0);
+                  color: rgb(117, 117, 117);
+                  border: 0px;
+                  border-radius: 2rem;
+            }
+            .btn-es-on
+            {
+                  background-color: rgb(126, 171, 255);
+                  color: white;
+            } 
+            .input-of
+            {
+                  background-color: #efefef !important;
+                  border: none !important;
+            }
+</style>
+<div  class="w-100 position-absolute bottom-0  d-flex justify-content-center" style="filter: blur(120px);" >
+      <div class="colors uno" style="background-color: #ffd588; margin-left: 1rem;"></div>
+      <div class="colors dos" style="margin-left: 2rem !important; background-color: rgb(243, 85, 85);"></div>
+      <div class="colors tres" style="margin-left: 17rem; margin-top: 20rem; background-color: rgb(178, 89, 230);"></div>
+</div>
+<section class='d-flex credits  overflow-scroll vh-100 position-relative  justify-content-center flex-wrap'>
+      <div class="d-flex w-100 justify-content-start ">
+            {% include "customer/user-profile.html" %}  
+      </div>
+      <!-- <div class="w-100 p-2">
+            <strong class="text-black-50" style="font-size: 12px;">
+                  Acciones
+            </strong>
+      </div> -->
+      <div class="w-100 d-flex  justify-content-center flex-wrap p-2" >
+            {% if cuotas %}   
+            <div class="d-flex justify-content-center w-100 py-3">
+                  <button class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('historial')"> 
+                        <img src="{% static "icons/movimiento.png" %}" width='24' alt=""> Movimientos</button>
+                  <button class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('factura')">
+                        <img src="{% static "icons/recibo.png" %}" width='24' alt=""> Generar Factura</button>
+                  <button class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('voucher')"> 
+                        <img src="{% static "icons/comprobante.png" %}" width='24' alt="">  Comprobantes</button>
+                  <button class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('voucher')"> 
+                        <img src="{% static "svg/calculator.svg" %}" width='24' alt="">  Calculadora</button>
+                        <button class="btn btn-apple btn-primary mx-2" > 
+                        <a class="" href="{% url "customer:update-credit" credit.id %}">
+                              <img src="{% static "icons/editar.png" %}" width='24' alt="">  Editar
+                        </a>
+                  </button>
             </div>
-            
-            {% if cuotas == none %}
-                  <form action="" method="post">
-                        {% csrf_token %}
-                        {{form}}
+            <div class="w-100 p-2  ">
+                  <strong class="text-black-50" style="font-size: 12px;">
+                        Listados de creditos
+                  </strong>
+            </div>
+            <div class='d-flex justify-content-start p-2 overflow-scroll  w-100 align-content-center '>
+                  {% include "components/list-credi.html" %}
+            </div>
+      
+           <div class="bg-white bg-opacity-50 w-100 overflow-scroll" style="height: 20rem;">
+            <table class=" w-100 b rounded-4 m-3 ">
+                  <thead>
+                        <tr>
+                              <th>#</th>
+                              <th>Cuota</th>
+                              <th>Mora</th>
+                              <th>Pagado</th>
+                              <th>Restante</th>
+                              <th>Estado</th>
+                              <th>Inicio</th>
+                              <th>Final</th>
+                              <th style="width: 20rem;">Acción</th>
+                        </tr>
+                  </thead>
+                  <tbody>
+                        {% for cuota in cuotas %}
+                        <tr>
+                              <td>{{ forloop.counter }}</td>
+                              <td>${{ cuota.cuota|intcomma }}.00</td>
+                              <td></td>
+                              <td>
+                                    {% if cuota.abonado > 0 %}
+                                    ${{ cuota.abonado|intcomma }}.00
+                                    {% else %}
+                                    N/A
+                                    {% endif %}
+                              </td>
+                              <td>
+                                    {% if cuota.abonado > 0 %}
+                                    ${{ cuota.restante|intcomma }}.00
+                                    {% else %}
+                                    N/A
+                                    {% endif %}
+                              </td>
+                              <td >  {% if cuota.estado %}  Pagado
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-patch-check-fill  text-primary" viewBox="0 0 16 16">
+                                          <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
+                                          </svg> 
+                                          {% else %}
 
-                        <button class="bg-white" style="border-radius: 2rem;">Listado de cuotas</button>
-                  </form>
+                                          {% endif %}  </td>
+                              <td> 3/10/2024</td>
+                              <td> 3/11/2024</td>
+
+
+                              <td class=" ">
+                                    {% if cuota.estado == True %}
+                                    <svg xmlns="http://www.w3.org/2000/svg" onclick="AplicarPago(this.id)" id="{{ cuota.id }}" width="25" height="25" fill="currentColor" class="bi bi-check-circle-fill text-primary" viewBox="0 0 16 16"></svg>
+                                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>
+                                    {% else %}
+                                    <div class="d-flex " style="height: 2.5rem;">
+                                          <input type="text" id="ct-p{{ cuota.id }}" class="bg-white  bg-opacity-10 inputs  p-2  outline-none" placeholder="Cantidad" min="1" max="{{ cuota.restante }}" style="border-radius: 1rem; width: 5rem; 
+                                          border: 1px solid rgb(195, 195, 195)  ;">
+                                          <button onclick="AplicarPago(this.id)" disabled="true" class=' btn-es' id="{{ cuota.id }}">N/A</button>
+                                    </div>
+                                    {% endif %}
+                              </td>
+                        </tr>
+                        {% endfor %}
+                  </tbody>
+            </table> 
+           </div>
+            <div class="justify-content-center mt-3 w-100 position-sticky blur bottom-0 d-flex rounded-2" 
+            style="background-color: #ffffff9c;">
+            <div class="di-cn">
+                  <strong>Capital:</strong> <span>${{ credit.amount|intcomma }}.00</span>
+            </div>
+            <div class="di-cn">
+                  <strong>Tasa:</strong> <span>{{ credit.tasa }}%</span>
+            </div>
+            <div class="di-cn">
+                  <strong>Capital mas intereses:</strong> <span>${{ cc|intcomma }}.00</span>
+            </div>
+            <div class="di-cn">
+                  <strong>Total pagado:</strong> <span>${{ cp|intcomma }}.00</span>
+            </div>
+            <div class="di-cn">
+                  <strong>Restante:</strong> <span>${{ cp|intcomma }}.00</span>
+            </div>
+
+      </div>
             {% endif %}
-      </section>
-      <input type="text" id="{{cuotas.id}}" class="d-none inp-id">
+      </div>
+      
+      
+      {% if cuotas == none %}
+      <form action="" method="post">
+            {% csrf_token %}
+            {{form}}
+            <button class="bg-white" style="border-radius: 2rem;">Listado de cuotas</button>
+      </form>
+      {% endif %}
+      
+      
+      <div class=" position-sticky bottom-0 w-100 start-0  text-white text-center ">
+
+            <div id="historial" class="position-absolute top-50 start-50 translate-middle bg-white p-3 d-none" style="z-index: 1050;">
+                  <button class="btn btn-danger" onclick="closeDiv('historial')">Cerrar</button>
+                  <p>Contenido del Historial</p>
+            </div>
+
+            <div id="factura" class="position-absolute top-50 start-50 translate-middle bg-white p-3 d-none" style="z-index: 1050;">
+                  <button class="btn btn-danger" onclick="closeDiv('factura')">Cerrar</button>
+                  <p>Contenido de Generar Factura</p>
+            </div>
+
+            <div id="voucher" class="position-absolute top-50 start-50 translate-middle bg-white p-3 d-none" style="z-index: 1050;">
+                  <button class="btn btn-danger" onclick="closeDiv('voucher')">Cerrar</button>
+                  <p>Contenido del Voucher</p>
+            </div>
+
+            <script>
+            function toggleDiv(divId) {
+                  const divs = ['historial', 'factura', 'voucher'];
+                  divs.forEach(id => {
+                        if (id === divId) {
+                              document.getElementById(id).classList.toggle('d-none');
+                        } else {
+                              document.getElementById(id).classList.add('d-none');
+                        }
+                  });
+            }
+
+            function closeDiv(divId) {
+                        document.getElementById(divId).classList.add('d-none');
+                  }
+            </script>
+      </div>
+
+</section>
+<input type="number" value="{{cp}}" class="d-none input-ip">
+<input type="text" id="{{cuotas.id}}" class="d-none inp-id">
 <script>
       window.onload = () => {
             let input_id = document.querySelector(".inp-id");
-            console.log()
-               alert(input_id.id)
             if (input_id) {
                   document.querySelector('#div-more'+input_id.id).classList.add('surper-bg')
             }
+         
+   
         };
 
 
@@ -136,35 +304,76 @@ function AplicarPago(ID){
 }
 
 document.querySelectorAll('.inputs').forEach(input => {
-          input.addEventListener('input', function(e) {
-              // Remueve todo lo que no sea dígito
-              let value = this.value.replace(/\D/g, '');
-      
-              // Convierte el valor a número y lo compara con el máximo
-              let max = parseInt(this.getAttribute('max'));
-      
-              if (parseInt(value) > max) {
+      input.addEventListener('input', function(e) {
+            let btnID = this.id.replace(/\D/g, '');
+            // Remueve todo lo que no sea dígito
+            let value = this.value.replace(/\D/g, '');
+
+            // Convierte el valor a número y lo compara con el máximo
+            let max = parseInt(this.getAttribute('max'));
+
+            if (parseInt(value) > max) {
                   // Si el valor es mayor al máximo, ajusta el valor al máximo permitido
-                  value = max.toString()
-              }
-      
-              // Añade comas en los lugares correctos
-              this.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-                  
-              // Cambia el borde si el valor es igual al máximo
-              if (parseInt(value) === max) {
-                  this.style.border = '4px solid green';
+                  // value = max.toString();
+            }
+
+            // Añade comas en los lugares correctos
+            this.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+            // Cambia el borde si el valor es igual al máximo
+            if (parseInt(value) === max) {
+                  this.style.border = '2px solid green';
             } else {
                   this.style.border = ''; // Restablece el estilo original si no es igual al máximo
-              }
-      
-              // Evita letras y otros caracteres no numéricos
-              if (/\D/.test(e.data)) {
-                  this.value = this.value.replace(e.data, '');
-              }
-      
+                  this.style.border = '1px solid #efefef';
+            }
 
-          });
+            // Evita letras y otros caracteres no numéricos
+            if (/\D/.test(e.data)) {
+                  this.value = this.value.replace(e.data, '');
+            }
+
+            // Muestra el botón si hay un valor en el input
+            if (value) {
+                  document.getElementById(btnID).disabled = false;
+                  document.getElementById(btnID).classList.add('btn-es-on');
+                  
+                  
+                  if (parseInt(value) > max) {
+                        let abonar = parseInt(value) - max;
+                        if(parseInt(value) >= parseInt(document.querySelector('.input-ip').value)) {
+                              this.value = parseInt(document.querySelector('.input-ip').value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                              document.getElementById(btnID).textContent = 'Saldar prestamo $'+ this.value
+                        } else {
+                              document.getElementById(btnID).textContent = 'Saldar y abonar $'+ abonar.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); 
+                        }
+                        this.style.border = '2px solid green';
+                  } 
+                  else if(parseInt(value) === max){
+                        document.getElementById(btnID).textContent = 'Saldar cuota';
+                  }
+                  else {
+                        document.getElementById(btnID).textContent = 'Aplicar';
+                  }
+
+
+
+            } else {
+                  document.getElementById(btnID).disabled = true;
+                  document.getElementById(btnID).textContent = 'N/A';
+                  document.getElementById(btnID).classList.remove('btn-es-on');
+            }  });
 });
+
+document.querySelectorAll('.inputs').forEach((input, index) => {
+      if (index > 0) {
+            input.disabled = true;  
+            input.classList.add('input-of');
+            input.setAttribute('placeholder', 'N/A');
+            
+      }
+});
+
+
 </script>
 {% endblock  %}

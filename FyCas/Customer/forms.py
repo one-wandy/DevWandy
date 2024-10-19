@@ -156,3 +156,17 @@ class CuotaForm(forms.ModelForm):
             'creado': forms.DateInput(attrs={'type': 'date'}),  # Para un selector de fecha
             'pago': forms.TextInput(attrs={'placeholder': 'Día del pago'}),  # Campo de texto
         }
+        
+        
+class CashControlForm(forms.ModelForm):
+        class Meta:
+            model = models.CashControl
+            fields = ['date', 'opening_balance', 'closing_balance', 'total_income', 'total_expenses', 'notes']
+            widgets = {
+                'date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+                'opening_balance': forms.NumberInput(attrs={'class': 'form-control'}),
+                'closing_balance': forms.NumberInput(attrs={'class': 'form-control'}),
+                'total_income': forms.NumberInput(attrs={'class': 'form-control'}),
+                'total_expenses': forms.NumberInput(attrs={'class': 'form-control'}),
+                'notes': forms.Textarea(attrs={'class': 'form-control'}),
+            }

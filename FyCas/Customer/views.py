@@ -391,6 +391,7 @@ class UpdateCredit(UpdateView, Options):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['c'] = self.model.objects.get(id=self.kwargs.get('pk')).customer 
+        context['credit'] = self.model.objects.get(id=self.kwargs.get('pk'))
         return context
     
     def form_valid(self, form_class):
@@ -691,7 +692,7 @@ class Configuraciones(TemplateView, Options):
     
     
     
-class CrearCredito(TemplateView):
+class CrearCredito(TemplateView, Options):
     model = models.Cuota  # Define el modelo que se va a crear
     template_name = "customer/crear-credito.html"  # Nombre de la plantilla
 
@@ -749,6 +750,7 @@ class CrearCredito(TemplateView):
         context['cc'] = p_x_c - c_p
         context['cp'] = c_p
         context['c'] =  credit.customer
+        context['setting'] = self.Setting()
         if credit.credito.exists() == True:
                 context['cuotas'] = cuotas
         return context

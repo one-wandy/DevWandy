@@ -13,21 +13,21 @@
    
     {% for credit in c.credit.all %}
     
-    <div class='bg-white credit-sp w-100 p-3 pb-0 card position-relative  text-black-50 opacity-75' 
+    <div class='bg-white credit-sp w-100 p-3 pb-0 me-1 card position-relative  text-black-50 opacity-75' 
     style=" min-width: 320px;   max-width: 320px; 
     font-size: 14px;
     border-radius: 1.9rem; height: max-content ; box-shadow: #eeeeee 1px 2px 6px 1px; border: 1px solid #eeeeeed7 !important;">
-{% if credit.estado == True %}
-<svg xmlns="http://www.w3.org/2000/svg" onclick="AplicarPago(this.id)" id="{{cuota.id}}" width="25" height="25" fill="currentColor" class="bi bi-check-circle-fill text-primary position-absolute end-0 me-2 mt-1 top-0"  viewBox="0 0 16 16" style="min-width: 20px;">
-      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-  </svg> 
-{% endif %}
+      {% if credit.estado == True %}
+      <svg xmlns="http://www.w3.org/2000/svg" onclick="AplicarPago(this.id)" id="{{cuota.id}}" width="25" height="25" fill="currentColor" class="bi bi-check-circle-fill text-primary position-absolute end-0 me-2 mt-1 top-0"  viewBox="0 0 16 16" style="min-width: 20px;">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </svg> 
+      {% endif %}
 
     <div class="">
           {% if credit.is_active == True %} 
           <a class=""  href="{% url "customer:update-credit" credit.id %}">
           <span class="black"> </span>
-              <strong>Nombre:   </strong>  {{credit.name}} 
+              <strong >Fecha:   </strong>  <span class="text-black-50"> {{credit.day_created|date:"F/d/Y" }}</span>
           </a>
           {% else %}
           <span class=""></span>
@@ -35,28 +35,32 @@
           {% endif %}
 
     </div>
-    <div>
+    <!-- <div>
       <a class="" href="{% url "customer:crear-credito" credit.id %}">
-           <span class=""></span>
-           <strong>Cedula: </strong>         {{credit.dni}}
-     </a>
-</div>
+            <span class=""></span>
+            <strong>Cedula: </strong>         {{credit.dni}}
+      </a>
+      </div> -->
+<a class="" href="{% url "customer:crear-credito" credit.id %}">
+      <div>
+            <span class=""></span>
+            <strong>No.: </strong>  <span class="text-black-50">  {{credit.no_account}}</span>
+      </div>
+</a>
 <div>
     <span class=""></span>
-    <strong>No.: </strong>   {{credit.no_account}}
+    <strong>Monto: </strong> <span class="text-black-50">${{credit.amount|intcomma}}.00</span>
 </div>
 <div>
-    <span class=""></span>
-    <strong>Monto: </strong> ${{credit.amount|intcomma}}.00
-</div>
-<div>
-    <span class=""></span>
-    <strong>Cuotas: </strong> #
-    {{credit.price_feed}} a ${{credit.amount_feed|intcomma}} los dias {% if credit.mode_pay == True %}
-    (15) - (30)
-    {% else %}
-    ({{credit.day_pay}})
-    {% endif %}
+
+    <strong>Cuotas: </strong>
+    <span class="text-black-50">
+      # {{credit.price_feed}} a ${{credit.amount_feed|intcomma}} los dias {% if credit.mode_pay == True %}
+      (15) - (30)
+      {% else %}
+      ({{credit.day_pay}})
+      {% endif %}
+    </span>
 </div>
 
 <div class=""> 
@@ -78,7 +82,7 @@
       }
 </style>
 
-      <div class='d-flex btn-share-con w-100  justify-content-center mt-2'>
+      <div class='d-flex btn-share-con w-100  justify-content-center mt-2 mb-2'>
             <a  class='w-100 m-0' 
                   href="https://api.whatsapp.com/send?phone=+18092998306&text=*({{credit.customer.name}} {{credit.customer.last_name}})*, Firmado el *{{fecha_actual}}*; Detalles -> https://grupofycas.online/detail-credit/customer/{{credit.id}}" >
                   <button >
@@ -97,12 +101,6 @@
                         Notarial
                   </button>
             </a>
-      </div>
-
-      <div>
-            <span style="font-size: 12px;" class="text-black-50 d-flex justify-content-end mt-1 w-100 pe-2 ">
-                {{credit.day_created|date:"F/d/Y" }}
-            </span>
       </div>
 </div>
 
