@@ -709,6 +709,10 @@ class CrearCredito(TemplateView, Options):
     
     
     def Calculadora_Francesa(self, capital, tasa, plazo, credit):
+        if tasa != 0:
+                tasa = tasa / 100
+        else:
+                tasa = 15
         tasa = tasa / 100
         if credit.credito.exists() == True:
             return 'Ya Existen cuotas para este credito'
@@ -788,7 +792,11 @@ class CrearCredito(TemplateView, Options):
     
     
     def CalFran(self, capital, tasa, plazo, filter_l):
-            tasa = tasa / 100
+
+            if tasa != 0:
+                tasa = tasa / 100
+            else:
+                tasa = 15
             # Calcular la cuota mensual
             cuotas = capital * tasa / (1 - (1 + tasa) ** -plazo)
             saldo = capital

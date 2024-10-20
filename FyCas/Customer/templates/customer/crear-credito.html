@@ -185,18 +185,9 @@
                   {% include "components/list-credi.html" %}
             </div>
             
-            <div class="w-100 p-2">
-                  <strong class="text-black-50 w-100" style="font-size: 12px;">
-                        Nota
-                  </strong> 
 
-                      <span style='font-size: 12px' class="text-black-50">
-                        “Si es la primera cuota que vas a pagar, ingresa un 0 y envía para actualizar. Esto corregirá un error en la función. También puedes ingresar el monto, ya que no afectará el resultado. Esto solo pasara en la primera cuota, gracias de antemanos estamos trabajando”
-                      </span>
 
-            </div>
-
-           <div class="bg-white bg-opacity-50 w-100 overflow-scroll" style="height: 20rem;">
+           <div class="bg-white bg-opacity-50 w-100 overflow-scroll mt-3" style="height: 20rem;">
             <table class=" w-100 b rounded-4 m-3 ">
                   <thead>
                         <tr>
@@ -265,7 +256,13 @@
                   <strong>Capital:</strong> <span>${{ credit.amount|intcomma }}.00</span>
             </div>
             <div class="di-cn">
-                  <strong>Tasa:</strong> <span>{{ credit.tasa }}%</span>
+                  <strong>Tasa:</strong> <span> 
+                        {% if credit.tasa == 0 %}
+                              15%
+                        {% else %}
+                              {{ credit.tasa }}%
+                        {% endif %}
+                        </span>
             </div>
             {% comment %} <div class="di-cn">
                   <strong>Capital mas intereses:</strong> <span>
@@ -280,7 +277,7 @@
                   <strong>Total pagado:</strong> <span>${{ cp|intcomma }}.00</span>
             </div>
             <div class="di-cn">
-                  <strong>Restante:</strong> <span> 
+                  <strong>Total al saldo:</strong> <span> 
                         {% if cc == 1 %}
                         $00.00
                         {% else %}
