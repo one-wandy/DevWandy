@@ -101,6 +101,9 @@
                   background-color: #efefef !important;
                   border: none !important;
             }
+            .super-shadow {
+                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1) !important;
+            }
 </style>
 <div  class="w-100 position-absolute bottom-0  d-flex justify-content-center" style="filter: blur(120px);" >
       <div class="colors uno" style="background-color: #ffd588; margin-left: 1rem;"></div>
@@ -299,17 +302,23 @@
 </section>
 <input type="number" value="{{cc}}" class="d-none input-ip">
 <input type="text" id="{{cuotas.id}}" class="d-none inp-id">
+<input type="text" id="cuotas_credit{{credit.id}}" class="d-none input-credit">
 <script>
       window.onload = () => {
+       
             let input_id = document.querySelector(".inp-id");
             if (input_id) {
                   document.querySelector('#div-more'+input_id.id).classList.add('surper-bg')
             }
-         
+            
+     
    
         };
 
-
+      let input_credit = document.querySelector(".input-credit");
+      if (input_credit) {
+            document.getElementById(input_credit.id).classList.add('super-shadow');
+      }
 function AplicarPago(ID){
 
             let input = document.getElementById('ct-p'+ID).value
