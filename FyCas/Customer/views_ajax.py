@@ -152,8 +152,11 @@ def AplicarPago(request):
             monto_abonado = int(request.GET.get('input'))
             cu.abonado += monto_abonado
             cu.restante = max(cu.cuota - cu.abonado, 0)
+
             if cu.abonado >= cu.cuota:
                 cu.abonado = cu.cuota
+
+
             if cu.cuota == cu.abonado:
                 cu.estado = True
             cu.save()

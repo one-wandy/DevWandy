@@ -691,7 +691,8 @@ class Configuraciones(TemplateView, Options):
     template_name = "components/configuraciones.html"
     
     
-    
+from dateutil.relativedelta import relativedelta
+from calendar import monthrange
 class CrearCredito(TemplateView, Options):
     model = models.Cuota  # Define el modelo que se va a crear
     template_name = "customer/crear-credito.html"  # Nombre de la plantilla
@@ -717,15 +718,45 @@ class CrearCredito(TemplateView, Options):
             saldo = capital
             total_intereses = 1
 
+            def adjust_day_for_month(date, day):
+                """Ajusta el día para que sea válido en el mes dado."""
+                last_day_of_month = monthrange(date.year, date.month)[1]
+                return min(day, last_day_of_month)
+
+            day_pay = credit.day_pay
+
+            today = datetime.now()
+            start_date = today.replace(day=1)
+
+            # Si el día actual es mayor o igual al 30, empezar el próximo mes
+            if today.day >= 30:
+                start_date = start_date + relativedelta(months=1)
+                start_date = start_date.replace(day=1)
+
             for mes in range(1, plazo + 1):
                 interes = saldo * tasa
                 amortizacion_capital = cuotas - interes
                 saldo -= amortizacion_capital
                 total_intereses += interes
 
+                # Ajusta el día al 1 de cada mes para start_date
+                start_date = start_date + relativedelta(months=1)
+                start_date = start_date.replace(day=1)
+                
+                # Ajusta el end_date al 30 de cada mes, excepto febrero que debe terminar el 28
+                if start_date.month == 2:
+                    end_date = start_date.replace(day=28)
+                    if day_pay == 15:
+                        end_date = end_date.replace(day=15)
+                else:
+                    end_date = start_date.replace(day=day_pay)
+
                 cuota = models.Cuota.objects.create(
-                    credito = credit,
-                    cuota = round(cuotas, 2),)
+                    credito=credit,
+                    cuota=round(cuotas, 2),
+                    start_date=start_date,
+                    end_date=end_date,
+                )
 
             return 'Creado'
 

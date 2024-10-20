@@ -210,6 +210,20 @@ class Cuota(models.Model):
         creado = models.DateField(default=timezone.now,  null=True, blank=True) #Dia en el que se creo la cuota mandatoria
         pago = models.CharField(default='', max_length=20,  null=True, blank=True) #Dia en que se realizo el pago
         estado = models.BooleanField(default=False,  null=True, blank=True) #Estado de  pago
+
+        start_date = models.DateField(default=timezone.now, null=True, blank=True)
+        end_date = models.DateField(null=True, blank=True)
+
+        # def save(self, *args, **kwargs):
+        #     if self.start_date:
+        #         next_month = self.start_date.month % 12 + 1
+        #         year_increment = (self.start_date.month + 1) // 13
+        #         self.end_date = self.start_date.replace(month=next_month, year=self.start_date.year + year_increment)
+        #     elif self.end_date:
+        #         next_month = self.end_date.month % 12 + 1
+        #         year_increment = (self.end_date.month + 1) // 13
+        #         self.end_date = self.end_date.replace(month=next_month, year=self.end_date.year + year_increment)
+        #     super(Cuota, self).save(*args, **kwargs)
         
         def __str__(self):
             return str(self.cuota)
