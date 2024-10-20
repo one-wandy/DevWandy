@@ -141,7 +141,18 @@
             <div class='d-flex justify-content-start p-2 overflow-scroll  w-100 align-content-center '>
                   {% include "components/list-credi.html" %}
             </div>
-      
+            
+            <div class="w-100 p-2">
+                  <strong class="text-black-50 w-100" style="font-size: 12px;">
+                        Nota
+                  </strong> 
+
+                      <span style='font-size: 12px' class="text-black-50">
+                        “Si es la primera cuota que vas a pagar, ingresa un 0 y envía para actualizar. Esto corregirá un error en la función. También puedes ingresar el monto, ya que no afectará el resultado. Esto solo pasara en la primera cuota, gracias de antemanos estamos trabajando”
+                      </span>
+
+            </div>
+
            <div class="bg-white bg-opacity-50 w-100 overflow-scroll" style="height: 20rem;">
             <table class=" w-100 b rounded-4 m-3 ">
                   <thead>
@@ -214,14 +225,26 @@
             <div class="di-cn">
                   <strong>Tasa:</strong> <span>{{ credit.tasa }}%</span>
             </div>
-            <div class="di-cn">
-                  <strong>Capital mas intereses:</strong> <span>${{ cc|intcomma }}.00</span>
-            </div>
+            {% comment %} <div class="di-cn">
+                  <strong>Capital mas intereses:</strong> <span>
+                        {% if cc == 1 %}
+                        $00.00
+                        {% else %}
+                        ${{ cc|intcomma }}.00
+                        {% endif %}
+                  </span>
+            </div> {% endcomment %}
             <div class="di-cn">
                   <strong>Total pagado:</strong> <span>${{ cp|intcomma }}.00</span>
             </div>
             <div class="di-cn">
-                  <strong>Restante:</strong> <span>${{ cp|intcomma }}.00</span>
+                  <strong>Restante:</strong> <span> 
+                        {% if cc == 1 %}
+                        $00.00
+                        {% else %}
+                        ${{ cc|intcomma }}.00
+                        {% endif %}
+                  </span>
             </div>
 
       </div>
@@ -274,7 +297,7 @@
       </div>
 
 </section>
-<input type="number" value="{{cp}}" class="d-none input-ip">
+<input type="number" value="{{cc}}" class="d-none input-ip">
 <input type="text" id="{{cuotas.id}}" class="d-none inp-id">
 <script>
       window.onload = () => {
@@ -288,7 +311,10 @@
 
 
 function AplicarPago(ID){
-      let input = document.getElementById('ct-p'+ID).value
+
+            let input = document.getElementById('ct-p'+ID).value
+
+  
       $.ajax({
             url:  '/aplicar-pago',
             data: {
@@ -296,22 +322,28 @@ function AplicarPago(ID){
                   input:   input.replace(/,/g, ''),
             },
             success: (D) => { 
-                  document.getElementById(D.id).classList.add('d-none')
-                  document.getElementById('check'+D.id).classList.remove('d-none')
-                   location.reload();
+                  if (document.getElementById(D.id)) {
+                        document.getElementById(D.id).classList.add('d-none');
+                  }
+                  if (document.getElementById('check' + D.id)) {
+                        document.getElementById('check' + D.id).classList.remove('d-none');
+                  }  location.reload();
             } 
       })
 }
 
 document.querySelectorAll('.inputs').forEach(input => {
       input.addEventListener('input', function(e) {
+
+            
             let btnID = this.id.replace(/\D/g, '');
             // Remueve todo lo que no sea dígito
             let value = this.value.replace(/\D/g, '');
-
+            
             // Convierte el valor a número y lo compara con el máximo
             let max = parseInt(this.getAttribute('max'));
-
+            console.log(max);
+ 
             if (parseInt(value) > max) {
                   // Si el valor es mayor al máximo, ajusta el valor al máximo permitido
                   // value = max.toString();
@@ -339,23 +371,25 @@ document.querySelectorAll('.inputs').forEach(input => {
                   document.getElementById(btnID).classList.add('btn-es-on');
                   
                   
-                  if (parseInt(value) > max) {
-                        let abonar = parseInt(value) - max;
-                        if(parseInt(value) >= parseInt(document.querySelector('.input-ip').value)) {
-                              this.value = parseInt(document.querySelector('.input-ip').value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-                              document.getElementById(btnID).textContent = 'Saldar prestamo $'+ this.value
-                        } else {
-                              document.getElementById(btnID).textContent = 'Saldar y abonar $'+ abonar.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); 
-                        }
-                        this.style.border = '2px solid green';
+            document.getElementById(btnID).textContent = 'Abonar';
+            if (parseInt(value) > max) {
+                  this.style.border = '2px solid green';
+            } 
+            else if (parseInt(value) == max) {
+                  let ab = max
+                   document.getElementById(btnID).textContent = 'Saldar cuota $' + ab.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');  
+                  
+            }
+            
+            
+            if (parseInt(value) > max){
+                  let ab = parseInt(value)  - max
+                  document.getElementById(btnID).textContent = 'Saldar y abonar $' + ab.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');  
+                  if (parseInt(value) >= parseInt(document.querySelector('.input-ip').value)) {
+                        this.value = parseInt(document.querySelector('.input-ip').value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                        document.getElementById(btnID).textContent = 'Saldar prestamo $' + this.value;
                   } 
-                  else if(parseInt(value) === max){
-                        document.getElementById(btnID).textContent = 'Saldar cuota';
-                  }
-                  else {
-                        document.getElementById(btnID).textContent = 'Aplicar';
-                  }
-
+             }
 
 
             } else {
@@ -370,6 +404,8 @@ document.querySelectorAll('.inputs').forEach((input, index) => {
             input.disabled = true;  
             input.classList.add('input-of');
             input.setAttribute('placeholder', 'N/A');
+
+
             
       }
 });

@@ -135,8 +135,18 @@ def CreateCreditAjax(request):
     
 def AplicarPago(request):
     cu = models.Cuota.objects.get(id=request.GET.get('id'))
+    cu_ta = models.Cuota.objects.get(id=request.GET.get('id'))
     # print(request.GET.get('input'), 'soii')
-    print(cu.credito.estado, 'siuuuu')
+    credit = models.Credit.objects.get(id=cu.credito.id)
+    cuotas_o =  credit.credito.all()
+    p_x_c = 1
+    c_p = 0
+        
+    for cuo in cuotas_o:
+        p_x_c += cu.cuota
+        if cuo.abonado > 0:
+            c_p += cuo.abonado
+    print(c_p, 'siuuu')
     if  cu.estado == False:
         if cu.cuota != cu.abonado:
             monto_abonado = int(request.GET.get('input'))
@@ -155,7 +165,7 @@ def AplicarPago(request):
         cu.credito.estado = False
         # cu.save()
     D = {
-        'id': cu.id
+        'id': cu_ta.id
     }
     
     return JsonResponse(D,  safe=False)    
