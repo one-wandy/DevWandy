@@ -55,7 +55,7 @@
             }
             table th 
             {
-                  font-size: 16px; color: #7e7e7ebc;
+                  font-size: 14px; color: #7e7e7ebc;
             }
             .fixed-bottom {
                   background-color: #343a40;
@@ -70,7 +70,7 @@
                   border-radius: 1.5rem;
                   background-color: white !important;
                   color: #797979;
-                  font-size: 16px;
+                  font-size: 14px;
                   font-weight: normal;
                   text-align: center;
                   text-decoration: none;
@@ -83,6 +83,7 @@
             .py-3 img 
             {
                   margin-right: 0.5rem;
+                  width: 20px;
             }
             .btn-es 
             {
@@ -106,43 +107,43 @@
                   background-color: rgba(237, 237, 237, 0.396) !important;
             }
             /* Definimos el efecto de flip-up */
-@keyframes flip-up {
-    0% {
-        transform: rotateX(90deg);
-        opacity: 0;
-    }
-    100% {
-        transform: rotateX(0deg);
-        opacity: 1;
-    }
-}
+            @keyframes flip-up {
+            0% {
+                  transform: rotateX(90deg);
+                  opacity: 0;
+            }
+            100% {
+                  transform: rotateX(0deg);
+                  opacity: 1;
+            }
+            }
 
-/* Clase que aplicará la animación */
-.flip-up {
-    animation: flip-up 0.8s ease-in-out;
-    transform-origin: top; /* Punto de rotación */
-    opacity: 0; /* Oculto por defecto */
-}
+            /* Clase que aplicará la animación */
+            .flip-up {
+            animation: flip-up 0.8s ease-in-out;
+            transform-origin: top; /* Punto de rotación */
+            opacity: 0; /* Oculto por defecto */
+            }
 
 
-/* Definimos el efecto de flip-down */
-@keyframes flip-down {
-    0% {
-        transform: rotateX(-90deg);
-        opacity: 0;
-    }
-    100% {
-        transform: rotateX(0deg);
-        opacity: 1;
-    }
-}
+            /* Definimos el efecto de flip-down */
+            @keyframes flip-down {
+            0% {
+                  transform: rotateX(-90deg);
+                  opacity: 0;
+            }
+            100% {
+                  transform: rotateX(0deg);
+                  opacity: 1;
+            }
+            }
 
-/* Clase que aplicará la animación */
-.flip-down {
-    animation: flip-down 1s ease-out ;
-    transform-origin: top; /* Punto de rotación */
-    opacity: 0; /* Oculto por defecto */
-}
+            /* Clase que aplicará la animación */
+            .flip-down {
+            animation: flip-down 1s ease-out ;
+            transform-origin: top; /* Punto de rotación */
+            opacity: 0; /* Oculto por defecto */
+            }
 </style>
 <div  class="w-100 position-absolute bottom-0  d-flex justify-content-center" style="filter: blur(120px);" >
       <div class="colors uno" style="background-color: #ffd588; margin-left: 1rem;"></div>
@@ -205,8 +206,8 @@
                               <th>Pagado</th>
                               <th>Restante</th>
                               <th>Estado</th>
-                              <th>Inicio</th>
-                              <th>Final</th>
+                              <th>Termina</th>
+                              <th>Vence</th>
                               <th style="width: 20rem;">Acciones de pago</th>
                         </tr>
                   </thead>
@@ -235,10 +236,11 @@
                                           <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
                                           </svg> 
                                           {% else %}
-                                                Inicia en 4 dias
+                                          N/A
+
                                           {% endif %}  </td>
-                              <td> {{cuota.start_date|date:"F/d/Y"}} </td>
-                              <td> {{cuota.end_date|date:"F/d/Y"}} </td>
+                              <td class="text-capitalize"> {{cuota.start_date|date:"F/d/Y"}} </td>
+                              <td class="text-capitalize"> {{cuota.end_date|date:"F/d/Y"}} </td>
 
 
                               <td class=" ">

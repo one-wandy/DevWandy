@@ -739,17 +739,16 @@ class CrearCredito(TemplateView, Options):
                 saldo -= amortizacion_capital
                 total_intereses += interes
 
-                # Ajusta el día al 1 de cada mes para start_date
+                # Ajusta el día al valor de day_pay para start_date
                 start_date = start_date + relativedelta(months=1)
-                start_date = start_date.replace(day=1)
-                
-                # Ajusta el end_date al 30 de cada mes, excepto febrero que debe terminar el 28
-                if start_date.month == 2:
-                    end_date = start_date.replace(day=28)
-                    if day_pay == 15:
-                        end_date = end_date.replace(day=15)
+                last_day_of_month = monthrange(start_date.year, start_date.month)[1]
+                if day_pay > last_day_of_month:
+                    start_date = start_date.replace(day=last_day_of_month)
                 else:
-                    end_date = start_date.replace(day=day_pay)
+                    start_date = start_date.replace(day=day_pay)
+                
+                # Ajusta el end_date al valor de day_pay más 5
+                end_date = start_date + timedelta(days=5)
 
                 cuota = models.Cuota.objects.create(
                     credito=credit,
