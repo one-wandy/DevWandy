@@ -68,13 +68,14 @@
                   display: inline-block;
                   padding: 0.5rem 1rem !important;
                   border-radius: 1.5rem;
-                  background-color: white !important;
+                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1) !important;
+                  background-color: rgba(237, 237, 237, 0.396) !important;
                   color: #797979;
                   font-size: 14px;
                   font-weight: normal;
                   text-align: center;
                   text-decoration: none;
-                  transition: all 0.3s ease;
+                  transition: all 1s ease;
                   width: max-content !important;
             }
             .btn-apple:hover {    
@@ -150,7 +151,7 @@
       <div class="colors dos" style="margin-left: 2rem !important; background-color: rgb(243, 85, 85);"></div>
       <div class="colors tres" style="margin-left: 17rem; margin-top: 20rem; background-color: rgb(178, 89, 230);"></div>
 </div>
-<section data-aos="fade-down" class='d-flex credits  overflow-scroll vh-100 position-relative  justify-content-center flex-wrap'>
+<section data-aos="fade-down" class='d-flex credits  overflow-scroll bg-white bg-opacity-10 vh-100 position-relative  justify-content-center flex-wrap'>
       <div class="d-flex w-100 justify-content-start  ">
             {% include "customer/user-profile.html" %}  
       </div>
@@ -162,15 +163,15 @@
       <div class="w-100 d-flex  justify-content-center flex-wrap p-2" >
             {% if cuotas %}   
             <div class="d-flex justify-content-center w-100 py-3">
-                  <button class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('historial')"> 
+                  <button data-aos="fade-right" class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('historial')"> 
                         <img src="{% static "icons/movimiento.png" %}" width='24' alt=""> Movimientos</button>
-                  <button class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('factura')">
+                  <button data-aos="fade-right" class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('factura')">
                         <img src="{% static "icons/recibo.png" %}" width='24' alt=""> Generar Factura</button>
-                  <button class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('voucher')"> 
+                  <button data-aos="fade-right" class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('voucher')"> 
                         <img src="{% static "icons/comprobante.png" %}" width='24' alt="">  Comprobantes</button>
-                  <button class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('voucher')"> 
+                  <button data-aos="fade-right" class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('voucher')"> 
                         <img src="{% static "icons/notify.png" %}" width='24' alt="">  Recordatorio</button>
-                        <button class="btn btn-apple btn-primary mx-2" > 
+                        <button data-aos="fade-right" class="btn btn-apple btn-primary mx-2" > 
                         <a class="" href="{% url "customer:update-credit" credit.id %}">
                               <img src="{% static "icons/editar.png" %}" width='24' alt="">  Editar
                         </a>
@@ -181,14 +182,14 @@
                         Listados de creditos
                   </strong>
             </div>
-            <div class='d-flex justify-content-start p-2 overflow-scroll  w-100 align-content-center '>
+            <div class='d-flex justify-content-start p-2 pb-4 overflow-scroll   w-100 align-content-center '>
                   {% include "components/list-credi.html" %}
             </div>
             
 
 
-           <div class="bg-white bg-opacity-50 w-100 overflow-scroll mt-3" style="height: 20rem;">
-            <table class=" w-100 b rounded-4 m-3 ">
+           <div class=" rounded-5 w-100 super-shadow d-flex flex-wrap justify-content-center overflow-scroll " style="height: 45vh;  ">
+            <table class=" w-100 b rounded-4 m-3  ">
                   <thead>
                         <tr>
                               <th>#</th>
@@ -249,9 +250,8 @@
                         {% endfor %}
                   </tbody>
             </table> 
-           </div>
-            <div class="justify-content-start mt-3 w-100 position-sticky blur bottom-0 d-flex rounded-5" 
-            style="background-color: #ffffff9c; border-top: 0px rgb(207, 207, 207) solid;">
+            <div class="justify-content-center  w-100 position-sticky blur bottom-0 d-flex rounded-0" 
+            style="background-color: #ffffff4e; border-top: 0px rgb(207, 207, 207) solid; margin-top: 15rem;">
             <div class="di-cn">
                   <strong>Capital:</strong> <span>${{ credit.amount|intcomma }}.00</span>
             </div>
@@ -286,7 +286,9 @@
                   </span>
             </div>
 
-      </div>
+            </div>
+           </div>
+          
             {% endif %}
       </div>
       
