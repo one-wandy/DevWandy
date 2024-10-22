@@ -771,11 +771,15 @@ class CrearCredito(TemplateView, Options):
         p_x_c = 1
         c_p = 0
         
+        p_cuotas = 0
+        c_cuotas = cuotas.count()
         for cu in cuotas:
             p_x_c += cu.cuota
             if cu.abonado > 0:
                 c_p += cu.abonado
                 
+            if cu.estado == True:
+                p_cuotas += 1
     
                 
         context = super().get_context_data(**kwargs)
@@ -783,6 +787,8 @@ class CrearCredito(TemplateView, Options):
         context['credit'] =  credit
         context['cc'] = p_x_c - c_p
         context['cp'] = c_p
+        context['c_cuotas'] = c_cuotas
+        context['p_cuotas'] = p_cuotas
         context['c'] =  credit.customer
         context['setting'] = self.Setting()
         if credit.credito.exists() == True:
