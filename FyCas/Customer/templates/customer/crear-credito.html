@@ -46,7 +46,7 @@
             }
             .di-cn strong
             {
-                  color: #909090 !important;
+                  color: #acacac !important;
                   font-size: 12px ;
             }
             table td 
@@ -145,13 +145,42 @@
             transform-origin: top; /* Punto de rotación */
             opacity: 0; /* Oculto por defecto */
             }
+
+            .green-span {
+                        background-color: #ebf4ff; /* Light green background */
+                        color: #005180; /* Green text */
+                        font-weight: bold;
+                        font-size: 12px;
+                        padding: 0.2rem 0.5rem;
+                        border-radius: 1rem;
+            }
+            .grey-span {
+                  background-color: #ececec8d; /* Light green background */
+                        color: #aaaaaa !important; /* Green text */
+                        font-weight: bold;
+                        font-size: 12px;
+                        padding: 0.2rem 0.5rem;
+                        border-radius: 1rem;
+            }
+            @keyframes moveInCircle {
+                  0% {
+                        transform: rotate(0deg) translateX(50px) rotate(0deg);
+                  }
+                  100% {
+                        transform: rotate(360deg) translateX(50px) rotate(-360deg);
+                  }
+            }
+
+            .colors {
+                  animation: moveInCircle 7s linear infinite;
+            }
 </style>
-<div  class="w-100 position-absolute bottom-0  d-flex justify-content-center" style="filter: blur(120px);" >
-      <div class="colors uno" style="background-color: #ffd588; margin-left: 1rem;"></div>
-      <div class="colors dos" style="margin-left: 2rem !important; background-color: rgb(243, 85, 85);"></div>
-      <div class="colors tres" style="margin-left: 17rem; margin-top: 20rem; background-color: rgb(178, 89, 230);"></div>
+<div  class="w-100 position-absolute bottom-top h-100 d-flex justify-content-around flex-wrap align-content-center" style="filter: blur(70px);" >
+      <div class="colors uno" style="background-color: hsl(254, 100%, 83%); margin-left: 1rem;margin-bottom: 15rem;"></div>
+      <div class="colors dos" style="margin-left: 2rem !important; margin-top: 19rem; background-color: rgb(85, 243, 238);"></div>
+      <div class="colors tres" style="margin-left: 5rem; margin-top: 5rem; background-color: rgb(255, 160, 151);"></div>
 </div>
-<section data-aos="fade-down" class='d-flex credits  overflow-scroll bg-white bg-opacity-10 vh-100 position-relative  justify-content-center flex-wrap'>
+<section data-aos="fade-down" class='d-flex credits  overflow-scroll bg-white bg-opacity-10 h-100 position-relative  justify-content-center flex-wrap'>
       <div class="d-flex w-100 justify-content-start  ">
             {% include "customer/user-profile.html" %}  
       </div>
@@ -160,7 +189,7 @@
                   Acciones
             </strong>
       </div> -->
-      <div class="w-100 d-flex  justify-content-center flex-wrap p-2" >
+      <div class="w-100 d-flex  justify-content-around flex-wrap " >
             {% if cuotas %}   
             <div class="d-flex justify-content-center w-100 py-3">
                   <button data-aos="fade-right" class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('historial')"> 
@@ -182,81 +211,18 @@
                         Listados de creditos
                   </strong>
             </div>
-            <div class='d-flex justify-content-start p-2 pb-4 overflow-scroll   w-100 align-content-center '>
+            <div class='d-flex justify-content-start p-2 pb-1 overflow-scroll   w-100 align-content-center '>
                   {% include "components/list-credi.html" %}
             </div>
             
 
-
-           <div class=" rounded-5 w-100 super-shadow d-flex flex-wrap justify-content-center overflow-scroll " style="height: 45vh;  ">
-            <table class=" w-100 b rounded-4 m-3  ">
-                  <thead>
-                        <tr>
-                              <th>#</th>
-                              <th>Cuota</th>
-                              <th>Mora</th>
-                              <th>Pagado</th>
-                              <th>Restante</th>
-                              <th>Estado</th>
-                              <th>Termina</th>
-                              <th>Vence</th>
-                              <th style="width: 20rem;">Acciones de pago</th>
-                        </tr>
-                  </thead>
-                  <tbody>
-                        {% for cuota in cuotas %}
-                        <tr>
-                              <td>{{ forloop.counter }}</td>
-                              <td>${{ cuota.cuota|intcomma }}.00</td>
-                              <td> N/A </td>
-                              <td>
-                                    {% if cuota.abonado > 0 %}
-                                    ${{ cuota.abonado|intcomma }}.00
-                                    {% else %}
-                                    N/A
-                                    {% endif %}
-                              </td>
-                              <td>
-                                    {% if cuota.abonado > 0 %}
-                                    ${{ cuota.restante|intcomma }}.00
-                                    {% else %}
-                                    N/A
-                                    {% endif %}
-                              </td>
-                              <td >  {% if cuota.estado %}  Completado
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-patch-check-fill  text-primary" viewBox="0 0 16 16">
-                                          <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
-                                          </svg> 
-                                          {% else %}
-                                          N/A
-
-                                          {% endif %}  </td>
-                              <td class="text-capitalize"> {{cuota.start_date|date:"F/d/Y"}} </td>
-                              <td class="text-capitalize"> {{cuota.end_date|date:"F/d/Y"}} </td>
-
-
-                              <td class=" ">
-                                    {% if cuota.estado == True %}
-                                          No hay acciones
-                                    {% else %}
-                                    <div class="d-flex " style="height: 2.5rem;">
-                                          <input type="text" id="ct-p{{ cuota.id }}" class="bg-white  bg-opacity-10 inputs  p-2  outline-none" placeholder="Cantidad" min="1" max="{{ cuota.restante }}" style="border-radius: 1rem; width: 5rem; 
-                                          border: 1px solid rgb(195, 195, 195)  ;">
-                                          <button onclick="AplicarPago(this.id)" disabled="true" class=' btn-es' id="{{ cuota.id }}">N/A</button>
-                                    </div>
-                                    {% endif %}
-                              </td>
-                        </tr>
-                        {% endfor %}
-                  </tbody>
-            </table> 
-            <div class="justify-content-center  w-100 position-sticky blur bottom-0 d-flex rounded-0" 
-            style="background-color: #ffffff4e; border-top: 0px rgb(207, 207, 207) solid; margin-top: 15rem;">
+            <div class="justify-content-center  w-100   bottom-0 d-flex rounded-0" 
+            style="background-color: #ffffff00; border-top: 0px rgb(207, 207, 207) solid; ">
             <div class="di-cn">
-                  <strong>Capital:</strong> <span>${{ credit.amount|intcomma }}.00</span>
+                  <strong>Capital:</strong> <span class="grey-span">${{ credit.amount|intcomma }}.00</span>
             </div>
             <div class="di-cn">
-                  <strong>Tasa:</strong> <span> 
+                  <strong>Tasa:</strong> <span class="grey-span"> 
                         {% if credit.tasa == 0 %}
                               15%
                         {% else %}
@@ -265,7 +231,7 @@
                         </span>
             </div>
             {% comment %} <div class="di-cn">
-                  <strong>Capital mas intereses:</strong> <span>
+                  <strong>Capital mas intereses:</strong> <span class="grey-span" >
                         {% if cc == 1 %}
                         $00.00
                         {% else %}
@@ -274,10 +240,10 @@
                   </span>
             </div> {% endcomment %}
             <div class="di-cn">
-                  <strong>Total pagado:</strong> <span>${{ cp|intcomma }}.00</span>
+                  <strong>Total pagado:</strong> <span class="grey-span">${{ cp|intcomma }}.00</span>
             </div>
             <div class="di-cn">
-                  <strong>Total al saldo:</strong> <span> 
+                  <strong>Total al saldo:</strong> <span class="grey-span"> 
                         {% if cc == 1 %}
                         $00.00
                         {% else %}
@@ -285,10 +251,91 @@
                         {% endif %}
                   </span>
             </div>
-
+            <div class="di-cn">
+                  <strong>Cuotas:</strong> <span class="grey-span">{{ p_cuotas }} / {{c_cuotas}} </span>
             </div>
-           </div>
-          
+      
+            </div>
+                
+           <div class=" rounded-5 me-2 ms-2 w-100 shadow bg-white bg-opacity-50  mb-2 d-flex flex-wrap justify-content-center overflow-scroll " style="height: 40vh;   ">
+            <table class=" w-100 b rounded-4 m-3  ">
+                  <thead>
+                        <tr>
+                              <th>#</th>
+                              <th>Cuota</th>
+                              <th>Mora</th>
+                              <th>Monto pagado</th>
+                              <th>Restante</th>
+                              <th>Estado de cuota</th>
+                              <th>Termina</th>
+                              <th>Vence</th>
+                              <th style="width: 20rem;">Acciones de aplicar pago </th>
+                        </tr>
+                  </thead>
+                  
+                  <tbody >
+                        
+                        {% for cuota in cuotas %}
+                        <tr>
+                              <td>{{ forloop.counter }}</td>
+                              <td> 
+                                    <span class="grey-span">
+
+                                          ${{ cuota.cuota|intcomma }}.00 
+                                    </span>
+                              </td>
+                              <td> ... </td>
+                              <td>
+                                    {% if cuota.abonado > 0 %}
+                                    <span class="grey-span">
+                                    ${{ cuota.abonado|intcomma }}.00
+                              </span>  
+                                    {% else %}
+                                          ...
+                                    {% endif %}
+                              </td>
+                              <td>
+                                    {% if cuota.abonado > 0 %}
+                                  <span class="grey-span">
+
+                                        ${{ cuota.restante|intcomma }}.00
+                                  </span>  
+                                    {% else %}
+                                          ...
+                                    {% endif %}
+                              </td>
+                              <td >  {% if cuota.estado %}  
+                                    <span class="green-span">
+                                          Completado
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-patch-check-fill  text-primary" viewBox="0 0 16 16">
+                                          <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
+                                          </svg> 
+
+                                          </span>
+                                          {% else %}
+                                          ...
+
+                                    {% endif %}  </td>
+                                    <td class="text-capitalize"> {{cuota.start_date|date:"m/d/Y"}} </td>
+                                    <td class="text-capitalize"> {{cuota.end_date|date:"m/d/Y"}} </td>
+
+                              <td class=" ">
+                                    {% if cuota.estado == True %}
+                                          ...
+                                    {% else %}
+                                    <div class="d-flex " style="height: 2.5rem;">
+                                          <input type="text" id="ct-p{{ cuota.id }}" class="bg-white  bg-opacity-10 inputs  p-2  outline-none" placeholder="Cantidad" min="1" max="{{ cuota.restante }}" style="border-radius: 1.5rem; width: 6rem; 
+                                          border: 1px solid rgb(213, 213, 213)  ;">
+                                          <button onclick="AplicarPago(this.id)" disabled="true" class=' btn-es' id="{{ cuota.id }}"></button>
+                                    </div>
+                                    {% endif %}
+                              </td>
+                        </tr>
+                        {% endfor %}
+                  </tbody>
+            </table> 
+      </div>
+  
             {% endif %}
       </div>
       
@@ -441,7 +488,7 @@ document.querySelectorAll('.inputs').forEach(input => {
 
             } else {
                   document.getElementById(btnID).disabled = true;
-                  document.getElementById(btnID).textContent = 'N/A';
+                  document.getElementById(btnID).textContent = '';
                   document.getElementById(btnID).classList.remove('btn-es-on');
             }  });
 });
@@ -451,6 +498,7 @@ document.querySelectorAll('.inputs').forEach((input, index) => {
             input.disabled = true;  
             input.classList.add('input-of');
             input.setAttribute('placeholder', 'N/A');
+            
 
 
             
