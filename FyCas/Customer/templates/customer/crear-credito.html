@@ -192,6 +192,8 @@
       <div class="w-100 d-flex  justify-content-around flex-wrap " >
             {% if cuotas %}   
             <div class="d-flex justify-content-center w-100 py-3">
+                  <button data-aos="fade-right" id="{{c.id}}" class="btn btn-apple btn-primary mx-2" onclick="OpenCloseBtnCredit(this.id)"> 
+                        <img src="{% static "icons/mas.png" %}" width='24' alt=""> Abrir credito</button>
                   <button data-aos="fade-right" class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('historial')"> 
                         <img src="{% static "icons/movimiento.png" %}" width='24' alt=""> Movimientos</button>
                   <button data-aos="fade-right" class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('factura')">
@@ -206,12 +208,60 @@
                         </a>
                   </button>
             </div>
+            <div  class='d-flex flex-wrap d-none bg-white mb-3 p-2 mt-2 ' id='div-credit{{c.id}}'
+            style="border-radius: 1.5rem;">
+            <section class="d-flex w-100  justify-content-center ">
+  
+                  <div class='form-floating w-100 m-1 justify-content-center' >
+                        <input type="text" class='form-control monto-input  ' value="999" id='monto{{c.id}}' placeholder='Monto a recibir' style='border-radius:2rem !important; '>
+                        <label for="monto{{c.id}}">Monto requirido</label>
+                  </div>
+
+                  <div class="form-floating w-100 m-1 justify-content-center">
+                        <input type="date"   class=' form-control' id='dia{{c.id}}'  style=" border-radius: 2rem;">
+                        <label for="dia{{c.id}}">Dia de pago</label>
+                  </div>
+            </section>
+            <div class="w-100">
+                  <span id="result-cuota{{c.id}}">
+
+                  </span>
+            </div>
+            <div class=''>
+                  
+                  <input type="text" class='m-0 mt-1 d-none  form-control input' id='monto_pagar{{c.id}}' placeholder='Monto a pagar' style='border-radius:2rem !important;'>
+            </div>
+            <span class='d-flex pe-2 mt-1 w-100 justify-content-end'>
+
+                  <button onclick="restar(this.id)" class='bg-transparent border-0 m-0 me-2 p-0' id='{{c.id}}'>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-dash-circle text-danger" viewBox="0 0 16 16">
+                              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                              <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                            </svg>
+                        {% comment %} Restar {% endcomment %}
+                  </button>
+                  
+                  <input type="number" min="0" class='m-0 text-center border-0  overflow-visible bg-transparent' value='1' id='cuotas{{c.id}}'   style='max-width: 3rem !important;' placeholder='Cuotas'>
+                  <button onclick="sumar(this.id)" class='border-0 bg-transparent p-0 m-0 ' id='{{c.id}}'>
+                        {% comment %} Sumar {% endcomment %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus-circle text-primary" viewBox="0 0 16 16">
+                              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                            </svg>
+                  </button>
+            </span>
+            <div class='w-100 mt-4 pt-3 d-flex  justify-content-end'>
+                  <button onclick='OpenCloseBtnCredit(this.id)' id='{{c.id}}' class=' bg-transparent border-0'>Cancelar</button>
+                  <button onclick='CreateCreditAjax(this.id)' id='{{c.id}}' class='text-white border-0 ' style='background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);border-radius: 1.5rem; width: 7rem;'> Crear</button>
+            </div>
+
+      </div>
             <div class="w-100 p-2  ">
                   <strong class="text-black-50" style="font-size: 12px;">
                         Listados de creditos
                   </strong>
             </div>
-            <div class='d-flex justify-content-start p-2 pb-1 overflow-scroll   w-100 align-content-center '>
+            <div class='d-flex justify-content-start p-2 pb-3 overflow-scroll   w-100 align-content-center '>
                   {% include "components/list-credi.html" %}
             </div>
             
@@ -504,5 +554,51 @@ document.querySelectorAll('.inputs').forEach((input, index) => {
             
       }
 });
+
+function OpenCloseBtnCredit(btn_id) {
+      const div = document.getElementById('div-credit' + btn_id);
+      if (div.classList.contains('d-none')) {
+            div.classList.remove('d-none');
+            div.classList.add('d-block');
+      } else if (div.classList.contains('d-block')) {
+            // document.getElementById('div-list-customer').classList.add('   ')
+            div.classList.remove('d-block');
+            div.classList.add('d-none');
+      }
+}
+
+function sumar(n) {
+      var inputNumero = document.getElementById("cuotas"+n);
+      var valorActual = parseInt(inputNumero.value);
+      inputNumero.value = valorActual + 1;
+      let numero_input = document.getElementById("monto"+n)
+      let numero = numero_input.value.replace(/,/g, ''); // Elimina las comas existentes
+      let capital = parseInt(numero)
+      SuperCalAuto(capital, document.querySelector("#cuotas"+n).value, 
+      0.15, 
+      "result-cuota"+n,
+      n
+      )
+};
+
+function restar(n) {
+      var inputNumero = document.getElementById("cuotas"+n);
+      var valorActual = parseInt(inputNumero.value);
+      let numero_input = document.getElementById("monto"+n)
+      if(valorActual > 0) {
+            inputNumero.value = valorActual - 1;
+      }
+
+      let numero = numero_input.value.replace(/,/g, ''); // Elimina las comas existentes
+      let capital = parseInt(numero)
+      SuperCalAuto(capital, document.querySelector("#cuotas"+n).value, 
+      0.15, 
+      "result-cuota"+n,
+      n
+      )
+}
+
+
+
 </script>
 {% endblock  %}

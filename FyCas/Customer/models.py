@@ -1,5 +1,9 @@
 from django.db import models
 from django.utils import timezone
+from PIL import Image
+import os
+from django.core.files.base import ContentFile
+from io import BytesIO
 
 # Create your models here.
 
@@ -45,8 +49,38 @@ class Customer(models.Model):
     dni = models.CharField( max_length=100) #Numero de Identidad
     amount = models.IntegerField(null=True)#Monto 
     no_account = models.IntegerField(default=0) #Numero de Cuentaloooo
+    
     img1 = models.ImageField(upload_to="media/",  blank=True, null=True, default="media/img-default/img.png")#Foto de Cedula delantera
-    img2 = models.ImageField(upload_to="media/", blank=True, null=True, default="media/img-default/img.png")#Foto de Cedula tracera
+    img2 = models.ImageField(upload_to="media/", blank=True, null=True, default="media/img-default/img.png")
+
+    def save(self, *args, **kwargs):
+        # Save the original instance first to ensure img1 is available
+        super(Customer, self).save(*args, **kwargs)
+
+        if self.img1:
+            try:
+                # Open the original image
+                img1_path = self.img1.path
+                img1 = Image.open(img1_path)
+
+                # Save the original image to img2
+                img2_io = BytesIO()
+                img1.save(img2_io, format=img1.format)
+                self.img2.save(os.path.basename(self.img1.name), ContentFile(img2_io.getvalue()), save=False)
+
+                # Resize img1 to 250p resolution
+                img1.thumbnail((50, 50))
+                img1_io = BytesIO()
+                img1.save(img1_io, format=img1.format, quality=5)  # Reduce quality to reduce file size
+
+                self.img1.save(os.path.basename(self.img1.name), ContentFile(img1_io.getvalue()), save=False)
+            except FileNotFoundError:
+                pass
+
+        super(Customer, self).save(*args, **kwargs)
+
+
+    #Foto de Cedula tracera
     name_r1 = models.CharField( max_length=255,  )#Nombre
     name_r2 = models.CharField( max_length=255,  )#Nombre
     number_r1 = models.CharField(default="",  max_length=30)#Numero local o Movile
