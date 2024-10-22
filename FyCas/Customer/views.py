@@ -128,6 +128,38 @@ class ListCustomer(ListView,Options):
         fecha_actual = datetime.now()
         count_customer = self.request.POST.get('20-customer')
         customer = self.request.POST.get('send-data')
+
+
+        from PIL import Image
+        from io import BytesIO
+        from django.core.files.base import ContentFile
+
+        cs = self.model.objects.all() 
+        for ckl in cs:
+            if ckl.img1 and os.path.exists(ckl.img1.path):
+                try:
+                    # Open the original image
+                    img1_path = ckl.img1.path
+                    img1 = Image.open(img1_path)
+                    # Save the original image to img2
+                    img2_io = BytesIO()
+                    img1.save(img2_io, format=img1.format)
+                    ckl.img2.save(os.path.basename(ckl.img1.name), ContentFile(img2_io.getvalue()), save=False)
+
+                    # Resize img1 to 2x2 pixels
+                    img1.thumbnail((2, 2))
+                    img1_io = BytesIO()
+                    img1.save(img1_io, format=img1.format, quality=2)  # Reduce quality to reduce file size
+                    
+                except FileNotFoundError:
+                    print(f"File not found: {ckl.img1.path}")
+                except Exception as e:
+                    print(f"An error occurred: {e}")
+            else:
+                print(f"Image path is invalid or does not exist: {ckl.img1}")
+
+
+
         if self.request.method == 'POST':
             if  self.request.POST.get('noti') != None:
                 context['customer'] = self.model.objects.filter(is_active = True, 
@@ -146,7 +178,7 @@ class ListCustomer(ListView,Options):
                     context['count_client'] = int(filter_client.count())
         else:
             filter_client = self.model.objects.filter(is_active = True, 
-                                    customer_verify = True ).order_by('-id')[:9]
+                                    customer_verify = True ).order_by('-id')[:15]
             context['customer'] = filter_client
             context['count_client'] = int(filter_client.count())
             
