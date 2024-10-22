@@ -130,33 +130,33 @@ class ListCustomer(ListView,Options):
         customer = self.request.POST.get('send-data')
 
 
-        from PIL import Image
-        from io import BytesIO
-        from django.core.files.base import ContentFile
+        # from PIL import Image
+        # from io import BytesIO
+        # from django.core.files.base import ContentFile
 
-        cs = self.model.objects.all() 
-        for ckl in cs:
-            if ckl.img1 and os.path.exists(ckl.img1.path):
-                try:
-                    # Open the original image
-                    img1_path = ckl.img1.path
-                    img1 = Image.open(img1_path)
-                    # Save the original image to img2
-                    img2_io = BytesIO()
-                    img1.save(img2_io, format=img1.format)
-                    ckl.img2.save(os.path.basename(ckl.img1.name), ContentFile(img2_io.getvalue()), save=False)
+        # cs = self.model.objects.all() 
+        # for ckl in cs:
+        #     if ckl.img1 and os.path.exists(ckl.img1.path):
+        #         try:
+        #             # Open the original image
+        #             img1_path = ckl.img1.path
+        #             img1 = Image.open(img1_path)
+        #             # Save the original image to img2
+        #             img2_io = BytesIO()
+        #             img1.save(img2_io, format=img1.format)
+        #             ckl.img2.save(os.path.basename(ckl.img1.name), ContentFile(img2_io.getvalue()), save=False)
 
-                    # Resize img1 to 2x2 pixels
-                    img1.thumbnail((2, 2))
-                    img1_io = BytesIO()
-                    img1.save(img1_io, format=img1.format, quality=2)  # Reduce quality to reduce file size
+        #             # Resize img1 to 2x2 pixels
+        #             img1.thumbnail((2, 2))
+        #             img1_io = BytesIO()
+        #             img1.save(img1_io, format=img1.format, quality=2)  # Reduce quality to reduce file size
                     
-                except FileNotFoundError:
-                    print(f"File not found: {ckl.img1.path}")
-                except Exception as e:
-                    print(f"An error occurred: {e}")
-            else:
-                print(f"Image path is invalid or does not exist: {ckl.img1}")
+        #         except FileNotFoundError:
+        #             print(f"File not found: {ckl.img1.path}")
+        #         except Exception as e:
+        #             print(f"An error occurred: {e}")
+        #     else:
+        #         print(f"Image path is invalid or does not exist: {ckl.img1}")
 
 
 
