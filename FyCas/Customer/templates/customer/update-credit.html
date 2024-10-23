@@ -142,41 +142,87 @@
      document.getElementById("id_dni").value =  document.getElementById("customer-dni").value 
 
 
-      let price_feed = document.getElementById("id_price_feed")
-      price_feed.addEventListener("input", () => {
-
-                  CalcularDivisas()
-
-      })
-      let amoun = document.getElementById("id_amount")
-      amoun.addEventListener("input", () => {
-            CalcularDivisas()
-      })
-
-      let amount_feed = document.getElementById("id_amount_feed")
-      amount_feed.addEventListener("input", () => {
-            CalcularDivisas()
-      })
+      // let price_feed = document.getElementById("id_price_feed")
+      // price_feed.addEventListener("input", () => {
 
 
-      window.onload = CalcularDivisas()
 
-      function CalcularDivisas() {
-            let p = parseFloat(document.getElementById("id_price_feed").value);
-            let amounts = parseFloat(document.getElementById("id_amount").value);
-            const int = p * 0.1;
-            // Formatear "intereses" con comas
-            let cuotas = int * amounts
-            let total = cuotas + amounts
-            let tt = total / p 
-            let total_c = Math.round(cuotas);
-            document.querySelector("#resultado-div").textContent = total.toLocaleString() ;
-            document.querySelector("#valor-div").textContent =  tt.toLocaleString()
+      // })
+      // let amoun = document.getElementById("id_amount")
+      // amoun.addEventListener("input", () => {
 
-}
+      // })
+
+      // let amount_feed = document.getElementById("id_amount_feed")
+      // amount_feed.addEventListener("input", () => {
+
+      // })
 
 
+
+
+
+let monto_update = document.getElementById('id_amount')
+
+monto_update.addEventListener("input", () => {
+      let numero = monto_update.value.replace(/,/g, ''); // Elimina las comas existentes
+      let capital = parseInt(numero)
+      let plazo =   plazoInput.value
+      let tasa = 0.15
+      SuperCalUpdate(capital, plazo, tasa)
+});
+let plazo_update = document.getElementById('id_price_feed')
+plazo_update.addEventListener("input", () => {
+      let numero = monto_update.value.replace(/,/g, ''); // Elimina las comas existentes
+      let capital = parseInt(numero)
+      let plazo =   plazo_update.value
+      let tasa = 0.15
+      SuperCalUpdate(capital, plazo, tasa)
+});
+
+
+
+let SuperCalUpdate = (capital, plazo, tasa)=> {
+      
+      const Cuotas = capital * tasa / (1 - Math.pow(1 + tasa, -plazo));
+      let amortizacion = [];
+      let saldo = capital;
+      let totalIntereses = 0; 
+      for (let mes = 1; mes <= plazo; mes++) {
+            const interes = saldo * tasa; 
+            const amortizacionCapital = Cuotas - interes;
+            saldo -= amortizacionCapital;
+            totalIntereses += interes; 
+            amortizacion.push({
+                  Mes: mes,
+                  Cuota: Cuotas.toFixed(2),
+                  Interes: interes.toFixed(2),
+                  AmortizacionCapital: amortizacionCapital.toFixed(2),
+                  Saldo: saldo.toFixed(2)
+            }); }
+            let totales = capital + totalIntereses
+      const numero = parseFloat(numeroInput.value);
+      document.getElementById('valor-div').innerHTML = Cuotas.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00'
+
+
+
+
+      document.getElementById('id_amount_feed').value =  Cuotas.toLocaleString(undefined, {maximumFractionDigits: 0})
+      resultadoParrafo.textContent = '$' + Cuotas.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00';
+      resultadoParrafo2.textContent = '$' + totalIntereses.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00'
+      resultadoParrafo3.textContent = '$' + totales.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00'
+      if(numeroInput.value != ''){
+            let numero = numeroInput.value.replace(/,/g, ''); // Elimina las comas existentes
+            if (!isNaN(numero) && numero.trim() !== '') {
+                numeroInput.value = parseFloat(numero).toLocaleString();
+            } else {
+                numeroInput.value = numeroInput.value.replace(/[^\d.]/g, ''); 
+                // Elimina cualquier carácter no numérico excepto el punto decimal
+            }
+      }
+
+} 
 
 </script>
 
-{%  endblock%}                                                                                                                        
+{%  endblock %}                                                                                                                        

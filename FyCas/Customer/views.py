@@ -435,8 +435,15 @@ class UpdateCredit(UpdateView, Options):
             form_class.instance.day_number =  datetime.now().day
             form_class.instance.year = Options.YearNow(self, datetime.now().year)
             form_class.instance.year_number = datetime.now().year
+            if form_class.instance.price_feed:
+                self.model.objects.get(id=self.kwargs.get('pk')).credito.all().delete()
+
+            if form_class.instance.amount:
+                self.model.objects.get(id=self.kwargs.get('pk')).credito.all().delete()
+                # Add your desired action here
             form_class.save()
-            return self.List_Redirect()
+            URL = reverse('customer:crear-credito',  kwargs={'pk': self.model.objects.get(id=self.kwargs.get('pk')).id})
+            return redirect(URL)
     
     # def post(self, request, *args, **kwargs):   
     #     f = self.form_class(request.POST)
@@ -742,15 +749,16 @@ class CrearCredito(TemplateView, Options):
     
     def Calculadora_Francesa(self, capital, tasa, plazo, credit):
         if tasa != 0:
-                tasa = tasa / 100
+            pass
         else:
-                tasa = 15
+            tasa = 15
         tasa = tasa / 100
         if credit.credito.exists() == True:
             return 'Ya Existen cuotas para este credito'
         else:
             # Calcular la cuota mensual
             cuotas = capital * tasa / (1 - (1 + tasa) ** -plazo)
+            print('Siuuu', cuotas)
             saldo = capital
             total_intereses = 1
 
@@ -788,7 +796,7 @@ class CrearCredito(TemplateView, Options):
 
                 cuota = models.Cuota.objects.create(
                     credito=credit,
-                    cuota=round(cuotas, 2),
+                    cuota=round(cuotas, 2) + 1,
                     start_date=start_date,
                     end_date=end_date,
                 )
@@ -797,34 +805,41 @@ class CrearCredito(TemplateView, Options):
 
 
     def get_context_data(self, **kwargs):
-        credit = models.Credit.objects.get(id=self.kwargs.get('pk'))
-        # Añadir contexto adicional a la plantilla si es necesario
-        cuotas =  credit.credito.all()
-        p_x_c = 1
-        c_p = 0
-        
-        p_cuotas = 0
-        c_cuotas = cuotas.count()
-        for cu in cuotas:
-            p_x_c += cu.cuota
-            if cu.abonado > 0:
-                c_p += cu.abonado
-                
-            if cu.estado == True:
-                p_cuotas += 1
-    
-                
         context = super().get_context_data(**kwargs)
-        context['cal'] = self.CalFran(int(credit.amount), int(credit.tasa), int(credit.price_feed), 't') 
-        context['credit'] =  credit
-        context['cc'] = p_x_c - c_p
-        context['cp'] = c_p
-        context['c_cuotas'] = c_cuotas
-        context['p_cuotas'] = p_cuotas
-        context['c'] =  credit.customer
+        
+        try:
+                    models.Credit.objects.get(id=self.kwargs.get('pk'))
+                    credit =  models.Credit.objects.get(id=self.kwargs.get('pk'))
+                    # Añadir contexto adicional a la plantilla si es necesario
+                    cuotas =  credit.credito.all()
+                    p_x_c = 1
+                    c_p = 0
+                    
+                    p_cuotas = 0
+                    c_cuotas = cuotas.count()
+                    for cu in cuotas:
+                        p_x_c += cu.cuota
+                        if cu.abonado > 0:
+                            c_p += cu.abonado
+                            
+                        if cu.estado == True:
+                            p_cuotas += 1
+
+                            
+                    context['cal'] = self.CalFran(int(credit.amount), int(credit.tasa), int(credit.price_feed), 't') 
+                    context['credit'] =  credit
+                    context['cc'] = p_x_c - c_p
+                    context['cp'] = c_p
+                    context['c_cuotas'] = c_cuotas
+                    context['p_cuotas'] = p_cuotas
+                    context['c'] =  credit.customer
+
+                    if credit.credito.exists() == True:
+                            context['cuotas'] = cuotas
+        except models.Credit.DoesNotExist:
+            context['error'] = "No se encontró el crédito especificado."
+            
         context['setting'] = self.Setting()
-        if credit.credito.exists() == True:
-                context['cuotas'] = cuotas
         return context
     
     
@@ -834,7 +849,7 @@ class CrearCredito(TemplateView, Options):
             if tasa != 0:
                 tasa = tasa / 100
             else:
-                tasa = 15
+                tasa = 0.15
             # Calcular la cuota mensual
             cuotas = capital * tasa / (1 - (1 + tasa) ** -plazo)
             saldo = capital
@@ -852,3 +867,5 @@ class CrearCredito(TemplateView, Options):
                 return  int(total_intereses)
             else:
                 return cuotas
+
+

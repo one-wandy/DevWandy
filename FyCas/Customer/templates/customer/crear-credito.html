@@ -181,6 +181,8 @@
       <div class="colors tres" style="margin-left: 5rem; margin-top: 5rem; background-color: rgb(255, 160, 151);"></div>
 </div>
 <section data-aos="fade-down" class='d-flex credits  overflow-scroll bg-white bg-opacity-10 h-100 position-relative  justify-content-center flex-wrap'>
+
+      {% if credit %}
       <div class="d-flex w-100 justify-content-start  ">
             {% include "customer/user-profile.html" %}  
       </div>
@@ -189,7 +191,7 @@
                   Acciones
             </strong>
       </div> -->
-      <div class="w-100 d-flex  justify-content-around flex-wrap " >
+      <div class="w-100 d-flex  justify-content-around flex-wrap position-relative " >
             {% if cuotas %}   
             <div class="d-flex justify-content-center w-100 py-3">
                   <button data-aos="fade-right" id="{{c.id}}" class="btn btn-apple btn-primary mx-2" onclick="OpenCloseBtnCredit(this.id)"> 
@@ -200,16 +202,17 @@
                         <img src="{% static "icons/recibo.png" %}" width='24' alt=""> Generar Factura</button>
                   <button data-aos="fade-right" class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('voucher')"> 
                         <img src="{% static "icons/comprobante.png" %}" width='24' alt="">  Comprobantes</button>
-                  <button data-aos="fade-right" class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('voucher')"> 
+                  <!-- <button data-aos="fade-right" class="btn btn-apple btn-primary mx-2" 
+                  onclick=""> 
                         <img src="{% static "icons/notify.png" %}" width='24' alt="">  Recordatorio</button>
-                        <button data-aos="fade-right" class="btn btn-apple btn-primary mx-2" > 
-                        <a class="" href="{% url "customer:update-credit" credit.id %}">
+                        <button onclick="toggleDisplayClass()" data-aos="fade-right" class="btn btn-apple btn-primary mx-2" > 
+                        
                               <img src="{% static "icons/editar.png" %}" width='24' alt="">  Editar
-                        </a>
-                  </button>
+
+                  </button> -->
             </div>
-            <div  class='d-flex flex-wrap d-none bg-white mb-3 p-2 mt-2 ' id='div-credit{{c.id}}'
-            style="border-radius: 1.5rem;">
+            <div  class='d-flex flex-wrap d-none position-absolute start-0 ms-3  z-3 blur top-0   shadow bg-opacity-10 justify-content-end mb-3 p-2  ' id='div-credit{{c.id}}'
+            style="border-radius: 1.5rem; width: 400px; margin-top: 4rem;">
             <section class="d-flex w-100  justify-content-center ">
   
                   <div class='form-floating w-100 m-1 justify-content-center' >
@@ -237,7 +240,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-dash-circle text-danger" viewBox="0 0 16 16">
                               <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
                               <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
-                            </svg>
+                            </svg> 
                         {% comment %} Restar {% endcomment %}
                   </button>
                   
@@ -252,7 +255,9 @@
             </span>
             <div class='w-100 mt-4 pt-3 d-flex  justify-content-end'>
                   <button onclick='OpenCloseBtnCredit(this.id)' id='{{c.id}}' class=' bg-transparent border-0'>Cancelar</button>
-                  <button onclick='CreateCreditAjax(this.id)' id='{{c.id}}' class='text-white border-0 ' style='background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);border-radius: 1.5rem; width: 7rem;'> Crear</button>
+                  <button onclick='CreateCreditAjax2(this.id)' id='{{c.id}}' class='text-white border-0 ' style='
+                 background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+                  border-radius: 1.5rem; width: 7rem;'> Crear</button>
             </div>
 
       </div>
@@ -433,7 +438,32 @@
                   }
             </script>
       </div>
-
+      {% else %}
+      <div class="d-flex flex-wrap justify-content-center align-content-center h-100 w-100">
+            <div class="alert alert-warning rounded-5 p-2" role="alert">
+                  
+            </div>
+            <span class="w-100">
+                  <div class="warning vh-100 d-flex justify-content-center align-content-center flex-wrap w-100">
+                        <h6 class="p-2 w-100 text-center pt-0 pb-0">
+                              Ha ocurrido un error. Por favor, inténtelo de nuevo más tarde.
+                        </h6>
+                        <p class="text-black-50  w-100 d-flex justify-content-center text-center" 
+                              style="font-size: 12px; border-radius: 2rem; ">
+                              Actualmente no existen creditos, o vuelve a buscar y seleccionar el credito, este mensaje aparecera siempre que se halla eliminado o no encontrado el credito  <a class=" bg-black  bg-opacity-10 ms-2 justify-content-center text-primary 
+                              " href="{% url "customer:list-customer" %}" style="max-width: 4rem;">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill text-primary me-1" style="margin-top: 3px;" viewBox="0 0 16 16">
+                                    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+                                  </svg>
+                                  Atras
+                              </a>
+                        </p>
+                     
+                     
+                  </div>
+            </span>
+      </div>  
+{% endif %}
 </section>
 <input type="number" value="{{cc}}" class="d-none input-ip">
 <input type="text" id="{{cuotas.id}}" class="d-none inp-id">
@@ -597,6 +627,94 @@ function restar(n) {
       n
       )
 }
+
+function CreateCreditAjax2(id){
+      const url = '/create-credit-ajax/customer/';
+      OpenCloseBtnCredit(id)
+      let monto = document.getElementById('monto'+id).value
+      let monto_cls = monto.replace(/,/g, ''); // Elimina las comas existentes
+      let mt_monto = parseInt(monto_cls)
+      let cuotas = document.getElementById('cuotas'+id).value
+      let cuotas_cls = cuotas.replace(/,/g, ''); // Elimina las comas existentes
+      let mt_cuotas = parseInt(cuotas_cls)
+      let monto_pagar = document.getElementById('monto_pagar'+id).value
+      let monto_pagar_cls = monto_pagar.replace(/,/g, ''); // Elimina las comas existentes
+      let mt_monto_pagar = parseInt(monto_pagar_cls)
+
+      $.ajax({
+            url: url,
+            data: {
+            customer_id: id,
+            monto: mt_monto,
+            cuotas: mt_cuotas,
+            dia: document.getElementById('dia'+id).value.split('-')[2] ,
+            monto_pagar: mt_monto_pagar,
+
+            }, success: function(r) {
+                  location.reload();
+            },
+      })
+}
+
+let SuperCalAuto = (capital, plazo, tasa, result, id_mont)=> {
+      const Cuotas = capital * tasa / (1 - Math.pow(1 + tasa, -plazo));
+      let amortizacion = [];
+      let saldo = capital;
+      let totalIntereses = 0; 
+      for (let mes = 1; mes <= plazo; mes++) {
+            const interes = saldo * tasa; 
+            const amortizacionCapital = Cuotas - interes;
+            saldo -= amortizacionCapital;
+            totalIntereses += interes; 
+            amortizacion.push({
+                  Mes: mes,
+                  Cuota: Cuotas.toFixed(2),
+                  Interes: interes.toFixed(2),
+                  AmortizacionCapital: amortizacionCapital.toFixed(2),
+                  Saldo: saldo.toFixed(2)
+            }); }
+      let totales = capital + totalIntereses
+      // const numero = parseFloat(count_input.value);
+            
+      document.querySelector('#'+result).innerHTML = 'Cuotas mensuales de: $' + Cuotas.toLocaleString(undefined,
+                              {maximumFractionDigits: 0}) + '.00';
+
+      let precio_cuota = document.getElementById("monto_pagar"+id_mont)
+      precio_cuota.value = Cuotas.toFixed(2)
+
+      let mont = document.getElementById("monto"+id_mont)
+      if(mont.value != ''){
+            let numero = mont.value.replace(/,/g, ''); // Elimina las comas existentes
+            if (!isNaN(numero) && numero.trim() !== '') {
+                mont.value = parseFloat(numero).toLocaleString();
+            } else {
+                mont.value = mont.value.replace(/[^\d.]/g, ''); 
+                // Elimina cualquier carácter no numérico excepto el punto decimal
+            }
+      }
+
+}
+
+const inputs = document.querySelectorAll('.monto-input');
+// Añade un evento de enfoque a cada uno
+inputs.forEach(input => {
+      input.addEventListener('focus', function() {
+            id_input_select = this.id
+            let si = document.querySelector("#"+id_input_select)
+            si.addEventListener('input', function() {
+            let lkj = this.id
+            let delt = lkj.replace(/\D/g, '');
+            let numero_input = document.getElementById(this.id)
+            let numero = numero_input.value.replace(/,/g, ''); // Elimina las comas existentes
+            let capital = parseInt(numero)
+            SuperCalAuto(capital, document.querySelector("#cuotas"+delt).value, 
+            0.15, 
+            "result-cuota"+delt,
+            delt
+            )
+            });
+      });
+});
 
 
 
