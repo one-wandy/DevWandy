@@ -18,6 +18,7 @@ from num2words import num2words
 from django.contrib.humanize.templatetags.humanize import intcomma
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 
 class Dashboard(TemplateView, Options):
@@ -828,6 +829,7 @@ class CrearCredito(TemplateView, Options):
                     context['cp'] = c_p
                     context['c_cuotas'] = c_cuotas
                     context['p_cuotas'] = p_cuotas
+                    context['today'] = timezone.now().date()
                     context['c'] =  credit.customer
 
                     if credit.credito.exists() == True:
