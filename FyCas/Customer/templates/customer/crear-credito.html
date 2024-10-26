@@ -92,6 +92,7 @@
                   color: rgb(117, 117, 117);
                   border: 0px;
                   border-radius: 2rem;
+                  overflow: visible !important;
             }
             .btn-es-on
             {
@@ -175,13 +176,87 @@
                   animation: moveInCircle 7s linear infinite;
             }
 </style>
-<div  class="w-100 position-absolute bottom-top h-100 d-flex justify-content-around flex-wrap align-content-center" style="filter: blur(70px);" >
+<div  class="w-100 position-fixed bottom-top h-100 d-flex justify-content-around flex-wrap align-content-center" style="filter: blur(70px);" >
       <div class="colors uno" style="background-color: hsl(254, 100%, 83%); margin-left: 1rem;margin-bottom: 15rem;"></div>
       <div class="colors dos" style="margin-left: 2rem !important; margin-top: 19rem; background-color: rgb(85, 243, 238);"></div>
       <div class="colors tres" style="margin-left: 5rem; margin-top: 5rem; background-color: rgb(255, 160, 151);"></div>
 </div>
 <section data-aos="fade-down" class='d-flex credits  overflow-scroll bg-white bg-opacity-10 h-100 position-relative  justify-content-center flex-wrap'>
+      <div id="factura"  class="position-absolute top-50 d-none start-50 translate-middle w-100 bg-white bg-opacity-75 d-flex justify-content-center h-100 align-content-center flex-wrap" style="z-index: 1050;">
 
+            <div class="  shadow rounded-4 bg-white position-relative p-5 " style="width: max-content; height: max-content;" >
+                  <button class="bg-transparent rounded-circle border-0 position-absolute top-0 end-0 w-auto" onclick="GenerarFactura()"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-circle-fill text-danger" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                      </svg></button>
+                  <div class="factura-content">
+                        <h2 class="text-center mt-3">Factura</h2>
+                        <h6 class="p-0 m-0  w-100 text-center" 
+                        style="font-size: 14px; margin: 0; "> Grupo Fycas</h6>
+                        <p class="p-0 text-black-50 m-0 mt-5 "><strong>Cliente:</strong> {{ credit.name }}</p>
+                        <p class="p-0 text-black-50 m-0"><strong>Fecha:</strong> <span  id="day_date"></span> </p>
+                        <p class="p-0 text-black-50 m-0"><strong>Capital:</strong> ${{ credit.amount|intcomma }}.00</p>
+                        <p class="p-0 text-black-50 m-0"><strong>Tasa de interés:</strong> {{ credit.tasa }}%</p>
+                        <p class="p-0 text-black-50 m-0"><strong>Total pagado:</strong> ${{ cp|intcomma }}.00</p>
+                        <p class="p-0 text-black-50 m-0"><strong>Saldo restante:</strong> ${{ cc|intcomma }}.00</p>
+                        <div class="w-100 ">
+                              <table class="w-100  table mt-4">
+                                    <thead>
+                                          <tr>
+                                                <th class="text-black-50">#</th>
+                                                <th class="text-black-50">Cuota</th>
+                                                <th class="text-black-50"> Pagado</th>
+                                                <th class="text-black-50">Restante</th>
+                                                <th class="text-black-50">Termina</th>
+                                                <th class="text-black-50">Vence</th>
+                                                <th class="text-black-50">Estado</th>
+                                          </tr>
+                                    </thead>
+                                    <tbody>
+                                          {% for cuota in cuotas %}
+                                          <tr>
+                                                <td style="font-size: 12px;" class="text-black-50"> ({{ forloop.counter }})</td>
+                                                <td style="font-size: 12px;" class="text-black-50">${{ cuota.cuota|intcomma }}.00</td>
+                                                <td style="font-size: 12px;" class="text-black-50">${{ cuota.abonado|intcomma }}.00</td>
+                                                <td style="font-size: 12px;" class="text-black-50">${{ cuota.restante|intcomma }}.00</td>
+                                                <td class="text-capitalize text-black-50"> {{cuota.start_date|date:"m/d/Y"}} </td>
+                                                <td class="text-capitalize text-black-50"> {{cuota.end_date|date:"m/d/Y"}} </td>
+                                                <td style="font-size: 12px;" class="text-black-50"> 
+                                                      {% if cuota.estado %}
+                                                      <span class="green-span">
+                                                            Completado  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-patch-check-fill  text-primary" viewBox="0 0 16 16">
+                                                                  <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
+                                                                  </svg> 
+                                                      </span>
+                                                      {% else %}
+                                                      <span class="grey-span">
+                                                            Proximamente
+                                                      </span>
+                                                      
+                                                      {% endif %}
+                                                </td>
+                                      
+                                          </tr>
+                                          {% endfor %}
+                                    </tbody>
+                              </table>
+                              <div class="d-flex justify-content-end ">
+                                    <button class="bg-transparent shadow-none text-black-50 p-0 rounded-5  border-0 mx-2" onclick="EnviarFactura()">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
+                                                <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5"/>
+                                              </svg>  Enviar a: <span class="text-primary">untal.wandy@gmail.com</span>
+                                    </button>
+                                    <button class="bg-transparent shadow-none text-black-50 p-0 rounded-5  border-0 mx-2"  onclick="ImprimirFactura()">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+                                                <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1"/>
+                                                <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
+                                              </svg>    Imprimir
+                                    </button>
+                                
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
       {% if credit %}
       <div class="d-flex w-100 justify-content-start  ">
             {% include "customer/user-profile.html" %}  
@@ -198,18 +273,8 @@
                         <img src="{% static "icons/mas.png" %}" width='24' alt=""> Abrir credito</button>
                   <button data-aos="fade-right" class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('historial')"> 
                         <img src="{% static "icons/movimiento.png" %}" width='24' alt=""> Movimientos</button>
-                  <button data-aos="fade-right" class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('factura')">
-                        <img src="{% static "icons/recibo.png" %}" width='24' alt=""> Generar Factura</button>
                   <button data-aos="fade-right" class="btn btn-apple btn-primary mx-2" onclick="toggleDiv('voucher')"> 
                         <img src="{% static "icons/comprobante.png" %}" width='24' alt="">  Comprobantes</button>
-                  <!-- <button data-aos="fade-right" class="btn btn-apple btn-primary mx-2" 
-                  onclick=""> 
-                        <img src="{% static "icons/notify.png" %}" width='24' alt="">  Recordatorio</button>
-                        <button onclick="toggleDisplayClass()" data-aos="fade-right" class="btn btn-apple btn-primary mx-2" > 
-                        
-                              <img src="{% static "icons/editar.png" %}" width='24' alt="">  Editar
-
-                  </button> -->
             </div>
             <div  class='d-flex flex-wrap d-none position-absolute start-0 ms-3  z-3 blur top-0   shadow bg-opacity-10 justify-content-end mb-3 p-2  ' id='div-credit{{c.id}}'
             style="border-radius: 1.5rem; width: 400px; margin-top: 4rem;">
@@ -269,7 +334,6 @@
             <div class='d-flex justify-content-start p-2 pb-3 overflow-scroll   w-100 align-content-center '>
                   {% include "components/list-credi.html" %}
             </div>
-            
 
             <div class="justify-content-center  w-100   bottom-0 d-flex rounded-0" 
             style="background-color: #ffffff00; border-top: 0px rgb(207, 207, 207) solid; ">
@@ -312,27 +376,26 @@
       
             </div>
                 
-           <div class=" rounded-5 me-2 ms-2 w-100 shadow bg-white bg-opacity-50  mb-2 d-flex flex-wrap justify-content-center overflow-scroll " style="height: 40vh;   ">
+           <div class=" rounded-5 me-2 ms-2 w-100 shadow bg-white bg-opacity-50  mb-2 d-flex flex-wrap justify-content-center align-content-start overflow-scroll " style="height: 40vh;   ">
             <table class=" w-100 b rounded-4 m-3  ">
                   <thead>
                         <tr>
-                              <th>#</th>
-                              <th>Cuota</th>
-                              <th>Mora</th>
-                              <th>Monto pagado</th>
-                              <th>Restante</th>
-                              <th>Estado de cuota</th>
-                              <th>Termina</th>
-                              <th>Vence</th>
-                              <th style="width: 20rem;">Acciones de aplicar pago </th>
-                        </tr>
-                  </thead>
+                              <th style="width: 6%;">#</th>
+                              <th style="width: 10%;">Cuota</th>
+                              <th style="width: 10%;">Mora</th>
+                              <th style="width: 14%;">Monto pagado</th>
+                              <th style="width: 10%;">Restante</th>
+                              <th style="width: 14%;">Estado de cuota</th>
+                              <th style="width: 10%;">Termina</th>
+                              <th style="width: 10%;">Vence</th>
+                              <th style="min-width: 290px;">Acciones </th>
+                        </tr>  </thead>
                   
                   <tbody >
                         
                         {% for cuota in cuotas %}
                         <tr>
-                              <td>{{ forloop.counter }}</td>
+                              <td style="font-size: 10px;"> ( {{ forloop.counter }} )</td>
                               <td> 
                                     <span class="grey-span">
 
@@ -375,11 +438,9 @@
                                     <td class="text-capitalize"> {{cuota.end_date|date:"m/d/Y"}} </td>
 
                               <td class=" ">
-                                    {% if cuota.estado == True %}
-                                          ...
-                                    {% else %}
+                                    {% if cuota.estado != True %}
                                     <div class="d-flex " style="height: 2.5rem;">
-                                          <input type="text" id="ct-p{{ cuota.id }}" class="bg-white  bg-opacity-10 inputs  p-2  outline-none" placeholder="Cantidad" min="1" max="{{ cuota.restante }}" style="border-radius: 1.5rem; width: 6rem; 
+                                          <input type="text" id="ct-p{{ cuota.id }}" class="bg-white  bg-opacity-10 inputs  p-1 ps-3  outline-none" placeholder="Cantidad" min="1" max="{{ cuota.restante }}" style="border-radius: 1.5rem; width: 50%; 
                                           border: 1px solid rgb(213, 213, 213)  ;">
                                           <button onclick="AplicarPago(this.id)" disabled="true" class=' btn-es' id="{{ cuota.id }}"></button>
                                     </div>
@@ -389,7 +450,7 @@
                         {% endfor %}
                   </tbody>
             </table> 
-      </div>
+             </div>
   
             {% endif %}
       </div>
@@ -464,11 +525,35 @@
             </span>
       </div>  
 {% endif %}
+
 </section>
 <input type="number" value="{{cc}}" class="d-none input-ip">
 <input type="text" id="{{cuotas.id}}" class="d-none inp-id">
 <input type="text" id="cuotas_credit{{credit.id}}" class="d-none input-credit">
 <script>
+
+document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+            const facturaElement = document.getElementById('factura');
+            if (!facturaElement.classList.contains('d-none')) {
+                        GenerarFactura();
+            }
+      }
+});
+
+function GenerarFactura() {
+      document.getElementById('factura').classList.toggle('d-none' );
+}
+const today = new Date();
+const formattedDate = today.toLocaleDateString('es-ES', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+});
+document.getElementById('day_date').innerText = formattedDate;
+
+
+
       window.onload = () => {
        
             let input_id = document.querySelector(".inp-id");
@@ -482,7 +567,8 @@
 
       let input_credit = document.querySelector(".input-credit");
       if (input_credit) {
-            document.getElementById(input_credit.id).classList.add('super-shadow', 'flip-up') ;
+            document.getElementById(input_credit.id).classList.add('super-shadow', 'flip-up') ; 
+
       }
 function AplicarPago(ID){
 

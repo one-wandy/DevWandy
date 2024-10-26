@@ -11,6 +11,10 @@
       {
             border-radius: 1rem;
       }
+      #id_date
+      {
+            width: 10rem;
+      }
 </style>
 <section class="p-3 section  overflow-scroll `">
       <div class="p-3 d-flex  ">
@@ -93,15 +97,35 @@
       <div class="w-100 d-flex">
             <div class="form-floating mb-3 " >
                   {{form.day_pay}}
-                  <label for="id_work_information">Dia de Pago
+                  <label for="id_day_pay">Dia de Pago
                   </label>
             </div>
+    
+            <div class="form-floating mb-3 d-flex  align-content-center flex-wrap " style="width: max-content;" >
+                  {{form.date}}
+          
+                  <button type="button" id="go-back-btn" class="btn mt-2 btn-secondary bg-black bg-opacity-10 ms-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                              <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+                            </svg>
+                  </button>
+                  <button type="button" id="change-month-btn" class="btn mt-2 btn-primary bg-black bg-opacity-10 ms-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+                              <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+                            </svg>
+                  </button>
+                  <label for="id_date">Mes de inicio
+                  </label>
+            </div>
+          
             <div class=" mb-3 ms-3  d-flex align-content-center " >
                   {{form.mode_pay}}
                   <label for="id_mode_pay" class="d-flex h-100 flex-wrap ms-1 align-content-center justify-content-center"> Aplicar dos pagos (15) - (30)
                   </label>
             </div>
+            
       </div>
+ 
 
       <div class="form- mb-3 w-100 " >
           <div >
@@ -131,6 +155,21 @@
 </form>
 </section>
 <script>
+
+document.getElementById('change-month-btn').addEventListener('click', () => {
+      let dateInput = document.getElementById('id_date');
+      let currentDate = new Date(dateInput.value);
+      currentDate.setMonth(currentDate.getMonth() + 1);
+      dateInput.value = currentDate.toISOString().split('T')[0];
+});
+
+document.getElementById('go-back-btn').addEventListener('click', () => {
+      let dateInput = document.getElementById('id_date');
+      let currentDate = new Date(dateInput.value);
+      currentDate.setMonth(currentDate.getMonth() - 1);
+      dateInput.value = currentDate.toISOString().split('T')[0];
+});
+
       // document.querySelector(".load").style.display = "none"
 
      let customer =  document.getElementById("id_customer")

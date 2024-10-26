@@ -758,7 +758,6 @@ class CrearCredito(TemplateView, Options):
         else:
             # Calcular la cuota mensual
             cuotas = capital * tasa / (1 - (1 + tasa) ** -plazo)
-            print('Siuuu', cuotas)
             saldo = capital
             total_intereses = 1
 
@@ -768,14 +767,9 @@ class CrearCredito(TemplateView, Options):
                 return min(day, last_day_of_month)
 
             day_pay = credit.day_pay
+            
 
-            today = datetime.now()
-            start_date = today.replace(day=1)
-
-            # Si el día actual es mayor o igual al 30, empezar el próximo mes
-            if today.day >= 30:
-                start_date = start_date + relativedelta(months=1)
-                start_date = start_date.replace(day=1)
+            start_date = credit.date
 
             for mes in range(1, plazo + 1):
                 interes = saldo * tasa
@@ -784,7 +778,6 @@ class CrearCredito(TemplateView, Options):
                 total_intereses += interes
 
                 # Ajusta el día al valor de day_pay para start_date
-                start_date = start_date + relativedelta(months=1)
                 last_day_of_month = monthrange(start_date.year, start_date.month)[1]
                 if day_pay > last_day_of_month:
                     start_date = start_date.replace(day=last_day_of_month)
@@ -800,6 +793,9 @@ class CrearCredito(TemplateView, Options):
                     start_date=start_date,
                     end_date=end_date,
                 )
+
+                # Incrementar el mes para la próxima iteración
+                start_date = start_date + relativedelta(months=1)
 
             return 'Creado'
 
