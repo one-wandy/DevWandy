@@ -8,18 +8,65 @@
       {
             background-color: #eeeeee !important;
       }
+      #cardDeck .card
+      {
+            max-width: 800px;
+            margin: 0 auto;
+      }
+      #cardDeck .card-header
+      {
+            /* background-color: rgb(202, 230, 255); */
+      }
 </style>
 {% include "components/background-animated.html" %}
-<section class="w-100 blur h-100 position-absolute top-0 start-0 d-flex   justify-content-center align-content-center flex-wrap"
+<section class="w-100 blur h-100 position-absolute top-0 start-0 d-flex    p-3"
       style="z-index: 0;">
+      <div>
 
-      <div class="justify-content-center text-center p-2">
-            <h4>
-                  Ups!  Aun esta en desarrollo
-            </h4> 
-            <p class="text-black-50" style="font-size: 14px;">
-                  Si quieres activar ver esta caracteristica antes de su lanzamiento, ve a configuraciones y activa la <strong>"True Dev"</strong>, esto para ir provando las nuevas caracteristicas
-            </p>
+            <div class="card-deck d-flex flex-wrap justify-content-center" style="width: 30rem;" id="cardDeck">
+                  <div class="card mb-4 border-0 rounded-4 shadow-sm bg-light">
+                        <div class="card-header rounded-3 border-0 bg-white text-black mb-2 d-flex align-items-center">
+                              <img src="{% static 'svg/user.svg' %}" width="24" alt="" class="me-2"> Clientes
+                        </div>
+                        <div class="card-body d-flex flex-wrap bg-white">
+                              <div class="w-50 p-2">
+                                    <strong>Notificaciones</strong>
+                                    <ul class="list-group list-group-flush">
+                                          <li class="list-group-item border-0">
+                                                <div class="form-check">
+                                                      <input class="form-check-input" type="checkbox" value="" id="flexCheckEmail">
+                                                      <label class="form-check-label" for="flexCheckEmail">
+                                                            Alertar por correo
+                                                      </label>
+                                                </div>
+                                          </li>
+                                          <li class="list-group-item border-0">
+                                                <div class="form-check">
+                                                      <input class="form-check-input" type="checkbox" value="" id="flexCheckSMS" checked>
+                                                      <label class="form-check-label" for="flexCheckSMS">
+                                                            Alertar por SMS
+                                                      </label>
+                                                </div>
+                                          </li>
+                                    </ul>
+                              </div>
+                              <div class="w-50 p-2">
+                                    <strong>Siguimiento</strong>
+                                    <ul class="list-group list-group-flush">
+                                          <li class="list-group-item border-0">
+                                                <div class="form-check">
+                                                      <input class="form-check-input" type="checkbox" value="" id="flexCheckFollowUp">
+                                                      <label class="form-check-label" for="flexCheckFollowUp">
+                                                            Enviar a lista de seguimiento tras los 10 días en atraso
+                                                      </label>
+                                                </div>
+                                          </li>
+                                    </ul>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+
       </div>
 
 </section>

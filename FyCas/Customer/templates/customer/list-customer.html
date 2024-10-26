@@ -467,7 +467,7 @@ window.addEventListener("DOMContentLoaded", function() {
     });
 
     document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') { // Detecta la tecla ESC
+      if (event.key === 'Escape' || (event.shiftKey && event.key === 'c')) { // Detecta la tecla ESC o Shift + C
           window.location.href = '/'; // Cambia la URL a la que deseas redirigir
       }
   });

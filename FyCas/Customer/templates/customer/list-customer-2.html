@@ -38,19 +38,11 @@
 
 .img-span:hover
 {
-      border-radius: 1rem !important;
+      border-radius: 1.6rem !important;
 
       
 }
-.img-span img:active
-{
-      width: 100% !important;
-      height: 100% !important;
-      object-fit: contain !important;
-      border-radius: 1rem !important;
-      position: absolute;
-      z-index: 10;
-}
+
 
 /* Definimos el efecto de flip-up */
 @keyframes flip-up {
@@ -111,7 +103,9 @@
                         
                               <span style="   border: 6px #a7a7a7  ; border-style:dotted; transition: 0.9s ease  !important; " 
                                     class="p-1  img-span rounded-circle ">
-                                    <img src="{{c.img1.url}}" class="  img-icons object-fit-cover" style="width: 57px; height: 57px; border-radius: 50%; "  alt=""> 
+                                    <img src="{{c.img1.url}}" class="  img-icons object-fit-cover" style="width: 57px; height: 57px; border-radius: 50%; 
+                                    filter: blur(90px);
+                                    filter: brightness(80%); "  alt=""> 
                               </span>
                               <a href="{% url "customer:detail-customer" c.id %}" >
                                     <div style="background-color: rgba(0, 0, 0, 0); border-radius: 2rem;

@@ -111,6 +111,7 @@ def CreateCreditAjax(request):
         from datetime import datetime
 
         c = models.Customer.objects.get(id=request.GET.get('customer_id'))
+        print(c, 'soy yo')
         credit = models.Credit.objects.create( 
             customer = c,
             dni = c.dni,
@@ -172,12 +173,24 @@ def AplicarPago(request):
     }
     
     return JsonResponse(D,  safe=False)    
+
+
+def DeleteCreditAjax(request):
+    credit_id = request.GET.get('id')
+    try:
+        credit = models.Credit.objects.get(id=int(credit_id))
+        credit.delete()
+        return JsonResponse({'status': 'success'}, safe=False)
+    except models.Credit.DoesNotExist:
+        return JsonResponse({'status': 'error', 'message': 'Credit not found'}, safe=False)
     
 """"
 from django.shortcuts import render
 from .models import Contacto
 from googleapiclient.discovery import build
 from google.oauth2.service_account import Credentials
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
 
 def migrar_contactos(request):
     # Leer contactos de la base de datos

@@ -104,7 +104,7 @@ class CreditForm(forms.ModelForm):
   class Meta:
       model = models.Credit
       fields = [
-        "customer", "name", "price_feed", "no_account", 
+        "customer", "name", "price_feed", "no_account", 'date', 'tasa',
          "mode_pay", "day_pay", "dni", "amount", "amount_feed",
       ]
       widgets = {
@@ -112,6 +112,8 @@ class CreditForm(forms.ModelForm):
         'name': forms.TextInput(attrs={'class': 'form-control'}),
         'dni': forms.TextInput(attrs={'class': 'form-control'}),
         'amount': forms.NumberInput(attrs={'class': 'form-control'}),
+        'date': forms.DateInput(attrs={'class': 'form-control'}),
+        'tasa': forms.NumberInput(attrs={'class': 'form-control'}),
 
         'price_feed': forms.NumberInput(attrs={'class': 'form-control'}),
         'no_account': forms.TextInput(attrs={'class': 'form-control'}),
@@ -159,14 +161,14 @@ class CuotaForm(forms.ModelForm):
         
         
 class CashControlForm(forms.ModelForm):
-        class Meta:
-            model = models.CashControl
-            fields = ['date', 'opening_balance', 'closing_balance', 'total_income', 'total_expenses', 'notes']
-            widgets = {
-                'date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-                'opening_balance': forms.NumberInput(attrs={'class': 'form-control'}),
-                'closing_balance': forms.NumberInput(attrs={'class': 'form-control'}),
-                'total_income': forms.NumberInput(attrs={'class': 'form-control'}),
-                'total_expenses': forms.NumberInput(attrs={'class': 'form-control'}),
-                'notes': forms.Textarea(attrs={'class': 'form-control'}),
-            }
+    class Meta:
+        model = models.CashControl
+        fields = ['date', 'opening_balance', 'closing_balance', 'total_income', 'total_expenses', 'notes']
+        widgets = {
+            'date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date', 'placeholder': 'Fecha'}),
+            'opening_balance': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Saldo de apertura'}),
+            'closing_balance': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Saldo de cierre'}),
+            'total_income': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Ingresos totales'}),
+            'total_expenses': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Gastos totales'}),
+            'notes': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Notas'}),
+        }

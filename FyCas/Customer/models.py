@@ -223,7 +223,7 @@ class Credit(models.Model):
     
     # Day Create
     day_created = models.DateField(default=timezone.now)
-    
+    date = models.DateField(default=timezone.now)
     
     tasa = models.IntegerField(default=15)
     plazo = models.IntegerField(default=1)
