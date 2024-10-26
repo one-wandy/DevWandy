@@ -274,7 +274,7 @@ let SuperCalUpdate = (capital, plazo, tasa)=> {
 
 
 
-      document.getElementById('id_amount_feed').value =  Cuotas.toLocaleString(undefined, {maximumFractionDigits: 0})
+      document.getElementById('id_amount_feed').value = Cuotas.toFixed(0);
       resultadoParrafo.textContent = '$' + Cuotas.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00';
       resultadoParrafo2.textContent = '$' + totalIntereses.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00'
       resultadoParrafo3.textContent = '$' + totales.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00'
