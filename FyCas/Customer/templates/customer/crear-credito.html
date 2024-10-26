@@ -297,12 +297,12 @@
                         <img src="{% static "icons/movimiento.png" %}" width='24' alt=""> Movimientos</button>
                   <button data-aos="fade-right" class="btn btn-apple btn-primary bg-transparent mx-1" onclick="toggleDiv('voucher')"> 
                         <img src="{% static "icons/comprobante.png" %}" width='24' alt="">  Comprobantes</button>
-                        <button data-aos="fade-right" class="btn btn-apple btn-primary bg-transparent mx-1" onclick="toggleDiv('voucher')"> 
-                              <img src="{% static "icons/file.png" %}" width='24' alt="">  Archivos</button>
+                        <!-- <button data-aos="fade-right" class="btn btn-apple btn-primary bg-transparent mx-1" onclick="toggleDiv('voucher')">  -->
+                              <!-- <img src="{% static "icons/file.png" %}" width='24' alt="">  Archivos</button>
                               <button data-aos="fade-right" class="btn btn-apple btn-primary bg-transparent mx-1" onclick="toggleDiv('voucher')"> 
                                     <img src="{% static "svg/config.svg" %}"  width='24' alt="">  Configuraciones</button>
                                     <button data-aos="fade-right" class="btn btn-apple btn-primary bg-transparent mx-1" onclick="toggleDiv('voucher')"> 
-                                          <img src="{% static "svg/calendar.svg" %}"  width='24' alt="">  Calendario</button>
+                                          <img src="{% static "svg/calendar.svg" %}"  width='24' alt="">  Calendario</button> -->
             </div>
             <div  class='d-flex flex-wrap d-none position-absolute start-0 ms-3  z-3 blur top-0   shadow bg-opacity-10 justify-content-end mb-3 p-2  ' id='div-credit{{c.id}}'
             style="border-radius: 1.5rem; width: 400px; margin-top: 4rem;">
@@ -500,11 +500,15 @@
                               <td class=" ">
                                     {% if cuota.estado != True %}
                                     <div class="d-flex " style="height: 2.5rem;">
-                                          <input type="text" id="ct-p{{ cuota.id }}" class="bg-white  bg-opacity-10 inputs  p-1 ps-3  outline-none" placeholder="Cantidad" min="1" max="{{ cuota.restante }}" style="border-radius: 1.5rem; width: 50%; 
+                                          <input type="text" id="ct-p{{ cuota.id }}"  class="bg-white  bg-opacity-10 inputs  p-1 ps-3  outline-none" placeholder="Cantidad" min="1" max="{{ cuota.restante }}" style="border-radius: 1.5rem; width: 50%; 
                                           border: 1px solid rgb(213, 213, 213)   ; height: 2rem;">
                                           <button onclick="AplicarPago(this.id)" disabled="true" class=' btn-es p-0 '  style="width: 100%; height: 2rem;" id="{{ cuota.id }}">
                                                 N/A
                                           </button>
+                                    </div>
+                                    {% else %}
+                                    <div style="height: 2.2rem;">
+
                                     </div>
                                     {% endif %}
                               </td>
@@ -653,6 +657,7 @@ function AplicarPago(ID){
             } 
       })
 }
+
 
 document.querySelectorAll('.inputs').forEach(input => {
       input.addEventListener('input', function(e) {
