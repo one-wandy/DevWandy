@@ -104,7 +104,7 @@ class CreditForm(forms.ModelForm):
   class Meta:
       model = models.Credit
       fields = [
-        "customer", "name", "price_feed", "no_account", 'date',
+        "customer", "name", "price_feed", "no_account", 'date', 'tasa',
          "mode_pay", "day_pay", "dni", "amount", "amount_feed",
       ]
       widgets = {
@@ -113,6 +113,7 @@ class CreditForm(forms.ModelForm):
         'dni': forms.TextInput(attrs={'class': 'form-control'}),
         'amount': forms.NumberInput(attrs={'class': 'form-control'}),
         'date': forms.DateInput(attrs={'class': 'form-control'}),
+        'tasa': forms.NumberInput(attrs={'class': 'form-control'}),
 
         'price_feed': forms.NumberInput(attrs={'class': 'form-control'}),
         'no_account': forms.TextInput(attrs={'class': 'form-control'}),

@@ -16,11 +16,18 @@
             width: 10rem;
       }
 </style>
-<section class="p-3 section  overflow-scroll `">
-      <div class="p-3 d-flex  ">
+<div  class="w-100 position-absolute bottom-0  d-flex justify-content-center" style="filter: blur(120px);" >
+      <div class="colors uno" style="background-color: #ffd588; margin-left: 1rem;"></div>
+      <div class="colors dos" style="margin-left: 2rem !important; background-color: rgb(243, 85, 85);"></div>
+      <div class="colors tres" 
+            style="margin-left: 17rem; margin-top: 20rem; background-color: rgb(178, 89, 230);">
+      </div>
+</div>
+<section class="p-3 section  overflow-scroll vh-100" >
+      <div class="p-0 d-flex  ">
             <div class="w-50 d-flex flex-wrap align-content-center  flex-wrap">
                   <h3 class="p-0 m-0">
-                        Renobar Credito 
+                        Credito 
                   </h3>
                   <p class="text-black-50 w-100">
                         Extender el plazo de repago de un préstamo existente 
@@ -78,7 +85,7 @@
       <div class="d-flex">
             <div class="form-floating mb-3 w-50" >
                   {{form.amount}}
-                  <label for="id_work_information">Monto
+                  <label for="id_amount">Monto
                   </label>
             </div>
             <div class="form-floating mb-3 w-50" >
@@ -93,8 +100,14 @@
                         No.  Cuenta
                   </label>
             </div>
+            
       </div>
       <div class="w-100 d-flex">
+            <div class="form-floating mb-3 " >
+                  {{form.tasa}}
+                  <label for="id_tasa">Tasa de interes
+                  </label>
+            </div>
             <div class="form-floating mb-3 " >
                   {{form.day_pay}}
                   <label for="id_day_pay">Dia de Pago
@@ -118,7 +131,7 @@
                   </label>
             </div>
           
-            <div class=" mb-3 ms-3  d-flex align-content-center " >
+            <div class=" mb-3 ms-3  d-flex d-none align-content-center " >
                   {{form.mode_pay}}
                   <label for="id_mode_pay" class="d-flex h-100 flex-wrap ms-1 align-content-center justify-content-center"> Aplicar dos pagos (15) - (30)
                   </label>
@@ -141,7 +154,7 @@
             </label>
          </div>
       </div>
-      <div class="d-flex w-100 pt-4 justify-content-end">
+      <div class="d-flex w-100 pt-4 justify-content-end z-3 position-absolute me-3 end-0">
             <a style="width: 2rem;" href="{% url "customer:crear-credito" credit.id %}" class="btn-cancel ps-0 pe-0 text-black-50 ">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left-circle-fill me-1 mt-1" style="margin-top: 3px;" viewBox="0 0 16 16">
                         <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
@@ -203,11 +216,25 @@ document.getElementById('go-back-btn').addEventListener('click', () => {
 
 let monto_update = document.getElementById('id_amount')
 
+document.querySelectorAll('input').forEach(input => {
+      input.addEventListener('input', () => {
+            let numero = monto_update.value.replace(/,/g, ''); // Elimina las comas existentes
+            let capital = parseInt(numero)
+            
+            let plazo =   plazo_update.value
+            let tasa_1 = parseFloat(document.getElementById('id_tasa').value) / 100;
+            let tasa = tasa_1
+            SuperCalUpdate(capital, plazo, tasa);
+      });
+});
+
+
 monto_update.addEventListener("input", () => {
       let numero = monto_update.value.replace(/,/g, ''); // Elimina las comas existentes
       let capital = parseInt(numero)
       let plazo =   plazoInput.value
-      let tasa = 0.15
+      let tasa_1 = parseFloat(document.getElementById('id_tasa').value) / 100;
+      let tasa = tasa_1
       SuperCalUpdate(capital, plazo, tasa)
 });
 let plazo_update = document.getElementById('id_price_feed')
@@ -215,7 +242,8 @@ plazo_update.addEventListener("input", () => {
       let numero = monto_update.value.replace(/,/g, ''); // Elimina las comas existentes
       let capital = parseInt(numero)
       let plazo =   plazo_update.value
-      let tasa = 0.15
+      let tasa_1 = parseFloat(document.getElementById('id_tasa').value) / 100;
+      let tasa = tasa_1
       SuperCalUpdate(capital, plazo, tasa)
 });
 
