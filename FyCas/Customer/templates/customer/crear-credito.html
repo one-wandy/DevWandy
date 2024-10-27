@@ -51,12 +51,13 @@
             }
             table td 
             {
-                  font-size: 13px; color: #7e7e7ebc;
+                  font-size: 12px; 
 
             }
             table th 
             {
-                  font-size: 14px; color: #383838bc;
+                  font-size: 12px; color: #494949bc;
+                  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             }
             .fixed-bottom {
                   background-color: #343a40;
@@ -109,6 +110,8 @@
                   border: none !important;
             }
             .super-shadow {
+                  /* scale: 1; */
+                  /* margin: 0.2rem; */
                   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1) !important;
                   /* background-color: rgba(237, 237, 237, 0.396) !important; */
                   border: 3px solid #ece9e9 !important;
@@ -161,8 +164,8 @@
                         border-radius: 1rem;
             }
             .grey-span {
-                  background-color: #ececec8d; /* Light green background */
-                        color: #aaaaaa !important; /* Green text */
+                  background-color: #ececec6c; /* Light green background */
+                        color: #adadad !important; /* Green text */
                         font-weight: bold;
                         font-size: 12px;
                         padding: 0.2rem 0.5rem;
@@ -202,7 +205,7 @@
       <div class="colors dos" style="margin-left: 2rem !important; margin-top: 19rem; background-color: rgb(85, 243, 238);"></div>
       <div class="colors tres" style="margin-left: 5rem; margin-top: 5rem; background-color: rgb(255, 160, 151);"></div>
 </div>
-<section data-aos="fade-down" class='d-flex credits  overflow-scroll bg-white bg-opacity-10 h-100 position-relative  justify-content-center flex-wrap'>
+<section data-aos="fade-down" class='d-flex credits  overflow-scroll bg-white bg-opacity-10 h-100 align-content-end pb-2 position-relative  justify-content-center flex-wrap'>
       <div id="factura"  class="position-absolute top-50 d-none start-50 translate-middle w-100 bg-white bg-opacity-75 d-flex justify-content-center h-100 align-content-center flex-wrap" style="z-index: 1050;">
 
             <div class="  shadow rounded-4 bg-white position-relative p-5 " style="width: max-content; height: max-content;" >
@@ -244,7 +247,7 @@
                                                 <td style="font-size: 12px;" class="text-black-50"> 
                                                       {% if cuota.estado %}
                                                       <span class="green-span">
-                                                            Completado  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-patch-check-fill  text-primary" viewBox="0 0 16 16">
+                                                            Completado  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-patch-check-fill   text-primary" viewBox="0 0 16 16">
                                                                   <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
                                                                   </svg> 
                                                       </span>
@@ -287,14 +290,14 @@
                   Acciones
             </strong>
       </div> -->
-      <div class="w-100 p-2 pb-1 pt-0  ">
+      <!-- <div class="w-100 p-2 pb-1 pt-0  ">
             <strong class="text-black-50" style="font-size: 12px;">
                   Acciones
             </strong>
-      </div>
-      <div class="w-100 d-flex  justify-content-around flex-wrap  position-relative " >
+      </div> -->
+      <div class="w-100 d-flex   justify-content-around flex-wrap  position-relative " >
             {% if cuotas %}   
-            <div class="d-flex justify-content-start w-100  overflow-scroll">
+            <div class="d-flex justify-content-start d-none w-100  overflow-scroll">
                   <button data-aos="fade-right" id="{{c.id}}" class="btn btn-apple btn-primary bg-transparent mx-2" onclick="OpenCloseBtnCredit(this.id)"> 
                   Abrir credito</button>
                   <button data-aos="fade-right" class="btn btn-apple btn-primary bg-transparent mx-1" onclick="toggleDiv('historial')"> 
@@ -368,8 +371,12 @@
             <div class='d-flex justify-content-start p-2 pb-3 overflow-scroll   w-100 align-content-center '>
                   {% include "components/list-credi.html" %}
             </div>
-
-            <div class="justify-content-around  w-100  pe-5 ps-5 bottom-0 d-flex rounded-0" 
+            <div class="w-100 p-2  pt-0 pb-0 ">
+                  <strong class="text-black-50" style="font-size: 12px;">
+                         Detalles de credito
+                  </strong>
+            </div>
+            <div class="justify-content-center  w-100  pe-5 ps-5 bottom-0 d-flex rounded-0" 
             style="background-color: #ffffff00; border-top: 0px rgb(207, 207, 207) solid; ">
             <div class="di-cn">
                   <strong>Capital:</strong> <span class="grey-span">${{ credit.amount|intcomma }}.00</span>
@@ -410,40 +417,45 @@
       
             </div>
                 
-           <div class=" rounded-4 me-2 ms-2 w-100 shadow bg-white bg-opacity-50   d-flex flex-wrap justify-content-center align-content-start overflow-scroll " style="height: 40vh;   ">
+   
+           <div class="  me-2 ms-2 w-100 shadow bg-white bg-opacity-75   d-flex flex-wrap justify-content-center align-content-start overflow-auto " style="height: 44vh; border-radius: 1rem;   ">
             <table class=" w-100 b rounded-4 m-2  ">
                   <thead>
                         <tr>
-                              <th style="width: 6%;">#</th>
-                              <th style="width: 10%;">Cuota</th>
-                              <th style="width: 10%;">Mora</th>
-                              <th style="width: 14%;">Monto pagado</th>
-                              <th style="width: 10%;">Restante</th>
-                              <th style="width: 14%;">Estado de cuota</th>
-                              <th style="width: 10%;">Termina</th>
-                              <th style="width: 12%;">Vencimiento</th>
-                              <th style="min-width: 290px;">Acciones </th>
+                              <th class="text-center" style="width: 6%;">#</th>
+                              <th class="text-center" style="width: 10%;">Cuota</th>
+                              <th class="text-center" style="width: 10%;">Mora</th>
+                              <th class="text-center" style="width: 14%;">Monto pagado</th>
+                              <th class="text-center" style="width: 10%;">Restante</th>
+                              <th class="text-center" style="width: 14%;">Estado de cuota</th>
+                              <th class="text-center" style="width: 10%;">Termina</th>
+                              <th class="text-center" style="width: 12%;">Vencimiento</th>
+                              <th class="text-center" style="min-width: 290px;">Acciones de: Pagos, Abonos y mas </th>
                         </tr>  </thead>
                   
                   <tbody >
                         
                         {% for cuota in cuotas %}
                         <tr>
-                              <td style="font-size: 10px;"> ( {{ forloop.counter }} )</td>
+                              <td style="font-size: 10px;">  
+                                    <div class="grey-span mt-2 d-flex justify-content-center flex-wrap align-content-center" style="height: 2rem;">
+                                          {{ forloop.counter }}
+                               </div>
+                         </td>
                               <td> 
-                                 <div class="grey-span d-flex justify-content-center flex-wrap align-content-center" style="height: 2rem;">
+                                 <div class="grey-span mt-2 d-flex justify-content-center flex-wrap align-content-center" style="height: 2rem;">
 
                                           ${{ cuota.cuota|intcomma }}.00 
 
                                  </div>
                               </td>
                               <td>
-                                    <div  class="grey-span d-flex justify-content-center flex-wrap align-content-center" style="height: 2rem;">
+                                    <div  class="grey-span d-flex mt-2 justify-content-center flex-wrap align-content-center" style="height: 2rem;">
                                           0.00
                                     </div>
                               </td>
                               <td>
-                                    <div  class="grey-span d-flex justify-content-center flex-wrap align-content-center" style="height: 2rem;">
+                                    <div  class="grey-span d-flex mt-2 justify-content-center flex-wrap align-content-center" style="height: 2rem;">
                                     {% if cuota.abonado > 0 %}
                                     ${{ cuota.abonado|intcomma }}.00
                                     {% else %}
@@ -453,7 +465,7 @@
                                           
                               </td>
                               <td>
-                                    <div  class="grey-span d-flex justify-content-center flex-wrap align-content-center" style="height: 2rem;">
+                                    <div  class="grey-span d-flex mt-2 justify-content-center flex-wrap align-content-center" style="height: 2rem;">
                                     {% if cuota.abonado > 0 %}
 
                                         ${{ cuota.restante|intcomma }}.00
@@ -464,10 +476,10 @@
                                           
                               </td>
                               <td >  
-                              <div  class="grey-span d-flex justify-content-center flex-wrap align-content-center" style="height: 2rem;">
+                              <div  class="grey-span d-flex mt-2 justify-content-center flex-wrap align-content-center" style="height: 2rem;">
                                                 {% if cuota.estado %}  
                                           Completado
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-patch-check-fill  text-black-50" style="color: #aaaaaa !important;" viewBox="0 0 16 16">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-patch-check-fill  text-black-50 ms-2" style="color: #aaaaaa !important;" viewBox="0 0 16 16">
                                           <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
                                           </svg> 
                                           {% else %}
@@ -477,26 +489,26 @@
 
                                     {% endif %}  </td>
                                     <td class="text-capitalize"> 
-                                          <div  class="grey-span d-flex justify-content-center flex-wrap align-content-center" style="height: 2rem;">{{cuota.start_date|date:"m/d/Y"}} </div> </td>
+                                          <div  class="grey-span d-flex mt-2 justify-content-center flex-wrap align-content-center" style="height: 2rem;">{{cuota.start_date|date:"m/d/Y"}} </div> </td>
                                     <td class="text-capitalize">
                                                {% if cuota.estado != True %}
 
                                                       
                                                       {% if cuota.end_date < today %}
-                                                            <div  class="danger-span d-flex justify-content-center flex-wrap align-content-center" style="height: 2rem;"> 
-                                                                  {{ cuota.end_date|date:"m/d/Y" }} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                                            <div  class="danger-span mt-2 d-flex justify-content-center flex-wrap align-content-center" style="height: 2rem;"> 
+                                                                  {{ cuota.end_date|date:"d/m/Y" }} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash ms-2" viewBox="0 0 16 16">
                                                                         <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
                                                                       </svg>
                                                             </div> 
                                                       {% else %}
-                                                            <div  class="grey-span d-flex justify-content-center flex-wrap align-content-center" style="height: 2rem;"> 
-                                                                  {{ cuota.end_date|date:"m/d/Y" }}
+                                                            <div  class="grey-span d-flex mt-2 justify-content-center flex-wrap align-content-center" style="height: 2rem;"> 
+                                                                  {{ cuota.end_date|date:"d/m/Y" }}
                                                             </div> 
                                                       {% endif %}
                   
                                                       {% else %}
-                                                      <div  class="green-span d-flex justify-content-center flex-wrap align-content-center" style="height: 2rem;"> 
-                                                            {{ cuota.end_date|date:"m/d/Y" }}      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-patch-check-fill  text-primary" viewBox="0 0 16 16">
+                                                      <div  class="green-span d-flex mt-2 justify-content-center flex-wrap align-content-center" style="height: 2rem;"> 
+                                                            {{ cuota.end_date|date:"d/m/Y" }}      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-patch-check-fill ms-2  text-primary" viewBox="0 0 16 16">
                                                                   <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
                                                                   </svg> 
                                                       </div> 
@@ -505,16 +517,16 @@
 
                               <td class=" ">
                                     {% if cuota.estado != True %}
-                                    <div class="d-flex " style="height: 2rem;">
+                                    <div class="d-flex mt-2 " style="height: 2rem;">
                                           <input type="text" id="ct-p{{ cuota.id }}"  class="bg-white  bg-opacity-10 inputs  p-1 ps-3  outline-none" placeholder="Cantidad" min="1" max="{{ cuota.restante }}" style="border-radius: 1.5rem; width: 50%; 
-                                          border: 1px solid rgb(213, 213, 213)   ; ;">
+                                          border: 1px solid rgb(236, 236, 236)   ; ;">
                                           <button onclick="AplicarPago(this.id)" disabled="true" class=' btn-es ms-2 border-0  p-0 '  style="width: 100%; height: 2rem;" id="{{ cuota.id }}">
                                                 N/A
                                           </button>
                                     </div>
                                     {% else %}
-                                    <div style="height: 2.2rem;">
-
+                                    <div class="d-flex" style="height: 2rem;">
+                                          
                                     </div>
                                     {% endif %}
                               </td>
