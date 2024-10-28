@@ -143,7 +143,10 @@
 
       <div class='d-flex btn-share-con w-100  justify-content-around mt-2 mb-2'>
             <a  class='w-100 m-0' 
-                  href="https://api.whatsapp.com/send?phone=+18092998306&text=*({{credit.customer.name}} {{credit.customer.last_name}})*, Firmado el *{{fecha_actual}}*; Detalles -> https://grupofycas.online/detail-credit/customer/{{credit.id}}" >
+                  href="https://api.whatsapp.com/send?phone=+18092998306&text=Cliente: *({{credit.customer.name}} {{credit.customer.last_name}})*, 
+                   Firmado el *{{fecha_actual}}* ,
+                   No. Cuenta; *{{credit.no_account}}*,
+                   ; Detalles -> https://grupofycas.online/detail-credit/customer/{{credit.id}}" >
                   <button style="background-color: #ececec6c !important;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share-fill  me-1"
                         style="margin-top: 2px;" viewBox="0 0 16 16">

@@ -792,7 +792,7 @@ class CrearCredito(TemplateView, Options):
                         if cu.estado == True:
                             p_cuotas += 1
 
-                            
+                    fecha_actual = datetime.now()
                     context['cal'] = self.CalFran(int(credit.amount), int(credit.tasa), int(credit.price_feed), 't') 
                     context['credit'] =  credit
                     context['cc'] = p_x_c - c_p
@@ -801,6 +801,7 @@ class CrearCredito(TemplateView, Options):
                     context['p_cuotas'] = p_cuotas
                     context['today'] = timezone.now().date()
                     context['c'] =  credit.customer
+                    context['fecha_actual'] =  fecha_actual.strftime("%d/%m/%Y").capitalize()
 
                     if credit.credito.exists() == True:
                             context['cuotas'] = cuotas
