@@ -229,21 +229,17 @@
                         Clientes inversiones
                   </span>
             </button>
-
-
-      </div>
-      <div class="text-center w-100 pt-4 " style="line-height: 14px; font-size: 12px !important;">
-            <span class="text-center w-100 p-1"
-            style="font-size: 10px !important; color: #5A5868; font-weight: bold;">
-                 <span style="font-size: 9px !important;">V</span> <strong class="text-black-50" style="font-size: 12px;">Destellos 2.5</strong>
-           </span> <br>
-           <span class="text-center w-100 p-1"
-           style="font-size: 10px; color: #5A5868; font-weight: bold;">
-                <span style="font-size: 9px !important;" class="text-black-50">Powered by</span> <strong class="text-black-50" style="font-size: 12px;">ChatGPT 3.5</strong>
-          </span>
-          <span class="w-100 justify-content-center" >
-            <a href="" class="text-center  text-black-50 justify-content-center w-100" style="font-size: 10px !important;">untal.wandy@icloud.com</a>
-          </span>
+            {% if customer %}
+            <input type="text" id='search-p'  style="font-size: 12px; width: auto; max-width: 212px;  
+            height: 2.3rem;     
+            outline: none !important;
+            border-radius: 3rem !important;
+            /* border-top-right-radius: 2rem !important;
+            border-bottom-right-radius: 2rem !important; */
+            border: 1px solid rgb(223, 223, 223);"
+            class="form-search  border-1 w-100 text-center  mb-3  ms-1 bg-white position-fixed bottom-0  outline-none   m-0 me-1 searching-config "  
+            placeholder=" Busqueda avanzada ">
+            {% endif %}
       </div>
 </section>
 <!-- <input type="text"  style="font-size: 14px;  min-width: 200px; min-height: 2.5rem;margin-top: 5px !important;   max-height: 2.5rem; " class="form-search bg-danger  text-center w-100  m-0 mb-1  bg-white bg-opacity-75 "  id="searching-config" 
