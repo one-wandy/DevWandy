@@ -272,6 +272,7 @@ class UpdateCustomer(UpdateView, Options):
 
 class DetailCustomer(DetailView, Options):
     model = models.Customer
+    form_class = forms.CustomerForm 
     template_name = "customer/user-profile.html"
     
     def get(self, request, *args, **kwargs):
