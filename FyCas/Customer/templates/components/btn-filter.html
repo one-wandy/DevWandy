@@ -24,7 +24,7 @@ strong
 }
 </style>
 
-<div class="btn-filter  d-flex overflow-scroll  justify-content-start p-1 rounded-0  pt-2 w-100 blur" >
+<div class="btn-filter  d-flex overflow-scroll  justify-content-start p-1 rounded-0  pt-2 w-100 blur " >
         <!-- <button id="toggle-btn" class="mt-1" onclick="ActiveDesactive(this.id, 'options') "> Opciones </button> -->
       <div  class="div-menu-4  d-flex flex-wrap overflow-hidden       justify-content-start "  style="border-radius: 2rem; width: 15rem ; margin-left: 2.2rem;">  
             <div class="w-100">
@@ -53,33 +53,14 @@ strong
       
             <!-- <img src="{% static "icons/search.png" %}" class="mt-2 "
             style="margin-left: 1.2rem; margin-right: 0.3rem;"  width='20' height="20" alt=""> -->
-            <input type="text" id='search-p'  style="font-size: 12px; width: auto; max-width: 450px;  height: 2.7rem;     outline: none !important;
-            border-radius: 0.3rem !important;
-                  border-top-right-radius: 2rem !important;
-                  border-bottom-right-radius: 2rem !important;
-               " class="form-search  border-0 w-100 outline-none  bg-transparent m-0 me-1 searching-config "  
-            placeholder=" Busqueda avanzada ">
+
             
       </div>
 
       
 </div>
 
-      <!-- <button onclick="Min()" class="mt-1 ms-2 border-0 btn_sm bg-black bg-opacity-10">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">      <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
-          </svg>
-      </button>
-      <span class="results-sr text-black p-2 d-flex text-black-50 justify-content-center" style="width: 2.2rem;">
-            
-      </span>
-      <button onclick="Plus()" class="mt-1 border-0 btn_sm  bg-black bg-opacity-10">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-                </svg>
-      </button>      
-      <button class="mt-1 ms-2 btn_sm" style="border-color: rgb(226, 226, 226);" onclick="searchElement()">
-               Buscar         
-      </button> -->
+
 
 <button class="border-1 p-2 bg-white bg-opacity-75 mt-1 blur d-none  btn-number2 " style="  border: 0px rgb(225, 225, 225) solid !important;">
       <form action="" method="post" class='w-100 border-0  d-flex justify-content-end flex-wrap'>
@@ -97,29 +78,12 @@ strong
 
                   </button>
             </div>
-            <!-- <button class='p-0 border-0 me-2' style="border: none !important; background-color: transparent !important;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-filter  text-primary border-0 bg-transparent" viewBox="0 0 16 16">
-                        <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
-                      </svg>
-            </button> -->
+
             </form>
 </button>
 
 <script>
-document.addEventListener('keydown', function(event) {
-    // Verifica si las teclas "Shift", "Command" o "Control", y "B" están siendo presionadas
-    if ((event.metaKey || event.ctrlKey) && event.shiftKey && event.key === 'b') {
-        // Obtén el elemento con el id 'search-p'
-        let searchElement = document.getElementById('search-p');
-        // Verifica si el elemento existe
-        if (searchElement) {
-            // Enfoca el elemento
-            searchElement.focus();
-        } else {
-            console.log("Elemento no encontrado");
-        }
-    }
-});
+
 
 
 let results_plus_rest = document.querySelector('.results-sr')

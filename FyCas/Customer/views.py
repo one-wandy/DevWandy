@@ -130,37 +130,6 @@ class ListCustomer(ListView,Options):
         count_customer = self.request.POST.get('20-customer')
         customer = self.request.POST.get('send-data')
 
-
-        # from PIL import Image
-        # from io import BytesIO
-        # from django.core.files.base import ContentFile
-
-        # cs = self.model.objects.all() 
-        # for ckl in cs:
-        #     if ckl.img1 and os.path.exists(ckl.img1.path):
-        #         try:
-        #             # Open the original image
-        #             img1_path = ckl.img1.path
-        #             img1 = Image.open(img1_path)
-        #             # Save the original image to img2
-        #             img2_io = BytesIO()
-        #             img1.save(img2_io, format=img1.format)
-        #             ckl.img2.save(os.path.basename(ckl.img1.name), ContentFile(img2_io.getvalue()), save=False)
-
-        #             # Resize img1 to 2x2 pixels
-        #             img1.thumbnail((2, 2))
-        #             img1_io = BytesIO()
-        #             img1.save(img1_io, format=img1.format, quality=2)  # Reduce quality to reduce file size
-                    
-        #         except FileNotFoundError:
-        #             print(f"File not found: {ckl.img1.path}")
-        #         except Exception as e:
-        #             print(f"An error occurred: {e}")
-        #     else:
-        #         print(f"Image path is invalid or does not exist: {ckl.img1}")
-
-
-
         if self.request.method == 'POST':
             if  self.request.POST.get('noti') != None:
                 context['customer'] = self.model.objects.filter(is_active = True, 
@@ -272,6 +241,7 @@ class UpdateCustomer(UpdateView, Options):
 
 class DetailCustomer(DetailView, Options):
     model = models.Customer
+    form_class = forms.CustomerForm 
     template_name = "customer/user-profile.html"
     
     def get(self, request, *args, **kwargs):
@@ -822,7 +792,7 @@ class CrearCredito(TemplateView, Options):
                         if cu.estado == True:
                             p_cuotas += 1
 
-                            
+                    fecha_actual = datetime.now()
                     context['cal'] = self.CalFran(int(credit.amount), int(credit.tasa), int(credit.price_feed), 't') 
                     context['credit'] =  credit
                     context['cc'] = p_x_c - c_p
@@ -831,6 +801,7 @@ class CrearCredito(TemplateView, Options):
                     context['p_cuotas'] = p_cuotas
                     context['today'] = timezone.now().date()
                     context['c'] =  credit.customer
+                    context['fecha_actual'] =  fecha_actual.strftime("%d/%m/%Y").capitalize()
 
                     if credit.credito.exists() == True:
                             context['cuotas'] = cuotas

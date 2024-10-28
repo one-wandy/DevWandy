@@ -244,23 +244,21 @@ btn-sliders-nav
 {
       background-color: #eeeeee !important;
 }
+
+
 </style>
 
 
+
+
 <div id="div-list-customer"></div>
-<div  class="w-100 position-absolute bottom-0  d-flex justify-content-center" style="filter: blur(120px);" >
-      <div class="colors uno" style="background-color: #ffd588; margin-left: 1rem;"></div>
-      <div class="colors dos" style="margin-left: 2rem !important; background-color: rgb(243, 85, 85);"></div>
-      <div class="colors tres" 
-            style="margin-left: 17rem; margin-top: 20rem; background-color: rgb(178, 89, 230);">
-      </div>
-</div>
 
 <section id="section" class=" mt-2 overflow-scroll h-100 " >
+      
       <div class="w-100 d-flex justify-content-end    ">
             <div id="config-list"  
-            class="position-fixed  w-100    justify-content-center d-flex flex-wrap" 
-            style="justify-content: center; bottom: 3.9rem; z-index: 100; max-width: 70rem;">
+            class="position-absolute  w-100     justify-content-center d-flex flex-wrap" 
+            style="justify-content: center; bottom: 3.9rem; z-index: 100; max-width: 70rem">
             </div>
       </div>
       <div id="text-c" class="w-100 justify-content-center  flex-wrap" 
@@ -278,9 +276,7 @@ btn-sliders-nav
       </div>  
 </section>
 
-<div  class="position-sticky bottom-0 ps-4">
-      {% include "components/btn-filter.html" %}
-</div>
+
 <form action="" method="post" class="d-none">
       {% csrf_token %}
       <input type="number" name="send-data" id="input-send-data">
@@ -288,6 +284,8 @@ btn-sliders-nav
 </form>
 
 <script>
+
+
 let id_input_select = 0
 document.addEventListener('DOMContentLoaded', (event) => {
 // Selecciona todos los elementos de entrada
@@ -351,127 +349,16 @@ document.addEventListener('keydown', function(event) {
 
 searching_config.addEventListener('focus', function() {
       searching_config.style.width = '100%'
-      document.getElementById('for-c').style.display = 'block'
-      document.getElementById('agregar').style.display = 'none'
-      document.getElementById('clientes').style.display = 'none';
+
+
+
 });
 
 searching_config.addEventListener('blur', function() {
       searching_config.style.width = '14rem'
-      document.getElementById('for-c').style.display = 'flex'
+
       document.getElementById('agregar').style.display = 'block'
       document.getElementById('clientes').style.display = 'flex';
-});
-
-window.addEventListener("DOMContentLoaded", function() {
-        ConfigData()
-        function ConfigData() {
-            const url = 'searching/customer';
-            $.ajax({
-                url: url,
-                success: function(data){
-                  config_data = data
-                  const searching_config = document.querySelector('.searching-config');
-                  searching_config.addEventListener('input', (event) => {
-                  const input_value = event.target.value;
-                  const filtered_data = data.filter((config) => {
-                        return config.filter.toLowerCase().includes(input_value.toLowerCase());
-                    });
-                    config_list.innerHTML = ''
-                    var divList = document.getElementById('div-list-customer') 
-                    if(filtered_data == ''){
-                              document.getElementById("text-c").style.display = 'flex'
-                              document.getElementById('user-no').innerHTML = searching_config.value
-                  }
-                  else{
-                        document.getElementById("text-c").style.display = 'none'
-                        if(searching_config.value == ''){
-                              divList.classList.remove('blur-up')
-                              document.getElementById('sec-listado').classList.remove('d-none')
-                        }
-                        else{  
-                              divList.classList.add('blur-up')
-                              document.getElementById('sec-listado').classList.add('d-none')
-                        }
-
-                  }
-
-                  for (const c  of filtered_data) {
-                        const div = document.createElement('div');
-                        div.classList.add("contdiv",  'justify-content-center' ,'d-flex',)
-                        const divCont = document.createElement('div');
-                        divCont.classList.add('contDiv' , 'justify-content-center' ,'d-flex',  )
-                        div.classList.add("divCon", "p-3", 'card', 'justify-content-center' ,'d-flex',)
-                              let divI = document.createElement("div")
-                              const imgLink = document.createElement('a');
-                              imgLink.href = "/detail-customer/" + c.id
-                              imgLink.target = '_blank';
-                              let divL = document.createElement("div")
-
-                              let stronL = document.createElement("strong")
-                              stronL.textContent = ""
-                              let spanL = document.createElement("span")
-                              const nameLink = document.createElement('button');
-                              nameLink.classList.add('border-0', 'p-0', )
-                              nameLink.id = c.id
-                              nameLink.addEventListener('click', function() {
-                                    // Llamar a la función y pasarle el ID como argumento
-                                    document.getElementById('input-send-data').value = this.id
-                                    console.log(document.getElementById('input-send-data').value)
-                                    document.getElementById('btn-send-data').click()
-                                    // Suponiendo que la función se llama "miFuncion"
-                              });
-                              nameLink.innerText = c.name
-                              divL.appendChild(stronL)
-                              divL.appendChild(nameLink)
-                              let divN = document.createElement("div")
-                              divN.classList.add('dni')
-                                    let stronN = document.createElement("strong")
-                                          stronN.textContent = ""
-                                    let spanN = document.createElement("span")
-                                          spanN.textContent = c.dni
-                              divN.appendChild(stronN)
-                              divN.appendChild(spanN)
-                              let divA = document.createElement("div")
-                              let divR = document.createElement("div")
-                              let stronR = document.createElement("strong")
-                              let divK = document.createElement("div")
-
-                        div.appendChild(divI);
-                        div.appendChild(divL);
-                        div.appendChild(divN);
-                        div.appendChild(divR);
-                        div.appendChild(divA);
-                        div.appendChild(divK);
-                        divCont.appendChild(div);
-                        config_list.appendChild(divCont);
-                    }
-                    if (searching_config.value.trim() === "") {
-                        config_list.innerHTML = ''
-                        config_list.style.display = 'none'
-                        document.getElementById('for-c').style.display = 'flex'
-                        // document.getElementById("list-customer").style.display = "block"
-                  }
-                  else {
-                        config_list.style.display = 'block'
-                        document.getElementById('for-c').style.display = 'none'
-                        // document.getElementById("list-customer").style.display = "none"
-                    }
-                    });
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error en la solicitud AJAX:', status, error);
-                }
-            });
-        }
-    });
-
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape' || (event.shiftKey && event.key === 'c')) { // Detecta la tecla ESC o Shift + C
-          window.location.href = '/'; // Cambia la URL a la que deseas redirigir
-      }
-  });
-  
 });
 
 function CustomerVerify(id){
@@ -567,7 +454,7 @@ function OpenCloseBtnCredit(btn_id) {
             div.classList.remove('d-none');
             div.classList.add('d-block');
       } else if (div.classList.contains('d-block')) {
-            // document.getElementById('div-list-customer').classList.add('   ')
+            document.getElementById('div-list-customer').classList.add('flip-down ')
             div.classList.remove('d-block');
             div.classList.add('d-none');
       }
@@ -662,7 +549,23 @@ function DisableCustomer(id){
             document.getElementById('client'+id).classList.add('d-none')
       }
      
-     
+
+
+
+document.addEventListener('keydown', function(event) {
+    // Verifica si las teclas "Shift", "Command" o "Control", y "B" están siendo presionadas
+    if ((event.metaKey || event.ctrlKey) && event.shiftKey && event.key === 'b') {
+        // Obtén el elemento con el id 'search-p'
+        let searchElement = document.getElementById('search-p');
+        // Verifica si el elemento existe
+        if (searchElement) {
+            // Enfoca el elemento
+            searchElement.focus();
+        } else {
+            console.log("Elemento no encontrado");
+        }
+    }
+});
 
 
 
