@@ -58,14 +58,14 @@
 
 /* Clase que aplicará la animación */
 .flip-up {
-    animation: flip-up 0.4s ease-out forwards;
+    animation: flip-up 1s ease-out ;
     transform-origin: top; /* Punto de rotación */
-    opacity: 0; /* Oculto por defecto */
+    opacity: 1; /* Oculto por defecto */
 }
 
 
 /* Definimos el efecto de flip-down */
-@keyframes flip-down {
+@keyframes flid-sda {
     0% {
         transform: rotateX(-90deg);
         opacity: 0;
@@ -77,10 +77,10 @@
 }
 
 /* Clase que aplicará la animación */
-.flip-down {
-    animation: flip-down 1s ease-out forwards;
-    transform-origin: top; /* Punto de rotación */
-    opacity: 0; /* Oculto por defecto */
+.flid-sda {
+    animation: flid-sda 0.4s ease-out;
+    transform-origin: left !important; /* Punto de rotación */
+    opacity: 1; /* Oculto por defecto */
 }
 </style>
 
@@ -91,7 +91,7 @@
       {% for c in customer %}
 <div style="  width: 338px; height: 171px; " class="position-relative  m-1 d-flex justify-content-center">
 
-      <div id="client{{c.id}}"  data-aos="zoom-in-down" style=" transition: 0.5s ease-out !important;  width: 338px; height: 171px; border-radius: 26px;   z-index: 0 !important; background-color: #ffffffc6 !important;
+      <div id="client{{c.id}}"  data-aos="zoom-in" style=" transition: 0.5s ease-out !important;  width: 338px; height: 171px; border-radius: 26px;   z-index: 0 !important; background-color: #ffffffc6 !important;
                   box-shadow: 0px 1px 3px 1px rgba(218, 218, 218, 0.505);" class=" position-relative card-cu m-1   p-2 " >
                   <button id="{{c.id}}"  onclick='OpenCloseBtn(this.id)' style="background-color: #35333e00; width: 35px; height: 35px; color: #000000 !important; top: 8rem; box-shadow: #eeeeee00 1px 1px 1px 1px; border: 0px solid #a7a7a7 !important; border-style: dotted !important;"   class="rounded-circle  position-absolute border-0  p-0 me-2 mb-2 end-0 d-flex flex-wrap justify-content-center align-content-center ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots " style="margin-top: 10px;" viewBox="0 0 16 16">
@@ -180,10 +180,11 @@
             if (div.classList.contains('d-none')) {
                   div.classList.remove('d-none');
                   div.classList.add('d-block');
+                  div.classList.add('flid-sda');
 
             }
             else if (div.classList.contains('d-block')) {
-                  // div.classList.add('flip-down');
+                  div.classList.add('flid-sda');
                   div.classList.remove('d-block');
                   div.classList.add('d-none');
             }
