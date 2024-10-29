@@ -368,22 +368,26 @@
       
       {% if c.credit.all %}
 
-                  <button class=""  style='border-radius: 1.5rem; color: rgb(154, 154, 154);
-                        border-bottom-left-radius: 3rem;
-                        background-color: rgb(241, 241, 241) !important;'>
-                        Listado
-                  </button>
+                  <a href="{% url "customer:listado-credit-redirect" c.id  %}">
+                        <button class=""  style='border-radius: 1.5rem; color: rgb(154, 154, 154);
+                              border-bottom-left-radius: 3rem;
+                              background-color: rgb(241, 241, 241) !important;'>
+                              Listado 
+                        </button>
+                  </a>
                   <button class=""  style='border-radius: 1.5rem; color: rgb(154, 154, 154);  
                         background-color: rgba(241, 241, 241, 0) !important;
                         border: 1px solid rgb(229, 229, 229) !important;'>
                         Actual
                   </button>
                   {% endif %}
-                  <button class=""  style='border-radius: 1.5rem;
+                  <a href="{% url "customer:create-credit-new" c.id  %}">
+                        <button class=""  style='border-radius: 1.5rem;
                         color: #163145 !important;
                         background-color: rgb(223, 240, 255) !important; border-bottom-right-radius: 3rem; ' >
                         Crear 
                   </button>
+            </a>
             </div>
       <div  class='d-flex flex-wrap d-none bg-white mb-3 p-2 mt-2 ' id='div-credit{{c.id}}'
             style="border-radius: 1.5rem;">
