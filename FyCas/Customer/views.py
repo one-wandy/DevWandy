@@ -861,13 +861,13 @@ class CreateCreditNew(CreateView, Options):
         form_class = forms.CreditForm
         template_name = "customer/crear-creadito-new.html"
 
-        def get(self, request, *args, **kwargs):
-            customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
-            try:
-                credit = self.model.objects.get(customer=customer, is_active=True)
-                return self.UpdateCredit(credit.id)
-            except self.model.DoesNotExist:
-                return super().get(request, *args, **kwargs)
+        # def get(self, request, *args, **kwargs):
+        #     customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
+        #     try:
+        #         credit = self.model.objects.get(customer=customer, is_active=True)
+        #         return self.UpdateCredit(credit.id)
+        #     except self.model.DoesNotExist:
+        #         return super().get(request, *args, **kwargs)
 
         def get_context_data(self, **kwargs):
             context = super().get_context_data(**kwargs)

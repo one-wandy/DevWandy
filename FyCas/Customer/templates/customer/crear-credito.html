@@ -38,11 +38,13 @@
                   display: inline-block;
                   margin: 0.2rem;
                   width: max-content;
+               
             }  
             .di-cn span
             {
-                  color: #909090 !important;
-                  font-size: 12px;
+                  color: #828282 !important;
+                  font-size: 14px; 
+                  font-family: Chillax;  font-weight: 500 !important;
             }
             .di-cn strong
             {
@@ -52,12 +54,13 @@
             table td 
             {
                   font-size: 12px; 
-
+                  font-family: Chillax;  font-weight: 500 !important;
             }
             table th 
             {
-                  font-size: 12px; color: #494949bc;
-                  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                  font-size: 14px; color: #818080;
+                  font-weight: 600;
+                  font-family: Chillax;
             }
             .fixed-bottom {
                   background-color: #343a40;
@@ -158,15 +161,15 @@
             .green-span {
                         background-color: #ebf4ff; /* Light green background */
                         color: #005180; /* Green text */
-                        font-weight: bold;
+
                         font-size: 12px;
                         padding: 0.2rem 0.5rem;
                         border-radius: 1rem;
             }
             .grey-span {
                   background-color: #ececec6c; /* Light green background */
-                        color: #adadad !important; /* Green text */
-                        font-weight: bold;
+                        color: #8b8b8b !important; /* Green text */
+
                         font-size: 12px;
                         padding: 0.2rem 0.5rem;
                         border-radius: 1rem;
@@ -174,7 +177,7 @@
             .danger-span {
                   background-color: #f8d7da; /* Light green background */
                         color: #721c24; /* Green text */
-                        font-weight: bold;
+
                         font-size: 12px;
                         padding: 0.2rem 0.5rem;
                         border-radius: 1rem;
@@ -182,7 +185,7 @@
             .verder-span {
                   background-color: #d4edda; /* Light green background */
                         color: #155724; /* Green text */
-                        font-weight: bold;
+
                         font-size: 12px;
                         padding: 0.2rem 0.5rem;
                         border-radius: 1rem;
@@ -205,10 +208,12 @@
       <div class="colors dos" style="margin-left: 2rem !important; margin-top: 19rem; background-color: rgb(85, 243, 238);"></div>
       <div class="colors tres" style="margin-left: 5rem; margin-top: 5rem; background-color: rgb(255, 160, 151);"></div>
 </div>
-<section data-aos="fade-down" class='d-flex credits  overflow-scroll bg-white bg-opacity-10 h-100 align-content-end pb-2 position-relative  justify-content-center flex-wrap'>
-      <div id="factura"  class="position-absolute top-50 d-none start-50 translate-middle w-100 bg-white bg-opacity-75 d-flex justify-content-center h-100 align-content-center flex-wrap" style="z-index: 1050;">
+<section data-aos="fade-down" class='d-flex credits  overflow-scroll bg-white  h-100 align-content-start pb-2 position-relative  justify-content-center flex-wrap'>
+      <div id="factura"  class="position-absolute top-50 d-none start-50 translate-middle w-100 bg-white bg-opacity-10  d-flex justify-content-center h-100 align-content-center flex-wrap" style="z-index: 1050; 
+          -webkit-backdrop-filter: blur(10px) !important;
+          backdrop-filter: blur(10px) !important;">
 
-            <div class="  shadow rounded-4 bg-white position-relative p-5 " style="width: max-content; height: max-content;" >
+            <div class="  super-shadow bg-white  bg-white position-relative p-5 overflow-scroll " style="width: max-content; height: max-content; max-height: 40rem; border-radius: 1.5rem;" >
                   <button class="bg-transparent rounded-circle border-0 position-absolute top-0 end-0 w-auto" onclick="GenerarFactura()"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-circle-fill text-danger" viewBox="0 0 16 16">
                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
                       </svg></button>
@@ -263,7 +268,7 @@
                                           {% endfor %}
                                     </tbody>
                               </table>
-                              <div class="d-flex justify-content-end ">
+                              <div class="d-flex justify-content-end  position-fixed  bottom-0 w-100 mb-4 me-2 end-0">
                                     <button class="bg-transparent shadow-none text-black-50 p-0 rounded-5  border-0 mx-2" onclick="EnviarFactura()">
                                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
                                                 <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5"/>
@@ -282,18 +287,16 @@
             </div>
       </div>
       {% if credit %}
-      <div class="d-flex w-100 justify-content-start  mt-5">
+      <div class="d-flex w-100 justify-content-start  mt-2">
             {% include "customer/user-profile.html" %}  
       </div>
-      <div class="d-flex w-100 justify-content-end position-absolute end-0    " style="top: 2rem; ">
+      <div class="d-flex w-100 justify-content-end position-absolute end-0    " style="top: 1.3rem; ">
 
             <a href="{% url "customer:create-credit-new" c.id  %}" class="me-2" style="width: max-content;">
                   <button class=""  style='border-radius: 1.5rem;
                   color: #163145 !important;
                   background-color: rgb(255, 255, 255) !important;  ' >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16" style="color: #163145 !important;">
-                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
-                </svg>   Crear  credito 
+                 Crear  
             </button>
       </a>
 
@@ -377,17 +380,21 @@
 
       </div>
             <div class="w-100 p-2  pt-0 pb-0 ">
-                  <strong class="text-black-50" style="font-size: 12px;">
-                        Listados de creditos
-                  </strong>
+                  <div class="grey-span ps-3 pe-3" style="width: max-content;">
+                        <strong class="text-black-50" style="font-size: 12px;">
+                              Listados de creditos
+                        </strong>
+                  </div>
             </div>
-            <div class='d-flex justify-content-start p-2 pb-3 overflow-scroll   w-100 align-content-center '>
+            <div class='d-flex justify-content-start p-2 pt-0 mb-0 overflow-scroll   w-100 align-content-center '>
                   {% include "components/list-credi.html" %}
             </div>
             <div class="w-100 p-2  pt-0 pb-0 ">
-                  <strong class="text-black-50" style="font-size: 12px;">
-                         Detalles de credito
-                  </strong>
+                  <div class="grey-span pe-3 ps-3" style="width: max-content;">
+                        <strong class="text-black-50" style="font-size: 12px;">
+                              Detalles de creditos
+                        </strong>
+                  </div>
             </div>
             <div class="justify-content-center  w-100  pe-5 ps-5 bottom-0 d-flex rounded-0" 
             style="background-color: #ffffff00; border-top: 0px rgb(207, 207, 207) solid; ">
@@ -413,7 +420,7 @@
                   </span>
             </div> {% endcomment %}
             <div class="di-cn">
-                  <strong>Total pagado:</strong> <span class="grey-span">${{ cp|intcomma }}.00</span>
+                  <strong>Pagado:</strong> <span class="grey-span">${{ cp|intcomma }}.00</span>
             </div>
             <div class="di-cn">
                   <strong>Total al saldo:</strong> <span class="grey-span"> 
@@ -431,8 +438,10 @@
             </div>
                 
    
-           <div class="  me-2 ms-2 w-100 shadow bg-white bg-opacity-75   d-flex flex-wrap justify-content-center align-content-start overflow-auto " style="height: 44vh; border-radius: 1rem;   ">
-            <table class=" w-100 b rounded-4 m-2  ">
+           <div class="  me-2 ms-2 w-100  bg-white bg-opacity-75  pb-2   d-flex flex-wrap justify-content-center align-content-start overflow-auto super-shadow " 
+           style="max-height: 49vh; border-radius: 1.1rem;   ">
+            <table class=" w-100 b rounded-4 m-2   mt-2 ">
+            
                   <thead>
                         <tr>
                               <th class="text-center" style="width: 6%;">#</th>
@@ -443,7 +452,7 @@
                               <th class="text-center" style="width: 14%;">Estado de cuota</th>
                               <th class="text-center" style="width: 10%;">Termina</th>
                               <th class="text-center" style="width: 12%;">Vencimiento</th>
-                              <th class="text-center" style="min-width: 290px;">Acciones de: Pagos, Abonos y mas </th>
+                              <th class="text-center" style="min-width: 290px;">Acciones de pagos, abonos y mas </th>
                         </tr>  </thead>
                   
                   <tbody >
@@ -502,7 +511,7 @@
 
                                     {% endif %}  </td>
                                     <td class="text-capitalize"> 
-                                          <div  class="grey-span d-flex mt-2 justify-content-center flex-wrap align-content-center" style="height: 2rem;">{{cuota.start_date|date:"m/d/Y"}} </div> </td>
+                                          <div  class="grey-span d-flex mt-2 justify-content-center flex-wrap align-content-center" style="height: 2rem;">{{cuota.start_date|date:"d/m/Y"}} </div> </td>
                                     <td class="text-capitalize">
                                                {% if cuota.estado != True %}
 
@@ -538,8 +547,10 @@
                                           </button>
                                     </div>
                                     {% else %}
-                                    <div class="d-flex" style="height: 2rem;">
-                                          
+                                    <div class="d-flex" style="">
+                                          <span class="green-span mt-2 d-flex w-100 justify-content-center align-content-center flex-wrap ps-2 pe-2" style="height: 2rem;">
+                                                Cuota saldada  el  -  {{ cuota.end_date|date:"d/m/Y" }}
+                                          </span>
                                     </div>
                                     {% endif %}
                               </td>
