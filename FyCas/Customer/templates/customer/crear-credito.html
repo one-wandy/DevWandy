@@ -549,8 +549,9 @@
                                     {% else %}
                                     <div class="d-flex" style="">
                                           <span class="green-span mt-2 d-flex w-100 justify-content-center align-content-center flex-wrap ps-2 pe-2" style="height: 2rem;">
-                                                Cuota saldada  el  -  {{ cuota.end_date|date:"d/m/Y" }}
-                                          </span>
+                                         
+                                                      Cuota saldada el - {{ cuota.last_pay|date:"d/M/Y" }} 
+                                                      ({{ cuota.last_time_pay|date:"h:i a" }})   </span>
                                     </div>
                                     {% endif %}
                               </td>
@@ -676,8 +677,9 @@ document.getElementById('day_date').innerText = formattedDate;
       let input_credit = document.querySelector(".input-credit");
       if (input_credit) {
             document.getElementById(input_credit.id).classList.add('super-shadow', 'flip-up') ; 
-
+            
       }
+
 function AplicarPago(ID){
 
             let input = document.getElementById('ct-p'+ID).value

@@ -40,10 +40,13 @@
 {% for credit in  c.credit.all %}   
 
 <div class="p-3 position-relative">
-      <span style=" width: 1.5rem; height: 1.5rem; margin-top: rem; border-radius: 50%; background-color: #000000; font-size: 12px;" class="d-flex text-white position-absolute z-2 flex-wrap justify-content-center flex-wrap align-content-center">
+      <span id="forlou{{credit.id}}" style=" width: 1.5rem; height: 1.5rem; margin-top: rem; border-radius: 50%; background-color: #000000; font-size: 12px;" class="d-flex text-white position-absolute z-2 flex-wrap justify-content-center flex-wrap align-content-center">
             #{{ forloop.counter }} 
       </span>
+
       <div class="position-absolute  z-2 top-0 end-0   rounded-5  btn-edit      " style="margin-top: 40px; border: 1px solid rgba(220, 220, 220, 0); background-color: #efefef; margin-right: 6px !important;">
+            {% if credit.estado_credito == False %} 
+
             <a class="" href="{% url "customer:update-credit" credit.id %}">
             <button class=" p-0 rounded-circle border-0  "   style="width: 30px; height: 30px;  background-color: #ffffff; "> 
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brush-fill" viewBox="0 0 16 16" style="color: #979797;">
@@ -51,20 +54,24 @@
                       </svg>
             </button>                    
             </a>
-            <button onclick="deleteCredit(this.id)" id="{{credit.id}}" class=" border-0 mt-1 mb-1 bg-opacity-10 p-0 rounded-circle   " style="width: 30px; height: 30px;           background-color: rgb(255, 255, 255) !important;"> 
+            <button onclick="deleteCredit(this.id)" id="{{credit.id}}"
+                   class=" border-0 mt-1 mb-1 bg-opacity-10 p-0 rounded-circle   " style="width: 30px; height: 30px;background-color: rgb(255, 255, 255) !important;"> 
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8"/>
                   </svg> 
-                                    </svg>
+                  </svg>
             </button> <br> 
 
+            {% endif %}
+
+
             <button onclick="GenerarFactura()" id="{{credit.id}}" class="    border-0  text-whiteß p-0 rounded-circle   " style="width: 30px; height: 30px; 
-                  background-color: #ffffff;"> 
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-receipt" style="color: #545454 !important;" viewBox="0 0 16 16">
-                        <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z"/>
-                        <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5"/>
-                      </svg>
-            </button>
+            background-color: #ffffff;"> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-receipt" style="color: #545454 !important;" viewBox="0 0 16 16">
+                  <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z"/>
+                  <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5"/>
+                </svg>
+      </button>
 
       </div>
       <div id="cuotas_credit{{credit.id}}" class='bg-white  credit-sp w-100 p-3 pb-0 pt-1 me-2 card   text-black-50 bg-opacity-50 ' 
@@ -73,17 +80,11 @@
       border-radius: 1.5rem; 
       height: max-content ; box-shadow: #e5e5e500 1px 2px 1px 1px;  border: 1px solid rgb(221, 221, 221);">
   
-       
-  
-        {% if credit.estado == True %}
-        <svg xmlns="http://www.w3.org/2000/svg" onclick="AplicarPago(this.id)" id="{{cuota.id}}" width="25" height="25" fill="currentColor" class="bi bi-check-circle-fill text-primary position-absolute end-0 me-2 mt-1 top-0"  viewBox="0 0 16 16" style="min-width: 20px;">
-              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-        </svg> 
-        {% endif %}
+      
   
         {% if credit.is_active == True %} 
         <a class=" mt-1" href="{% url "customer:crear-credito" credit.id %}">
-              <strong class="mt-1">Fecha:</strong>
+              <strong class="mt-1">Fecha:</strong>       
                   <div class="grey-divs">
                     {{credit.day_created|date:"F/d/Y" }}
                     </div>
@@ -100,8 +101,17 @@
   <a class="" href="{% url "customer:crear-credito" credit.id %}">
         <strong class="mt-1">Monto:</strong>
   <div class="grey-divs">
-         ${{credit.amount|intcomma}}.00
-  </div>
+         ${{credit.amount|intcomma}}.00            
+      </div>
+      {% if credit.estado_credito == True %}        
+      <span  class='green-span d-flex mt-1 justify-content-center align-content-center flex-wrap' >
+            Saldado
+      </span>
+      {% else %}
+      <span  class='danger-span d-flex mt-1 justify-content-center align-content-center flex-wrap' >
+            Pendiente
+      </span>
+      {% endif %}
   </a>
   <a class="" href="{% url "customer:crear-credito" credit.id %}">
   <strong class="mt-1">Pagos:</strong>
@@ -132,18 +142,21 @@
   </style>
   
         <div class='d-flex  btn-share-con w-100  justify-content-around mt-3 mb-2'>
+
               <a  class='w-100 m-0' 
                     href="https://api.whatsapp.com/send?phone=+18092998306&text=Cliente: *({{credit.customer.name}} {{credit.customer.last_name}})*, 
                      Firmado el *{{fecha_actual}}* ,
                      No. Cuenta; *{{credit.no_account}}*,
                      ; Detalles -> https://grupofycas.online/detail-credit/customer/{{credit.id}}" >
-                    <button style="background-color: #ececec6c !important;">
+                    <button style="" style="background-color: #ececec6c !important;">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share-fill  me-1"
                           style="margin-top: 2px;" viewBox="0 0 16 16">
                                 <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5"/>
                               </svg>   Compartir
                     </button>
               </a>
+        
+
               <a  target="_blank" class='m-0 me-1 ms-1 w-100' 
                     href="{% url "customer:card-customer" credit.customer.id credit.id %}">
                     <button style="background-color: #ececec6c !important;">

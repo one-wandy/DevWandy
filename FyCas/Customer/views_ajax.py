@@ -160,6 +160,9 @@ def AplicarPago(request):
 
             if cu.cuota == cu.abonado:
                 cu.estado = True
+                cu.last_time_pay = datetime.now()
+                credit.estado_credito = True
+                credit.save()
             cu.save()
         else:
             cu.estado = True
