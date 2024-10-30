@@ -838,3 +838,46 @@ class CrearCredito(TemplateView, Options):
                 return cuotas
 
 
+
+
+class ListadoCredit_rederict(View):
+        model = models.Credit
+        def get(self, request, *args, **kwargs):
+            customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
+            credit = self.model.objects.filter(customer__id=customer.id).last()
+            if credit:  # Replace with your actual condition
+                URL = reverse('customer:crear-credito',  kwargs={'pk': credit.id})
+                return redirect(URL)
+            else:
+                URL = reverse('customer:create-credit-new',  kwargs={'pk': customer.id})
+                return redirect(URL)
+
+
+
+
+
+class CreateCreditNew(CreateView, Options):
+        model = models.Credit
+        form_class = forms.CreditForm
+        template_name = "customer/crear-creadito-new.html"
+
+        # def get(self, request, *args, **kwargs):
+        #     customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
+        #     try:
+        #         credit = self.model.objects.get(customer=customer, is_active=True)
+        #         return self.UpdateCredit(credit.id)
+        #     except self.model.DoesNotExist:
+        #         return super().get(request, *args, **kwargs)
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
+            context['c'] = customer
+            return context
+
+        def form_valid(self, form_class):
+            customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
+            form_class.instance.customer = customer
+            form_class.save()
+            URL = reverse('customer:crear-credito',  kwargs={'pk': form_class.instance.id})
+            return redirect(URL)

@@ -198,20 +198,19 @@ class Customer(models.Model):
 
 
 class Credit(models.Model):
-    customer = models.ForeignKey(Customer, null=True, blank=True, on_delete=models.CASCADE, related_name="credit")
+    customer = models.ForeignKey(Customer, null=True, blank=True, 
+                    on_delete=models.CASCADE, related_name="credit")
     amount = models.IntegerField(default=10000)
     name = models.CharField(max_length=100)
+    #Numero de Cuenta
     price_feed = models.IntegerField(default=1)
     dni = models.TextField(default="")
-    no_account = models.TextField() #Numero de Cuenta
-    
-    #thow pay for monts
+    no_account = models.TextField() 
+    #if mode_pay is True Appli 
     mode_pay = models.BooleanField(default=False)
-    #if mode_pay is True Appli 2 Pay 
     day_pay = models.IntegerField(default=30)
-    is_active = models.BooleanField(default=True)#is active rederict at diferens view
-
-    # 
+    is_active = models.BooleanField(default=True)
+    #is active rederict at diferens view
     mont = models.CharField(max_length=100, default="")
     day = models.CharField(max_length=100, default="")
     day_number = models.CharField(max_length=100, default="")
@@ -220,14 +219,16 @@ class Credit(models.Model):
     amount_str = models.CharField(max_length=100, default="")
     amount_feed_int = models.CharField(max_length=100, default="")
     amount_feed = models.CharField(max_length=100, default="")
-    
     # Day Create
     day_created = models.DateField(default=timezone.now)
     date = models.DateField(default=timezone.now)
-    
+    #Estado de  credito
     tasa = models.IntegerField(default=15)
     plazo = models.IntegerField(default=1)
-    estado = models.BooleanField(default=False,  null=True, blank=True) #Estado de  credito
+    estado = models.BooleanField(default=False,  null=True, blank=True) 
+
+
+    estado_credito = models.BooleanField(default=False,  null=True, blank=True)
     
     def __str__(self):
         return self.name
@@ -247,6 +248,12 @@ class Cuota(models.Model):
 
         start_date = models.DateField(default=timezone.now, null=True, blank=True)
         end_date = models.DateField(null=True, blank=True)
+
+        last_pay = models.DateField(default=timezone.now, null=True, blank=True)
+
+        last_time_pay = models.TimeField(default=timezone.now)
+
+
 
         # def save(self, *args, **kwargs):
         #     if self.start_date:

@@ -40,12 +40,40 @@
       {
             color: #808080 !important;
       }
+      .btn-c  button
+      {
+            height: 1.9rem;
+            display: flex; justify-content: center; align-content: center; padding: 6px 10px !important; 
+            margin: 1px !important; flex-wrap: wrap;
+            width: 100%;           
+            font-family: Chillax, sans-serif;
+            font-size: 14px ; font-weight: 500; border: 0px ;
+          
+            color: rgb(105, 105, 105);
+      }
+      .btn-share-con button
+      {
+            height: 1.9rem;
+            display: flex; justify-content: center; align-content: center; padding: 0px !important; 
+            margin: 1px !important; flex-wrap: wrap;
+            width: 100%;           
+            font-family: Chillax, sans-serif;
+            font-size: 14px ; font-weight: 500; border: 0px ;
+          
+            color: rgb(105, 105, 105);
+      }
+      .delete-btn 
+      {
+            background-color: #ffdbdb; color: rgb(114, 31, 31) !important; 
+      }
+
 
 </style>
 
-<div id='div-more{{c.id}}' class='  d-none bg-white extends-div w-100 shadow position-absolute  start-0 p-1  ' 
-      style='top: 9.3rem; border-radius: 1.7rem; font-family: Ninu, sans-serif; min-height: 1rem;
-      border: 1px solid rgb(235, 235, 235); color: black; font-size: 16px;  
+<div id='div-more{{c.id}}' class='  d-none bg-white extends-div w-100 shadow position-absolute  start-0 p-1' 
+      style='top: 9.3rem; border-radius: 1.7rem; font-family: Chillax, sans-serif; min-height: 1rem;
+      border: 1px solid rgb(235, 235, 235); color: black; font-size: 16px;      
+
       z-index: 1000 !important;
       '>
       <style>
@@ -88,25 +116,35 @@
                   }
                   .det,  .aci 
                   {
-                        background-color: #eeeeee;
-                        color: rgb(95, 95, 95) !important;
-                        font-weight: bold !important;
-                        font-family: 'Nunito', sans-serif !important;
+                        height: 1.9rem;
+                        display: flex; justify-content: center; align-content: center; padding: 0px !important; margin: 1px !important; flex-wrap: wrap;
+                        width: max-content;           
+                        font-family: Chillax, sans-serif;
+                        font-size: 14px ; font-weight: 500 !important; border: 0px ;
+                        color: rgb(133, 133, 133) !important;
+                        font-size: 14px;
                   }
             </style>
-            <button  class="border-0 aci p-0 m-0 me-1" style="height: max-content;   font-weight: bold !important;" 
+            <button  class="border-0 aci shadow-none p-0 m-0 me-1" style="height: max-content; background-color: rgba(241, 241, 241, 0.165) !important;   " 
             onclick="Option(this.id)" id="{{c.id}}">    
         
-                  Acciones 
+                  Acciones  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down  ms-2" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                      </svg>
             </button>
-            <button class="border-0 det p-0 m-0" style="height: max-content; font-weight: bold !important;" 
+            <button class="border-0 shadow-none det p-0 m-0" style="height: max-content;background-color: rgba(241, 241, 241, 0.089) !important; " 
             onclick="Detail(this.id)" id="{{c.id}}"> 
 
                   Detalles del cliente 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down ms-2" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                  </svg>
             </button>
       </div>
 
-      <div class="  d-none  extend-dos overflow-scroll mt-2 bg-white p-3 "  id="div-detail{{c.id}}" style="max-height: 20rem; border-radius: 2rem;">
+      <div class="  d-none  extend-dos overflow-scroll mt-2  p-3  "  id="div-detail{{c.id}}" style="max-height: 20rem; border-radius: 1.5rem; background-color: rgb(255, 255, 255) !important;
+      border: 2px solid rgb(238, 238, 238);
+            ">
                         
     
 
@@ -239,66 +277,62 @@
       <section class="   mt-2  d-none extend-dos p-2 bg-white " id="div-options{{c.id}}"  
             style=" min-width: 8rem; border-radius: 1.5rem;">
 
-            <span class="">
-                  <h6 class="text-black-50 ps-2 m-0 p-0 "  > 
-                   Acciones  de creditos
-                  </h6>
+            <span class=" m-0 p-0 pt-2  text-black-50" 
+                  style="font-size: 14px; font-weight: 600;
+                  "> 
+            Acciones de aprobacion
             </span>
-            <span class='w-100 d-flex justify-content-center btn-share-con' >
-                  <!-- <button style='border-radius: 1.5rem;'>
-                        Eliminar 
-                  </button> -->
-                  <button class="text-black-50 " onclick='OpenCloseBtnCredit(this.id)' id='{{c.id}}' style='border-radius: 1.5rem;' >
-                        Crear 
+            <p class=" p-0 m-0 " style="font-size: 12px; color: rgb(157, 157, 157); 
+                  line-height: 12px;">
+                  Estas acciones determinan el estado del cliente
+            </p>
+         <div class="d-flex overflow-scroll">
+            <span class='w-100 d-flex overflow-scrol mt-1 btn-share-con'>
+
+            
+                  <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} Actualmente aplica para un prestamo estandar con un monoto minimo de *($7,000.00)*, si deseas puede obtener un mayor monto con una garantia fisica que avale el monto solicitado. ¿Desea continuar con el proceso *(Estandar)* o *(Garantizado)*?" >
+            
+                  <button class=' border-0' style='min-width: 6rem; border-radius: 1.5rem;'>
+                  Estandar
                   </button>
-                  <button class="text-black-50"  style='border-radius: 1.5rem;'>
-                        Listado
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) *{{c.name}} {{c.last_name}}*%0A%0A*Informacion de solicitud de prestamo por un monto de ${{c.monto_requerido|intcomma}}.00*%0ADebido a su precalificasion, por el momento no califica para el tipo de préstamo (Estandar) solicitado, podemos evaluarle en base a una garantía física que avale el monto solicitado." >
+                  <button class=' border-0' style=' width: 6rem; border-radius: 1.5rem;'>
+                        Garantia
                   </button>
-                  <button class="text-black-50"  style='border-radius: 1.5rem;'>
-                        Actual
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} su solicitud ha sido declinada en este momento. para mas detalles, haga clic en el siguiente enlace -> https://grupofycas.online/no-approved/customer" >
+                  <button class='  '
+                        style='border-radius: 1.5rem; min-width: 6rem; background-color: #ffffff; color: rgb(144, 144, 144) !important; border: 1px solid rgb(229, 229, 229);'>
+                        Declinar
                   </button>
-            </span>
-            <span>
-                  <h6 class="text-black-50 m-0 p-0 pb-1" > 
-                        Acciones de aprobacion
-                  </h6>
-            </span>
-            <span class='w-100 d-flex overflow-scroll btn-share-con'>
+            </a>
                   {% if c.customer_verify == False %}
                   <button class='text-white border-0'  id='{{c.id}}' onclick='CustomerVerify(this.id)'    id="{{c.id}}"  style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
                         Verificar
                   </button>
-                  <button class=' border-0'  onclick='DisableCustomer(this.id)' id="{{c.id}}"  style=' border-radius: 1.5rem; min-width: 7˝rem;  '>
+                  <button class=' border-0 '  onclick='DisableCustomer(this.id)' id="{{c.id}}"  style=' border-radius: 1.5rem; min-width: 7rem;  '>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-dash" viewBox="0 0 16 16">
                               <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M11 12h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1m0-7a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
                               <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
                             </svg>   Eliminar
                   </button>
                   {% else %}
-                  <button class=' border-0'  onclick='DisableCustomer(this.id)' id="{{c.id}}"  style=' border-radius: 1.5rem;  '>
-                        Eliminar
+                  <button class=' border-0 '  onclick='DisableCustomer(this.id)' id="{{c.id}}"  style=' border-radius: 1.5rem; min-width: 9.3rem;  background-color: #ffdbdb; color: rgb(114, 31, 31) !important; '>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-dash me-2" style="margin-top: 2px; color: rgb(114, 31, 31);" viewBox="0 0 16 16">
+                              <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M11 12h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1m0-7a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                              <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
+                            </svg>
+                               <span class="elieminar-cliente-btn">
+                                  Eliminar cliente
+
+                            </span>
                   </button>
                   {% endif %}
                   
-                  <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} su solicitud ha sido declinada en este momento. para mas detalles, haga clic en el siguiente enlace -> https://grupofycas.online/no-approved/customer" >
-                        <button class=' '
-                              style='border-radius: 1.5rem;'>
-                              Declinar
-                        </button>
-                  </a>
-                  <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}} Actualmente aplica para un prestamo estandar con un monoto minimo de *($7,000.00)*, si deseas puede obtener un mayor monto con una garantia fisica que avale el monto solicitado. ¿Desea continuar con el proceso *(Estandar)* o *(Garantizado)*?" >
-            
-                  <button class=' border-0' style=' border-radius: 1.5rem;'>
-                  Estandar
-                  </button>
-            </a>
-            <a href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) *{{c.name}} {{c.last_name}}*%0A%0A*Informacion de solicitud de prestamo por un monto de ${{c.monto_requerido|intcomma}}.00*%0ADebido a su precalificasion, por el momento no califica para el tipo de préstamo (Estandar) solicitado, podemos evaluarle en base a una garantía física que avale el monto solicitado." >
-                  <button class=' border-0' style=' border-radius: 1.5rem;'>
-                        Garantia
-                  </button>
-            </a>
             
             </span>
+         </div>
             <span class='w-100 d-flex justify-content-center btn-share-con d-none'>
                   {% if c.customer_verify == False %}
                   <button class='text-white border-0'   id="{{c.id}}"  style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
@@ -317,21 +351,45 @@
                   </button>
             </span>
       </section>
+      <div class="b-span mt-3 w-100 text-start pe-2" style="width: max-content;">
+            <span class=" m-0 p-0 pt-2 ps-2 text-black-50" 
+                  style="font-size: 14px; font-weight: 600;
+                  "> 
+             Acciones de credito
+            </span>
+            <p class=" p-0 m-0 ps-2" style="font-size: 12px; color: rgb(157, 157, 157); 
+                  line-height: 12px;">
+                  Crea un nuevo credito para el cliente o actualiza el credito actual
+            </p>
+
+            
+      </div>
+      <div class='d-flex  overflow-scroll w-100 btn-c justify-content-center pb-0  mt-1   w-100 ' 
+      style="height: max-content;  "  >
+      
       {% if c.credit.all %}
-          <div class="b-span mt-1 w-100 text-start pe-2" style="width: max-content;">
 
-                  <span class=" m-0 p-0 pb-1 pt-2 ps-2 text-black-50" style="font-size: 12px;"  > 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-                            </svg>  Listado de creditos
-                  </span>
-
-          </div>
-            <div class='d-flex  overflow-scroll pb-0  mt-1 ps-1  w-100 ' 
-                  style="height: 10.2rem;   width: max-content;"  >
-                  {% include "components/list-credi.html" %}
+                  <a href="{% url "customer:listado-credit-redirect" c.id  %}">
+                        <button class=""  style='border-radius: 1.5rem; color: rgb(154, 154, 154);
+                              border-bottom-left-radius: 3rem;
+                              background-color: rgb(241, 241, 241) !important;'>
+                              Listado 
+                        </button>
+                  </a>
+                  <button class=""  style='border-radius: 1.5rem; color: rgb(154, 154, 154);  
+                        background-color: rgba(241, 241, 241, 0) !important;
+                        border: 1px solid rgb(229, 229, 229) !important;'>
+                        Actual
+                  </button>
+                  {% endif %}
+                  <a href="{% url "customer:create-credit-new" c.id  %}">
+                        <button class=""  style='border-radius: 1.5rem;
+                        color: #163145 !important;
+                        background-color: rgb(223, 240, 255) !important; border-bottom-right-radius: 3rem; ' >
+                        Crear 
+                  </button>
+            </a>
             </div>
-      {% endif %}
       <div  class='d-flex flex-wrap d-none bg-white mb-3 p-2 mt-2 ' id='div-credit{{c.id}}'
             style="border-radius: 1.5rem;">
             <section class="d-flex w-100  justify-content-center ">
@@ -401,7 +459,25 @@
 
 /* Clase que aplicará la animación */
 .flip-down {
-    animation: flip-down 1s ease-out forwards;
+    animation: flip-down 0.5s ease-in-out forwards;
+    transform-origin: top; /* Punto de rotación */
+    opacity: 0; /* Oculto por defecto */
+}
+
+@keyframes flip-options-down {
+    0% {
+        transform: rotateX(-90deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+/* Clase que aplicará la animación */
+.flip-options-down {
+    animation: flip-options-down 0.5s ease-in-out forwards;
     transform-origin: top; /* Punto de rotación */
     opacity: 0; /* Oculto por defecto */
 }
@@ -445,11 +521,11 @@ function Option(id) {
             if (item.classList.contains('d-none')) {
                 item.classList.remove('d-none');
                 item.classList.add('d-block');
-                item.classList.add('flip-down');
+                item.classList.add('flip-options-down');
             } else {
                 item.classList.remove('d-block');
                 item.classList.add('d-none');
-                item.classList.add('flip-down');
+                item.classList.add('flip-options-down');
             }
         } else {
             // Aseguramos que los demás divs siempre tengan la clase d-none
@@ -458,5 +534,19 @@ function Option(id) {
         }
     });
 }
+
+
+function DisableCustomer(id){
+
+      const url = 'disable-customer/';
+      $.ajax({
+      url: url,
+      data: {
+            customer_id: id
+      },
+      })
+      document.getElementById('client'+id).classList.add('d-none')
+      }
+
       </script>
 </div>

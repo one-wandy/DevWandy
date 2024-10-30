@@ -19,6 +19,8 @@ urlpatterns = [
       path('update-credit/<int:pk>', views.UpdateCredit.as_view(), name='update-credit'),
       path('list-credit/<int:pk>', views.ListCredit.as_view(), name='list-credit'),
 
+      path('create-credit-new/<int:pk>', views.CreateCreditNew.as_view(), name='create-credit-new'),
+
       path('calendario/', views.Calendario.as_view(), name='calendario'),
 
       path('configuraciones/', views.Configuraciones.as_view(), name='configuraciones'),
@@ -41,6 +43,7 @@ urlpatterns = [
       path('ubicaciones', views.Ubicaciones.as_view(), name='ubicaciones'),
       path('agregar', views.Agregar.as_view(), name='agregar'),
 
+      path('listado-credit-redirect/<int:pk>', views.ListadoCredit_rederict.as_view(), name='listado-credit-redirect'),
 
 
       # New Version
