@@ -39,11 +39,11 @@
    </style>
 {% for credit in  c.credit.all %}   
 
-<div class="p-4 position-relative">
+<div class="p-3 position-relative">
       <span style=" width: 1.5rem; height: 1.5rem; margin-top: rem; border-radius: 50%; background-color: #000000; font-size: 12px;" class="d-flex text-white position-absolute z-2 flex-wrap justify-content-center flex-wrap align-content-center">
             #{{ forloop.counter }} 
       </span>
-      <div class="position-absolute  z-2 top-0 end-0   rounded-5  btn-edit      " style="margin-top: 50px; border: 1px solid rgba(220, 220, 220, 0); background-color: #efefef; margin-right: 6px !important;">
+      <div class="position-absolute  z-2 top-0 end-0   rounded-5  btn-edit      " style="margin-top: 40px; border: 1px solid rgba(220, 220, 220, 0); background-color: #efefef; margin-right: 6px !important;">
             <a class="" href="{% url "customer:update-credit" credit.id %}">
             <button class=" p-0 rounded-circle border-0  "   style="width: 30px; height: 30px;  background-color: #ffffff; "> 
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brush-fill" viewBox="0 0 16 16" style="color: #979797;">
