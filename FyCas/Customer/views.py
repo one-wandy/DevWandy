@@ -777,6 +777,12 @@ class CrearCredito(TemplateView, Options):
         try:
                     models.Credit.objects.get(id=self.kwargs.get('pk'))
                     credit =  models.Credit.objects.get(id=self.kwargs.get('pk'))
+
+                    all_credits = models.Credit.objects.filter(customer__id=credit.customer.id).order_by('-id')
+
+                    customer_exist_credit = models.Customer.objects.get(id=credit.customer.id)
+                    exist_credit = models.Credit.objects.filter(customer__id=credit.customer.id, estado_credito=False).exists()
+
                     # Añadir contexto adicional a la plantilla si es necesario
                     cuotas =  credit.credito.all()
                     p_x_c = 1
@@ -797,7 +803,9 @@ class CrearCredito(TemplateView, Options):
                     context['credit'] =  credit
                     context['cc'] = p_x_c - c_p
                     context['cp'] = c_p
+                    context['all_credits'] = all_credits
                     context['c_cuotas'] = c_cuotas
+                    context['exist_credit'] = exist_credit 
                     context['p_cuotas'] = p_cuotas
                     context['today'] = timezone.now().date()
                     context['c'] =  credit.customer

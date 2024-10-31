@@ -161,8 +161,7 @@ def AplicarPago(request):
             if cu.cuota == cu.abonado:
                 cu.estado = True
                 cu.last_time_pay = datetime.now()
-                credit.estado_credito = True
-                credit.save()
+           
             cu.save()
         else:
             cu.estado = True
@@ -171,6 +170,18 @@ def AplicarPago(request):
         cu.estado = False
         cu.credito.estado = False
         # cu.save()
+
+    customer_exist_credit = models.Customer.objects.get(id=credit.customer.id)
+
+    # si exite una cuota con el estado false, este credito aun no ha sido saldado
+    cuotas_credits_all = models.Cuota.objects.filter(credito__id=credit.id, estado=False).exists()
+
+    if cuotas_credits_all == False:
+        credit.estado_credito = True
+        credit.save()
+
+    
+
     D = {
         'id': cu_ta.id
     }

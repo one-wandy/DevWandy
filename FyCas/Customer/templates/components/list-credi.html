@@ -19,15 +19,16 @@
       .credit-sp  .grey-divs
       {
             margin-top: 2px;
+
             font-family: Chillax, sans-serif !important;
             font-weight: 500;
             background-color: #ececec6c; /* Light green background */
-            color: #9b9b9b !important; /* Green text */
+            color: #7f7f7f !important; /* Green text */
             border-radius: 1rem;
             width: max-content;
-
+            font-size: 12px;
             margin-right: 3px !important;
-            padding: 2px 7px;
+            padding: 3px 10px;
       }
       .btn-share-con button {
             height: 1.9rem;
@@ -37,7 +38,7 @@
       } 
 
    </style>
-{% for credit in  c.credit.all %}   
+{% for credit in  all_credits %}   
 
 <div class="p-3 position-relative">
       <span id="forlou{{credit.id}}" style=" width: 1.5rem; height: 1.5rem; margin-top: rem; border-radius: 50%; background-color: #000000; font-size: 12px;" class="d-flex text-white position-absolute z-2 flex-wrap justify-content-center flex-wrap align-content-center">
