@@ -57,20 +57,20 @@
 
 <section class="d-flex flex-wrap    overflow-scroll  p-1 pt-0  h-100" >
 
-<div  style="  width: 338px; height: 101px; border-radius: 35px; 
+<div  style="  width: 238px; height: 101px; border-radius: 35px; 
 " class=" position-relative card-cu m-1 mt-2    p-2" >
 
       <div class="m-0 p-0 " >
             <div class="d-flex">
                
-                  <span style="   border: 6px rgb(207, 207, 207)  ; border-style:dotted; " 
-                        class="p-1 rounded-circle ">
+                  <span style="   border: 6px rgb(210, 210, 210)  ; border-style: dotted; " 
+                        class=" p-1 rounded-circle ">
                         <img src="{{c.img1.url}}" class="  img-icons object-fit-cover" style="width: 37px; height: 37px; border-radius: 50%; "  alt=""> 
                   </span>
                   <a href="{% url "customer:detail-customer" c.id %}" >
                         <div style="background-color: rgba(0, 0, 0, 0); border-radius: 2rem;
-                        width: 190px; height: 38px; border: 1px solid rgba(217, 217, 217, 0); font-weight: bold; color: #484848;" class="p-2  m-0  ms-2   w-100  d-flex  ">
-                              <div class="m-0  d-inline    " style="width: 251px; flex-wrap: nowrap !important;">
+                        width: 190px; height: 38px; border: 1px solid rgba(217, 217, 217, 0); font-weight: bold; color: #484848;" class="p-2  m-0  ms-1   w-100  d-flex  ">
+                              <div class="m-0  d-inline  pt-2  " style="width: 251px; flex-wrap: nowrap !important; line-height: 14px;">
                                     {{c.name}} {{c.last_name}} <br>
                                     <span class="text-black-50" style="font-size: 12px; font-weight: 400;">   {{c.dni}} </span>
                               </div>
