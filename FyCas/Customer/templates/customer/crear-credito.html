@@ -48,8 +48,10 @@
             }
             .di-cn strong
             {
-                  color: #acacac !important;
+                  color: #8a8a8a !important;
+                  font-family: Chillax;  font-weight: 500 !important;
                   font-size: 12px ;
+
             }
             table td 
             {
@@ -59,7 +61,7 @@
             table th 
             {
                   font-size: 14px; color: #818080;
-                  font-weight: 600;
+                  font-weight: 500;
                   font-family: Chillax;
             }
             .fixed-bottom {
@@ -203,12 +205,6 @@
                   animation: moveInCircle 7s linear infinite;
             }
 </style>
-<div  class="w-100 position-fixed bottom-top h-100 d-flex justify-content-around flex-wrap align-content-center" style="filter: blur(70px);" >
-      <div class="colors uno" style="background-color: hsl(254, 100%, 83%); margin-left: 1rem;margin-bottom: 15rem;"></div>
-      <div class="colors dos" style="margin-left: 2rem !important; margin-top: 19rem; background-color: rgb(85, 243, 238);"></div>
-      <div class="colors tres" style="margin-left: 5rem; margin-top: 5rem; background-color: rgb(255, 160, 151);"></div>
-</div>
-
 
 
 
@@ -249,7 +245,7 @@
 
 
 
-<section data-aos="fade-down" class='d-flex credits  overflow-scroll bg-white  h-100 align-content-start pb-2 position-relative  justify-content-center flex-wrap'>
+<section data-aos="fade-down" class='d-flex credits bg-transparent  overflow-scroll bg-white  h-100 align-content-start pt-4 pb-2 position-relative  justify-content-center flex-wrap'>
       <div id="factura"  class="position-absolute top-50 d-none start-50 translate-middle w-100 bg-white bg-opacity-10  d-flex justify-content-center h-100 align-content-center flex-wrap" style="z-index: 1050; 
           -webkit-backdrop-filter: blur(10px) !important;
           backdrop-filter: blur(10px) !important;">
@@ -437,29 +433,29 @@
 
       </div>
             <div class="w-100 p-2  pt-0 pb-0 ">
-                  <div class="grey-span ps-3 pe-3" style="width: max-content;">
-                        <strong class="text-black-50" style="font-size: 12px;">
+                  <div class="grey-s ps-3 pe-3" style="width: max-content;">
+                        <span class="text-black-50" style="font-size: 14px; font-weight: 500;">
                               Listados de creditos
-                        </strong>
+                        </span>
                   </div>
             </div>
             <div class='d-flex justify-content-start p-2 pt-0 mb-0 overflow-scroll   w-100 align-content-center '>
                   {% include "components/list-credi.html" %}
             </div>
             <div class="w-100 p-2  pt-0 pb-0 ">
-                  <div class="grey-span pe-3 ps-3" style="width: max-content;">
-                        <strong class="text-black-50" style="font-size: 12px;">
+                  <div class="grey-s ps-3 pe-3" style="width: max-content;">
+                        <span class="text-black-50" style="font-size: 14px; font-weight: 500;">
                               Detalles de credito
-                        </strong>
+                        </span>
                   </div>
             </div>
             <div class="justify-content-center  w-100  pe-5 ps-5 bottom-0 d-flex rounded-0" 
             style="background-color: #ffffff00; border-top: 0px rgb(207, 207, 207) solid; ">
             <div class="di-cn">
-                  <strong>Capital:</strong> <span class="grey-span">${{ credit.amount|intcomma }}.00</span>
+                   <span class="grey-span"><strong>Capital:</strong> ${{ credit.amount|intcomma }}.00</span>
             </div>
             <div class="di-cn">
-                  <strong>Tasa:</strong> <span class="grey-span"> 
+                 <span class="grey-span">  <strong> Tasa:</strong> 
                         {% if credit.tasa == 0 %}
                               15%
                         {% else %}
@@ -468,7 +464,7 @@
                         </span>
             </div>
             {% comment %} <div class="di-cn">
-                  <strong>Capital mas intereses:</strong> <span class="grey-span" >
+                  <span class="grey-span" > <strong>Capital mas intereses:</strong>
                         {% if cc == 1 %}
                         $00.00
                         {% else %}
@@ -477,10 +473,10 @@
                   </span>
             </div> {% endcomment %}
             <div class="di-cn">
-                  <strong>Pagado:</strong> <span class="grey-span">${{ cp|intcomma }}.00</span>
+                   <span class="grey-span"> <strong>Pagado:</strong> ${{ cp|intcomma }}.00</span>
             </div>
             <div class="di-cn">
-                  <strong>Total al saldo:</strong> <span class="grey-span"> 
+                   <span class="grey-span"> <strong>Total al saldo:</strong>
                         {% if cc == 1 %}
                         $00.00
                         {% else %}
@@ -489,14 +485,16 @@
                   </span>
             </div>
             <div class="di-cn">
-                  <strong>Cuotas:</strong> <span class="grey-span">{{ p_cuotas }} / {{c_cuotas}} </span>
+                 <span class="grey-span">  <strong>Cuotas:</strong>  {{ p_cuotas }} / {{c_cuotas}} </span>
             </div>
       
             </div>
                 
    
-           <div class="  me-2 ms-2 w-100  bg-white bg-opacity-75  pb-2   d-flex flex-wrap justify-content-center align-content-start overflow-auto super-shadow " 
-           style="max-height: 49vh; border-radius: 1.1rem;   ">
+           <div class="  me-2 ms-2 w-100    pb-2   d-flex flex-wrap justify-content-center align-content-start overflow-auto  " 
+           style="max-height: 49vh; border-radius: 1.1rem; 
+background-image: linear-gradient(to top, #f2f6fb 0%, white 100%);
+           border: dotted 1px rgb(217, 217, 217);">
             <table class=" w-100 b rounded-4 m-2   mt-2 ">
             
                   <thead>
@@ -605,7 +603,7 @@
                                     </div>
                                     {% else %}
                                     <div class="d-flex" style="">
-                                         <span class="mt-0 ms-3  mt-2 green-span me-1 ms-1 d-flex justify-content-center align-content-center flex-wrap ps-2 pe-2"> <strong style="color: #005180;">PAGADO</strong> </span>
+                                         <span class="mt-0 ms-3  mt-2 green-span me-1 ms-1 d-flex justify-content-center align-content-center flex-wrap ps-2 pe-2"> Ultimo pago</span>
                                           <span class="green-span mt-2 d-flex justify-content-center align-content-center flex-wrap ps-2 pe-2" style="height: 2rem;">
                                          
                                                      {{ cuota.last_pay|date:"d/m/Y" }} - {{ cuota.last_time_pay|date:"h:i a" }}   </span>
