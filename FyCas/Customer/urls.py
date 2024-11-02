@@ -48,6 +48,7 @@ urlpatterns = [
 
       # New Version
       path('crear-credito/<int:pk>', views.CrearCredito.as_view(), name='crear-credito'),
+      path('list-all-credits', views.ListAllCredits.as_view(), name='list-all-credits'),
 
       # Views Ajax``
       path('aplicar-pago', views_ajax.AplicarPago, name='aplicar-pago'),

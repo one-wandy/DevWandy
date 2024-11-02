@@ -229,6 +229,7 @@ class Credit(models.Model):
 
 
     estado_credito = models.BooleanField(default=False,  null=True, blank=True)
+    credito_atrasado = models.BooleanField(default=False,  null=True, blank=True)
     
     def __str__(self):
         return self.name
@@ -265,6 +266,8 @@ class Cuota(models.Model):
         #         year_increment = (self.end_date.month + 1) // 13
         #         self.end_date = self.end_date.replace(month=next_month, year=self.end_date.year + year_increment)
         #     super(Cuota, self).save(*args, **kwargs)
+
+        credito_atrasado = models.BooleanField(default=False,  null=True, blank=True)
         
         def __str__(self):
             return str(self.cuota)
