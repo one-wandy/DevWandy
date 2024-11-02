@@ -9,32 +9,34 @@
       .credit-sp  strong 
       {
             font-size: 12px !important;
-            font-family: "Nunito", sans-serif !important;
-            color: #727272;
+            font-family: Chillax, sans-serif !important;
+            color: #939393;
             background-color: rgba(222, 236, 255, 0);
             border-radius: 1rem;
+            /* display: none; */
             margin-right: 10px !important;
             padding: 1px 5px;
             width: 100%;
             max-width: 3.6rem;
-            font-weight: 900;
-            background-color: rgb(242, 242, 242);
+            font-weight: 500;
+            /* background-color: rgb(238, 238, 238); */
             text-align: center;
+
       }
       .credit-sp  .grey-divs
       {
             margin-top: 2px;
 
             font-family: Chillax, sans-serif !important;
-            font-weight: 400;
-            background-color: #ffffff6c; /* Light green background */
-            color: #7f7f7f !important; /* Green text */
+            font-weight: 500;
+            background-color: #f3f3f3; /* Light green background */
+            color: #777777 !important; /* Green text */
             border-radius: 1rem;
-            width: 100%;
+            width: max-content;
             font-size: 12px;
             margin-right: 10px !important;
 
-            padding: 1px 5px;
+            padding: 1px 15px;
       }
       .btn-share-con button {
             height: 1.9rem;
@@ -109,21 +111,7 @@
         </div>
   </a>
   
-  <a class="" href="{% url "customer:crear-credito" credit.id %}">
-        <strong class="mt-1">Monto</strong>
-  <div class="grey-divs">
-         ${{credit.amount|intcomma}}.00            
-      </div>
-      {% if credit.estado_credito == True %}        
-      <span  class='green-span d-flex mt-1 justify-content-center align-content-center flex-wrap' >
-            Finalizado
-      </span>
-      {% else %}
-      <span  class='danger-span d-flex mt-1 justify-content-center align-content-center flex-wrap' >
-            Activo
-      </span>
-      {% endif %}
-  </a>
+  
   <a class="" href="{% url "customer:crear-credito" credit.id %}">
   <strong class="mt-1">Pagos</strong>
   <div class="grey-divs">
@@ -136,7 +124,7 @@
   </div>
   
   </a>
-  <a class="" href="{% url "customer:crear-credito" credit.id %}">
+  <a class=" " href="{% url "customer:crear-credito" credit.id %}">
       <strong class="mt-1">Cliente</strong>
       <div class="grey-divs">
       
@@ -144,11 +132,37 @@
       </div>
       
       </a>  
-      {% if credit.credito_atrasado == False %} 
+
+
+      <a class="mb-1" href="{% url "customer:crear-credito" credit.id %}">
+            <strong class="mt-1">Monto</strong>
+      <div class="grey-divs">
+             ${{credit.amount|intcomma}}.00            
+          </div>
+
+      </a>
+      <div class="d-flex" style="font-weight: 500;">
+  
+      
+         {% if credit.estado_credito == True %}        
+         <span  class='green-span d-flex me-2  justify-content-center align-content-center flex-wrap' >
+               Finalizado
+         </span>
+         {% else %}
+         <span  class='danger-span d-flex  me-2 justify-content-center align-content-center flex-wrap' >
+               Activo
+         </span>
+         {% if credit.credito_atrasado == False %} 
+         <span class="green-span" style="width: max-content;">
             Al dia
+         </span>
       {% else %}
+           <span class="danger-span" style="width: max-content;">
             En Atraso
+           </span>
       {% endif %}
+         {% endif %}
+      </div>
   
   <style>
         .btn-share-con button
