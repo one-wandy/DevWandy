@@ -96,7 +96,7 @@
 {% include "components/div-options.html" %} 
 {% if customer %}
       {% for c in customer %}
-<div style="  width: 438px; height: 171px; " class="position-relative clients mt-2  w-100  d-flex justify-content-center">
+<div style="  width: 438px; height: 171px; " class="position-relative clients mt-1  w-100  d-flex justify-content-center">
 
       <div id="client{{c.id}}"   style=" transition: 0.5s ease-out !important;  width: 338px; height: 171px; border-radius: 26px;   z-index: 0 !important; background-color: #ffffffc6 !important;
                   box-shadow: 0px 1px 3px 1px rgba(218, 218, 218, 0.505);" class=" position-relative card-cu   p-2 " >
@@ -125,15 +125,13 @@
                         </div>
                   <div class="ms-1 mt-3 overflow-visible">  
                               <span class="d-flex text2">
-                              {{c.dni}}
+                                    {{c.dni}}
                               </span>
-                              
-            
-                                    <span class="d-flex text2 ">
-                                     {{c.number}}
-                                    </span>
+                              <span class="d-flex text2 ">
+                                    {{c.number}}
+                              </span> 
 
-                              <!-- <span class="" -->
+                              <!-- <span class=""
                   
                               <span class="d-flex text2 overflow-hidden  w-100 justify-content-end  pe-5" 
                               style="font-size: 12px; color: #a6a5a5 !important;">
@@ -141,8 +139,8 @@
                               {{ c.day_created|date:"F/d/Y" }}
                               {% if c.customer_verify == False %} 
                               <strong class='text-danger me-2'> (No verificado) </strong>   
-                                                <!-- {{c.ciudad}} -->
-                                                {% endif %} 
+                                          {{c.ciudad}} -->
+                                                <!-- {% endif %}  -->
                                     </span>
                   </div>
                   </div>
