@@ -13,9 +13,9 @@
             margin-top: 0.4rem;
             border-radius: 0.9rem !important;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            /* border-left: none !important;
+            border-left: none !important;
             border-right: none !important;
-            border-top: none !important;    border-bottom: none !important; */
+            border-top: none !important;    border-bottom: none !important;
             /* box-shadow: 0 4px 2px rgba(150, 171, 227, 0.144), 0 2px 2px rgba(236, 236, 236, 0) !important; */
 
       }
@@ -37,7 +37,7 @@
             align-content: center;
             border-radius: 1.5rem;
             border: rgba(227, 227, 227, 0.905) 1px solid;
-            color: #949494;
+            color: #000000;
           
             font-weight:400 ;
             font-size: 14px !important;
@@ -58,7 +58,7 @@
             width: 16px !important;
             margin-top: 0.4rem;
 
-            filter: invert(48%) sepia(100%) saturate(0%) hue-rotate(180deg) brightness(93%) contrast(92%);
+
             
       } 
        .btn-nav button:hover  
@@ -103,9 +103,9 @@
       }
 
 </style>
-<section class="vh-100  sec-btn  bg-white   overflow-scroll blur" 
-      style="border-radius: 1rem;">
-      <div class='btn-nav p-2 pb-2  mt-2  ' data-aos="fade-right" >
+<section class="  sec-btn ms-3 bg-white  card  mt-3 overflow-scroll " 
+      style="border-radius: 1.5rem; border-top-left-radius: 0.7rem;  height: 95vh;">
+      <div class='btn-nav p-2 pb-2    mt-2  ' data-aos="fade-right" >
             <div class="w-100 d-flex justify-content-center mb-1 mt-1">
                   <!-- <img src="{% static "icons/doc(46).png" %}" 
                   class="mt-2"  width='24' height="24" alt=""> -->
@@ -172,7 +172,7 @@
                   </span> 
                   <div class=" d-flex  flex-wrap
                          btns-creditos-opciones h-auto " 
-                         style="background-color: #ffffff; ">
+                         style="background-color: #ffffff00; ">
                       
                         <form action="" method="post">
                               {% csrf_token %}
@@ -213,7 +213,7 @@
                   </span> 
                   <div class=" d-flex  overflow-scroll
                          btns-creditos-opciones h-auto " 
-                         style="background-color: #ffffff; ">
+                         style="background-color: #ffffff00; ">
                          <form action="" method="get">
 
                                <button class="">
