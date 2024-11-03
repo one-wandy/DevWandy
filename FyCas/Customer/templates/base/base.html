@@ -61,6 +61,51 @@
                   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 </head>
   <style>
+      @font-face {
+    font-family: 'Chillax';
+    src: url('/static/fonts/Chillax-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Chillax';
+    src: url('/static/fonts/Chillax-Extralight.otf') format('opentype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Chillax';
+    src: url('/static/fonts/Chillax-Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Chillax';
+    src: url('/static/fonts/Chillax-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Chillax';
+    src: url('/static/fonts/Chillax-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Chillax';
+    src: url('/static/fonts/Chillax-Semibold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Chillax', sans-serif;
+}
       /* Styling the scrollbar */
       ::-webkit-scrollbar {
             width: 0px; /* Remove scrollbar width */
@@ -655,19 +700,6 @@ select option {
             <div class="nav-2 blur" style=" display: none;
             width: 18rem; border-radius: 0rem !important; height: max-content; border-color: #e9e9e900 !important;">
                   <div style="height: max-content;" class="mb-3">
-                        <div  class="w-100 position-absolute position-relative divers bottom-0 flex-wrap align-content-center  d-flex justify-content-center" style="filter: blur(20px);" >
-                              <div class="colors uno position-absolute top-0" style="background-color: #ffd588;  margin-left: 1rem;">
-                        
-                              </div>
-                              <div class="colors uno" style="background-color: #ffb3ba; margin-top: 10rem;  margin-left: 1rem;"></div>
-                              <div class="colors uno" style="background-color: #ffdfba; margin-left: 1rem;"></div>
-                              <div class="colors uno" style="background-color: #ffffba; margin-left: 1rem;"></div>
-                        
-                              <div class="colors dos" style="margin-left: 2rem !important; background-color: #baffc9;"></div>
-                              <div class="colors tres" style="margin-left: 17rem; margin-top: 20rem; background-color: #bae1ff;"></div>
-                        
-                        </div>
-                        
                         {% include "components/btn-nav.html" %}
                   </div>
             </div>
@@ -675,7 +707,8 @@ select option {
 
             <div style="display: flex; border-radius: 0rem !important; min-width: 300px; width: 100%; height: 100vh; " 
             class="w-100 overflow-hidden   bg-white card border-top-0 border-end-0 border-bottom-0  pe-0   flex-wrap justify-content-center">
-                 <section class="  w-100  vh-100 overflow-hidden" style="border-radius: 1rem; border-color: #d9d9d9 !important; background-color: #f0e8e852;">
+                 <section class="  w-100  vh-100 overflow-hidden" style="border-radius: 1rem; border-color: #d9d9d9 !important; 
+                 background-image: linear-gradient(120deg, #fdf6f6 0%, #ebf0f3 100%);">
                   {% block content %}
                   {% endblock  %}      
                  </section>
@@ -824,12 +857,13 @@ max-width: 420px; height: 13.4rem;">
             }
       });
 
-
+ 
 function Menu(){
       var div = document.getElementById('div-gregar');
       var divList = document.getElementById('div-list-customer');
       if (div.style.display === 'none') {
           div.style.display = 'flex';
+          div.classList.add('flip-up');
           document.getElementById('x').style.display = 'block'
           document.getElementById('m').style.display = 'none'
           

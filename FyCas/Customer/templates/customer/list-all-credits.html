@@ -1,0 +1,217 @@
+{% extends "base/base.html" %}
+{% block content %}
+<style>
+      .btns-creditos-opciones button
+      {
+            width: max-content; background-color: white;
+            font-size: 12px !important;
+            border-radius: 2rem !important;
+
+      }
+      .option-creditos{
+            display: block !important;
+      }
+      .btn-creditos
+      {
+            background-color: #eeeeee !important;
+      }
+      .text-black-50 
+      {
+            font-size: 14px;
+      }
+      .credits li 
+      {
+            list-style: none;
+      }
+      .extends-div
+      {
+            display: block !important;
+          
+      }
+      .surper-bg
+      {
+            background-color: rebeccapurple !important;
+      }
+      .inputs  
+      {
+            border: 1px rgb(255, 255, 255);
+            outline: none !important;
+      }
+      .di-cn {
+            border-radius: 1.5rem;
+            padding: 0.5rem 1rem;
+            display: inline-block;
+            margin: 0.2rem;
+            width: max-content;
+         
+      }  
+      .di-cn span
+      {
+            color: #828282 !important;
+            font-size: 14px; 
+            font-family: Chillax;  font-weight: 500 !important;
+      }
+      .di-cn strong
+      {
+            color: #8a8a8a !important;
+            font-family: Chillax;  font-weight: 500 !important;
+            font-size: 12px ;
+
+      }
+      table td 
+      {
+            font-size: 12px; 
+            font-family: Chillax;  font-weight: 500 !important;
+      }
+      table th 
+      {
+            font-size: 14px; color: #818080;
+            font-weight: 500;
+            font-family: Chillax;
+      }
+      .fixed-bottom {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            width: 100%;
+      }
+      .btn-apple {
+            display: inline-block;
+            /* padding: 0.1rem 1.3rem !important; */
+            border-radius: 1.4rem !important;
+            box-shadow: 0 4px 8px rgba(124, 124, 124, 0.1), 0 6px 20px rgba(214, 214, 214, 0.1) !important;
+            background-color:  #ffffffe0  !important;
+            color: #959595 !important;
+            font-size: 14px;
+            font-weight: normal;
+            text-align: center;
+            text-decoration: none;
+            transition: all 1s ease;
+            width: max-content !important;
+            height: 2.2rem !important;
+            min-width: 7rem;
+      }
+      .btn-apple:hover {    
+            box-shadow: 5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff; 
+      }
+      .py-3 img 
+      {
+            margin-right: 0.5rem;
+            width: 20px;
+      }
+      .btn-es 
+      {
+            color: rgb(165, 165, 165);
+            border: 1px solid rgb(226, 226, 226);
+            border-radius: 1rem;
+            overflow: visible !important;
+            margin: 0.1rem;
+            background-color: #efefef ;
+      }
+      .btn-es-on
+      {
+            background-color: rgb(126, 171, 255);
+            color: white;
+      } 
+      .input-of
+      {
+            background-color: #efefef !important;
+            border: none !important;
+      }
+      .super-shadow {
+            /* scale: 1; */
+            /* margin: 0.2rem; */
+            box-shadow: 0 4px 8px rgba(150, 171, 227, 0.333), 0 6px 10px rgba(236, 236, 236, 0.1) !important;
+            /* background-color: rgba(237, 237, 237, 0.396) !important; */
+            border: 2px solid #ece9e9 !important;
+      }
+      /* Definimos el efecto de flip-up */
+      @keyframes flip-up {
+      0% {
+            transform: rotateX(90deg);
+            opacity: 1;
+      }
+      100% {
+            transform: rotateX(0deg);
+            opacity: 1;
+      }
+      }
+
+      /* Clase que aplicará la animación */
+      .flip-up {
+      animation: flip-up 0.8s ease-in-out;
+      transform-origin: bottom; /* Punto de rotación */
+      opacity: 1; /* Oculto por defecto */
+      }
+
+
+      /* Definimos el efecto de flip-down */
+      @keyframes flip-down {
+      0% {
+            transform: rotateX(-90deg);
+            opacity: 0;
+      }
+      100% {
+            transform: rotateX(0deg);
+            opacity: 1;
+      }
+      }
+
+      /* Clase que aplicará la animación */
+      .flip-down {
+      animation: flip-down 1s ease-out ;
+      transform-origin: top; /* Punto de rotación */
+      opacity: 0; /* Oculto por defecto */
+      }
+
+      .green-span {
+                  background-color: #ebf4ff; /* Light green background */
+                  color: #005180; /* Green text */
+
+                  font-size: 12px;
+                  padding: 0.2rem 0.5rem;
+                  border-radius: 1rem;
+      }
+      .grey-span {
+            background-color: #ececec6c; /* Light green background */
+                  color: #8b8b8b !important; /* Green text */
+
+                  font-size: 12px;
+                  padding: 0.2rem 0.5rem;
+                  border-radius: 1rem;
+      }
+      .danger-span {
+            background-color: #f8d7da; /* Light green background */
+                  color: #721c24; /* Green text */
+
+                  font-size: 12px;
+                  padding: 0.2rem 0.5rem;
+                  border-radius: 1rem;
+      }
+      .verder-span {
+            background-color: #d4edda; /* Light green background */
+                  color: #155724; /* Green text */
+
+                  font-size: 12px;
+                  padding: 0.2rem 0.5rem;
+                  border-radius: 1rem;
+      }
+      @keyframes moveInCircle {
+            0% {
+                  transform: rotate(0deg) translateX(50px) rotate(0deg);
+            }
+            100% {
+                  transform: rotate(360deg) translateX(50px) rotate(-360deg);
+            }
+      }
+
+      .colors {
+            animation: moveInCircle 7s linear infinite;
+      }
+      
+</style>
+      <section class="d-flex flex-wrap overflow-scroll h-100 justify-content-start align-content-start">
+            {% include "components/list-credi.html" %}
+      </section>
+{% endblock  %}

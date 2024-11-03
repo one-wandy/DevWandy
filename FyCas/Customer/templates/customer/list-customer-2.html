@@ -82,6 +82,13 @@
     transform-origin: left !important; /* Punto de rotación */
     opacity: 1; /* Oculto por defecto */
 }
+
+@media (min-width: 600px) {
+      .clients {
+            max-width: 340px;
+            margin: 0.3rem;
+      }
+}
 </style>
 
 <!-- <section class="d-flex flex-wrap h-100 bg-danger  justify-content-center  overflow-scroll pb-5 p-1 pt-0 " > -->
@@ -89,10 +96,10 @@
 {% include "components/div-options.html" %} 
 {% if customer %}
       {% for c in customer %}
-<div style="  width: 338px; height: 171px; " class="position-relative  m-1 d-flex justify-content-center">
+<div style="  width: 438px; height: 171px; " class="position-relative clients mt-1  w-100  d-flex justify-content-center">
 
-      <div id="client{{c.id}}"  data-aos="zoom-in" style=" transition: 0.5s ease-out !important;  width: 338px; height: 171px; border-radius: 26px;   z-index: 0 !important; background-color: #ffffffc6 !important;
-                  box-shadow: 0px 1px 3px 1px rgba(218, 218, 218, 0.505);" class=" position-relative card-cu m-1   p-2 " >
+      <div id="client{{c.id}}"   style=" transition: 0.5s ease-out !important;  width: 338px; height: 171px; border-radius: 26px;   z-index: 0 !important; background-color: #ffffffc6 !important;
+                  box-shadow: 0px 1px 3px 1px rgba(218, 218, 218, 0.505);" class=" position-relative card-cu   p-2 " >
                   <button id="{{c.id}}"  onclick='OpenCloseBtn(this.id)' style="background-color: #35333e00; width: 35px; height: 35px; color: #000000 !important; top: 8rem; box-shadow: #eeeeee00 1px 1px 1px 1px; border: 0px solid #a7a7a7 !important; border-style: dotted !important;"   class="rounded-circle  position-absolute border-0  p-0 me-2 mb-2 end-0 d-flex flex-wrap justify-content-center align-content-center ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots " style="margin-top: 10px;" viewBox="0 0 16 16">
                               <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
@@ -101,7 +108,7 @@
                   <div class="m-0 p-0" >
                         <div class="d-flex">
                         
-                              <span style="   border: 6px #a7a7a7  ; border-style:dotted; transition: 0.9s ease  !important; " 
+                              <span style="   border: 6px #c7c7c7  ; border-style:dotted; transition: 0.9s ease  !important; " 
                                     class="p-1  img-span rounded-circle ">
                                     <img src="{{c.img1.url}}" class="  img-icons object-fit-cover" style="width: 57px; height: 57px; border-radius: 50%; 
                                     filter: blur(90px);
@@ -109,7 +116,7 @@
                               </span>
                               <a href="{% url "customer:detail-customer" c.id %}" >
                                     <div style="background-color: rgba(0, 0, 0, 0); border-radius: 2rem;
-                                    width: 190px; height: 38px; border: 1px solid rgba(217, 217, 217, 0); font-weight: bold; color: #000000; line-height: 16px;" class="p-2  m-0 mt-3 ms-2   w-100  d-flex  ">
+                                    width: 190px; height: 38px; border: 1px solid rgba(217, 217, 217, 0); font-weight: 600; color: #494949; line-height: 16px;" class="p-2  m-0 mt-3 ms-2   w-100  d-flex  ">
                                           <div class="m-0  d-inline   text-first-letter-uppercase  " style="width: 151px; flex-wrap: nowrap !important; ">
                                                 {{c.name}} {{c.last_name}}
                                           </div>
@@ -117,20 +124,22 @@
                               </a>
                         </div>
                   <div class="ms-1 mt-3 overflow-visible">  
+                        <a href="">
+                        <span class="d-flex text2">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill m-0 mt-1 me-1 p-0 " viewBox="0 0 16 16">
+                                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
+                                  </svg> {{c.dni}}
+                        </span></a>
+                        <a  href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}}"  class="m-0 p-0">
                               <span class="d-flex text2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill m-0 mt-1 me-1 p-0 " viewBox="0 0 16 16">
-                                          <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
-                                    </svg> {{c.dni}}
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill me-1 mt-1" viewBox="0 0 16 16">
+                                          <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                                    </svg> {{c.number}}
                               </span>
-                              
-                              <a  href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}}"  class="m-0 p-0   " style="width: max-content; ">
-                                    <span class="d-flex text2 ">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill me-1 mt-1" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
-                                          </svg> {{c.number}}
-                                    </span>
-                              </a>
-                              <!-- <span class="" -->
+      
+                        </a>
+
+                              <!-- <span class=""
                   
                               <span class="d-flex text2 overflow-hidden  w-100 justify-content-end  pe-5" 
                               style="font-size: 12px; color: #a6a5a5 !important;">
@@ -138,8 +147,8 @@
                               {{ c.day_created|date:"F/d/Y" }}
                               {% if c.customer_verify == False %} 
                               <strong class='text-danger me-2'> (No verificado) </strong>   
-                                                <!-- {{c.ciudad}} -->
-                                                {% endif %} 
+                                          {{c.ciudad}} -->
+                                                <!-- {% endif %}  -->
                                     </span>
                   </div>
                   </div>

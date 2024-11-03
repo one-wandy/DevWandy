@@ -128,3 +128,25 @@ class Options:
             
             # Return the corresponding weekday based on the day number
             return weekdays[day_number]
+
+
+
+
+      def RunCreditValidate(self):
+            today = datetime.today()
+            creditos = models.Credit.objects.all()
+            for credit in creditos:
+                  cuotas_all = models.Cuota.objects.filter(credito__id=credit.id, estado=False).exists()
+                  if cuotas_all == True:
+                        cuota = models.Cuota.objects.filter(credito__id=credit.id, estado=False).first()
+
+                        if cuota.end_date < today.date():
+                              credit.credito_atrasado = True
+                              credit.save()
+                              days_late = (today.date() - cuota.end_date).days
+                              print( f' {credit.name} {credit.credito_atrasado} Con  {days_late} dias de atraso')
+                        else:
+                              credit.credito_atrasado = False
+                              credit.save()
+                              print( f' {credit.name} {credit.credito_atrasado} al dia')
+            return creditos

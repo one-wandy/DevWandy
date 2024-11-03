@@ -142,7 +142,7 @@ def AplicarPago(request):
     cuotas_o =  credit.credito.all()
     p_x_c = 1
     c_p = 0
-        
+
     for cuo in cuotas_o:
         p_x_c += cu.cuota
         if cuo.abonado > 0:
@@ -161,11 +161,14 @@ def AplicarPago(request):
             if cu.cuota == cu.abonado:
                 cu.estado = True
                 cu.last_time_pay = datetime.now()
-           
+                
+                credit.save()   
             cu.save()
         else:
+            # Cuota pagada
             cu.estado = True
             cu.save()
+            
     else:
         cu.estado = False
         cu.credito.estado = False
@@ -175,7 +178,6 @@ def AplicarPago(request):
 
     # si exite una cuota con el estado false, este credito aun no ha sido saldado
     cuotas_credits_all = models.Cuota.objects.filter(credito__id=credit.id, estado=False).exists()
-
     if cuotas_credits_all == False:
         credit.estado_credito = True
         credit.save()
@@ -185,7 +187,7 @@ def AplicarPago(request):
     D = {
         'id': cu_ta.id
     }
-    
+    Options().RunCreditValidate()
     return JsonResponse(D,  safe=False)    
 
 

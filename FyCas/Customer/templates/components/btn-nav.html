@@ -10,7 +10,11 @@
       }
       .btn-nav button 
       {
-            border-radius: 1rem !important;
+            border-radius: 0.9rem !important;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            border-left: none !important;
+            border-right: none !important;
+            border-top: none !important;
 
       }
       .btn-nav button:hover
@@ -31,9 +35,9 @@
             align-content: center;
             border-radius: 1.5rem;
             border: rgba(227, 227, 227, 0.905) 1px solid;
-            color: rgb(78, 78, 78);
+            color: rgb(107, 107, 107);
           
-            font-weight:400 !important;
+            font-weight:500 ;
             font-size: 14px !important;
             background-color: rgba(255, 255, 255, 0.258);
       }
@@ -146,6 +150,76 @@
                         </span>
                   </button>
             </a>
+            {% if customer_count %}
+            <div data-aos="fade-right" style="transition: 1s; " class="option-creditos   mb-4 mt-2 w-100" >
+                  <span  class="text-black-50" style="font-size: 12px; font-weight: 500;">
+                        <!-- Filtro de Clientes -->
+                  </span> 
+                  <div class=" d-flex  flex-wrap
+                         btns-creditos-opciones h-auto " 
+                         style="background-color: #ffffff; ">
+                      
+                        <form action="" method="post">
+                              {% csrf_token %}
+                              <input type="text" class="d-none" name="noti" value="true">
+                              <button style="background-color: #f8d7da; /* Light green background */
+                        color: #721c24; /* Green text */">
+                              Solicitudes
+                        </button>
+                  </form>
+                  {% if customer %}
+                  <input type="text" id='search-p'  style="font-size: 12px; width: auto; max-width: 212px;  
+                  height: 2.3rem;     
+                  outline: none !important;
+                  border-radius: 3rem !important;
+                  /* border-top-right-radius: 2rem !important;
+                  border-bottom-right-radius: 2rem !important; */
+                  border: 1px solid rgb(223, 223, 223);"
+                  class="form-search  border-1 w-100 text-center  mb-3  ms-1 bg-white bottom-0  outline-none   m-0 me-1 searching-config "  
+                  placeholder=" Busqueda avanzada ">
+                  {% endif %}
+                  </div>
+            </div>
+            {% endif %}
+            <a href="{% url "customer:list-all-credits" %}">
+                  <button class="btn-creditos">
+                        <img src="{% static "svg/list.svg" %}" width='24' alt="">
+                        <span>
+                              Listado de creditos
+                        </span>
+                  </button>
+            </a>
+            <div data-aos="fade-right" style="transition: 1s; " class="option-creditos d-none mb-4 mt-2 w-100" >
+                  <span  class="text-black-50" style="font-size: 12px; font-weight: 500;">
+                        <!-- Filtro de Creditos -->
+                  </span> 
+                  <div class=" d-flex  overflow-scroll
+                         btns-creditos-opciones h-auto " 
+                         style="background-color: #ffffff; ">
+                         <form action="" method="get">
+
+                               <button class="">
+                                     Todos ({{credits_count}})
+                                    </button>
+                        </form>
+                        <form action="" method="post">
+                              {% csrf_token %}
+                              <input type="text" class="d-none" name="pendientes" value="true">
+                              <button style="background-color: #f8d7da; /* Light green background */
+                        color: #721c24; /* Green text */">
+                              Activos ({{pendiente_credit}})
+                        </button>
+                  </form>
+                  <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="text" class="d-none" name="saldado" value="true">
+                        <button style="background-color: #ebf4ff; /* Light green background */
+                        color: #005180; /* Green text */">
+                              Finalizados ({{saldado_credit}})
+                        </button>
+                  </form>
+                  </div>
+            </div>
             <a href="{% url "customer:ubicaciones" %}">
 
                   <button class="btn-ubicaciones">
@@ -158,12 +232,12 @@
   
       
     
-            <div class="mt-4 d-none w-100">
+            <div class="mt-0 d-none w-100">
                   <strong >
                         Utilidades
                   </strong>
             </div>
-            <button onclick="Cal()"  class="mt-4 btn-calculadora">
+            <button onclick="Cal()"  class="mt-0 btn-calculadora">
                   <img src="{% static "svg/calculator.svg" %}" width='24' alt="">
                   <span>
                         Calculadora 
@@ -209,37 +283,20 @@
                         </span>
                   </button>
             </a>
-            <button>
+            {% comment %} <button>
                   <img src="{% static "svg/document.svg" %}" width='24' alt="">
                   <span>
                         Historial de credito
                   </span>
-            </button>
-                  <a href="{% url "customer:prestamos" %}">
-                  <button class="btn-prestamos">
-                        <img src="{% static "svg/list.svg" %}" width='24' alt="">
-                        <span>
-                              Listas
-                        </span>
-                  </button>
-            </a>
+            </button> {% endcomment %}
+    
             <button class="btn-prestamos">
                   <img src="{% static "icons/statu_up.png" %}" width='24' alt="">
                   <span>
                         Clientes inversiones
                   </span>
             </button>
-            {% if customer %}
-            <input type="text" id='search-p'  style="font-size: 12px; width: auto; max-width: 212px;  
-            height: 2.3rem;     
-            outline: none !important;
-            border-radius: 3rem !important;
-            /* border-top-right-radius: 2rem !important;
-            border-bottom-right-radius: 2rem !important; */
-            border: 1px solid rgb(223, 223, 223);"
-            class="form-search  border-1 w-100 text-center  mb-3  ms-1 bg-white position-fixed bottom-0  outline-none   m-0 me-1 searching-config "  
-            placeholder=" Busqueda avanzada ">
-            {% endif %}
+
       </div>
 </section>
 <!-- <input type="text"  style="font-size: 14px;  min-width: 200px; min-height: 2.5rem;margin-top: 5px !important;   max-height: 2.5rem; " class="form-search bg-danger  text-center w-100  m-0 mb-1  bg-white bg-opacity-75 "  id="searching-config" 
