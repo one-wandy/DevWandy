@@ -2,19 +2,22 @@
 <style>
       .btn-nav 
       {
-            width: 15rem;
+            width: 17rem;
             display: flex;
             flex-wrap: wrap;    
             /* border: rgb(228, 228, 228) 1px solid; */
-            border-radius: 2rem;
+            /* border-radius: 2rem; */
       }
       .btn-nav button 
       {
+            margin-top: 0.4rem;
             border-radius: 0.9rem !important;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 400 !important;
             border-left: none !important;
             border-right: none !important;
-            border-top: none !important;
+            border-top: none !important;    border-bottom: none !important;
+            /* box-shadow: 0 4px 2px rgba(150, 171, 227, 0.144), 0 2px 2px rgba(236, 236, 236, 0) !important; */
 
       }
       .btn-nav button:hover
@@ -35,11 +38,11 @@
             align-content: center;
             border-radius: 1.5rem;
             border: rgba(227, 227, 227, 0.905) 1px solid;
-            color: rgb(107, 107, 107);
+            color: #000000;
           
-            font-weight:500 ;
+
             font-size: 14px !important;
-            background-color: rgba(255, 255, 255, 0.258);
+            background-color: rgba(224, 246, 255, 0);
       }
       a 
       {
@@ -53,8 +56,11 @@
       .btn-nav button img
       {
             margin-right: 0.7rem;
-            width: 20px !important;
-            margin-top: 0.1rem;
+            width: 16px !important;
+            margin-top: 0.4rem;
+
+
+            
       } 
        .btn-nav button:hover  
       {
@@ -89,11 +95,19 @@
       }
       
 }
+.btns-creditos-opciones button
+      {
+            width: max-content; background-color: white;
+            font-size: 12px !important;
+            border-radius: 2rem !important;
 
+      }
 
 </style>
-<section class="vh-100  sec-btn rounded-0 bg-white bg-opacity-75  overflow-scroll blur">
-      <div class='btn-nav p-2 pb-2  ' >
+<section class="  sec-btn ms-3 bg-white  card  mt-3 overflow-scroll " 
+      style="border-radius: 1.4rem; border-top-left-radius: 0.6rem;
+      border-bottom-left-radius: 0.6rem;  height: 95vh;">
+      <div class='btn-nav p-2 pb-2    mt-2  ' data-aos="fade-right" >
             <div class="w-100 d-flex justify-content-center mb-1 mt-1">
                   <!-- <img src="{% static "icons/doc(46).png" %}" 
                   class="mt-2"  width='24' height="24" alt=""> -->
@@ -126,14 +140,17 @@
                    App
                   </strong>
             </div>
+         
             <a href="{% url "customer:dashboard" %}" class="pt-4">
                   <button class="btn-dashboard">
                         <img src="{% static "icons/grafico.png" %}" width='24' alt="">
-                        <span>
-                              Dashboard
+                        <span class=" text-start">
+                              Dashboard,  
                         </span>
                   </button>
+            
             </a>
+           
             <a href="{% url "customer:agregar" %}">
                   <button>
                         <img src="{% static "icons/mas.png" %}" width='24' alt="">
@@ -150,42 +167,12 @@
                         </span>
                   </button>
             </a>
-            {% if customer_count %}
-            <div data-aos="fade-right" style="transition: 1s; " class="option-creditos   mb-4 mt-2 w-100" >
-                  <span  class="text-black-50" style="font-size: 12px; font-weight: 500;">
-                        <!-- Filtro de Clientes -->
-                  </span> 
-                  <div class=" d-flex  flex-wrap
-                         btns-creditos-opciones h-auto " 
-                         style="background-color: #ffffff; ">
-                      
-                        <form action="" method="post">
-                              {% csrf_token %}
-                              <input type="text" class="d-none" name="noti" value="true">
-                              <button style="background-color: #f8d7da; /* Light green background */
-                        color: #721c24; /* Green text */">
-                              Solicitudes
-                        </button>
-                  </form>
-                  {% if customer %}
-                  <input type="text" id='search-p'  style="font-size: 12px; width: auto; max-width: 212px;  
-                  height: 2.3rem;     
-                  outline: none !important;
-                  border-radius: 3rem !important;
-                  /* border-top-right-radius: 2rem !important;
-                  border-bottom-right-radius: 2rem !important; */
-                  border: 1px solid rgb(223, 223, 223);"
-                  class="form-search  border-1 w-100 text-center  mb-3  ms-1 bg-white bottom-0  outline-none   m-0 me-1 searching-config "  
-                  placeholder=" Busqueda avanzada ">
-                  {% endif %}
-                  </div>
-            </div>
-            {% endif %}
+
             <a href="{% url "customer:list-all-credits" %}">
                   <button class="btn-creditos">
                         <img src="{% static "svg/list.svg" %}" width='24' alt="">
                         <span>
-                              Listado de creditos
+                              Creditos
                         </span>
                   </button>
             </a>
@@ -195,7 +182,7 @@
                   </span> 
                   <div class=" d-flex  overflow-scroll
                          btns-creditos-opciones h-auto " 
-                         style="background-color: #ffffff; ">
+                         style="background-color: #ffffff00; ">
                          <form action="" method="get">
 
                                <button class="">
@@ -237,7 +224,7 @@
                         Utilidades
                   </strong>
             </div>
-            <button onclick="Cal()"  class="mt-0 btn-calculadora">
+            <button onclick="Cal()"  class="mt-1 btn-calculadora">
                   <img src="{% static "svg/calculator.svg" %}" width='24' alt="">
                   <span>
                         Calculadora 
@@ -276,7 +263,7 @@
             </div>
             <a  href="{% url "customer:configuraciones" %}">
 
-                  <button  class="mt-4 btn-configuraciones">
+                  <button  class="mt-2 btn-configuraciones">
                         <img src="{% static "svg/config.svg" %}" width='24' alt="">
                         <span>
                               Configuraciones
@@ -293,7 +280,7 @@
             <button class="btn-prestamos">
                   <img src="{% static "icons/statu_up.png" %}" width='24' alt="">
                   <span>
-                        Clientes inversiones
+                        Inversiones
                   </span>
             </button>
 
