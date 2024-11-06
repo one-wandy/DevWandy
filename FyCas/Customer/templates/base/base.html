@@ -61,7 +61,7 @@
                   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 </head>
   <style>
-      @font-face {
+      /* @font-face {
     font-family: 'Chillax';
     src: url('/static/fonts/Chillax-Bold.otf') format('opentype');
     font-weight: bold;
@@ -101,10 +101,10 @@
     src: url('/static/fonts/Chillax-Semibold.otf') format('opentype');
     font-weight: 600;
     font-style: normal;
-}
+} */
 
 body {
-    font-family: 'Chillax', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ,
 }
       /* Styling the scrollbar */
       ::-webkit-scrollbar {
@@ -693,7 +693,7 @@ select option {
                   </span>
             </div>
           </div>
-          <section class=" d-flex  rounded-0  " style="   background-image: linear-gradient(120deg, #fdf6f6 0%, #e9f7ff 100%);">
+          <section class=" d-flex  rounded-0  " style="   background-image: linear-gradient(120deg, #fef1f1 0%, #ffffff 100%);">
 
             
             <div class="nav-2   " style=" display: none;
@@ -1128,8 +1128,9 @@ window.addEventListener("DOMContentLoaded", function() {
                         const div = document.createElement('div');
                         div.classList.add("contdiv",  'justify-content-center' ,'d-flex',)
                         const divCont = document.createElement('div');
-                        divCont.classList.add('contDiv' , 'justify-content-center' ,'d-flex',  )
-                        div.classList.add("divCon", "p-3", 'card', 'justify-content-center' ,'d-flex',)
+                        divCont.classList.add('contDiv' , 'justify-content-start' , 'w-100' ,'d-flex',  )
+
+                        div.classList.add("divCon", 'w-100', "p-1", 'justify-content-start' ,'d-flex',)
                               let divI = document.createElement("div")
                               const imgLink = document.createElement('a');
                               imgLink.href = "/detail-customer/" + c.id
@@ -1140,7 +1141,7 @@ window.addEventListener("DOMContentLoaded", function() {
                               stronL.textContent = ""
                               let spanL = document.createElement("span")
                               const nameLink = document.createElement('button');
-                              nameLink.classList.add('border-0', 'p-0', )
+                              nameLink.classList.add('border-0', 'p-0', 'bg-white' ,'btn-lik' )
                               nameLink.id = c.id
                               nameLink.addEventListener('click', function() {
                                     // Llamar a la función y pasarle el ID como argumento
@@ -1157,7 +1158,7 @@ window.addEventListener("DOMContentLoaded", function() {
                                     let stronN = document.createElement("strong")
                                           stronN.textContent = ""
                                     let spanN = document.createElement("span")
-                                          spanN.textContent = c.dni
+                                          // spanN.textContent = c.dni
                               divN.appendChild(stronN)
                               divN.appendChild(spanN)
                               let divA = document.createElement("div")

@@ -253,27 +253,16 @@ btn-sliders-nav
 
 <div id="div-list-customer"></div>
 
-<section id="section" class=" overflow-scroll vh-100   " >
+<section id="section" class="    " >
       
-      <div class="w-100 d-flex justify-content-end    ">
-            <div id="config-list"  
-            class="position-absolute  w-100     justify-content-center d-flex flex-wrap" 
-            style="justify-content: center; bottom: 3.9rem; z-index: 100; max-width: 70rem">
-            </div>
-      </div>
-      <div id="text-c" class="w-100 justify-content-center  flex-wrap" 
-      style="display: none; z-index: 105; bottom: 1rem;" >
-            <h5 class="position-absolute " style='bottom:5rem;'  >
-                  "<span id="user-no"></span>"  no registrado
-            </h5>
-      </div>  
+ 
 
-      <div id="sec-listado" data-aos="fade-up"  class="w-100 d-flex  h-100  pt-3 overflow-auto align-content-start   flex-wrap justify-content-center" 
+      <div id="sec-listado" data-aos="fade-up"  class="w-100 d-flex  overflow-auto align-content-start   flex-wrap justify-content-center" 
             style=" z-index: 100; height: 100%; transition: 1s;"> 
-            <!-- <div class="w-100 d-flex   flex-wrap justify-content-evenly mt-5"> -->
+            </div>  
+            <div class="w-100 d-flex justify-content-start   flex-wrap vh-100 overflow-scroll">
                   {% include "customer/list-customer-2.html" %} 
-            <!-- </div> -->
-      </div>  
+            </div>
 </section>
 
 
