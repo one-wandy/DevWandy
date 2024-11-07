@@ -1,5 +1,6 @@
 {% load static %}
 <style>
+    
       .btn-nav 
       {
             width: 17rem;
@@ -11,7 +12,7 @@
       .btn-nav button 
       {
             margin-top: 0.4rem;
-            border-radius: 0.9rem !important;
+            border-radius: 0.9rem ;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-weight: 400 !important;
             border-left: none !important;
@@ -51,13 +52,13 @@
       }
       .btn-nav span
       {
-            margin-top: 0.2rem;
+            margin-top: rem;
       }
       .btn-nav button img
       {
             margin-right: 0.7rem;
             width: 16px !important;
-            margin-top: 0.4rem;
+            margin-top: 0.2rem;
 
 
             
@@ -104,26 +105,28 @@
       }
 
 </style>
-<section class="  sec-btn ms-3 bg-white  card  mt-3 overflow-scroll " 
-      style="border-radius: 1.4rem; border-top-left-radius: 0.6rem;
-      border-bottom-left-radius: 0.6rem;  height: 95vh;">
-      <div class='btn-nav p-2 pb-2    mt-2  ' data-aos="fade-right" >
+<section class="  sec-btn ms-2 me-2   card  mt-1 mb-1 overflow-scroll " 
+      style="border-radius: 2rem;  height: 99vh;
+
+      ">
+      <div class='btn-nav p-2 pb-2    mt-2  ' data-aos="fade-right" style="transition: 1s;" >
             <div class="w-100 d-flex justify-content-center mb-1 mt-1">
                   <!-- <img src="{% static "icons/doc(46).png" %}" 
                   class="mt-2"  width='24' height="24" alt=""> -->
-                  <h5 class="p-0 m-0 mt-2" 
+                  <!-- <h5 class="p-0 m-0 mt-2" 
                   style="font-size: 21px; margin: 0; padding: 0.5rem 1rem;
                  ">
-                        <!-- Grupo Fycas -->
-                  </h5>      
+                         Grupo Fycas 
+                  </h5>       -->
             </div>
-            <div class="  pe-3 ps-1" style="width: max-content; height: 2.2rem; border-radius: 2rem;">
-                  <div class="d-flex justify-content-end  me-2" style="line-height: 10px;">
-                      <div class="" style="margin-top: 4px;">
-                          <img src="static/pro.png" width="30" height="30"  class=" me-1 object-fit-cover rounded-circle " style="border: 1px;" alt="">
+            <div class="  pe-3 ps-1  w-100" style=" height: 2.2rem; border-radius: 2rem;">
+                  <div class="d-flex justify-content-center   me-2" style="line-height: 10px;
+">
+                      <div class="" style="margin-top: 1px;">
+                          <img src="static/pro.png" width="30" height="30"  class="  object-fit-cover rounded-circle " style="border: 1px;" alt="">
                       </div> 
                       <div>
-                          <h6 style="font-size: 10px;" class="text-black-50 p-0 m-0">
+                          <h6 style="font-size: 10px;" class="text-black-50 text-center p-0 m-0">
                               <!-- {{request.user.username}} -->{{request.user.last_name}}
                           </h6>
                           <span >
@@ -132,27 +135,33 @@
                                     {{request.user.first_name}} 
                              </strong>
                           </span>
+                          
                       </div>
+                      
                   </div>
+                  <div class="w-100">
+                        <hr class="me-3 ms-3 text-black-50">
+                    </div>
               </div>
+             
             <div class="mt- d-none w-100">
                   <strong >
                    App
                   </strong>
             </div>
          
-            <a href="{% url "customer:dashboard" %}" class="pt-4">
+            <a href="{% url "customer:dashboard" %}" class="pt-4 mt-5">
                   <button class="btn-dashboard">
                         <img src="{% static "icons/grafico.png" %}" width='24' alt="">
                         <span class=" text-start">
-                              Dashboard,  
+                              Dashboard  
                         </span>
                   </button>
             
             </a>
            
             <a href="{% url "customer:agregar" %}">
-                  <button>
+                  <button class="btn-agregar">
                         <img src="{% static "icons/mas.png" %}" width='24' alt="">
                         <span>
                               Agregar 
