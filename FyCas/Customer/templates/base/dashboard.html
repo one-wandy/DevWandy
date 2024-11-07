@@ -63,334 +63,204 @@ canvas {
 
 
 </style>
-<section  class="bg-white bg-opacity-50">
-    <div class="w-100 d-flex justify-content-start pt-2 pe-3">
-       
-        <button  onclick="BtnCloseSession()" class="position-absolute end-0 rounded-circle bg-transparent border-0">
-            <img src="{% static "svg/more.svg" %}" width='26'  style='max-width:26px;' alt="">
-        </button> 
-    </div>
-    
-    <div id="btn-close-session" class="position-absolute top-0  d-none  end-0 vh-100 vw-100   blur bg-white d-flex flex-wrap align-content-center justify-content-center bg-opacity-10 p-3" style="  border-radius: 2rem; z-index: 1003;" >
-        <section class="position-relative ">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill text-danger position-absolute top-0 end-0" viewBox="0 0 16 16" onclick="BtnCloseSession()">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
-                </svg>
-            <div style="width: 340px; height:  max-content; border-radius: 2.5rem;" class=" m-1 card mb-4 p-3 bg-transparent">
-                  <form class="login-fast bg-transparent "> 
-                        <div class="text-center mb-3">
-                              <strong style="font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 16px;">Cerrar Session</strong>
-                        </div>
-                        <div class="mb-2 mt-3">
-                              <!-- <label for="cedula-fast" class="form-label"> 
-                              Cedula </label> -->
-                              <input type="cedula-fast" disabled class="form-control" id="cedula-fast" name="cedula-fast" placeholder="{{request.user.username}}" aria-describedby="cedula-fastHelp" style="   font-size: 14px !important;
-                              color: rgb(136, 136, 136);
-                              height: 3rem !important;
-                              border-radius: 1rem !important;">
-                        </div>
-                        <div class="mb-3">
-                              <!-- <label for="numero-fast" class="form-label">Numero</label> -->
-                              <input type="numero-fast" disabled class="form-control" id="numero-fast" 
-                              name="numero-fast"
-                              placeholder="849-343-****" style="font-size: 14px !important;
-                              color: rgb(136, 136, 136);
-                              height: 3rem !important;
-                              border-radius: 1rem !important;">
-                        </div>
-                        <div>
-                              <p class="text-center text-black-50" style="font-size: 12px;">Al cerrar session, no podras acceder a las funciones de este usuario</p>
-                        </div>
-                       <div class="w-100 d-flex justify-content-center flex-wrap">
-                        
-                        <div class='w-100 justify-content-center  mt-2 d-flex'>
-                              <button class="scroll-btn bg-danger" style="width: 11rem;" >Cerrar Session</button>
-                        </div>
-                       </div>
-                  </form>
-            </div>
-      </section>
-    </div>
 
-    <strong class="w-100 text-black-50 ms-3">
-      Rendimiento de la empresa
-     </strong> 
-    <section data-aos="fade-down" style="transition: 1s ease-in-out !important;" class="w-100 mt-2  p-0">
-        <div class=" d-flex   justify-content-center   overflow-scroll" style="max-height: 40rem;"> 
-             
+
+
     
-            <div class=" mt-1 d-flex flex-wrap">
-                <div style="max-width: 20rem; border-radius: 2rem; height: 7rem;
-               border: 1px rgba(192, 192, 192, 0.414) solid !important;" class=" d-flex p-1 bg-white bg-opacity-25 m-1 w-100" 
-                >
-                    <div  style="width: 340px;" class=" d-flex flex-wrap ">
-                        <strong class="text-center  d-flex justify-content-center align-content-center flex-wrap m-2 p-2 rounded-5 pb-1 pt-1" >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cash-coin p-0 m-0 mt-1 me-2 " viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8m5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0"/>
-                                <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195z"/>
-                                <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083q.088-.517.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1z"/>
-                                <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 6 6 0 0 1 3.13-1.567"/>
-                              </svg>      Saldar D...
-                        </strong>  
-                        <strong class="text-center w-100 d-flex justify-content-center align-content-center flex-wrap m-2 rounded-5 p-2 pb-1 pt-1"
-                        style=""> 88%</strong> 
-                    </div>
-                    <div class="w-50 p-0 mb-1">
-                        <canvas id="activityChart" >
-                    
-                        </canvas>
-                    </div>
-                </div>
-            </div>
+
     
-            <div style="width: 20rem; border-radius: 2rem; height: 7rem;
-                  border: 1px rgba(192, 192, 192, 0.414) solid !important;" class=" d-flex p-1 m-1 " >
-                    <div   style="width: 340px;"class=" d-flex flex-wrap bg-white bg-opacity-25">
-                        <strong class="text-center  d-flex justify-content-center align-content-center flex-wrap m-2 p-2 rounded-5 pb-1 pt-1" >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-half me-2" viewBox="0 0 16 16">
-                                <path d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z"/>
-                              </svg> Recome...
-                        </strong>  
-                       <strong class="text-center w-100 d-flex justify-content-center align-content-center flex-wrap m-2 rounded-5 p-2 pb-1 pt-1"
-                        style=""> 60%</strong> 
-                </div>
-                <div class="w-50 p-0 mb-1">
-                    <canvas id="saldar_deudas" >
-                
-                    </canvas>
-                </div>
+    <main class="vh-100 overflow-scroll pb-5">
+    
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="https://www.getyooz.com/hubfs/inteligencia%20artificial%20en%20finanzas.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="https://www.getyooz.com/hubfs/inteligencia%20artificial%20en%20finanzas.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="https://www.getyooz.com/hubfs/inteligencia%20artificial%20en%20finanzas.jpg" class="d-block w-100" alt="...">
+              </div>
             </div>
+
+          </div>
     
     
-            <div style="width: 20rem; border-radius: 2rem; height: 7rem;
-             border: 1px rgba(192, 192, 192, 0.414) solid !important;
-            " class=" d-flex p-1 m-1 bg-white bg-opacity-25" >
-                <div class="d-flex flex-wrap " style="width: 340px;" >
-                    <strong class="text-center  d-flex justify-content-center align-content-center flex-wrap m-2 p-2 rounded-5 pb-1 pt-1" >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-piggy-bank me-2 p-0" viewBox="0 0 16 16">
-                            <path d="M5 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.138-1.496A6.6 6.6 0 0 1 7.964 4.5c.666 0 1.303.097 1.893.273a.5.5 0 0 0 .286-.958A7.6 7.6 0 0 0 7.964 3.5c-.734 0-1.441.103-2.102.292a.5.5 0 1 0 .276.962"/>
-                            <path fill-rule="evenodd" d="M7.964 1.527c-2.977 0-5.571 1.704-6.32 4.125h-.55A1 1 0 0 0 .11 6.824l.254 1.46a1.5 1.5 0 0 0 1.478 1.243h.263c.3.513.688.978 1.145 1.382l-.729 2.477a.5.5 0 0 0 .48.641h2a.5.5 0 0 0 .471-.332l.482-1.351c.635.173 1.31.267 2.011.267.707 0 1.388-.095 2.028-.272l.543 1.372a.5.5 0 0 0 .465.316h2a.5.5 0 0 0 .478-.645l-.761-2.506C13.81 9.895 14.5 8.559 14.5 7.069q0-.218-.02-.431c.261-.11.508-.266.705-.444.315.306.815.306.815-.417 0 .223-.5.223-.461-.026a1 1 0 0 0 .09-.255.7.7 0 0 0-.202-.645.58.58 0 0 0-.707-.098.74.74 0 0 0-.375.562c-.024.243.082.48.32.654a2 2 0 0 1-.259.153c-.534-2.664-3.284-4.595-6.442-4.595M2.516 6.26c.455-2.066 2.667-3.733 5.448-3.733 3.146 0 5.536 2.114 5.536 4.542 0 1.254-.624 2.41-1.67 3.248a.5.5 0 0 0-.165.535l.66 2.175h-.985l-.59-1.487a.5.5 0 0 0-.629-.288c-.661.23-1.39.359-2.157.359a6.6 6.6 0 0 1-2.157-.359.5.5 0 0 0-.635.304l-.525 1.471h-.979l.633-2.15a.5.5 0 0 0-.17-.534 4.65 4.65 0 0 1-1.284-1.541.5.5 0 0 0-.446-.275h-.56a.5.5 0 0 1-.492-.414l-.254-1.46h.933a.5.5 0 0 0 .488-.393m12.621-.857a.6.6 0 0 1-.098.21l-.044-.025c-.146-.09-.157-.175-.152-.223a.24.24 0 0 1 .117-.173c.049-.027.08-.021.113.012a.2.2 0 0 1 .064.199"/>
-                          </svg>  Inversions
-                    </strong>  
-                   <strong class="text-center  w-100 d-flex justify-content-center align-content-center flex-wrap m-2 rounded-5 p-2 pb-1 pt-1"
-                    style=""> 12%</strong> 
-            </div>
-            <div class="w-50 p-0 mb-1" style="">
-                <canvas id="invertir"  >
-            
-                </canvas>
-            </div>
+      <!-- Marketing messaging and featurettes
+      ================================================== -->
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+    
+      <div class="container marketing d-flex  justify-content-center flex-wrap">
+    
+        <!-- Three columns of text below the carousel -->
+        <!-- /.row -->
+        <section>
+            <div class="row text-center mt-3">
+                <div class="col-lg-4 ">
+                    <img src="https://www.getyooz.com/hubfs/inteligencia%20artificial%20en%20finanzas.jpg" alt="" width="140" height="140" class="rounded-circle object-fit-cover">
+          
+                  <h2>Heading</h2>
+                  <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                  <p><a class="btn btn-secondary d-none" href="#">View details »</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <img src="https://www.getyooz.com/hubfs/inteligencia%20artificial%20en%20finanzas.jpg" alt="" width="140" height="140" class="rounded-circle object-fit-cover">
+          
+          
+                  <h2>Heading</h2>
+                  <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+                  <p><a class="btn btn-secondary d-none" href="#">View details »</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <img src="https://www.getyooz.com/hubfs/inteligencia%20artificial%20en%20finanzas.jpg" alt="" width="140" height="140" class="rounded-circle object-fit-cover ">
+          
+          
+                  <h2>Heading</h2>
+                  <p>And lastly this, the third column of representative placeholder content.</p>
+                  <p><a class="btn btn-secondary d-none" href="#">View details »</a></p>
+                </div><!-- /.col-lg-4 -->
+              </div><!-- /.row -->
+        </section>
+    
+        <!-- START THE FEATURETTES -->
+    
+        <hr class="featurette-divider">
+    
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
+            <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+          </div>
+          <div class="col-md-5">
+            <img src="https://www.getyooz.com/hubfs/inteligencia%20artificial%20en%20finanzas.jpg" alt="" width="400" height="400" class="rounded-4 object-fit-cover">
+          
+    
+          </div>
         </div>
     
+        <hr class="featurette-divider">
     
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+            <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <img src="https://www.getyooz.com/hubfs/inteligencia%20artificial%20en%20finanzas.jpg" alt="" width="400" height="400" class="rounded-4 object-fit-cover">
+          
+    
+          </div>
         </div>
     
-        
-    </section>
-    <section data-aos="fade-left" style="transition: 1s ease-in-out !important;" class=" w-100 mt-4 position-relative">
-        
+        <hr class="featurette-divider">
     
-        <strong class="ms-3 text-black-50">
-          Estadisticas de solicitudes
-        </strong>
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+            <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+          </div>
+          <div class="col-md-5">
+            <img src="https://www.getyooz.com/hubfs/inteligencia%20artificial%20en%20finanzas.jpg" alt="" width="400" height="400" class="rounded-4 object-fit-cover">
+          
+          </div>
+        </div>
     
-        </span>
+        <hr class="featurette-divider">
+    
+        <!-- /END THE FEATURETTES -->
+    
+      </div><!-- /.container -->
+      
+    
 
-            <div class=" overflow-hidden bg-transparent  p-0 m-2 border-0"  style="border-radius: 2rem; border: 0px rgba(90, 90, 90, 0.414) solid !important;">
-                <div class="chart-container      m-2">
-                    <canvas id="leadsChart" ></canvas>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Total Prestado</h5>
+                    <p class="card-text">$500,000</p>
                 </div>
             </div>
-        
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Clientes</h5>
+                    <p class="card-text">200</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Creditos aprobado</h5>
+                    <p class="card-text">30</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-danger mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Ganancias</h5>
+                    <p class="card-text">$130</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Loans Overview</h5>
+                    <canvas id="loansChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Top Loan Products</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item">Personal Loan</li>
+                        <li class="list-group-item">Home Loan</li>
+                        <li class="list-group-item">Car Loan</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
     
     
-    </section>
-</section>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-const ctx = document.getElementById('leadsChart').getContext('2d');
-const leadsChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: [ 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', ],
-        datasets: [
-            {
-                label: 'Aprobados',
-                data: [9, 8, 3, 10, 7, 12, 7],
-                fill: true,
-                tension: 0.4,
-                backgroundColor: ['#a1c4fd96'],
-            },
-            {
-                label: 'Declinado',
-                data: [5, 12, 20, 15, 20,30, 35 ],
-                fill: true,
-                backgroundColor: '#fa709995',
-                tension: 1
-            },
-
-        ]
-    },
-    options: {
-        responsive: true,
-        animations: {
-      tension: {
-        duration: 4000,
-        easing: 'linear',
-        from: 0.8,
-        to: 0,
-        loop: true
-      }
-    },
-        plugins: {
-            tooltip: {
-                mode: 'index',
-                intersect: false,
-                
-            },
-            legend: {
-                display: true,
-                position: 'top',
-            },
+    var ctx = document.getElementById('loansChart').getContext('2d');
+    var loansChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [{
+                label: 'Loans',
+                data: [100000, 150000, 200000, 250000, 300000, 350000, 400000],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
         },
-        hover: {
-            mode: 'nearest',
-            intersect: true
-        },
-        scales: {
-            x: {
-                display: true,
-                title: {
-                    display: true,
-                    text: ''
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
                 }
-            },
-            y: {
-                display: true,
-                title: {
-                    display: true,
-                    text: ''
-                },
-                suggestedMin: 0,
-                suggestedMax: 40
             }
         }
-    }
-});
-
-       
-var ctxs = document.getElementById('activityChart').getContext('2d');
-        var activity = 88;
-
-        var chart = new Chart(ctxs, {
-            type: 'doughnut',
-            data: {
-                datasets: [{
-                    data: [activity, 100 - activity],
-                    backgroundColor: ['#bae0ff', 'transparent'],
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutoutPercentage: 10,
-                rotation: Math.PI / 2,
-                tooltips: { enabled: false },
-                hover: {  mode: 'nearest',
-                intersect: true },
-                plugins: {
-                    doughnutlabel: {
-                        labels: [{
-                            text: activity + '%',
-                            font: {
-                                size: 14,
-                                weight: 'bold'
-                            },
-                            color: '#6b6b6b00'
-                        }]
-                    }
-                }
-            }
-        });
-    
-
-
-        var ctxs = document.getElementById('saldar_deudas').getContext('2d');
-        var activity = 60;
-
-        var chart = new Chart(ctxs, {
-            type: 'doughnut',
-            data: {
-                datasets: [{
-                    data: [activity, 100 - activity],
-                    backgroundColor: ['#c9c7ff', "transparent" ],
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutoutPercentage: 10,
-                rotation: Math.PI / 2,
-                tooltips: { enabled: false },
-                hover: {  mode: 'nearest',
-                intersect: true },
-                plugins: {
-                    doughnutlabel: {
-                        labels: [{
-                            text: activity + '%',
-                            font: {
-                                size: 14,
-                                weight: 'bold'
-                            },
-                            color: '#333'
-                        }]
-                    }
-                }
-            }
-        });
-// invertir
-var ctxs = document.getElementById('invertir').getContext('2d');
-        var activity = 30;
-
-        var chart = new Chart(ctxs, {
-            type: 'doughnut',
-            data: {
-                datasets: [{
-                    data: [activity, 100 - activity],
-                    backgroundColor: ['#ff8b8b', "transparent"],
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutoutPercentage: 10,
-                rotation: Math.PI / 2,
-                tooltips: { enabled: false },
-                hover: {  mode: 'nearest',
-                intersect: true },
-                plugins: {
-                    doughnutlabel: {
-                        labels: [{
-                            text: activity + '%',
-                            font: {
-                                size: 14,
-                                weight: 'bold'
-                            },
-                            color: '#333'
-                        }]
-                    }
-                }
-            }
-        });
-
-        function BtnCloseSession() {
-      var btnMoreSession = document.querySelector('#btn-close-session');
-      if (btnMoreSession) {
-            btnMoreSession.classList.toggle('d-none');
-      }
-}
+    });
 </script>
+
 {% endblock  %}
