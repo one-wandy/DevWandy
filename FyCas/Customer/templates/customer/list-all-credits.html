@@ -214,9 +214,46 @@
       .colors {
             animation: moveInCircle 7s linear infinite;
       }
+      .btns-creditos-opciones  button
+      {
+            font-size: 12px !important;
+            border: none !important;
+      }
+
       
 </style>
-      <section class="d-flex flex-wrap overflow-scroll h-100 justify-content-start align-content-start">
+<div data-aos="fade-left" style="transition: 1s; width: max-content;" class="option-creditos  end-0 mb-2 mt-2 " >
+      <span  class="text-black-50" style="font-size: 12px; font-weight: 500;">
+            <!-- Filtro de Creditos -->
+      </span> 
+      <div class=" d-flex flex-wrap justify-content-center align-content-center 
+             btns-creditos-opciones h-auto " 
+             style="background-color: #ffffff00; ">
+             <form action="" class="w-" method="get">
+
+                   <button class="">
+                         Todos ({{credits_count}})
+                        </button>
+            </form>
+            <form action="" class=""  method="post">
+                  {% csrf_token %}
+                  <input type="text" class="d-none" name="pendientes" value="true">
+                  <button style="background-color: #ffffff; /* Light green background */
+            color: #000000; /* Green text */" class="">
+                  Activos ({{pendiente_credit}})
+            </button>
+      </form>
+      <form action="" class="" method="post">
+            {% csrf_token %}
+            <input type="text" class="d-none" name="saldado" value="true">
+            <button style="background-color: #ffffff; /* Light green background */
+            color: #000000; /* Green text */" class="">
+                  Finalizados ({{saldado_credit}})
+            </button>
+      </form>
+      </div>
+</div>
+      <section data-aos="fade-in" style="transition: 0.5s ease-out; "   class="d-flex flex-wrap overflow-scroll h-100 justify-content-start align-content-start">
             {% include "components/list-credi.html" %}
       </section>
 {% endblock  %}

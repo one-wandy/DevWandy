@@ -111,6 +111,20 @@
                   transition: width 0.5s ease;
             }
 
+            @media (min-width: 700px) {
+                  .card-cu {
+                        width: 48% !important;
+                  }
+                  .div-cu 
+                  {
+                        
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+
+                  }
+            }
+
 </style>
 
 <!-- <section class="d-flex flex-wrap h-100 bg-danger  justify-content-center  overflow-scroll pb-5 p-1 pt-0 " > -->
@@ -119,7 +133,7 @@
 
 
 {% if customer %}
-<div class="d-flex  w-100  mb-1 justify-content-start flex-wrap   ms-2  start-0 position-relative position-sticky z-2  top-0" 
+<div class="d-flex  w-100  mb-1   justify-content-start flex-wrap   ms-2  start-0 position-relative position-sticky z-2  top-0 div-cu" 
       style="">
             
       <form action="" method="post">
@@ -134,15 +148,15 @@
       </form>
 
 
-      <div class=" div-search position-absolute d-flex end-0 me-3 top-0 border-0 mt-5 " style="width: max-content; ">  
-                  <img src="{% static "icons/search.png" %}" width='24' height="24" class="mt-2 icon-s" alt="">
+      <div class="   d-flex end-0 me-3 top-0 border-0 mt-1 " style="width: max-content; ">  
+             
 
 
-      <input type="text" id='search-p'  style="font-size: 12px;  width: 100%; height: 2.5rem; 
-      outline: none !important; border-radius: 2rem !important; border: 1px solid rgb(223, 223, 223);" class="form-search border-1  shadow  text-center d-none bg-white bottom-0  outline-none  m-0  searching-config"  
+      <input type="text" id='search-p'  style="font-size: 12px;  width: 20rem; height: 2.5rem; 
+      outline: none !important; border-radius: 2rem !important; border: 1px solid rgb(223, 223, 223);" class="form-search border-1    text-center  bg-white bottom-0  outline-none  m-0  searching-config"  
       placeholder="Busqueda ">
 
-      <section class="w-100 d-flex justify-content-start position-absolute top-0 mt-4 pt-1 " style="max-height: 30rem;">
+      <section class="w-100 d-flex justify-content-start position-absolute top-0 mt-5 pt-1 " style="max-height: 30rem;">
             <div class=" card  blur bg-white bg-opacity-50 border-0 shadow    overflow-scroll mt-1" style="width: 338px; border-radius: 1.5rem; ">
                   <div class="w-100 d-flex justify-content-end    ">
                         <div id="config-list"  
@@ -165,11 +179,12 @@
 
 
 
-      {% for c in customer %}
-<div style="  width: 438px; height: 171px; " class="position-relative clients mt-1   w-100  d-flex justify-content-center">
+{% for c in customer %}
+<div style="width: 408px; height: 181px;   " class="position-relative   card-cu   mt-1     d-flex justify-content-center m-1">
 
-      <div id="client{{c.id}}"   style=" transition: 0.5s ease-out !important;  width: 338px; height: 171px; border-radius: 1.5rem;   z-index: 0 !important; background-color: #ffffff !important;
-                  box-shadow: 0px 1px 3px 1px rgba(218, 218, 218, 0.505);" class=" position-relative card-cu   p-2 bg-white" >
+      <div id="client{{c.id}}"   style=" transition: 0.5s ease-out !important;   border-radius: 1.5rem;   z-index: 0 !important; background-color: #ffffff !important;
+                  box-shadow: 0px 1px 3px 1px rgba(218, 218, 218, 0.505);" class="w-100 position-relative  p-2 bg-white " >
+
                   <button id="{{c.id}}"  onclick='OpenCloseBtn(this.id)' style="background-color: #35333e00; width: 35px; height: 35px; color: #000000 !important; top: 8rem; box-shadow: #eeeeee00 1px 1px 1px 1px; border: 0px solid #a7a7a7 !important; border-style: dotted !important;"   class="rounded-circle  position-absolute border-0  p-0 me-2 mb-2 end-0 d-flex flex-wrap justify-content-center align-content-center ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots " style="margin-top: 10px;" viewBox="0 0 16 16">
                               <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
@@ -193,7 +208,7 @@
                                     </div>
                               </a>
                         </div>
-                  <div class="ms-1 mt-4  overflow-visible">  
+                  <div class="ms-1   overflow-visible" style="margin-top:2rem !important;">  
                         <a href="">
                         <span class="d-flex text2">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill m-0 mt-1 me-1 p-0 " viewBox="0 0 16 16">
@@ -229,7 +244,7 @@
             {% include "customer/extends-customer.html" %} 
 
 </div>
-      {% endfor %}
+{% endfor %}
 {% else %}
             <div class="warning vh-100 d-flex justify-content-center align-content-center flex-wrap w-100">
                   <h6 class="p-2 w-100 text-center pt-0 pb-0">
@@ -249,7 +264,6 @@
                
             </div>
 {% endif %}
-
 
 
 <!-- </section> -->
