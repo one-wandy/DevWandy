@@ -923,9 +923,9 @@ class ListAllCredits(ListView, Options):
             print('siuu')
             
             if  self.request.POST.get('pendientes') != None:
-                context['all_credits'] = self.model.objects.filter(estado_credito=False)
+                context['all_credits'] = self.model.objects.filter(estado_credito=False).order_by('-id')
             if  self.request.POST.get('saldado') != None:
                 context['all_credits'] = self.model.objects.filter(estado_credito=True).order_by('-id')
         else:
-            context['all_credits'] = self.model.objects.all()
+            context['all_credits'] = self.model.objects.all().order_by('-id')
         return context
