@@ -1094,13 +1094,7 @@ var Datos_d_llegada = false
 window.addEventListener("DOMContentLoaded", function() {
 
       let searchElement = document.getElementById('search-p');
-      searchElement.addEventListener('focus', function() {
-            if(Datos_d_llegada == false){
-                  ConfigData()
 
-            }
-
-});
         function ConfigData() {
             console.log('Configurando datos...');
             const url = 'searching/customer';

@@ -4,10 +4,18 @@
 {% load humanize %}
 
 <style>
-      .btn-configuraciones
-      {
-            background-color: #eeeeee !important;
-      }
+              .btn-configuraciones
+{
+      background-color: var(--bg-enfasis) !important;
+      color: white !important;
+      width: max-content !important;
+      
+}
+.btn-configuraciones img 
+{
+      display: none;
+}
+
       #cardDeck .card
       {
             max-width: 800px;
@@ -17,57 +25,198 @@
       {
             /* background-color: rgb(202, 230, 255); */
       }
-</style>
-{% include "components/background-animated.html" %}
-<section class="w-100 blur h-100 position-absolute top-0 start-0 d-flex    p-3"
-      style="z-index: 0;">
-      <div>
 
-            <div class="card-deck d-flex flex-wrap justify-content-center" style="width: 30rem;" id="cardDeck">
-                  <div class="card mb-4 border-0 rounded-4 shadow-sm bg-light">
-                        <div class="card-header rounded-3 border-0 bg-white text-black mb-2 d-flex align-items-center">
-                              <img src="{% static 'svg/user.svg' %}" width="24" alt="" class="me-2"> Clientes
-                        </div>
-                        <div class="card-body d-flex flex-wrap bg-white">
-                              <div class="w-50 p-2">
-                                    <strong>Notificaciones</strong>
-                                    <ul class="list-group list-group-flush">
-                                          <li class="list-group-item border-0">
-                                                <div class="form-check">
-                                                      <input class="form-check-input" type="checkbox" value="" id="flexCheckEmail">
-                                                      <label class="form-check-label" for="flexCheckEmail">
-                                                            Alertar por correo
-                                                      </label>
-                                                </div>
-                                          </li>
-                                          <li class="list-group-item border-0">
-                                                <div class="form-check">
-                                                      <input class="form-check-input" type="checkbox" value="" id="flexCheckSMS" checked>
-                                                      <label class="form-check-label" for="flexCheckSMS">
-                                                            Alertar por SMS
-                                                      </label>
-                                                </div>
-                                          </li>
-                                    </ul>
+      .form-check-label 
+      {
+            font-size: 12px; margin-left: 8px; color: gray;
+      } 
+      .form-check-input
+      {
+            border-radius: 50% !important;
+
+      }
+      .card {
+            border-radius: 1rem;
+      }
+</style>
+
+<section class="w-100  h-100  top-0 start-0 d-flex    p-3"
+      style="z-index: 0;">
+      <div class="container">
+            <div class="row">
+                  <div class="col-md-4 mb-3">
+                        <div class="card">
+                              <div class="card-header">Configuraciones</div>
+                              <div class="card-body">
+                                    <p>Administra las configuraciones de la aplicación.</p>
+                                    <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" id="configOption1">
+                                          <label class="form-check-label" for="configOption1">
+                                                Activar modo oscuro
+                                          </label>
+                                    </div>
+                                    <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" id="configOption2">
+                                          <label class="form-check-label" for="configOption2">
+                                                Activar notificaciones
+                                          </label>
+                                    </div>
+                                    <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" id="configOption3">
+                                          <label class="form-check-label" for="configOption3"> 
+                                                Activar notificaciones de voz
+                                          </label>
+                                    </div>
                               </div>
-                              <div class="w-50 p-2">
-                                    <strong>Siguimiento</strong>
-                                    <ul class="list-group list-group-flush">
-                                          <li class="list-group-item border-0">
-                                                <div class="form-check">
-                                                      <input class="form-check-input" type="checkbox" value="" id="flexCheckFollowUp">
-                                                      <label class="form-check-label" for="flexCheckFollowUp">
-                                                            Enviar a lista de seguimiento tras los 10 días en atraso
-                                                      </label>
-                                                </div>
-                                          </li>
-                                    </ul>
+                        </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                        <div class="card">
+                              <div class="card-header">Clientes</div>
+                              <div class="card-body">
+                                    <p>Gestiona la información de los clientes.</p>
+                                    <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" id="clientesOption1">
+                                          <label class="form-check-label" for="clientesOption1"> Enviar recordatorio  via mensaje </label>
+                                    </div>
+                                    <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" id="clientesOption2">
+                                          <label class="form-check-label" for="clientesOption2"> Enviar facturas automáticamente via correo </label>
+                                    </div>
+                                    <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" id="clientesOption3">
+                                          <label class="form-check-label" for="clientesOption3"> Enviar ofertas via mensaje</label>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                        <div class="card">
+                              <div class="card-header">Calculadora</div>
+                              <div class="card-body">
+                                    <p>Utiliza la calculadora para realizar cálculos financieros.</p>
+                                    <div class="d-flex">
+                                          <span style="font-size: 14px;"> Tasa por defecto </span>%
+                                          <input type="text" width="100" value="15" 
+                                                class="rounded-4 border-0 ms-3 w-25 p-1 bg-dark bg-opacity-10 " style="outline: none;">
+                                    </div> 
+                                    <div class="form-check">
+                                          <input class="form-check-input" checked type="checkbox" id="calculadoraOption2">
+                                          <label class="form-check-label" for="calculadoraOption2">
+                                                Mostrar en el panel lateral
+
+                                          </label>
+                                    </div>
+                                    <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" id="calculadoraOption3">
+                                          <label class="form-check-label" for="calculadoraOption3">
+                                                Activar mediante Shift + command (Alt) +  C      
+                                          </label>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                        <div class="card">
+                              <div class="card-header">Mapas</div>
+                              <div class="card-body">
+                                    <p>Visualiza ubicaciones y rutas en los mapas.</p>
+                                    <div class="form-check">
+                                          <input class="form-check-input" checked type="checkbox" id="mapasOption1">
+                                          <label class="form-check-label" for="mapasOption1">
+                                                Mostrar ubicaciones en el mapa
+                                          </label>
+                                    </div>
+                                    <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" id="mapasOption2">
+                                          <label class="form-check-label" for="mapasOption2">
+                                                Mostrar rutas en el mapa al selecionar
+                                          </label>
+                                    </div>
+                                    <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" id="mapasOption3">
+                                          <label class="form-check-label" for="mapasOption3">
+                                                Mostrar buscardor en map      
+                                          </label>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                        <div class="card">
+                              <div class="card-header">Créditos</div>
+                              <div class="card-body">
+                                    <p>Administra los créditos y préstamos.</p>
+                                    <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" id="creditosOption1">
+                                          <label class="form-check-label" for="creditosOption1">
+                                                Eliminar al finalizar 
+                                          </label>
+                                    </div>
+                                    <div class="form-check">
+                                          <input class="form-check-input" checked type="checkbox" id="creditosOption2">
+                                          <label class="form-check-label" for="creditosOption2">
+                                                Notificar vencimiento
+                                          </label>
+                                    </div>
+                                    <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" id="creditosOption3">
+                                          <label class="form-check-label" for="creditosOption3">
+                                                Negar créditos a clientes con deudas
+                                          </label>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                        <div class="card">
+                              <div class="card-header">Mensajería</div>
+                              <div class="card-body">
+                                    <p>Envía y recibe mensajes.</p>
+                                    <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" id="mensajeriaOption1">
+                                          <label class="form-check-label" for="mensajeriaOption1">
+                                                Mostrar en linea
+                                          </label>
+                                    </div>
+                                    <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" id="mensajeriaOption2">
+                                          <label class="form-check-label" for="mensajeriaOption2">
+                                                Permitir llamadas
+                                          </label>
+                                    </div>
+                                    <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" id="mensajeriaOption3">
+                                          <label class="form-check-label" for="mensajeriaOption3">
+                                                Mostrar en ventana flotante
+                                          </label>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                        <div class="card">
+                              <div class="card-header">Inversiones</div>
+                              <div class="card-body">
+                                    <p>Gestiona las inversiones y portafolios.</p>
+                                    <div class="form-check">
+                                          <input class="form-check-input" checked type="checkbox" id="inversionesOption1">
+                                          <label class="form-check-label" for="inversionesOption1">
+                                                Nofificar al generar credito
+                                          </label>
+                                    </div>
+                                    <div class="form-check">
+                                          <input class="form-check-input" checked type="checkbox" id="inversionesOption2">
+                                          <label class="form-check-label" for="inversionesOption2">
+                                                Usuario puede tener acceso a inversiones
+                                          </label>
+                                    </div>
+                   
                               </div>
                         </div>
                   </div>
             </div>
-
-      </div>
+      </div></div>
 
 </section>
 
