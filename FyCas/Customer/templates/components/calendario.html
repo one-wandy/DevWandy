@@ -5,9 +5,17 @@
 
 <style>
       .btn-calendario
-      {
-            background-color: #eeeeee !important;
-      }
+{
+      background-color: var(--bg-enfasis) !important;
+      color: white !important;
+      width: max-content !important;
+      
+}
+.btn-calendario img 
+{
+      display: none;
+}
+
       .fc-button-group button, .fc-button-primary
       {
             background-color: transparent !important;
@@ -23,10 +31,10 @@
 
       }
 </style>
-{% include "components/background-animated.html" %}
-<section class="w-100 blur h-100 position-absolute top-0 start-0 d-flex   justify-content-center align-content-center flex-wrap" style="z-index: 0;">
+
+<section class="w-100  h-100  top-0 start-0 d-flex   justify-content-center align-content-center flex-wrap" style="z-index: 0;">
       <div id="overlay"></div>
-      <div id='calendar' class="" style="height: 500px; width: 90%;"></div>
+      <div data-aos="fade-in" id='calendar' class="" style="width: 90%; transition-delay: 0.3s !important;" ></div>
   
       <!-- Modal para el evento Cobrar -->
       <div id="cobrar-modal" class="position-absolute bg-white top-50 z-2" style="display: none;"> 

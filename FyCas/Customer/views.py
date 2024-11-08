@@ -649,6 +649,12 @@ class Agregar(CreateView, Options):
     
 class Calendario(TemplateView, Options):
     template_name = "components/calendario.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['setting'] = self.Setting()
+
+        return context
     
 class Ubicaciones(TemplateView, Options):
     model = models.Customer

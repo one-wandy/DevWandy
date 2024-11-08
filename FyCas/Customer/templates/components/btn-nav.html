@@ -3,7 +3,7 @@
     
       .btn-nav 
       {
-            width: 17rem;
+            width: 15rem;
             display: flex;
             flex-wrap: wrap;    
             /* border: rgb(228, 228, 228) 1px solid; */
@@ -185,37 +185,7 @@
                         </span>
                   </button>
             </a>
-            <div data-aos="fade-right" style="transition: 1s; " class="option-creditos d-none mb-4 mt-2 w-100" >
-                  <span  class="text-black-50" style="font-size: 12px; font-weight: 500;">
-                        <!-- Filtro de Creditos -->
-                  </span> 
-                  <div class=" d-flex  overflow-scroll
-                         btns-creditos-opciones h-auto " 
-                         style="background-color: #ffffff00; ">
-                         <form action="" method="get">
-
-                               <button class="">
-                                     Todos ({{credits_count}})
-                                    </button>
-                        </form>
-                        <form action="" method="post">
-                              {% csrf_token %}
-                              <input type="text" class="d-none" name="pendientes" value="true">
-                              <button style="background-color: #f8d7da; /* Light green background */
-                        color: #721c24; /* Green text */">
-                              Activos ({{pendiente_credit}})
-                        </button>
-                  </form>
-                  <form action="" method="post">
-                        {% csrf_token %}
-                        <input type="text" class="d-none" name="saldado" value="true">
-                        <button style="background-color: #ebf4ff; /* Light green background */
-                        color: #005180; /* Green text */">
-                              Finalizados ({{saldado_credit}})
-                        </button>
-                  </form>
-                  </div>
-            </div>
+        
             <a href="{% url "customer:ubicaciones" %}">
 
                   <button class="btn-ubicaciones">
