@@ -9,7 +9,9 @@
                   <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css' rel='stylesheet' />
             <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js'></script>
                   <title id="title">Grupo FyCas</title>
-                  <link rel="icon"  href="{{setting.Icon.url}}"  >
+                  {% if setting.Icon.url %}
+                                <link rel="icon"  href="{{setting.Icon.url}}"  >
+                  {% endif %}
 
                   <link rel="preconnect" href="https://fonts.googleapis.com">
                   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -699,7 +701,7 @@ select option {
           </div>
           <section class=" d-flex  rounded-0  " style="  
 
-background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
  background-blend-mode: screen;
 
 /* background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%); */

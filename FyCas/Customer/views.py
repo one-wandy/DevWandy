@@ -707,6 +707,11 @@ class Configuraciones(TemplateView, Options):
     template_name = "components/configuraciones.html"
     
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['setting'] = self.Setting()
+
+        return context
 from dateutil.relativedelta import relativedelta
 from calendar import monthrange
 class CrearCredito(TemplateView, Options):
