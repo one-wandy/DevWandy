@@ -704,7 +704,10 @@ select option {
           </div>
           <section class=" d-flex  rounded-0  " style="  
 
-background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+
+background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+
+/* background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); */
  background-blend-mode: screen;
 
 /* background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%); */
@@ -1097,6 +1100,13 @@ let config_data;
 
 var Datos_d_llegada = false
 window.addEventListener("DOMContentLoaded", function() {
+
+      document.querySelector('.searching-config').addEventListener('click', function() {
+            if (Datos_d_llegada == false) {
+                  ConfigData();
+            }
+
+      });
 
       let searchElement = document.getElementById('search-p');
 
