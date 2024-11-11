@@ -551,6 +551,9 @@ select option {
   </style>
 
   <body style="" class="h-100 overflow-hidden ">
+
+
+
       <section   class=" flex-wrap overflow-hidden  load bg-white  bg-opacity-25 blur align-content-center
             w-100 h-100 position-fixed  top-0" style="z-index: 1000; ">
             <div data-aos="zoom-in-down" class="d-flex  justify-content-center h-100">
@@ -1099,11 +1102,14 @@ let list_data = document.getElementById('list_data')
 var data_coming = false
 let config_data;
 window.addEventListener("DOMContentLoaded", function() {
-      search_data.addEventListener('click', function() {
-            if (data_coming == false) {
-                  CallData();
-            }
-      });
+      if( document.querySelector('#search-data')) {
+                  search_data.addEventListener('click', function() {
+                  if (data_coming == false) {
+                        CallData();
+                  }
+            });
+      }
+  
         function CallData() {
             console.log('Loading...');
             const url = 'searching/customer';
@@ -1159,11 +1165,13 @@ window.addEventListener("DOMContentLoaded", function() {
 });
 
 
-  
+
+
 
 
         
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
 crossorigin="anonymous"></script>
