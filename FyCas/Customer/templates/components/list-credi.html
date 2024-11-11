@@ -71,8 +71,8 @@
             font-weight: 500; color: #6b6b6b !important;
       }
    </style>
-{% for credit in  all_credits %}   
 
+{% for credit in  all_credits %}   
 <div  class="p-2 position-relative">
       <span id="forlou{{credit.id}}" style=" width: 1.5rem; height: 1.5rem; margin-top: rem; border-radius: 50%; background-color: #0f83ff; font-size: 12px;" class="d-flex d-none text-white position-absolute z-2 flex-wrap justify-content-center flex-wrap align-content-center">
             #{{ forloop.counter }} 
@@ -111,8 +111,8 @@
 {% endif %}
 
 
-      <div id="cuotas_credit{{credit.id}}" class='  credit-sp w-100 p-2 pb-0 pt-1 me-2 card   text-black-50 ' 
-      style="  min-width: 490px;  max-width: 490px;
+      <div id="cuotas_credit{{credit.id}}" class='  credit-sp w-100 p-2 pb-0 pt-1  card   text-black-50 ' 
+      style="  min-width: 470px;  max-width: 470px;
       font-size: 14px; 
       border-radius: 1.5rem; 
       height: max-content ; box-shadow: #e5e5e500 1px 2px 1px 1px;  border: 1px solid rgb(221, 221, 221);">
@@ -139,7 +139,10 @@
             <table class=" w-100 bg-transparent  ">
                   <thead>
                         <tr>
-                              <th scope="col">Fecha</th>
+                              {% if cuotas %}
+                                    <th scope="col">Fecha</th>
+                          
+                              {% endif %}
                               <th scope="col">Cuotas</th>
                               <th scope="col">Precio</th>
                               <th scope="col">Plazo</th>
@@ -149,7 +152,10 @@
                   </thead>
                   <tbody>
                         <tr>
-                              <td>   {{credit.day_created|date:"m/d/Y" }}</td>
+                              {% if cuotas %}
+                                    <td>   {{credit.day_created|date:"m/d/Y" }}</td>
+                                    {% endif %}
+
                               <td>        {{credit.price_feed}}</td>
                               <td> ${{credit.amount_feed|intcomma}}.00 </td>
                               <td> {% if credit.mode_pay == True %}
