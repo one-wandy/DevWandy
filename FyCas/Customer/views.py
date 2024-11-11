@@ -151,7 +151,8 @@ class ListCustomer(ListView,Options):
                                     customer_verify = True ).order_by('-id')[:15]
             context['customer'] = filter_client
             context['count_client'] = int(filter_client.count())
-            
+        
+        context['customer_ramdon'] = self.model.objects.filter(is_active = True,).order_by('?')[:9]
         context['setting'] = self.Setting()
         context['fecha_actual'] =  fecha_actual.strftime("%d / %B / %Y").capitalize()
         context['customer_count'] = self.model.objects.filter(is_active = True, 

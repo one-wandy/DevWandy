@@ -1091,128 +1091,72 @@ let ActiveDesactive = (btnId, divClass) => {
             } else {
                   targetDiv.classList.add('d-none');
             }
-
-
 };
-let searching_config = document.querySelector('.searching-config');
-let config_list = document.getElementById('config-list')
+
+
+let search_data = document.querySelector('#search-data');
+let list_data = document.getElementById('list_data')
+var data_coming = false
 let config_data;
-
-var Datos_d_llegada = false
 window.addEventListener("DOMContentLoaded", function() {
-
-      document.querySelector('.searching-config').addEventListener('click', function() {
-            if (Datos_d_llegada == false) {
-                  ConfigData();
+      search_data.addEventListener('click', function() {
+            if (data_coming == false) {
+                  CallData();
             }
-
       });
-
-      let searchElement = document.getElementById('search-p');
-
-        function ConfigData() {
-            console.log('Configurando datos...');
+        function CallData() {
+            console.log('Loading...');
             const url = 'searching/customer';
             $.ajax({
                 url: url,
                 success: function(data){
-                  Datos_d_llegada = true
-                  config_data = data
-                  const searching_config = document.querySelector('.searching-config');
-                  searching_config.addEventListener('input', (event) => {
-                  const input_value = event.target.value;
-                  const filtered_data = data.filter((config) => {
-                        return config.filter.toLowerCase().includes(input_value.toLowerCase());
-                    });
-                    config_list.innerHTML = ''
-                    var divList = document.getElementById('div-list-customer') 
-                    if(filtered_data == ''){
-                              document.getElementById("text-c").style.display = 'flex'
-                              document.getElementById('user-no').innerHTML = searching_config.value
-                  }
-                  else{
-                        document.getElementById("text-c").style.display = 'none'
-                        if(searching_config.value == ''){
-                              divList.classList.remove('blur-up')
-                              document.getElementById('sec-listado').classList.remove('d-none')
-                        }
-                        else{  
-                              divList.classList.add('blur-up')
-                              document.getElementById('sec-listado').classList.add('d-none')
+                  data_coming = true
+                  search_data.addEventListener('input', (event) => {
+                        const input_value = event.target.value;
+                        const filtered_data = data.filter((config) => {
+                              return config.filter.toLowerCase().includes(input_value.toLowerCase());
+                        });
+                        list_data.innerHTML = ''
+                        for (const c  of filtered_data) {
+                              let container = document.createElement("div")
+                                    container.classList.add('container_list')
+                              let button = document.createElement('button');
+                                    container.classList.add('w-100')
+                                    button.classList.add('border-1', 'p-0' )
+                                    button.id = c.id
+                                    button.addEventListener('click', function() {
+                                          document.getElementById('input-send-data').value = this.id
+                                          document.getElementById('btn-send-data').click()
+                                    });
+                                    button.innerText = c.name
+                                    container.appendChild(button)
+                                    list_data.appendChild(container);
                         }
 
+                        if (filtered_data.length > 0) {
+                              document.getElementById('no-found').classList.add('d-none')
+
+                        } else {
+                              document.getElementById('no-found').classList.remove('d-none')
+                              document.getElementById('no-found').innerText = 'No encontado ' + '(' + search_data.value + ')' 
+                        }
+                        if (search_data.value === "") {
+                              list_data.innerHTML = ''
+                              list_data.classList.add('d-none') 
+                              document.querySelector('.container-data').classList.add('d-none')
+                        }
+                        else {
+                              list_data.classList.remove('d-none')
+                              document.querySelector('.container-data').classList.remove('d-none')
+                        }
+                  });
+            },
+                  error: function(xhr, status, error) {
+                        console.error('Error en la solicitud AJAX:', status, error);
                   }
-
-                  for (const c  of filtered_data) {
-                        const div = document.createElement('div');
-                        div.classList.add("contdiv",  'justify-content-center' ,'d-flex',)
-                        const divCont = document.createElement('div');
-                        divCont.classList.add( 'justify-content-start', 'mt-3'  ,'d-flex',  )
-
-                        div.classList.add("divCon", 'w-100', "p-1", 'justify-content-start' ,'d-flex',)
-                              let divI = document.createElement("div")
-                              const imgLink = document.createElement('a');
-                              imgLink.href = "/detail-customer/" + c.id
-                              imgLink.target = '_blank';
-                              let divL = document.createElement("div")
-
-                              let stronL = document.createElement("strong")
-                              stronL.textContent = ""
-                              let spanL = document.createElement("span")
-                              const nameLink = document.createElement('button');
-                              nameLink.classList.add('border-0', 'p-0' , )
-                              nameLink.id = c.id
-                              nameLink.addEventListener('click', function() {
-                                    // Llamar a la función y pasarle el ID como argumento
-                                    document.getElementById('input-send-data').value = this.id
-                                    console.log(document.getElementById('input-send-data').value)
-                                    document.getElementById('btn-send-data').click()
-                                    // Suponiendo que la función se llama "miFuncion"
-                              });
-                              nameLink.innerText = c.name
-                              divL.appendChild(stronL)
-                              divL.appendChild(nameLink)
-                              let divN = document.createElement("div")
-                              divN.classList.add('dni')
-                                    let stronN = document.createElement("strong")
-                                          stronN.textContent = ""
-                                    let spanN = document.createElement("span")
-                                          // spanN.textContent = c.dni
-                              divN.appendChild(stronN)
-                              divN.appendChild(spanN)
-                              let divA = document.createElement("div")
-                              let divR = document.createElement("div")
-                              let stronR = document.createElement("strong")
-                              let divK = document.createElement("div")
-
-                        div.appendChild(divI);
-                        div.appendChild(divL);
-                        div.appendChild(divN);
-                        div.appendChild(divR);
-                        div.appendChild(divA);
-                        div.appendChild(divK);
-                        divCont.appendChild(div);
-                        config_list.appendChild(divCont);
-                    }
-                    if (searching_config.value.trim() === "") {
-                        config_list.innerHTML = ''
-                        config_list.style.display = 'none'
-
-
-                  }
-                  else {
-                        config_list.style.display = 'block'
-
-
-                    }
-                    });
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error en la solicitud AJAX:', status, error);
-                }
-            });
-        }
-    });
+                  });
+            }
+});
 
 
   

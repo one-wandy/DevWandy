@@ -2,30 +2,21 @@
 
 {% load static %}
 {% load humanize %}
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
-      .text2 
-      {
-            font-size: 14px;
-            color: #737373;
-      }
-      .img-icons
-      {
-            
-      }     
-      svg
-      {
-            color: #8e8e8e;
-            width: 12px !important;
-      }
-      .rotar-btn {
+.text2 {
+      font-size: 14px;
+      color: #737373;
+}
+svg{
+      color: #8e8e8e;
+      width: 12px !important;
+}
+.rotar-btn {
     transform: rotate(90deg);
-    /* Ajustes adicionales */
     display: inline-block;
     transition: transform 0.3s ease-in-out;
 }
-.blured
-{
+.blured {
       -webkit-backdrop-filter: blur(100px) !important;
       backdrop-filter: blur(100px) !important;
 }
@@ -39,12 +30,8 @@
 .img-span:hover
 {
       border-radius: 1.6rem !important;
-
-      
 }
 
-
-/* Definimos el efecto de flip-up */
 @keyframes flip-up {
     0% {
         transform: rotateX(90deg);
@@ -56,15 +43,12 @@
     }
 }
 
-/* Clase que aplicará la animación */
 .flip-up {
     animation: flip-up 1s ease-out ;
     transform-origin: top; /* Punto de rotación */
     opacity: 1; /* Oculto por defecto */
 }
 
-/* MK */
-/* Definimos el efecto de flip-down */
 @keyframes flid-sda {
     0% {
         transform: rotateX(-90deg);
@@ -75,56 +59,45 @@
         opacity: 1;
     }
 }
-
-/* Clase que aplicará la animación */
 .flid-sda {
-    animation: flid-sda 0.4s ease-out;
-    transform-origin: left !important; /* Punto de rotación */
-    opacity: 1; /* Oculto por defecto */
+      animation: flid-sda 0.4s ease-out;
+      transform-origin: left !important; /* Punto de rotación */
+      opacity: 1; /* Oculto por defecto */
 }
-
 @media (min-width: 600px) {
       .clients {
             max-width: 340px;
             margin: 0.3rem;
       }
 }
-.btn-lik 
-{
+.btn-lik {
       background-color: #ffffff !important;
 }
-.opciones-span
-            {
-                  font-size: 12px; color: rgb(139, 139, 139); background-color: #ffffff;
-                  padding: 0.4rem 1rem; border-radius: 1.3rem;  text-align: center; 
-                  border: 1px solid rgb(214, 214, 214); cursor: pointer;
-                  margin: 0.0rem 0.3rem;
-            }
-
-            .div-search 
-            {
-                  /* background-color: white; */
-                  transition: 0.4s ease-in !important;
-            }
-            .div-search:hover {
-                  min-width: 20rem;
-                  transition: width 0.5s ease;
-            }
-
-            @media (min-width: 700px) {
-                  .card-cu {
-                        width: 48% !important;
-                        max-width: 26rem;
-                  }
-                  .div-cu 
-                  {
-                        
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: center;
-
-                  }
-            }
+.opciones-span {
+      font-size: 12px; color: rgb(139, 139, 139); background-color: #ffffff;
+      padding: 0.4rem 1rem; border-radius: 1.3rem;  text-align: center; 
+      border: 1px solid rgb(214, 214, 214); cursor: pointer;
+      margin: 0.0rem 0.3rem;
+}
+.div-search {
+      /* background-color: white; */
+      transition: 0.4s ease-in !important;
+}
+.div-search:hover {
+      min-width: 20rem;
+      transition: width 0.5s ease;
+}
+@media (min-width: 700px) {
+      .card-cu {
+            width: 48% !important;
+            max-width: 26rem;
+      }
+      .div-cu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+      }
+}
 
 </style>
 
@@ -134,119 +107,148 @@
 
 
 {% if customer %}
-<div class="d-flex  w-100  mb-1   justify-content-start flex-wrap   ms-2  start-0 position-relative position-sticky z-2  top-0 div-cu" 
-      style="">
-            
-      <form action="" method="post">
-            {% csrf_token %}
-            <input type="text" class="d-none" name="noti" value="true">
-            <button class="position-absolute end-0 top-0 border-0  bg-transparent">  
-                        {% if new_customer %}
-                            {{new_customer}}    
-                        {% endif %}
-                        <img src="{% static "icons/notify.png" %}" width='24' alt="">
-            </button>
-      </form>
-
-
-      <div class="   d-flex end-0 me-3 top-0 border-0 mt-1 " style="width: max-content; ">  
-             
-
-
-      <input type="text" id='search-p'  style="font-size: 12px;  width: 20rem; height: 2.5rem; 
-      outline: none !important; border-radius: 2rem !important; border: 1px solid rgb(223, 223, 223);" class="form-search border-1    text-center  bg-white bottom-0  outline-none  m-0  searching-config"  
-      placeholder="Busqueda ">
-
-      <section class="w-100 d-flex justify-content-start position-absolute top-0 mt-5 pt-1 " style="max-height: 30rem;">
-            <div class=" card   bg-white  border-0 shadow    p-0 overflow-auto mt-2" style="width: 838px; border-radius: 1.5rem; ">
-                  <div class="w-100 d-flex justify-content-end    ">
-                        <div id="config-list"  
-                        class="  w-100  border-0  justify-content-start  d-flex flex-wrap" 
-                        style="justify-content: center; bottom: 3.9rem; z-index: 100; max-width: 70rem">
-                        </div>
-                        <div id="text-c" class="w-100  justify-content-center  flex-wrap" 
-                        style="display: none; z-index: 105; bottom: 1rem;" >
-                              <h5 class="position-absolute " style='bottom:5rem;'  >
-                                    "<span id="user-no"></span>"  no registrado
-                              </h5>
-                        </div>  
-                  </div>
-            </div>
-      </section>        
-      </div>
-
-      
-</div>
 
 
 
-{% for c in customer %}
-<div style="width: 408px; height: 181px;   " class="position-relative   card-cu   mt-1     d-flex justify-content-center m-1">
+<div class="w-100 d-flex">
+      <div class="w-75 d-flex flex-wrap overflow-scroll vh-100 ">
+            {% for c in customer %}
+                  <div style="width: 408px; height: 181px;   " class="position-relative   card-cu   mt-1     d-flex justify-content-center m-1">
 
-      <div id="client{{c.id}}"   style=" transition: 0.5s ease-out !important;   
-      border-radius: 1.5rem;   z-index: 0 !important; background-color: #ffffff !important;
-                  box-shadow: 0px 1px 3px 1px rgba(218, 218, 218, 0.505);" class="w-100 position-relative  p-2 bg-white " >
+                        <div id="client{{c.id}}"   style=" transition: 0.5s ease-out !important;   
+                        border-radius: 1.5rem;   z-index: 0 !important; background-color: #ffffff !important;
+                                    box-shadow: 0px 1px 3px 1px rgba(218, 218, 218, 0.505);" class="w-100 position-relative  p-2 bg-white " >
 
-                  <button id="{{c.id}}"  onclick='OpenCloseBtn(this.id)' style="background-color: #35333e00; width: 35px; height: 35px; color: #000000 !important; top: 8rem; box-shadow: #eeeeee00 1px 1px 1px 1px; border: 0px solid #a7a7a7 !important; border-style: dotted !important;"   class="rounded-circle  position-absolute border-0  p-0 me-2 mb-2 end-0 d-flex flex-wrap justify-content-center align-content-center ">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots " style="margin-top: 10px;" viewBox="0 0 16 16">
-                              <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                            </svg>
-                  </button>
-                  <div class="m-0 p-0" >
-                        <div class="d-flex">
-                        
-                              <span style="   border: 6px #c7c7c7  ; border-style:dotted; transition: 0.9s ease  !important; " 
-                                    class="p-1  img-span rounded-circle ">
-                                    <img src="{{c.img1.url}}" class="  img-icons object-fit-cover" style="width: 47px; height: 47px; border-radius: 50%; 
-                                    filter: blur(90px);
-                                    filter: brightness(80%); "  alt=""> 
-                              </span>
-                              <a href="{% url "customer:detail-customer" c.id %}" >
-                                    <div style="background-color: rgba(0, 0, 0, 0); border-radius: 2rem;
-                                    width: 190px; height: 38px; border: 1px solid rgba(217, 217, 217, 0); font-weight: 600; color: #494949; line-height: 16px;" class="p-2  m-0 mt-3 ms-2   w-100  d-flex  ">
-                                          <div class="m-0  d-inline   text-first-letter-uppercase  " style="width: 151px; flex-wrap: nowrap !important; ">
-                                                {{c.name}} {{c.last_name}}
+                                    <button id="{{c.id}}"  onclick='OpenCloseBtn(this.id)' style="background-color: #35333e00; width: 35px; height: 35px; color: #000000 !important; top: 8rem; box-shadow: #eeeeee00 1px 1px 1px 1px; border: 0px solid #a7a7a7 !important; border-style: dotted !important;"   class="rounded-circle  position-absolute border-0  p-0 me-2 mb-2 end-0 d-flex flex-wrap justify-content-center align-content-center ">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots " style="margin-top: 10px;" viewBox="0 0 16 16">
+                                                <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+                                          </svg>
+                                    </button>
+                                    <div class="m-0 p-0" >
+                                          <div class="d-flex">
+                                          
+                                                <span style="   border: 6px #c7c7c7  ; border-style:dotted; transition: 0.9s ease  !important; " 
+                                                      class="p-1  img-span rounded-circle ">
+                                                      <img src="{{c.img1.url}}" class="  img-icons object-fit-cover" style="width: 47px; height: 47px; border-radius: 50%; 
+                                                      filter: blur(90px);
+                                                      filter: brightness(80%); "  alt=""> 
+                                                </span>
+                                                <a href="{% url "customer:detail-customer" c.id %}" >
+                                                      <div style="background-color: rgba(0, 0, 0, 0); border-radius: 2rem;
+                                                      width: 190px; height: 38px; border: 1px solid rgba(217, 217, 217, 0); font-weight: 600; color: #494949; line-height: 16px;" class="p-2  m-0 mt-3 ms-2   w-100  d-flex  ">
+                                                            <div class="m-0  d-inline   text-first-letter-uppercase  " style="width: 151px; flex-wrap: nowrap !important; ">
+                                                                  {{c.name}} {{c.last_name}}
+                                                            </div>
+                                                      </div>
+                                                </a>
                                           </div>
+                                    <div class="ms-1   overflow-visible" style="margin-top:2rem !important;">  
+                                          <a href="">
+                                          <span class="d-flex text2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill m-0 mt-1 me-1 p-0 " viewBox="0 0 16 16">
+                                                      <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
+                                                </svg> {{c.dni}}
+                                          </span></a>
+                                          <a  href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}}"  class="m-0 p-0">
+                                                <span class="d-flex text2">
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill me-1 mt-1" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                                                      </svg> {{c.number}}
+                                                </span>
+                        
+                                          </a>
+
+                                                <!-- <span class=""
+                                    
+                                                <span class="d-flex text2 overflow-hidden  w-100 justify-content-end  pe-5" 
+                                                style="font-size: 12px; color: #a6a5a5 !important;">
+                                                
+                                                {{ c.day_created|date:"F/d/Y" }}
+                                                {% if c.customer_verify == False %} 
+                                                <strong class='text-danger me-2'> (No verificado) </strong>   
+                                                            {{c.ciudad}} -->
+                                                                  <!-- {% endif %}  -->
+                                                      </span>
                                     </div>
-                              </a>
+                                    </div>
+
+
+                                    
                         </div>
-                  <div class="ms-1   overflow-visible" style="margin-top:2rem !important;">  
-                        <a href="">
-                        <span class="d-flex text2">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill m-0 mt-1 me-1 p-0 " viewBox="0 0 16 16">
-                                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
-                                  </svg> {{c.dni}}
-                        </span></a>
-                        <a  href="https://api.whatsapp.com/send?phone=+1{{c.number}}&text=Estimado(a) {{c.name}} {{c.last_name}}"  class="m-0 p-0">
-                              <span class="d-flex text2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill me-1 mt-1" viewBox="0 0 16 16">
-                                          <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
-                                    </svg> {{c.number}}
-                              </span>
-      
-                        </a>
+                              {% include "customer/extends-customer.html" %} 
 
-                              <!-- <span class=""
-                  
-                              <span class="d-flex text2 overflow-hidden  w-100 justify-content-end  pe-5" 
-                              style="font-size: 12px; color: #a6a5a5 !important;">
-                              
-                              {{ c.day_created|date:"F/d/Y" }}
-                              {% if c.customer_verify == False %} 
-                              <strong class='text-danger me-2'> (No verificado) </strong>   
-                                          {{c.ciudad}} -->
-                                                <!-- {% endif %}  -->
-                                    </span>
                   </div>
-                  </div>
-
-
-                  
+            {% endfor %}
       </div>
-            {% include "customer/extends-customer.html" %} 
+      <div class="w-25 position-relative pt-1">
+            <input type="text" id='search-data'  style="font-size: 12px;  max-width: 20rem; 
+            height: 2.5rem; outline: none !important; border-radius: 1.5rem!important;
+            border: 1px solid rgb(223, 223, 223);"
+            class="form-search border-1 text-center w-100 bg-white bottom-0  outline-none  m-0"  
+            placeholder="Busqueda avanzada (ChatGPT)">
+            <div class="w-100 text-start"> 
+                  <span style="font-size: 12px;" class="text-black-50 w-100 text-center">
+                        Shift + command + b para activar el chat
+                 </span>
+            </div>
 
+            <!-- Solicitudes -->
+
+         
+             <form action="" method="post">
+                  {% csrf_token %}
+                  <input type="text" class="d-none" name="noti" value="true">
+                  <button class="  border-1 text-white rounded-5  p-1  pe-2 ps-2" style="background-color: var(--bg-enfasis);">  
+                        {% if new_customer %}
+                              <span style="font-size: 12px;"> {{new_customer}} </span>
+                        {% endif %}
+                        <img src="{% static "icons/notify.png" %}" width='20' alt="" style="filter: brightness(0) invert(1);"><span style="font-size: 12px;">Notificaciones</span>
+                  </button>
+            </form>
+
+            {% if customer|length == 1 %}
+            <a class="  ms-2  justify-content-center text-primary" href="{% url "customer:list-customer" %}" style="max-width: 4rem;">
+                              <button class='d-flex align-content-center text-primary bg-transparent  border-0' >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill text-primary me-1" style="margin-top: 3px;" viewBox="0 0 16 16">
+                  <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+                  </svg>
+                  Atras
+            </button> 
+            </a>
+    
+
+            {% endif %} 
+
+            <!-- Listado de busqueda -->
+            <div class=" card container-data d-none overflow-auto z-2   border-1 p-2 w-100 blur  bg-white  bg-opacity-75  position-absolute top-0 mt-5" style="border-radius: 1.5rem;
+            max-height: 25rem; ">
+                  <div id="list_data" class="d-none"></div>
+                  <h6 id="no-found" class=" d-none text-center text-black-50">
+                  </h6>  
+            </div>
+
+            <!-- Clientes mas frecuentes -->
+            <h6 class="m-0 p-0 text-black-50 mt-5" style="font-size: 12px;">
+                  Sugereridos
+            </h6>
+            <div class="  d-flex justify-content-around p-2 bg-transparent  flex-wrap " 
+            style="border: 0px solid grey;">
+
+                  {% for i in customer_ramdon %}
+
+                  <div class="position-relative">
+                        <div class="rounded-circle bg-primary m-1" style="width: 70px; height: 70px;">
+                              <img src="{{i.img1.url}}" class="w-100 h-100 object-fit-cover rounded-circle" alt="" onclick="GetDetail(this.id)" id="{{i.id}}">      
+                        </div>
+                  </div>
+
+                  {% endfor %}
+            </div>
+
+
+      </div>
 </div>
-{% endfor %}
+
 {% else %}
             <div class="warning vh-100 d-flex justify-content-center align-content-center flex-wrap w-100">
                   <h6 class="p-2 w-100 text-center pt-0 pb-0">
@@ -287,18 +289,11 @@
 
 
 
+      let GetDetail = (id) => {
+            document.getElementById('input-send-data').value = id
+            document.getElementById('btn-send-data').click()
+      }
 
 
 
-      document.querySelector('.div-search').addEventListener('mouseover', function() {
-            document.querySelector('.icon-s').classList.add('d-none');
-            document.getElementById('search-p').classList.remove('d-none');
-            document.getElementById('search-p').focus();
-
-      });
-
-      document.querySelector('.div-search').addEventListener('mouseout', function() {
-            document.getElementById('search-p').classList.add('d-none');
-            document.querySelector('.icon-s').classList.remove('d-none');
-      });
 </script>
