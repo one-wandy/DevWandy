@@ -15,11 +15,7 @@
       {
             color: #383838 !important;
       }
-      .contdiv 
-      {
-            width: 320px;
-            background-color: rgba(255, 255, 255, 0.979);
-      }
+
       .img-js
       {
             border-radius: 1.2rem;
@@ -28,7 +24,7 @@
       {
             /* border: #e4e4e4 1px solid; */
             margin-bottom: 1px;
-            {% comment %} filter: blur(5px); {% endcomment %}
+
       }
       .referencias:hover{
             height: auto !important;
@@ -71,21 +67,28 @@
             /* border: 0px rgb(185, 185, 185) solid !important; */
 
       }
-      .zoom
-      {
-            width: 10rem !important;
-            border: 1px rgb(233, 233, 233) solid !important;
-      }
-      .contDiv
-      {
-            border-radius: 1.5rem;
-            margin-bottom: 4px;
-            margin-left: 4px;
-            padding: 1px;
-            font-size: 14px;
-            width: auto !important;
 
-      }
+.container_list button
+{
+      background-color: rgba(255, 255, 255, 0) !important;
+      padding:  5px 10px !important;
+      border-radius: 1rem !important;
+      color: rgb(88, 88, 88) !important;
+      width: 100% !important;
+      text-align: start;
+      border: 1px solid transparent !important;
+      font-family: Quicksand, sans-serif;
+      font-size: 14px;
+}
+.container_list button:hover
+{
+      background-color: rgba(255, 255, 255, 0) !important;
+      color: var(--bg-enfasis)!important;
+      box-shadow: none !important;
+      border: 1px solid var(--bg-enfasis) !important;
+
+
+}
 @keyframes rotarColores {
   0% {
     background-image: linear-gradient(
@@ -223,12 +226,7 @@
       font-weight: bold;
 
 }
-.contdiv button
-{
-      background-color: rgba(207, 207, 207, 0.69) !important;
-      padding: 5px 10px !important;
-      border-radius: 1rem !important;
-}
+
 @media (min-width: 900px) 
 {
       .list-group-item 
@@ -261,7 +259,7 @@ btn-sliders-nav
 
 
 <div id="div-list-customer"></div>
-<section  class="mb-3 pb-3" >
+<section  class="mb-3 pb-3 " >
             <div id="sec-listado" data-aos="fade-up"  class="w-100 d-flex  overflow-auto align-content-start   flex-wrap justify-content-center" 
                   style=" z-index: 100; height: 100%; transition: 1s;"> 
             </div>  
@@ -331,29 +329,15 @@ function CustomerVerifyNo(id){
       })
 }
 
-let searching_config = document.querySelector('.searching-config');
-let config_list = document.getElementById('config-list')
-let config_data;
-
-document.addEventListener('keydown', function(event) {
-      if (event.altKey && event.key === 'b') {
-            searching_config.focus();
-      }
-});
-
-searching_config.addEventListener('focus', function() {
-      searching_config.style.width = '100%'
 
 
 
-});
 
-searching_config.addEventListener('blur', function() {
-      searching_config.style.width = '14rem'
 
-      document.getElementById('agregar').style.display = 'block'
-      document.getElementById('clientes').style.display = 'flex';
-});
+
+
+
+
 
 function CustomerVerify(id){
       const url = 'verify/customer/';
