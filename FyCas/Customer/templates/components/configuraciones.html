@@ -88,14 +88,15 @@
 
 
       <div class="profile-header " >
-            <div class="cover-photo d-flex" style=" height: 150px; background-size: cover; background-position: center; background-color: #81dbfcd6; 
+            <div class="cover-photo d-flex" style=" height: 150px; background-size: cover; background-position: center; 
+            background-color: transparent; 
             border-bottom-left-radius: 2rem;">
             <div class="profile-info  d-flex w-100">
                   <div style="width: 100%; height: 100%;" class=" position-relative">
                         <div class="profile-photo position-sticky start-0  p-1  " style="margin-top: 5rem; width: 100px; height: 100px; border-radius: 50%; overflow: visible; 
                         background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);">
                               {% if setting.Icon.url %}
-                              <img src="{{setting.Icon.url}}" alt="Profile Photo" style="width: 100%; height: 100%; object-fit: cover; " class='rounded-circle'>
+                              <img src="{{setting.Icon.url}}" alt="Profile Photo" style="width: 100%; height: 100%; object-fit: cover; "  id="img-profile" class='rounded-circle'>
                               {% endif %}
                         </div>
                   </div>
@@ -306,6 +307,30 @@
 </section>
 
 <script>
+
+window.addEventListener('DOMContentLoaded', () => {
+    const img = document.getElementById('img-profile');
+    const bgPortada = document.querySelector('.cover-photo');
+
+    if (img && bgPortada) {
+        const colorThief = new ColorThief();
+
+        function setBackgroundColor() {
+            const dominantColor = colorThief.getColor(img);
+            bgPortada.style.backgroundColor = `rgb(${dominantColor.join(',')})`;
+        }
+
+        // Si la imagen ya está cargada al momento de ejecutar el script
+        if (img.complete) {
+            setBackgroundColor();
+        } else {
+            // Espera a que cargue la imagen para obtener el color
+            img.addEventListener('load', setBackgroundColor);
+        }
+    }
+});
+
+
       document.querySelectorAll('input[type="checkbox"]').forEach(input => {
             input.addEventListener('mouseover', () => {
                  

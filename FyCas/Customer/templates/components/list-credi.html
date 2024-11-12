@@ -71,8 +71,8 @@
             font-weight: 500; color: #6b6b6b !important;
       }
    </style>
-{% for credit in  all_credits %}   
 
+{% for credit in  all_credits %}   
 <div  class="p-2 position-relative">
       <span id="forlou{{credit.id}}" style=" width: 1.5rem; height: 1.5rem; margin-top: rem; border-radius: 50%; background-color: #0f83ff; font-size: 12px;" class="d-flex d-none text-white position-absolute z-2 flex-wrap justify-content-center flex-wrap align-content-center">
             #{{ forloop.counter }} 
@@ -111,11 +111,12 @@
 {% endif %}
 
 
-      <div id="cuotas_credit{{credit.id}}" class='  credit-sp w-100 p-2 pb-0 pt-1 me-2 card   text-black-50 ' 
-      style="  min-width: 480px;  max-width: 480px;
+      <div id="cuotas_credit{{credit.id}}" class='  credit-sp w-100 p-2 pb-0 pt-1  card   text-black-50 ' 
+      style="  min-width: 470px;  max-width: 470px;
       font-size: 14px; 
       border-radius: 1.5rem; 
-      height: max-content ; box-shadow: #e5e5e500 1px 2px 1px 1px;  border: 1px solid rgb(221, 221, 221);">
+      height: max-content ;
+      box-shadow: #e5e5e500 1px 2px 1px 1px;  border: 1px solid rgb(221, 221, 221);">
 
 
 <a class=" " href="{% url "customer:crear-credito" credit.id %}">
@@ -139,7 +140,10 @@
             <table class=" w-100 bg-transparent  ">
                   <thead>
                         <tr>
-                              <th scope="col">Fecha</th>
+                              {% if cuotas %}
+                                    <th scope="col">Fecha</th>
+                          
+                              {% endif %}
                               <th scope="col">Cuotas</th>
                               <th scope="col">Precio</th>
                               <th scope="col">Plazo</th>
@@ -149,7 +153,10 @@
                   </thead>
                   <tbody>
                         <tr>
-                              <td>   {{credit.day_created|date:"m/d/Y" }}</td>
+                              {% if cuotas %}
+                                    <td>   {{credit.day_created|date:"m/d/Y" }}</td>
+                                    {% endif %}
+
                               <td>        {{credit.price_feed}}</td>
                               <td> ${{credit.amount_feed|intcomma}}.00 </td>
                               <td> {% if credit.mode_pay == True %}
@@ -208,7 +215,7 @@
               background-color:  white !important;
               color: rgb(75, 75, 75) !important;
               font-size: 12px !important;
-              border: rgba(227, 227, 227, 0.905) 1px solid !important;
+              border: rgba(227, 227, 227, 0.905) 0px solid !important;
               width: 100%;
         }
   </style>
@@ -220,7 +227,7 @@
                      Firmado el *{{fecha_actual}}* ,
                      No. Cuenta; *{{credit.no_account}}*,
                      ; Detalles -> https://grupofycas.online/detail-credit/customer/{{credit.id}}" >
-                    <button style="" style="background-color: #ececec6c !important;">
+                    <button class="" style="" style="background-color: #ececec6c !important;">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share-fill  me-1"
                           style="margin-top: 2px;" viewBox="0 0 16 16">
                                 <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5"/>
