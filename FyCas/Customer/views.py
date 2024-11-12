@@ -898,6 +898,11 @@ class CreateCreditNew(CreateView, Options):
         def form_valid(self, form_class):
             customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
             form_class.instance.customer = customer
+            form_class.instance.mont = Options.MontNow()
+            form_class.instance.day = Options.DayNow(self,datetime.now().day)
+            form_class.instance.day_number =  datetime.now().day
+            form_class.instance.year = Options.YearNow(self, datetime.now().year)
+            form_class.instance.year_number = datetime.now().year
             form_class.save()
             URL = reverse('customer:crear-credito',  kwargs={'pk': form_class.instance.id})
             return redirect(URL)

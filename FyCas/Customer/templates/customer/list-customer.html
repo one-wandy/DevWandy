@@ -339,16 +339,6 @@ function CustomerVerifyNo(id){
 
 
 
-function CustomerVerify(id){
-      const url = 'verify/customer/';
-      $.ajax({
-            url: url,
-            data: {
-            customer_id: id
-            }
-      })
-      document.getElementById('client'+id).classList.add('d-none')
-}
 
 function CreateCreditAjax(id){
       const url = 'create-credit-ajax/customer/';

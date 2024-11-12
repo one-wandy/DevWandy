@@ -126,8 +126,9 @@ class Options:
             # Define a list of weekdays in Spanish
             weekdays = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo']
             
+            select_day = weekdays[day_number].strip().lower()
             # Return the corresponding weekday based on the day number
-            return weekdays[day_number]
+            return select_day
 
 
 

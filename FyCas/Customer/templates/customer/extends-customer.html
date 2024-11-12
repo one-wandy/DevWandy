@@ -308,7 +308,7 @@
                   </button>
             </a>
                   {% if c.customer_verify == False %}
-                  <button class='text-white border-0'  id='{{c.id}}' onclick='CustomerVerify(this.id)'    id="{{c.id}}"  style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem;  color: white !important;'>
+                  <button class='text-white border-0'  id='{{c.id}}' onclick='CustomerVerify(this.id)'    id="{{c.id}}"  style='background-image: linear-gradient(120deg, #72a8ff 0%, #acc7ff 100%); border-radius: 1.5rem; min-width: 7rem;  color: white !important;'>
                         Verificar
                   </button>
                   <button class=' border-0 '  onclick='DisableCustomer(this.id)' id="{{c.id}}"  style=' border-radius: 1.5rem; min-width: 7rem;  '>
@@ -547,6 +547,17 @@ function DisableCustomer(id){
       })
       document.getElementById('client'+id).classList.add('d-none')
       }
+
+function CustomerVerify(id){
+      const url = 'verify/customer/';
+      $.ajax({
+            url: url,
+            data: {
+            customer_id: id
+            }
+      })
+      document.getElementById('client'+id).classList.add('d-none')
+}
 
       </script>
 </div>
