@@ -222,20 +222,7 @@ class UpdateCustomer(UpdateView, Options):
     def form_valid(self, form_class):
         form_class.save()
         return HttpResponseRedirect(reverse('customer:list-customer')) 
-        # c.last_name = request.POST.get("last_name").title()
-        # c.dni = request.POST.get("dni")
-        # c.number = request.POST.get("number")
-        # c.address = request.POST.get("address")
-        # c.name_r1 = request.POST.get("name_r1")
-        # c.number_r1 = request.POST.get("number_r1")
-        # c.name_r2 = request.POST.get("name_r1")
-        # c.number_r2 = request.POST.get("number_r2")
 
-        # c.work_information = request.POST.get("work_information")
-        # if request.FILES.get("img1"):
-        #     c.img1 = request.FILES.get("img1")
-        # if request.FILES.get("img2"):
-        #     c.img2 = request.FILES.get("img2")
             
         
 
@@ -663,6 +650,7 @@ class Ubicaciones(TemplateView, Options):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['setting'] = self.Setting()
         context['customer'] = self.model.objects.filter(is_active = True, 
                                         customer_verify = True)
         
@@ -715,6 +703,9 @@ class Configuraciones(TemplateView, Options):
         return context
 from dateutil.relativedelta import relativedelta
 from calendar import monthrange
+
+
+
 class CrearCredito(TemplateView, Options):
     model = models.Cuota  # Define el modelo que se va a crear
     template_name = "customer/crear-credito.html"  # Nombre de la plantilla
@@ -922,21 +913,21 @@ class ListAllCredits(ListView, Options):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        pendiente_credit = self.model.objects.filter(estado_credito=False).count()
+        pendiente_credit = self.model.objects.filter(estado_credito=False, credito_atrasado=True).count()
         saldado_credit = self.model.objects.filter(estado_credito=True).count()
         credits_count = self.model.objects.all().count()
         context['credits_count'] = credits_count
-        context['all_credits'] = self.model.objects.all()
-        
+        context['all_credits'] = self.model.objects.filter(estado_credito=False).order_by('-id')
         context['pendiente_credit'] = pendiente_credit
         context['saldado_credit'] = saldado_credit
+        context['setting'] = self.Setting()
         if self.request.method == 'POST':
             print('siuu')
             
             if  self.request.POST.get('pendientes') != None:
-                context['all_credits'] = self.model.objects.filter(estado_credito=False).order_by('-id')
+                context['all_credits'] = self.model.objects.filter(estado_credito=False, credito_atrasado=True).order_by('-id')
             if  self.request.POST.get('saldado') != None:
                 context['all_credits'] = self.model.objects.filter(estado_credito=True).order_by('-id')
         else:
-            context['all_credits'] = self.model.objects.all().order_by('-id')
+            context['all_credits'] = self.model.objects.filter(estado_credito=False).order_by('-id')
         return context

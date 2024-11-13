@@ -541,7 +541,16 @@
                               </td>
                               <td>
                                     <div  class="grey-span d-flex mt-2 justify-content-center flex-wrap align-content-center" style="height: 2rem;">
-                                          0.00
+                                          $00.00
+                                          {% comment %} {% if cuota.estado != True %}
+                                                      {% if cuota.end_date < today %}
+                                                            <button id='{{cuota.id}}' onclick='CalcularMora(this.id)'>
+                                                                  Calcular
+                                                            </button>
+                                                            {% else %}
+                                                            0.00
+                                                      {% endif %}
+                                          {% endif %} {% endcomment %}
                                     </div>
                               </td>
                               <td>
@@ -984,6 +993,17 @@ inputs.forEach(input => {
 });
 
 
+function CalcularMora(id){
+      $.ajax({
+            url: '/calcular-mora',
+            data: {
+                  id: id,
+            },
+            success: function(r) {
+                  {% comment %} location.reload(); {% endcomment %}
+            },
+      })
+}
 
 </script>
 {% endblock  %}

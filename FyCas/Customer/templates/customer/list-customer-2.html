@@ -111,7 +111,7 @@ svg{
 
 
 <div class="w-100 d-flex">
-      <div class="w-75 d-flex flex-wrap overflow-scroll vh-100 ">
+      <div class="w-75 d-flex flex-wrap align-content-start overflow-scroll vh-100 ">
             {% for c in customer %}
                   <div style="width: 408px; height: 181px;   " class="position-relative   card-cu   mt-1     d-flex justify-content-center m-1">
 
@@ -158,17 +158,16 @@ svg{
                         
                                           </a>
 
-                                                <!-- <span class=""
+
                                     
                                                 <span class="d-flex text2 overflow-hidden  w-100 justify-content-end  pe-5" 
                                                 style="font-size: 12px; color: #a6a5a5 !important;">
                                                 
-                                                {{ c.day_created|date:"F/d/Y" }}
                                                 {% if c.customer_verify == False %} 
                                                 <strong class='text-danger me-2'> (No verificado) </strong>   
-                                                            {{c.ciudad}} -->
-                                                                  <!-- {% endif %}  -->
-                                                      </span>
+                                                {% endif %}  
+                                                {{ c.day_created|date:"F/d/Y" }}
+                                          </span>
                                     </div>
                                     </div>
 
@@ -187,7 +186,7 @@ svg{
             class="form-search border-1 text-center w-100 bg-white bottom-0  outline-none  m-0"  
             placeholder="Busqueda avanzada (ChatGPT)">
             <div class="w-100 text-start"> 
-                  <span style="font-size: 12px;" class="text-black-50 w-100 text-center">
+                  <span style="font-size: 12px;" class="text-black-50 ms-2 w-100 text-center">
                         Shift + command + b para activar el chat
                  </span>
             </div>

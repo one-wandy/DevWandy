@@ -199,6 +199,24 @@ def DeleteCreditAjax(request):
         return JsonResponse({'status': 'success'}, safe=False)
     except models.Credit.DoesNotExist:
         return JsonResponse({'status': 'error', 'message': 'Credit not found'}, safe=False)
+
+
+def CalcularMora(request):
+
+    cuota = models.Cuota.objects.get(id=int(request.GET.get('id')))
+
+    today = datetime.now().date()
+    end_date =  cuota.end_date 
+    days_late = (today - end_date).days
+
+
+
+
+
+    print(cuota.cuota * 0.05, 'Dias de atraso con' , days_late )
+
+
+    return JsonResponse( {'s':0}, safe=False)
     
 """"
 from django.shortcuts import render

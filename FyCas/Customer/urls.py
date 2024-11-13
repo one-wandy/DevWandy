@@ -56,6 +56,7 @@ urlpatterns = [
       path("verify/customer/", views_ajax.CustomerVerify, name="verify-true-customer"),
       path("verify-no/customer/", views_ajax.CustomerNoVerify, name="verify-false-customer"),
 
+      path('calcular-mora', views_ajax.CalcularMora, name='calcular-mora'),
 
       path("turn-debit/customer/", views_ajax.TurnDebeit, name="turn-debit-customer"),
       

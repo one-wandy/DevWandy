@@ -254,7 +254,7 @@ class Cuota(models.Model):
 
         last_time_pay = models.TimeField(default=timezone.now)
 
-
+        mora = models.IntegerField(default=5,  null=True, blank=True) #Precio de la cuota
 
         # def save(self, *args, **kwargs):
         #     if self.start_date:
