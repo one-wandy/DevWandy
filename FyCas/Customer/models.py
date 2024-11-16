@@ -5,6 +5,8 @@ import os
 from django.core.files.base import ContentFile
 from io import BytesIO
 
+from django.contrib.auth.models import User
+
 # Create your models here.
 
 class Customer(models.Model):
@@ -285,6 +287,9 @@ class PayCredit(models.Model):
 class SettingApp(models.Model):
     name = models.CharField(blank=True, max_length=233, default='Grupo Fycas')
     Icon = models.ImageField(upload_to="media/", blank=True, null=True, default="media/img-default/img.png") #Foto de Cedula tracera
+    user = models.ForeignKey(User, on_delete=models.CASCADE,  blank=True, null=True)
+
+    bg_enfasis = models.CharField(blank=True, max_length=233, default='rgb(83, 137, 255)') #color de enfasis de la ui
     
     def __str__(self):
         return self.name

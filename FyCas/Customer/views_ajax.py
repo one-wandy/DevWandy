@@ -217,6 +217,28 @@ def CalcularMora(request):
 
 
     return JsonResponse( {'s':0}, safe=False)
+
+
+
+
+def UploadImageURL(request):
+            customer_id = request.GET.get('customer_id')
+            image_url = request.FILES.get('image')
+
+            bg_enfasis = request.POST.get('bg_enfasis')
+
+    
+
+            print(bg_enfasis, 'vamos a ver')
+            customer = models.SettingApp.objects.get(user=request.user)
+            customer.Icon = image_url
+            customer.bg_enfasis = bg_enfasis
+            customer.save()
+            return JsonResponse({'status': 'success'}, safe=False)
+ 
+
+            return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, safe=False)
+
     
 """"
 from django.shortcuts import render
