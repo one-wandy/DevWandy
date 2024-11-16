@@ -105,7 +105,7 @@ input[type="checkbox"]:checked {
 
       <div class="profile-header " >
             <div class="cover-photo d-flex" style=" height: 150px; background-size: cover; background-position: center; 
-            background-color: transparent; 
+            background-color: var(--bg-enfasis); 
             border-bottom-left-radius: 2rem;">
             <div class="profile-info  d-flex w-100">
                   <div style="width: 100%; height: 100%;" class=" position-relative">
@@ -332,27 +332,6 @@ input[type="checkbox"]:checked {
 
 <script>
 
-window.addEventListener('DOMContentLoaded', () => {
-    const img = document.getElementById('img-profile');
-    const bgPortada = document.querySelector('.cover-photo');
-
-    if (img && bgPortada) {
-        const colorThief = new ColorThief();
-
-        function setBackgroundColor() {
-            const dominantColor = colorThief.getColor(img);
-            bgPortada.style.backgroundColor = `rgb(${dominantColor.join(',')})`;
-        }
-
-        // Si la imagen ya está cargada al momento de ejecutar el script
-        if (img.complete) {
-            setBackgroundColor();
-        } else {
-            // Espera a que cargue la imagen para obtener el color
-            img.addEventListener('load', setBackgroundColor);
-        }
-    }
-});
 
 
       document.querySelectorAll('input[type="checkbox"]').forEach(input => {
@@ -409,10 +388,14 @@ document.querySelector('.change-img').addEventListener('click', () => {
                   const bg_enfasisInput = document.createElement('input');
             bg_enfasisInput.type = 'text';
             bg_enfasisInput.name = 'bg_enfasis';
-                const dominantColor = colorThief.getColor(imgElement);
+            const dominantColor = colorThief.getColor(imgElement);
 
+
+                
                 bg_enfasisInput.value = `rgb(${dominantColor.join(',')})`;
                 
+
+
                 const formData = new FormData();
                 
                 console.log(bg_enfasisInput.value, 'Siuu');
