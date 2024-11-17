@@ -38,7 +38,7 @@ class Dashboard(TemplateView, Options):
         return context
     
     
-    
+    # Esta vista agrega los clientes de manera externa a la empresa
 class AddCustomer(CreateView, Options):
     model = models.Customer
     form_class = forms.CustomerForm
@@ -47,10 +47,7 @@ class AddCustomer(CreateView, Options):
         
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['company'] = self.Company()
-        context['img1'] = self.ImgApp(2)
-        context['img2'] = self.ImgApp(3)
-        context['img3'] = self.ImgApp(4)
+        context['company'] = models.Company.objects.get(id=self.kwargs.get('pk'))
         return context
     
     
@@ -74,6 +71,7 @@ class AddCustomer(CreateView, Options):
         else:
             f = self.form_class(request.POST, request.FILES)
             if f.is_valid():
+                f.instance.company = models.Company.objects.get(id=self.kwargs.get('pk'))
                 f.instance.nacimiento = request.POST.get('date-customer')
                 f.instance.monto_requerido = request.POST.get('form-select-monto')
                 f.instance.fines = request.POST.get('form-select')
@@ -133,32 +131,32 @@ class ListCustomer(ListView,Options):
 
         if self.request.method == 'POST':
             if  self.request.POST.get('noti') != None:
-                context['customer'] = self.model.objects.filter(is_active = True, 
+                context['customer'] = self.model.objects.filter(is_active = True, company = self.Company(),
                                     customer_verify = False).order_by('-id')
             if customer != None:                
                 context['customer'] = self.model.objects.filter(id=int(customer))
-                ls = self.model.objects.filter(id=int(customer))
+                ls = self.model.objects.filter(id=int(customer),company = self.Company(),)
                 context['true'] = True
                 return context
 
             if count_customer != None:
-                    filter_client = self.model.objects.filter(is_active = True, 
-                                        customer_verify = True,
+                    filter_client = self.model.objects.filter(is_active = True, company = self.Company(),
+                                        customer_verify = True, 
                                     ).order_by('-id')[:int(count_customer)]
                     context['customer'] = filter_client
                     context['count_client'] = int(filter_client.count())
         else:
-            filter_client = self.model.objects.filter(is_active = True, 
+            filter_client = self.model.objects.filter(is_active = True, company = self.Company(),
                                     customer_verify = True ).order_by('-id')[:15]
             context['customer'] = filter_client
             context['count_client'] = int(filter_client.count())
         
-        context['customer_ramdon'] = self.model.objects.filter(is_active = True,).order_by('?')[:6]
+        context['customer_ramdon'] = self.model.objects.filter(is_active = True, company = self.Company(),).order_by('?')[:6]
         context['company'] = self.Company()
         context['fecha_actual'] =  fecha_actual.strftime("%d / %B / %Y").capitalize()
-        context['customer_count'] = self.model.objects.filter(is_active = True, 
+        context['customer_count'] = self.model.objects.filter(is_active = True, company = self.Company(),
                                     customer_verify = True).count()
-        context['new_customer'] = self.model.objects.filter(is_active = True, 
+        context['new_customer'] = self.model.objects.filter(is_active = True, company = self.Company(),
                                     customer_verify = False).count()
         context['day_pay'] = self.Day15_or_30()
         context['day_pay_2'] = self.Day_Pay()
@@ -582,8 +580,7 @@ class Prestamos(ListView, Options):
    
     
         
-
-    
+#Esta vista agrega  a los clientes de manera internar a la empresa 
 class Agregar(CreateView, Options):
     model = models.Customer
     form_class = forms.CustomerForm
@@ -593,9 +590,6 @@ class Agregar(CreateView, Options):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['company'] = self.Company()
-        context['img1'] = self.ImgApp(2)
-        context['img2'] = self.ImgApp(3)
-        context['img3'] = self.ImgApp(4)
         return context
     
     
@@ -619,6 +613,7 @@ class Agregar(CreateView, Options):
         else:
             f = self.form_class(request.POST, request.FILES)
             if f.is_valid():
+                f.instance.company = models.Company.objects.get(id=self.kwargs.get('pk'))
                 f.instance.nacimiento = request.POST.get('date-customer')
                 f.instance.monto_requerido = request.POST.get('form-select-monto')
                 f.instance.fines = request.POST.get('form-select')
@@ -699,9 +694,9 @@ class Configuraciones(TemplateView, Options):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['company'] = self.Company()
-        context['configurations'] = models.ConfigurationCompany.objects.filter(company=self.Company())
+        context['configurations'] = models.ConfigurationCompany.objects.filter(is_active=True, company=self.Company())
         return context
-        
+
 from dateutil.relativedelta import relativedelta
 from calendar import monthrange
 

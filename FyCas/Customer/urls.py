@@ -5,7 +5,7 @@ from . import views, views_ajax
 app_name = "customer"
 urlpatterns = [
       path("", views.Dashboard.as_view(), name='dashboard'),
-      path('add-customer', views.AddCustomer.as_view(), name='add-customer'),
+      path('add-customer/<int:pk>', views.AddCustomer.as_view(), name='add-customer'),
       path('detail-customer/<int:pk>', views.DetailCustomer.as_view(), name='detail-customer'),
       path('update-customer/<int:pk>', views.UpdateCustomer.as_view(), name='update-customer'),
       
@@ -41,7 +41,7 @@ urlpatterns = [
       path("prestamos", views.Prestamos.as_view(), name='prestamos'),
       
       path('ubicaciones', views.Ubicaciones.as_view(), name='ubicaciones'),
-      path('agregar', views.Agregar.as_view(), name='agregar'),
+      path('agregar/<int:pk>', views.Agregar.as_view(), name='agregar'),
 
       path('listado-credit-redirect/<int:pk>', views.ListadoCredit_rederict.as_view(), name='listado-credit-redirect'),
 

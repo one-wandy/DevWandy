@@ -110,7 +110,12 @@ class Options:
             return response
 
       def Company(self):
-            return models.Company.objects.get(user=self.request.user)
+            company = models.Company.objects.get(user=self.request.user)
+            if company:
+                  return company
+            else:
+                  return None
+            
             
       
       def ImgApp(self, N):

@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Customer(models.Model):
+    company= models.ForeignKey('Company', on_delete=models.CASCADE,  blank=True, null=True, related_name="company_customer")
     # Para el tema de las solicitudes, cuando el user ingresa por primera vez el estado permanece false durante los proximos 7 dias, sera descartado y eliminado de la base de datos ya que su aprobacion no fue verificada por lo tanto no cambio a " True " pero se guardada su DNI en una base de datos adicional mas adelante p
     not_aprobado = models.BooleanField(default=False,  blank=True)
     # Si 
@@ -39,7 +40,6 @@ class Customer(models.Model):
     
 
     is_active = models.BooleanField(default=True)
-    company = models.CharField(max_length=255, default='Grupo Fycas', blank=True )
     name = models.CharField( max_length=255, )#Nombre
     last_name = models.CharField( max_length=255)#Apellido
     number = models.CharField( max_length=20, )#Numero local o Movile
@@ -347,5 +347,9 @@ class OpcionsConfiguration(models.Model):
     is_checked = models.BooleanField(default=False, blank=True, null=True)
     input_text = models.CharField(max_length=255, default="", blank=True, null=True)
     url = models.CharField(max_length=100, default="", blank=True, null=True)
+
+    OPTIONS = [(str(i), str(i)) for i in range(51)]
+    select_option = models.CharField(max_length=2, choices=OPTIONS, default='0')
+
     def __str__(self):
         return f'{self.configuration.name} de {self.name}'

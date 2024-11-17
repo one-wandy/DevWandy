@@ -124,7 +124,7 @@
 ">
                       <div class="" style="margin-top: 1px;">
                         {% if company.Icon.url %}
-                        <img src="{{company.Icon.url}}" width="30" height="30"  class="  object-fit-cover rounded-circle me-1 " style="border: 1px;" alt="">
+                        <img src="{{company.Icon.url}}" width="30" height="30"  class="  object-fit-cover  me-1 " style="border: 1px;" alt="">
                         {% endif %}
                       </div> 
                       <div>
@@ -162,7 +162,7 @@
             
             </a>
            
-            <a href="{% url "customer:agregar" %}">
+            <a href="{% url "customer:agregar" company.id %}">
                   <button class="btn-agregar">
                         <img src="{% static "icons/mas.png" %}" width='24' alt="">
                         <span>
@@ -247,7 +247,7 @@
                   <button  class="mt-2 btn-configuraciones">
                         <img src="{% static "svg/config.svg" %}" width='24' alt="">
                         <span>
-                              Configuraciones
+                              Configuraciones 
                         </span>
                   </button>
             </a>

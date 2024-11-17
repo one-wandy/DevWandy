@@ -99,24 +99,23 @@ input[type="checkbox"]:checked {
 </style>
 
 
-<section class="w-100  h-100 div-conf  top-0 start-0  d-flex overflow-scroll  p-3"
+
+<section class="w-100  h-100 div-conf  top-0 start-0  d-flex overflow-scroll  p-0"
       style="z-index: 0;">
 
 
       <div class="profile-header w-100" >
             <div class="cover-photo d-flex" style=" height: 150px; background-size: cover; background-position: center; 
-            background-color: var(--bg-enfasis); 
+            background-color: var(--bg-enfasis);  border-radius: 1.9rem;
             border-bottom-left-radius: 2rem;">
             <div class="profile-info  d-flex w-100">
                   <div style="width: 100%; height: 100%;" class=" position-relative">
-                        <div class="profile-photo position-sticky position-relative start-0  p-1  " style="margin-top: 5rem; width: 100px; height: 100px; border-radius: 50%; overflow: visible; transition: 0.1s !important;
-                        background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);">
+                        <div class="profile-photo  position-sticky position-relative bg-white d-flex justify-content-center flex-wrap align-content-center start-0  p-1  " style="margin-top: 5rem; width: 100px; height: 100px; border-radius: 50%; overflow: visible; transition: 0.1s !important;  border: 0px; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); padding: 0.1rem;">
                               {% if company.Icon.url %}
-                              <img src="{{company.Icon.url}}" alt="Profile Photo" style="width: 100%; height: 100%; object-fit: cover; "  id="img-profile" class='rounded-circle'>
+                              <img src="{{company.Icon.url}}" alt="Profile Photo" style="width: 60%; height: 60%; object-fit: cover; "  id="img-profile" class='rounded-4'>
                               <div class='z-3 end-0 change-img w-100 text-center pt-2   d-flex rounded-circle justify-content-center align-content-center flex-wrap'  style="width: 100%; height: 100%;  font-size: 14px;
                               font-weight: 700;position: absolute; top: 0; left: 0rem;
-                              color: transparent;
-                               ">
+                              color: transparent;">
                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-up-fill m-0  me-1 p-0" style="transition: 0s !important; margin-top: 3px !important;" viewBox="0 0 16 16">
                                     <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2m2.354 5.146a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0z"/>
                                   </svg> Imagen
@@ -126,10 +125,11 @@ input[type="checkbox"]:checked {
                   </div>
             </div>
       </div>
-      <div class="profile-name " style="margin-top: 0em; margin-left: 6rem;">
-            <h4 style="font-family: Arial, Helvetica, sans-serif; font-weight: 500;">
+      <div class="profile-name position-relative " style="margin-top: 0em; margin-left: 7rem;">
+            <h5 style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">
                   {{company.name}}
-            </h4>
+            </h5>
+
 
       </div>
       
@@ -138,8 +138,8 @@ input[type="checkbox"]:checked {
             style=''>
 
             {% for config in configurations %}
-                  <div class="card m-2 overflow-hidden overflow-scroll" data-aos="fade-right" 
-                        style="transition: 1s; width: 20rem; height: 10rem;">
+                  <div class="card m-2  overflow-hidden overflow-scroll" data-aos="fade-right" 
+                        style="transition: 0.5s; width: 22rem; height: 10rem; border-radius: 1.5rem;">
                         <div class="card-header">  
                               {{config.svg|safe}}
                               {{config.name}}
@@ -148,14 +148,21 @@ input[type="checkbox"]:checked {
                               <div class="card-body">
                                     {% for option in config.options_configuration.all %}
                                           <div class="form-check">
-                                                {% if option.is_checked == True %}
-                                                   <input class="form-check-input" checked  type="checkbox" id='form-check{{option.id}}'>
-                                                      {% else %}
-                                                      <input class="form-check-input"  type="checkbox" id='form-check{{option.id}}'>
+
+                                                {% if option.is_checked != None %}
+                                                      <input class="form-check-input" type="checkbox"
+                                                      id="form-check{{option.id}}"
+                                                          {% if option.is_checked %} checked {% endif %}>
+                                                      <label class="form-check-label" for="form-check{{option.id}}"> 
+                                                            {{option.name}}
+                                                      </label>
+                                                       {% else %}
+                                                       <label class="form-check-label" for="form-check{{option.id}}"> 
+                                                             {{option.name}}
+                                                      </label>
+                                                      <span style='font-size: 12px;' class='text-black-50'> {{ option.select_option }} % </span>
                                                 {% endif %}
-                                                <label class="form-check-label" for="form-check{{option.id}}"> 
-                                                      {{option.name}}
-                                                </label>
+                                           
                                           </div>
                                     {% endfor %}
                               </div>
