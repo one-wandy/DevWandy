@@ -289,6 +289,18 @@ class Company(models.Model):
     name = models.CharField(blank=True, max_length=233, default='Grupo Fycas')
     Icon = models.ImageField(upload_to="media/", blank=True, null=True, 
     default="media/img-default/img.png")
+    phone = models.CharField(blank=True, max_length=233, default='829-557-7196')
+    email = models.CharField(blank=True, null=True, max_length=233,)
+    EMAIL_PROVIDERS = [
+        ('@gmail.com', 'Gmail'),
+        ('@icloud.com', 'iCloud'),
+        ('@yahoo.com', 'Yahoo'),
+        ('@outlook.com', 'Outlook'),
+        ('@other', 'Other'),
+    ]
+    email_provider = models.CharField(max_length=50, choices=EMAIL_PROVIDERS, default='gmail', blank=True, null=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+    rnc = models.CharField(max_length=50, blank=True, null=True, default='')
     #Foto de Cedula tracera
 
     # Configuracion de la UI para la compania
