@@ -11,7 +11,7 @@
             <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js'></script>
                   <title id="title">Grupo FyCas</title>
                   {% if setting.Icon.url %}
-                                <link rel="icon"  href="{{setting.Icon.url}}"  >
+                                <link rel="icon"  href="{{company.Icon.url}}"  >
                   {% endif %}
 
                   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,153 +66,89 @@
   <style>
 
 
-      /* @font-face {
-    font-family: 'Chillax';
-    src: url('/static/fonts/Chillax-Bold.otf') format('opentype');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Chillax';
-    src: url('/static/fonts/Chillax-Extralight.otf') format('opentype');
-    font-weight: 200;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Chillax';
-    src: url('/static/fonts/Chillax-Light.otf') format('opentype');
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Chillax';
-    src: url('/static/fonts/Chillax-Medium.otf') format('opentype');
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Chillax';
-    src: url('/static/fonts/Chillax-Regular.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Chillax';
-    src: url('/static/fonts/Chillax-Semibold.otf') format('opentype');
-    font-weight: 600;
-    font-style: normal;
-} */
-
-body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ,
-}
       /* Styling the scrollbar */
       ::-webkit-scrollbar {
-            width: 0px; /* Remove scrollbar width */
-      }
+      width: 0px; /* Remove scrollbar width */
+}
 
-
-      p
-      {
-            font-size:14px;
-      }
-
+      * {
+      transition: 0.4s; 
+      scrollbar-width: none;
+      touch-action: pan-x pan-y;
+}
+    
       :root {
-      
-      --bg-enfasis: {{setting.bg_enfasis}} !important;
+            
+      --bg-enfasis: {{company.bg_enfasis}} !important;
+      /* Baground-color principal */
+      --bg-one:  rgb(255, 255, 255);
+      --bg-cero: white;
+      --color-one:  rgb(94, 85, 2);
+      --color-cero:  white;
+      --shadow-one: 1px 1px 20px rgba(100, 155, 255, 0.1);
 
-/* Baground-color principal */
-    --bg-one:  rgb(255, 255, 255);
-    --bg-cero: white;
-    --color-one:  rgb(94, 85, 2);
-    --color-cero:  white;
-    --shadow-one: 1px 1px 20px rgba(100, 155, 255, 0.1);
-/* Styles of views components */
+      /* Styles of views components */
       --font-one: "Nunito", sans-serif;
-
 }
-ls.
-{
-      color: #ffffff;
-      color: #0080ff;
+
+
+
+
+      h1, h2 {
+      font-family: "Kanit", sans-serif;
+      font-weight: 500;
+      font-style: normal;
 }
-@import url('https://cdn-uicons.flaticon.com/2.2.0/uicons-thin-rounded/css/uicons-thin-rounded.css')
 
+      h6, h5, h4, h3 {
+      color: rgb(63, 63, 63) !important; 
+      font-family: 'Nunito', sans-serif;
+}
 
+      p{
+            font-size:14px;
+}
 
-span
-{
+      spa {
       color: rgb(78, 78, 78);
       font-size: 14px;
 }
-h6, h5, h4, h3
-      {
-            color: rgb(63, 63, 63) !important; 
-            font-family: 'Nunito', sans-serif;
-            {% comment %} font-weight: lighter;  {% endcomment %}
-            
-      }
-      #id_lon, #id_lat
-      {
-            display: none;
-      }
-h1, h2
-{
-font-family: "Kanit", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-}
 
+      #id_lon, #id_lat {
+      display: none;
+}
        
-  .form-control 
-    {
-   
-    }
-    .form-search {
+
+      .form-search {
       border-radius: 16px;
       margin: 1px;
       margin-right:2rem;
       height: 100%;
-    }
-    .textarea
-    {
+}
+
+      .textarea {
       min-height: 15rem !important ;
-
-    }
-    *
-    {
-      transition: 0.4s; 
-      scrollbar-width: none;
-      touch-action: pan-x pan-y;
-
-    }
-    
-
-.no-select {
-   /* Standard */
 }
 
 
-nav {
+      body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ,
+}
+
+      nav {
   background-color: #fe0000 !important; /* Color azul oscuro */
 }
 
-nav::before {
-  content: ""; /* Contenido vacío para que no afecte el texto */
-  position: absolute; /* Posicionamiento absoluto para superponer la barra de navegación */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; /* Cubrir toda la barra de navegación */
-  background-color: rgba(255, 0, 0, 0.784); /* Color semitransparente */
+      nav::before {
+      content: ""; /* Contenido vacío para que no afecte el texto */
+      position: absolute; /* Posicionamiento absoluto para superponer la barra de navegación */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; /* Cubrir toda la barra de navegación */
+      background-color: rgba(255, 0, 0, 0.784); /* Color semitransparente */
 }
-.list-group-item img:hover 
-{
+      .list-group-item img:hover {
       width: 300px !important;
       border-radius: 1rem !important;
 }

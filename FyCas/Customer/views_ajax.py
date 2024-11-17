@@ -230,10 +230,10 @@ def UploadImageURL(request):
     
 
             print(bg_enfasis, 'vamos a ver')
-            customer = models.SettingApp.objects.get(user=request.user)
-            customer.Icon = image_url
-            customer.bg_enfasis = bg_enfasis
-            customer.save()
+            company = models.Company.objects.get(user=request.user)
+            company.Icon = image_url
+            company.bg_enfasis = bg_enfasis
+            company.save()
             return JsonResponse({'status': 'success'}, safe=False)
  
 

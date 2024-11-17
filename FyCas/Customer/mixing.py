@@ -109,9 +109,9 @@ class Options:
 
             return response
 
-      def Setting(self):
-            setting = models.SettingApp.objects.get(id=1)
-            return setting
+      def Company(self):
+            return models.Company.objects.get(user=self.request.user)
+            
       
       def ImgApp(self, N):
             return models.Img.objects.get(id=N)

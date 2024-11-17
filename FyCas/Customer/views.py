@@ -28,10 +28,11 @@ class Dashboard(TemplateView, Options):
         if not request.user.is_authenticated:
                return redirect(reverse('customer:add-customer'))
         return super().get(request, *args, **kwargs)
+        
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
         context['s'] = intcomma(3232)
 
         return context
@@ -46,7 +47,7 @@ class AddCustomer(CreateView, Options):
         
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
         context['img1'] = self.ImgApp(2)
         context['img2'] = self.ImgApp(3)
         context['img3'] = self.ImgApp(4)
@@ -153,7 +154,7 @@ class ListCustomer(ListView,Options):
             context['count_client'] = int(filter_client.count())
         
         context['customer_ramdon'] = self.model.objects.filter(is_active = True,).order_by('?')[:6]
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
         context['fecha_actual'] =  fecha_actual.strftime("%d / %B / %Y").capitalize()
         context['customer_count'] = self.model.objects.filter(is_active = True, 
                                     customer_verify = True).count()
@@ -449,7 +450,7 @@ class DetailCreditCustomer(DetailView, Options):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['credit'] = self.model.objects.get(id=self.kwargs.get('pk'))
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
         context['form'] = forms.PayCreditForm
 
         return context
@@ -469,7 +470,7 @@ class NoApproved(TemplateView, Options):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
         context['img'] = self.ImgApp(5)
         return context
     
@@ -481,7 +482,7 @@ class Approved(TemplateView, Options):
     def get_context_data(self, **kwargs):
         credit = models.Credit.objects.filter(customer__id=self.kwargs.get('pk')).order_by('-id').last()
         context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
         context['c'] = models.Customer.objects.get(id=self.kwargs.get('pk'))
         context['credit'] = credit
         context['img'] = self.ImgApp(1)
@@ -498,7 +499,7 @@ class CreateCustomerDebit(CreateView, Options):
         
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
         # context['form'] = forms.CustomerDebit
         return context
     
@@ -591,7 +592,7 @@ class Agregar(CreateView, Options):
         
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
         context['img1'] = self.ImgApp(2)
         context['img2'] = self.ImgApp(3)
         context['img3'] = self.ImgApp(4)
@@ -640,7 +641,7 @@ class Calendario(TemplateView, Options):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
 
         return context
     
@@ -650,7 +651,7 @@ class Ubicaciones(TemplateView, Options):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
         context['customer'] = self.model.objects.filter(is_active = True, 
                                         customer_verify = True)
         
@@ -695,12 +696,12 @@ class Ubicaciones(TemplateView, Options):
 class Configuraciones(TemplateView, Options):
     template_name = "components/configuraciones.html"
     
-    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
-
+        context['company'] = self.Company()
+        context['configurations'] = models.ConfigurationCompany.objects.filter(company=self.Company())
         return context
+        
 from dateutil.relativedelta import relativedelta
 from calendar import monthrange
 
@@ -819,7 +820,7 @@ class CrearCredito(TemplateView, Options):
         except models.Credit.DoesNotExist:
             context['error'] = "No se encontró el crédito especificado."
             
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
         return context
     
     
@@ -920,7 +921,7 @@ class ListAllCredits(ListView, Options):
         context['all_credits'] = self.model.objects.filter(estado_credito=False).order_by('-id')
         context['pendiente_credit'] = pendiente_credit
         context['saldado_credit'] = saldado_credit
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
         if self.request.method == 'POST':
             print('siuu')
             
