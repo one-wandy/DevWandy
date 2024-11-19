@@ -52,8 +52,9 @@ class Customer(models.Model):
     amount = models.IntegerField(null=True)#Monto 
     no_account = models.IntegerField(default=0) #Numero de Cuentaloooo
     
-    img1 = models.ImageField(upload_to="media/",  blank=True, null=True, default="media/img-default/img.png")#Foto de Cedula delantera
-    img2 = models.ImageField(upload_to="media/", blank=True, null=True, default="media/img-default/img.png")
+    img1 = models.ImageField(upload_to="media/",  blank=True, null=True, default=None)
+      #Foto de Cedula delantera
+    img2 = models.ImageField(upload_to="media/", blank=True, null=True, default=None)
 
     def save(self, *args, **kwargs):
         # Save the original instance first to ensure img1 is available

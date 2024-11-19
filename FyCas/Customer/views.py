@@ -131,10 +131,12 @@ class ListCustomer(ListView,Options):
 
         if self.request.method == 'POST':
             if  self.request.POST.get('noti') != None:
+                context['company'] = self.Company()
                 context['customer'] = self.model.objects.filter(is_active = True, company = self.Company(),
                                     customer_verify = False).order_by('-id')
             if customer != None:                
                 context['customer'] = self.model.objects.filter(id=int(customer))
+                context['company'] = self.Company()
                 ls = self.model.objects.filter(id=int(customer),company = self.Company(),)
                 context['true'] = True
                 return context
@@ -144,11 +146,13 @@ class ListCustomer(ListView,Options):
                                         customer_verify = True, 
                                     ).order_by('-id')[:int(count_customer)]
                     context['customer'] = filter_client
+                    context['company'] = self.Company()
                     context['count_client'] = int(filter_client.count())
         else:
             filter_client = self.model.objects.filter(is_active = True, company = self.Company(),
                                     customer_verify = True ).order_by('-id')[:15]
             context['customer'] = filter_client
+            context['company'] = self.Company()
             context['count_client'] = int(filter_client.count())
         
         context['customer_ramdon'] = self.model.objects.filter(is_active = True, company = self.Company(),).order_by('?')[:6]
@@ -569,6 +573,7 @@ class Mensensajeria(TemplateView, Options):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['company'] = self.Company()
         context['cb'] = models.CustomerDebit.objects.all()
         return context
     

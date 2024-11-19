@@ -579,29 +579,50 @@ select option {
                        
                        <div class="calculador-v d-flex flex-wrap">
                              <div class="d-flex justify-content-center w-100">
-                                   <div class="calculador">
-                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
-                                               <path d="M8.39 12.648a1 1 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1 1 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.51.51 0 0 0-.523-.516.54.54 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532s.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531s.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z"/>
-                                             </svg>
-                                         <input type="number" name="" id="plazo-es" style="outline: none !important;">
-                                   </div>
+                    
                                    <div class="calculador">
                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
                                                <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
                                              </svg>
                                          <input type="text" id="numero-es"min="-1"  style="outline: none !important;">
                                    </div>
+                                   <div class="calculador">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
+                                          <path d="M8.39 12.648a1 1 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1 1 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.51.51 0 0 0-.523-.516.54.54 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532s.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531s.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z"/>
+                                        </svg>
+                                    <input type="number" name="" id="plazo-es" style="outline: none !important;">
+                              </div>
                              </div>
                        
-                             <div class="w-100 p-2">
+                             <div class="w-100 di-de p-2" >
+                              <style>
+                                    .di-de div  span
+                                    {
+                                          font-size: 14px !important;
+                                    }
+                              </style>
                                    <div>
-                                         Cuotas Mensuales: <strong id="resultado-es">$00,000,00</strong>
+                                        <span> 
+                                                Cuotas Mensuales:
+                                          </span> <strong id="resultado-es">$00,000,00</strong>
                                    </div>
                                    <div>
-                                         Interes (15%): <strong id="resultado-es2"> $00,000,00</strong>
+                                          <span>       
+                                                Interes (15%):
+                                          </span> <strong id="resultado-es2"> $00,000,00</strong>
                                    </div>
                                    <div>
-                                         Total: <strong id="resultado-es3"> $00,000,00</strong>
+                                        <span>
+                                                Total:
+                                          </span> 
+                                        <strong id="resultado-es3"> $00,000,00</strong>
+                                   </div>
+                                   <div class='   w-100 mt-2'>
+                                          <a href="#" class='text-end text-primary justify-content-end'>
+                                                Calculadora extensa <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-circle-fill text-primary mt-1 ms-1" viewBox="0 0 16 16">
+                                                      <path d="M0 8a8 8 0 1 0 16 0A8 8 0 0 0 0 8m5.904 2.803a.5.5 0 1 1-.707-.707L9.293 6H6.525a.5.5 0 1 1 0-1H10.5a.5.5 0 0 1 .5.5v3.975a.5.5 0 0 1-1 0V6.707z"/>
+                                                    </svg>
+                                          </a>
                                    </div>
                              </div>
                        
@@ -641,7 +662,7 @@ select option {
                   </span>
             </div>
           </div>
-          <section class=" d-flex  rounded-0  " style="  
+          <section class=" d-flex  rounded-0 base-boyd " style="  
 
 
 background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
