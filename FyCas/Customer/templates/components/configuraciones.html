@@ -238,7 +238,7 @@ document.querySelector('.change-img').addEventListener('click', () => {
 
 
                 
-                bg_enfasisInput.value = `rgb(${dominantColor.join(',')})`;
+            bg_enfasisInput.value = `#${dominantColor.map(c => c.toString(16).padStart(2, '0')).join('')}`;
                 
 
 
