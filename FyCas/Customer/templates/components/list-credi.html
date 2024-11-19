@@ -122,20 +122,22 @@
 <a class=" " href="{% url "customer:crear-credito" credit.id %}">
       <strong class="mt-1">Cliente</strong>
       <div class="d-flex ">
-            <img src="{{credit.customer.img1.url}}" class="  img-icons object-fit-cover" style="width: 47px; height: 47px; border-radius: 50%; 
-            filter: blur(90px);
-            filter: brightness(80%); "  alt=""> 
-           <span class=" ms-2" style="margin-top: 13px; font-size: 12px; font-weight: bold;">  {{credit.name}} </span>
+            {% comment %} {% if credit.customer.img1 %}
+                  <img src="{{credit.customer.img1.url}}" class="  img-icons object-fit-cover" style="width: 47px; height: 47px; border-radius: 50%; 
+                  filter: blur(90px);
+                  filter: brightness(80%); "  alt=""> 
+            {% endif %} {% endcomment %}
+           <span class=" ms-2" style="margin-top: 13px; font-size: 12px; font-weight: bold;"> 
+                  {{credit.name}} 
+            </span>
       </div>
       
       </a>  
 
 
   
-      
 
-
-<section class="    mt-2 mb-4 div-text rounded-4  me-3 ms-3 ">
+<section class="mt-2 mb-4 div-text rounded-4  me-3 ms-3 ">
       <div class="w-100  rounded-4 p-2">
             <table class=" w-100 bg-transparent  ">
                   <thead>

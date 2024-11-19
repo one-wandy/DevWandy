@@ -885,6 +885,7 @@ class CreateCreditNew(CreateView, Options):
             context = super().get_context_data(**kwargs)
             customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
             context['c'] = customer
+            context['company'] = self.Company()
             return context
 
         def form_valid(self, form_class):
