@@ -183,7 +183,7 @@
                   <button class="btn-creditos">
                         <img src="{% static "svg/list.svg" %}" width='24' alt="">
                         <span>
-                              Cobros
+                              Creditos
                         </span>
                   </button>
             </a>
@@ -229,14 +229,16 @@
                         </span>
                   </button>
             </a>
-            <a  href="{% url "customer:mensajeria" %}">
+
+            <!-- <a  href="{% url "customer:mensajeria" %}">
                   <button>
                         <img src="{% static "icons/file.png" %}" width='24' alt="">
                         <span>
                               Archivos
                         </span>
                   </button>
-            </a>
+            </a> -->
+
             <div class="mt-4 d-none w-100">
                   <strong >
                         Sistema
@@ -248,6 +250,15 @@
                         <img src="{% static "svg/config.svg" %}" width='24' alt="">
                         <span>
                               Configuraciones 
+                        </span>
+                  </button>
+            </a>
+
+            <a  href="{% url "customer:empresa" %}">
+                  <button class="btn-empresa">
+                        <img src="{% static "icons/Bank.png" %}" width='24' alt="">
+                        <span>
+                              Empresa
                         </span>
                   </button>
             </a>
@@ -287,7 +298,7 @@ placeholder=" Buscando Clientes "> -->
       let totalIntereses = 0; 
       for (let mes = 1; mes <= plazo; mes++) {
             const interes = saldo * tasa; 
-            const amortizacionCapital = Cuotas - interes;
+            const amortizacionCapital = Cuotas - interes;   
             saldo -= amortizacionCapital;
             totalIntereses += interes; 
             amortizacion.push({

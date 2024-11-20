@@ -201,6 +201,7 @@ class Customer(models.Model):
 
 
 class Credit(models.Model):
+    company= models.ForeignKey('Company', on_delete=models.CASCADE,  blank=True, null=True, related_name="company_credit")
     customer = models.ForeignKey(Customer, null=True, blank=True, 
                     on_delete=models.CASCADE, related_name="credit")
     amount = models.IntegerField(default=10000)
@@ -288,6 +289,7 @@ class PayCredit(models.Model):
 class Company(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,  blank=True, null=True, related_name="company")
     name = models.CharField(blank=True, max_length=233, default='Grupo Fycas')
+    description = models.TextField(blank=True, null=True, default='Grupo Fycas')
     Icon = models.ImageField(upload_to="media/", blank=True, null=True, 
     default="media/img-default/img.png")
     phone = models.CharField(blank=True, max_length=233, default='829-557-7196')

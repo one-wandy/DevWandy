@@ -32,7 +32,15 @@ class Dashboard(TemplateView, Options):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        creditos = models.Credit.objects.filter(is_active = True, company = self.Company())
+        total_inversion = 0
+        for credito in creditos:
+            total_inversion += credito.amount
+
+        context['total_inversion'] = total_inversion
         context['company'] = self.Company()
+        context['customer_count'] = models.Customer.objects.filter(is_active = True, company = self.Company()).count()
+        context['credit_count'] = models.Credit.objects.filter(is_active = True, company = self.Company()).count()
         context['s'] = intcomma(3232)
 
         return context
@@ -933,3 +941,34 @@ class ListAllCredits(ListView, Options):
         else:
             context['all_credits'] = self.model.objects.filter(estado_credito=False).order_by('-id')
         return context
+
+
+
+class Empresa(TemplateView, Options):
+        template_name = "empresa/empresa.html"
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['company'] = self.Company()
+            # context['employees'] = models.Employee.objects.filter(company=self.Company())
+            return context
+
+
+class Calculadora(TemplateView, Options):
+        template_name = "components/clc-extensa.html"
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['company'] = self.Company()
+            # context['employees'] = models.Employee.objects.filter(company=self.Company())
+            return context
+
+
+class SearchCompany(TemplateView, Options):
+        template_name = "components/search-company.html"
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['all_company'] = models.Company.objects.all()
+            # context['employees'] = models.Employee.objects.filter(company=self.Company())
+            return context
