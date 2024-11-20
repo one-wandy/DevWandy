@@ -26,7 +26,7 @@ class Dashboard(TemplateView, Options):
     
     def get(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
-               return redirect(reverse('customer:add-customer'))
+               return redirect(reverse('customer:search-company'))
         return super().get(request, *args, **kwargs)
         
     
