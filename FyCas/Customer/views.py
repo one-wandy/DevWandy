@@ -32,10 +32,6 @@ class Dashboard(TemplateView, Options):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        creditos = models.Credit.objects.filter(is_active = True, company = self.Company())
-        total_inversion = 0
-        for credito in creditos:
-            total_inversion += credito.amount
 
         context['total_inversion'] = total_inversion
         context['company'] = self.Company()
