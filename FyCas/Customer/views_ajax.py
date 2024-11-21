@@ -239,6 +239,109 @@ def UploadImageURL(request):
 
             return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, safe=False)
 
+
+
+
+
+
+
+    
+
+
+
+
+import openai
+
+def ChatGPT(request):
+        key = "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"
+
+        openai.api_key = key
+        company = models.Company.objects.get(user=request.user)
+        creditos = models.Credit.objects.filter(company=company, is_active = True)
+        clientes = models.Customer.objects.filter(
+            is_active=True, company=company)
+
+
+        customer_list = []
+        for customer in clientes:
+            customer_info = {
+            'name': customer.name + " " + customer.last_name,
+            'number': customer.number,
+            'ubication': customer.calle_numero + "," + customer.municipio + ',' + customer.sector + ',' + customer.ciudad,
+            'refers': customer.name_r1 + " " + str(customer.number_r1) + " - " + customer.name_r2 + " " + str(customer.number_r2),
+            'dni': customer.dni,
+            'date': customer.day_created,
+
+
+            'credito': list(customer.credit.all()) if customer.credit.all().exists() else None,
+            'creditos': [
+                {
+                    'id': credito.id,
+                    'amount': credito.amount,
+                    'credito_atrasado': credito.credito_atrasado,
+                }
+                for credito in customer.credit.all()
+            ] if customer.credit.all().exists() else None
+
+
+            }
+            customer_list.append(customer_info)
+
+        total_inversion = 0
+        for credito in creditos:
+            total_inversion += credito.amount
+        # Mensaje que envías al modelo
+        mensaje = request.GET.get('message')
+        prompt_sistema = f"""
+        Eres un asistente especializado en finanzas creado para {company.name} Tu tarea principal es gestionar la información financiera de la empresa, te llamaras 
+
+        Siempre mantén actualizada esta información clave:
+        0.Te llamas Soli
+        1. Número total de clientes activos: {clientes.count()}.
+        2. Cantidad de créditos otorgados: {creditos.count()}.
+        3. Ingresos totales de la empresa: 384,333.
+        4. Inversion totale de la empresa: {total_inversion}
+        5.Litado de clientes: {models.Customer.objects.filter(is_active=True, company=company)}
+        6. Infomacion de clientes todas {models.Customer.objects.filter(is_active=True, company=company)}
+        7. Informacion de clientes {customer_list}
+        Reglas:
+        - Proporciona respuestas claras, precisas y basadas en los datos que tienes disponibles.
+       
+        """
+
+        try:
+            respuesta = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": prompt_sistema},
+                    {"role": "user", "content": mensaje}
+                ]
+            )
+            contenido = respuesta["choices"][0]["message"]["content"]
+            print(contenido)  # Muestra la respuesta en consola
+            list_cutomers = []
+
+            dictci = { 
+                'response': contenido,
+                }
+
+            return JsonResponse(dictci,  safe=False)
+
+        except Exception as e:
+            print("Oh!", e)  # Imprime el error si ocurre
+            list_cutomers = []
+
+            dict_customer = { 
+                'id': 1,
+                }
+            list_cutomers.append(dict_customer)
+            return JsonResponse(list_cutomers,  safe=False)
+
+
+
+  
+
+
     
 """"
 from django.shortcuts import render

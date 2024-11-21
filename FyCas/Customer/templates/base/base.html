@@ -1067,7 +1067,6 @@ window.addEventListener("DOMContentLoaded", function() {
                   }
             });
       }
-  
         function CallData() {
             console.log('Loading...');
             const url = 'searching/customer';
@@ -1080,6 +1079,17 @@ window.addEventListener("DOMContentLoaded", function() {
                         const filtered_data = data.filter((config) => {
                               return config.filter.toLowerCase().includes(input_value.toLowerCase());
                         });
+                        if(filtered_data.length == '') {
+                              document.getElementById('no-found').innerText = ''
+                              document.getElementById('no-found').classList.add('active')
+                              document.getElementById('sr-data').value = search_data.value
+                              
+                        }
+                        else{
+                              document.getElementById('no-found').classList.remove('active')
+                        }
+
+                       
                         list_data.innerHTML = ''
                         for (const c  of filtered_data) {
                               let container = document.createElement("div")
@@ -1096,13 +1106,15 @@ window.addEventListener("DOMContentLoaded", function() {
                                     container.appendChild(button)
                                     list_data.appendChild(container);
                         }
+            
 
                         if (filtered_data.length > 0) {
                               document.getElementById('no-found').classList.add('d-none')
 
                         } else {
                               document.getElementById('no-found').classList.remove('d-none')
-                              document.getElementById('no-found').innerText = 'No encontado ' + '(' + search_data.value + ')' 
+                              document.getElementById('no-found').innerText = 'Preguntar  a Soli' 
+                              
                         }
                         if (search_data.value === "") {
                               list_data.innerHTML = ''
@@ -1110,19 +1122,38 @@ window.addEventListener("DOMContentLoaded", function() {
                               document.querySelector('.container-data').classList.add('d-none')
                         }
                         else {
+
                               list_data.classList.remove('d-none')
                               document.querySelector('.container-data').classList.remove('d-none')
                         }
+
+          
                   });
             },
+
+
                   error: function(xhr, status, error) {
                         console.error('Error en la solicitud AJAX:', status, error);
                   }
                   });
             }
+      
+
+
+            
 });
 
 
+
+
+function Chatgpt() {
+                  $.ajax({
+                        url: '/chatgpt',
+                        // data: {
+                              //     customer_id: id
+                        //}
+                  })
+            }
 
 
 
