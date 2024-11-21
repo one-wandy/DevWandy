@@ -109,6 +109,8 @@ class Options:
 
             return response
 
+
+
       def Company(self):
             company = models.Company.objects.get(user=self.request.user)
             if company:
