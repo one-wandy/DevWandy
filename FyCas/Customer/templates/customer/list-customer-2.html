@@ -189,6 +189,7 @@ svg{
                   </div>
             {% endfor %}
       </div>
+      <input type="text" id="sr-data" class="d-none">
       <div class="w-25 position-relative pt-1 d-flex flex-wrap align-content-start">
             <input type="text" id='search-data'  style="font-size: 12px;  max-width: 20rem; 
             height: 2.5rem; outline: none !important; border-radius: 1.5rem!important;
@@ -270,8 +271,10 @@ svg{
             <div class=" card container-data d-none overflow-auto z-2   border-1 p-2 w-100 blur  bg-white  bg-opacity-75  position-absolute top-0 mt-5" style="border-radius: 1.5rem;
             max-height: 25rem; ">
                   <div id="list_data" class="d-none"></div>
-                  <h6 id="no-found" class=" d-none text-center text-black-50">
-                  </h6>  
+                  <h6 id="no-found" class=" mt-2 d-none text-center text-black-50" 
+                        style="font-size: 14px;">
+
+                  </h6>    
             </div>
 
             {% if customer_ramdon %}
@@ -367,6 +370,37 @@ svg{
             document.getElementById('btn-send-data').click()
       }
 
+
+      function miFuncion() {
+      const noFoundDiv = document.querySelector('#no-found');
+            if (noFoundDiv.classList.contains('active')) {
+                  console.log(document.getElementById('sr-data').value );
+                  $.ajax({
+                        url: '/chatgpt',
+                        data: {
+                              message: document.getElementById('sr-data').value,
+                        },
+                        success: function(data) {
+                              console.log(data);
+                              document.getElementById('no-found').innerText =   data.response
+                        
+                        }
+                  })
+
+
+
+
+            } else {
+                  console.log(false);
+            }
+        }
+
+        // Detectar cuando se presiona una tecla
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                miFuncion(); // Llamar la función cuando se presiona Enter
+            }
+        });
 
 
 </script>

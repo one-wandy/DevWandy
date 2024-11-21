@@ -27,11 +27,15 @@ class Dashboard(TemplateView, Options):
     def get(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
                return redirect(reverse('customer:search-company'))
-        return super().get(request, *args, **kwargs)
+        return super().get(request, *args, **kwargs)    
         
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        creditos = models.Credit.objects.filter(company=self.Company(), is_active = True)
+        total_inversion = 0
+        for credito in creditos:
+            total_inversion += credito.amount
 
         context['total_inversion'] = total_inversion
         context['company'] = self.Company()

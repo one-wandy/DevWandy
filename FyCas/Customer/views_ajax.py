@@ -239,7 +239,7 @@ def UploadImageURL(request):
 
             return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, safe=False)
 
-
+<<<<<<< HEAD
 
 
 
@@ -256,7 +256,9 @@ import openai
 def ChatGPT(request):
         company = models.Company.objects.get(user=request.user)
 
-        openai.api_key = company.key
+        key = company.key.replace(" ", "")
+
+        openai.api_key = key
         creditos = models.Credit.objects.filter(company=company, is_active = True)
         clientes = models.Customer.objects.filter(
             is_active=True, company=company)
@@ -340,6 +342,7 @@ def ChatGPT(request):
 
 
   
+
 
 
 
