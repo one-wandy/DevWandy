@@ -239,7 +239,6 @@ def UploadImageURL(request):
 
             return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, safe=False)
 
-<<<<<<< HEAD
 
 
 
