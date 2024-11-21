@@ -342,7 +342,7 @@ def ChatGPT(request):
   
 
 
-=======
+
 >>>>>>> parent of 6aaefe8 (Agregar funcionalidad de búsqueda con ChatGPT, mejorar la lógica de visualización de resultados y ajustar estilos en las plantillas.)
     
 """"
