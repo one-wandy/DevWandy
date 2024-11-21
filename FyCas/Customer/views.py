@@ -32,7 +32,10 @@ class Dashboard(TemplateView, Options):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
+        creditos = models.Credit.objects.filter(company=self.Company(), is_active = True)
+        total_inversion = 0
+        for credito in creditos:
+            total_inversion += credito.amount
         context['total_inversion'] = total_inversion
         context['company'] = self.Company()
         context['customer_count'] = models.Customer.objects.filter(is_active = True, company = self.Company()).count()
@@ -70,7 +73,7 @@ class AddCustomer(CreateView, Options):
                         mensaje = f"({username} o {password }) " 
                 except User.DoesNotExist:
                     autenticado = False
-                return redirect(reverse('customer:add-customer'))
+                return redirect(reverse('customer:search-company'))
         
         else:
             f = self.form_class(request.POST, request.FILES)
@@ -115,7 +118,7 @@ class ListCustomer(ListView,Options):
     def get(self, request, *args, **kwargs):
         self.convertir_todos_los_campos_credit_a_mayusculas()
         if not request.user.is_authenticated:
-               return redirect(reverse('customer:add-customer'))
+               return redirect(reverse('customer:search-company'))
         return super().get(request, *args, **kwargs)
    
     def convertir_todos_los_campos_credit_a_mayusculas(self):

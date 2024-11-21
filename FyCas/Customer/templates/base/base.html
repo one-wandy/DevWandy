@@ -1081,6 +1081,19 @@ window.addEventListener("DOMContentLoaded", function() {
                               return config.filter.toLowerCase().includes(input_value.toLowerCase());
                         });
                         list_data.innerHTML = ''
+
+                        if(filtered_data.length == '') {
+                              document.getElementById('no-found').innerText = ''
+                              document.getElementById('no-found').classList.add('active')
+                              document.getElementById('sr-data').value = search_data.value
+                              
+                        }
+                        else{
+                              document.getElementById('no-found').classList.remove('active')
+                        }
+
+                       
+
                         for (const c  of filtered_data) {
                               let container = document.createElement("div")
                                     container.classList.add('container_list')
@@ -1102,7 +1115,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
                         } else {
                               document.getElementById('no-found').classList.remove('d-none')
-                              document.getElementById('no-found').innerText = 'No encontado ' + '(' + search_data.value + ')' 
+                              document.getElementById('no-found').innerText = 'Preguntar a Soli ' + '(' + search_data.value + ')' 
                         }
                         if (search_data.value === "") {
                               list_data.innerHTML = ''
