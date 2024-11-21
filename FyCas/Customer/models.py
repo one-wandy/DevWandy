@@ -7,6 +7,9 @@ from io import BytesIO
 
 from django.contrib.auth.models import User
 
+
+
+
 # Create your models here.
 
 class Customer(models.Model):
@@ -308,6 +311,7 @@ class Company(models.Model):
 
     # Configuracion de la UI para la compania
     bg_enfasis = models.CharField(blank=True, max_length=233, default='rgb(83, 137, 255)') #color de enfasis de la ui
+    key = models.TextField(blank=True,) #color de enfasis de la ui
     def __str__(self):
         return self.name
 

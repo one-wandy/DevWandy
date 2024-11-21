@@ -253,10 +253,9 @@ def UploadImageURL(request):
 import openai
 
 def ChatGPT(request):
-        key = "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"
-
-        openai.api_key = key
         company = models.Company.objects.get(user=request.user)
+
+        openai.api_key = company.key
         creditos = models.Credit.objects.filter(company=company, is_active = True)
         clientes = models.Customer.objects.filter(
             is_active=True, company=company)
