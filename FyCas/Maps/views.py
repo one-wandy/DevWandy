@@ -37,7 +37,7 @@ class Maps(TemplateView, Options):
               
       def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
         return context
     
     

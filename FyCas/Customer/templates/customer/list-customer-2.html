@@ -98,6 +98,10 @@ svg{
             justify-content: center;
       }
 }
+.btn-sec-cl button
+{
+      border: none !important;
+}
 
 </style>
 
@@ -111,7 +115,7 @@ svg{
 
 
 <div class="w-100 d-flex">
-      <div class="w-75 d-flex flex-wrap overflow-scroll vh-100 ">
+      <div class="w-75 d-flex flex-wrap align-content-start overflow-scroll vh-100 ">
             {% for c in customer %}
                   <div style="width: 408px; height: 181px;   " class="position-relative   card-cu   mt-1     d-flex justify-content-center m-1">
 
@@ -120,7 +124,7 @@ svg{
                                     box-shadow: 0px 1px 3px 1px rgba(218, 218, 218, 0.505);" class="w-100 position-relative  p-2 bg-white " >
 
                                     <button id="{{c.id}}"  onclick='OpenCloseBtn(this.id)' style="background-color: #35333e00; width: 35px; height: 35px; color: #000000 !important; top: 8rem; box-shadow: #eeeeee00 1px 1px 1px 1px; border: 0px solid #a7a7a7 !important; border-style: dotted !important;"   class="rounded-circle  position-absolute border-0  p-0 me-2 mb-2 end-0 d-flex flex-wrap justify-content-center align-content-center ">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots " style="margin-top: 10px;" viewBox="0 0 16 16">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots >" style="margin-top: 10px;" viewBox="0 0 16 16">
                                                 <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
                                           </svg>
                                     </button>
@@ -129,9 +133,15 @@ svg{
                                           
                                                 <span style="   border: 6px #c7c7c7  ; border-style:dotted; transition: 0.9s ease  !important; " 
                                                       class="p-1  img-span rounded-circle ">
+                                                      {% if c.img1 %}
                                                       <img src="{{c.img1.url}}" class="  img-icons object-fit-cover" style="width: 47px; height: 47px; border-radius: 50%; 
                                                       filter: blur(90px);
                                                       filter: brightness(80%); "  alt=""> 
+                                                      {% else %}
+                                                      <img src="{% static "icons/gallery.png" %}" class="  img-icons object-fit-cover" style="width: 47px; height: 47px; border-radius: 50%; 
+                                                      filter: blur(90px);
+                                                      filter: brightness(80%); "  alt=""> 
+                                                      {% endif %}
                                                 </span>
                                                 <a href="{% url "customer:detail-customer" c.id %}" >
                                                       <div style="background-color: rgba(0, 0, 0, 0); border-radius: 2rem;
@@ -158,17 +168,16 @@ svg{
                         
                                           </a>
 
-                                                <!-- <span class=""
+
                                     
                                                 <span class="d-flex text2 overflow-hidden  w-100 justify-content-end  pe-5" 
                                                 style="font-size: 12px; color: #a6a5a5 !important;">
                                                 
-                                                {{ c.day_created|date:"F/d/Y" }}
                                                 {% if c.customer_verify == False %} 
                                                 <strong class='text-danger me-2'> (No verificado) </strong>   
-                                                            {{c.ciudad}} -->
-                                                                  <!-- {% endif %}  -->
-                                                      </span>
+                                                {% endif %}  
+                                                {{ c.day_created|date:"F/d/Y" }}
+                                          </span>
                                     </div>
                                     </div>
 
@@ -180,32 +189,70 @@ svg{
                   </div>
             {% endfor %}
       </div>
-      <div class="w-25 position-relative pt-1">
+      <div class="w-25 position-relative pt-1 d-flex flex-wrap align-content-start">
             <input type="text" id='search-data'  style="font-size: 12px;  max-width: 20rem; 
             height: 2.5rem; outline: none !important; border-radius: 1.5rem!important;
             border: 1px solid rgb(223, 223, 223);"
             class="form-search border-1 text-center w-100 bg-white bottom-0  outline-none  m-0"  
             placeholder="Busqueda avanzada (ChatGPT)">
-            <div class="w-100 text-start"> 
-                  <span style="font-size: 12px;" class="text-black-50 w-100 text-center">
+            <div class="w-100 d-none text-start"> 
+                  <span style="font-size: 12px;" class="text-black-50 ms-2 w-100 text-center">
                         Shift + command + b para activar el chat
                  </span>
             </div>
 
             <!-- Solicitudes -->
 
-         
-             <form action="" method="post">
+          <section class="card btn-sec-cl w-100 rounded-5 p-3 pt-1 mt-3">
+            <h6 class="m-0 p-0 text-black-50 mt-2" style="font-size: 12px;">
+                  <!-- Acciones  -->
+            </h6>
+            <div class="w-100 d-flex justify-content-center ">
+                           
+             <form action="" method="post"  style="max-width: max-content;">
                   {% csrf_token %}
                   <input type="text" class="d-none" name="noti" value="true">
-                  <button class="  border-1 text-white rounded-5  p-1  pe-2 ps-2" style="background-color: var(--bg-enfasis);">  
+                  <button class="border-1 text-white mt-1 rounded-circle position-relative  p-1  pe-2 ps-2" style="background-color: var(--bg-enfasis);
+                        width: 2.5rem; height: 2.5rem;">  
                         {% if new_customer %}
-                              <span style="font-size: 12px;"> {{new_customer}} </span>
+                              <span style="font-size: 12px; width: 18px; height: 18px;" 
+                              class=" rounded-circle position-absolute end-0 z-2 top-0 bg-black bg-opacity-75" >
+                                    {{new_customer}} 
+                              </span>
                         {% endif %}
-                        <img src="{% static "icons/notify.png" %}" width='20' alt="" style="filter: brightness(0) invert(1);"><span style="font-size: 12px;">Notificaciones</span>
+                        <img src="{% static "icons/notify.png" %}" width='20' alt="" style="filter: brightness(0) invert(1);"><span style="font-size: 12px;"></span>
                   </button>
             </form>
+            <button class="border-1 mt-1 text-white rounded-circle position-relative  p-1  pe-2 ps-2" style="background-color: var(--bg-enfasis);
+            width: 2.5rem; height: 2.5rem;">  
+  
+            
+            <img src="{% static "svg/list.svg" %}" width='20' alt="" style="filter: brightness(0) invert(1);"><span style="font-size: 12px;"></span>
+      </button>
 
+      <button class="border-1 mt-1 text-white rounded-circle position-relative  p-1  pe-2 ps-2" style="background-color: var(--bg-enfasis);
+      width: 2.5rem; height: 2.5rem;">  
+
+      
+            <img src="{% static "icons/Note.png" %}" width='20' alt="" style="filter: brightness(0) invert(1);"><span style="font-size: 12px;"></span>
+      </button>
+
+      <button class="border-1 mt-1 text-white rounded-circle position-relative  p-1  pe-2 ps-2" style="background-color: var(--bg-enfasis);
+      width: 2.5rem; height: 2.5rem;">  
+
+
+      <img src="{% static "icons/Documento.png" %}" width='20' alt="" style="filter: brightness(0) invert(1);"><span style="font-size: 12px;"></span>
+      </button>
+      <button class="border-1 mt-1 text-white rounded-circle position-relative  p-1  pe-2 ps-2" style="background-color: var(--bg-enfasis);
+      width: 2.5rem; height: 2.5rem;">  
+
+
+      <img src="{% static "icons/file.png" %}" width='20' alt="" style="filter: brightness(0) invert(1);"><span style="font-size: 12px;"></span>
+      </button>
+
+            </div>
+
+          </section>
             {% if customer|length == 1 %}
             <a class="  ms-2  justify-content-center text-primary" href="{% url "customer:list-customer" %}" style="max-width: 4rem;">
                               <button class='d-flex align-content-center text-primary bg-transparent  border-0' >
@@ -227,45 +274,71 @@ svg{
                   </h6>  
             </div>
 
+            {% if customer_ramdon %}
             <!-- Clientes mas frecuentes -->
-            <h6 class="m-0 p-0 text-black-50 mt-5" style="font-size: 12px;">
-                  Sugereridos
-            </h6>
-            <div class="  d-flex justify-content-around p-2 bg-transparent  flex-wrap " 
-            style="border: 0px solid grey;">
+            <section class="card p-3 rounded-5 mt-3 w-100 d-none">
+                  <h6 class="m-0 p-0 text-black-50 mb-2 text-center" style="font-size: 12px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">
+                              <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
+                            </svg>       Clientes sugeridos
+                  </h6>
+                  <div class="  d-flex justify-content-around p-2 bg-transparent  flex-wrap " 
+                  style="border: 0px solid grey;">
+      
+                        {% for i in customer_ramdon %}
+      
+                        <div class="position-relative">
+                              <div class="rounded-circle bg-white m-1" style="width: 70px; height: 70px;">
+                                    {% if i.img1 %}
+                                          <img src="{{i.img1.url}}" class="w-100 h-100 object-fit-cover rounded-circle" alt="" onclick="GetDetail(this.id)" id="{{i.id}}
+                                          ">   
+                                          {% else %}
+                                          <img src="{% static "icons/gallery.png" %}" class="w-100 h-100 object-fit-cover rounded-2" alt="" onclick="GetDetail(this.id)" id="{{i.id}}
+                                          ">         
 
-                  {% for i in customer_ramdon %}
-
-                  <div class="position-relative">
-                        <div class="rounded-circle bg-primary m-1" style="width: 70px; height: 70px;">
-                              <img src="{{i.img1.url}}" class="w-100 h-100 object-fit-cover rounded-circle" alt="" onclick="GetDetail(this.id)" id="{{i.id}}">      
+                                    {% endif %}
+                              </div>
                         </div>
+      
+                        {% endfor %}
                   </div>
-
-                  {% endfor %}
-            </div>
-
-
+      
+            </section>
+            {% endif %}
       </div>
 </div>
 
 {% else %}
             <div class="warning vh-100 d-flex justify-content-center align-content-center flex-wrap w-100">
-                  <h6 class="p-2 w-100 text-center pt-0 pb-0">
-                     Solicitudes
+                  <h6 class="p-2 w-100 d-flex justify-content-center text-center pt-0 pb-0">
+                        <form action="" method="post"  style="max-width: max-content;">
+                              {% csrf_token %}
+                              <input type="text" class="d-none" name="noti" value="true">
+                              <button class="border-1 text-white mt-1 rounded-circle position-relative  p-1  pe-2 ps-2" style="background-color: var(--bg-enfasis);
+                                    width: 2.5rem; height: 2.5rem;">  
+                                    {% if new_customer %}
+                                          <span style="font-size: 12px; width: 18px; height: 18px;" 
+                                          class=" rounded-circle position-absolute end-0 z-2 top-0 bg-black bg-opacity-75" >
+                                                {{new_customer}} 
+                                          </span>
+                                    {% endif %}
+                                    <img src="{% static "icons/notify.png" %}" width='20' alt="" style="filter: brightness(0) invert(1);"><span style="font-size: 12px;"></span>
+                              </button>
+                        </form> <span class='mt-3 ms-2'>Ups!, no envontramos clientes</span>
                   </h6>
                   <p class="text-black-50  w-100 d-flex justify-content-center text-center" 
                         style="font-size: 12px; border-radius: 2rem; ">
-                        Actualmente no hay solicitudes entrantes     <a class=" bg-black  bg-opacity-10 ms-2 justify-content-center text-primary 
-                        " href="{% url "customer:list-customer" %}" style="max-width: 4rem;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill text-primary me-1" style="margin-top: 3px;" viewBox="0 0 16 16">
+                          <a class="  ms-2 justify-content-center  
+                        " href="{% url "customer:list-customer" %}" 
+                        style="max-width: 4rem; color: var(--bg-enfasis) !important;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill  me-1" style="margin-top: 3px; color: var(--bg-enfasis) !important;" viewBox="0 0 16 16">
                               <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
                             </svg>
                             Atras
                         </a>
                   </p>
                
-               
+              
             </div>
 {% endif %}
 

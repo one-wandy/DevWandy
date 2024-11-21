@@ -5,9 +5,15 @@ import os
 from django.core.files.base import ContentFile
 from io import BytesIO
 
+from django.contrib.auth.models import User
+
+
+
+
 # Create your models here.
 
 class Customer(models.Model):
+    company= models.ForeignKey('Company', on_delete=models.CASCADE,  blank=True, null=True, related_name="company_customer")
     # Para el tema de las solicitudes, cuando el user ingresa por primera vez el estado permanece false durante los proximos 7 dias, sera descartado y eliminado de la base de datos ya que su aprobacion no fue verificada por lo tanto no cambio a " True " pero se guardada su DNI en una base de datos adicional mas adelante p
     not_aprobado = models.BooleanField(default=False,  blank=True)
     # Si 
@@ -37,7 +43,6 @@ class Customer(models.Model):
     
 
     is_active = models.BooleanField(default=True)
-    company = models.CharField(max_length=255, default='Grupo Fycas', blank=True )
     name = models.CharField( max_length=255, )#Nombre
     last_name = models.CharField( max_length=255)#Apellido
     number = models.CharField( max_length=20, )#Numero local o Movile
@@ -50,8 +55,9 @@ class Customer(models.Model):
     amount = models.IntegerField(null=True)#Monto 
     no_account = models.IntegerField(default=0) #Numero de Cuentaloooo
     
-    img1 = models.ImageField(upload_to="media/",  blank=True, null=True, default="media/img-default/img.png")#Foto de Cedula delantera
-    img2 = models.ImageField(upload_to="media/", blank=True, null=True, default="media/img-default/img.png")
+    img1 = models.ImageField(upload_to="media/",  blank=True, null=True, default=None)
+      #Foto de Cedula delantera
+    img2 = models.ImageField(upload_to="media/", blank=True, null=True, default=None)
 
     def save(self, *args, **kwargs):
         # Save the original instance first to ensure img1 is available
@@ -198,6 +204,7 @@ class Customer(models.Model):
 
 
 class Credit(models.Model):
+    company= models.ForeignKey('Company', on_delete=models.CASCADE,  blank=True, null=True, related_name="company_credit")
     customer = models.ForeignKey(Customer, null=True, blank=True, 
                     on_delete=models.CASCADE, related_name="credit")
     amount = models.IntegerField(default=10000)
@@ -254,7 +261,7 @@ class Cuota(models.Model):
 
         last_time_pay = models.TimeField(default=timezone.now)
 
-
+        mora = models.IntegerField(default=5,  null=True, blank=True) #Precio de la cuota
 
         # def save(self, *args, **kwargs):
         #     if self.start_date:
@@ -282,10 +289,29 @@ class PayCredit(models.Model):
 
 
     
-class SettingApp(models.Model):
+class Company(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,  blank=True, null=True, related_name="company")
     name = models.CharField(blank=True, max_length=233, default='Grupo Fycas')
-    Icon = models.ImageField(upload_to="media/", blank=True, null=True, default="media/img-default/img.png") #Foto de Cedula tracera
-    
+    description = models.TextField(blank=True, null=True, default='Grupo Fycas')
+    Icon = models.ImageField(upload_to="media/", blank=True, null=True, 
+    default="media/img-default/img.png")
+    phone = models.CharField(blank=True, max_length=233, default='829-557-7196')
+    email = models.CharField(blank=True, null=True, max_length=233,)
+    EMAIL_PROVIDERS = [
+        ('@gmail.com', 'Gmail'),
+        ('@icloud.com', 'iCloud'),
+        ('@yahoo.com', 'Yahoo'),
+        ('@outlook.com', 'Outlook'),
+        ('@other', 'Other'),
+    ]
+    email_provider = models.CharField(max_length=50, choices=EMAIL_PROVIDERS, default='gmail', blank=True, null=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+    rnc = models.CharField(max_length=50, blank=True, null=True, default='')
+    #Foto de Cedula tracera
+
+    # Configuracion de la UI para la compania
+    bg_enfasis = models.CharField(blank=True, max_length=233, default='rgb(83, 137, 255)') #color de enfasis de la ui
+    key = models.TextField(blank=True,) #color de enfasis de la ui
     def __str__(self):
         return self.name
 
@@ -319,3 +345,30 @@ class CashControl(models.Model):
 
         def __str__(self):
             return f"Cash Control for {self.date}"
+
+
+# Comfiguracion 
+class ConfigurationCompany(models.Model):
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, 
+    related_name="configuration_company", blank=True, null=True)
+    name = models.CharField(max_length=100, default="Configuracion")
+    img = models.ImageField(upload_to="media/", blank=True, null=True) 
+    svg = models.TextField(default='<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-balloon-heart" viewBox="0 0 16 16"><path fill-rule="evenodd" d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063q.068.062.132.129.065-.067.132-.129c3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3 3 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.235-.468ZM6.013 2.06c-.649-.18-1.483.083-1.85.798-.131.258-.245.689-.08 1.335.063.244.414.198.487-.043.21-.697.627-1.447 1.359-1.692.217-.073.304-.337.084-.398"/></svg>' , blank=True, null=True)
+
+    url = models.CharField(max_length=100,  default="", blank=True, null=True)
+    is_active = models.BooleanField(default=True,  blank=True, null=True)
+    def __str__(self):
+        return self.name
+
+class OpcionsConfiguration(models.Model):
+    configuration = models.ForeignKey(ConfigurationCompany, on_delete=models.CASCADE, related_name="options_configuration")
+    name = models.CharField(max_length=100, default="Opcion")
+    is_checked = models.BooleanField(default=False, blank=True, null=True)
+    input_text = models.CharField(max_length=255, default="", blank=True, null=True)
+    url = models.CharField(max_length=100, default="", blank=True, null=True)
+
+    OPTIONS = [(str(i), str(i)) for i in range(51)]
+    select_option = models.CharField(max_length=2, choices=OPTIONS, default='0')
+
+    def __str__(self):
+        return f'{self.configuration.name} de {self.name}'

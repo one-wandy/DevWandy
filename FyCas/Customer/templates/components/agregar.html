@@ -85,7 +85,8 @@
             height: 42px;
             font-size: 14px;
             cursor: pointer;
-           background-color: #719CFF;
+            background-color: var(--bg-enfasis);
+           /* background-color: #719CFF; */
            flex-wrap: wrap; 
            justify-content: center;
             align-content: center;
@@ -140,7 +141,7 @@ label {
 <section  data-aos="fade-down" style="transition: 1s ease-in-out;" class="position-relative  container-fluid   bg-white overflow-hidden   p-1 mb-5 ">
  
                         <div class="sL  align-content-center justify-content-center  position-relative" >
-                              <img src="{% static "svg/more.svg" %}" width='26' style='max-width:26px; ' alt="" class="position-absolute top-0 end-0 m-2" onclick="BtnMoreSession()">
+                              {% comment %} <img src="{% static "svg/more.svg" %}" width='1' style='max-width:26px; ' alt="" class="position-absolute top-0 end-0 m-2" onclick="BtnMoreSession()"> {% endcomment %}
                               <div id="btn-more-session" class="position-absolute top-0  d-none  end-0 vh-100 vw-100  bg-white d-flex flex-wrap align-content-center justify-content-center bg-opacity-10 p-3" style="        -webkit-backdrop-filter: blur(40px) !important;
       backdrop-filter: blur(40px) !important;border-radius: 2rem; z-index: 13;" >
                                     <section class="position-relative ">
@@ -249,7 +250,7 @@ label {
                                     {% csrf_token %}
                             <div class="dn text-center p-3 " style='max-width: 700px;'>
                                     <h1 style="text-align: center;" >
-                                          ¡Grupo FyCas acaba de expandir sus limites!
+                                          ¡{{company.name}} acaba de expandir sus limites!
                                     </h1>
                                     <div id="carouselExample" class="carousel mt-4 slide">
                                           <div class="carousel-inner">

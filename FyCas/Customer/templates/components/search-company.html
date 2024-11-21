@@ -1,0 +1,109 @@
+{% block content %}
+{% load static %}
+{% load humanize %}
+      <style>
+            .card 
+            {
+                  background-color: white;
+            }
+      </style>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+      <div class="card bg-dark text-white">
+            <img src="{% static "img-static/Fondo.jpg" %}" class="card-img vh-100" alt="...">
+            <div class="card-img-overlay   align-content-start vh-100 d-flex flex-wrap" 
+                  style="     
+                  background-color: rgba(238, 238, 238, 0.616);
+                  -webkit-backdrop-filter: blur(70px) !important;
+                  backdrop-filter: blur(70px) !important;">
+
+
+
+
+      <section data-aos="fade-up" class="pt-3 w-100" style="border-radius: 2rem;
+            height: 12rem; transition: 1s;
+            
+             /* background-color: rgb(100, 147, 255); */
+             ">
+
+            <div class="d-flex justify-content-center mt-3">
+                        <input type="text" placeholder="Buscador" class="border-0 text-center" 
+                              style="width: 30rem; height: 2.7rem; border-radius: 2rem;">
+            </div>
+
+            <div class="mt-3 p-2 text-center">
+                  <h4 style="font-size: 16px;" class="m-0 text-black">
+                        Las <span style="color: 5a93ff; font-weight: bold;" > compañias</span> disponibles aqui estan siendo actualizadas constantemente, si no encuentras la compañia que buscas, favor contactanos.
+                  </h4>
+                  <p style="font-size: 14px;" class="text-black-50">
+                       Si tienes un negocio o te dedicas a prestamos personales  prueba nuestro software de gestion de prestamos. 
+                  </p>
+            </div>
+
+      </section> 
+
+            <div data-aos="fade-down"  class="d-flex flex-wrap align-content-start justify-content-start   w-100 p-3  "
+                   style="border-radius: 2rem; height: 33rem ; transition: 0.8s ease-in-out; margin-top: 5rem;
+      background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+                    " >
+                   <div class="w-100  d-flex justify-content-end" style="margin-bottom: 5rem;">
+                        <button style="background-color: rgb(255, 255, 255); border-radius: 2rem; width: 7rem; border-radius: 2rem;
+                        font-size: 14px; font-weight: bold;" 
+                        class="text-black border-0 p-2 me-2 ">
+                              Detalles
+                         </button>
+                        <button style="background-color: #5a93ff; border-radius: 2rem; width: 10rem; border-radius: 2rem;
+                              font-size: 14px; font-weight: bold;" 
+                              class="text-white border-0 p-2 ">
+                              Probar sotware 
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M0 8a8 8 0 1 0 16 0A8 8 0 0 0 0 8m5.904 2.803a.5.5 0 1 1-.707-.707L9.293 6H6.525a.5.5 0 1 1 0-1H10.5a.5.5 0 0 1 .5.5v3.975a.5.5 0 0 1-1 0V6.707z"/>
+                                  </svg>
+                        </button>
+                   </div>
+                  {% for company in all_company %}
+                  <a href="{% url "customer:add-customer" company.id %}" style='text-decoration: none; color: black;'>
+                        <div data-aos="fade-right"  class="card     mb-3 m-1  p-2" 
+                              style="width: 550px;  border-radius: 1.6rem; transition: 1s ease-in;">
+                              <div class="row g-0" style='height: 200px;'> 
+                              <div class="col-md-4  d-flex flex-wrap align-content-center">
+                              <img src="{{company.Icon.url}}" class="img-fluid rounded-start" alt="...">
+                              </div>
+                              <div class="col-md-8">
+                              <div class="card-body">
+                                    <h5 class="card-title m-0"> {{company.name}} </h5>
+                                    <small class="text-muted" style="font-size: 12px;">
+                                          {{ company.created_at|date:"d M Y" }}
+                                    </small>
+                                    <p class="card-text mt-2 overflow-scroll" style="font-size: 14px; height: 4rem;">
+                                          {{company.description}}
+                                    </p>
+                              </div>
+                        </div>
+         
+                              </div>
+                        </div>
+                  </a>
+                  {% endfor %}
+            </div>
+              
+            </div>
+          </div>
+
+
+          <script>
+            document.querySelectorAll('.card').forEach(card => {
+                  card.addEventListener('mouseover', () => {
+                        card.classList.add('shadow');
+                  });
+                  card.addEventListener('mouseout', () => {
+                        card.classList.remove('shadow');
+                  });
+            });
+          </script>
+
+          <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+          <script>
+            AOS.init();
+          </script>
+{% endblock %}

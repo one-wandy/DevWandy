@@ -1,22 +1,14 @@
  
-
 {% include "base/base2.html" %}
-
-
 {% load static %}
 <!-- 
       Si
 -->
 <style>
 
-      .text-danger
-      {
+      .text-danger {
             color: #ff7171 !important;
            
-      }
-      input
-      {
-         
       }
       #id_name_r1, #id_name_r2 {
             margin: 0 !important;
@@ -32,18 +24,18 @@
             }
      
       }
-      .form-floating 
-      {
+      
+      .form-floating {
             margin: 0.1rem;
             height: 51px !important;
             padding: 0 !important;
       }
-      .form-control 
-      {
+
+      .form-control {
             border-radius: 21px !important;
       }
 
-.sL {
+      .sL {
             background-color: #6b6b6b00 !important;
            
             width: 100%;
@@ -55,81 +47,79 @@
             position: relative;
             transition: transform 1s cubic-bezier(0.1, 0.0, 0.2, 1.0)
             
-        }
-.sl,  label {
+      }
+
+      .sl,  label {
             cursor: pointer;
             -webkit-user-select: none !important; /* Safari */
             -moz-user-select: none !important;    /* Firefox */
             -ms-user-select: none !important;     /* IE10+/Edge */
             user-select: none !important;    
-        }
+      }
 
-.blur
-{
-      -webkit-backdrop-filter: blur(10px) !important;
-      backdrop-filter: blur(10px) !important;
-}
+      .blur {
+            -webkit-backdrop-filter: blur(10px) !important;
+            backdrop-filter: blur(10px) !important;
+      }
 
-.scroll-btn, .btn-black {
-       
+      .scroll-btn, .btn-black {
             width: 130px;
             height: 42px;
             font-size: 14px;
             cursor: pointer;
-           background-color: #719CFF;
-           flex-wrap: wrap; 
-           justify-content: center;
+            background-color: #719CFF;
+            flex-wrap: wrap; 
+            justify-content: center;
             align-content: center;
             text-align: center;
             color: white;
             border-radius: 24px;
       }
-.scroll-btn .bi-arrow-right-circle-fill 
-{
+
+      .scroll-btn .bi-arrow-right-circle-fill {
             width: 27px;
             height: 27px;
-}
-            
-label {
-      -webkit-user-select: none !important; /* Safari */
-      -moz-user-select: none !important;    /* Firefox */
-      -ms-user-select: none !important;     /* IE10+/Edge */
-      user-select: none !important;    
-}
-.div-menu-1 
-{
-      display: none !important;
-}
-body 
-{
-      background-image: none !important;
-}
-
-.img-glouds 
-{
-      height: 14rem;
-      border-radius: 2.7rem !important;
-      background-color: #f6f6f694 !important;
-      border: #EBEBEB solid 1px !important;
-}
-
-@media (min-width: 600px)
-{
-      .img-glouds  
-      {
-            height: 16rem;
-            
- 
       }
-      .sec-sl 
-      {
-          
-            width: 80% !important;
-            height: 95%;
-            align-content: center;
-            margin-top: 0 !important;
+            
+      label {
+            -webkit-user-select: none !important; /* Safari */
+            -moz-user-select: none !important;    /* Firefox */
+            -ms-user-select: none !important;     /* IE10+/Edge */
+            user-select: none !important;    
       }
-}
+
+      .div-menu-1 {
+            display: none !important;
+      }
+
+      body {
+            background-image: none !important;
+      }
+
+      .img-glouds {
+            height: 14rem;
+            border-radius: 2.7rem !important;
+            background-color: #f6f6f694 !important;
+            border: #EBEBEB solid 1px !important;
+      }
+
+      @media (min-width: 600px)
+      {
+            .img-glouds  
+            {
+                  height: 16rem;
+                  
+      
+            }
+            .sec-sl 
+            {
+            
+                  width: 80% !important;
+                  height: 95%;
+                  align-content: center;
+                  margin-top: 0 !important;
+            }
+      }
 
 </style>
 <section  class="position-relative  container-fluid  vh-100 bg-white overflow-hidden   p-1 mb-5 ">
@@ -244,7 +234,7 @@ body
                                     {% csrf_token %}
                             <div class="dn text-center p-3 " style='max-width: 700px;'>
                                     <h1 style="text-align: center;" >
-                                          ¡Grupo FyCas acaba de expandir sus limites!
+                                          ¡{{company.name}} acaba de expandir sus limites!
                                     </h1>
                                     <div id="carouselExample" class="carousel mt-4 slide">
                                           <div class="carousel-inner">

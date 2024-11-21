@@ -123,8 +123,8 @@
                   <div class="d-flex justify-content-center   me-2" style="line-height: 10px;
 ">
                       <div class="" style="margin-top: 1px;">
-                        {% if setting.Icon.url %}
-                        <img src="{{setting.Icon.url}}" width="30" height="30"  class="  object-fit-cover rounded-circle me-1 " style="border: 1px;" alt="">
+                        {% if company.Icon.url %}
+                        <img src="{{company.Icon.url}}" width="30" height="30"  class="  object-fit-cover  me-1 " style="border: 1px;" alt="">
                         {% endif %}
                       </div> 
                       <div>
@@ -162,7 +162,7 @@
             
             </a>
            
-            <a href="{% url "customer:agregar" %}">
+            <a href="{% url "customer:agregar" company.id %}">
                   <button class="btn-agregar">
                         <img src="{% static "icons/mas.png" %}" width='24' alt="">
                         <span>
@@ -221,22 +221,24 @@
                   </button>
             </a>
 
-            <a  href="{% url "customer:mensajeria" %}">
-                  <button>
+            <a  href="{% url "mensapp:mensapp" %}">
+                  <button class="btn-mensajeria">
                         <img src="{% static "icons/msj.png" %}" width='24' alt="">
                         <span>
                               Mensajeria
                         </span>
                   </button>
             </a>
-            <a  href="{% url "customer:mensajeria" %}">
+
+            <!-- <a  href="{% url "customer:mensajeria" %}">
                   <button>
                         <img src="{% static "icons/file.png" %}" width='24' alt="">
                         <span>
                               Archivos
                         </span>
                   </button>
-            </a>
+            </a> -->
+
             <div class="mt-4 d-none w-100">
                   <strong >
                         Sistema
@@ -247,7 +249,16 @@
                   <button  class="mt-2 btn-configuraciones">
                         <img src="{% static "svg/config.svg" %}" width='24' alt="">
                         <span>
-                              Configuraciones
+                              Configuraciones 
+                        </span>
+                  </button>
+            </a>
+
+            <a  href="{% url "customer:empresa" %}">
+                  <button class="btn-empresa">
+                        <img src="{% static "icons/Bank.png" %}" width='24' alt="">
+                        <span>
+                              Empresa
                         </span>
                   </button>
             </a>
@@ -287,7 +298,7 @@ placeholder=" Buscando Clientes "> -->
       let totalIntereses = 0; 
       for (let mes = 1; mes <= plazo; mes++) {
             const interes = saldo * tasa; 
-            const amortizacionCapital = Cuotas - interes;
+            const amortizacionCapital = Cuotas - interes;   
             saldo -= amortizacionCapital;
             totalIntereses += interes; 
             amortizacion.push({

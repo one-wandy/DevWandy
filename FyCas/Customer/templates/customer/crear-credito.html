@@ -505,7 +505,7 @@
                 
    
            <div class="  me-2 ms-2 w-100    pb-2  bg-white d-flex flex-wrap justify-content-center align-content-start overflow-auto  " 
-           style="max-height: 49vh; border-radius: 1.1rem; 
+           style="height: 42vh; border-radius: 1.1rem; 
 
            border: dotted 1px rgb(217, 217, 217);">
             <table class=" w-100 b rounded-4 m-2   mt-2 ">
@@ -541,7 +541,16 @@
                               </td>
                               <td>
                                     <div  class="grey-span d-flex mt-2 justify-content-center flex-wrap align-content-center" style="height: 2rem;">
-                                          0.00
+                                          $00.00
+                                          {% comment %} {% if cuota.estado != True %}
+                                                      {% if cuota.end_date < today %}
+                                                            <button id='{{cuota.id}}' onclick='CalcularMora(this.id)'>
+                                                                  Calcular
+                                                            </button>
+                                                            {% else %}
+                                                            0.00
+                                                      {% endif %}
+                                          {% endif %} {% endcomment %}
                                     </div>
                               </td>
                               <td>
@@ -637,7 +646,9 @@
       <form action="" method="post">
             {% csrf_token %}
             {{form}}
-            <button class="bg-white z-n1 mt-5" style="border-radius: 2rem;"> Abrir  </button>
+            <button class="bg-white z-n1 mt-5" style="border-radius: 2rem;"> 
+                  Ver      
+            </button>
       </form>
       {% endif %}
       
@@ -984,6 +995,17 @@ inputs.forEach(input => {
 });
 
 
+function CalcularMora(id){
+      $.ajax({
+            url: '/calcular-mora',
+            data: {
+                  id: id,
+            },
+            success: function(r) {
+                  {% comment %} location.reload(); {% endcomment %}
+            },
+      })
+}
 
 </script>
 {% endblock  %}

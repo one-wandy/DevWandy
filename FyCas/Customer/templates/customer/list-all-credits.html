@@ -1,5 +1,7 @@
 {% extends "base/base.html" %}
 {% block content %}
+{% load humanize %}
+{% load static %}
 <style>
 
       .option-creditos{
@@ -223,31 +225,36 @@
       
 </style>
 <section class="d-flex">
+
+      
      
       <section data-aos="fade-in" style="transition: 0.5s ease-out; "   class="d-flex flex-wrap overflow-scroll h-100 w-100 justify-content-start  align-content-start">
+            <div class='w-100 ps-2'>
+                  <input type="text" id='search-data'  style="font-size: 12px;  max-width: 20rem; 
+                  height: 2.5rem; outline: none !important; border-radius: 1.5rem!important;
+                  border: 1px solid rgb(223, 223, 223);"
+                  class="form-search border-1 text-center w-100 bg-white bottom-0  outline-none  m-0"  
+                  placeholder="Busqueda avanzada (ChatGPT)">
+            </div>
             {% include "components/list-credi.html" %}
       </section>
-      <div data-aos="fade-left" style="transition: 1s; width: 7rem;" class="option-creditos  end-0 mb-2 mt-2  " >
+      <div  style="transition: 1s; width: max-content;" class=" position-absolute top-0 end-0 mb-2 mt-0  " >
             <span  class="text-black-50" style="font-size: 12px; font-weight: 500;">
-                  <!-- Filtro de Creditos -->
+                  
+                  <button onclick="ActiveOptions()" class="btn-creditos rounded-5">
+                         Opciones</button>
+
             </span> 
-            <div class=" d-flex flex-wrap justify-content-center align-content-center 
-                  btns-creditos-opciones h-auto " 
+            <div class=" d-flex flex-wrap justify-content-center d-none position-absolute end-0 ms-4 top-0 mt-5 align-content-center 
+                  btns-creditos-opciones h-auto" 
                   style="background-color: #ffffff00; ">
                   <form action="" class="w-" method="get">
 
                         <button class="">
-                              Todos ({{credits_count}})
+                              Activos ({{credits_count}})
                               </button>
                   </form>
-                  <form action="" class=""  method="post">
-                        {% csrf_token %}
-                        <input type="text" class="d-none" name="pendientes" value="true">
-                        <button style="background-color: #ffffff; /* Light green background */
-                  color: #000000; /* Green text */" class="">
-                        Activos ({{pendiente_credit}})
-                  </button>
-            </form>
+      
             <form action="" class="" method="post">
                   {% csrf_token %}
                   <input type="text" class="d-none" name="saldado" value="true">
@@ -256,7 +263,27 @@
                         Finalizados ({{saldado_credit}})
                   </button>
             </form>
+
+            <form action="" class=""  method="post">
+                  {% csrf_token %}
+                        <input type="text" class="d-none" name="pendientes" value="true">
+                        <button style="background-color: #ffe4e4; /* Light green background */
+                  color: #391111; /* Green text */" class="">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                  </svg>  Atrasados ({{pendiente_credit}})
+                  </button>
+            </form>
             </div>
       </div>
 </section>
+
+<script>
+      function ActiveOptions() {
+            const optionsDiv = document.querySelector('.btns-creditos-opciones');
+            optionsDiv.classList.toggle('d-none');
+      }
+</script>
+
+
 {% endblock  %}

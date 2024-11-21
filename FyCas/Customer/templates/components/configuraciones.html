@@ -80,255 +80,104 @@
 }
 
 
+.profile-photo div:hover {
+      background-color: rgba(0, 0, 0, 0.647); 
+      color: rgba(255, 255, 255, 0.611) !important;
+      -webkit-backdrop-filter: blur(4px) !important;
+      backdrop-filter: blur(4px) !important;
+      cursor: pointer; transition: 0.1 !important;
+}
+
+
+
+input[type="checkbox"]:checked {
+      background-color: var(--bg-enfasis) !important;
+      border: none !important;
+}
+
+
 </style>
 
 
-<section class="w-100  h-100 div-conf  top-0 start-0  d-flex overflow-scroll  p-3"
+
+<section class="w-100  h-100 div-conf  top-0 start-0  d-flex overflow-scroll  p-0"
       style="z-index: 0;">
 
 
-      <div class="profile-header " >
+      <div class="profile-header w-100" >
             <div class="cover-photo d-flex" style=" height: 150px; background-size: cover; background-position: center; 
-            background-color: transparent; 
+            background-color: var(--bg-enfasis);  border-radius: 1.9rem;
             border-bottom-left-radius: 2rem;">
             <div class="profile-info  d-flex w-100">
                   <div style="width: 100%; height: 100%;" class=" position-relative">
-                        <div class="profile-photo position-sticky start-0  p-1  " style="margin-top: 5rem; width: 100px; height: 100px; border-radius: 50%; overflow: visible; 
-                        background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);">
-                              {% if setting.Icon.url %}
-                              <img src="{{setting.Icon.url}}" alt="Profile Photo" style="width: 100%; height: 100%; object-fit: cover; "  id="img-profile" class='rounded-circle'>
+                        <div class="profile-photo  position-sticky position-relative bg-white d-flex justify-content-center flex-wrap align-content-center start-0  p-1  " style="margin-top: 5rem; width: 100px; height: 100px; border-radius: 50%; overflow: visible; transition: 0.1s !important;  border: 0px; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); padding: 0.1rem;">
+                              {% if company.Icon.url %}
+                              <img src="{{company.Icon.url}}" alt="Profile Photo" style="width: 60%; height: 60%; object-fit: cover; "  id="img-profile" class='rounded-4'>
+                              <div class='z-3 end-0 change-img w-100 text-center pt-2   d-flex rounded-circle justify-content-center align-content-center flex-wrap'  style="width: 100%; height: 100%;  font-size: 14px;
+                              font-weight: 700;position: absolute; top: 0; left: 0rem;
+                              color: transparent;">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-up-fill m-0  me-1 p-0" style="transition: 0s !important; margin-top: 3px !important;" viewBox="0 0 16 16">
+                                    <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2m2.354 5.146a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0z"/>
+                                  </svg> Imagen
+                              </div>
                               {% endif %}
                         </div>
                   </div>
             </div>
       </div>
-      <div class="profile-name " style="margin-top: 0em; margin-left: 6rem;">
-            <h4 style="font-family: Arial, Helvetica, sans-serif; font-weight: 500;">Grupo Fycas</h4>
+      <div class="profile-name position-relative " style="margin-top: 0em; margin-left: 7rem;">
+            <h5 style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">
+                  {{company.name}}
+            </h5>
+
+
       </div>
+
       
+      {% if configurations %}
+      <div class=" mt-5 w-100  pt-3  w-100 d-flex justify-content-center flex-wrap " data-aos="fade-in" 
+            style=''>
 
+            {% for config in configurations %}
+                  <div class="card m-2  overflow-hidden overflow-scroll" data-aos="fade-right" 
+                        style="transition: 0.5s; width: 22rem; height: 10rem; border-radius: 1.5rem;">
+                        <div class="card-header">  
+                              {{config.svg|safe}}
+                              {{config.name}}
+                        </div>
+                        {% if config.options_configuration.all %}
+                              <div class="card-body">
+                                    {% for option in config.options_configuration.all %}
+                                          <div class="form-check">
 
-      <div class="container mt-4 pt-3  " data-aos="fade-in">
-            <div class="row">
-                  <div class="col-md-4 mb-3">
-                        <div class="card " data-aos="fade-right" style="transition: 1s;">
-                              <div class="card-header"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
-                                    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
-                                    <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
-                                  </svg> Sistema</div>
-                              <div class="card-body">
-                                    <p>Administrar aplicación.</p>
-                                    <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="configOption1">
-                                          <label class="form-check-label" for="configOption1">
-                                                Modo modo oscuro
-                                          </label>
-                                    </div>
-                                    <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="configOption2">
-                                          <label class="form-check-label" for="configOption2">
-                                                Permitir notificaciones
-                                          </label>
-                                    </div>
-                                    <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="configOption3">
-                                          <label class="form-check-label" for="configOption3"> 
-                                                Activar notificaciones de voz
-                                          </label>
-                                    </div>
-                              </div>
-                        </div>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                        <div class="card" data-aos="fade-right"
-                              style="transition: 1s; transition-delay: 0.2s;">
-                              <div class="card-header"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
-                                  </svg> Clientes</div>
-                              <div class="card-body">
-                                    <p>Gestiona la información de los clientes.</p>
-                                    <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="clientesOption1">
-                                          <label class="form-check-label" for="clientesOption1"> Enviar recordatorio  via mensaje </label>
-                                    </div>
-                                    <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="clientesOption2">
-                                          <label class="form-check-label" for="clientesOption2"> Enviar facturas automáticamente via correo </label>
-                                    </div>
-                                    <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="clientesOption3">
-                                          <label class="form-check-label" for="clientesOption3"> Enviar ofertas via mensaje</label>
-                                    </div>
-                              </div>
-                        </div>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                        <div class="card" data-aos="fade-right" style="transition: 1s ; transition-delay: 0.3s;">
-                              <div class="card-header"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
-                                    <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
-                                    <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
-                                  </svg> Calculadora de intereses</div>
-                              <div class="card-body">
-                                    <p>Realiza cálculos financieros facil.</p>
-                                    <div class="d-flex">
-                                          <span style="font-size: 14px;">  Tasa por defecto </span>%
-                                          <input type="text" width="100" value="15" 
-                                                class="rounded-4 border-0 ms-3 w-25 p-1 mt-1 bg-transparent" style="outline: none; height: 1rem;">
-                                    </div> 
-                                    <div class="form-check">
-                                          <input class="form-check-input" checked type="checkbox" id="calculadoraOption2">
-                                          <label class="form-check-label" for="calculadoraOption2">
-                                                Mostrar en el panel lateral
+                                                {% if option.is_checked != None %}
+                                                      <input class="form-check-input" type="checkbox"
+                                                      id="form-check{{option.id}}"
+                                                          {% if option.is_checked %} checked {% endif %}>
 
-                                          </label>
-                                    </div>
-                                    <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="calculadoraOption3">
-                                          <label class="form-check-label" for="calculadoraOption3">
-                                                Activar mediante Shift + command (Alt) +  C      
-                                          </label>
-                                    </div>
+                                                      <label class="form-check-label" for="form-check{{option.id}}"> 
+                                                            {{option.name}}
+                                                      </label>
+                                                       {% else %}
+                                                       <label class="form-check-label" for="form-check{{option.id}}"> 
+                                                             {{option.name}}
+                                                      </label>
+                                                      <span style='font-size: 12px;' class='text-black-50'> {{ option.select_option }} % </span>
+                                                {% endif %}
+                                           
+                                          </div>
+                                    {% endfor %}
                               </div>
-                        </div>
+                        {% endif %}
                   </div>
-                  <div class="col-md-4 mb-3">
-                        <div class="card" data-aos="fade-right" style="transition: 1s ; transition-delay: 0.4s;">
-                              <div class="card-header"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-                                    <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
-                                    <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                                  </svg> Mapas</div>
-                              <div class="card-body">
-                                    <p>Visualiza ubicaciones y rutas en los mapas.</p>
-                                    <div class="form-check">
-                                          <input class="form-check-input" checked type="checkbox" id="mapasOption1">
-                                          <label class="form-check-label" for="mapasOption1">
-                                                Mostrar ubicaciones en el mapa
-                                          </label>
-                                    </div>
-                                    <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="mapasOption2">
-                                          <label class="form-check-label" for="mapasOption2">
-                                                Mostrar rutas en el mapa al selecionar
-                                          </label>
-                                    </div>
-                                    <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="mapasOption3">
-                                          <label class="form-check-label" for="mapasOption3">
-                                                Mostrar buscardor en map      
-                                          </label>
-                                    </div>
-                              </div>
-                        </div>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                        <div class="card" data-aos="fade-right" style="transition: 1s ; transition-delay: 0.5s;"> 
-                              <div class="card-header"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-piggy-bank" viewBox="0 0 16 16">
-                                    <path d="M5 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.138-1.496A6.6 6.6 0 0 1 7.964 4.5c.666 0 1.303.097 1.893.273a.5.5 0 0 0 .286-.958A7.6 7.6 0 0 0 7.964 3.5c-.734 0-1.441.103-2.102.292a.5.5 0 1 0 .276.962"/>
-                                    <path fill-rule="evenodd" d="M7.964 1.527c-2.977 0-5.571 1.704-6.32 4.125h-.55A1 1 0 0 0 .11 6.824l.254 1.46a1.5 1.5 0 0 0 1.478 1.243h.263c.3.513.688.978 1.145 1.382l-.729 2.477a.5.5 0 0 0 .48.641h2a.5.5 0 0 0 .471-.332l.482-1.351c.635.173 1.31.267 2.011.267.707 0 1.388-.095 2.028-.272l.543 1.372a.5.5 0 0 0 .465.316h2a.5.5 0 0 0 .478-.645l-.761-2.506C13.81 9.895 14.5 8.559 14.5 7.069q0-.218-.02-.431c.261-.11.508-.266.705-.444.315.306.815.306.815-.417 0 .223-.5.223-.461-.026a1 1 0 0 0 .09-.255.7.7 0 0 0-.202-.645.58.58 0 0 0-.707-.098.74.74 0 0 0-.375.562c-.024.243.082.48.32.654a2 2 0 0 1-.259.153c-.534-2.664-3.284-4.595-6.442-4.595M2.516 6.26c.455-2.066 2.667-3.733 5.448-3.733 3.146 0 5.536 2.114 5.536 4.542 0 1.254-.624 2.41-1.67 3.248a.5.5 0 0 0-.165.535l.66 2.175h-.985l-.59-1.487a.5.5 0 0 0-.629-.288c-.661.23-1.39.359-2.157.359a6.6 6.6 0 0 1-2.157-.359.5.5 0 0 0-.635.304l-.525 1.471h-.979l.633-2.15a.5.5 0 0 0-.17-.534 4.65 4.65 0 0 1-1.284-1.541.5.5 0 0 0-.446-.275h-.56a.5.5 0 0 1-.492-.414l-.254-1.46h.933a.5.5 0 0 0 .488-.393m12.621-.857a.6.6 0 0 1-.098.21l-.044-.025c-.146-.09-.157-.175-.152-.223a.24.24 0 0 1 .117-.173c.049-.027.08-.021.113.012a.2.2 0 0 1 .064.199"/>
-                                  </svg> Créditos</div>
-                              <div class="card-body">
-                                    <p>Administra los créditos y préstamos.</p>
-                                    <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="creditosOption1">
-                                          <label class="form-check-label" for="creditosOption1">
-                                                Eliminar al finalizar 
-                                          </label>
-                                    </div>
-                                    <div class="form-check">
-                                          <input class="form-check-input" checked type="checkbox" id="creditosOption2">
-                                          <label class="form-check-label" for="creditosOption2">
-                                                Notificar vencimiento
-                                          </label>
-                                    </div>
-                                    <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="creditosOption3">
-                                          <label class="form-check-label" for="creditosOption3">
-                                                Negar créditos a clientes con deudas
-                                          </label>
-                                    </div>
-                              </div>
-                        </div>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                        <div class="card" data-aos="fade-right" style="transition: 1s ; transition-delay: 0.6s;">
-                              <div class="card-header"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat" viewBox="0 0 16 16">
-                                    <path d="M2.678 11.894a1 1 0 0 1 .287.801 11 11 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8 8 0 0 0 8 14c3.996 0 7-2.807 7-6s-3.004-6-7-6-7 2.808-7 6c0 1.468.617 2.83 1.678 3.894m-.493 3.905a22 22 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a10 10 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105"/>
-                                  </svg> Mensajería</div>
-                              <div class="card-body">
-                                    <p>Envía y recibe mensajes.</p>
-                                    <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="mensajeriaOption1">
-                                          <label class="form-check-label" for="mensajeriaOption1">
-                                                Mostrar en linea
-                                          </label>
-                                    </div>
-                                    <div class="form-check    ">
-                                          <input class="form-check-input" type="checkbox" id="mensajeriaOption2">
-                                          <label class="form-check-label" for="mensajeriaOption2">
-                                                Permitir llamadas
-                                          </label>
-                                    </div>
-                                    <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="mensajeriaOption3">
-                                          <label class="form-check-label" for="mensajeriaOption3">
-                                                Mostrar en ventana flotante
-                                          </label>
-                                    </div>
-                              </div>
-                        </div>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                        <div class="card" data-aos="fade-right" style="transition: 1s ; transition-delay: 0.7s;">
-                              <div class="card-header"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
-                                    <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z"/>
-                                  </svg> Inversiones</div>
-                              <div class="card-body">
-                                    <p>Gestiona las inversiones y portafolios.</p>
-                                    <div class="form-check">
-                                          <input class="form-check-input" checked type="checkbox" id="inversionesOption1">
-                                          <label class="form-check-label" for="inversionesOption1">
-                                                Nofificar al generar credito
-                                          </label>
-                                    </div>
-                                    <div class="form-check">
-                                          <input class="form-check-input" checked type="checkbox" id="inversionesOption2">
-                                          <label class="form-check-label" for="inversionesOption2">
-                                                Usuario puede tener acceso a inversiones
-                                          </label>
-                                    </div>
-                   
-                              </div>
-                        </div>
-                  </div>
-                  
-            </div>
-      </div></div>
+            {% endfor %}            
 
+      </div>
+      {% endif %}
 </section>
 
 <script>
 
-window.addEventListener('DOMContentLoaded', () => {
-    const img = document.getElementById('img-profile');
-    const bgPortada = document.querySelector('.cover-photo');
-
-    if (img && bgPortada) {
-        const colorThief = new ColorThief();
-
-        function setBackgroundColor() {
-            const dominantColor = colorThief.getColor(img);
-            bgPortada.style.backgroundColor = `rgb(${dominantColor.join(',')})`;
-        }
-
-        // Si la imagen ya está cargada al momento de ejecutar el script
-        if (img.complete) {
-            setBackgroundColor();
-        } else {
-            // Espera a que cargue la imagen para obtener el color
-            img.addEventListener('load', setBackgroundColor);
-        }
-    }
-});
 
 
       document.querySelectorAll('input[type="checkbox"]').forEach(input => {
@@ -364,6 +213,72 @@ window.addEventListener('DOMContentLoaded', () => {
             });
 
       });
+
+document.querySelector('.change-img').addEventListener('click', () => {
+    const inputFile = document.createElement('input');
+    inputFile.type = 'file';
+    inputFile.accept = 'image/*';
+    inputFile.style.display = 'none';
+
+    inputFile.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+
+       
+
+            const colorThief = new ColorThief();
+            const imgElement = document.createElement('img');
+            imgElement.src = URL.createObjectURL(file);
+            imgElement.onload = () => {
+
+                  const bg_enfasisInput = document.createElement('input');
+            bg_enfasisInput.type = 'text';
+            bg_enfasisInput.name = 'bg_enfasis';
+            const dominantColor = colorThief.getColor(imgElement);
+
+
+                
+            bg_enfasisInput.value = `#${dominantColor.map(c => c.toString(16).padStart(2, '0')).join('')}`;
+                
+
+
+                const formData = new FormData();
+                
+                console.log(bg_enfasisInput.value, 'Siuu');
+                formData.append('image', file);
+                formData.append('bg_enfasis', bg_enfasisInput.value); 
+                
+                // Aquí usamos el valor en lugar del elemento.
+
+
+
+                $.ajax({
+                    url: '/upload-image-url', // Asegúrate de que esta URL sea correcta
+                    type: 'POST',
+                    data: formData,
+                    processData: false, // No procesar los datos
+                    contentType: false, // No establecer el encabezado Content-Type
+                    headers: { 'X-CSRFToken': '{{ csrf_token }}' }, // Token CSRF si usas Django
+                    success: function(response) {
+                        console.log('Imagen subida:', response);
+                            window.location.reload();
+                        // Actualiza la imagen de perfil con la URL devuelta
+                        document.getElementById('img-profile').src = response.image_url;
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error al subir la imagen:', error);
+                    }
+                });
+
+            };
+
+        }
+    });
+
+    document.body.appendChild(inputFile);
+    inputFile.click();
+});
+
 </script>
 
 {% endblock %}

@@ -26,18 +26,23 @@ class Dashboard(TemplateView, Options):
     
     def get(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
-               return redirect(reverse('customer:add-customer'))
+               return redirect(reverse('customer:search-company'))
         return super().get(request, *args, **kwargs)
+        
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
+
+        context['total_inversion'] = total_inversion
+        context['company'] = self.Company()
+        context['customer_count'] = models.Customer.objects.filter(is_active = True, company = self.Company()).count()
+        context['credit_count'] = models.Credit.objects.filter(is_active = True, company = self.Company()).count()
         context['s'] = intcomma(3232)
 
         return context
     
     
-    
+    # Esta vista agrega los clientes de manera externa a la empresa
 class AddCustomer(CreateView, Options):
     model = models.Customer
     form_class = forms.CustomerForm
@@ -46,10 +51,7 @@ class AddCustomer(CreateView, Options):
         
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
-        context['img1'] = self.ImgApp(2)
-        context['img2'] = self.ImgApp(3)
-        context['img3'] = self.ImgApp(4)
+        context['company'] = models.Company.objects.get(id=self.kwargs.get('pk'))
         return context
     
     
@@ -73,6 +75,7 @@ class AddCustomer(CreateView, Options):
         else:
             f = self.form_class(request.POST, request.FILES)
             if f.is_valid():
+                f.instance.company = models.Company.objects.get(id=self.kwargs.get('pk'))
                 f.instance.nacimiento = request.POST.get('date-customer')
                 f.instance.monto_requerido = request.POST.get('form-select-monto')
                 f.instance.fines = request.POST.get('form-select')
@@ -132,32 +135,36 @@ class ListCustomer(ListView,Options):
 
         if self.request.method == 'POST':
             if  self.request.POST.get('noti') != None:
-                context['customer'] = self.model.objects.filter(is_active = True, 
+                context['company'] = self.Company()
+                context['customer'] = self.model.objects.filter(is_active = True, company = self.Company(),
                                     customer_verify = False).order_by('-id')
             if customer != None:                
                 context['customer'] = self.model.objects.filter(id=int(customer))
-                ls = self.model.objects.filter(id=int(customer))
+                context['company'] = self.Company()
+                ls = self.model.objects.filter(id=int(customer),company = self.Company(),)
                 context['true'] = True
                 return context
 
             if count_customer != None:
-                    filter_client = self.model.objects.filter(is_active = True, 
-                                        customer_verify = True,
+                    filter_client = self.model.objects.filter(is_active = True, company = self.Company(),
+                                        customer_verify = True, 
                                     ).order_by('-id')[:int(count_customer)]
                     context['customer'] = filter_client
+                    context['company'] = self.Company()
                     context['count_client'] = int(filter_client.count())
         else:
-            filter_client = self.model.objects.filter(is_active = True, 
+            filter_client = self.model.objects.filter(is_active = True, company = self.Company(),
                                     customer_verify = True ).order_by('-id')[:15]
             context['customer'] = filter_client
+            context['company'] = self.Company()
             context['count_client'] = int(filter_client.count())
         
-        context['customer_ramdon'] = self.model.objects.filter(is_active = True,).order_by('?')[:9]
-        context['setting'] = self.Setting()
+        context['customer_ramdon'] = self.model.objects.filter(is_active = True, company = self.Company(),).order_by('?')[:6]
+        context['company'] = self.Company()
         context['fecha_actual'] =  fecha_actual.strftime("%d / %B / %Y").capitalize()
-        context['customer_count'] = self.model.objects.filter(is_active = True, 
+        context['customer_count'] = self.model.objects.filter(is_active = True, company = self.Company(),
                                     customer_verify = True).count()
-        context['new_customer'] = self.model.objects.filter(is_active = True, 
+        context['new_customer'] = self.model.objects.filter(is_active = True, company = self.Company(),
                                     customer_verify = False).count()
         context['day_pay'] = self.Day15_or_30()
         context['day_pay_2'] = self.Day_Pay()
@@ -222,20 +229,7 @@ class UpdateCustomer(UpdateView, Options):
     def form_valid(self, form_class):
         form_class.save()
         return HttpResponseRedirect(reverse('customer:list-customer')) 
-        # c.last_name = request.POST.get("last_name").title()
-        # c.dni = request.POST.get("dni")
-        # c.number = request.POST.get("number")
-        # c.address = request.POST.get("address")
-        # c.name_r1 = request.POST.get("name_r1")
-        # c.number_r1 = request.POST.get("number_r1")
-        # c.name_r2 = request.POST.get("name_r1")
-        # c.number_r2 = request.POST.get("number_r2")
 
-        # c.work_information = request.POST.get("work_information")
-        # if request.FILES.get("img1"):
-        #     c.img1 = request.FILES.get("img1")
-        # if request.FILES.get("img2"):
-        #     c.img2 = request.FILES.get("img2")
             
         
 
@@ -462,7 +456,7 @@ class DetailCreditCustomer(DetailView, Options):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['credit'] = self.model.objects.get(id=self.kwargs.get('pk'))
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
         context['form'] = forms.PayCreditForm
 
         return context
@@ -482,7 +476,7 @@ class NoApproved(TemplateView, Options):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
         context['img'] = self.ImgApp(5)
         return context
     
@@ -494,7 +488,7 @@ class Approved(TemplateView, Options):
     def get_context_data(self, **kwargs):
         credit = models.Credit.objects.filter(customer__id=self.kwargs.get('pk')).order_by('-id').last()
         context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
         context['c'] = models.Customer.objects.get(id=self.kwargs.get('pk'))
         context['credit'] = credit
         context['img'] = self.ImgApp(1)
@@ -511,7 +505,7 @@ class CreateCustomerDebit(CreateView, Options):
         
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
         # context['form'] = forms.CustomerDebit
         return context
     
@@ -583,6 +577,7 @@ class Mensensajeria(TemplateView, Options):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['company'] = self.Company()
         context['cb'] = models.CustomerDebit.objects.all()
         return context
     
@@ -594,8 +589,7 @@ class Prestamos(ListView, Options):
    
     
         
-
-    
+#Esta vista agrega  a los clientes de manera internar a la empresa 
 class Agregar(CreateView, Options):
     model = models.Customer
     form_class = forms.CustomerForm
@@ -604,10 +598,7 @@ class Agregar(CreateView, Options):
         
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
-        context['img1'] = self.ImgApp(2)
-        context['img2'] = self.ImgApp(3)
-        context['img3'] = self.ImgApp(4)
+        context['company'] = self.Company()
         return context
     
     
@@ -631,6 +622,7 @@ class Agregar(CreateView, Options):
         else:
             f = self.form_class(request.POST, request.FILES)
             if f.is_valid():
+                f.instance.company = models.Company.objects.get(id=self.kwargs.get('pk'))
                 f.instance.nacimiento = request.POST.get('date-customer')
                 f.instance.monto_requerido = request.POST.get('form-select-monto')
                 f.instance.fines = request.POST.get('form-select')
@@ -653,7 +645,7 @@ class Calendario(TemplateView, Options):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
 
         return context
     
@@ -663,6 +655,7 @@ class Ubicaciones(TemplateView, Options):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['company'] = self.Company()
         context['customer'] = self.model.objects.filter(is_active = True, 
                                         customer_verify = True)
         
@@ -707,14 +700,17 @@ class Ubicaciones(TemplateView, Options):
 class Configuraciones(TemplateView, Options):
     template_name = "components/configuraciones.html"
     
-    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['setting'] = self.Setting()
-
+        context['company'] = self.Company()
+        context['configurations'] = models.ConfigurationCompany.objects.filter(is_active=True, company=self.Company())
         return context
+
 from dateutil.relativedelta import relativedelta
 from calendar import monthrange
+
+
+
 class CrearCredito(TemplateView, Options):
     model = models.Cuota  # Define el modelo que se va a crear
     template_name = "customer/crear-credito.html"  # Nombre de la plantilla
@@ -828,7 +824,7 @@ class CrearCredito(TemplateView, Options):
         except models.Credit.DoesNotExist:
             context['error'] = "No se encontró el crédito especificado."
             
-        context['setting'] = self.Setting()
+        context['company'] = self.Company()
         return context
     
     
@@ -893,6 +889,7 @@ class CreateCreditNew(CreateView, Options):
             context = super().get_context_data(**kwargs)
             customer = models.Customer.objects.get(id=self.kwargs.get('pk'))
             context['c'] = customer
+            context['company'] = self.Company()
             return context
 
         def form_valid(self, form_class):
@@ -922,21 +919,52 @@ class ListAllCredits(ListView, Options):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        pendiente_credit = self.model.objects.filter(estado_credito=False).count()
+        pendiente_credit = self.model.objects.filter(estado_credito=False, credito_atrasado=True).count()
         saldado_credit = self.model.objects.filter(estado_credito=True).count()
         credits_count = self.model.objects.all().count()
         context['credits_count'] = credits_count
-        context['all_credits'] = self.model.objects.all()
-        
+        context['all_credits'] = self.model.objects.filter(estado_credito=False).order_by('-id')
         context['pendiente_credit'] = pendiente_credit
         context['saldado_credit'] = saldado_credit
+        context['company'] = self.Company()
         if self.request.method == 'POST':
             print('siuu')
             
             if  self.request.POST.get('pendientes') != None:
-                context['all_credits'] = self.model.objects.filter(estado_credito=False).order_by('-id')
+                context['all_credits'] = self.model.objects.filter(estado_credito=False, credito_atrasado=True).order_by('-id')
             if  self.request.POST.get('saldado') != None:
                 context['all_credits'] = self.model.objects.filter(estado_credito=True).order_by('-id')
         else:
-            context['all_credits'] = self.model.objects.all().order_by('-id')
+            context['all_credits'] = self.model.objects.filter(estado_credito=False).order_by('-id')
         return context
+
+
+
+class Empresa(TemplateView, Options):
+        template_name = "empresa/empresa.html"
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['company'] = self.Company()
+            # context['employees'] = models.Employee.objects.filter(company=self.Company())
+            return context
+
+
+class Calculadora(TemplateView, Options):
+        template_name = "components/clc-extensa.html"
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['company'] = self.Company()
+            # context['employees'] = models.Employee.objects.filter(company=self.Company())
+            return context
+
+
+class SearchCompany(TemplateView, Options):
+        template_name = "components/search-company.html"
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['all_company'] = models.Company.objects.all()
+            # context['employees'] = models.Employee.objects.filter(company=self.Company())
+            return context

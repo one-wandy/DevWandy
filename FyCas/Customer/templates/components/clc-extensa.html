@@ -1,0 +1,65 @@
+{% extends "base/base.html" %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+
+
+
+
+
+      <style>
+
+
+      .btn-calculadora {
+            background-color: var(--bg-enfasis) !important;
+            color: white !important;
+            width: max-content !important;
+      }
+
+      .btn-calculadora img {
+            display: none;
+      }
+
+
+      </style>
+
+
+      <div>
+            <label for="capital">Capital:</label>
+            <input type="number" id="capital" name="capital">
+      </div>
+      <div>
+            <label for="interes">Interés:</label>
+            <input type="number" id="interes" name="interes" step="0.01">
+      </div>
+      <div>
+            <label for="periodo">Periodo de Interés:</label>
+            <select id="periodo" name="periodo">
+                  <option value="52">Semana</option>
+                  <option value="12">Mes</option>
+                  <option value="1">Año</option>
+            </select>
+      </div>
+      <div>
+            <label for="cuotas">Cuotas:</label>
+            <input type="number" id="cuotas" name="cuotas">
+      </div>
+      <button class="btn-calculadora" onclick="calcularFrances()">Calcular</button>
+
+      <script>
+      function calcularFrances() {
+            const capital = parseFloat(document.getElementById('capital').value);
+            const interes = parseFloat(document.getElementById('interes').value) / 100;
+            const periodo = parseInt(document.getElementById('periodo').value);
+            const cuotas = parseInt(document.getElementById('cuotas').value);
+
+            const interesMensual = interes / periodo;
+            const cuotaMensual = capital * interesMensual / (1 - Math.pow(1 + interesMensual, -cuotas));
+
+            alert('La cuota mensual es: ' + cuotaMensual.toFixed(2));
+      }
+      </script>
+
+
+
+{% endblock %}

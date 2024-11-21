@@ -199,6 +199,152 @@ def DeleteCreditAjax(request):
         return JsonResponse({'status': 'success'}, safe=False)
     except models.Credit.DoesNotExist:
         return JsonResponse({'status': 'error', 'message': 'Credit not found'}, safe=False)
+
+
+def CalcularMora(request):
+
+    cuota = models.Cuota.objects.get(id=int(request.GET.get('id')))
+
+    today = datetime.now().date()
+    end_date =  cuota.end_date 
+    days_late = (today - end_date).days
+
+
+
+
+
+    print(cuota.cuota * 0.05, 'Dias de atraso con' , days_late )
+
+
+    return JsonResponse( {'s':0}, safe=False)
+
+
+
+
+def UploadImageURL(request):
+            customer_id = request.GET.get('customer_id')
+            image_url = request.FILES.get('image')
+
+            bg_enfasis = request.POST.get('bg_enfasis')
+
+    
+
+            print(bg_enfasis, 'vamos a ver')
+            company = models.Company.objects.get(user=request.user)
+            company.Icon = image_url
+            company.bg_enfasis = bg_enfasis
+            company.save()
+            return JsonResponse({'status': 'success'}, safe=False)
+ 
+
+            return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, safe=False)
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+
+
+
+
+
+    
+
+
+
+
+import openai
+
+def ChatGPT(request):
+        company = models.Company.objects.get(user=request.user)
+
+        openai.api_key = company.key
+        creditos = models.Credit.objects.filter(company=company, is_active = True)
+        clientes = models.Customer.objects.filter(
+            is_active=True, company=company)
+
+
+        customer_list = []
+        for customer in clientes:
+            customer_info = {
+            'name': customer.name + " " + customer.last_name,
+            'number': customer.number,
+            'ubication': customer.calle_numero + "," + customer.municipio + ',' + customer.sector + ',' + customer.ciudad,
+            'refers': customer.name_r1 + " " + str(customer.number_r1) + " - " + customer.name_r2 + " " + str(customer.number_r2),
+            'dni': customer.dni,
+            'date': customer.day_created,
+
+
+            'credito': list(customer.credit.all()) if customer.credit.all().exists() else None,
+            'creditos': [
+                {
+                    'id': credito.id,
+                    'amount': credito.amount,
+                    'credito_atrasado': credito.credito_atrasado,
+                }
+                for credito in customer.credit.all()
+            ] if customer.credit.all().exists() else None
+
+
+            }
+            customer_list.append(customer_info)
+
+        total_inversion = 0
+        for credito in creditos:
+            total_inversion += credito.amount
+        # Mensaje que envías al modelo
+        mensaje = request.GET.get('message')
+        prompt_sistema = f"""
+        Eres un asistente especializado en finanzas creado para {company.name} Tu tarea principal es gestionar la información financiera de la empresa, te llamaras 
+
+        Siempre mantén actualizada esta información clave:
+        0.Te llamas Soli
+        1. Número total de clientes activos: {clientes.count()}.
+        2. Cantidad de créditos otorgados: {creditos.count()}.
+        3. Ingresos totales de la empresa: 384,333.
+        4. Inversion totale de la empresa: {total_inversion}
+        5.Litado de clientes: {models.Customer.objects.filter(is_active=True, company=company)}
+        6. Infomacion de clientes todas {models.Customer.objects.filter(is_active=True, company=company)}
+        7. Informacion de clientes {customer_list}
+        Reglas:
+        - Proporciona respuestas claras, precisas y basadas en los datos que tienes disponibles.
+       
+        """
+
+        try:
+            respuesta = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": prompt_sistema},
+                    {"role": "user", "content": mensaje}
+                ]
+            )
+            contenido = respuesta["choices"][0]["message"]["content"]
+            print(contenido)  # Muestra la respuesta en consola
+            list_cutomers = []
+
+            dictci = { 
+                'response': contenido,
+                }
+
+            return JsonResponse(dictci,  safe=False)
+
+        except Exception as e:
+            print("Oh!", e)  # Imprime el error si ocurre
+            list_cutomers = []
+
+            dict_customer = { 
+                'id': 1,
+                }
+            list_cutomers.append(dict_customer)
+            return JsonResponse(list_cutomers,  safe=False)
+
+
+
+  
+
+
+=======
+>>>>>>> parent of 6aaefe8 (Agregar funcionalidad de búsqueda con ChatGPT, mejorar la lógica de visualización de resultados y ajustar estilos en las plantillas.)
     
 """"
 from django.shortcuts import render

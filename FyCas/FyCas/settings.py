@@ -22,21 +22,21 @@ CSRF_TRUSTED_ORIGINS = ['https://8000-cs-764470ba-73bf-4820-b736-e9a1023a88b7.cs
 # Application definition
 
 INSTALLED_APPS = [
-    'Maps.apps.MapsConfig',
-    'Customer.apps.CustomerConfig',
-    # Apps OneWandy
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.humanize',
-    
-    'django_twilio', 
-      'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    'MensApp.apps.MensappConfig', # App de Mensajes
+    'Maps.apps.MapsConfig', # App de Mapas
+    'Customer.apps.CustomerConfig', # App de Clientes
+    # Apps create for the one UntalWandy
+    'django.contrib.admin', # App de Administrador
+    'django.contrib.auth', # App de Autenticación
+    'django.contrib.contenttypes', # App de Tipos de Contenido
+    'django.contrib.sessions', # App de Sesiones
+    'django.contrib.messages', # App de Mensajes
+    'django.contrib.staticfiles', # App de Archivos Estáticos
+    'django.contrib.humanize', # App de Humanización
+    'django_twilio',  # App de Twilio
+    'allauth',  # App de Autenticación
+    'allauth.account', # App de Cuentas
+    'allauth.socialaccount', # App de Cuentas Sociales
 ]
 
 MIDDLEWARE = [
