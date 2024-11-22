@@ -103,11 +103,11 @@
 
 <section class="d-flex ms-2">
       <label for="capital"></label>
-<input type="number" class="border-0 rounded-5 p-2" id="capital" placeholder="Ingrese el capital"><br><br>
+<input type="text"  class="border-0 rounded-5 p-2" id="capital" placeholder="Ingrese el capital"><br><br>
 
 
 <div class="input-selec pt-2 ms-3">
-      <label for="cuotas">Cantidad de cuotas</label>
+      <label for="cuotas">Cantidad de cuotas #</label>
       <select class="bg-white" id="cuotas">
             <option value="0">0</option>
             <option value="1">1</option>
@@ -163,10 +163,25 @@ document.querySelectorAll('input, select').forEach(element => {
       element.addEventListener('input', calcular);
 });
 
+      document.getElementById('capital').addEventListener('input', function (e) {
+            let value = e.target.value;
+            value = value.replace(/,/g, ''); // Remove existing commas
+            value = parseFloat(value);
+            if (isNaN(value)) {
+                  e.target.value = '';
+            } else {
+                  e.target.value = value.toLocaleString('en-US'); // Add commas
+            }
+      });
       
     // Función principal
     function calcular() {
-        const capital = parseFloat(document.getElementById('capital').value);
+
+
+
+      let capital = document.getElementById('capital').value;
+      capital = parseFloat(capital.replace(/,/g, ''));
+
         const interes = parseFloat(document.getElementById('interes').value) / 100;
         const tipoTasa = document.getElementById('tipoTasa').value;
         const cuotas = parseInt(document.getElementById('cuotas').value);
@@ -207,7 +222,9 @@ document.querySelectorAll('input, select').forEach(element => {
             minimumFractionDigits: 2, maximumFractionDigits: 2 
       });
 
-        document.getElementById('resultado').innerText = `La cuota es $${resultado}`;
+
+
+      document.getElementById('resultado').innerText = `La cuota es $${resultado}`;
     }
 
     // Amortización Francés
