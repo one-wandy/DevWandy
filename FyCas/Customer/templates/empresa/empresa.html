@@ -14,4 +14,119 @@
 }
       </style>
 
+
+
+      <div class="profile " style="height: 30vh;">
+            <div class="cover-photo" style="background-color: var(--bg-enfasis);
+                  height: 8rem; border-radius: 2rem 2rem 4px 4px;
+                  ">
+            </div>
+            <div class="d-flex flex-wrap top-0  justify-content-center  position-absolute  " 
+                  style="
+                  margin-top: 4.8rem;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  "> 
+                  <div class="profile-photo  bg-white card p-2 d-flex "
+                        style="width: 100px; border-radius: 50%;" >
+                        <img src="{{company.Icon.url}}"   alt="Profile Photo">
+                  </div> 
+                  <div class="profile-name w-100 mt-2 ms-2">
+                        <h1 class="m-0 p-0"> {{company.name}} </h1> 
+                        <span style="font-size: 13px;" class="text-black-50">
+                              {{company.rnc}}
+                        </span>
+                  </div>
+            </div>
+      </div>
+
+
+      <section class="p-2 mt-4">
+
+      <strong >
+            Acuerdos establecidos
+      </strong>
+      <p style="font-size: 13px;">
+            En esta sección se muestran los acuerdos establecidos entre la financiera y el cliente, los cuales son de obligatorio cumplimiento para ambas partes, estos acuerdos son establecidos en el contrato y en el acto notarial, seran firmados digitalmente por ambas partes y por el notario.
+      </p>
+      <section class="d-flex  mt-2 w-100">
+            <div class="card me-2 w-100" style="">
+                  <div class="card-body">
+                    <h5 class="card-title">Contrato</h5>
+                    <h6 class="card-subtitle mb-2 text-muted" >
+                        Estipula los términos del acuerdo entre la financiera y el cliente (monto, tasa de interés, plazos, penalidades)
+                    </h6>
+                    <p class="card-text">
+                        De una parte, <span class="black text-uppercase"> {{company.name}} </span> sociedad constituida conforme a las leyes de la Republica Dominicana, con su domicilio social y asiento principal en la Carretera de Mendoza, esquina 23, Municipio Santo Domingo Este, Provincia Santo Domingo, provista del Registro Nacional del Contribuyente (RNC) número 1-32-42163-9 y del Registro mercantil número 168478PSD, quien en lo adelante en el presente contrato se denominará  <span class="black">GRUPO FYCAS</span> o por su nombre completo.    
+      
+                   </p>
+                       <div class="w-100 d-flex justify-content-start">
+                        <a href="#" class="card-link" style="width: max-content;">
+                              Editar contrato
+                        </a>
+                       </div>
+                  </div>
+            </div>
+
+
+            <div class="card w-100" style="">
+                  <div class="card-body">
+                    <h5 class="card-title">Notarial</h5>
+                    <h6 class="card-subtitle mb-2 text-muted" >
+                        Es un acto formal realizado por un notario, que tiene como propósito autenticar o dar fe de un acuerdo, contrato, declaración o firma, asegurando que lo que se ha dicho o firmado es válido y conforme a la ley
+                    </h6>
+                    <p class="card-text">
+                        En la ciudad de Santo Domingo, República Dominicana, hoy día {{day}} ({{day_number}}) del mes de {{mont}} del año {{year}} ({{year_number}}); POR ANTE MI,<span class="black"> LIC. ALEJANDRO MADE SALVADOR </span>, Notario Público de los del número del Distrito Nacional, Matrícula No. 3242, dominicano, mayor de edad, abogado, titular de la cédula de identidad y electoral número 402-3098169-4, con estudio profesional abierto en la calle Octavio Ciriaco, No. 17, Sector Don Bosco, Distrito Nacional; en el regular ejercicio de mis funciones, y dentro de la jurisdicción a la que pertenezco, ante mí, HA COMPARECIDO, libre y voluntariamente, el o la señor(a), 
+      
+                   </p>
+                        <div class="w-100  text-end justify-content-end d-flex">
+                              <a href="#" class="card-link " 
+                                    style="width: max-content; ">
+                             Editar Notoarial
+                              </a>
+                        </div>
+                  </div>
+            </div>
+      </section>
+
+
+
+
+      </section>
+
+
+
+
+      <style>
+      .card 
+      {
+            border-radius: 1.6rem;
+      }
+      .card-title{}
+      .card-subtitle{
+            font-size: 14px; height: 4rem; overflow: scroll;
+      }
+      .card-text{
+            font-size: 14px; background-color: rgb(237, 237, 237); 
+            border: 10px solid rgb(237, 237, 237);
+            border-radius: 1rem; overflow: scroll;
+            height: 12rem;
+      }
+      .profile {
+            text-align: center;
+
+      }
+
+
+      .profile-photo img {
+            width: 100%; height: 100%;
+      }
+
+      .profile-name h1 {
+            margin-top: 10px;
+            font-size: 24px;
+            color: var(--text-color);
+      }
+      </style>
+
 {% endblock %}

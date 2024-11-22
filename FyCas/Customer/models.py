@@ -308,6 +308,11 @@ class Company(models.Model):
     created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
     rnc = models.CharField(max_length=50, blank=True, null=True, default='')
     #Foto de Cedula tracera
+    direccion = models.CharField( max_length=555, blank=True, null=True, default='')
+    instagrem = models.CharField( max_length=255, blank=True, null=True, default='')
+    facebook = models.CharField( max_length=255, blank=True, null=True, default='')
+    twitter = models.CharField( max_length=255, blank=True, null=True, default='')
+    whatsapp = models.CharField( max_length=255, blank=True, null=True, default='')
 
     # Configuracion de la UI para la compania
     bg_enfasis = models.CharField(blank=True, max_length=233, default='rgb(83, 137, 255)') #color de enfasis de la ui
