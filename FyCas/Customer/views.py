@@ -393,6 +393,7 @@ class UpdateCredit(UpdateView, Options):
         context = super().get_context_data(**kwargs)
         context['c'] = self.model.objects.get(id=self.kwargs.get('pk')).customer 
         context['credit'] = self.model.objects.get(id=self.kwargs.get('pk'))
+        context['company'] = self.Company()
         return context
     
     def form_valid(self, form_class):

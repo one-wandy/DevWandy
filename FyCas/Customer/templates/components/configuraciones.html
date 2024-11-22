@@ -4,7 +4,27 @@
 {% load humanize %}
 
 <style>
-              .btn-configuraciones
+
+@keyframes rotate-stars {
+      0% {
+            transform: rotate(0deg);
+            animation-timing-function: ease;
+
+      }
+
+      100% {
+            transform: rotate(360deg);
+            animation-timing-function: ease;
+
+      }
+}
+
+.bi-stars {
+      animation: rotate-stars 4s infinite;
+}
+
+      
+      .btn-configuraciones
 {
       background-color: var(--bg-enfasis) !important;
       color: white !important;
@@ -125,8 +145,8 @@ input[type="checkbox"]:checked {
                   </div>
             </div>
       </div>
-      <div class="profile-name position-relative " style="margin-top: 0em; margin-left: 7rem;">
-            <h5 style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">
+      <div class="profile-name position-relative " style="margin-top: 5px; margin-left: 7rem;">
+            <h5 style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;font-size: 16px; ">
                   {{company.name}}
             </h5>
 
@@ -135,7 +155,7 @@ input[type="checkbox"]:checked {
 
       
       {% if configurations %}
-      <div class=" mt-5 w-100  pt-3  w-100 d-flex justify-content-center flex-wrap " data-aos="fade-in" 
+      <div class=" mt-5 w-100  pt-4  w-100 d-flex justify-content-center flex-wrap " data-aos="fade-in" 
             style=''>
 
             {% for config in configurations %}
