@@ -1118,12 +1118,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
                         } else {
                               document.getElementById('no-found').classList.remove('d-none')
-                              document.getElementById('no-found').classList.add('text-center')
-                              document.getElementById('no-found').innerHTML = 'No se encontraron resultados'
-
-
-
-                              
+                              document.getElementById('no-found').innerText = 'Preguntar a Soli ' + '(' + search_data.value + ')' 
                         }
                         if (search_data.value === "") {
                               list_data.innerHTML = ''
