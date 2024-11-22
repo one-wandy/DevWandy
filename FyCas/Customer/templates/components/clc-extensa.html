@@ -23,42 +23,99 @@
 
       </style>
 
+<h2>Calculadora de Amortización</h2>
+    
+<label for="capital">Capital:</label>
+<input type="number" id="capital" placeholder="Ingrese el capital"><br><br>
 
-      <div>
-            <label for="capital">Capital:</label>
-            <input type="number" id="capital" name="capital">
-      </div>
-      <div>
-            <label for="interes">Interés:</label>
-            <input type="number" id="interes" name="interes" step="0.01">
-      </div>
-      <div>
-            <label for="periodo">Periodo de Interés:</label>
-            <select id="periodo" name="periodo">
-                  <option value="52">Semana</option>
-                  <option value="12">Mes</option>
-                  <option value="1">Año</option>
-            </select>
-      </div>
-      <div>
-            <label for="cuotas">Cuotas:</label>
-            <input type="number" id="cuotas" name="cuotas">
-      </div>
-      <button class="btn-calculadora" onclick="calcularFrances()">Calcular</button>
+<label for="interes">Interés (%):</label>
+<input type="number" id="interes" placeholder="Ingrese la tasa de interés"><br><br>
 
-      <script>
-      function calcularFrances() {
-            const capital = parseFloat(document.getElementById('capital').value);
-            const interes = parseFloat(document.getElementById('interes').value) / 100;
-            const periodo = parseInt(document.getElementById('periodo').value);
-            const cuotas = parseInt(document.getElementById('cuotas').value);
+<label for="tipoTasa">Tipo de tasa:</label>
+<select id="tipoTasa">
+    <option value="anual">Anual</option>
+    <option value="mensual">Mensual</option>
+    <option value="semanal">Semanal</option>
+</select><br><br>
 
-            const interesMensual = interes / periodo;
-            const cuotaMensual = capital * interesMensual / (1 - Math.pow(1 + interesMensual, -cuotas));
+<label for="cuotas">Número de cuotas:</label>
+<input type="number" id="cuotas" placeholder="Ingrese el número de cuotas"><br><br>
 
-            alert('La cuota mensual es: ' + cuotaMensual.toFixed(2));
-      }
-      </script>
+<label for="tipoAmortizacion">Tipo de Amortización:</label>
+<select id="tipoAmortizacion">
+    <option value="frances">Francés</option>
+    <option value="americano">Americano</option>
+    <option value="interesesFijos">Intereses Fijos</option>
+</select><br><br>
+
+<button onclick="calcular()">Calcular</button>
+<p id="resultado"></p>
+
+<script>
+    // Función principal
+    function calcular() {
+        const capital = parseFloat(document.getElementById('capital').value);
+        const interes = parseFloat(document.getElementById('interes').value) / 100;
+        const tipoTasa = document.getElementById('tipoTasa').value;
+        const cuotas = parseInt(document.getElementById('cuotas').value);
+        const tipoAmortizacion = document.getElementById('tipoAmortizacion').value;
+
+        // Ajustar tasa de interés
+        let interesAjustado;
+        if (tipoTasa === "anual") {
+            interesAjustado = interes / 12; // Convierte anual a mensual
+        } else if (tipoTasa === "mensual") {
+            interesAjustado = interes; // Mantiene mensual
+        } else if (tipoTasa === "semanal") {
+            interesAjustado = interes / 4.33; // Convierte semanal a mensual (aproximación)
+        } else {
+            document.getElementById('resultado').innerText = "Tipo de tasa no válido.";
+            return;
+        }
+
+        // Calcular según el tipo de amortización
+        let resultado;
+        if (tipoAmortizacion === "frances") {
+            resultado = calcularFrances(capital, interesAjustado, cuotas);
+        } else if (tipoAmortizacion === "americano") {
+            resultado = calcularAmericano(capital, interesAjustado, cuotas);
+        } else if (tipoAmortizacion === "interesesFijos") {
+            resultado = calcularInteresesFijos(capital, interesAjustado, cuotas);
+        } else {
+            document.getElementById('resultado').innerText = "Tipo de amortización no válido.";
+            return;
+        }
+
+        document.getElementById('resultado').innerText = `La cuota es: ${resultado.toFixed(2)}`;
+    }
+
+    // Amortización Francés
+    function calcularFrances(capital, interes, cuotas) {
+        return capital * interes / (1 - Math.pow(1 + interes, -cuotas));
+    }
+
+// Amortización Americano
+function calcularAmericano(capital, interes, cuotas) {
+    // El pago de interés es constante
+    const pagoInteres = capital * interes;
+    // El capital completo se devuelve en la última cuota
+    return pagoInteres; // Solo muestra el pago de interés periódico
+}
+
+// Amortización Intereses Fijos
+function calcularInteresesFijos(capital, interes, cuotas) {
+    const pagoInteres = capital * interes; // Interés fijo en cada cuota
+    const pagoCapital = capital / cuotas; // Porción del capital en cada cuota
+    const cuota = pagoInteres + pagoCapital; // Total por cuota
+    return cuota;
+}
+</script>
+
+
+
+
+
+
 
 
 
