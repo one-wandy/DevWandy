@@ -48,29 +48,48 @@
       .card .card-text 
       {
             font-size: 12px;  
+            color: grey;
 
       }
+
+      @keyframes flip-down {
+    0% {
+        transform: rotateX(-90deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+/* Clase que aplicará la animación */
+.flip-down {
+    animation: flip-down 0.3s ease-in forwards;
+    transform-origin: left; /* Punto de rotación */
+    opacity: 0; /* Oculto por defecto */
+}
       </style>
 
 <h2 class="mb-4 p-1">Calculadora de interes extensa</h2>
 
 
-<div class="card-deck d-flex">
+<div class="card-deck d-flex" data-aos="fade-left">
       <div class="card">
             <div class="card-body">
-                  <h5 class="card-title text-center">Amortización Francesa</h5>
+                  <h5 class="card-title ">Amortización Francesa</h5>
                   <p class="card-text">La amortización francesa se caracteriza por tener cuotas constantes a lo largo del tiempo, donde al inicio se paga más interés y menos capital, y al final se paga más capital y menos interés.</p>
             </div>
       </div>
       <div class="card">
             <div class="card-body">
-                  <h5 class="card-title text-center">Amortización Americana</h5>
+                  <h5 class="card-title ">Amortización Americana</h5>
                   <p class="card-text">En la amortización americana, los pagos de interés son constantes durante todo el periodo, y el capital se paga en su totalidad al final del plazo.</p>
             </div>
       </div>
       <div class="card">
             <div class="card-body">
-                  <h5 class="card-title text-center">Amortización de Intereses Fijos</h5>
+                  <h5 class="card-title ">Amortización de Intereses Fijos</h5>
                   <p class="card-text">La amortización de intereses fijos implica pagos de interés constantes en cada cuota, junto con una porción fija del capital, resultando en cuotas decrecientes a lo largo del tiempo.</p>
             </div>
       </div>
@@ -145,7 +164,7 @@
 
 <section class="d-flex ms-2">
       <label for="capital"></label>
-<input type="text"  class="border-0 text-center rounded-5 p-2" id="capital" placeholder="Ingrese el capital"><br><br>
+<input type="text" style="outline: none !important;" class="border-0   text-center rounded-5 p-2" id="capital" placeholder="Ingrese el capital"><br><br>
 
 
 <div class="input-selec pt-2 ms-3">
@@ -267,6 +286,12 @@ document.querySelectorAll('input, select').forEach(element => {
 
 
       document.getElementById('resultado').innerText = `$${resultado}`;
+      
+      document.getElementById('resultado').classList.add('flip-down');
+      setTimeout(() => {
+            document.getElementById('resultado').classList.remove('flip-down');
+      }, 300);
+
     }
 
     // Amortización Francés
