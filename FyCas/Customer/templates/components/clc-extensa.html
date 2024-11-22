@@ -23,7 +23,7 @@
       .input-selec .input-s{
             border: 0px solid var(--bg-enfasis);
             width: 100%; padding: 0.6rem; margin: 0.5rem;
-
+            text-align: center;
             background-color: white;  border-radius: 2rem;
       }
       #interes, #cuotas
@@ -39,9 +39,51 @@
             text-align: center;
             border-radius: 0.8rem;
       }
+
+      .card 
+      {
+            border-radius: 1.7rem; margin: 0.5rem;
+            width: 25rem; border: 0px;
+      }
+      .card .card-text 
+      {
+            font-size: 12px;  
+
+      }
       </style>
 
 <h2 class="mb-4 p-1">Calculadora de interes extensa</h2>
+
+
+<div class="card-deck d-flex">
+      <div class="card">
+            <div class="card-body">
+                  <h5 class="card-title text-center">Amortización Francesa</h5>
+                  <p class="card-text">La amortización francesa se caracteriza por tener cuotas constantes a lo largo del tiempo, donde al inicio se paga más interés y menos capital, y al final se paga más capital y menos interés.</p>
+            </div>
+      </div>
+      <div class="card">
+            <div class="card-body">
+                  <h5 class="card-title text-center">Amortización Americana</h5>
+                  <p class="card-text">En la amortización americana, los pagos de interés son constantes durante todo el periodo, y el capital se paga en su totalidad al final del plazo.</p>
+            </div>
+      </div>
+      <div class="card">
+            <div class="card-body">
+                  <h5 class="card-title text-center">Amortización de Intereses Fijos</h5>
+                  <p class="card-text">La amortización de intereses fijos implica pagos de interés constantes en cada cuota, junto con una porción fija del capital, resultando en cuotas decrecientes a lo largo del tiempo.</p>
+            </div>
+      </div>
+</div>
+
+
+<div>
+      <div class="card rounded-5 d-flex justify-content-center text-center w-100" style="height: 10rem;">
+            <p id="resultado" class="mt-2 ms-2"
+             style="font-size: 18px; font-weight: bold;"> $DOP 0.00</p>
+
+      </div>
+</div>
 
 <section data-aos="fade-in" style="transition: 1s;" class="d-flex w-100 justify-content-around input-selec"> 
       <div class="input-s">
@@ -103,7 +145,7 @@
 
 <section class="d-flex ms-2">
       <label for="capital"></label>
-<input type="text"  class="border-0 rounded-5 p-2" id="capital" placeholder="Ingrese el capital"><br><br>
+<input type="text"  class="border-0 text-center rounded-5 p-2" id="capital" placeholder="Ingrese el capital"><br><br>
 
 
 <div class="input-selec pt-2 ms-3">
@@ -154,11 +196,11 @@
 </section>
 
 <!-- <button onclick="calcular()">Calcular</button> -->
-<p id="resultado" class="mt-2 ms-2">La cuota es $DOP 0.00</p>
 
 <script>
 
 
+document.getElementById('capital').focus();
 document.querySelectorAll('input, select').forEach(element => {
       element.addEventListener('input', calcular);
 });
@@ -224,7 +266,7 @@ document.querySelectorAll('input, select').forEach(element => {
 
 
 
-      document.getElementById('resultado').innerText = `La cuota es $${resultado}`;
+      document.getElementById('resultado').innerText = `$${resultado}`;
     }
 
     // Amortización Francés
