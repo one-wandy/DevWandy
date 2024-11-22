@@ -74,7 +74,7 @@ class AddCustomer(CreateView, Options):
                         mensaje = f"({username} o {password }) " 
                 except User.DoesNotExist:
                     autenticado = False
-                return redirect(reverse('customer:add-customer'))
+                return redirect(reverse('customer:search-company'))
         
         else:
             f = self.form_class(request.POST, request.FILES)
@@ -119,7 +119,7 @@ class ListCustomer(ListView,Options):
     def get(self, request, *args, **kwargs):
         self.convertir_todos_los_campos_credit_a_mayusculas()
         if not request.user.is_authenticated:
-               return redirect(reverse('customer:add-customer'))
+               return redirect(reverse('customer:search-company'))
         return super().get(request, *args, **kwargs)
    
     def convertir_todos_los_campos_credit_a_mayusculas(self):
@@ -394,6 +394,7 @@ class UpdateCredit(UpdateView, Options):
         context = super().get_context_data(**kwargs)
         context['c'] = self.model.objects.get(id=self.kwargs.get('pk')).customer 
         context['credit'] = self.model.objects.get(id=self.kwargs.get('pk'))
+        context['company'] = self.Company()
         return context
     
     def form_valid(self, form_class):

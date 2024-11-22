@@ -6,6 +6,7 @@
 .text2 {
       font-size: 14px;
       color: #737373;
+      font-weight: bold;
 }
 svg{
       color: #8e8e8e;
@@ -103,6 +104,25 @@ svg{
       border: none !important;
 }
 
+
+@keyframes rotate-stars {
+      0% {
+            transform: rotate(0deg);
+            animation-timing-function: ease;
+
+      }
+
+      100% {
+            transform: rotate(360deg);
+            animation-timing-function: ease;
+
+      }
+}
+
+.bi-stars {
+      animation: rotate-stars 4s infinite;
+}
+
 </style>
 
 <!-- <section class="d-flex flex-wrap h-100 bg-danger  justify-content-center  overflow-scroll pb-5 p-1 pt-0 " > -->
@@ -123,7 +143,7 @@ svg{
                         border-radius: 1.5rem;   z-index: 0 !important; background-color: #ffffff !important;
                                     box-shadow: 0px 1px 3px 1px rgba(218, 218, 218, 0.505);" class="w-100 position-relative  p-2 bg-white " >
 
-                                    <button id="{{c.id}}"  onclick='OpenCloseBtn(this.id)' style="background-color: #35333e00; width: 35px; height: 35px; color: #000000 !important; top: 8rem; box-shadow: #eeeeee00 1px 1px 1px 1px; border: 0px solid #a7a7a7 !important; border-style: dotted !important;"   class="rounded-circle  position-absolute border-0  p-0 me-2 mb-2 end-0 d-flex flex-wrap justify-content-center align-content-center ">
+                                    <button id="{{c.id}}"  onclick='OpenCloseBtn(this.id)' style="background-color: #35333e00; width: 35px; height: 35px; color: #000000 !important; top: 8rem; box-shadow: #eeeeee00 1px 1px 1px 1px; border: 0px solid #a7a7a7 !important; border-style: dotted !important;"   class="rounded-circle  position-absolute border-0  p-0 me-2 mb-2 mt-2 end-0 d-flex flex-wrap justify-content-center align-content-center ">
                                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots >" style="margin-top: 10px;" viewBox="0 0 16 16">
                                                 <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
                                           </svg>
@@ -138,7 +158,7 @@ svg{
                                                       filter: blur(90px);
                                                       filter: brightness(80%); "  alt=""> 
                                                       {% else %}
-                                                      <img src="{% static "icons/gallery.png" %}" class="  img-icons object-fit-cover" style="width: 47px; height: 47px; border-radius: 50%; 
+                                                      <img src="{% static "icons/doc(39).png" %}" class="  img-icons object-fit-cover" style="width: 47px; height: 47px; border-radius: 50%; 
                                                       filter: blur(90px);
                                                       filter: brightness(80%); "  alt=""> 
                                                       {% endif %}
@@ -170,8 +190,8 @@ svg{
 
 
                                     
-                                                <span class="d-flex text2 overflow-hidden  w-100 justify-content-end  pe-5" 
-                                                style="font-size: 12px; color: #a6a5a5 !important;">
+                                                <span class="d-flex text2 overflow-hidden  w-100 justify-content-start  pe-5" 
+                                                style="font-size: 12px; color: #737373 !important;">
                                                 
                                                 {% if c.customer_verify == False %} 
                                                 <strong class='text-danger me-2'> (No verificado) </strong>   
@@ -195,7 +215,7 @@ svg{
             height: 2.5rem; outline: none !important; border-radius: 1.5rem!important;
             border: 1px solid rgb(223, 223, 223);"
             class="form-search border-1 text-center w-100 bg-white bottom-0  outline-none  m-0"  
-            placeholder="Busqueda avanzada (ChatGPT)">
+            placeholder="Descubre más, encuentra mejor con Soli!">
             <div class="w-100 d-none text-start"> 
                   <span style="font-size: 12px;" class="text-black-50 ms-2 w-100 text-center">
                         Shift + command + b para activar el chat
@@ -204,7 +224,7 @@ svg{
 
             <!-- Solicitudes -->
 
-          <section class="card btn-sec-cl w-100 rounded-5 p-3 pt-1 mt-3">
+          <section class="card btn-sec-cl w-100 rounded-4 p-3 pt-1 mt-2">
             <h6 class="m-0 p-0 text-black-50 mt-2" style="font-size: 12px;">
                   <!-- Acciones  -->
             </h6>

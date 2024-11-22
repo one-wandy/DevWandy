@@ -3,7 +3,7 @@
     
       .btn-nav 
       {
-            width: 15rem;
+            width: 12rem;
             display: flex;
             flex-wrap: wrap;    
             /* border: rgb(228, 228, 228) 1px solid; */
@@ -12,7 +12,7 @@
       .btn-nav button 
       {
             margin-top: 0.4rem;
-            border-radius: 0.9rem ;
+            border-radius: 0.1rem ;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-weight: 400 !important;
             border-left: none !important;
@@ -37,7 +37,7 @@
             display: flex; 
             justify-content: start;
             align-content: center;
-            border-radius: 1.5rem;
+            border-radius: 1rem;
             border: rgba(227, 227, 227, 0.905) 1px solid;
             color: #000000;
           
@@ -105,11 +105,11 @@
       }
 
 </style>
-<section class="  sec-btn ms-2 me-2   card  mt-1 mb-1 overflow-scroll " 
-      style="border-radius: 2rem;  height: 99vh;
+<section class="  sec-btn ms-2 me-2   card  mt-1 mb-1 border-0 overflow-scroll " 
+      style="border-radius: 0rem;  height: max-content;
 
       ">
-      <div class='btn-nav p-2 pb-2    mt-2  ' data-aos="fade-right" style="transition: 1s;" >
+      <div class='btn-nav  pb-2      ' data-aos="fade-right" style="transition: 1s;" >
             <div class="w-100 d-flex justify-content-center mb-1 mt-1">
                   <!-- <img src="{% static "icons/doc(46).png" %}" 
                   class="mt-2"  width='24' height="24" alt=""> -->
@@ -119,8 +119,28 @@
                          Grupo Fycas 
                   </h5>       -->
             </div>
-            <div class="  pe-3 ps-1  w-100" style=" height: 2.2rem; border-radius: 2rem;">
-                  <div class="d-flex justify-content-center   me-2" style="line-height: 10px;
+            <div class="  pe-3 ps-1  w-100" style=" height: 9rem; border-radius: 0rem;">
+
+                  <div class="position-relative"> 
+                      <div class="d-flex justify-content-center align-content-center flex-wrap" style="background-color: var(--bg-enfasis); height: 2.5rem; 
+                      border-radius: 2rem;" >
+                                 <h6 style="font-size: 14px; font-weight: bold;" class="text-white text-center w-100 p-0 m-0">
+                                    <!-- {{request.user.username}} -->{{company.name}}
+                              </h6>
+                      </div>  
+                      <span class="position-absolute mt-4 d-flex flex-wrap align-content-center justify-content-center top-0 card border-0   p-2 bg-white rounded-circle" 
+                        style="height: 50px; width: 50px;">
+                        {% if company.Icon.url %}
+                        <img src="{{company.Icon.url}}" width="40" height="40"  class="  object-fit-cover  me-1  " style="border: 1px;" alt="">
+                        {% endif %}
+                      </span>
+                      <span>
+                           
+                              <span >
+                      </span>
+                  </div>
+
+                  <div class="d-flex justify-content-center   d-none  me-2" style="line-height: 10px;
 ">
                       <div class="" style="margin-top: 1px;">
                         {% if company.Icon.url %}
@@ -141,7 +161,7 @@
                       </div>
                       
                   </div>
-                  <div class="w-100">
+                  <div class="w-100 d-none">
                         <hr class="me-3 ms-3 text-black-50">
                     </div>
               </div>
@@ -152,7 +172,7 @@
                   </strong>
             </div>
          
-            <a href="{% url "customer:dashboard" %}" class="pt-5 mt-5">
+            <a href="{% url "customer:dashboard" %}" class=" mt-5">
                   <button class="btn-dashboard">
                         <img src="{% static "icons/grafico.png" %}" width='24' alt="">
                         <span class=" text-start">

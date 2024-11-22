@@ -142,12 +142,12 @@
                                                             <!-- <label for="cedula-fast" class="form-label"> 
                                                             Cedula </label> -->
                                                             {% if request.user.is_authenticated %}
-                                                            <input type="text" class="form-control" id="cedula-fast" name="cedula-fast" value="{{request.user.username}}" disabled aria-describedby="cedula-fastHelp" style="   font-size: 14px !important;
+                                                            <input type="text" class="form-control" id="" name="cedula-fast" value="{{request.user.username}}" disabled aria-describedby="cedula-fastHelp" style="   font-size: 14px !important;
                                                             color: rgb(136, 136, 136);
                                                             height: 3rem !important;
                                                             border-radius: 1rem !important;">
                                                             {% else %}
-                                                            <input type="text" class="form-control" id="cedula-fast" name="cedula-fast" placeholder="402-000000-0" aria-describedby="cedula-fastHelp" style="   font-size: 14px !important;
+                                                            <input type="text" class="form-control" id="" name="cedula-fast" placeholder="Nombre de usuario" aria-describedby="cedula-fastHelp" style="   font-size: 14px !important;
                                                             color: rgb(136, 136, 136);
                                                             height: 3rem !important;
                                                             border-radius: 1rem !important;">
@@ -171,16 +171,16 @@
                                                       <div class="mb-3">
                                                             <!-- <label for="numero-fast" class="form-label">Numero</label> -->
                                                             {% if request.user.is_authenticated %}
-                                                            <input type="text" class="form-control" id="numero-fast" 
+                                                            <input type="text" class="form-control" id="" 
                                                             name="numero-fast"
-                                                            placeholder="809-870-7852" disabled value="8**-***-****" style="font-size: 14px !important;
+                                                            placeholder="Contraseña" disabled value="8**-***-****" style="font-size: 14px !important;
                                                             color: rgb(136, 136, 136);
                                                             height: 3rem !important;
                                                             border-radius: 1rem !important;">
                                                                 {% else %}
-                                                                <input type="text" class="form-control" id="numero-fast" 
+                                                                <input type="text" class="form-control" id="" 
                                                                 name="numero-fast"
-                                                                placeholder="809-870-7852" style="font-size: 14px !important;
+                                                                placeholder="Contraseña" style="font-size: 14px !important;
                                                                 color: rgb(136, 136, 136);
                                                                 height: 3rem !important;
                                                                 border-radius: 1rem !important;">
