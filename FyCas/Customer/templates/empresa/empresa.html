@@ -16,38 +16,41 @@
 
 
 
-      <div class="profile " style="height: 30vh;">
-            <div class="cover-photo" style="background-color: var(--bg-enfasis);
-                  height: 8rem; border-radius: 2rem 2rem 4px 4px;
+      <div  data-aos="fade-down" class="profile " style="height: 30vh; transition: 1s ease-out;">
+            <div class="cover-photo" style="
+            /* background-color: var(--bg-enfasis); */
+            background-image: url({{company.Icon.url}});
+            filter: brightness(0.9);
+                  height: 8rem; border-radius: 2rem 2rem 20px 20px;
                   ">
             </div>
-            <div class="d-flex flex-wrap top-0  justify-content-center  position-absolute  " 
+            <div  class="d-flex flex-wrap top-0  justify-content-center  position-absolute  " 
                   style="
                   margin-top: 4.8rem;
                   left: 50%;
                   transform: translateX(-50%);
                   "> 
                   <div class="profile-photo  bg-white card p-2 d-flex "
-                        style="width: 100px; border-radius: 50%;" >
-                        <img src="{{company.Icon.url}}"   alt="Profile Photo">
+                        style="width: 100px; height: 100px; border-radius: 50%;" >
+                        <img src="{{company.Icon.url}}"   alt="Profile Photo" class="rounded-circle object-fit-cover">
                   </div> 
                   <div class="profile-name w-100 mt-2 ms-2">
                         <h1 class="m-0 p-0"> {{company.name}} </h1> 
                         <span style="font-size: 13px;" class="text-black-50">
-                              {{company.rnc}}
+                              {{company.description}}
                         </span>
                   </div>
             </div>
       </div>
 
 
-      <section class="p-2 mt-4">
+      <section data-aos="fade-up" class="p-2 mt-5 pt-5">
 
       <strong >
             Acuerdos establecidos
       </strong>
-      <p style="font-size: 13px;">
-            En esta sección se muestran los acuerdos establecidos entre la financiera y el cliente, los cuales son de obligatorio cumplimiento para ambas partes, estos acuerdos son establecidos en el contrato y en el acto notarial, seran firmados digitalmente por ambas partes y por el notario.
+      <p style="font-size: 12px;" class="text-black-50">
+             Estos acuerdos son establecidos en el contrato y en el acto notarial, que seran firmados digitalmente por ambas partes y por el notario.
       </p>
       <section class="d-flex  mt-2 w-100">
             <div class="card me-2 w-100" style="">
@@ -80,7 +83,7 @@
       
                    </p>
                         <div class="w-100  text-end justify-content-end d-flex">
-                              <a href="#" class="card-link " 
+                              <a href="#" class="card-link  " 
                                     style="width: max-content; ">
                              Editar Notoarial
                               </a>
@@ -101,17 +104,28 @@
       .card 
       {
             border-radius: 1.6rem;
+            border: 0px;
       }
-      .card-title{}
+      .card-title{
+            font-size: 14px; font-weight: bold;
+      }
       .card-subtitle{
-            font-size: 14px; height: 4rem; overflow: scroll;
+            font-size: 12px; height: 4rem; overflow: auto;
       }
       .card-text{
-            font-size: 14px; background-color: rgb(237, 237, 237); 
-            border: 10px solid rgb(237, 237, 237);
-            border-radius: 1rem; overflow: scroll;
-            height: 12rem;
+            font-size: 12px; background-color: #f5f5f5; 
+            border: 10px solid #f5f5f5;
+            overflow: auto;
+            border-radius: 1rem; 
+            height: 8rem;
+            text-align: justify;
       }
+
+      .card-link {
+            font-size: 12px !important; color: rgb(109, 109, 109);
+            font-weight: bold;
+      }
+
       .profile {
             text-align: center;
 

@@ -95,7 +95,7 @@
 .chat-header {
       display: flex;
       align-items: center;
-      padding: 17px;
+      padding: 10px;
       border-bottom: 1px solid #ddd;
 }
 
@@ -123,13 +123,13 @@
 }
 
 .message.received p {
-      background-color: #f1f1f1;
+      background-color: #b3b3b349;
       align-self: flex-start;
 }
 
 .message.sent p {
       /* background-color: var(--bg-enfasis); */
-      background-color: #dcf8c6;
+      background-color: #c6c6c64a;
       color: rgb(44, 44, 44); 
       align-self: flex-end;
       padding-top: 10px;
@@ -174,7 +174,7 @@
 
 
 
-      <div class="whatsapp-container">
+      <div  class="whatsapp-container">
             <div class="chat-window  rounded-5 overflow-hidden">
                   <div class="chat-header" 
                         style="background-color: var(--bg-enfasis); 
@@ -185,8 +185,12 @@
                         </span>
                         <span class="text-white" style="font-weight: bold;">Nicolas De Jesus Armando</span>
                   </div>
-                  <div class="messages d-flex">
-                        <section class="w-100 d-flex flex-wrap align-content-end">
+                  <div class="messages d-flex p-0" 
+                        style="  background-image: url({% static "img-static/Fondo.jpg" %});" >
+                        <section class="w-100 d-flex p-3  bg-white bg-opacity-50 flex-wrap align-content-end" 
+                              style="
+                                 -webkit-backdrop-filter: blur(50px) !important;
+                                 backdrop-filter: blur(50px) !important;"  >
                               <div class='d-flex'>
                                     <div class="message received">
                                           <p class="w-100 " style="border-radius: 1.5rem; border-top-left-radius: 0rem;">Received message</p>
@@ -202,8 +206,8 @@
                                                 <span class="time text-end me-2  mb-1 position-absolute bottom-0 end-0 ">10:01 AM</span>
                                           </div>
                                    </div>
-                                   <div class="message-input w-100 border-0 position-sticky bottom-0">
-                                    <input type="text" placeholder="Escribe mensaje" class="rounded-5 input-ms">
+                                   <div class="message-input w-100 border-0 d-flex justify-content-center position-sticky bottom-0">
+                                    <input type="text" placeholder="Escribe mensaje" class="rounded-5 input-ms" style="max-width: 40rem;">
                                     <button class="send-btn d-none rounded-circle">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-send-fill m-0 p-0 " viewBox="0 0 16 16">
                                           <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z"/>
@@ -212,7 +216,7 @@
                               </div>
                         </section>
                         <!-- Repeat message div for more messages -->
-                       <section class="align-content-end w-25 ">
+                       <section class="align-content-end d-none w-25 ">
                         <div class="sidebar card shadow w-100">
                               <div class="search-bar">
                                     <input type="text" placeholder="Buscar chat" class="rounded-5">

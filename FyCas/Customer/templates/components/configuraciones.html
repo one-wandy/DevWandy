@@ -125,14 +125,18 @@ input[type="checkbox"]:checked {
 
 
       <div class="profile-header w-100" >
-            <div class="cover-photo d-flex" style=" height: 150px; background-size: cover; background-position: center; 
-            background-color: var(--bg-enfasis);  border-radius: 1.9rem;
+            <div class="cover-photo d-flex" style=" height: 150px;
+
+            filter: brightness(0.9) ;
+            background-image: url({{company.Icon.url}});
+            /* background-color: var(--bg-enfasis);   */
+            border-radius: 1.9rem;
             border-bottom-left-radius: 2rem;">
             <div class="profile-info  d-flex w-100">
                   <div style="width: 100%; height: 100%;" class=" position-relative">
                         <div class="profile-photo  position-sticky position-relative bg-white d-flex justify-content-center flex-wrap align-content-center start-0  p-1  " style="margin-top: 5rem; width: 100px; height: 100px; border-radius: 50%; overflow: visible; transition: 0.1s !important;  border: 0px; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); padding: 0.1rem;">
                               {% if company.Icon.url %}
-                              <img src="{{company.Icon.url}}" alt="Profile Photo" style="width: 60%; height: 60%; object-fit: cover; "  id="img-profile" class='rounded-4'>
+                              <img src="{{company.Icon.url}}" alt="Profile Photo" style="width: 90%; height: 90%; object-fit: cover; "  id="img-profile" class='rounded-circle'>
                               <div class='z-3 end-0 change-img w-100 text-center pt-2   d-flex rounded-circle justify-content-center align-content-center flex-wrap'  style="width: 100%; height: 100%;  font-size: 14px;
                               font-weight: 700;position: absolute; top: 0; left: 0rem;
                               color: transparent;">
@@ -147,7 +151,7 @@ input[type="checkbox"]:checked {
       </div>
       <div class="profile-name position-relative " style="margin-top: 5px; margin-left: 7rem;">
             <h5 style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;font-size: 16px; ">
-                  {{company.name}}
+                  <!-- {{company.name}} -->
             </h5>
 
 
