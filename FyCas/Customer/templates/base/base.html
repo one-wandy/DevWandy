@@ -666,7 +666,8 @@ select option {
 
 
 
-background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+/* background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%); */
+/* background-image: linear-gradient(to top, #dfe9f3 0%, white 100%); */
 
 /* background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); */
  background-blend-mode: screen;
@@ -675,16 +676,18 @@ background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
 ">
 
             
-            <div class="nav-2" style=" display: none;
-            width: 17rem; border-radius: 0rem !important; height: max-content; border-color: #e9e9e900 !important;">
+            <div class="nav-2 pt-1" style=" display: none;
+            width: 14rem; border-radius: 0rem !important; height: max-content; border-color: #e9e9e900 !important;">
                   <div style="height: max-content;" class="mb-3">
                         {% include "components/btn-nav.html" %}
                   </div>
             </div>
     
 
-            <div style="display: flex; border-radius: 1rem !important; min-width: 300px; width: 100%; max-height: 99vh;  " 
-            class="w-100 overflow-hidden  border-top-1 mb-2 me-1 mt-1 mb-3 border-end-1 border-bottom-1  pe-0   flex-wrap justify-content-center" >
+            <div style="display: flex; border-radius: 1.8rem !important; min-width: 300px; width: 100%; max-height: 99vh;
+      background-color: #f5f5f5;
+            " 
+            class="w-100 overflow-hidden p-1  position-relative    border-top-1 mb-2 me-1 mt-1 mb-3 border-end-1 border-bottom-1     flex-wrap justify-content-center"  >
                  <section class="  w-100  h-100 overflow-hidden" style="border-color: #d9d9d9 !important; 
               ">
                   {% block content %}
@@ -1115,7 +1118,12 @@ window.addEventListener("DOMContentLoaded", function() {
 
                         } else {
                               document.getElementById('no-found').classList.remove('d-none')
-                              document.getElementById('no-found').innerText = 'Preguntar a Soli ' + '(' + search_data.value + ')' 
+                              document.getElementById('no-found').classList.add('text-center')
+                              document.getElementById('no-found').innerHTML = 'No se encontraron resultados'
+
+
+
+                              
                         }
                         if (search_data.value === "") {
                               list_data.innerHTML = ''
