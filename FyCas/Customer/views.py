@@ -973,3 +973,53 @@ class SearchCompany(TemplateView, Options):
             context['all_company'] = models.Company.objects.all()
             # context['employees'] = models.Employee.objects.filter(company=self.Company())
             return context
+
+
+
+class SelecForm(CreateView, Options):
+    model = models.Customer
+    form_class = forms.CustomerForm
+    template_name = "components/select-form.html"
+        
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['company'] = self.Company()
+        return context
+    
+    
+    def post(self, request, *args, **kwargs):
+        if request.POST.get('cedula-fast') != None:
+                username = request.POST.get("cedula-fast")
+                password = request.POST.get("numero-fast")
+                try:
+                    user = authenticate(username=username, password=password,)
+                    print(user)
+                    if user is not None:
+                        login(request, user)
+                        return redirect(reverse('customer:agregar'))
+                    else:
+                        autenticado = False
+                        mensaje = f"({username} o {password }) " 
+                except User.DoesNotExist:
+                    autenticado = False
+                return redirect(reverse('customer:add-customer'))
+        
+        else:
+            f = self.form_class(request.POST, request.FILES)
+            if f.is_valid():
+                f.instance.company = models.Company.objects.get(id=self.kwargs.get('pk'))
+                f.instance.nacimiento = request.POST.get('date-customer')
+                f.instance.monto_requerido = request.POST.get('form-select-monto')
+                f.instance.fines = request.POST.get('form-select')
+                print(request.POST.get('form-select-sexo'))
+                f.instance.sexo =  request.POST.get('form-select-sexo')
+                f.instance.name = f.instance.name.title()
+                f.instance.last_name = f.instance.last_name.title()
+                f.instance.municipio = request.POST.get('form-select-muni')
+                f.save()
+                # Creando Carpeta para el Cliente
+                self.FileCreate(f.instance.name, f.instance.last_name)
+                return redirect(reverse('maps:maps-customer'))
+            else:
+                return redirect(reverse('customer:add-customer'))

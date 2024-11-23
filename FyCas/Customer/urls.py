@@ -54,7 +54,7 @@ urlpatterns = [
 
       path('search-company', views.SearchCompany.as_view(), name='search-company'),
 
-
+      path('select-form', views.SelecForm.as_view(), name='select-form'),
 
 
       # Views Ajax``
