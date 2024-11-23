@@ -52,27 +52,15 @@
       .card .card-text 
       {
             font-size: 12px;  
-            color: grey;
+            color: grey; text-align: justify;
 
       }
 
-      @keyframes flip-down {
-    0% {
-        transform: rotateX(-90deg);
-        opacity: 0;
-    }
-    100% {
-        transform: rotateX(0deg);
-        opacity: 1;
-    }
+.sec-moras label
+{
+      font-size: 12px; color: grey; font-weight: bold;
 }
 
-/* Clase que aplicará la animación */
-.flip-down {
-    animation: flip-down 0.3s ease-in forwards;
-    transform-origin: left; /* Punto de rotación */
-    opacity: 0; /* Oculto por defecto */
-}
       </style>
 
 
@@ -100,15 +88,6 @@
       </div>
 </div>
 
-
-<div>
-      <div class="card rounded-5 d-flex justify-content-center text-center w-100" style="height: 13rem;">
-            <p class="mt-0 text-black-50" style="font-size: 12px; font-weight: bold;">Cuota correspondiente</p>
-            <p id="resultado" class=" m-0"
-             style="font-size: 18px; font-weight: bold;"> $DOP 0.00</p>
-
-      </div>
-</div>
 
 <section data-aos="fade-in" style="transition: 1s;" class="d-flex w-100 justify-content-around input-selec"> 
       <div class="input-s text-center">
@@ -168,13 +147,23 @@
       </div>
 </section>
 
+<div>
+      <div class="card rounded-5 d-flex justify-content-center text-center w-100" style="height: 13rem;">
+            <p class="mt-0 text-black-50 text-descritivo" style="font-size: 12px; font-weight: bold;">Cuota correspondiente</p>
+            <p id="resultado" class=" m-0"
+             style="font-size: 18px; font-weight: bold;"> $DOP 0.00</p>
+
+      </div>
+</div>
+
+
 <section class="d-flex ms-2 mt-3">
       <label for="capital"></label>
 <input type="text" style="outline: none !important;" class="border-0   text-center rounded-5 p-2" id="capital" placeholder="Ingrese el capital"><br><br>
 
 
 <div class="input-selec pt-2 ms-3">
-      <label for="cuotas">Cantidad de cuotas #</label>
+      <label for="cuotas">Cuotas #</label>
       <select class="bg-white text-black border-0 ps-2 text-center" id="cuotas">
             <option value="0">0</option>
             <option value="1">1</option>
@@ -219,6 +208,119 @@
 </div>
 
 </section>
+
+
+
+<div class="mt-4">
+      <strong class="mt-4 pt-4 ps-3">
+            Seccion para calculos de moras
+      </strong>
+</div>
+<section class="d-flex  mt-3 sec-moras">
+      <div class="input-s text-center">
+            <label for="precioCuota">Cuota</label>
+            <input type="text" style="outline: none !important;" class="border-0 text-center rounded-5 p-2" id="precioCuota" placeholder="Precio">
+      </div>
+      <div class="input-s ms-3 text-center">
+            <label for="diasAtraso">Días de Atraso</label>
+            <input type="number" style="outline: none !important;" value="15" class="border-0 text-center rounded-5 p-2" id="diasAtraso" placeholder="Ingrese  días  atraso">
+      </div>
+      <div class="input-s ms-3 text-center">
+            <label for="porcentajeMora">Mora %</label>
+            <input type="number" style="outline: none !important;" value="15" class="border-0 text-center rounded-5 p-2" id="porcentajeMora" placeholder="Ingrese el porcentaje de mora">
+      </div>
+      <div class="input-s ms-3 text-center">
+            <label for="diaMes" class="label-mes">Días del Mes</label>
+            <input type="number" style="outline: none !important;" class="border-0 text-center rounded-5 p-2" id="diaMes" placeholder="Ingrese el día del mes">
+      </div>
+
+</section>
+<div class="card rounded-4 bg-transparent d-flex justify-content-start text-start ps-2"
+      style="width: max-content;" >
+ 
+      <p id="total-mora" class=" m-0 text-black-50"
+      style="font-size: 14px; font-weight: bold;">Total a pagar $DOP 0.00</p>
+      <p id="resultado-mora" class=" m-0 text-black-50"
+       style="font-size: 14px; font-weight: bold;">Mora $DOP 0.00</p>
+
+</div>
+
+
+<script>
+      function calcularMora() {
+            const precioCuota = parseFloat(document.getElementById('precioCuota').value.replace(/,/g, ''));
+            const porcentajeMora = parseFloat(document.getElementById('porcentajeMora').value) / 100;
+            const diaMes = parseInt(document.getElementById('diaMes').value);
+            const diasAtraso = parseInt(document.getElementById('diasAtraso').value);
+      
+            // Validación de campos
+   
+      
+            // Fórmula ajustada con paréntesis para mantener el orden correcto
+            const mora = (precioCuota * porcentajeMora * diasAtraso) / diaMes;
+            const totalConMora = precioCuota + mora;
+
+            if (isNaN(mora) || mora === null) {
+          mora = 0;
+      }
+
+
+            if (isNaN(totalConMora) || totalConMora === null) {
+          totalConMora = 0;
+      }
+
+      
+                // Mostrar resultado
+            document.getElementById('resultado-mora').innerText = 'Mora $' + mora.toLocaleString('us', { 
+                  style: 'currency', currency: 'DOP', 
+                  minimumFractionDigits: 2, maximumFractionDigits: 2 
+            });
+            // Mostrar resultado
+            document.getElementById('total-mora').innerText =  'Total a pagar $' + totalConMora.toLocaleString('us', { 
+                  style: 'currency', currency: 'DOP', 
+                  minimumFractionDigits: 2, maximumFractionDigits: 2 
+            });
+      
+
+
+      }
+
+
+
+            const fechaActual = new Date();
+            const mes = fechaActual.getMonth() + 1; // Mes actual (0-11, por eso sumamos 1)
+            const año = fechaActual.getFullYear();
+            const diasEnMes = new Date(año, mes, 0).getDate(); // Obtiene el último día del mes
+
+            document.getElementById('diaMes').value = diasEnMes;
+
+
+                  const meses = [
+                        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+                  ];
+                  const nombreMes = meses[fechaActual.getMonth()];
+                  document.querySelector('.label-mes').innerText = `Días de ${nombreMes}`;
+
+
+
+            document.querySelectorAll('input, select').forEach(element => {
+            element.addEventListener('input', calcularMora);
+      });
+
+      document.getElementById('precioCuota').addEventListener('input', function (e) {
+            let value = e.target.value;
+            value = value.replace(/,/g, ''); // Remove existing commas
+            value = parseFloat(value);
+            if (isNaN(value)) {
+                  e.target.value = '';
+            } else {
+                  e.target.value = value.toLocaleString('en-US'); // Add commas
+            }
+      });
+
+      </script>
+
 
 <!-- <button onclick="calcular()">Calcular</button> -->
 
@@ -297,6 +399,8 @@ document.querySelectorAll('input, select').forEach(element => {
       setTimeout(() => {
             document.getElementById('resultado').classList.remove('flip-down');
       }, 300);
+
+      document.querySelector('.text-descritivo').innerText = 'Cuota correspondiente';
 
     }
 
