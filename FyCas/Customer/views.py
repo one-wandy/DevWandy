@@ -721,6 +721,7 @@ class CrearCredito(TemplateView, Options):
     template_name = "customer/crear-credito.html"  # Nombre de la plantilla
 
     def post(self, request, *args, **kwargs):   
+        self.RunCreditValidate()
         credit = models.Credit.objects.get(id=self.kwargs.get('pk'))
         capital = int(credit.amount)
         tasa = int(credit.tasa)
@@ -732,6 +733,7 @@ class CrearCredito(TemplateView, Options):
     
     
     def Calculadora_Francesa(self, capital, tasa, plazo, credit):
+        self.RunCreditValidate()
         if tasa != 0:
             pass
         else:
@@ -824,6 +826,7 @@ class CrearCredito(TemplateView, Options):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         print(self.FiltrarCreditosAtrasados(), 'Siuu')
+        self.RunCreditValidate()
         try:
                     models.Credit.objects.get(id=self.kwargs.get('pk'))
                     credit =  models.Credit.objects.get(id=self.kwargs.get('pk'))
