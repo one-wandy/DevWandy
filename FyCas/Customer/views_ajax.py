@@ -367,6 +367,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from calendar import monthrange
 
+
 def migrar_contactos(request):
     # Leer contactos de la base de datos
     contactos = Contacto.objects.all()
@@ -394,3 +395,6 @@ def migrar_contactos(request):
     return render(request, 'contacto/migracion_exitosa.html')
 
 """""
+
+
+# Calculo de mora cada dia a las 1 am

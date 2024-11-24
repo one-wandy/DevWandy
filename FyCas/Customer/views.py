@@ -783,10 +783,47 @@ class CrearCredito(TemplateView, Options):
 
             return 'Creado'
 
+    def FiltrarCreditosAtrasados(self):
+        today = datetime.now().date()
+        
+        creditos_atrasados = models.Credit.objects.filter(credito_atrasado=True)
+
+        cuotas_vencidas = []
+
+        # Convertir la tasa mensual de porcentaje a decimal
+     
+
+        for credito in creditos_atrasados:
+            cuotas = models.Cuota.objects.filter(credito=credito, end_date__lt=today)
+
+            for cuota in cuotas:
+                tasa_decimal = cuota.credito.tasa / 100
+
+                dias_mes = monthrange(cuota.end_date.year, cuota.end_date.month)[1]
+
+                dias_atraso = (today - cuota.end_date).days
+
+                cuota_fija = int(cuota.credito.amount_feed) + 1
+                # Calcular la mora
+                mora = ( cuota_fija * tasa_decimal) / dias_mes * dias_atraso
+
+                cuota.dias_en_atraso = dias_atraso
+                # Total con mora
+                cuota.mora = mora
+                cuota.cuota = cuota_fija + mora
+                cuota.save()
+                total_con_mora = int(cuota.cuota + mora)
+                print(total_con_mora, 'Moras', dias_atraso)
+
+
+            cuotas_vencidas.extend(cuotas)
+        
+        return creditos_atrasados, cuotas_vencidas
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        
+        print(self.FiltrarCreditosAtrasados(), 'Siuu')
         try:
                     models.Credit.objects.get(id=self.kwargs.get('pk'))
                     credit =  models.Credit.objects.get(id=self.kwargs.get('pk'))
