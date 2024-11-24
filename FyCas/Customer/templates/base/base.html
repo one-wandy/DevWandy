@@ -483,6 +483,41 @@ select option {
       backdrop-filter: blur(40px) !important;
     transform-origin: left; /* Punto de rotación */
 }
+
+@keyframes flip-up {
+    0% {
+        transform: rotateX(90deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+.flip-up {
+    animation: flip-up 0.3s ease-out ;
+    transform-origin: top; /* Punto de rotación */
+    opacity: 1; /* Oculto por defecto */
+}
+@keyframes rotate-stars {
+      0% {
+            transform: rotate(0deg);
+            animation-timing-function: ease;
+
+      }
+
+      100% {
+            transform: rotate(360deg);
+            animation-timing-function: ease;
+
+      }
+}
+
+.bi-stars {
+      animation: rotate-stars 4s infinite;
+}
+
     /* Improving visualization in light mode */
   </style>
 
@@ -695,6 +730,32 @@ select option {
                  </section>
             </div>
             
+            <!-- Soli IA -->
+            <section id="container-ia" class=" d-none  bg-white bg-opacity-10 d-flex flex-wrap justify-content-center align-content-center rounded-0 position-absolute top-0 z-3 vh-100 w-100" style="     
+             -webkit-backdrop-filter: blur(20px) !important;
+      backdrop-filter: blur(20px) !important; ">
+            <div class="bg-white bg-opacity-75 d-flex align-content-end shadow flex-wrap" 
+            style="width: 50rem; height: 26rem; border-radius: 2rem;
+            border: #e6e6e6 solid 1px; ">
+
+         
+
+                  <div class="w-100 d-flex justify-content-center h-75 " >
+                        <p id="response-ia" class="text-center text-black-50    rounded-5 p-3" style="width: 40rem;  text-align: justify; "> Soy un asistente virtual, ¿En que puedo ayudarte?
+                   
+                        </p>
+                  </div>
+                  <div class="d-flex justify-content-center w-100 h-10">
+                        <textarea class="bg-black mb-2 bg-opacity-10 d-flex flex-wrap align-content-center text-black p-1 text-center" id="send-data-ia" placeholder="¿Que necesitas?" 
+                        style="border: #dedede solid 0px; width: 49rem; border-radius: 1.5rem; 
+                        outline: none;"></textarea>
+      
+                  </div>
+                  
+            </div>
+            </section>
+
+
           </section>
        
             
@@ -1140,6 +1201,63 @@ window.addEventListener("DOMContentLoaded", function() {
 });
 
 
+
+document.addEventListener('keydown', function(event) {
+      if (event.shiftKey && event.metaKey && event.key === 'g') {
+            toggleContainerIA()
+      }
+});
+
+        // Detectar cuando se presiona una tecla
+document.addEventListener("keydown", function(event) {
+
+      if (event.key === 'Enter') {
+            // Llama a la función que deseas ejecutar al presionar Enter
+
+            if (document.getElementById('send-data-ia').value.length > 2) {
+                  sendDataToIA();
+            }
+
+
+      }
+});
+
+function sendDataToIA() {
+      // Tu lógica para enviar datos a IA
+      $.ajax({
+            url: '/chatgpt',
+            data: {
+                  message: document.getElementById('send-data-ia').value,
+            },
+            success: function(data) {
+                  document.getElementById('response-ia').innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">
+                        <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
+                        </svg>
+                        ${data.response}
+                  `;
+            }
+      });
+}
+
+document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+            toggleContainerIA();
+      }
+});
+
+
+function toggleContainerIA() {
+      const containerIA = document.getElementById('container-ia');
+      if (containerIA.classList.contains('d-none')) {
+            containerIA.classList.remove('d-none');
+            containerIA.classList.add('flip-up');
+            document.getElementById('send-data-ia').focus();
+      } else {
+            containerIA.classList.add('d-none');
+            containerIA.classList.remove('flip-up');
+      }
+}
 
 
 

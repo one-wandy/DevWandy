@@ -231,7 +231,7 @@
       </div>
       <div class="input-s ms-3 text-center">
             <label for="diaMes" class="label-mes">Días del Mes</label>
-            <input type="number" style="outline: none !important;" class="border-0 text-center rounded-5 p-2" id="diaMes" placeholder="Ingrese el día del mes">
+            <input type="text" disabled  style="outline: none !important;" class="border-0 text-center rounded-5 p-2" id="diaMes" placeholder="Ingrese el día del mes">
       </div>
 
 </section>
@@ -294,6 +294,8 @@
 
             document.getElementById('diaMes').value = diasEnMes;
 
+            document.getElementById('diaMes').min = diasEnMes;
+            document.getElementById('diaMes').max = diasEnMes;
 
                   const meses = [
                         "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
