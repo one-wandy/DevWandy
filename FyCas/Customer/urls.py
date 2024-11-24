@@ -74,5 +74,7 @@ urlpatterns = [
       
 
       path('chatgpt', views_ajax.ChatGPT, name='chatgpt'),
+
+      path('aplicar-pago-cuota', views_ajax.AplicarPagoCuota, name='aplicar-pago-cuota'),
       
 ]

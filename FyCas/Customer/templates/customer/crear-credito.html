@@ -524,9 +524,17 @@
                         {% for cuota in cuotas %}
                         <tr>
                               <td style="font-size: 10px;">  
-                              <div onclick="GetCuota(this.id)" id="{{cuota.id}}" class="grey-span mt-2 d-flex justify-content-center flex-wrap cuota-left align-content-center" style="height: 2rem; cursor: pointer;">
+                                    {% if cuota.estado %}  
+                                    <div  id="{{cuota.id}}" class="green-span   mt-2 d-flex justify-content-center flex-wrap cuota-left align-content-center" style="height: 2rem; cursor: pointer;">
                                           {{ forloop.counter }}
-                               </div>
+                                     </div>
+                                    {% else %}
+                                    <div onclick="GetCuota(this.id)" id="{{cuota.id}}" class="grey-span mt-2 d-flex justify-content-center flex-wrap cuota-left align-content-center" style="height: 2rem; cursor: pointer;">
+                                                {{ forloop.counter }}
+                                     </div>
+                                    
+                                    {% endif %}
+
                          </td>
                               <td> 
                                  <div class="grey-span mt-2 d-flex justify-content-center flex-wrap align-content-center" style="height: 2rem;">
@@ -617,7 +625,7 @@
                               <td class=" ">
                                     {% if cuota.estado != True %}
                                     <div class="d-flex mt-2 " style="height: 2rem;">
-                                          <input type="text" id="ct-p{{ cuota.id }}"  class="bg-white  bg-opacity-10 inputs  p-1 ps-3  outline-none" placeholder="Cantidad" min="{{cuota.mora}}"
+                                          <input type="text" id="ct-p{{ cuota.id }}"  class="bg-white  bg-opacity-10 inputs  d-none p-1 ps-3  outline-none" placeholder="Cantidad" min="{{cuota.mora}}"
                                            value="{{cuota.cuota}}" max="{{ cuota.restante }}" style="border-radius: 1.5rem; width: 50%; 
                                           border: 1px solid rgb(236, 236, 236)   ; ;">
                                           <button onclick="AplicarPago(this.id)" disabled="true" class=' btn-es ms-2 border-0  p-0 '  style="width: 100%; height: 2rem;" id="{{ cuota.id }}">
@@ -639,12 +647,14 @@
             </table> 
             <div class="d-flex flex-wrap align-content-center w-100 justify-content-end  position-sticky bottom-0 rounded-0 bg-white bg-opacity-50 blur">
                   <span class="align-content-center"> 
-                        <strong>Cuotas seleccionadas:</strong> 
-                        <span id="select-cuota" class="">  0 </span>
+                        <!-- <label for="pago-minimo"><strong>Pago minimo</strong></label>
+                        <input type="checkbox" name="pago-minimo" class="me-3 rounded-circle" id="pago-minimo"> -->
+                        <strong>Cuotas:</strong> 
+                        <span id="select-cuota" class="">0</span>
                         <strong class="ms-3">Total a pagar:</strong> 
-                        <span id="total-a-apagar" class="">$0.00</span>
+                        <span id="total-a-apagar" class="me-4">$0.00</span>
                   </span>
-                  <button class="border-0 ms-3 text-white rounded-5"  style="background-color: var(--bg-enfasis); font-weight: bold;">
+                  <button onclick="AplicarPagoCuota()" class="border-0 aplicar-pago d-none ms-3 text-white rounded-5"  style="background-color: var(--bg-enfasis); font-weight: bold;">
                        Aplicar pago
                   </button>
             </div>
@@ -739,27 +749,68 @@
 </style>
 <script>
 
+      function AplicarPagoCuota() {
+            let total = 0;
+            let selectedCount = 0;
+            let list_ids = [];
+            document.querySelectorAll('.cuota-left').forEach(cuota => {
+                  if (cuota.classList.contains('selected')) {
+                        total += parseInt(document.getElementById('ct-p'+cuota.id).value);
+                        selectedCount++;
+
+                        let ent = parseInt(cuota.id);
+                        list_ids.push(ent);
+                  }
+            });
+            console.log(list_ids)
+            list_ids.join(',')
+            $.ajax({
+                  url: '/aplicar-pago-cuota',
+                  data: {
+                        list_ids: JSON.stringify(list_ids),
+                  },
+                  success: function(r) {
+                        window.location.reload();
+                  },
+            })
+
+
+
+      }
+
+
       function GetCuota(id) {
             let total = 0;
-
+            let list_ids = [];
             let selectedCount = 0;
             document.getElementById(id).classList.toggle('selected');
             document.querySelectorAll('.cuota-left').forEach(cuota => {
                   if (cuota.classList.contains('selected')) {
                         total += parseInt(document.getElementById('ct-p'+cuota.id).value);
                         selectedCount++;
+                        list_ids.push(cuota.id);
                   }
             });
+
+
             document.getElementById('select-cuota').innerText = selectedCount;
-
-
+         
             document.getElementById('total-a-apagar').innerText = '$' + total.toLocaleString() + '.00';
 
+            
+
             console.log(total);
+            if (total > 0) {
+
+                  document.querySelector('.aplicar-pago').classList.remove('d-none');
+            } else {
+                  document.querySelector('.aplicar-pago').classList.add('d-none');
+            }
             
 
 
       }
+
 
 document.addEventListener('keydown', function(event) {
       if (event.key === 'Escape') {

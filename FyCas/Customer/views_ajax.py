@@ -396,5 +396,36 @@ def migrar_contactos(request):
 
 """""
 
+# Aplicar pago
+def AplicarPagoCuota(request):
+    list_ids = request.GET.get('list_ids')  # Obtener el parámetro 'list_ids' de la solicitud
+    list_ids = list_ids.split(',')  # Dividir la cadena por comas
 
+    numeric_list = []  # Lista para almacenar los números
+
+    for i in list_ids:
+        try:
+            # Eliminar caracteres no numéricos antes de intentar convertir a int
+            clean_i = i.strip("[]")  # Elimina los corchetes si los hay
+            numeric_list.append(int(clean_i))  # Convertir a número entero
+        except ValueError:
+            print(f"Advertencia: '{i}' no es un número válido.")  # Manejo de errores
+
+    # Imprimir los números válidos
+    for num in numeric_list:
+        cu = models.Cuota.objects.get(id=num)
+        cu.abonado = cu.cuota
+        cu.estado = True
+        cu.last_time_pay = datetime.now()
+        cu.save()
+
+
+            # si exite una cuota con el estado false, este credito aun no ha sido saldado
+        cuotas_credits_all = models.Cuota.objects.filter(credito=cu.credito, estado=False).exists()
+        if cuotas_credits_all == False:
+            cu.credito.estado_credito = True
+            cu.credito.save()
+
+
+    return JsonResponse(list(),  safe=False)
 # Calculo de mora cada dia a las 1 am
