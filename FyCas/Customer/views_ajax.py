@@ -251,7 +251,7 @@ def UploadImageURL(request):
 
 
 import openai
-
+from calendar import monthrange
 def ChatGPT(request):
         company = models.Company.objects.get(user=request.user)
 
@@ -288,31 +288,43 @@ def ChatGPT(request):
             }
             customer_list.append(customer_info)
 
+
+
+        current_year = datetime.now().year
+        current_month = datetime.now().month
+        days_in_month = monthrange(current_year, current_month)[1]
         total_inversion = 0
         for credito in creditos:
             total_inversion += credito.amount
         # Mensaje que envías al modelo
         mensaje = request.GET.get('message')
         prompt_sistema = f"""
-        Eres un asistente especializado en finanzas creado para {company.name} Tu tarea principal es gestionar la información financiera de la empresa, te llamaras 
+Eres un asistente especializado en finanzas creado para {company.name}. Tu tarea principal es gestionar la información financiera de la empresa. Te llamarás Soli.
 
-        Siempre mantén actualizada esta información clave:
-        0.Te llamas Soli
-        1. Número total de clientes activos: {clientes.count()}.
-        2. Cantidad de créditos otorgados: {creditos.count()}.
-        3. Ingresos totales de la empresa: 384,333.
-        4. Inversion totale de la empresa: {total_inversion}
-        5.Litado de clientes: {models.Customer.objects.filter(is_active=True, company=company)}
-        6. Infomacion de clientes todas {models.Customer.objects.filter(is_active=True, company=company)}
-        7. Informacion de clientes {customer_list}
-        Reglas:
-        - Proporciona respuestas claras, precisas y basadas en los datos que tienes disponibles.
-       
-        """
+Siempre mantén actualizada esta información clave:
+0. Te llamas Soli.
+1. Número total de clientes activos: {clientes.count()}.
+2. Cantidad de créditos otorgados: {creditos.count()}.
+3. Ingresos totales de la empresa: 384,333.
+4. Inversión total de la empresa: {total_inversion}.
+5. Listado de clientes: {models.Customer.objects.filter(is_active=True, company=company)}.
+6. Información de todos los clientes: {models.Customer.objects.filter(is_active=True, company=company)}.
+7. Información específica de clientes: {customer_list}.
 
+Datos adicionales:
+- GRUPO FYCAS presta a una tasa mensual del 15%.
+- GRUPO FYCAS fue fundada en 2022.
+- GRUPO FYCAS es una empresa dedicada a la gestión financiera y otorgamiento de créditos.
+
+Cálculo de moras:
+- La fórmula exacta para calcular la mora es:
+  Mora = (Precio de la cuota * 15% % {days_in_month}) * Días de atraso
+
+"""
+    
         try:
             respuesta = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4o",
                 messages=[
                     {"role": "system", "content": prompt_sistema},
                     {"role": "user", "content": mensaje}
@@ -353,6 +365,7 @@ from googleapiclient.discovery import build
 from google.oauth2.service_account import Credentials
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
+from calendar import monthrange
 
 def migrar_contactos(request):
     # Leer contactos de la base de datos

@@ -496,7 +496,7 @@ select option {
 }
 
 .flip-up {
-    animation: flip-up 0.3s ease-out ;
+    animation: flip-up 0.4s ease-in ;
     transform-origin: top; /* Punto de rotación */
     opacity: 1; /* Oculto por defecto */
 }
@@ -519,6 +519,337 @@ select option {
 }
 
     /* Improving visualization in light mode */
+
+    /* From Uiverse.io by 00Kubi */ 
+css <style > .socket {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  margin-left: -100px;
+  top: 50%;
+  margin-top: -100px;
+}
+
+.circle {
+  background: #000000;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation-name: fade00;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: fade00;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.gel {
+  height: 30px;
+  width: 30px;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.center-gel {
+  margin-left: -15px;
+  margin-top: -15px;
+  animation-name: pulse00;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: pulse00;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.c1 {
+  margin-left: -47px;
+  margin-top: -15px;
+}
+
+.c2 {
+  margin-left: -31px;
+  margin-top: -43px;
+}
+
+.c3 {
+  margin-left: 1px;
+  margin-top: -43px;
+}
+
+.c4 {
+  margin-left: 17px;
+  margin-top: -15px;
+}
+
+.c5 {
+  margin-left: -31px;
+  margin-top: 13px;
+}
+
+.c6 {
+  margin-left: 1px;
+  margin-top: 13px;
+}
+
+.c7 {
+  margin-left: -63px;
+  margin-top: -43px;
+}
+
+.c8 {
+  margin-left: 33px;
+  margin-top: -43px;
+}
+
+.c9 {
+  margin-left: -15px;
+  margin-top: 41px;
+}
+
+.c10 {
+  margin-left: -63px;
+  margin-top: 13px;
+}
+
+.c11 {
+  margin-left: 33px;
+  margin-top: 13px;
+}
+
+.c12 {
+  margin-left: -15px;
+  margin-top: -71px;
+}
+
+.c13 {
+  margin-left: -47px;
+  margin-top: -71px;
+}
+
+.c14 {
+  margin-left: 17px;
+  margin-top: -71px;
+}
+
+.c15 {
+  margin-left: -47px;
+  margin-top: 41px;
+}
+
+.c16 {
+  margin-left: 17px;
+  margin-top: 41px;
+}
+
+.c17 {
+  margin-left: -79px;
+  margin-top: -15px;
+}
+
+.c18 {
+  margin-left: 49px;
+  margin-top: -15px;
+}
+
+.c19 {
+  margin-left: -63px;
+  margin-top: -99px;
+}
+
+.c20 {
+  margin-left: 33px;
+  margin-top: -99px;
+}
+
+.c21 {
+  margin-left: 1px;
+  margin-top: -99px;
+}
+
+.c22 {
+  margin-left: -31px;
+  margin-top: -99px;
+}
+
+.c23 {
+  margin-left: -63px;
+  margin-top: 69px;
+}
+
+.c24 {
+  margin-left: 33px;
+  margin-top: 69px;
+}
+
+.c25 {
+  margin-left: 1px;
+  margin-top: 69px;
+}
+
+.c26 {
+  margin-left: -31px;
+  margin-top: 69px;
+}
+
+.c27 {
+  margin-left: -79px;
+  margin-top: -15px;
+}
+
+.c28 {
+  margin-left: -95px;
+  margin-top: -43px;
+}
+
+.c29 {
+  margin-left: -95px;
+  margin-top: 13px;
+}
+
+.c30 {
+  margin-left: 49px;
+  margin-top: 41px;
+}
+
+.c31 {
+  margin-left: -79px;
+  margin-top: -71px;
+}
+
+.c32 {
+  margin-left: -111px;
+  margin-top: -15px;
+}
+
+.c33 {
+  margin-left: 65px;
+  margin-top: -43px;
+}
+
+.c34 {
+  margin-left: 65px;
+  margin-top: 13px;
+}
+
+.c35 {
+  margin-left: -79px;
+  margin-top: 41px;
+}
+
+.c36 {
+  margin-left: 49px;
+  margin-top: -71px;
+}
+
+.c37 {
+  margin-left: 81px;
+  margin-top: -15px;
+}
+
+.r1 {
+  animation-name: pulse00;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.2s;
+  -webkit-animation-name: pulse00;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-delay: 0.2s;
+}
+
+.r2 {
+  animation-name: pulse00;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.4s;
+  -webkit-animation-name: pulse00;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-delay: 0.4s;
+}
+
+.r3 {
+  animation-name: pulse00;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.6s;
+  -webkit-animation-name: pulse00;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-delay: 0.6s;
+}
+
+.r1 > .circle {
+  animation-name: fade00;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.2s;
+  -webkit-animation-name: fade00;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-delay: 0.2s;
+}
+
+.r2 > .circle {
+  animation-name: fade00;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.4s;
+  -webkit-animation-name: fade00;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-delay: 0.4s;
+}
+
+.r3 > .circle {
+  animation-name: fade00;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.6s;
+  -webkit-animation-name: fade00;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-delay: 0.6s;
+}
+
+@keyframes pulse00 {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  50% {
+    -webkit-transform: scale(0.01);
+    transform: scale(0.01);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes fade00 {
+  0% {
+    background: #252525;
+  }
+
+  50% {
+    background: #000000;
+  }
+
+  100% {
+    background: #353535;
+  }
+}
+
   </style>
 
   <body style="" class="h-100 overflow-hidden ">
@@ -732,23 +1063,143 @@ select option {
             
             <!-- Soli IA -->
             <section id="container-ia" class=" d-none  bg-white bg-opacity-10 d-flex flex-wrap justify-content-center align-content-center rounded-0 position-absolute top-0 z-3 vh-100 w-100" style="     
-             -webkit-backdrop-filter: blur(20px) !important;
-      backdrop-filter: blur(20px) !important; ">
-            <div class="bg-white bg-opacity-75 d-flex align-content-end shadow flex-wrap" 
-            style="width: 50rem; height: 26rem; border-radius: 2rem;
+             -webkit-backdrop-filter: blur(40px) !important;
+      backdrop-filter: blur(40px) !important; ">
+            <div class="bg-white bg-opacity-50 w-100 d-flex align-content-end shadow flex-wrap" 
+            style="max-width: 70rem; height: 37rem; border-radius: 2.5rem;
             border: #e6e6e6 solid 1px; ">
 
          
 
                   <div class="w-100 d-flex justify-content-center h-75 " >
-                        <p id="response-ia" class="text-center text-black-50    rounded-5 p-3" style="width: 40rem;  text-align: justify; "> Soy un asistente virtual, ¿En que puedo ayudarte?
-                   
+                        <p id="response-ia" class=" text-black    rounded-5 p-1" 
+                        style="width: 40rem;  text-align: justify; font-weight: bold; 
+                         font-family: Poppins, sans-serif; font-size: 14px;
+  font-weight: 500;
+  font-style: normal;"> 
+                   Hola! Soy Soli, tu asistente virtual, en que puedo ayudarte hoy?
                         </p>
+
+<div class="socket d-none">
+  <div class="gel center-gel">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c1 r1">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c2 r1">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c3 r1">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c4 r1">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c5 r1">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c6 r1">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c7 r2">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c8 r2">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c9 r2">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c10 r2">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c11 r2">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c12 r2">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c13 r2">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c14 r2">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c15 r2">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c16 r2">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c17 r2">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c18 r2">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c19 r3">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c20 r3">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c21 r3">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c22 r3">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c23 r3">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c24 r3">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c25 r3">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c26 r3">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c28 r3">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c29 r3">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c30 r3">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c31 r3">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c32 r3">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c33 r3">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c34 r3">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c35 r3">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c36 r3">
+    <div class="circle"></div>
+  </div>
+  <div class="gel c37 r3">
+    <div class="circle"></div>
+  </div>
+</div>
+
                   </div>
                   <div class="d-flex justify-content-center w-100 h-10">
-                        <textarea class="bg-black mb-2 bg-opacity-10 d-flex flex-wrap align-content-center text-black p-1 text-center" id="send-data-ia" placeholder="¿Que necesitas?" 
-                        style="border: #dedede solid 0px; width: 49rem; border-radius: 1.5rem; 
-                        outline: none;"></textarea>
+                        <input class=" mb-2 bg-transparent   text-black-50 p-1 text-center" id="send-data-ia"
+                        placeholder="Hablale a soli aqui..." 
+                        style="border: #dedede solid 0px; width: 49rem; height: 3rem; border-radius: 1.5rem; 
+                        outline: none;"/>
       
                   </div>
                   
@@ -1216,6 +1667,9 @@ document.addEventListener("keydown", function(event) {
 
             if (document.getElementById('send-data-ia').value.length > 2) {
                   sendDataToIA();
+                  document.querySelector('#response-ia').innerHTML = '';
+                  document.getElementById('send-data-ia').value = '';
+                  document.querySelector('.socket').classList.remove('d-none')
             }
 
 
@@ -1230,6 +1684,7 @@ function sendDataToIA() {
                   message: document.getElementById('send-data-ia').value,
             },
             success: function(data) {
+                  document.querySelector('.socket').classList.add('d-none')
                   document.getElementById('response-ia').innerHTML = `
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">
                         <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
@@ -1243,6 +1698,7 @@ function sendDataToIA() {
 document.addEventListener('keydown', function(event) {
       if (event.key === 'Escape') {
             toggleContainerIA();
+           
       }
 });
 
