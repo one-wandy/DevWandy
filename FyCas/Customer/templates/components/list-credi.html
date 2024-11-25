@@ -73,11 +73,16 @@
    </style>
 
 {% for credit in  all_credits %}   
-<div  class="p-2 position-relative">
+<div  class=" pe-3 position-relative">
+
+
+
       <span id="forlou{{credit.id}}" style=" width: 1.5rem; height: 1.5rem; margin-top: rem; border-radius: 50%; background-color: #0f83ff; font-size: 12px;" class="d-flex d-none text-white position-absolute z-2 flex-wrap justify-content-center flex-wrap align-content-center">
             #{{ forloop.counter }} 
       </span>
 {% if cuotas %}
+
+
       <div class="position-absolute  z-2 top-0 end-0   rounded-5  btn-edit      " style="margin-top: 40px; border: 1px solid rgba(220, 220, 220, 0); background-color: #eaeaea; margin-right: 6px !important;">
             {% if credit.estado_credito == False %} 
 
@@ -112,7 +117,7 @@
 
 
       <div id="cuotas_credit{{credit.id}}" class='  credit-sp w-100 p-2 pb-0 pt-1  card   text-black-50 ' 
-      style="  min-width: 470px;  max-width: 470px;
+      style="  min-width: 490px;  max-width: 490px;
       font-size: 14px; 
       border-radius: 1.5rem; 
       height: max-content ;
@@ -137,7 +142,7 @@
 
   
 
-<section class="mt-2 mb-4 div-text rounded-4  me-3 ms-3 ">
+<section class="mt-2 mb-4 div-text rounded-4  me-3  ">
       <div class="w-100  rounded-4 p-2">
             <table class=" w-100 bg-transparent  ">
                   <thead>

@@ -128,10 +128,10 @@
                                     <!-- {{request.user.username}} -->{{company.name}}
                               </h6>
                       </div>  
-                      <span class="position-absolute mt-4 d-flex flex-wrap align-content-center justify-content-center top-0 card border-0   p-2 bg-white rounded-circle" 
+                      <span class="position-absolute mt-4 d-flex flex-wrap align-content-center justify-content-center top-0 card border-0   p-1 bg-white rounded-circle" 
                         style="height: 50px; width: 50px;">
                         {% if company.Icon.url %}
-                        <img src="{{company.Icon.url}}" width="40" height="40"  class="  object-fit-cover  me-1  " style="border: 1px;" alt="">
+                        <img src="{{company.Icon.url}}" width="40" height="40"  class="  object-fit-cover   rounded-circle" style="border: 1px;" alt="">
                         {% endif %}
                       </span>
                       <span>
@@ -182,7 +182,7 @@
             
             </a>
            
-            <a href="{% url "customer:agregar" company.id %}">
+            <a href="{% url "customer:select-form" %}">
                   <button class="btn-agregar">
                         <img src="{% static "icons/mas.png" %}" width='24' alt="">
                         <span>

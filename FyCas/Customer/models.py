@@ -65,19 +65,15 @@ class Customer(models.Model):
 
         if self.img1:
             try:
+                img2 = self.img1.path
                 # Open the original image
                 img1_path = self.img1.path
                 img1 = Image.open(img1_path)
 
-                # Save the original image to img2
-                img2_io = BytesIO()
-                img1.save(img2_io, format=img1.format)
-                self.img2.save(os.path.basename(self.img1.name), ContentFile(img2_io.getvalue()), save=False)
-
                 # Resize img1 to 250p resolution
                 img1.thumbnail((50, 50))
                 img1_io = BytesIO()
-                img1.save(img1_io, format=img1.format, quality=5)  # Reduce quality to reduce file size
+                img1.save(img1_io, format=img1.format, quality=50)  # Reduce quality to reduce file size
 
                 self.img1.save(os.path.basename(self.img1.name), ContentFile(img1_io.getvalue()), save=False)
             except FileNotFoundError:
@@ -261,7 +257,8 @@ class Cuota(models.Model):
 
         last_time_pay = models.TimeField(default=timezone.now)
 
-        mora = models.IntegerField(default=5,  null=True, blank=True) #Precio de la cuota
+        dias_en_atraso = models.IntegerField(default=0,  null=True, blank=True) #Precio de la cuota
+        mora = models.IntegerField(default=0,  null=True, blank=True) #Precio de la cuota
 
         # def save(self, *args, **kwargs):
         #     if self.start_date:
@@ -308,6 +305,11 @@ class Company(models.Model):
     created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
     rnc = models.CharField(max_length=50, blank=True, null=True, default='')
     #Foto de Cedula tracera
+    direccion = models.CharField( max_length=555, blank=True, null=True, default='')
+    instagrem = models.CharField( max_length=255, blank=True, null=True, default='')
+    facebook = models.CharField( max_length=255, blank=True, null=True, default='')
+    twitter = models.CharField( max_length=255, blank=True, null=True, default='')
+    whatsapp = models.CharField( max_length=255, blank=True, null=True, default='')
 
     # Configuracion de la UI para la compania
     bg_enfasis = models.CharField(blank=True, max_length=233, default='rgb(83, 137, 255)') #color de enfasis de la ui

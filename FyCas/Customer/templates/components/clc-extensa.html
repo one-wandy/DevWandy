@@ -20,45 +20,419 @@
             display: none;
       }
 
+      .input-selec .input-s{
+            border: 0px solid var(--bg-enfasis);
+            width: 100%; padding: 0.2rem; margin: 0.5rem;
+            text-align: center;
+            background-color: transparent;  border-radius: 2rem;
+      }
+      #interes, #cuotas
+      {
+            background-color: #ffffff; padding: 0.2rem; 
+            text-align: center; color: rgb(29, 29, 29);
+            width: max-content;
+            font-weight: bold;
+            border-radius:2rem;
+      }
+      #tipoTasa, #tipoAmortizacion
+
+      {
+            background-color: #ffffff; padding: 0.2rem; 
+            text-align: center; color: rgb(29, 29, 29);
+            width: max-content;
+            font-weight: bold;
+            border-radius:2rem;
+      }
+
+      .card 
+      {
+            border-radius: 1.7rem; margin: 0.5rem;
+            width: 25rem; border: 0px;
+      }
+      .card .card-text 
+      {
+            font-size: 12px;  
+            color: grey; text-align: justify;
+
+      }
+
+.sec-moras label
+{
+      font-size: 12px; color: grey; font-weight: bold;
+}
 
       </style>
 
 
-      <div>
-            <label for="capital">Capital:</label>
-            <input type="number" id="capital" name="capital">
+
+
+
+<div class="card-deck d-flex" data-aos="fade-left">
+      <div class="card">
+            <div class="card-body">
+                  <strong class="card-title "> Francesa</strong>
+                  <p class="card-text">La amortización francesa se caracteriza por tener cuotas constantes a lo largo del tiempo, donde al inicio se paga más interés y menos capital, y al final se paga más capital y menos interés.</p>
+            </div>
       </div>
-      <div>
-            <label for="interes">Interés:</label>
-            <input type="number" id="interes" name="interes" step="0.01">
+      <div class="card">
+            <div class="card-body">
+                  <strong class="card-title "> Americana</strong>
+                  <p class="card-text">En la amortización americana, los pagos de interés son constantes durante todo el periodo, y el capital se paga en su totalidad al final del plazo.</p>
+            </div>
       </div>
-      <div>
-            <label for="periodo">Periodo de Interés:</label>
-            <select id="periodo" name="periodo">
-                  <option value="52">Semana</option>
-                  <option value="12">Mes</option>
-                  <option value="1">Año</option>
+      <div class="card">
+            <div class="card-body">
+                  <strong class="card-title "> Intereses Fijos</strong>
+                  <p class="card-text">La amortización de intereses fijos implica pagos de interés constantes en cada cuota, junto con una porción fija del capital, resultando en cuotas decrecientes a lo largo del tiempo.</p>
+            </div>
+      </div>
+</div>
+
+
+<section data-aos="fade-in" style="transition: 1s;" class="d-flex w-100 justify-content-around input-selec"> 
+      <div class="input-s text-center">
+            <label for="tipoAmortizacion"> Amortización</label>
+            <select class="border-0  ps-3" style="width: 6rem;" id="tipoAmortizacion">
+                <option value="frances">Francés</option>
+                <option value="americano">Americano</option>
+                <option value="interesesFijos">Intereses Fijos</option>
             </select>
       </div>
-      <div>
-            <label for="cuotas">Cuotas:</label>
-            <input type="number" id="cuotas" name="cuotas">
+
+     
+
+      <div class="input-s">
+            <label for="tipoTasa">Periodo</label>
+            <select class="border-0 ps-3 pe-3" id="tipoTasa">
+                  <option value="mensual">Mensual</option>
+                  <option value="anual">Anual</option>
+                  <option value="semanal">Semanal</option>
+            </select>
+
+
+            
       </div>
-      <button class="btn-calculadora" onclick="calcularFrances()">Calcular</button>
+      <div class="input-s">
+            <label for="interes">Interés %</label>
+            <select class="border-0 " id="interes">
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15" selected>15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                  <option value="32">32</option>
+                  <option value="33">33</option>
+                  <option value="34">34</option>
+                  <option value="35">35</option>
+            </select>      
+      </div>
+</section>
 
-      <script>
-      function calcularFrances() {
-            const capital = parseFloat(document.getElementById('capital').value);
-            const interes = parseFloat(document.getElementById('interes').value) / 100;
-            const periodo = parseInt(document.getElementById('periodo').value);
-            const cuotas = parseInt(document.getElementById('cuotas').value);
+<div>
+      <div class="card rounded-5 d-flex justify-content-center text-center w-100" style="height: 13rem;">
+            <p class="mt-0 text-black-50 text-descritivo" style="font-size: 12px; font-weight: bold;">Cuota correspondiente</p>
+            <p id="resultado" class=" m-0"
+             style="font-size: 18px; font-weight: bold;"> $DOP 0.00</p>
 
-            const interesMensual = interes / periodo;
-            const cuotaMensual = capital * interesMensual / (1 - Math.pow(1 + interesMensual, -cuotas));
+      </div>
+</div>
 
-            alert('La cuota mensual es: ' + cuotaMensual.toFixed(2));
+
+<section class="d-flex ms-2 mt-3">
+      <label for="capital"></label>
+<input type="text" style="outline: none !important;" class="border-0   text-center rounded-5 p-2" id="capital" placeholder="Ingrese el capital"><br><br>
+
+
+<div class="input-selec pt-2 ms-3">
+      <label for="cuotas">Cuotas #</label>
+      <select class="bg-white text-black border-0 ps-2 text-center" id="cuotas">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4" selected>4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
+            <option value="32">32</option>
+            <option value="33">33</option>
+            <option value="34">34</option>
+            <option value="35">35</option>
+            <option value="36">36</option>
+            <option value="37">37</option>
+            <option value="38">38</option>
+      </select>
+</div>
+
+</section>
+
+
+
+<div class="mt-4">
+      <strong class="mt-4 pt-4 ps-3">
+            Seccion para calculos de moras
+      </strong>
+</div>
+<section class="d-flex  mt-3 sec-moras">
+      <div class="input-s text-center">
+            <label for="precioCuota">Cuota</label>
+            <input type="text" style="outline: none !important;" class="border-0 text-center rounded-5 p-2" id="precioCuota" placeholder="Precio">
+      </div>
+      <div class="input-s ms-3 text-center">
+            <label for="diasAtraso">Días de Atraso</label>
+            <input type="number" style="outline: none !important;" value="15" class="border-0 text-center rounded-5 p-2" id="diasAtraso" placeholder="Ingrese  días  atraso">
+      </div>
+      <div class="input-s ms-3 text-center">
+            <label for="porcentajeMora">Mora %</label>
+            <input type="number" style="outline: none !important;" value="15" class="border-0 text-center rounded-5 p-2" id="porcentajeMora" placeholder="Ingrese el porcentaje de mora">
+      </div>
+      <div class="input-s ms-3 text-center">
+            <label for="diaMes" class="label-mes">Días del Mes</label>
+            <input type="text" disabled  style="outline: none !important;" class="border-0 text-center rounded-5 p-2" id="diaMes" placeholder="Ingrese el día del mes">
+      </div>
+
+</section>
+<div class="card rounded-4 bg-transparent d-flex justify-content-start text-start ps-2"
+      style="width: max-content;" >
+ 
+      <p id="total-mora" class=" m-0 text-black-50"
+      style="font-size: 14px; font-weight: bold;">Total a pagar $DOP 0.00</p>
+      <p id="resultado-mora" class=" m-0 text-black-50"
+       style="font-size: 14px; font-weight: bold;">Mora $DOP 0.00</p>
+
+</div>
+
+
+<script>
+      function calcularMora() {
+            const precioCuota = parseFloat(document.getElementById('precioCuota').value.replace(/,/g, ''));
+            const porcentajeMora = parseFloat(document.getElementById('porcentajeMora').value) / 100;
+            const diaMes = parseInt(document.getElementById('diaMes').value);
+            const diasAtraso = parseInt(document.getElementById('diasAtraso').value);
+      
+            // Validación de campos
+   
+      
+            // Fórmula ajustada con paréntesis para mantener el orden correcto
+            const mora = (precioCuota * porcentajeMora * diasAtraso) / diaMes;
+            const totalConMora = precioCuota + mora;
+
+            if (isNaN(mora) || mora === null) {
+          mora = 0;
       }
+
+
+            if (isNaN(totalConMora) || totalConMora === null) {
+          totalConMora = 0;
+      }
+
+      
+                // Mostrar resultado
+            document.getElementById('resultado-mora').innerText = 'Mora $' + mora.toLocaleString('us', { 
+                  style: 'currency', currency: 'DOP', 
+                  minimumFractionDigits: 2, maximumFractionDigits: 2 
+            });
+            // Mostrar resultado
+            document.getElementById('total-mora').innerText =  'Total a pagar $' + totalConMora.toLocaleString('us', { 
+                  style: 'currency', currency: 'DOP', 
+                  minimumFractionDigits: 2, maximumFractionDigits: 2 
+            });
+      
+
+
+      }
+
+
+
+            const fechaActual = new Date();
+            const mes = fechaActual.getMonth() + 1; // Mes actual (0-11, por eso sumamos 1)
+            const año = fechaActual.getFullYear();
+            const diasEnMes = new Date(año, mes, 0).getDate(); // Obtiene el último día del mes
+
+            document.getElementById('diaMes').value = diasEnMes;
+
+            document.getElementById('diaMes').min = diasEnMes;
+            document.getElementById('diaMes').max = diasEnMes;
+
+                  const meses = [
+                        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+                  ];
+                  const nombreMes = meses[fechaActual.getMonth()];
+                  document.querySelector('.label-mes').innerText = `Días de ${nombreMes}`;
+
+
+
+            document.querySelectorAll('input, select').forEach(element => {
+            element.addEventListener('input', calcularMora);
+      });
+
+      document.getElementById('precioCuota').addEventListener('input', function (e) {
+            let value = e.target.value;
+            value = value.replace(/,/g, ''); // Remove existing commas
+            value = parseFloat(value);
+            if (isNaN(value)) {
+                  e.target.value = '';
+            } else {
+                  e.target.value = value.toLocaleString('en-US'); // Add commas
+            }
+      });
+
       </script>
+
+
+<!-- <button onclick="calcular()">Calcular</button> -->
+
+<script>
+
+
+document.getElementById('capital').focus();
+document.querySelectorAll('input, select').forEach(element => {
+      element.addEventListener('input', calcular);
+});
+
+      document.getElementById('capital').addEventListener('input', function (e) {
+            let value = e.target.value;
+            value = value.replace(/,/g, ''); // Remove existing commas
+            value = parseFloat(value);
+            if (isNaN(value)) {
+                  e.target.value = '';
+            } else {
+                  e.target.value = value.toLocaleString('en-US'); // Add commas
+            }
+      });
+      
+    // Función principal
+    function calcular() {
+
+
+
+      let capital = document.getElementById('capital').value;
+      capital = parseFloat(capital.replace(/,/g, ''));
+
+        const interes = parseFloat(document.getElementById('interes').value) / 100;
+        const tipoTasa = document.getElementById('tipoTasa').value;
+        const cuotas = parseInt(document.getElementById('cuotas').value);
+        const tipoAmortizacion = document.getElementById('tipoAmortizacion').value;
+
+        // Ajustar tasa de interés
+        let interesAjustado;
+        if (tipoTasa === "anual") {
+            interesAjustado = interes / 12; // Convierte anual a mensual
+        } else if (tipoTasa === "mensual") {
+            interesAjustado = interes; // Mantiene mensual
+        } else if (tipoTasa === "semanal") {
+            interesAjustado = interes / 4.33; // Convierte semanal a mensual (aproximación)
+        } else {
+            document.getElementById('resultado').innerText = "Tipo de tasa no válido.";
+            return;
+        }
+
+        // Calcular según el tipo de amortización
+        let resultado;
+        if (tipoAmortizacion === "frances") {
+            resultado = calcularFrances(capital, interesAjustado, cuotas);
+        } else if (tipoAmortizacion === "americano") {
+            resultado = calcularAmericano(capital, interesAjustado, cuotas);
+        } else if (tipoAmortizacion === "interesesFijos") {
+            resultado = calcularInteresesFijos(capital, interesAjustado, cuotas);
+        } else {
+
+            document.getElementById('resultado').innerText = "Tipo de amortización no válido.";
+
+            return;
+        }
+      if (isNaN(resultado) || resultado === null) {
+          resultado = 0;
+      }
+      resultado = resultado.toLocaleString('us', { 
+            style: 'currency', currency: 'DOP', 
+            minimumFractionDigits: 2, maximumFractionDigits: 2 
+      });
+
+
+
+      document.getElementById('resultado').innerText = `$${resultado}`;
+      
+      document.getElementById('resultado').classList.add('flip-down');
+      setTimeout(() => {
+            document.getElementById('resultado').classList.remove('flip-down');
+      }, 300);
+
+      document.querySelector('.text-descritivo').innerText = 'Cuota correspondiente';
+
+    }
+
+    // Amortización Francés
+    function calcularFrances(capital, interes, cuotas) {
+        return capital * interes / (1 - Math.pow(1 + interes, -cuotas));
+    }
+
+// Amortización Americano
+function calcularAmericano(capital, interes, cuotas) {
+    // El pago de interés es constante
+    const pagoInteres = capital * interes;
+    // El capital completo se devuelve en la última cuota
+    return pagoInteres; // Solo muestra el pago de interés periódico
+}
+
+// Amortización Intereses Fijos
+function calcularInteresesFijos(capital, interes, cuotas) {
+    const pagoInteres = capital * interes; // Interés fijo en cada cuota
+    const pagoCapital = capital / cuotas; // Porción del capital en cada cuota
+    const cuota = pagoInteres + pagoCapital; // Total por cuota
+    return cuota;
+}
+</script>
+
+
+
+
+
+
 
 
 

@@ -2,13 +2,6 @@
 {% comment %} {% block content %} {% endcomment %}
 {% load static %}
 {% load humanize %}
-
-
-
-
-
-{% load static %}
-{% load humanize %}
 <style>
       .text2 
       {
@@ -68,8 +61,7 @@
                   {% if c.img1 %}
                               <img src="{{c.img1.url}}" class="  img-icons object-fit-cover" style="width: 37px; height: 37px; border-radius: 50%; "  alt=""> 
                   {% else %}
-                  <img src="{% static "icons/gallery.png" %}" class="w-100 h-100 object-fit-cover rounded-2" alt="" onclick="GetDetail(this.id)" id="{{i.id}}
-                  ">         
+                  <img src="{% static "icons/doc(39).png" %}" class="  img-icons object-fit-cover" style="width: 37px; height: 37px; border-radius: 50%; "  alt=""> 
                   {% endif %}
 
                   </span>

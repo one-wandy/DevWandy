@@ -1,0 +1,98 @@
+{% extends "base/base.html" %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+
+<style>
+
+.btn-agregar
+{
+      background-color: var(--bg-enfasis) !important;
+      color: white !important;
+      width: max-content !important;
+      
+}
+.btn-agregar img 
+{
+      display: none;
+}
+.card 
+{
+      cursor: pointer; width: 25rem; margin: 1rem;
+}
+.form-control input
+{
+      width: 20rem;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+}
+.form-control
+{
+      margin: 1rem;  width: max-content;
+
+}
+</style>
+
+<div class="welcome-screen">
+      <!-- <h1>Debes seleccionar un metodo</h1>
+      <p>Seleccione una opción para continuar:</p> -->
+      <div class="d-flex justify-content-center mt-5">
+
+              <div class="card rounded-4">
+                <div class="card-body">
+                  <h5 class="card-title"> Agregar cliente facil </h5>
+                  <p class="card-text text-black-50">
+                        Nombre, apellido, cedula, telefono o correo
+                  </p>
+                </div>
+              </div>
+
+              <a href="{% url "customer:agregar" company.id %}" style="width: max-content;">
+              <div class="card rounded-4">
+                <div class="card-body">
+                  <h5 class="card-title"> Agregar cliente extenso</h5>
+                  <p class="card-text text-black-50">
+                        Nombre, apellido, cedula, foto de cedula, telefono, correo, direccion, etc
+                  </p>
+                </div>
+              </div>
+          </div>
+      </a>
+
+
+
+      <section class="d-flex  flex-wrap">
+            <div class="form-control">
+                    <label for="id_name">Nombre</label>
+                    {{ form.name }}
+            </div>
+            <div class="form-control">
+                    <label for="id_last_name">Apellido</label>
+                    {{ form.last_name }}
+            </div>
+            <div class="form-control">
+                    <label for="id_phone">Teléfono</label>
+                    {{ form.phone }}
+            </div>
+            <div class="form-control">
+                    <label for="id_dni">Cedula</label>
+                    {{ form.dni }}
+            </div>
+      </section>
+
+
+
+</div>
+
+<script>
+document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mouseover', () => {
+            card.classList.add('shadow');
+      });
+      card.addEventListener('mouseout', () => {
+            card.classList.remove('shadow');
+      });
+});
+</script>
+
+{% endblock %}

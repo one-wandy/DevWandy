@@ -54,7 +54,7 @@ urlpatterns = [
 
       path('search-company', views.SearchCompany.as_view(), name='search-company'),
 
-
+      path('select-form', views.SelecForm.as_view(), name='select-form'),
 
 
       # Views Ajax``
@@ -74,5 +74,7 @@ urlpatterns = [
       
 
       path('chatgpt', views_ajax.ChatGPT, name='chatgpt'),
+
+      path('aplicar-pago-cuota', views_ajax.AplicarPagoCuota, name='aplicar-pago-cuota'),
       
 ]

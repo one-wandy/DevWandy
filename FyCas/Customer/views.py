@@ -79,6 +79,7 @@ class AddCustomer(CreateView, Options):
         else:
             f = self.form_class(request.POST, request.FILES)
             if f.is_valid():
+                f.instance.img2 = request.FILES.get('img1')
                 f.instance.company = models.Company.objects.get(id=self.kwargs.get('pk'))
                 f.instance.nacimiento = request.POST.get('date-customer')
                 f.instance.monto_requerido = request.POST.get('form-select-monto')
@@ -89,8 +90,7 @@ class AddCustomer(CreateView, Options):
                 f.instance.last_name = f.instance.last_name.title()
                 f.instance.municipio = request.POST.get('form-select-muni')
                 f.save()
-                # Creando Carpeta para el Cliente
-                self.FileCreate(f.instance.name, f.instance.last_name)
+
                 return redirect(reverse('maps:maps-customer'))
             else:
                 return redirect(reverse('customer:add-customer'))
@@ -627,6 +627,7 @@ class Agregar(CreateView, Options):
         else:
             f = self.form_class(request.POST, request.FILES)
             if f.is_valid():
+                f.instance.img2 = request.FILES.get('img1')
                 f.instance.company = models.Company.objects.get(id=self.kwargs.get('pk'))
                 f.instance.nacimiento = request.POST.get('date-customer')
                 f.instance.monto_requerido = request.POST.get('form-select-monto')
@@ -721,6 +722,7 @@ class CrearCredito(TemplateView, Options):
     template_name = "customer/crear-credito.html"  # Nombre de la plantilla
 
     def post(self, request, *args, **kwargs):   
+        self.RunCreditValidate()
         credit = models.Credit.objects.get(id=self.kwargs.get('pk'))
         capital = int(credit.amount)
         tasa = int(credit.tasa)
@@ -732,6 +734,7 @@ class CrearCredito(TemplateView, Options):
     
     
     def Calculadora_Francesa(self, capital, tasa, plazo, credit):
+        self.RunCreditValidate()
         if tasa != 0:
             pass
         else:
@@ -783,10 +786,48 @@ class CrearCredito(TemplateView, Options):
 
             return 'Creado'
 
+    def FiltrarCreditosAtrasados(self):
+        today = datetime.now().date()
+        
+        creditos_atrasados = models.Credit.objects.filter(credito_atrasado=True)
+
+        cuotas_vencidas = []
+
+        # Convertir la tasa mensual de porcentaje a decimal
+     
+
+        for credito in creditos_atrasados:
+            cuotas = models.Cuota.objects.filter(credito=credito, end_date__lt=today)
+
+            for cuota in cuotas:
+                tasa_decimal = cuota.credito.tasa / 100
+
+                dias_mes = monthrange(cuota.end_date.year, cuota.end_date.month)[1]
+
+                dias_atraso = (today - cuota.end_date).days
+
+                cuota_fija = int(cuota.credito.amount_feed) + 1
+                # Calcular la mora
+                mora = ( cuota_fija * tasa_decimal) / dias_mes * dias_atraso
+
+                cuota.dias_en_atraso = dias_atraso
+                # Total con mora
+                cuota.mora = mora
+                cuota.cuota = cuota_fija + mora
+                cuota.save()
+                total_con_mora = int(cuota.cuota + mora)
+                print(total_con_mora, 'Moras', dias_atraso)
+
+
+            cuotas_vencidas.extend(cuotas)
+        
+        return creditos_atrasados, cuotas_vencidas
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        
+        print(self.FiltrarCreditosAtrasados(), 'Siuu')
+        self.RunCreditValidate()
         try:
                     models.Credit.objects.get(id=self.kwargs.get('pk'))
                     credit =  models.Credit.objects.get(id=self.kwargs.get('pk'))
@@ -973,3 +1014,53 @@ class SearchCompany(TemplateView, Options):
             context['all_company'] = models.Company.objects.all()
             # context['employees'] = models.Employee.objects.filter(company=self.Company())
             return context
+
+
+
+class SelecForm(CreateView, Options):
+    model = models.Customer
+    form_class = forms.CustomerForm
+    template_name = "components/select-form.html"
+        
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['company'] = self.Company()
+        return context
+    
+    
+    def post(self, request, *args, **kwargs):
+        if request.POST.get('cedula-fast') != None:
+                username = request.POST.get("cedula-fast")
+                password = request.POST.get("numero-fast")
+                try:
+                    user = authenticate(username=username, password=password,)
+                    print(user)
+                    if user is not None:
+                        login(request, user)
+                        return redirect(reverse('customer:agregar'))
+                    else:
+                        autenticado = False
+                        mensaje = f"({username} o {password }) " 
+                except User.DoesNotExist:
+                    autenticado = False
+                return redirect(reverse('customer:add-customer'))
+        
+        else:
+            f = self.form_class(request.POST, request.FILES)
+            if f.is_valid():
+                f.instance.company = models.Company.objects.get(id=self.kwargs.get('pk'))
+                f.instance.nacimiento = request.POST.get('date-customer')
+                f.instance.monto_requerido = request.POST.get('form-select-monto')
+                f.instance.fines = request.POST.get('form-select')
+                print(request.POST.get('form-select-sexo'))
+                f.instance.sexo =  request.POST.get('form-select-sexo')
+                f.instance.name = f.instance.name.title()
+                f.instance.last_name = f.instance.last_name.title()
+                f.instance.municipio = request.POST.get('form-select-muni')
+                f.save()
+                # Creando Carpeta para el Cliente
+                self.FileCreate(f.instance.name, f.instance.last_name)
+                return redirect(reverse('maps:maps-customer'))
+            else:
+                return redirect(reverse('customer:add-customer'))
