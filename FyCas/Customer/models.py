@@ -292,6 +292,8 @@ class Company(models.Model):
     description = models.TextField(blank=True, null=True, default='Grupo Fycas')
     Icon = models.ImageField(upload_to="media/", blank=True, null=True, 
     default="media/img-default/img.png")
+    Icon_img = models.ImageField(upload_to="media/", blank=True, null=True, 
+    default="media/img-default/img.png")
     phone = models.CharField(blank=True, max_length=233, default='829-557-7196')
     email = models.CharField(blank=True, null=True, max_length=233,)
     EMAIL_PROVIDERS = [
@@ -314,6 +316,11 @@ class Company(models.Model):
     # Configuracion de la UI para la compania
     bg_enfasis = models.CharField(blank=True, max_length=233, default='rgb(83, 137, 255)') #color de enfasis de la ui
     key = models.TextField(blank=True,) #color de enfasis de la ui
+
+    contrato = models.TextField(blank=True,) #color de enfasis de la ui
+    notarial = models.TextField(blank=True,) #color de enfasis de la ui
+
+    
     def __str__(self):
         return self.name
 
