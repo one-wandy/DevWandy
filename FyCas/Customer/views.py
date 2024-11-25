@@ -79,6 +79,7 @@ class AddCustomer(CreateView, Options):
         else:
             f = self.form_class(request.POST, request.FILES)
             if f.is_valid():
+                f.instance.img2 = request.FILES.get('img1')
                 f.instance.company = models.Company.objects.get(id=self.kwargs.get('pk'))
                 f.instance.nacimiento = request.POST.get('date-customer')
                 f.instance.monto_requerido = request.POST.get('form-select-monto')
@@ -89,8 +90,7 @@ class AddCustomer(CreateView, Options):
                 f.instance.last_name = f.instance.last_name.title()
                 f.instance.municipio = request.POST.get('form-select-muni')
                 f.save()
-                # Creando Carpeta para el Cliente
-                self.FileCreate(f.instance.name, f.instance.last_name)
+
                 return redirect(reverse('maps:maps-customer'))
             else:
                 return redirect(reverse('customer:add-customer'))
@@ -627,6 +627,7 @@ class Agregar(CreateView, Options):
         else:
             f = self.form_class(request.POST, request.FILES)
             if f.is_valid():
+                f.instance.img2 = request.FILES.get('img1')
                 f.instance.company = models.Company.objects.get(id=self.kwargs.get('pk'))
                 f.instance.nacimiento = request.POST.get('date-customer')
                 f.instance.monto_requerido = request.POST.get('form-select-monto')
