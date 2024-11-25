@@ -16,7 +16,7 @@
 {
       display: none;
 }
-.card 
+.welcome-screen .card 
 {
       cursor: pointer; width: 25rem; margin: 1rem;
 }
@@ -36,22 +36,22 @@
 <div class="welcome-screen">
       <!-- <h1>Debes seleccionar un metodo</h1>
       <p>Seleccione una opción para continuar:</p> -->
-      <div class="d-flex justify-content-center mt-5">
+      <div class="d-flex justify-content-center flex-wrap align-content-center  vh-100 ">
 
-              <div class="card rounded-4">
+              <div class="card rounded-5">
                 <div class="card-body">
-                  <h5 class="card-title"> Agregar cliente facil </h5>
-                  <p class="card-text text-black-50">
+                  <h5 class="card-title p-0 m-0 mb-3"> Agregar cliente facil </h5>
+                  <p class="card-text text-black-50" style="font-size: 12px;">
                         Nombre, apellido, cedula, telefono o correo
                   </p>
                 </div>
               </div>
 
               <a href="{% url "customer:agregar" company.id %}" style="width: max-content;">
-              <div class="card rounded-4">
+              <div class="card rounded-5">
                 <div class="card-body">
-                  <h5 class="card-title"> Agregar cliente extenso</h5>
-                  <p class="card-text text-black-50">
+                  <h5 class="card-title p-0 m-0 mb-3"> Agregar cliente extenso</h5>
+                  <p class="card-text text-black-50" style="font-size: 12px;">
                         Nombre, apellido, cedula, foto de cedula, telefono, correo, direccion, etc
                   </p>
                 </div>
@@ -61,7 +61,7 @@
 
 
 
-      <section class="d-flex  flex-wrap">
+      <section class="d-flex  flex-wrap d-none">
             <div class="form-control">
                     <label for="id_name">Nombre</label>
                     {{ form.name }}
@@ -85,7 +85,8 @@
 </div>
 
 <script>
-document.querySelectorAll('.card').forEach(card => {
+
+document.querySelectorAll('.welcome-screen .card').forEach(card => {
       card.addEventListener('mouseover', () => {
             card.classList.add('shadow');
       });
@@ -93,6 +94,8 @@ document.querySelectorAll('.card').forEach(card => {
             card.classList.remove('shadow');
       });
 });
+
+
 </script>
 
 {% endblock %}
