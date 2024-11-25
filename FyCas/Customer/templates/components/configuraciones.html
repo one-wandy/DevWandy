@@ -115,7 +115,14 @@ input[type="checkbox"]:checked {
       border: none !important;
 }
 
-
+.url {
+      color: var(--bg-enfasis) !important;
+      text-decoration: none;
+}
+.url:hover {
+      text-decoration: underline;
+      font-weight: bold;
+}
 </style>
 
 
@@ -151,19 +158,24 @@ input[type="checkbox"]:checked {
       </div>
       <div class="profile-name position-relative " style="margin-top: 5px; margin-left: 7rem;">
             <h5 style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;font-size: 16px; ">
-                  <!-- {{company.name}} -->
+                  {{user.first_name}} <span class="text-black-50" style="font-size: 12px;">({{user.last_name}})</span>
             </h5>
 
 
       </div>
-
+<!-- d-flex justify-content-center flex-wrap -->
       
       {% if configurations %}
-      <div class=" mt-5 w-100  pt-4  w-100 d-flex justify-content-center flex-wrap " data-aos="fade-in" 
-            style=''>
+      <div class=" mt-5 w-100  pt-4   w-100  " 
+      
+
+            style='
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr)); gap: 0rem; justify-content: center; align-content: center; padding: 1rem; place-items: center;
+            '
+            >
 
             {% for config in configurations %}
-                  <div class="card m-2  overflow-hidden overflow-scroll" data-aos="fade-right" 
+                  <div class="card m-2  overflow-hidden overflow-scroll"
                         style="transition: 0.5s; width: 22rem; height: 10rem; border-radius: 1.5rem;">
                         <div class="card-header">  
                               {{config.svg|safe}}
@@ -184,9 +196,23 @@ input[type="checkbox"]:checked {
                                                       </label>
                                                        {% else %}
                                                        <label class="form-check-label" for="form-check{{option.id}}"> 
-                                                             {{option.name}}
+                                                            {% if option.url %}
+                                                            <a href="" class='url'>
+                                                                  {{option.name}}
+                                                            </a>
+                                                            {% else %}
+                                                            {{option.name}}
+                                                            {% endif %}
                                                       </label>
-                                                      <span style='font-size: 12px;' class='text-black-50'> {{ option.select_option }} % </span>
+                                                      <span style='font-size: 12px;' class='text-black-50'>
+                                                            {% if option.url %}
+                                                      
+                                                            {% else %}
+                                                            {{ option.select_option }}
+                                                            {% endif %}
+                                                                  
+                                                            
+                                                             </span>
                                                 {% endif %}
                                            
                                           </div>

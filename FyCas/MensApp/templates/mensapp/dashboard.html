@@ -130,7 +130,7 @@
 .message.sent p {
       /* background-color: var(--bg-enfasis); */
       background-color: #c6c6c64a;
-      color: rgb(44, 44, 44); 
+      color: rgb(255, 255, 255); 
       align-self: flex-end;
       padding-top: 10px;
       padding-left: 20px;
@@ -138,7 +138,7 @@
 
 .time {
       font-size: 12px;
-      color: #888;
+      color: #c3c3c3;
       margin-top: 5px;
 }
 
@@ -186,14 +186,17 @@
                         <span class="text-white" style="font-weight: bold;">Nicolas De Jesus Armando</span>
                   </div>
                   <div class="messages d-flex p-0" 
-                        style="  background-image: url({% static "img-static/Fondo.jpg" %});" >
-                        <section class="w-100 d-flex p-3  bg-white bg-opacity-50 flex-wrap align-content-end" 
+                        style="  background-image: url({{company.Icon.url}});
+                        background-position: center; background-repeat: no-repeat;
+                        " >
+                        <section class="w-100 d-flex p-3  bg-black bg-opacity-50 flex-wrap align-content-end" 
                               style="
-                                 -webkit-backdrop-filter: blur(50px) !important;
-                                 backdrop-filter: blur(50px) !important;"  >
+                                 -webkit-backdrop-filter: blur(400px) !important;
+                                 backdrop-filter: blur(400px) !important;"  >
                               <div class='d-flex'>
                                     <div class="message received">
-                                          <p class="w-100 " style="border-radius: 1.5rem; border-top-left-radius: 0rem;">Received message</p>
+                                          <p class="w-100 " style="border-radius: 1.5rem; border-top-left-radius: 0rem;
+                                          color: #f7f7f7;">Received message</p>
                                           <span class="time">10:00 AM</span>
                                     </div>
                                  </div>
@@ -207,7 +210,7 @@
                                           </div>
                                    </div>
                                    <div class="message-input w-100 border-0 d-flex justify-content-center position-sticky bottom-0">
-                                    <input type="text" placeholder="Escribe mensaje" class="rounded-5 input-ms" style="max-width: 40rem;">
+                                    <input type="text" placeholder="Escribe mensaje" class="rounded-5 input-ms bg-black bg-opacity-25 border-0 text-white-50" style="max-width: 40rem; outline: none;">
                                     <button class="send-btn d-none rounded-circle">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-send-fill m-0 p-0 " viewBox="0 0 16 16">
                                           <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z"/>
@@ -219,7 +222,7 @@
                        <section class="align-content-end d-none w-25 ">
                         <div class="sidebar card shadow w-100">
                               <div class="search-bar">
-                                    <input type="text" placeholder="Buscar chat" class="rounded-5">
+                                    <input type="text" placeholder="Buscar chat" class="rounded-5 bg-black bg-opacity-50">
                               </div>
                               <div class="chats overflow-scroll w-100 h-100">
             
