@@ -57,13 +57,13 @@
             {
                   color: #454545 !important;
                   font-size: 12px; 
-                  padding: 0.3rem 1rem;
+
                   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-                  background-color: white !important;
+                  background-color: rgba(255, 255, 255, 0) !important;
             }
             .di-cn strong
             {
-                  color: #6e6e6e !important;
+                  color: rgb(117, 117, 117) !important;
                   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                   font-size: 12px ;
 
@@ -71,7 +71,8 @@
             table td 
             {
                   font-size: 12px; 
-                  font-family: Chillax;  font-weight: 300 !important;
+                  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                   font-weight: 300 !important;
             }
             table th 
             {
@@ -184,7 +185,7 @@
                         border-radius: 1rem;
             }
             .grey-span {
-                  background-color: #e7e7e76c; /* Light green background */
+                  background-color: #ededed6c; /* Light green background */
                         color: #4e4e4e !important; /* Green text */
 
                         font-size: 12px;
@@ -220,6 +221,15 @@
                   animation: moveInCircle 7s linear infinite;
             }
 
+            .borde-color
+            {
+                  border: 1px solid rgb(160, 160, 160) !important;
+            }
+            .credit-sp:hover
+            {
+                  border: 1px solid grey !important;
+            }
+
 </style>
 
 
@@ -240,15 +250,15 @@
                               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
                               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4m.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2"/>
                             </svg> </strong> 
-                        Pagar dos créditos simultaneamente no es recomendable ya que aumenta la carga financiera y reduce la flexibilidad de manejar otros gastos, además, el pago de intereses en ambos créditos puede hacer que sea más difícil salir de la deuda.
+                        Pagar mas de un crédito simultaneamente no es recomendable, ya que aumenta la carga financiera y reduce la flexibilidad de manejar otros gastos, además el pago de intereses en ambos créditos afectara notablemente tus pagos.
                   </p>
                   <div class="d-flex justify-content-end">
                         <a href="{% url "customer:create-credit-new" c.id  %}" class="me-2" style="width: max-content;">
-                              <button class="border-0"  
+                              <button class="border-0 bg-transparent shadow-none"  
                                     style='border-radius: 1.5rem; width: max-content;
                                     color: #3f1111 !important;
                                     font-weight: 600;
-                                    background-color: rgb(255, 212, 212) !important;  ' >
+                                    ' >
                                 
                                     No me importa, deseo continuar
                               </button>
@@ -343,7 +353,7 @@
       <div class="d-flex w-100 justify-content-start  ">
             {% include "customer/user-profile.html" %}  
       </div>
-      <div class="d-flex w-100 justify-content-end z-3 position-absolute end-0  flex-wrap h-auto    " style="top: 7rem; ">
+      <div class="d-flex w-100 justify-content-end z-3 position-absolute end-0  flex-wrap h-auto    " style="top: 0.1rem; ">
             {% if exist_credit == False %}
             <a href="{% url "customer:create-credit-new" c.id  %}" class="me-2" style="width: max-content;">
                   <button class=""  
@@ -364,7 +374,7 @@
       color: #ffffff !important;
       font-weight: 600;
       background-color: var(--bg-enfasis) !important;  '  data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Nuevo 
+            + Credito
       </button>
       {% endif %}
             
@@ -459,65 +469,26 @@
                   {% include "components/list-credi.html" %}
             </div>
 
-            <div class="justify-content-start mt-3 mb-1  w-100  pe-5  bottom-0 d-flex rounded-0" 
-            style="background-color: #ffffff00; border-top: 0px rgb(207, 207, 207) solid; ">
-            <div class="di-cn">
-                   <span class="grey-span"><strong>Capital:</strong> ${{ credit.amount|intcomma }}.00</span>
-            </div>
-            <div class="di-cn">
-                 <span class="grey-span">  <strong> Tasa:</strong> 
-                        {% if credit.tasa == 0 %}
-                              15%
-                        {% else %}
-                              {{ credit.tasa }}%
-                        {% endif %}
-                        </span>
-            </div>
-            {% comment %} <div class="di-cn">
-                  <span class="grey-span" > <strong>Capital mas intereses:</strong>
-                        {% if cc == 1 %}
-                        $00.00
-                        {% else %}
-                        ${{ cc|intcomma }}.00
-                        {% endif %}
-                  </span>
-            </div> {% endcomment %}
-            <div class="di-cn">
-                   <span class="grey-span"> <strong>Pagado:</strong> ${{ cp|intcomma }}.00</span>
-            </div>
-            <div class="di-cn">
-                   <span class="grey-span"> <strong>Total al saldo:</strong>
-                        {% if cc == 1 %}
-                        $00.00
-                        {% else %}
-                        ${{ cc|intcomma }}.00
-                        {% endif %}
-                  </span>
-            </div>
-            <div class="di-cn">
-                 <span class="grey-span">  <strong>Cuotas:</strong>  {{ p_cuotas }} / {{c_cuotas}} </span>
-            </div>
-      
-            </div>
+  
                 
    
-           <div class="  me-2 ms-2 w-100     bg-white d-flex flex-wrap justify-content-center align-content-start overflow-auto  " 
-           style="height: 47vh; border-radius: 1.5rem; 
+           <div class="  me-2 ms-2 w-100  mt-3 bg-white d-flex flex-wrap justify-content-center align-content-start overflow-auto  " 
+           style="height: 55vh; border-radius: 1.5rem; 
 
            border: dotted 1px rgb(217, 217, 217);">
             <table class=" w-100 b rounded-4 m-2   mt-2 ">
             
                   <thead>
                         <tr>
-                              <th class="text-center" style="font-size: 12px; width: 6%;">#</th>
-                              <th class="text-center" style="font-size: 12px; width: 10%;">Cuota</th>
-                              <th class="text-center" style="font-size: 12px; width: 10%;">Mora</th>
-                              <th class="text-center" style="font-size: 12px; width: 14%;">Monto pagado</th>
-                              <th class="text-center" style="font-size: 12px; width: 10%;">Restante</th>
-                              <th class="text-center" style="font-size: 12px; width: 14%;">Dias de atraso</th>
-                              <th class="text-center" style="font-size: 12px; width: 10%;">Termina</th>
-                              <th class="text-center" style="font-size: 12px; width: 12%;">Vencimiento</th>
-                              <th class="text-center" style="font-size: 12px; min-width: 290px;">Acciones de pagos, abonos y mas </th>
+                              <th class="text-center pb-2" style="font-size: 12px; font-weight: 400; color: #454545 !important; width: 6%;">#</th>
+                              <th class="text-center pb-2" style="font-size: 12px; font-weight: 400; color: #454545 !important; width: 10%;">Cuota</th>
+                              <th class="text-center pb-2" style="font-size: 12px; font-weight: 400; color: #454545 !important; width: 10%;">Mora</th>
+                              <th class="text-center pb-2" style="font-size: 12px; font-weight: 400; color: #454545 !important; width: 14%;">Monto pagado</th>
+                              <th class="text-center pb-2" style="font-size: 12px; font-weight: 400; color: #454545 !important; width: 10%;">Restante</th>
+                              <th class="text-center pb-2" style="font-size: 12px; font-weight: 400; color: #454545 !important; width: 14%;">Dias de atraso</th>
+                              <th class="text-center pb-2" style="font-size: 12px; font-weight: 400; color: #454545 !important; width: 10%;">Termina</th>
+                              <th class="text-center pb-2" style="font-size: 12px; font-weight: 400; color: #454545 !important; width: 12%;">Vencimiento</th>
+                              <th class="text-center pb-2" style="font-size: 12px; font-weight: 400; color: #454545 !important; min-width: 290px;">Acciones cobros de cuotas y mas </th>
                         </tr>  </thead>
                   
                   <tbody >
@@ -629,14 +600,14 @@
                                           <input type="text" id="ct-p{{ cuota.id }}"  class="bg-white  bg-opacity-10 inputs  d-none p-1 ps-3  outline-none" placeholder="Cantidad" min="{{cuota.mora}}"
                                            value="{{cuota.cuota}}" max="{{ cuota.restante }}" style="border-radius: 1.5rem; width: 50%; 
                                           border: 1px solid rgb(236, 236, 236)   ; ;">
-                                          <button onclick="AplicarPago(this.id)" disabled="true" class=' btn-es ms-2 border-0  p-0 '  style="width: 100%; height: 2rem;" id="{{ cuota.id }}">
-                                                N/A
+                                          <button onclick="AplicarPago(this.id)" disabled="true" class=' btn-es ms-2 border-0  p-0 '  style="width: 100%; height: 2rem; background-color: #ededed6c !important;" id="{{ cuota.id }}">
+                                                ...
                                           </button>
                                     </div>
                                     {% else %}
                                     <div class="d-flex" style="">
-                                         <span class="mt-0 ms-3  mt-2 green-span me-1 ms-1 d-flex justify-content-center align-content-center flex-wrap ps-2 pe-2"> Ultimo pago</span>
-                                          <span class="green-span mt-2 d-flex justify-content-center align-content-center flex-wrap ps-2 pe-2" style="height: 2rem;">
+                                         <span class="mt-0 ms-3  mt-2 green-span me-1 ms-1 d-flex justify-content-center align-content-center flex-wrap ps-3 pe-3"> Ultimo pago</span>
+                                          <span class="green-span mt-2 d-flex justify-content-center align-content-center flex-wrap ps-3 pe-3" style="height: 2rem;">
                                                 {{ cuota.last_pay|date:"d/m/Y" }} - {{ cuota.last_time_pay|date:"h:i a" }}   
                                           </span>
                                     </div>
@@ -646,16 +617,52 @@
                         {% endfor %}
                   </tbody>
             </table> 
-            <div class="d-flex flex-wrap align-content-center w-100 justify-content-end  position-sticky bottom-0 rounded-0 bg-white bg-opacity-50 blur">
+            <div class="d-flex flex-wrap align-content-center w-100 justify-content-end  position-sticky bottom-0 rounded-0 bg-white bg-opacity-50 blur rounded-5" style="border-top-left-radius: 0 !important; border-top-right-radius: 0 !important;">
+                  <div class="justify-content-start     pe-5  bottom-0 d-flex rounded-0" 
+                  style="background-color: #ffffff00; border-top: 0px rgb(207, 207, 207) solid; ">
+                  <div class="di-cn">
+                         <span class="grey-span"><strong>Capital $</strong>{{ credit.amount|intcomma }}.00</span>
+                  </div>
+                  <div class="di-cn">
+                       <span class="grey-span">  <strong> Tasa</strong> 
+                              {% if credit.tasa == 0 %}
+                                    15%
+                              {% else %}
+                                    {{ credit.tasa }}%
+                              {% endif %}
+                              </span>
+                  </div>
+                  {% comment %} <div class="di-cn">
+                        <span class="grey-span" > <strong>Capital mas intereses</strong>
+                              {% if cc == 1 %}
+                              $00.00
+                              {% else %}
+                              ${{ cc|intcomma }}.00
+                              {% endif %}
+                        </span>
+                  </div> {% endcomment %}
+                  <div class="di-cn">
+                         <span class="grey-span"> <strong>Pagado $</strong>{{ cp|intcomma }}.00</span>
+                  </div>
+                  <div class="di-cn">
+                         <span class="grey-span">
+                              <strong>Total al saldo $</strong>{% if cc == 1 %}00.00
+                              {% else %}{{ cc|intcomma }}.00
+                              {% endif %}
+                        </span>
+                  </div>
+                  <div class="di-cn">
+                       <span class="grey-span">  <strong>Cuotas</strong>  {{ p_cuotas }} / {{c_cuotas}} </span>
+                  </div>
+            
+            </div>
                   <span class="align-content-center"> 
-                        <!-- <label for="pago-minimo"><strong>Pago minimo</strong></label>
-                        <input type="checkbox" name="pago-minimo" class="me-3 rounded-circle" id="pago-minimo"> -->
-                        <strong>Cuotas:</strong> 
-                        <span id="select-cuota" class="">0</span>
-                        <strong class="ms-3">Total a pagar:</strong> 
-                        <span id="total-a-apagar" class="me-4">$0.00</span>
+                        <strong style="font-size: 12px; color: #5b5b5b;">Cuotas</strong> 
+                        <span id="select-cuota" class="" style="font-size: 12px;">0</span>
+                        <strong class="ms-3" style="color: #5b5b5b ; font-size: 12px;">Total a pagar</strong> 
+                        <span id="total-a-apagar" class="me-4" style="font-size: 16px; font-weight: bold;">$0.00</span>
                   </span>
-                  <button onclick="AplicarPagoCuota()" class="border-0 aplicar-pago d-none ms-3 text-white rounded-5"  style="background-color: var(--bg-enfasis); font-weight: bold;">
+                  <button onclick="AplicarPagoCuota()" class="border-0 mb-1 me-1 aplicar-pago d-none ms-3 text-white rounded-5"  style="background-color: #5b5b5b; font-weight: bold;">
                        Aplicar pago
                   </button>
             </div>
@@ -835,22 +842,20 @@ document.getElementById('day_date').innerText = formattedDate;
 
 
 
-      window.onload = () => {
-       
-            let input_id = document.querySelector(".inp-id");
-            if (input_id) {
-                  document.querySelector('#div-more'+input_id.id).classList.add('surper-bg')
-            }
-            
-     
-   
-        };
 
-      let input_credit = document.querySelector(".input-credit");
-      if (input_credit) {
-            document.getElementById(input_credit.id).classList.add('super-shadow', 'flip-up') ; 
-            
-      }
+let input_credit = document.querySelector(".input-credit");
+if (input_credit) {
+      document.getElementById(input_credit.id).classList.add( 'flip-up', 'borde-color') ;   
+      
+}
+
+
+
+
+
+
+
+
 
 function AplicarPago(ID){
 
