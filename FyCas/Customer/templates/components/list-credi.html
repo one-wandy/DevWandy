@@ -132,8 +132,12 @@
                   filter: blur(90px);
                   filter: brightness(80%); "  alt=""> 
             {% endif %} {% endcomment %}
-           <span class=" ms-2" style="margin-top: 13px; font-size: 12px; font-weight: bold;"> 
-                  {{credit.name}} 
+           <span class=" ms-2" style="margin-top: 13px; font-size: 16px; font-weight: bold;"> 
+             -    {{credit.name}}  <br>
+                 <span style="font-size: 12px;" class="text-black-50 m-0 p-0">
+                  {{credit.day_created|date:"d F, Y" }}    
+            
+                 </span>
             </span>
       </div>
       
@@ -142,38 +146,40 @@
 
   
 
-<section class="mt-2 mb-4 div-text rounded-4  me-3  ">
+<section class="mt-3 mb-4 div-text rounded-4  me-3  ">
       <div class="w-100  rounded-4 p-2">
-            <table class=" w-100 bg-transparent text-center ">
+            <table class=" w-100 bg-transparent  ">
                   <thead>
                         <tr>
-                              {% if cuotas %}
+                              <!-- {% if cuotas %}
                                     <th scope="col">Fecha</th>
                           
-                              {% endif %}
-                              <th scope="col">Cuotas</th>
-                              <th scope="col">Precio</th>
-                              <th scope="col">Plazo</th>
+                              {% endif %} -->
                               <th scope="col">Capital</th>
+                              <th scope="col">Precio</th>
+                              <th scope="col">Cuotas</th>
+                              <th scope="col">Plazo</th>
                               <th scope="col">Estado</th>
                         </tr>
                   </thead>
                   <tbody>
                         <tr>
-                              {% if cuotas %}
-                                    <td>   {{credit.day_created|date:"m/d/Y" }}</td>
-                                    {% endif %}
-
+                              <!-- {% if cuotas %}
+                                    <td>
+                                             {{credit.day_created|date:"m/d/Y" }} 
+                                          </td>
+                                    {% endif %} -->
+                                    <td>
+                                          ${{credit.amount|intcomma}}.00     
+                                    </td>
+                                    <td> ${{credit.amount_feed|intcomma}}.00 </td>
                               <td>        {{credit.price_feed}}</td>
-                              <td> ${{credit.amount_feed|intcomma}}.00 </td>
                               <td> {% if credit.mode_pay == True %}
                                     (15) - (30)  (Q)
                                     {% else %}(M)
                                     {{credit.day_pay}}
                                     {% endif %}  </td>
-                              <td>
-                                    ${{credit.amount|intcomma}}.00     
-                              </td>
+                         
                               <td>
                                     <div class="d-flex text-black-50 w-100 justify-content-start start-0  top-0" style="font-weight: 500; font-size: 12px;">
   
@@ -183,11 +189,6 @@
                                                 Saldado
                                           </span>
                                           {% else %}
-                                          <!-- <span  >
-                                                Activo <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill " style="color: #73ff00 !important;" viewBox="0 0 16 16">
-                                                   <circle cx="8" cy="8" r="8"/>
-                                                 </svg>
-                                          </span> -->
                                           {% if credit.credito_atrasado == False %} 
                                           <span  class='green-span d-flex   justify-content-center align-content-center flex-wrap'  style="background-color: #eaeaea !important; color: #000000 !important;  ">
                                                 Puntual
@@ -227,7 +228,7 @@
         }
   </style>
   
-        <div class='d-flex  btn-share-con w-100  justify-content-around mt-2  mb-2'>
+        <div class='d-flex  btn-share-con d-none w-100  justify-content-around mt-2  mb-2'>
 
               <a  class='w-100 m-0' 
                     href="https://api.whatsapp.com/send?phone=+18092998306&text=Cliente: *({{credit.customer.name}} {{credit.customer.last_name}})*, 
