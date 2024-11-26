@@ -272,14 +272,19 @@ def ChatGPT(request):
             'refers': customer.name_r1 + " " + str(customer.number_r1) + " - " + customer.name_r2 + " " + str(customer.number_r2),
             'dni': customer.dni,
             'date': customer.day_created,
-
-
+            'empresa_donde_opera': customer.empresa_trabaja,
+            'ocupacion_en_su_empresa':customer.cargo,
+            'fines_de_prestamo': customer.fines,
+            "sexo": customer.sexo, 
             'credito': list(customer.credit.all()) if customer.credit.all().exists() else None,
+
             'creditos': [
                 {
                     'id': credito.id,
                     'amount': credito.amount,
                     'credito_atrasado': credito.credito_atrasado,
+                    'dia_de_pago': credito.day_pay,
+                    'precio_de_cuota': credito.price_feed
                 }
                 for credito in customer.credit.all()
             ] if customer.credit.all().exists() else None
