@@ -628,8 +628,23 @@
             <div class="d-flex flex-wrap align-content-center w-100 justify-content-end  position-sticky bottom-0 rounded-0 bg-white bg-opacity-50 blur rounded-5" style="border-top-left-radius: 0 !important; border-top-right-radius: 0 !important;">
                   <div class="justify-content-start     pe-5  bottom-0 d-flex rounded-0" 
                   style="background-color: #ffffff00; border-top: 0px rgb(207, 207, 207) solid; ">
-                  <div class="di-cn">
-                         <span class="grey-span"><strong>Capital $</strong>{{ credit.amount|intcomma }}.00</span>
+                  <div class="di-cn d-flex align-content-center flex-wrap mt-1 ">
+
+                        <span ><strong>Pago personalizado</strong></span>
+                        <div class=" m-0 p-0 ms-1 me-1 form-check" style="font-size: 12px;">
+                              <input class=" m-0 p-0 ms-1 me-1 form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                              <label class=" m-0 p-0 ms-1 me-1 form-check-label" for="flexRadioDefault1">
+                                Si
+                              </label>
+                            </div>
+                            <div class=" m-0 p-0 ms-1 me-1 form-check" style="font-size: 12px;">
+                              <input class=" m-0 p-0 ms-1 me-1 form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                              <label class=" m-0 p-0 ms-1 me-1 form-check-label" for="flexRadioDefault2">
+                                    No
+                              </label>
+                            </div>
+
+                         <!-- <span class="grey-span"><strong>Capital $</strong>{{ credit.amount|intcomma }}.00</span> -->
                   </div>
                   <div class="di-cn">
                        <span class="grey-span">  <strong> Tasa</strong> 
@@ -660,7 +675,7 @@
                         </span>
                   </div>
                   <div class="di-cn">
-                       <span class="grey-span">  <strong>Pagas</strong>  {{ p_cuotas }} / {{c_cuotas}} </span>
+                       <span class="grey-span">  <strong>Pagos</strong>  {{ p_cuotas }} / {{c_cuotas}} </span>
                   </div>
             
                   <span class="align-content-center"> 
