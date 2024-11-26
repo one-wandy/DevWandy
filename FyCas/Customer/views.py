@@ -797,7 +797,7 @@ class CrearCredito(TemplateView, Options):
      
 
         for credito in creditos_atrasados:
-            cuotas = models.Cuota.objects.filter(credito=credito, end_date__lt=today)
+            cuotas = models.Cuota.objects.filter(credito=credito, end_date__lt=today, estado=False)
 
             for cuota in cuotas:
                 tasa_decimal = cuota.credito.tasa / 100
@@ -815,6 +815,7 @@ class CrearCredito(TemplateView, Options):
                 cuota.mora = mora
                 cuota.cuota = cuota_fija + mora
                 cuota.save()
+                
                 total_con_mora = int(cuota.cuota + mora)
                 print(total_con_mora, 'Moras', dias_atraso)
 
