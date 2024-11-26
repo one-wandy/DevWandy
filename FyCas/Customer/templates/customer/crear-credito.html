@@ -151,8 +151,8 @@
 
             /* Clase que aplicará la animación */
             .flip-up {
-            animation: flip-up 0.8s ease-in-out;
-            transform-origin: bottom; /* Punto de rotación */
+            animation: flip-up 0.5s ease-in-out;
+            transform-origin: left; /* Punto de rotación */
             opacity: 1; /* Oculto por defecto */
             }
 
@@ -223,11 +223,13 @@
 
             .borde-color
             {
-                  border: 1px solid rgb(160, 160, 160) !important;
+                  border: 1px solid rgb(156, 156, 156) !important;
             }
             .credit-sp:hover
             {
-                  border: 1px solid grey !important;
+                  box-shadow: 0 4px 8px rgba(150, 171, 227, 0.333), 0 6px 10px rgba(236, 236, 236, 0.1) !important;
+                  /* background-color: rgba(237, 237, 237, 0.396) !important; */
+                  border: 2px solid #ece9e9 !important;
             }
 
 </style>
@@ -485,10 +487,12 @@
                               <th class="text-center pb-2" style="font-size: 12px; font-weight: 400; color: #454545 !important; width: 10%;">Mora</th>
                               <th class="text-center pb-2" style="font-size: 12px; font-weight: 400; color: #454545 !important; width: 14%;">Monto pagado</th>
                               <th class="text-center pb-2" style="font-size: 12px; font-weight: 400; color: #454545 !important; width: 10%;">Restante</th>
-                              <th class="text-center pb-2" style="font-size: 12px; font-weight: 400; color: #454545 !important; width: 14%;">Dias de atraso</th>
+                              <th class="text-center pb-2" style="font-size: 12px; font-weight: 400; color: #454545 !important; width: 17%;">Dias de atraso</th>
                               <th class="text-center pb-2" style="font-size: 12px; font-weight: 400; color: #454545 !important; width: 10%;">Termina</th>
                               <th class="text-center pb-2" style="font-size: 12px; font-weight: 400; color: #454545 !important; width: 12%;">Vencimiento</th>
-                              <th class="text-center pb-2" style="font-size: 12px; font-weight: 400; color: #454545 !important; min-width: 290px;">Acciones cobros de cuotas y mas </th>
+                              <th class="text-center pb-2" style="font-size: 12px; font-weight: 400; color: #454545 !important; min-width: 250px;">
+                                    Fecha y hora de pago      
+                              </th>
                         </tr>  </thead>
                   
                   <tbody >
@@ -499,6 +503,9 @@
                                     {% if cuota.estado %}  
                                     <div  id="{{cuota.id}}" class="green-span   mt-2 d-flex justify-content-center flex-wrap cuota-left align-content-center" style="height: 2rem; cursor: pointer;">
                                           {{ forloop.counter }}
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-patch-check-fill ms-2  text-primary" viewBox="0 0 16 16">
+                                                <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
+                                                </svg> 
                                      </div>
                                     {% else %}
                                     <div onclick="GetCuota(this.id)" id="{{cuota.id}}" class="grey-span mt-2 d-flex justify-content-center flex-wrap cuota-left align-content-center" style="height: 2rem; cursor: pointer;">
@@ -553,10 +560,7 @@
                               <td >  
                               <div  class="grey-span d-flex mt-2 justify-content-center flex-wrap align-content-center" style="height: 2rem;">
                                                 {% if cuota.estado %}  
-                                          Completado
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-patch-check-fill  text-black-50 ms-2" style="color: #aaaaaa !important;" viewBox="0 0 16 16">
-                                          <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
-                                          </svg> 
+                                                Se demoro {{cuota.dias_en_atraso}} días 
                                           {% else %}
                                           {% if cuota.dias_en_atraso == 0 %}
                                                       ...
@@ -587,9 +591,10 @@
                   
                                                       {% else %}
                                                       <div  class="green-span d-flex mt-2 justify-content-center flex-wrap align-content-center" style="height: 2rem;"> 
-                                                            {{ cuota.end_date|date:"d/m/Y" }}      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-patch-check-fill ms-2  text-primary" viewBox="0 0 16 16">
+                                                            {{ cuota.end_date|date:"d/m/Y" }}      
+                                                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-patch-check-fill ms-2  text-primary" viewBox="0 0 16 16">
                                                                   <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
-                                                                  </svg> 
+                                                                  </svg>  -->
                                                       </div> 
                                                 {% endif %}
                                                 </td>
@@ -606,8 +611,8 @@
                                     </div>
                                     {% else %}
                                     <div class="d-flex" style="">
-                                         <span class="mt-0 ms-3  mt-2 green-span me-1 ms-1 d-flex justify-content-center align-content-center flex-wrap ps-3 pe-3"> Ultimo pago</span>
-                                          <span class="green-span mt-2 d-flex justify-content-center align-content-center flex-wrap ps-3 pe-3" style="height: 2rem;">
+                                         <!-- <span class="mt-0 ms-3  mt-2 green-span me-1 ms-1 d-flex justify-content-center align-content-center flex-wrap ps-3 pe-3"> </span> -->
+                                          <span class="green-span mt-2 ms-2 w-100 d-flex justify-content-center align-content-center flex-wrap ps-3 pe-3" style="height: 2rem;">
                                                 {{ cuota.last_pay|date:"d/m/Y" }} - {{ cuota.last_time_pay|date:"h:i a" }}   
                                           </span>
                                     </div>
@@ -646,25 +651,27 @@
                   </div>
                   <div class="di-cn">
                          <span class="grey-span">
-                              <strong>Total al saldo $</strong>{% if cc == 1 %}00.00
+                              <strong>Saldar con $</strong>{% if cc == 1 %}00.00
                               {% else %}{{ cc|intcomma }}.00
                               {% endif %}
                         </span>
                   </div>
                   <div class="di-cn">
-                       <span class="grey-span">  <strong>Cuotas</strong>  {{ p_cuotas }} / {{c_cuotas}} </span>
+                       <span class="grey-span">  <strong>Pagas</strong>  {{ p_cuotas }} / {{c_cuotas}} </span>
                   </div>
             
-            </div>
                   <span class="align-content-center"> 
-                        <strong style="font-size: 12px; color: #5b5b5b;">Cuotas</strong> 
-                        <span id="select-cuota" class="" style="font-size: 12px;">0</span>
-                        <strong class="ms-3" style="color: #5b5b5b ; font-size: 12px;">Total a pagar</strong> 
+
+                        
+                        <strong class="ms-3" style="color: #5b5b5b ; font-size: 12px;">Total </strong> 
                         <span id="total-a-apagar" class="me-4" style="font-size: 16px; font-weight: bold;">$0.00</span>
                   </span>
-                  <button onclick="AplicarPagoCuota()" class="border-0 mb-1 me-1 aplicar-pago d-none ms-3 text-white rounded-5"  style="background-color: #5b5b5b; font-weight: bold;">
-                       Aplicar pago
+                  <button onclick="AplicarPagoCuota()" class="border-0 mb-1 me-1  position-relative aplicar-pago  text-white rounded-5"  style="background-color: var(--bg-enfasis); font-weight: bold; ">
+                       Aplicar  pago  
+                       <span id="select-cuota" class="position-absolute top-0 end-0 text-white rounded-circle d-flex flex-wrap align-content-center justify-content-center text-black p-2" 
+                       style="font-size: 12px; height: 20px; width: 20px; background-color: rgb(43, 138, 255);">0</span>
                   </button>
+            </div>
             </div>
              </div>
   
@@ -810,9 +817,12 @@
             console.log(total);
             if (total > 0) {
 
-                  document.querySelector('.aplicar-pago').classList.remove('d-none');
+                  document.querySelector('.aplicar-pago').disabled = false
+
+
             } else {
-                  document.querySelector('.aplicar-pago').classList.add('d-none');
+                  document.querySelector('.aplicar-pago').disabled = true
+
             }
             
 
@@ -845,7 +855,7 @@ document.getElementById('day_date').innerText = formattedDate;
 
 let input_credit = document.querySelector(".input-credit");
 if (input_credit) {
-      document.getElementById(input_credit.id).classList.add( 'flip-up', 'borde-color') ;   
+      document.getElementById(input_credit.id).classList.add( 'flip-up', 'super-shadow') ;   
       
 }
 

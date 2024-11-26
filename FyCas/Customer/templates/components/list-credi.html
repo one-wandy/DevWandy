@@ -120,7 +120,7 @@
       style="  min-width: 490px;  max-width: 490px;
       font-size: 14px; 
       border-radius: 1.5rem; 
-      height: max-content ;
+      height: 12rem ;
       box-shadow: #e5e5e500 1px 2px 1px 1px;  border: 1px solid rgb(221, 221, 221);">
 
 
@@ -167,10 +167,10 @@
                               <td>        {{credit.price_feed}}</td>
                               <td> ${{credit.amount_feed|intcomma}}.00 </td>
                               <td> {% if credit.mode_pay == True %}
-                                    (15) - (30) 
-                                    {% else %}
+                                    (15) - (30)  (Q)
+                                    {% else %}(M)
                                     {{credit.day_pay}}
-                                    {% endif %} Mensual </td>
+                                    {% endif %}  </td>
                               <td>
                                     ${{credit.amount|intcomma}}.00     
                               </td>
