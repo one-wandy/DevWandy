@@ -135,9 +135,9 @@ svg{
 
 
 <div class="w-100 d-flex">
-      <div class="w-75 d-flex flex-wrap align-content-start overflow-scroll vh-100 ">
+      <div style="width: max-content;" class=" d-flex flex-wrap  align-content-start overflow-scroll vh-100 ">
             {% for c in customer %}
-                  <div style="width: 408px; height: 181px;   " class="position-relative  mb-1 me-1 card-cu       d-flex justify-content-center me-1">
+                  <div style="width: 408px; height: 181px;   " class="position-relative  mb-1 me-1 card-cu       d-flex justify-content-center ">
 
                         <div id="client{{c.id}}"   style=" transition: 0.5s ease-out !important;   
                         border-radius: 1.5rem;   z-index: 0 !important; background-color: #ffffff !important;
@@ -212,7 +212,7 @@ svg{
             {% endfor %}
       </div>
       <input type="text" id="sr-data" class="d-none">
-      <div class="w-25 position-relative  d-flex flex-wrap align-content-start">
+      <div class="w-100 position-relative  d-flex flex-wrap  align-content-start">
             <input type="text" id='search-data'  style="font-size: 12px;  max-width: 20rem; 
             height: 2.8rem; outline: none !important; border-radius: 1.5rem!important;
             border: 1px solid rgb(223, 223, 223);"
@@ -226,7 +226,7 @@ svg{
 
             <!-- Solicitudes -->
 
-          <section class="card btn-sec-cl w-100 rounded-5 p-4 pt-1 mt-2">
+          <section class="card btn-sec-cl w-100 rounded-5 p-4 pt-1 mt-2 ">
             <h6 class="m-0 p-0 text-black-50 mt-2" style="font-size: 12px;">
                   <!-- Acciones  -->
             </h6>
@@ -279,7 +279,7 @@ svg{
 
 
             <div class="w-100 mt-2"> 
-                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://grupofycas.online/agregar/{{company.id}}" class="w-100 rounded-5" alt="QR Code">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://grupofycas.online/add-customer/{{company.id}}" class="w-100 rounded-5" alt="QR Code">
                   <a class="url text-center" href="https://grupofycas.online/add-customer/{{company.id}}">https:grupofycas.online</a>
                   <style>
                         .url {
