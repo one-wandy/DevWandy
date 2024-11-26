@@ -18,7 +18,7 @@
 
 .whatsapp-container {
       display: flex;
-      height: 100vh;
+      height: 100%;
 }
 
 .sidebar {
@@ -129,7 +129,7 @@
 
 .message.sent p {
       /* background-color: var(--bg-enfasis); */
-      background-color: #5353534a;
+      /* background-color: #2222227b; */
       color: rgb(255, 255, 255);
       align-self: flex-end;
       padding-top: 10px;
@@ -170,11 +170,11 @@
 }
 
 </style>
-<section data-aos="fade-in" class="bg-danger rounded-5 h-100" style="transition: 0.5s;">
+<section data-aos="fade-in" class=" rounded-5 h-100 overflow-scroll " style="transition: 0.5s;">
 
 
 
-      <div  class="whatsapp-container ">
+      <div  class="whatsapp-container  " >
             <div class="chat-window overflow-hidden rounded-5">
           
                   <div class="messages d-flex rounded-5 p-0" 
@@ -188,10 +188,12 @@
                                          style="
                                          border-bottom-left-radius: 0.4rem;
                                          border-bottom-right-radius: 0.4rem;">
-                                         <span class="bg-white rounded-circle me-4 ms-1 mt-1 p-2">
+                                         <span class="bg-white rounded-circle me-2 ms-1 mt-1 p-2">
                                                <img src="{{company.Icon.url}}" alt="Contact Picture">
                                          </span> <br>
-                                         <span class="text-white mt-2" style="font-weight: bold;">Nicolas De Jesus Armando</span>
+                                         <span class="text-white mt-2" style="font-weight: bold;">
+                                                {{user.first_name}} 
+                                          </span>
                                    </div>
 
                                     <div style="width: 100%;" class="bg-black bg-opacity-50 rounded-0">
@@ -204,24 +206,83 @@
                                               
                               <div class='d-flex p-2'>
                                     <div class="message received">
-                                          <p class="w-100 " style="border-radius: 1.5rem; border-top-left-radius: 0rem;
-                                          color: #f7f7f7;"> Hola!, ¿en que puedes ayudarme? </p>
+                                        <span class="text-white " 
+                                        style="font-weight: bold; font-size: 12px;">
+                                        <img src="https://intn24.lalr.co/cms/2023/10/11164032/Texto-del-parrafo-99.jpg?w=1024" alt="Contact Picture" width="30" height="30" class="object-fit-cover rounded-circle me-1">  Lucia Fernandez</span>
+                                          <p class="w-100 mt-1" style="border-radius: 1.5rem; border-top-left-radius: 0rem;
+                                          color: #f7f7f7;"> Hola!, ¿cuales son los requisitos de prestamo de $70,000.00? </p>
                                           <span class="time">10:00 AM</span>
                                     </div>
                                  </div>
                                    <div class='d-flex w-100 justify-content-end '>
-                                          <div class="message sent position-relative  p-2 pb-4 "
+                                          <div class="message sent position-relative  p-2 ms-5 pb-4 "
                                                  style='width: 40rem;'>
-                                                <p class="w-100 " style="border-radius: 1.5rem; border-bottom-right-radius: 0rem;">¡Hola! Soy Soli, tu asistente financiero. Puedo ayudarte a gestionar y analizar la información financiera del Grupo Fycas
-            
+                                                <p class="w-100  bg-black bg-opacity-25" style="border-radius: 1.5rem; border-bottom-right-radius: 0rem;">¡Hola! Soy Soli, tu asistente financiero de {{company.name}}. <br> Para solicitar un préstamo de $70,000.00 necesitas: <br> <br> - <strong class="text-white">Ser mayor de edad </strong><br> - <strong class="text-white">Tener una cuenta bancaria</strong> <br> - <strong class="text-white">Comprobante de ingresos</strong> <br> - <strong class="text-white">Comprobante de domicilio</strong> <br> - <strong class="text-white">Identificación oficial vigente</strong>
                                                 </p>
                                                 <span class="time text-end me-2  mb-1 position-absolute bottom-0 end-0 ">10:01 AM</span>
                                           </div>
-                                          
                                    </div>
+                                   <div class='d-flex p-2'>
+                                    <div class="message received">
+                                        <span class="text-white " 
+                                        style="font-weight: bold; font-size: 12px;">
+                                        <img src="https://intn24.lalr.co/cms/2023/10/11164032/Texto-del-parrafo-99.jpg?w=1024" alt="Contact Picture" width="30" height="30" class="object-fit-cover rounded-circle me-1">  Lucia Fernandez</span>
+                                          <p class="w-100 mt-1 typing-indicator" style="border-radius: 1.5rem; border-top-left-radius: 0rem;
+                                          color: #f7f7f7;"> 
+              
+
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+
+
+                                          <style>
+                                          .typing-indicator {
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                height: 38px;
+                                          }
+
+                                          .typing-indicator span {
+                                                display: block;
+                                                width: 8px;
+                                                height: 8px;
+                                                margin: 0 2px;
+                                                background-color: #ffffff;
+                                                border-radius: 50%;
+                                                animation: typing 1s infinite;
+                                          }
+
+                                          .typing-indicator span:nth-child(2) {
+                                                animation-delay: 0.2s;
+                                          }
+
+                                          .typing-indicator span:nth-child(3) {
+                                                animation-delay: 0.4s;
+                                          }
+                                 
+
+                                          @keyframes typing {
+                                                0%, 60%, 100% {
+                                                      transform: translateY(0);
+                                                }
+                                                30% {
+                                                      transform: translateY(-5px);
+                                                }
+                                          }
+
+                                          
+                                          </style>
+
+                                    </p>
+                                          <!-- <span class="time">10:40 AM</span> -->
+                                    </div>
+                                 </div>
                                    <div class="message-input w-100 border-0  d-flex justify-content-center position-sticky bottom-0">
-                                    <input type="text" placeholder="Escribe mensaje" class="rounded-5 input-ms bg-black bg-opacity-25 border-0 text-white-50" style="max-width: 40rem; outline: none;">
-                                    <button class="send-btn d-none rounded-circle">
+                                         <input type="text" placeholder="Escribe mensaje" class=" input-ms bg-black bg-opacity-25 border-0 p-2 ps-4 pe-4 text-white-50" style="max-width: 20rem; outline: none; border-radius: 2rem; 
+                                         min-height: 2.8rem;">
+                                         <button class="send-btn d-none rounded-circle">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-send-fill m-0 p-0 " viewBox="0 0 16 16">
                                           <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z"/>
                                         </svg>
