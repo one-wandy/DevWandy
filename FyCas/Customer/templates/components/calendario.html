@@ -30,11 +30,104 @@
       {
 
       }
+      .fc-toolbar-title 
+    {
+        font-size: 12px !important;
+    }
+    .inputs-fo 
+    {
+        width: 100%; 
+        height: 2.5rem; padding: 1rem;
+        border-radius: 1.5rem; border: #d6d6d6 solid 1px;
+    }
+
+    tr{
+        font-size: 14px;
+    }
 </style>
 
-<section class="w-100  h-100  top-0 start-0 d-flex   justify-content-center align-content-center flex-wrap" style="z-index: 0;">
+<section data-aos="fade-in" class="w-100  h-100  top-0 start-0 d-flex   justify-content-start align-content-start flex-wrap" style="z-index: 0; transition: 0.5s;">
       <div id="overlay"></div>
-      <div data-aos="fade-in" id='calendar' class="" style="width: 90%; transition-delay: 0.3s !important;" ></div>
+        <section class="d-flex w-100">
+            <div data-aos="fade-in" id='calendar' class="" style="width: 120rem; transition-delay: 0.3s !important;" ></div>
+            <div class="w-100">
+                
+                <form id="event-form" class="d-flex flex-column p-2 w-100 bg-white rounded-4">
+                    <div class="mb-3">
+
+                        <input type="text" placeholder="Nombre" class="inputs-fo" id="event-name" required>
+                    </div>
+                    <div class="mb-3">
+                    <textarea placeholder="Descripción" class="inputs-fo"  style="height: 15rem;" required></textarea>
+
+                    </div>
+                    <div class="mb-1">
+                        <input type="date" class="inputs-fo" id="event-date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="event-type" class="form-label rounded-4" 
+                            style="font-size: 12px;">Tipo de Evento</label>
+                        <select class="rounded-2 ps-3 pe-3 bg-black text-white" id="event-type" required>
+                            <option value="Cobro">Cobro</option>
+                            <option value="Acuerdo">Acuerdo</option>
+                            <option value="Citar">Citar</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <button type="submit" class=" text-white rounded-5" 
+                    style="background-color: var(--bg-enfasis); font-weight: bold; 
+                    width: 100%;">Agregar Evento</button>
+                </form>
+
+            </div>
+        </section>
+        <section class="w-100">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Fecha</th>
+                        <th>Evento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Federico Almanzar</td>
+                        <td>Pago de cuota mensual</td>
+                        <td>15/01/2024</td>
+                        <td>Cobrar</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Gonzales Camacho</td>
+                        <td>Reunión para discutir términos</td>
+                        <td>30/01/2024</td>
+                        <td>Acuerdo</td>
+                    </tr>
+                    <tr>
+                        <td>Maria Lopez</td>
+                        <td>Entrevista para nuevo proyecto</td>
+                        <td>10/02/2024</td>
+                        <td>Citar</td>
+                    </tr>
+                    <tr>
+                        <td>Juan Perez</td>
+                        <td>Evento social de networking</td>
+                        <td>20/03/2024</td>
+                        <td>Otro</td>
+                    </tr>
+                    <tr>
+                        <td>Luisa Martinez</td>
+                        <td>Revisión de contrato</td>
+                        <td>25/04/2024</td>
+                        <td>Acuerdo</td>
+                    </tr>
+
+                    <!-- Agrega más filas según sea necesario -->
+                </tbody>
+            </table>
+        </section>
   
       <!-- Modal para el evento Cobrar -->
       <div id="cobrar-modal" class="position-absolute bg-white top-50 z-2" style="display: none;"> 

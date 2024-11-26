@@ -484,7 +484,7 @@ select option {
     transform-origin: left; /* Punto de rotación */
 }
 
-@keyframes flip-up {
+@keyframes flip-up-ai {
     0% {
         transform: rotateX(90deg);
         opacity: 0;
@@ -495,8 +495,8 @@ select option {
     }
 }
 
-.flip-up {
-    animation: flip-up 0.3s ease-in ;
+.flip-up-ai {
+    animation: flip-up-ai 0.3s ease-in ;
     transform-origin: left; /* Punto de rotación */
     opacity: 1; /* Oculto por defecto */
 }
@@ -1710,11 +1710,11 @@ function toggleContainerIA() {
       const containerIA = document.getElementById('container-ia');
       if (containerIA.classList.contains('d-none')) {
             containerIA.classList.remove('d-none');
-            containerIA.classList.add('flip-up');
+            containerIA.classList.add('flip-up-ai');
             document.getElementById('send-data-ia').focus();
       } else {
             containerIA.classList.add('d-none');
-            containerIA.classList.remove('flip-up');
+            containerIA.classList.remove('flip-up-ai');
       }
 }
 
