@@ -474,7 +474,7 @@
   
                 
    
-           <div class="  me-2 ms-2 w-100  mt-3 bg-white d-flex flex-wrap justify-content-center align-content-start overflow-auto  " 
+           <div class="  me-2 ms-2 w-100  mt-0 bg-white d-flex flex-wrap justify-content-center align-content-start overflow-auto  " 
            style="height: 55vh; border-radius: 1.5rem; 
 
            border: dotted 1px rgb(217, 217, 217);">
@@ -572,26 +572,26 @@
 
                                     {% endif %}  </td>
                                     <td class="text-capitalize"> 
-                                          <div  class="grey-span d-flex mt-2 justify-content-center flex-wrap align-content-center" style="height: 2rem;">{{cuota.start_date|date:"d/m/Y"}} </div> </td>
+                                          <div  class="grey-span d-flex mt-2 justify-content-center flex-wrap align-content-center" style="height: 2rem;">{{cuota.start_date|date:"M/d/Y"}} </div> </td>
                                     <td class="text-capitalize">
                                                {% if cuota.estado != True %}
 
                                                       
                                                       {% if cuota.end_date < today %}
                                                             <div  class="danger-span mt-2 d-flex justify-content-center flex-wrap align-content-center" style="height: 2rem;"> 
-                                                                  {{ cuota.end_date|date:"d/m/Y" }} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash ms-2" viewBox="0 0 16 16">
+                                                                  {{ cuota.end_date|date:"M/d/Y" }} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash ms-2" viewBox="0 0 16 16">
                                                                         <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
                                                                       </svg>
                                                             </div> 
                                                       {% else %}
                                                             <div  class="grey-span d-flex mt-2 justify-content-center flex-wrap align-content-center" style="height: 2rem;"> 
-                                                                  {{ cuota.end_date|date:"d/m/Y" }}
+                                                                  {{ cuota.end_date|date:"M/d/Y" }}
                                                             </div> 
                                                       {% endif %}
                   
                                                       {% else %}
                                                       <div  class="green-span d-flex mt-2 justify-content-center flex-wrap align-content-center" style="height: 2rem;"> 
-                                                            {{ cuota.end_date|date:"d/m/Y" }}      
+                                                            {{ cuota.end_date|date:"M/d/Y" }}      
                                                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-patch-check-fill ms-2  text-primary" viewBox="0 0 16 16">
                                                                   <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
                                                                   </svg>  -->

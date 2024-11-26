@@ -144,7 +144,7 @@
 
 <section class="mt-2 mb-4 div-text rounded-4  me-3  ">
       <div class="w-100  rounded-4 p-2">
-            <table class=" w-100 bg-transparent  ">
+            <table class=" w-100 bg-transparent text-center ">
                   <thead>
                         <tr>
                               {% if cuotas %}
@@ -179,8 +179,8 @@
   
       
                                           {% if credit.estado_credito == True %}        
-                                          <span  class='green-span d-flex me-2  justify-content-center align-content-center flex-wrap' >
-                                                Finalizado
+                                          <span  class='green-span d-flex   justify-content-center align-content-center flex-wrap' >
+                                                Saldado
                                           </span>
                                           {% else %}
                                           <!-- <span  >
@@ -189,11 +189,11 @@
                                                  </svg>
                                           </span> -->
                                           {% if credit.credito_atrasado == False %} 
-                                          <span  class='green-span d-flex me-2  justify-content-center align-content-center flex-wrap'  style="background-color: #eaeaea !important; color: #000000 !important;  ">
+                                          <span  class='green-span d-flex   justify-content-center align-content-center flex-wrap'  style="background-color: #eaeaea !important; color: #000000 !important;  ">
                                                 Puntual
                                           </span>
                                        {% else %}
-                                       <span  class='danger-span d-flex me-2  justify-content-center align-content-center flex-wrap' >
+                                       <span  class='danger-span d-flex   justify-content-center align-content-center flex-wrap' >
                                           Atrasado
                                     </span>
                                        {% endif %}
