@@ -813,7 +813,6 @@ class CrearCredito(TemplateView, Options):
                 cuota.dias_en_atraso = dias_atraso
                 # Total con mora
                 cuota.mora = mora
-                cuota.end_date = today
                 cuota.cuota = cuota_fija + mora
                 cuota.save()
                 

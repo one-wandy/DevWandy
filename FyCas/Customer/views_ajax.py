@@ -421,6 +421,7 @@ def AplicarPagoCuota(request):
         cu = models.Cuota.objects.get(id=num)
         cu.abonado = cu.cuota
         cu.estado = True
+        cu.end_date = datetime.today()
         cu.last_time_pay = datetime.now()
         cu.save()
 
