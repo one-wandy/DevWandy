@@ -31,6 +31,9 @@ class Dashboard(TemplateView, Options):
         
     
     def get_context_data(self, **kwargs):
+
+
+
         context = super().get_context_data(**kwargs)
         creditos = models.Credit.objects.filter(company=self.Company(), is_active = True)
         total_inversion = 0
@@ -158,7 +161,7 @@ class ListCustomer(ListView,Options):
                     context['count_client'] = int(filter_client.count())
         else:
             filter_client = self.model.objects.filter(is_active = True, company = self.Company(),
-                                    customer_verify = True ).order_by('-id')[:15]
+                                    customer_verify = True ).order_by('-id')[:8]
             context['customer'] = filter_client
             context['company'] = self.Company()
             context['count_client'] = int(filter_client.count())

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'allauth',  # App de Autenticación
     'allauth.account', # App de Cuentas
     'allauth.socialaccount', # App de Cuentas Sociales
+     'django_extensions',
 ]
 
 MIDDLEWARE = [
