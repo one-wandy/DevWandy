@@ -333,8 +333,8 @@ a
 .blur
 {
 
-      -webkit-backdrop-filter: blur(10px) !important;
-      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(40px) !important;
+      backdrop-filter: blur(40px) !important;
       
 
 }
@@ -852,9 +852,89 @@ css <style > .socket {
   }
 }
 
+
+
   </style>
 
   <body style="" class="h-100 overflow-hidden ">
+
+
+<section class="position-absolute notificacion-push  d-flex z-2 flex-wrap justify-content-center p-2 align-content-center" 
+      style="top: 0.3rem; right: 0.3rem; width: 29rem; border-radius: 1.5rem; transition: 0.7s;
+         ">
+      <div data-aos="fade-left" class=" blur p-1  bg-white bg-opacity-25  card"
+      style="width: 29rem;  border-radius: 1.5rem; transition: 1.5s;">
+      <div class="w-100 h-100 p-2 bg-white opacity-50"
+      style="border-radius: 1.5rem;">
+            <span>
+                 <strong>
+                  <img src="{{company.Icon.url}}"   alt="Profile Photo" class="rounded-circle object-fit-cover  " width="30" height="30">   Bengamin Hernandez
+                 </strong>
+            </span>
+            <p>
+                  Hola! ¿como estan?, soy nuevo en {{company.name}} vengo a salicitar un prestamo de <strong>$70,000.00</strong>
+                  a 8 cuotas
+            </p>
+            <div class="d-flex w-100 justify-content-end" style="font-size: 14px;">
+                  <span class="p-2" style="font-weight: bold;">
+                        Rechazar
+                  </span>
+                  <span class="bg-black bg-opacity-75 text-white p-2 ps-3 pe-3 rounded-5">
+                        Depurar
+                  </span>
+            </div>
+      </div>
+</div>
+
+
+<div data-aos="fade-left" class=" blur p-1  bg-white bg-opacity-25  card"
+style="width: 29rem;  border-radius: 1.5rem; transition: 1s;">
+<div class="w-100 h-100 p-2 bg-white opacity-50"
+style="border-radius: 1.5rem;">
+      <span>
+           <strong>
+            <img src="{{company.Icon.url}}"   alt="Profile Photo" class="rounded-circle object-fit-cover  " width="30" height="30">   Bengamin Hernandez
+           </strong>
+      </span>
+      <p>
+            Hola! ¿como estan?, soy nuevo en {{company.name}} vengo a salicitar un prestamo de <strong>$70,000.00</strong>
+            a 8 cuotas
+      </p>
+      <div class="d-flex w-100 justify-content-end" style="font-size: 14px;">
+            <span class="p-2" style="font-weight: bold;">
+                  Rechazar
+            </span>
+            <span class="bg-black bg-opacity-75 text-white p-2 ps-3 pe-3 rounded-5">
+                  Depurar
+            </span>
+      </div>
+</div>
+</div>
+
+
+
+<div data-aos="fade-left" class=" blur p-1 mt-1 mb-1  bg-white bg-opacity-25  card"
+style="width: 29rem; transition: 0.5s;
+  border-radius: 1.5rem;">
+<div class="w-100 h-100 p-2 bg-white opacity-50"
+style="border-radius: 1.5rem;">
+      <span>
+           <strong>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">
+                  <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/></svg>   Soli 
+           </strong>
+      </span>
+      <p>
+            ¿Sabias que el cliente <strong>Luis Medrano</strong> debe mas de <strong>$37,000.00</strong>
+            solo de intereses? <strong><a href="" class="url" style="width: max-content;">Ver mas</a></strong>
+      </p>
+
+</div>
+</div>
+
+</section>
+
+
 
 
 
@@ -1719,7 +1799,9 @@ function toggleContainerIA() {
 }
 
 
-
+setTimeout(() => {
+      document.querySelector('.notificacion-push').classList.add('d-none');
+}, 6000);
 
         
 </script>
