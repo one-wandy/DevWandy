@@ -223,7 +223,7 @@
 
             .borde-color
             {
-                  border: 1px solid rgb(156, 156, 156) !important;
+                  border: 3px solid rgb(221, 225, 229) !important;
             }
             .credit-sp:hover
             {
@@ -631,12 +631,12 @@
 
 
                   <div class="m-0 p-0 ms-1 me-1 " style=" margin-top: 2px !important; font-size: 12px;">
-                        <label for="paymentMethod" class="form-label">Método de pago</label>
+                        <label for="paymentMethod" class="form-label">Modo de pago</label>
                         <select class="border-0 rounded-4  p-2" style="font-weight: bold;" id="paymentMethod">
-                              <option class="text-white" value="normal">Normal</option>
-                              <option class="text-white" value="personalizado">Personalizado</option>
+                              <option class="text-white" value="normal">Saldar Cuota</option>
+                              <option class="text-white" value="personalizado">Abonar al capital</option>
                               <option class="text-white" value="acuerdo">Acuerdo de pago</option>
-                              <option class="text-white" value="intereses">Pagar intereses</option>
+                              <option class="text-white" value="intereses">Abonar Intereses</option>
                         </select>
                   </div>
                          <!-- <span class="grey-span"><strong>Capital $</strong>{{ credit.amount|intcomma }}.00</span> -->
@@ -868,7 +868,7 @@ document.getElementById('day_date').innerText = formattedDate;
 
 let input_credit = document.querySelector(".input-credit");
 if (input_credit) {
-      document.getElementById(input_credit.id).classList.add( 'flip-up', 'super-shadow') ;   
+      document.getElementById(input_credit.id).classList.add( 'flip-up', 'borde-color') ;   
       
 }
 
