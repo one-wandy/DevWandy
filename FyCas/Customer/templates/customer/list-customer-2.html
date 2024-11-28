@@ -90,8 +90,8 @@ svg{
 }
 @media (min-width: 700px) {
       .card-cu {
-            width: 48% !important;
-            max-width: 26rem;
+            width: 50% !important;
+            max-width: 27rem;
       }
       .div-cu {
             display: flex;
@@ -135,9 +135,9 @@ svg{
 
 
 <div class="w-100 d-flex">
-      <div style="width: 100%;" class=" d-flex flex-wrap  align-content-start overflow-scroll vh-100 ">
+      <div style="width: 100%;" class=" d-flex flex-wrap justify-content-evenly  mt-1 align-content-center overflow-scroll vh-100 ">
             {% for c in customer %}
-                  <div style="width: 408px; height: 181px;   " class="position-relative  mb-1 me-1 card-cu       d-flex justify-content-center ">
+                  <div style="width: 408px; height: 181px;   " class="position-relative  mb-3 me-1 card-cu       d-flex justify-content-center ">
 
                         <div id="client{{c.id}}"   style=" transition: 0.5s ease-out !important;   
                         border-radius: 1.8rem;   z-index: 0 !important; background-color: #ffffff !important;

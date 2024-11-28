@@ -196,7 +196,7 @@ class Customer(models.Model):
     day_created = models.DateField(default=timezone.now)
 
     def __str__(self):
-        return self.name
+        return f'{self.name}, {self.last_name}, {self.company}'
 
 
 class Credit(models.Model):
