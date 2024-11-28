@@ -634,13 +634,70 @@
                         <label for="paymentMethod" class="form-label">Modo de pago</label>
                         <select class="border-0 rounded-4  p-2" style="font-weight: bold;" id="paymentMethod">
                               <option class="text-white" value="normal">Saldar Cuota</option>
-                              <option class="text-white" value="personalizado">Abonar al capital</option>
+                              <option class="text-white" value="abonar">Abonar al capital</option>
                               <option class="text-white" value="acuerdo">Acuerdo de pago</option>
                               <option class="text-white" value="intereses">Abonar Intereses</option>
                         </select>
                   </div>
                          <!-- <span class="grey-span"><strong>Capital $</strong>{{ credit.amount|intcomma }}.00</span> -->
-        
+                  <script>
+function handlePaymentMethodChange() {
+      var input_s = document.querySelector('.input-personalizado')
+            let btnAplicar_pago = document.querySelector('.aplicar-pago') 
+            const paymentSelect = document.getElementById("paymentMethod");
+            const selectedValue = paymentSelect.value;
+
+            
+
+                  if (selectedValue === "abonar") {
+                        btnAplicar_pago.classList.add('d-none')
+                        input_s.classList.remove('d-none')
+
+
+                        input_s.addEventListener("input", function (e) {
+                        let value = e.target.value;
+
+                        // Elimina todo lo que no sea dígito
+                        value = value.replace(/[^0-9]/g, "");
+
+                        // Formatea el número con comas como separadores de miles
+                        const formattedValue = new Intl.NumberFormat().format(value);
+
+                        // Muestra el valor formateado
+                        e.target.value = formattedValue;
+                        document.querySelector('#total-a-apagar').innerHTML = 'DOP$'+ formattedValue + '.00'
+
+                        let value_replace = value.replace(/\D/g, '');
+            
+                        // Convierte el valor a número y lo compara con el máximo
+                        let max = parseInt(this.getAttribute('max'));
+                        console.log(max);
+            
+                        if (parseInt(value_replace) > max) {
+                              // Si el valor es mayor al máximo, ajusta el valor al máximo permitido
+
+                            
+                        }
+
+
+
+                  });
+
+
+                  
+                  }
+                  if (selectedValue === "normal") {
+                        btnAplicar_pago.classList.remove('d-none')
+                        input_s.classList.add('d-none')
+                  }
+  }
+      // Escucha el evento de entrada en el campo
+
+
+  // Escucha el evento de cambio en el select
+  document.getElementById("paymentMethod")
+    .addEventListener("change", handlePaymentMethodChange);
+                  </script>
                   <div class="di-cn">
                        <span class="grey-span">  <strong> Tasa</strong> 
                               {% if credit.tasa == 0 %}
@@ -676,7 +733,7 @@
                   <span class="align-content-center"> 
 
                         
-                        <strong class="ms-3" style="color: #5b5b5b ; font-size: 12px;">Total </strong> 
+                        <strong class="ms-3" style="color: #5b5b5b ; font-size: 12px;"> </strong> 
                         <span id="total-a-apagar" class="me-4" style="font-size: 16px; font-weight: bold;">$0.00</span>
                   </span>
                   <button onclick="AplicarPagoCuota()" class="border-0 mb-1 me-1  position-relative aplicar-pago  text-white rounded-5"  disabled="true" style="background-color: var(--bg-enfasis); font-weight: bold; ">
@@ -684,6 +741,9 @@
                        <span id="select-cuota" class="position-absolute top-0 end-0 text-white rounded-circle d-flex flex-wrap align-content-center justify-content-center text-black p-2" 
                        style="font-size: 12px; height: 20px; width: 20px; background-color: rgb(43, 138, 255);">0</span>
                   </button>
+
+                  <input type="text" name="" placeholder=""  class="border-0 d-none text-center  text-black-50 input-personalizado" maxlength="{{cc}}" max="{{cc}}" style="height: 2.3rem; border-radius: 1.8rem; outline: none;
+                  background-color: var(--bg-secundary); width: 7rem;">
             </div>
             </div>
              </div>

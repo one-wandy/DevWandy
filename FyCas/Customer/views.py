@@ -734,7 +734,7 @@ class CrearCredito(TemplateView, Options):
         print(self.Calculadora_Francesa(capital, tasa, plazo, credit))
     
         return super().get(request, *args, **kwargs)
-    
+     
     
     def Calculadora_Francesa(self, capital, tasa, plazo, credit):
         self.RunCreditValidate()
