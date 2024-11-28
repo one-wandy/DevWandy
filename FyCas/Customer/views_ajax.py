@@ -310,15 +310,15 @@ Siempre mantén actualizada esta información clave:
 0. Te llamas Soli.
 1. Número total de clientes activos: {clientes.count()}.
 2. Cantidad de créditos otorgados: {creditos.count()}.
-3. Ingresos totales de la empresa: 384,333.
+3. Ingresos totales de la empresa: 384,333.1
 4. Inversión total de la empresa: {total_inversion}.
-5. Listado de clientes: {models.Customer.objects.filter(is_active=True, company=company)}.
+5. Listado de clientes: {models.Customer.objects.filter(is_active = True, company = company,
+                                    customer_verify = True ).order_by('-id')[:8]}.
 6. Información de todos los clientes: {models.Customer.objects.filter(is_active=True, company=company)}.
 7. Información específica de clientes: {customer_list}.
 
 Datos adicionales:
 - GRUPO FYCAS presta a una tasa mensual del 15%.
-- GRUPO FYCAS fue fundada en 2022.
 - GRUPO FYCAS es una empresa dedicada a la gestión financiera y otorgamiento de créditos.
 
 Cálculo de moras:

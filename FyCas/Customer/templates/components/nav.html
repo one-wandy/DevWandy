@@ -172,14 +172,31 @@
                   </strong>
             </div>
          
-            <a href="{% url "customer:dashboard" %}" class=" mt-5">
+            <a href="{% url "customer:dashboard" %}" class=" mt-1">
                   <button class="btn-dashboard">
                         <img src="{% static "icons/grafico.png" %}" width='24' alt="">
                         <span class=" text-start">
                               Dashboard  
                         </span>
                   </button>
-            
+            </a>
+
+            <a href="{% url "shop:shop" %}">
+                  <button class="btn-pos">
+                        <img src="{% static "icons/pos.png" %}" width='24' alt="">
+                        <span>
+                              POS
+                        </span>
+                  </button>
+            </a>
+
+            <a href="{% url "shop:inventario" %}">
+                  <button class="btn-inventario">
+                        <img src="{% static "icons/item.png" %}" width='24' alt="">
+                        <span>
+                              Inventario
+                        </span>
+                  </button>
             </a>
            
             <a href="{% url "customer:select-form" %}">
@@ -232,7 +249,6 @@
                   </span>
             </button>
             <a href="{% url "customer:calendario" %}">
-
                   <button class="btn-calendario">
                         <img src="{% static "svg/calendar.svg" %}" width='24' alt="">
                         <span>

@@ -1,0 +1,187 @@
+{% extends "base/base.html" %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+<style>
+    .btn-pos
+    {
+          background-color: var(--bg-enfasis) !important;
+          color: white !important;
+          width: max-content !important;
+          
+    }
+    .btn-pos img 
+    {
+          display: none;
+    }
+    .container {
+      max-width: 800px;
+      margin-top: 20px;
+    }
+
+    .item {
+      cursor: pointer;
+      padding: 10px;
+      border: 1px solid #ddd;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .item:hover {
+      background-color: #f1f1f1;
+    }
+    .total-container {
+      margin-top: 20px;
+    }
+    .item-list .item 
+    {
+      width: 15rem; height: 18rem; margin: 0.5rem;
+      border-radius: 1.4rem;
+    }
+    .itemList li 
+    {
+      border-radius: 1rem;
+    }
+    .btn-categoria button
+    {
+      min-width: 6rem;
+      transition: 0s !important;
+    }
+    .btn-categoria button:hover
+    {
+      font-weight: bold;
+      border: none; box-shadow: none;
+      min-width: 6rem;
+      color: var(--bg-enfasis) !important;
+    }
+    </style>
+      <section>
+        <div class="  ">
+        
+      
+          <div class="h-100 w-100 d-flex  w-100">
+            <!-- Lado izquierdo con los productos -->
+            <div class="w-75 bg-white rounded-5">
+              <div class="item-list d-flex flex-wrap">
+                <!-- Productos (estos deben ser generados dinámicamente con JavaScript) -->
+                <div class="item d-flex flex-wrap align-content-start " data-name="Producto A" data-price="20.00">
+                   <span class="d-flex justify-content-center w-100"> 
+                      <img src="{% static "svg/calendar.svg" %}" width="90" alt="">
+                    </span>
+                  <span class="w-100 mt-2" style="font-size: 12px;">LIsta Milk</span> 
+                  <span  class="w-100" style="font-size: 16px;"> DOP$ 90.00</span>
+                  <span class="w-100 text-decoration-line-through" style="font-size: 12px;">DOP$ 99.00</span> 
+
+                  <div class="d-flex justify-content-center pt-4 w-100">
+                    <button class="p-0 mt-5 text-white" style="width: 95%; height: 2.5rem;
+                    border-radius: 2rem; font-weight: bold; background-color: var(--bg-enfasis);">
+                          Agregar
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-100 d-flex overflow-scroll btn-categoria position-sticky bottom-0
+                ">
+                      <button class="d-flex p-0 border-0 bg-transparent justify-content-center flex-wrap">
+                          <!-- <img src="{% static "svg/calendar.svg" %}" width="25" alt=""> -->
+                          <span class="w-100 " style="font-size: 12px;">
+                              Alimentos 
+                          </span>
+                      </button>
+
+                      <button class="d-flex p-0 border-0 bg-transparent justify-content-center flex-wrap">
+                        <!-- <img src="{% static "svg/calendar.svg" %}" width="25" alt=""> -->
+                        <span class="w-100 " style="font-size: 12px;">
+                            Bebidas alcolicas
+                        </span>
+                    </button>
+
+                    <button class="d-flex p-0 border-0 bg-transparent justify-content-center flex-wrap">
+                      <!-- <img src="{% static "svg/calendar.svg" %}" width="25" alt=""> -->
+                      <span class="w-100 " style="font-size: 12px;">
+                          Para el hogar
+                      </span>
+                  </button>
+              </div>
+            </div>
+      
+            <!-- Lado derecho con los ítems seleccionados -->
+            <div class="w-25 p-2 d-flex flex-wrap align-content-end overflow-scroll">
+
+              <ul id="itemList" class="list-group overflow-scroll w-100"style='height: 76.8vh;' >
+
+              </ul>
+              
+              <div class="total-container d-flex flex-wrap w-100" id="totalContainer" style="display: none;">
+                <label class="w-100 text-black-50" style="font-size: 13px;">Total de la venta</label>
+                <p id="totalAmount" class="fs-3">$0.00</p>
+                <div class="d-flex justify-content-center  w-100">
+                  <button class="btn btn-primary bg-white w-100 d-block" 
+                  style="font-weight: bold;" onclick="resetForm()">
+                  Realizar factura
+                </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+          let items = []; // Aquí se almacenarán los productos seleccionados
+      
+          // Función para agregar productos al listado
+          const addItemToList = (name, price) => {
+            const itemList = document.getElementById('itemList');
+            const listItem = document.createElement('li');
+            listItem.classList.add('list-group-item');
+            listItem.innerHTML = `${name} - DOP$ ${price} <button class="btn btn-danger btn-sm float-end" onclick="removeItem(this, ${price})">Eliminar</button>`;
+            itemList.appendChild(listItem);
+      
+            // Agregar el producto al array de items
+            items.push({ name, price });
+            updateTotal();
+          };
+      
+          // Función para actualizar el total de la venta
+          const updateTotal = () => {
+            const totalAmountElement = document.getElementById('totalAmount');
+            const total = items.reduce((sum, item) => sum + parseFloat(item.price), 0);
+            totalAmountElement.textContent = `DOP$ ${total.toFixed(2)}`;
+            document.getElementById('totalContainer').style.display = total > 0 ? 'block' : 'none';
+          };
+      
+          // Función para eliminar un item de la lista
+          const removeItem = (button, price) => {
+            const itemIndex = Array.from(button.parentElement.parentElement.children).indexOf(button.parentElement);
+            items.splice(itemIndex, 1);
+            button.parentElement.remove();
+            updateTotal();
+          };
+      
+          // Función para seleccionar un producto y agregarlo al carrito
+          const selectProduct = (event) => {
+            const productName = event.target.getAttribute('data-name');
+            const productPrice = event.target.getAttribute('data-price');
+            addItemToList(productName, productPrice);
+          };
+      
+          // Asignar eventos a los productos
+          const itemsElements = document.querySelectorAll('.item');
+          itemsElements.forEach(item => {
+            item.addEventListener('click', selectProduct);
+          });
+      
+          // Función para resetear la venta
+          const resetForm = () => {
+            items = [];
+            document.getElementById('itemList').innerHTML = '';
+            document.getElementById('totalContainer').style.display = 'none';
+          };
+        </script>
+      
+      </section>
+{% endblock %}
