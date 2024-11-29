@@ -126,19 +126,22 @@
 
 <a class=" " href="{% url "customer:crear-credito" credit.id %}">
       <strong class="mt-1">Cliente</strong>
-      <div class="d-flex ">
+      <div class="d-flex flex-wrap">
             {% comment %} {% if credit.customer.img1 %}
                   <img src="{{credit.customer.img1.url}}" class="  img-icons object-fit-cover" style="width: 47px; height: 47px; border-radius: 50%; 
                   filter: blur(90px);
                   filter: brightness(80%); "  alt=""> 
             {% endif %} {% endcomment %}
-           <span class=" ms-2" style="margin-top: 13px; font-size: 16px; font-weight: bold;"> 
+           <span class=" ms-2" style="margin-top: 13px; font-size: 17px; font-weight: bold;"> 
              ~    {{credit.name}}  <br>
-                 <span style="font-size: 12px;" class="text-black-50  m-0 ms-3 p-0">
-                  {{credit.day_created|date:"F/ d/ Y" }}    
-            
-                 </span>
             </span>
+            <span style="font-size: 16px;" class="w-100 text-black-50  m-0 ms-3 p-0">
+                  ${{credit.capital_no_variable|intcomma}}.00    
+                </span> 
+                <!-- <span style="font-size: 12px;" class="text-black-50 w-100  m-0 ms-3 p-0">
+                 {{credit.day_created|date:"F/ d/ Y" }}    
+           
+                </span> -->
       </div>
       
       </a>  
@@ -146,7 +149,7 @@
 
   
 
-<section class="mt-4 mb-4 div-text rounded-4  me-3  ">
+<section class="mt-2 mb-4 div-text rounded-4  me-3  ">
       <div class="w-100  rounded-4 p-2">
             <table class=" w-100   text-center ">
                   <thead>
