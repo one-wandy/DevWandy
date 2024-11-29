@@ -439,8 +439,38 @@ def AbonarCapital(request):
     credito = models.Credit.objects.get(id=int(request.GET.get('id')))
     abono = request.GET.get('abono')
     abono = abono.replace(',', '').replace('"', '').replace("'", "")
-
-    credito.amount = credito.amount - int(abono)
+    credito.amount = credito.amount -  int(abono)
     credito.save()
+
+    capital = int(credito.amount)
+    tasa = int(credito.tasa)
+    plazo = int(credito.price_feed)
+
+
+    all_cuotas = models.Cuota.objects.filter(credito=credito, estado=False)
+    # # Recalcular cuotas no saldadas
+    tasa_mensual = tasa / 100  # Tasa de interés mensual 
+    # Cálculo de la cuota fija
+    cuotas = capital * tasa_mensual / (1 - (1 + tasa_mensual) ** -plazo)
+    # Variables para el cálculo del saldo y total de intereses
+    saldo = capital
+    total_intereses = 0
+
+    n_cuotas = all_cuotas.count()
+    credito.amount_feed = int(round(cuotas, 2))
+    credito.save()
+    # Iterar sobre los meses para desglosar el pago
+    for mes in range(1, plazo + 1):
+        interes = saldo * tasa_mensual
+        amortizacion_capital = cuotas - interes
+        saldo -= amortizacion_capital
+        total_intereses += interes
+        
+
+    for cu in all_cuotas:
+        cu.cuota = round(cuotas, 2)
+        cu.save()
+
+# 
     return JsonResponse(list(),  safe=False)
 # Calculo de mora cada dia a las 1 am
