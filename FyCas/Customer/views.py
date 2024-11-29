@@ -862,7 +862,7 @@ class CrearCredito(TemplateView, Options):
                     credit.save()
                     context['cal'] = self.CalFran(int(credit.amount), int(credit.tasa), int(credit.price_feed), 't') 
                     context['credit'] =  credit
-                    context['cc'] = p_x_c - c_p
+                    context['cc'] = p_x_c 
                     context['cp'] = c_p
                     context['all_credits'] = all_credits
                     context['c_cuotas'] = c_cuotas
