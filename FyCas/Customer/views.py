@@ -857,6 +857,9 @@ class CrearCredito(TemplateView, Options):
                             p_cuotas += 1
 
                     fecha_actual = datetime.now()
+
+
+                    credit.save()
                     context['cal'] = self.CalFran(int(credit.amount), int(credit.tasa), int(credit.price_feed), 't') 
                     context['credit'] =  credit
                     context['cc'] = p_x_c - c_p

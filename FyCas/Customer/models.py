@@ -232,6 +232,7 @@ class Credit(models.Model):
     estado = models.BooleanField(default=False,  null=True, blank=True) 
 
 
+    precio_a_saldar = models.IntegerField(default=1, blank=True)
     estado_credito = models.BooleanField(default=False,  null=True, blank=True)
     credito_atrasado = models.BooleanField(default=False,  null=True, blank=True)
     
