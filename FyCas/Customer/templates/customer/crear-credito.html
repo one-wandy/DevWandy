@@ -632,17 +632,17 @@
 
                   <div class="m-0 p-0 ms-1 me-1 " style=" margin-top: 2px !important; font-size: 12px;">
                         <label for="paymentMethod" class="form-label">Modo de pago</label>
-                        <select class="border-0 rounded-4  p-2" style="font-weight: bold;" id="paymentMethod">
+                        <select class="border-0 rounded-4  p-2" style="font-weight: bold; outline: none;" id="paymentMethod" >
                               <option class="text-white" value="normal">Saldar Cuota</option>
                               <option class="text-white" value="abonar">Abonar al capital</option>
-                              <option class="text-white" value="acuerdo">Acuerdo de pago</option>
-                              <option class="text-white" value="intereses">Abonar Intereses</option>
+                              <!-- <option class="text-white" value="acuerdo">Acuerdo de pago</option>
+                              <option class="text-white" value="intereses">Abonar Intereses</option> -->
                         </select>
                   </div>
                          <!-- <span class="grey-span"><strong>Capital $</strong>{{ credit.amount|intcomma }}.00</span> -->
                   <script>
 function handlePaymentMethodChange() {
-      var input_s = document.querySelector('.input-personalizado')
+      var input_s = document.querySelector('.abonar-capital-input')
             let btnAplicar_pago = document.querySelector('.aplicar-pago') 
             const paymentSelect = document.getElementById("paymentMethod");
             const selectedValue = paymentSelect.value;
@@ -742,7 +742,7 @@ function handlePaymentMethodChange() {
                        style="font-size: 12px; height: 20px; width: 20px; background-color: rgb(43, 138, 255);">0</span>
                   </button>
 
-                  <input type="text" name="" placeholder=""  class="border-0 d-none text-center  text-black-50 input-personalizado" maxlength="{{cc}}" max="{{cc}}" style="height: 2.3rem; border-radius: 1.8rem; outline: none;
+                  <input type="text" name="" placeholder=""  class="border-0 d-none text-center  text-black-50 abonar-capital-input" maxlength="{{cc}}" max="{{cc}}" style="height: 2.3rem; border-radius: 1.8rem; outline: none;
                   background-color: var(--bg-secundary); width: 7rem;">
             </div>
             </div>
@@ -826,7 +826,7 @@ function handlePaymentMethodChange() {
 
 </section>
 <input type="number" value="{{cc}}" class="d-none input-ip">
-<input type="text" id="{{cuotas.id}}" class="d-none inp-id">
+<input type="number" id="{{cuotas.id}}" value="{{credit.id}}" class="d-none inp-id">
 <input type="text" id="cuotas_credit{{credit.id}}" class="d-none input-credit">
 <style>
       .selected
@@ -931,12 +931,6 @@ if (input_credit) {
       document.getElementById(input_credit.id).classList.add( 'flip-up', 'borde-color') ;   
       
 }
-
-
-
-
-
-
 
 
 
@@ -1185,6 +1179,27 @@ function CalcularMora(id){
             },
       })
 }
+
+document.querySelector('.abonar-capital-input').addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+            AbonarCapital();
+      }
+});
+
+function AbonarCapital(){
+      console.log(document.querySelector('.inp-id').value)
+      $.ajax({
+            url: '/abonar-capital',
+            data: {
+                  id: document.querySelector('.inp-id').value,
+                  abono: document.querySelector('.abonar-capital-input').value,
+            },
+            success: function(r) {
+                  // location.reload(); 
+            },
+      })
+}
+
 
 </script>
 {% endblock  %}

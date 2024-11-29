@@ -434,4 +434,13 @@ def AplicarPagoCuota(request):
 
 
     return JsonResponse(list(),  safe=False)
+
+def AbonarCapital(request):
+    credito = models.Credit.objects.get(id=int(request.GET.get('id')))
+    abono = request.GET.get('abono')
+    abono = abono.replace(',', '').replace('"', '').replace("'", "")
+
+    credito.amount = credito.amount - int(abono)
+    credito.save()
+    return JsonResponse(list(),  safe=False)
 # Calculo de mora cada dia a las 1 am
