@@ -434,6 +434,7 @@ def AplicarPagoCuota(request):
 
 
     return JsonResponse(list(),  safe=False)
+    
 
 def AbonarCapital(request):
     credito = models.Credit.objects.get(id=int(request.GET.get('id')))
