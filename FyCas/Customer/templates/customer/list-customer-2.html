@@ -91,7 +91,8 @@ svg{
 @media (min-width: 700px) {
       .card-cu {
             width: 50% !important;
-            max-width: 27rem;
+            max-width: 26rem;
+            min-width: 26rem;
       }
       .div-cu {
             display: flex;
@@ -135,7 +136,7 @@ svg{
 
 
 <div class="w-100 d-flex">
-      <div style="width: 100%;" class=" d-flex flex-wrap justify-content-evenly  mt-1 align-content-center overflow-scroll vh-100 ">
+      <div style="width: 100%;" class=" d-flex flex-wrap justify-content-evenly  pt-4 align-content-center overflow-scroll vh-100 ">
             {% for c in customer %}
                   <div style="width: 408px; height: 181px;   " class="position-relative  mb-3 me-1 card-cu       d-flex justify-content-center ">
 
@@ -151,7 +152,7 @@ svg{
                                     <div class="m-0 p-0" >
                                           <div class="d-flex">
                                           
-                                                <span style="   border: 6px #c7c7c7  ; border-style:dotted; transition: 0.9s ease  !important; " 
+                                                <span style="   border: 4px #d5d5d5  ; border-style:dotted; transition: 0.9s ease  !important; " 
                                                       class="p-1  img-span rounded-circle ">
                                                       {% if c.img1 %}
                                                       <img src="{{c.img1.url}}" class="  img-icons object-fit-cover" style="width: 47px; height: 47px; border-radius: 50%; 

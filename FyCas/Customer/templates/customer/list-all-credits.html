@@ -222,57 +222,70 @@
             border: none !important;
       }
 
+      * Contenedor principal */
+        .alphabet-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+            gap: 15px;
+            padding: 20px;
+
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.5);
+
+        }
+
+        /* Letras individuales */
+        .letter {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: transparent;
+            color: var(--bg-enfasis);
+            margin: 0.3rem;
+            display: flex;
+            width: 2rem; height: 2rem;
+            justify-content: center;
+            min-width: 2rem; min-height: 2rem;
+            align-items: center;
+            border-radius: 50%;
+
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Efecto hover */
+        .letter:hover {
+            transform: scale(1.2);
+            background-color: var(--bg-enfasis);
+            color: white;
+        }
       
 </style>
-<section class="d-flex">
-
-      
-     
-      <section data-aos="fade-in" style="transition: 0.5s ease-out; "   class="d-flex flex-wrap overflow-scroll h-100 w-100 justify-content-start  align-content-start">
-            
-            {% include "components/list-credi.html" %}
-      </section>
-      <div  style="transition: 1s; width: max-content;" class=" position-absolute top-0 end-0 mb-2 mt-0  " >
-            <span  class="text-black-50" style="font-size: 12px; font-weight: 500;">
-                  
-                  <button onclick="ActiveOptions()" class="btn-creditos rounded-5">
-                         Filtrado</button>
-
-            </span> 
-            <div class=" d-flex flex-wrap justify-content-center d-none position-absolute end-0 ms-4 top-0 mt-5 align-content-center 
-                  btns-creditos-opciones h-auto" 
-                  style="background-color: #ffffff00; ">
-                  <form action="" class="w-" method="get">
-
-                        <button class="">
-                              Activos ({{credits_count}})
-                              </button>
-                  </form>
-      
-            <form action="" class="" method="post">
-                  {% csrf_token %}
-                  <input type="text" class="d-none" name="saldado" value="true">
-                  <button style="background-color: #ffffff; /* Light green background */
-                  color: #000000; /* Green text */" class="">
-                        Finalizados ({{saldado_credit}})
-                  </button>
-            </form>
-
-            <form action="" class=""  method="post">
-                  {% csrf_token %}
-                        <input type="text" class="d-none" name="pendientes" value="true">
-                        <button style="background-color: #ffe4e4; /* Light green background */
-                  color: #391111; /* Green text */" class="">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
-                  </svg>  Atrasados ({{pendiente_credit}})
-                  </button>
-            </form>
+<section class="overflow-scroll vh-100">
+      <div data-aos="fade-in"  style="transition-delay: 0.3s;" class="w-100  d-flex justify-content-center   position-absolute blur-10 z-1 top-0 bg-transparent">
+            <div style="max-width: 90%;" class="d-flex bg-transparent rounded-5 m-1  p-1 pt-2 pb-2">
+                  <input type="text" class="rounded-5 me-2   p-2 text-center bg-white bg-opacity-75"  placeholder="Buscador avanzado" name="" style="width: 30rem; font-size: 14px; border: 1px solid rgb(229, 229, 229);" id="">
+                  <div class="alphabet-container d-flex   overflow-scroll" id="alphabetContainer"></div>
             </div>
       </div>
+      <div class="mt-5 pt-3">
+            {% include "components/a-b-c-list-credit.html" %}
+      </div>
 </section>
-
 <script>
+      // Selecciona el contenedor
+      const alphabetContainer = document.getElementById('alphabetContainer');
+
+      // Genera las letras del abecedario dinámicamente
+      for (let i = 65; i <= 90; i++) { // Código ASCII de 'A' es 65 y de 'Z' es 90
+          const letter = String.fromCharCode(i); // Convierte el código ASCII a letra
+          const letterDiv = document.createElement('div'); // Crea un elemento div
+          letterDiv.className = 'letter'; // Agrega la clase
+          letterDiv.textContent = letter; // Asigna la letra al contenido
+          alphabetContainer.appendChild(letterDiv); // Añade el div al contenedor
+      }
+  </script>
+<script>
+      
       function ActiveOptions() {
             const optionsDiv = document.querySelector('.btns-creditos-opciones');
             optionsDiv.classList.toggle('d-none');

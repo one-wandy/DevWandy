@@ -957,8 +957,10 @@ class CreateCreditNew(CreateView, Options):
             URL = reverse('customer:crear-credito',  kwargs={'pk': form_class.instance.id})
             return redirect(URL)
 
-
-
+from django.db.models import CharField, Value
+from django.db.models.functions import Upper, Substr
+from itertools import groupby
+import string
 class ListAllCredits(ListView, Options):
     model = models.Credit
     template_name = "customer/list-all-credits.html"
@@ -969,26 +971,24 @@ class ListAllCredits(ListView, Options):
 
     def post(self, request, *args, **kwargs):
         return self.get(request, *args, **kwargs)
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
+        
+
         pendiente_credit = self.model.objects.filter(estado_credito=False, credito_atrasado=True).count()
         saldado_credit = self.model.objects.filter(estado_credito=True).count()
         credits_count = self.model.objects.all().count()
         context['credits_count'] = credits_count
-        context['all_credits'] = self.model.objects.filter(estado_credito=False).order_by('-id')
-        context['pendiente_credit'] = pendiente_credit
-        context['saldado_credit'] = saldado_credit
+        context['saldado_credit'] =  saldado_credit
+        context['pendiente_credit']  = pendiente_credit
+        context['category'] = models.Category.objects.all()
+
         context['company'] = self.Company()
-        if self.request.method == 'POST':
-            print('siuu')
+
             
-            if  self.request.POST.get('pendientes') != None:
-                context['all_credits'] = self.model.objects.filter(estado_credito=False, credito_atrasado=True).order_by('-id')
-            if  self.request.POST.get('saldado') != None:
-                context['all_credits'] = self.model.objects.filter(estado_credito=True).order_by('-id')
-        else:
-            context['all_credits'] = self.model.objects.filter(estado_credito=False).order_by('-id')
+
         return context
 
 

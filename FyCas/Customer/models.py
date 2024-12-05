@@ -199,7 +199,13 @@ class Customer(models.Model):
         return f'{self.name}, {self.last_name}, {self.company}'
 
 
+class Category(models.Model):
+        letter = models.CharField(max_length=1, default='A')
+        def __str__(self):
+            return f' Categoria ({self.letter})'
+
 class Credit(models.Model):
+    category = models.ForeignKey('Category', on_delete=models.CASCADE,  blank=True, null=True, related_name="category_credit")
     company= models.ForeignKey('Company', on_delete=models.CASCADE,  blank=True, null=True, related_name="company_credit")
     customer = models.ForeignKey(Customer, null=True, blank=True, 
                     on_delete=models.CASCADE, related_name="credit")
@@ -220,8 +226,8 @@ class Credit(models.Model):
     day_number = models.CharField(max_length=100, default="")
     year = models.CharField(max_length=100, default="")
     year_number = models.CharField(max_length=100, default="")
-    amount_str = models.CharField(max_length=100, default="")
-    amount_feed_int = models.CharField(max_length=100, default="")
+    amount_str = models.CharField(max_length=100, default="0.00")
+    amount_feed_int = models.CharField(max_length=100, default="0.00")
     amount_feed = models.CharField(max_length=100, default="")
     # Day Create
     day_created = models.DateField(default=timezone.now)
@@ -235,7 +241,13 @@ class Credit(models.Model):
     precio_a_saldar = models.IntegerField(default=1, blank=True)
     estado_credito = models.BooleanField(default=False,  null=True, blank=True)
     credito_atrasado = models.BooleanField(default=False,  null=True, blank=True)
-    
+    group_letter = models.CharField(max_length=1, default='A')
+
+    def save(self, *args, **kwargs):
+            # Asignar la primera letra al campo group_letter automáticamente
+            self.group_letter = self.customer.name[0].upper()
+            super().save(*args, **kwargs)
+
     def __str__(self):
         return f'{self.customer.name} {self.customer.last_name}, {self.amount}, {self.date}'
 
