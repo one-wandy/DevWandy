@@ -75,7 +75,6 @@
    {
       box-shadow: 0 4px 8px rgba(150, 171, 227, 0.333), 0 6px 10px rgba(236, 236, 236, 0.1) !important;
                   /* background-color: rgba(237, 237, 237, 0.396) !important; */
-
    }
 </style>
 
@@ -196,8 +195,8 @@
                                                 <td>        #{{credit.price_feed}}</td>
                                                 <td> {% if credit.mode_pay == True %}
                                                       (15) - (30)  (Q)
-                                                      {% else %}(Mes)
-                                                      {{credit.day_pay}}
+                                                      {% else %}( Mensual -
+                                                      {{credit.day_pay}} )
                                                       {% endif %}  </td>
                                           
                                                 <td>
