@@ -14,11 +14,7 @@
                                 <link rel="icon"  href="{{company.Icon_img.url}}"  >
                   {% endif %}
 
-                  <link rel="preconnect" href="https://fonts.googleapis.com">
-                  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
-                  <!--
-                  -->
+
                   <link rel="preconnect" href="https://fonts.googleapis.com">
                   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
                   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
@@ -30,24 +26,7 @@
                   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
                   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-                  <!--
-                                    Madimi One
-                  -->
-                  <link rel="preconnect" href="https://fonts.googleapis.com">
-                  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                  <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
-                  <!--
-                                    Right
-                  -->
-                  <link rel="preconnect" href="https://fonts.googleapis.com">
-                  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
-                  <!--
-                                    Roboto
-                  -->
-                  <link rel="preconnect" href="https://fonts.googleapis.com">
-                  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
+
                   <!--
                                     AOS
                   -->
@@ -56,12 +35,6 @@
                   <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
                   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
                   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-                  <!--
-                              Nunitos
-                  -->
-                  <link rel="preconnect" href="https://fonts.googleapis.com">
-                  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 </head>
   <style>
 
@@ -80,6 +53,7 @@
       :root {
             
       --bg-enfasis: {{company.bg_enfasis}} !important;
+      --bg-secundary:  #f5f5f5 ;
       /* Baground-color principal */
       --bg-one:  rgb(255, 255, 255);
       --bg-cero: white;
@@ -333,11 +307,34 @@ a
 .blur
 {
 
-      -webkit-backdrop-filter: blur(10px) !important;
-      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(40px) !important;
+      backdrop-filter: blur(40px) !important;
       
 
 }
+.blur-5
+{
+
+      -webkit-backdrop-filter: blur(5px) !important;
+      backdrop-filter: blur(5px) !important;
+      
+
+}
+.blur-10
+{
+
+      -webkit-backdrop-filter: blur(10px) !important;
+      backdrop-filter: blur(10px) !important;
+}
+.blur-20
+{
+
+      -webkit-backdrop-filter: blur(20px) !important;
+      backdrop-filter: blur(20px) !important;
+}
+
+
+
 .fycas
 {
       font-family: "Righteous", sans-serif !important ;
@@ -484,6 +481,25 @@ select option {
     transform-origin: left; /* Punto de rotación */
 }
 
+@keyframes flip-close {
+    0% {
+          transform: rotateX(0deg);
+          opacity: 1;
+      }
+      100% {
+            transform: rotateX(90deg);
+            opacity: 0;
+    }
+}
+
+.flip-close {
+    animation: flip-close 0.6s ease-in ;
+    transform-origin: top; /* Punto de rotación */
+    opacity: 0; /* Oculto por defecto */
+}
+
+
+
 @keyframes flip-up-ai {
     0% {
         transform: rotateX(90deg);
@@ -498,7 +514,6 @@ select option {
 .flip-up-ai {
     animation: flip-up-ai 0.3s ease-in ;
     transform-origin: left; /* Punto de rotación */
-    opacity: 1; /* Oculto por defecto */
 }
 
 
@@ -852,15 +867,56 @@ css <style > .socket {
   }
 }
 
+
+
   </style>
 
   <body style="" class="h-100 overflow-hidden ">
+      <!-- Activate la notificacion mediante hover en el top end posis\tion-absolute -->
+      <div class="activate-notifcacion position-absolute z-2 end-0 bg-transparent" style="width: 30rem; height: 1rem;">
+      </div>
+      <!-- Activate la notificacion mediante hover en el top end posis\tion-absolute -->
 
+      <!-- Notificacions push -->
+      <section class="position-absolute notificacion-push blur-5  d-none   d-flex z-2 flex-wrap justify-content-center p-2 align-content-center rounded-5" 
+            style="top: 0.3rem; right: 0.3rem; width: 29rem; transition: 0.7s;">
+            <div class=" blur p-1  bg-white   card"
+                  style="width: 29rem;  border-radius: 2rem; transition: 1.5s;">
+                  <div class="w-100 h-100 p-3"
+                  style="border-radius: 1.5rem;">
+                        <span>
+                        <strong>
+                              <img src="{{company.Icon.url}}"   alt="Profile Photo" class="rounded-circle object-fit-cover  " width="30" height="30">   Bengamin Hernandez
+                        </strong>
+                        </span>
+                        <p>
+                              Hola! ¿como estan?, soy nuevo en {{company.name}} vengo a salicitar un prestamo de <strong>$70,000.00</strong>
+                              a 8 cuotas
+                        </p>
+                        <div class="d-flex w-100 justify-content-end" style="font-size: 14px;">
+                              <span class="p-2" style="font-weight: bold;">
+                                    Rechazar
+                              </span>
+                              <span class="bg-black bg-opacity-75 text-white p-2 ps-3 pe-3 rounded-5">
+                                    Depurar
+                              </span>
+                        </div>
+                  </div>
+            </div>
 
+            <div class="mt-4">
+                  <span onclick="HideNotifyCation()" class=" text-white p-2 ps-3 pe-3 rounded-5 mt-5" 
+                        style="font-weight: bold; cursor: pointer; background-color: var(--bg-enfasis);">
+                        <strong class="text-white">Ocultar</strong>
+                  </span>
+            </div>
+      </section>
+      <!-- Notificacions push -->
 
+       <!-- Loader -->
       <section   class=" flex-wrap overflow-hidden  load bg-white  bg-opacity-25 blur align-content-center
             w-100 h-100 position-fixed  top-0" style="z-index: 1000; ">
-            <div data-aos="zoom-in-down" class="d-flex  justify-content-center h-100">
+            <div class="d-flex  justify-content-center h-100">
                   <div id="page">
                         <div id="container">
                             <div id="ring"></div>
@@ -876,469 +932,291 @@ css <style > .socket {
                               -webkit-text-fill-color: transparent;">
                                     Grupo Fycas
                               </h6>
-                                    <!-- <img src="{% static "icons/up.png" %}"  width="30" alt="" srcset=""> -->
-                              </div>
-                              <p class="text-black-50 p-0 m-0" style="font-family: Poppins, sans-serif;
-                              font-size: 12px;">
-                                    <!-- Tu Solucion Financiera -->
-                              </p>
-              
                         </div>
                   </div>
-            </div>
-      </div>
-
+             </div>
       </section>
+      <!-- Loader -->
+
+      <!-- Calculadora flotante -->
       <div class="  bg-transparent d-block  d-none p-2 border-0  " id="Calculadora" >
             <button onclick="Cal()" class="bg-danger border-0  text-white d-flex justify-content-center flex-wrap align-content-center rounded-circle position-absolute end-0"
             style="width: 29px; height: 29px; z-index: 100;"> 
-                    X
-         </button>
+      </button>
 
-            <div id="mn-calc" class="card-body shadow border-1 card bg-white bg-opacity-10 position-relative" style="border-radius: 1.5rem; border: 0px solid rgba(229, 229, 229, 0);     -webkit-backdrop-filter: blur(30px) !important;
-      backdrop-filter: blur(30px) !important;" >
-              
-                  <!-- {% include "design-virginia/Menu-V/calculador.html" %} -->
+            <div id="mn-calc" class="card-body shadow border-1 card bg-white bg-opacity-10 position-relative" style="border-radius: 1.5rem;     border: 0px solid rgba(229, 229, 229, 0);     -webkit-backdrop-filter: blur(30px) !important;
+                  backdrop-filter: blur(30px) !important;" >
+      
                   <div>
                         <style>
                               .calculador
-                             {
-                                   /* background-color: #5A5868; */
-                                   width: 161px;
-                                   height: 49px;
-                                   max-height: 49px;
-                                   border-radius: 26px;
-                                   margin: 0 5px;
-                                   display: flex;
-                                   background-color: #c2c2c23b;
-                                   display: flex;
-                                   justify-content: center;
-                                   align-content: center;
-                             }
-                             .calculador svg
-                             {
-                                   color: #5A5868;
-                                   width: 30px !important;
-                                   height: 30px !important;
-                                   margin-top: 8px;
-                             }
-                             .calculador input 
-                             {
-                                   width:90px;
-                                   background-color: transparent;
-                                   border: none;
-                                   font-size: 17px !important;
-                       
-                             }
-                             .btn 
-                             {
-                                   background-color: #c2c2c25c;
-                                   border-radius: 26px;
-                                   width: 42px;
-                                   height: 42px;
-                                   display: flex; flex-wrap: wrap; align-content: center;
-                                   justify-content: center;
-                                   color: #5A5868 !important;
-                                   border: 0;
-                                   padding: 0;
-                             }
-                       
-                       </style>
-                       
-                       <div class="calculador-v d-flex flex-wrap">
-                             <div class="d-flex justify-content-center w-100">
-                    
-                                   <div class="calculador">
-                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
-                                               <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
-                                             </svg>
-                                         <input type="text" id="numero-es"min="-1"  style="outline: none !important;">
-                                   </div>
-                                   <div class="calculador">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
-                                          <path d="M8.39 12.648a1 1 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1 1 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.51.51 0 0 0-.523-.516.54.54 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532s.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531s.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z"/>
-                                        </svg>
-                                    <input type="number" name="" id="plazo-es" style="outline: none !important;">
+                        {
+                              /* background-color: #5A5868; */
+                              width: 161px;
+                              height: 49px;
+                              max-height: 49px;
+                              border-radius: 26px;
+                              margin: 0 5px;
+                              display: flex;
+                              background-color: #c2c2c23b;
+                              display: flex;
+                              justify-content: center;
+                              align-content: center;
+                        }
+                        .calculador svg
+                        {
+                              color: #5A5868;
+                              width: 30px !important;
+                              height: 30px !important;
+                              margin-top: 8px;
+                        }
+                        .calculador input 
+                        {
+                              width:90px;
+                              background-color: transparent;
+                              border: none;
+                              font-size: 17px !important;
+                  
+                        }
+                        .btn 
+                        {
+                              background-color: #c2c2c25c;
+                              border-radius: 26px;
+                              width: 42px;
+                              height: 42px;
+                              display: flex; flex-wrap: wrap; align-content: center;
+                              justify-content: center;
+                              color: #5A5868 !important;
+                              border: 0;
+                              padding: 0;
+                        }
+                  
+                  </style>
+                  
+                  <div class="calculador-v d-flex flex-wrap">
+                        <div class="d-flex justify-content-center w-100">
+                              <div class="calculador">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                                          <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
+                                          </svg>
+                                    <input type="text" id="numero-es"min="-1"  style="outline: none !important;">
                               </div>
-                             </div>
-                       
-                             <div class="w-100 di-de p-2" >
+                              <div class="calculador">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
+                                          <path d="M8.39 12.648a1 1 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1 1 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.51.51 0 0 0-.523-.516.54.54 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532s.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531s.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z"/>
+                                    </svg>
+                                          <input type="number" name="" id="plazo-es" style="outline: none !important;">
+                                    </div>
+                        </div>
+                        <div class="w-100 di-de p-2" >
                               <style>
                                     .di-de div  span
                                     {
                                           font-size: 14px !important;
                                     }
                               </style>
-                                   <div>
-                                        <span> 
+                              <div>
+                                    <span> 
                                                 Cuotas Mensuales:
                                           </span> <strong id="resultado-es">$00,000,00</strong>
-                                   </div>
-                                   <div>
+                              </div>
+                              <div>
                                           <span>       
                                                 Interes (15%):
                                           </span> <strong id="resultado-es2"> $00,000,00</strong>
-                                   </div>
-                                   <div>
-                                        <span>
+                              </div>
+                              <div>
+                                    <span>
                                                 Total:
                                           </span> 
-                                        <strong id="resultado-es3"> $00,000,00</strong>
-                                   </div>
-                                   <div class='   w-100 mt-2'>
+                                    <strong id="resultado-es3"> $00,000,00</strong>
+                              </div>
+                              <div class='   w-100 mt-2'>
                                           <a href="{% url "customer:calculadora" %}" class='text-end text-primary justify-content-end'>
                                                 Calculadora extensa <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-circle-fill text-primary mt-1 ms-1" viewBox="0 0 16 16">
                                                       <path d="M0 8a8 8 0 1 0 16 0A8 8 0 0 0 0 8m5.904 2.803a.5.5 0 1 1-.707-.707L9.293 6H6.525a.5.5 0 1 1 0-1H10.5a.5.5 0 0 1 .5.5v3.975a.5.5 0 0 1-1 0V6.707z"/>
-                                                    </svg>
+                                                </svg>
                                           </a>
-                                   </div>
-                             </div>
-                       
-                             <div id="close-calculador" class="w-100 d-flex d-none mt-3 position-relative">
-                                   <label class="btn" onclick="Cal()">
-                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
-                                               <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
-                                             </svg> 
-                                   </label>
-                                 <span class="mt-2 ms-2" onclick="Cal()">  Cerrar</span> 
-                                 <label class="position-absolute end-0 mt-2 me-2">
-                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                       </svg>
-                                 </label>
-                             </div>
-                       </div>
+                              </div>
+                        </div>
                   </div>
-    
+                  </div>
+
             </div>
-            <div class="d-flex w-100 flex-wrap d-none" id="cls-bn" >
-                  <h6 class="w-100  text-end pe-1 ps-1" style="font-size: 14px;">
-                        <hr  class="w-100  container">
-                  </h6>
-                  <span class="w-100 m">  
-                        <h6 class=" w-auto ms-2" style="font-size: 16px;"> Intereses % 
-                        <input type="number" style=" outline: none; max-height: 2rem; border-radius: 0.5rem; max-width: 3.5rem;" 
-                        class=" m-0 m-1 mt-0  bg-transparent border-0" min="0" value="15" > </h6>
-                  </span>
-                  <span class="w-100">
-                        <select class="form-select bg-white bg-opacity-50" 
-                              style="max-width: 18.4rem !important;" aria-label="Default select example">
-                              <option selected>(Mensual) </option>
-                              <option value="1">Samanal</option>
-                              <option value="2">Anual</option>
-                        </select>
-                  </span>
-            </div>
-          </div>
-          <section class=" d-flex  rounded-0 base-boyd " style="  
 
+      </div>
+      <!-- Calculadora flotante -->
 
-
-/* background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%); */
-/* background-image: linear-gradient(to top, #dfe9f3 0%, white 100%); */
-
-/* background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); */
- background-blend-mode: screen;
-
-/* background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%); */
-">
-
-            
+      <!-- Base template django -->
+      <section class=" d-flex  rounded-0   base-boyd " >
             <div class="nav-2 pt-1" style=" display: none;
-            width: 14rem; border-radius: 0rem !important; height: max-content; border-color: #e9e9e900 !important;">
-                  <div style="height: max-content;" class="mb-3">
-                        {% include "components/btn-nav.html" %}
-                  </div>
+            width: 14rem; height: max-content; border-color: #e9e9e900 !important;">
+                  {% include "components/nav.html" %}
             </div>
     
-
-            <div style="display: flex; border-radius: 1.8rem !important; min-width: 300px; width: 100%; max-height: 99vh;
-      background-color: #f5f5f5;
-            " 
-            class="w-100 overflow-hidden p-1  position-relative    border-top-1 mb-2 me-1 mt-1 mb-3 border-end-1 border-bottom-1     flex-wrap justify-content-center"  >
-                 <section class="  w-100  vh-100 overflow-hidden" style="border-color: #d9d9d9 !important; 
-              ">
-                  {% block content %}
-                  {% endblock  %}      
-                 </section>
+            <div style="display: flex; border-radius: 1.8rem !important; min-width: 300px; 
+                  width: 100%; max-height: 99vh;
+                  background-color: #f5f5f5;" 
+                  class="w-100 overflow-hidden p-1  vh-100  position-relative    border-top-1 mb-2 me-1 mt-1 mb-3 border-end-1 border-bottom  flex-wrap justify-content-center"  >
+                  <section class="  w-100  h-100 overflow-hidden" 
+                        style="border-color: #d9d9d9 !important;">
+                        {% block content %}
+                        {% endblock  %}      
+                  </section>
             </div>
             
             <!-- Soli IA -->
             <section id="container-ia" class=" d-none  bg-gradient bg-black bg-opacity-25 d-flex flex-wrap justify-content-center align-content-center rounded-0 position-absolute top-0 z-3 vh-100 w-100" style="     
              -webkit-backdrop-filter: blur(40px) !important;
-      backdrop-filter: blur(40px) !important; ">
-            <div class="bg-white bg-opacity-75 w-100 d-flex align-content-end  flex-wrap" 
-            style="max-width: 70rem; height: 40rem; border-radius: 2.5rem;
-            border: #e6e6e6 solid 1px; ">
-
-         
-
-                  <div class="w-100 d-flex justify-content-center h-75 " >
-                        <p id="response-ia" class=" text-black    rounded-5 p-1" 
-                        style="width: 40rem;  text-align: justify; font-weight: bold; 
-                         font-family: Poppins, sans-serif; font-size: 14px;
-                         font-weight: 500;
-                         font-style: normal;"> 
-                   Hola! Soy Soli, tu asistente virtual, en que puedo ayudarte hoy?
-                        </p>
-
-<div class="socket d-none">
-  <div class="gel center-gel">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c1 r1">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c2 r1">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c3 r1">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c4 r1">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c5 r1">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c6 r1">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c7 r2">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c8 r2">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c9 r2">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c10 r2">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c11 r2">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c12 r2">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c13 r2">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c14 r2">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c15 r2">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c16 r2">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c17 r2">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c18 r2">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c19 r3">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c20 r3">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c21 r3">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c22 r3">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c23 r3">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c24 r3">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c25 r3">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c26 r3">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c28 r3">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c29 r3">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c30 r3">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c31 r3">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c32 r3">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c33 r3">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c34 r3">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c35 r3">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c36 r3">
-    <div class="circle"></div>
-  </div>
-  <div class="gel c37 r3">
-    <div class="circle"></div>
-  </div>
-</div>
-
+            backdrop-filter: blur(40px) !important; ">
+                  <div class="bg-white bg-opacity-75 w-100 d-flex align-content-end  flex-wrap" 
+                  style="max-width: 70rem; height: 40rem; border-radius: 2.5rem;
+                  border: #e6e6e6 solid 1px; ">
+                        <div class="w-100 d-flex justify-content-center h-75 " >
+                              <p id="response-ia" class=" text-black    rounded-5 p-1" 
+                              style="width: 40rem;  text-align: justify; font-weight: bold; 
+                              font-family: Poppins, sans-serif; font-size: 14px;
+                              font-weight: 500;
+                              font-style: normal;"> 
+                                    Hola! Soy Soli, tu asistente virtual, en que puedo ayudarte hoy?
+                              </p>
+                              <div class="socket d-none">
+                              <div class="gel center-gel">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c1 r1">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c2 r1">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c3 r1">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c4 r1">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c5 r1">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c6 r1">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c7 r2">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c8 r2">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c9 r2">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c10 r2">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c11 r2">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c12 r2">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c13 r2">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c14 r2">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c15 r2">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c16 r2">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c17 r2">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c18 r2">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c19 r3">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c20 r3">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c21 r3">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c22 r3">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c23 r3">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c24 r3">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c25 r3">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c26 r3">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c28 r3">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c29 r3">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c30 r3">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c31 r3">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c32 r3">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c33 r3">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c34 r3">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c35 r3">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c36 r3">
+                              <div class="circle"></div>
+                              </div>
+                              <div class="gel c37 r3">
+                              <div class="circle"></div>
+                              </div>
+                              </div>
+                        </div>
+                        <div class="d-flex justify-content-center w-100 h-10">
+                              <input class=" mb-2 bg-black bg-opacity-10  text-black-50 p-1 text-center" id="send-data-ia"
+                              placeholder="Escribe aqui tu mensaje" 
+                              style="border: #dedede solid 0px; width: 20rem; height: 2.5rem; border-radius: 1.5rem; 
+                              outline: none;"/>
+                        </div> 
                   </div>
-                  <div class="d-flex justify-content-center w-100 h-10">
-                        <input class=" mb-2 bg-black bg-opacity-10  text-black-50 p-1 text-center" id="send-data-ia"
-                        placeholder="Escribe aqui tu mensaje" 
-                        style="border: #dedede solid 0px; width: 20rem; height: 2.5rem; 
-                        border-radius: 1.5rem; 
-                        outline: none;"/>
-      
-                  </div>
-                  
-            </div>
             </section>
+      </section>
+      <!-- Base template django -->
 
-
-          </section>
-       
-            
-<style>
-      #div-gregar section span
-      {
-           font-size: 10px !important;
-      } 
-      #div-gregar section 
-      {
-            display: none !important;
-
-            border-radius: 50%;
-            padding: 0;
-            line-height: 1px;
-            margin: 0.1rem;
-      }
-      .btn-movile a
-      {
-            display: flex;
-            width: 9rem;
-            height: 2rem;
-            background-color: #f3f3ff !important;
-            margin: 0.3rem;
-            padding: 0.1rem;
-
-      }
-
-      #div-agregar .btn-movile span
-      {
-            width: 20px;
-      }
-      .text-danger
-      {
-            color: #ff7171 !important;
-           
-      }
-
-</style>
-            
 <div id="div-gregar" class="position-fixed flex-wrap    top-0 bg-white bg-opacity-75 h-100   w-100 justify-content-center"  
 style="display: none; z-index: 11; ">      
 <div class=" justify-content-start w-100  mt-5">
       {% include "design-virginia/Menu-V/base.html" %}
-
-{% if day_pay %}
-
-<div class='bg-white bg-opacity-75 mt-2  text-center  p-3 pt-1 pb-1' 
-      style='height: max-content; border-radius: 2rem;'>
-      <button  class="border-0 p-0  bg-transparent  m-1" style="height: 0.5rem; z-index: 10; box-shadow: none !important;">
-            <!-- Dia de cobro -->
-
-            {% if day_pay_2 == true %}
-                  <script>
-                        function MensajeCustomerDebit(id) {
-                              alert('Enviando peticion de cobro a todos los deudores')
-                              $.ajax({
-                                    url: '/msg/customer/debit',
-                                   // data: {
-                                     //     customer_id: id
-                                    //}
-                              })
-                        }
-                  </script>
-            {% endif %}
-            <span class='text-black-50 m-0 p-0 mb-1' style='font-size:12px;'>
-                  {{day_pay}}
-            </span>
-      </button> 
-
-</div>
-      {% endif %}
      
 </div>
          
        
-  
-
-<div id="div-notifycations"  class="bg-white d-none  bg-opacity-75 blur m-2 p-2  w-100 " style="display: none; z-index: 10; top: 1rem; max-width: 620px; border-radius: 1.5rem !important;  height: max-content;">
-      <button  class="border-0 bg-transparent m-0 " style="height: 0.5rem; z-index: 10; box-shadow: none !important;">
-            Notificaciones
-      </button>
-      {% if solicitud %}
-      
-
-      {% else %}
-      <p class='text-black-50'>
-            Aun no hay nuevos usuarios, recargue la pagina puede solucionar algun problema <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
-            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
-            </svg>
-      </p>
-      {% endif %}
-      
-</div>
-
 
       
-<div class="div  bg-transparent mt-5  position-absolute   position-relative d-flex  flex-wrap   justify-content-center p-2 pt-0  m-2 " style=" border-radius: 2rem; 
-bottom: 5rem;
-font-family: var(--font-one);
-color: black;
-font-optical-sizing: auto;
-max-width: 420px; height: 13.4rem;">
-
-<!-- <div class="w-100">
-<h6 style="font-family: Righteous, sans-serif !important; ">
-      Menu
-</h6> -->
-<!-- <hr> -->
-<!-- </div> --> 
-<div class='w-100 d-flex justify-content-start mb-2'>
-<!-- <button onclick="NotifyCation()" id="btn-notifycation"  class=" d-none bg-transparent border-0  end-0 position-relative" style="height: 0.5rem; z-index: 10; box-shadow: none !important;">
-      Notifi      {% comment %} <span class="position-absolute top-50 p-1 rounded-circle " style=" left: 1.3rem;color: white; font-size: 12px;">6</span>~ {% endcomment %}
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-app-indicator text-black" viewBox="0 0 16 16">
-            <path d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1z"/>
-            <path d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-          </svg>
-</button> -->
-</div>
 
 
-
-
-</div>
-
-
-</div>
-{% include "components/menu.html" %}
 
 
 <script>
@@ -1608,9 +1486,7 @@ window.addEventListener("DOMContentLoaded", function() {
                         }
                         else{
                               document.getElementById('no-found').classList.remove('active')
-                        }
-
-                       
+                        }    
 
                         for (const c  of filtered_data) {
                               let container = document.createElement("div")
@@ -1692,6 +1568,8 @@ function sendDataToIA() {
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">
                         <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
                         </svg>
+                        
+                        
                         ${data.response}
                   `;
             }
@@ -1719,14 +1597,33 @@ function toggleContainerIA() {
 }
 
 
+function HideNotifyCation() {
+      let div = document.querySelector('.notificacion-push');
+      if (div.classList.contains('d-none')) {
+            div.classList.remove('d-none');
+            
+      } else {
+            div.classList.add('flip-close');
+            setTimeout(() => {
+                  div.classList.add('d-none');
+                  div.classList.remove('flip-close');
+            }, 2000);
+      }
+}
 
 
-        
+
+document.querySelector('.activate-notifcacion').addEventListener('mouseover', function() {
+      document.querySelector('.notificacion-push').classList.remove('d-none', 'flip-close');
+});
+
+
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
-crossorigin="anonymous"></script>
-
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.min.js"></script> 
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+      crossorigin="anonymous"></script>
+      <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+      <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
 </body>
 </html>

@@ -310,15 +310,15 @@ Siempre mantén actualizada esta información clave:
 0. Te llamas Soli.
 1. Número total de clientes activos: {clientes.count()}.
 2. Cantidad de créditos otorgados: {creditos.count()}.
-3. Ingresos totales de la empresa: 384,333.
+3. Ingresos totales de la empresa: 384,333.1
 4. Inversión total de la empresa: {total_inversion}.
-5. Listado de clientes: {models.Customer.objects.filter(is_active=True, company=company)}.
+5. Listado de clientes: {models.Customer.objects.filter(is_active = True, company = company,
+                                    customer_verify = True ).order_by('-id')[:8]}.
 6. Información de todos los clientes: {models.Customer.objects.filter(is_active=True, company=company)}.
 7. Información específica de clientes: {customer_list}.
 
 Datos adicionales:
 - GRUPO FYCAS presta a una tasa mensual del 15%.
-- GRUPO FYCAS fue fundada en 2022.
 - GRUPO FYCAS es una empresa dedicada a la gestión financiera y otorgamiento de créditos.
 
 Cálculo de moras:
@@ -433,5 +433,45 @@ def AplicarPagoCuota(request):
             cu.credito.save()
 
 
+    return JsonResponse(list(),  safe=False)
+    
+
+def AbonarCapital(request):
+    credito = models.Credit.objects.get(id=int(request.GET.get('id')))
+    abono = request.GET.get('abono')
+    abono = abono.replace(',', '').replace('"', '').replace("'", "")
+    credito.amount = credito.amount -  int(abono)
+    credito.save()
+
+    capital = int(credito.amount)
+    tasa = int(credito.tasa)
+    plazo = int(credito.price_feed)
+
+
+    all_cuotas = models.Cuota.objects.filter(credito=credito, estado=False)
+    # # Recalcular cuotas no saldadas
+    tasa_mensual = tasa / 100  # Tasa de interés mensual 
+    # Cálculo de la cuota fija
+    cuotas = capital * tasa_mensual / (1 - (1 + tasa_mensual) ** -plazo)
+    # Variables para el cálculo del saldo y total de intereses
+    saldo = capital
+    total_intereses = 0
+
+    n_cuotas = all_cuotas.count()
+    credito.amount_feed = int(round(cuotas, 2))
+    credito.save()
+    # Iterar sobre los meses para desglosar el pago
+    for mes in range(1, plazo + 1):
+        interes = saldo * tasa_mensual
+        amortizacion_capital = cuotas - interes
+        saldo -= amortizacion_capital
+        total_intereses += interes
+        
+
+    for cu in all_cuotas:
+        cu.cuota = round(cuotas, 2)
+        cu.save()
+
+# 
     return JsonResponse(list(),  safe=False)
 # Calculo de mora cada dia a las 1 am

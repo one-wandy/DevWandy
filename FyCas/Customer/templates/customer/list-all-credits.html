@@ -222,61 +222,174 @@
             border: none !important;
       }
 
+      * Contenedor principal */
+        .alphabet-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+            gap: 15px;
+            padding: 20px;
+
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.5);
+
+        }
+
+        /* Letras individuales */
+        .letter {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: transparent;
+            color: var(--bg-enfasis);
+            margin: 0.3rem;
+            display: flex;
+            width: 2rem; height: 2rem;
+            justify-content: center;
+            min-width: 2rem; min-height: 2rem;
+            align-items: center;
+            border-radius: 50%;
+
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Efecto hover */
+        .letter:hover {
+            transform: scale(1.2);
+            background-color: var(--bg-enfasis);
+            color: white;
+        }
+        .letter-hover{
+            transform: scale(1.2);
+            background-color: var(--bg-enfasis);
+            color: white;
+        }
+        .shadow-1
+        {
+            box-shadow: 0 4px 8px rgba(150, 171, 227, 0.333), 0 6px 10px rgba(236, 236, 236, 0.1) !important;
+        }
       
 </style>
-<section class="d-flex">
-
-      
-     
-      <section data-aos="fade-in" style="transition: 0.5s ease-out; "   class="d-flex flex-wrap overflow-scroll h-100 w-100 justify-content-start  align-content-start">
-            
-            {% include "components/list-credi.html" %}
-      </section>
-      <div  style="transition: 1s; width: max-content;" class=" position-absolute top-0 end-0 mb-2 mt-0  " >
-            <span  class="text-black-50" style="font-size: 12px; font-weight: 500;">
-                  
-                  <button onclick="ActiveOptions()" class="btn-creditos rounded-5">
-                         Filtrado</button>
-
-            </span> 
-            <div class=" d-flex flex-wrap justify-content-center d-none position-absolute end-0 ms-4 top-0 mt-5 align-content-center 
-                  btns-creditos-opciones h-auto" 
-                  style="background-color: #ffffff00; ">
-                  <form action="" class="w-" method="get">
-
-                        <button class="">
-                              Activos ({{credits_count}})
-                              </button>
-                  </form>
-      
-            <form action="" class="" method="post">
-                  {% csrf_token %}
-                  <input type="text" class="d-none" name="saldado" value="true">
-                  <button style="background-color: #ffffff; /* Light green background */
-                  color: #000000; /* Green text */" class="">
-                        Finalizados ({{saldado_credit}})
-                  </button>
-            </form>
-
-            <form action="" class=""  method="post">
-                  {% csrf_token %}
-                        <input type="text" class="d-none" name="pendientes" value="true">
-                        <button style="background-color: #ffe4e4; /* Light green background */
-                  color: #391111; /* Green text */" class="">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
-                  </svg>  Atrasados ({{pendiente_credit}})
-                  </button>
-            </form>
+<section class="overflow-scroll vh-100">
+      <div data-aos="fade-in"  style="transition-delay: 0.3s;" class="w-100  d-flex justify-content-center   position-absolute blur-10 z-1 top-0 bg-transparent">
+            <div style="max-width: 99%;" class="d-flex bg-transparent rounded-5 m-1  p-1 pt-2 pb-2">
+                  <input type="text" class="rounded-5 me-2  buscador-credito  p-2 text-center bg-white bg-opacity-75"  placeholder=" Nombre, Fecha, Numero y Cedula" name="" style="width: 30rem; font-size: 13px; border: 1px solid rgb(229, 229, 229); outline: none !important;" id="">
+                  <div class="alphabet-container d-flex   overflow-scroll" id="alphabetContainer"></div>
+            </div>
+            <div class="list_data_credits shadow-1 position-absolute start-0 card  d-none rounded-5 p-3  bg-white  z-2" style="max-height: 30rem; width: 40rem; top: 4rem;">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut laudantium animi ad sequi nesciunt corrupti blanditiis praesentium odio explicabo. Velit esse eaque vel error laboriosam obcaecati animi aspernatur qui tempore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum sunt officia, vero, soluta iure id sequi odit veniam laborum eveniet in, asperiores ullam dolor natus voluptatum doloribus aperiam alias consectetur?
             </div>
       </div>
+      <div class="mt-5 pt-3">
+            {% include "components/a-b-c-list-credit.html" %}
+      </div>
 </section>
-
 <script>
+      // Selecciona el contenedor
+      const alphabetContainer = document.getElementById('alphabetContainer');
+
+
+
+      // Genera las letras del abecedario dinámicamente
+      for (let i = 65; i <= 90; i++) { // Código ASCII de 'A' es 65 y de 'Z' es 90
+          const letter = String.fromCharCode(i); // Convierte el código ASCII a letra
+          const letterDiv = document.createElement('div'); // Crea un elemento div
+          letterDiv.classList.add('letter')  // Agrega la clase
+          letterDiv.textContent = letter; // Asigna la letra al contenido
+          alphabetContainer.appendChild(letterDiv); // Añade el div al contenedor
+      }
+  </script>
+<script>
+document.querySelectorAll('.letter').forEach(letter => {
+    letter.addEventListener('click', function() {
+        // Alternar la clase 'letter-hover' en el elemento clicado
+        if (this.classList.contains('letter-hover')) {
+            this.classList.remove('letter-hover');
+        } else {
+            this.classList.add('letter-hover');
+
+            // Remover 'letter-hover' de los demás elementos
+            document.querySelectorAll('.letter').forEach(otherLetter => {
+                if (otherLetter !== this) {
+                    otherLetter.classList.remove('letter-hover');
+                }
+            });
+        }
+    });
+});
+
       function ActiveOptions() {
             const optionsDiv = document.querySelector('.btns-creditos-opciones');
             optionsDiv.classList.toggle('d-none');
       }
+
+      let input_search_credits =   document.querySelector('.buscador-credito')
+      document.addEventListener('DOMContentLoaded', ()=>{
+            input_search_credits.focus()
+      } )
+      
+let data_credit_coming = false
+
+input_search_credits.addEventListener('input', ()=> {
+
+      console.log(input_search_credits.value)
+      if(input_search_credits.value.length > 0){
+            document.querySelector('.list_data_credits').classList.remove('d-none')
+      } else {
+            document.querySelector('.list_data_credits').classList.add('d-none')
+      }
+}
+)
+window.addEventListener("DOMContentLoaded", function() {
+      if( document.querySelector('#search-data')) {
+            input_search_credits.addEventListener('click', function() {
+                  if (data_credit_coming == false) {
+                        CallDataCredit();
+                  }
+            });
+      }
+  
+        function CallDataCredit() {
+            console.log('Loading Credits Data...');
+            let list_data = document.querySelector('.list_data_credits')
+            const url = 'searching/credit';
+            $.ajax({
+                url: url,
+                success: function(data){
+                  data_credit_coming = true
+                  search_data.addEventListener('input', (event) => {
+                        const input_search_credits = event.target.value;
+                        const filtered_data = data.filter((config) => {
+                              return config.filter.toLowerCase().includes(input_search_credits.toLowerCase());
+                        });
+
+                        list_data.innerHTML = ''
+                        for (const c  of filtered_data) {
+                              let container = document.createElement("div")
+                                    container.classList.add('container_list')
+                              let button = document.createElement('button');
+                                    container.classList.add('w-100')
+                                    button.classList.add('border-1', 'p-0' )
+                                    button.id = c.id
+                                    button.addEventListener('click', function() {
+                                          document.getElementById('input-send-data').value = this.id
+                                          document.getElementById('btn-send-data').click()
+                                    });
+                                    button.innerText = c.name
+                                    container.appendChild(button)
+                                    list_data.appendChild(container);
+                        }
+
+   
+
+                  });
+            },
+                  error: function(xhr, status, error) {
+                        console.error('Error en la solicitud AJAX:', status, error);
+                  }
+                  });
+            }
+});
+
 </script>
 
 

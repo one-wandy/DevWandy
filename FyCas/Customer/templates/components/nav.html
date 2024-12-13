@@ -65,8 +65,9 @@
       } 
        .btn-nav button:hover  
       {
+            box-shadow: none !important;
             /* margin-top: 0.2rem; */
-            border: rgba(255, 255, 255, 0.789) 1px solid;
+            /* border: rgba(255, 255, 255, 0.789) 1px solid; */
       
 
       } 
@@ -105,11 +106,11 @@
       }
 
 </style>
-<section class="  sec-btn ms-2 me-2   card  mt-1 mb-1 border-0 overflow-scroll " 
+<section class="  sec-btn ms-2 me-2   card   mb-1 border-0 overflow-scroll " 
       style="border-radius: 0rem;  height: max-content;
 
       ">
-      <div class='btn-nav  pb-2      ' data-aos="fade-right" style="transition: 1s;" >
+      <div class='btn-nav  pb-2      ' data-aos="fade-in" style="transition: 1s;" >
             <div class="w-100 d-flex justify-content-center mb-1 mt-1">
                   <!-- <img src="{% static "icons/doc(46).png" %}" 
                   class="mt-2"  width='24' height="24" alt=""> -->
@@ -172,14 +173,31 @@
                   </strong>
             </div>
          
-            <a href="{% url "customer:dashboard" %}" class=" mt-5">
+            <a href="{% url "customer:dashboard" %}" class=" mt-1">
                   <button class="btn-dashboard">
                         <img src="{% static "icons/grafico.png" %}" width='24' alt="">
                         <span class=" text-start">
                               Dashboard  
                         </span>
                   </button>
-            
+            </a>
+
+            <a href="{% url "shop:shop" %}">
+                  <button class="btn-pos">
+                        <img src="{% static "icons/pos.png" %}" width='24' alt="">
+                        <span>
+                              POS
+                        </span>
+                  </button>
+            </a>
+
+            <a href="{% url "shop:inventario" %}">
+                  <button class="btn-inventario">
+                        <img src="{% static "icons/item.png" %}" width='24' alt="">
+                        <span>
+                              Inventario
+                        </span>
+                  </button>
             </a>
            
             <a href="{% url "customer:select-form" %}">
@@ -194,7 +212,7 @@
                   <button class="btn-cliente"> 
                         <img src="{% static "svg/user.svg" %}" width='24' alt="">
                         <span>
-                              Clientes  {% if customer_count %} ({{customer_count}}) {% endif %} 
+                              Clientes  {% if customer_count %} <strong style="font-size: 14px;"> ( {{customer_count}} )</strong> {% endif %} 
                         </span>
                   </button>
             </a>
@@ -232,11 +250,10 @@
                   </span>
             </button>
             <a href="{% url "customer:calendario" %}">
-
                   <button class="btn-calendario">
                         <img src="{% static "svg/calendar.svg" %}" width='24' alt="">
                         <span>
-                              Calendario
+                              Agenda
                         </span>
                   </button>
             </a>

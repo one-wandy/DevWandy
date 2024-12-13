@@ -31,6 +31,9 @@ class Dashboard(TemplateView, Options):
         
     
     def get_context_data(self, **kwargs):
+
+
+
         context = super().get_context_data(**kwargs)
         creditos = models.Credit.objects.filter(company=self.Company(), is_active = True)
         total_inversion = 0
@@ -158,7 +161,7 @@ class ListCustomer(ListView,Options):
                     context['count_client'] = int(filter_client.count())
         else:
             filter_client = self.model.objects.filter(is_active = True, company = self.Company(),
-                                    customer_verify = True ).order_by('-id')[:15]
+                                    customer_verify = True ).order_by('-id')[:8]
             context['customer'] = filter_client
             context['company'] = self.Company()
             context['count_client'] = int(filter_client.count())
@@ -731,7 +734,7 @@ class CrearCredito(TemplateView, Options):
         print(self.Calculadora_Francesa(capital, tasa, plazo, credit))
     
         return super().get(request, *args, **kwargs)
-    
+     
     
     def Calculadora_Francesa(self, capital, tasa, plazo, credit):
         self.RunCreditValidate()
@@ -854,9 +857,12 @@ class CrearCredito(TemplateView, Options):
                             p_cuotas += 1
 
                     fecha_actual = datetime.now()
+
+
+                    credit.save()
                     context['cal'] = self.CalFran(int(credit.amount), int(credit.tasa), int(credit.price_feed), 't') 
                     context['credit'] =  credit
-                    context['cc'] = p_x_c - c_p
+                    context['cc'] = p_x_c 
                     context['cp'] = c_p
                     context['all_credits'] = all_credits
                     context['c_cuotas'] = c_cuotas
@@ -951,8 +957,10 @@ class CreateCreditNew(CreateView, Options):
             URL = reverse('customer:crear-credito',  kwargs={'pk': form_class.instance.id})
             return redirect(URL)
 
-
-
+from django.db.models import CharField, Value
+from django.db.models.functions import Upper, Substr
+from itertools import groupby
+import string
 class ListAllCredits(ListView, Options):
     model = models.Credit
     template_name = "customer/list-all-credits.html"
@@ -963,26 +971,24 @@ class ListAllCredits(ListView, Options):
 
     def post(self, request, *args, **kwargs):
         return self.get(request, *args, **kwargs)
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
+        
+
         pendiente_credit = self.model.objects.filter(estado_credito=False, credito_atrasado=True).count()
         saldado_credit = self.model.objects.filter(estado_credito=True).count()
         credits_count = self.model.objects.all().count()
         context['credits_count'] = credits_count
-        context['all_credits'] = self.model.objects.filter(estado_credito=False).order_by('-id')
-        context['pendiente_credit'] = pendiente_credit
-        context['saldado_credit'] = saldado_credit
+        context['saldado_credit'] =  saldado_credit
+        context['pendiente_credit']  = pendiente_credit
+        context['category'] = models.Category.objects.all()
+
         context['company'] = self.Company()
-        if self.request.method == 'POST':
-            print('siuu')
+
             
-            if  self.request.POST.get('pendientes') != None:
-                context['all_credits'] = self.model.objects.filter(estado_credito=False, credito_atrasado=True).order_by('-id')
-            if  self.request.POST.get('saldado') != None:
-                context['all_credits'] = self.model.objects.filter(estado_credito=True).order_by('-id')
-        else:
-            context['all_credits'] = self.model.objects.filter(estado_credito=False).order_by('-id')
+
         return context
 
 

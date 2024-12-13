@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include('Customer.urls')),
     path('', include('Maps.urls')),
     path('', include('MensApp.urls')),
+     path('', include('Shop.urls')),
     path('admin/', admin.site.urls),
 ]
 

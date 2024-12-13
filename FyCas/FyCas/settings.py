@@ -22,6 +22,7 @@ CSRF_TRUSTED_ORIGINS = ['https://8000-cs-764470ba-73bf-4820-b736-e9a1023a88b7.cs
 # Application definition
 
 INSTALLED_APPS = [
+    'Shop.apps.ShopConfig',
     'MensApp.apps.MensappConfig', # App de Mensajes
     'Maps.apps.MapsConfig', # App de Mapas
     'Customer.apps.CustomerConfig', # App de Clientes
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'allauth',  # App de Autenticación
     'allauth.account', # App de Cuentas
     'allauth.socialaccount', # App de Cuentas Sociales
+     'django_extensions',
 ]
 
 MIDDLEWARE = [

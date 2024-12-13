@@ -196,14 +196,21 @@ class Customer(models.Model):
     day_created = models.DateField(default=timezone.now)
 
     def __str__(self):
-        return self.name
+        return f'{self.name}, {self.last_name}, {self.company}'
 
+
+class Category(models.Model):
+        letter = models.CharField(max_length=1, default='A')
+        def __str__(self):
+            return f' Categoria ({self.letter})'
 
 class Credit(models.Model):
+    category = models.ForeignKey('Category', on_delete=models.CASCADE,  blank=True, null=True, related_name="category_credit")
     company= models.ForeignKey('Company', on_delete=models.CASCADE,  blank=True, null=True, related_name="company_credit")
     customer = models.ForeignKey(Customer, null=True, blank=True, 
                     on_delete=models.CASCADE, related_name="credit")
-    amount = models.IntegerField(default=10000)
+    amount = models.IntegerField(default=10000) # Este es el capital que si varia, esto para el ajuste de los abonos al capital
+    capital_no_variable = models.IntegerField(default=1, blank=True, null=True) # Este capital no varia
     name = models.CharField(max_length=100)
     #Numero de Cuenta
     price_feed = models.IntegerField(default=1)
@@ -219,8 +226,8 @@ class Credit(models.Model):
     day_number = models.CharField(max_length=100, default="")
     year = models.CharField(max_length=100, default="")
     year_number = models.CharField(max_length=100, default="")
-    amount_str = models.CharField(max_length=100, default="")
-    amount_feed_int = models.CharField(max_length=100, default="")
+    amount_str = models.CharField(max_length=100, default="0.00")
+    amount_feed_int = models.CharField(max_length=100, default="0.00")
     amount_feed = models.CharField(max_length=100, default="")
     # Day Create
     day_created = models.DateField(default=timezone.now)
@@ -231,11 +238,18 @@ class Credit(models.Model):
     estado = models.BooleanField(default=False,  null=True, blank=True) 
 
 
+    precio_a_saldar = models.IntegerField(default=1, blank=True)
     estado_credito = models.BooleanField(default=False,  null=True, blank=True)
     credito_atrasado = models.BooleanField(default=False,  null=True, blank=True)
-    
+    group_letter = models.CharField(max_length=1, default='A')
+
+    def save(self, *args, **kwargs):
+            # Asignar la primera letra al campo group_letter automáticamente
+            self.group_letter = self.customer.name[0].upper()
+            super().save(*args, **kwargs)
+
     def __str__(self):
-        return self.name
+        return f'{self.customer.name} {self.customer.last_name}, {self.amount}, {self.date}'
 
 class Cuota(models.Model):
         credito = models.ForeignKey(Credit, null=True, blank=True, 
@@ -274,7 +288,7 @@ class Cuota(models.Model):
         credito_atrasado = models.BooleanField(default=False,  null=True, blank=True)
         
         def __str__(self):
-            return str(self.cuota)
+            return  f" {self.credito.customer.name} {self.credito.customer.last_name},    {str(self.cuota)}"
         
         
         
