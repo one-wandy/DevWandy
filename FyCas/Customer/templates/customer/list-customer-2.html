@@ -6,7 +6,7 @@
 .text2 {
       font-size: 12px;
       color: #737373;
-      font-weight: bold;
+      font-weight: 500;
 }
 svg{
       color: #8e8e8e;
@@ -136,19 +136,19 @@ svg{
 
 
 <div class="w-100 d-flex">
-      <div style="width: 100%;" class=" d-flex flex-wrap justify-content-evenly  pt-4 align-content-center overflow-scroll vh-100 ">
+      <div style="width: 100%;" class=" d-flex flex-wrap justify-content-evenly  pt-2 pb-3 align-content-start overflow-scroll vh-100 ">
             {% for c in customer %}
                   <div style="width: 408px; height: 181px;   " class="position-relative  mb-3 me-1 card-cu       d-flex justify-content-center ">
 
-                        <div id="client{{c.id}}"   style=" transition: 0.5s ease-out !important;   
-                        border-radius: 1.8rem;   z-index: 0 !important; background-color: #ffffff !important;
+                        <div id="client{{c.id}}"     style=" transition: 0.5s ease-out !important;   
+                        border-radius: 2rem;   z-index: 0 !important; background-color: #ffffff !important;
                                     box-shadow: 0px 1px 3px 1px rgba(218, 218, 218, 0.505);" class="w-100 position-relative  p-2 bg-white " >
 
-                                    <button id="{{c.id}}"  onclick='OpenCloseBtn(this.id)' style="background-color: #35333e00; width: 35px; height: 35px; color: #000000 !important; top: 8rem; box-shadow: #eeeeee00 1px 1px 1px 1px; border: 0px solid #a7a7a7 !important; border-style: dotted !important;"   class="rounded-circle  position-absolute border-0  p-0 me-2 mb-2 mt-2 end-0 d-flex flex-wrap justify-content-center align-content-center ">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots >" style="margin-top: 10px;" viewBox="0 0 16 16">
+                                    <!-- <button id="{{c.id}}"  onclick='OpenCloseBtn(this.id)' style="background-color: #35333e00; width: 35px; height: 35px; color: #000000 !important; top: 8rem; box-shadow: #eeeeee00 1px 1px 1px 1px; border: 0px solid #a7a7a7 !important; border-style: dotted !important;"   class="rounded-circle  position-absolute border-0  p-0 me-2 mb-2 mt-2 end-0 d-flex flex-wrap justify-content-center align-content-center ">
+                                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots >" style="margin-top: 10px;" viewBox="0 0 16 16">
                                                 <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                          </svg>
-                                    </button>
+                                          </svg> 
+                                    </button> -->
                                     <div class="m-0 p-0" >
                                           <div class="d-flex">
                                           
@@ -164,14 +164,14 @@ svg{
                                                       filter: brightness(80%); "  alt=""> 
                                                       {% endif %}
                                                 </span>
-                                                <a href="{% url "customer:detail-customer" c.id %}" >
-                                                      <div style="border-radius: 2rem;
+                                                <!-- <a href="{% url "customer:detail-customer" c.id %}" > -->
+                                                      <div id="{{c.id}}" onclick='OpenCloseBtn(this.id)'  style="border-radius: 2rem;
                                                       width: 190px; height: 37px; border: 1px solid rgba(217, 217, 217, 0); font-weight: 600; color: #494949; line-height: 16px; background-color: transparent;" class="p-2  m-0 mt-3 ms-2   w-100  d-flex  ">
                                                             <div class="m-0  d-inline   text-first-letter-uppercase   p-1  " style="width: 281px; flex-wrap: nowrap !important; font-size: 16px; ">
                                                                   {{c.name}} {{c.last_name}}
                                                             </div>
                                                       </div>
-                                                </a>
+                                                <!-- </a> -->
                                           </div>
                                     <div class="ms-1   overflow-visible" style="margin-top:2rem !important;">  
                                           <a href="">
@@ -191,8 +191,8 @@ svg{
 
 
                                     
-                                                <span class="d-flex text2 overflow-hidden  w-100 justify-content-end  pe-5" 
-                                                style="font-size: 12px; color: #737373 !important;">
+                                                <span class="d-flex text2 overflow-hidden  w-100 justify-content-end  pe-3" 
+                                                style="font-size: 12px; color: #737373 !important; font-weight: 00 !important;">
                                                 
                                                 {% if c.customer_verify == False %} 
                                                 <strong class='text-danger me-2'>
@@ -227,7 +227,16 @@ svg{
             <h6 class="m-0 p-0 text-black-50 mt-2" style="font-size: 12px;">
                   <!-- Acciones  -->
             </h6>
-            <div class="w-100 d-flex justify-content-center ">
+            <div class="w-100 d-flex justify-content-start  ">
+
+                  <a href="{% url "customer:agregar"  company.id %}" style="width: max-content; ">
+                        <button class="border-1  mt-1 text-white rounded-circle position-relative  p-1  pe-2 ps-2" style="background-color: var(--bg-enfasis);
+                        width: 2.5rem; height: 2.5rem;">
+                              <img src="{% static "icons/mas.png" %}" width='24' style="filter: brightness(0) invert(1);">  
+
+                              <span style="font-size: 12px;"></span>
+                        </button>
+                  </a>
                            
              <form action="" method="post"  style="max-width: max-content;">
                   {% csrf_token %}
@@ -243,21 +252,17 @@ svg{
                         <img src="{% static "icons/notify.png" %}" width='20' alt="" style="filter: brightness(0) invert(1);"><span style="font-size: 12px;"></span>
                   </button>
             </form>
-            <button class="border-1 mt-1 text-white rounded-circle position-relative  p-1  pe-2 ps-2" style="background-color: var(--bg-enfasis);
-            width: 2.5rem; height: 2.5rem;">  
-  
-            
-                  <img src="{% static "svg/list.svg" %}" width='20' alt="" style="filter: brightness(0) invert(1);"><span style="font-size: 12px;"></span>
-            </button>
 
+         
+<!-- 
             <button class="border-1 mt-1 text-white rounded-circle position-relative  p-1  pe-2 ps-2" style="background-color: var(--bg-enfasis);
             width: 2.5rem; height: 2.5rem;">  
 
       
                   <img src="{% static "icons/Note.png" %}" width='20' alt="" style="filter: brightness(0) invert(1);"><span style="font-size: 12px;"></span>
-            </button>
+            </button> -->
 
-            <button class="border-1 mt-1 text-white rounded-circle position-relative  p-1  pe-2 ps-2" style="background-color: var(--bg-enfasis);
+            <!-- <button class="border-1 mt-1 text-white rounded-circle position-relative  p-1  pe-2 ps-2" style="background-color: var(--bg-enfasis);
             width: 2.5rem; height: 2.5rem;">  
 
 
@@ -268,16 +273,15 @@ svg{
 
 
             <img src="{% static "icons/file.png" %}" width='20' alt="" style="filter: brightness(0) invert(1);"><span style="font-size: 12px;"></span>
-            </button>
-
+            </button> -->
 
       
             </div>
 
 
             <div class="w-100 mt-2"> 
-                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://grupofycas.online/add-customer/{{company.id}}" class="w-100 rounded-5" alt="QR Code">
-                  <a class="url text-center" href="https://grupofycas.online/add-customer/{{company.id}}">
+                  <!-- <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://grupofycas.online/add-customer/{{company.id}}" class="w-100 rounded-5" alt="QR Code">
+                  <a class="url text-center" href="https://grupofycas.online/add-customer/{{company.id}}"> -->
 
                   </a>
                   <style>
